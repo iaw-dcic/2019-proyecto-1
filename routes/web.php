@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Home
+Route::get('/', 'HomeController@getHomeView');
+
+// Add Game
+Route::get('/add-game', 'AddGameController@getAddGameView');
