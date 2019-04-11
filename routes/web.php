@@ -12,18 +12,19 @@
 */
 
 // Home
-Route::get('/', 'HomeController@getHomeView');
-Route::get('/home', 'HomeController@getHomeView');
+/*Route::get('/', 'HomeController@getHomeView');
+Route::get('/home', 'HomeController@getHomeView');*/
+Route::get('/','PagesController@home');
 
 // My games
-Route::get('/my-games', 'MyGamesController@getMyGamesView');
+Route::get('/games', 'PagesController@games');
 
-// About us
-Route::get('/about-us', 'AboutUsController@getAboutUsView');
+// About 
+Route::get('/about', 'PagesController@about');
 
 // Login
-Route::get('/login', 'LoginController@getLoginView');
+Route::get('/login', 'PagesController@login');
 
 // Register
-Route::get('/register', 'RegisterController@getRegisterView');
+Route::get('/register', 'PagesController@register');
 
