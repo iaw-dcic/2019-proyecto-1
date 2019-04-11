@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>EndGam - Gaming Magazine Template</title>
+    <title>GG - Good Game!</title>
     <meta charset="UTF-8">
     <meta name="description" content="EndGam Gaming Magazine Template">
     <meta name="keywords" content="endGam,gGaming, magazine, html">
@@ -49,17 +49,17 @@
                 </a>
                 <nav class="top-nav-area w-100">
                     <div class="user-panel">
-                        <a href="./">Login</a> / <a href="">Registro</a>
+                        <a href="./login">Login</a> / <a href="./register">Registro</a>
                     </div>
                     <!-- Menu -->
                     <ul class="main-menu primary-menu">
                         <li><a href="./">Inicio</a></li>
-                        <li><a href="./add-game">Juegos</a>
+                        <li><a href="./my-games">Juegos</a>
                             <ul class="sub-menu">
                                 <li><a href="game-single.html">Game Singel</a></li>
                             </ul>
                         </li>
-                        <li><a href="./about-us">Sobre nosotros</a></li>
+                        <li><a href="./about-us">Nosotros</a></li>
                     </ul>
                 </nav>
             </div>
@@ -75,14 +75,14 @@
                 <div class="container">
                     <h2>GoodGame</h2>
                     <p>Todos tus juegos en un solo lugar!.</p>
-                    <a href="#" class="site-btn">Leer más<img src="img/icons/double-arrow.png" alt="#" /></a>
+                    <a href="./about-us" class="site-btn">Leer más<img src="img/icons/double-arrow.png" alt="#" /></a>
                 </div>
             </div>
             <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="img/slider-bg-2.jpg">
                 <div class="container">
                     <h2>Game on!</h2>
                     <p>Fusce erat dui, venenatis et erat in, vulputate dignissim lacus. Donec vitae tempus dolor,<br>sit amet elementum lorem. Ut cursus tempor turpis.</p>
-                    <a href="#" class="site-btn">Read More <img src="img/icons/double-arrow.png" alt="#" /></a>
+                    <a href="./about-us" class="site-btn">Read More <img src="img/icons/double-arrow.png" alt="#" /></a>
                 </div>
             </div>
         </div>
@@ -124,7 +124,6 @@
                 <a href="#"><i class="fa fa-dribbble"></i></a>
                 <a href="#"><i class="fa fa-behance"></i></a>
             </div>
-            <div class="copyright"><a href="">Colorlib</a> 2018 @ All rights reserved</div>
         </div>
     </footer>
     <!-- Footer section end -->

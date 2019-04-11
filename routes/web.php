@@ -13,6 +13,17 @@
 
 // Home
 Route::get('/', 'HomeController@getHomeView');
+Route::get('/home', 'HomeController@getHomeView');
 
-// Add Game
-Route::get('/add-game', 'AddGameController@getAddGameView');
+// My games
+Route::get('/my-games', 'MyGamesController@getMyGamesView');
+
+// About us
+Route::get('/about-us', 'AboutUsController@getAboutUsView');
+
+// Login
+Route::get('/login', 'LoginController@getLoginView');
+
+// Register
+Route::get('/register', 'RegisterController@getRegisterView');
+

@@ -70,10 +70,10 @@
     <!-- Page top section -->
     <section class="page-top-section set-bg" data-setbg="img/page-top-bg/4.jpg">
         <div class="page-info">
-            <h2>Nosotros</h2>
+            <h2>Registro</h2>
             <div class="site-breadcrumb">
                 <a href="./">Inicio</a> /
-                <span>Nosotros</span>
+                <span>Registro</span>
             </div>
         </div>
     </section>
