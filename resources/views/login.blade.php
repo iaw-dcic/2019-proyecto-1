@@ -70,10 +70,10 @@
     <!-- Page top section -->
     <section class="page-top-section set-bg" data-setbg="img/page-top-bg/4.jpg">
         <div class="page-info">
-            <h2>Login</h2>
+            <h2>Ingresar</h2>
             <div class="site-breadcrumb">
                 <a href="./">Inicio</a> /
-                <span>Login</span>
+                <span>Ingresar</span>
             </div>
         </div>
     </section>
@@ -83,7 +83,6 @@
     <!-- Contact page -->
     <section class="contact-page">
         <div class="container">
-            <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14376.077865872314!2d-73.879277264103!3d40.757667781624285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1546528920522" style="border:0" allowfullscreen></iframe></div>
             <div class="row">
                 <div class="col-lg-7 order-2 order-lg-1">
                     <form class="contact-form">

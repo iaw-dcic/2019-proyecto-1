@@ -102,6 +102,7 @@
     <footer class="footer-section">
         <div class="container">
             <div class="footer-left-pic">
+                <!--<img src="img/prueba1.png" alt=""> -->
                 <img src="img/footer-left-pic.png" alt="">
             </div>
             <div class="footer-right-pic">
