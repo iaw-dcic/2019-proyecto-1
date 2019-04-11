@@ -18,12 +18,12 @@
                 <!-- Menu -->
                 <ul class="main-menu primary-menu">
                     <li><a href="./">Inicio</a></li>
-                    <li><a href="./my-games">Juegos</a>
+                    <li><a href="./games">Juegos</a>
                         <ul class="sub-menu">
                             <li><a href="game-single.html">Game Singel</a></li>
                         </ul>
                     </li>
-                    <li><a href="./about-us">Nosotros</a></li>
+                    <li><a href="./about">Nosotros</a></li>
                 </ul>
             </nav>
         </div>
