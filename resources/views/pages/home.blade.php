@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>GG - Good Game!</title>
+    <title>{{config('app.name')}}</title>
     <meta charset="UTF-8">
     <meta name="description" content="EndGam Gaming Magazine Template">
     <meta name="keywords" content="endGam,gGaming, magazine, html">
