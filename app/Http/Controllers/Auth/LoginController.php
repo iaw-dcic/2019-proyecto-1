@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 use App\User;
 
@@ -29,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -60,21 +61,16 @@ class LoginController extends Controller
     {
         $user = Socialite::driver($service)->user();
 
-        $newUser = User::where('provider_id', $user->getId())->first();
-
+        $newUser = User::where('email', $user->getEmail())->first();
 
         if (!$newUser) {
-            //add user to the database
-            $newUser = User::create([
-                'email'->$user->getEmail(),
-                'name'->$user->getName(),
-                'provider_id'->$user->getId(),
-            ]);
+            $newUser = new User;
+            $newUser->email = $user->getEmail();
+            $newUser->name = $user->getName();
+            $newUser->provider_id = $user->getId();
         }
 
-        //login the user
         Auth::login($newUser, true);
-
         return redirect($this->redirectTo);
     }
 }
