@@ -13,7 +13,7 @@ class GamesController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.games');
     }
 
     /**
@@ -23,7 +23,7 @@ class GamesController extends Controller
      */
     public function create()
     {
-        //
+        return view('games.create');
     }
 
     /**

@@ -9,7 +9,7 @@
         <div class="header-bar-warp d-flex">
             <!-- site logo -->
             <a href="home.html" class="site-logo">
-                <img src="./img/logo.png" alt="">
+                <img src="{{asset('/img/logo.png')}}">
             </a>
 
             <nav class="top-nav-area w-100">

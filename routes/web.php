@@ -12,12 +12,12 @@
 */
 
 Route::get('/','PagesController@home');
-Route::get('/games', 'PagesController@games');
+//Route::get('/games', 'PagesController@games');
 Route::get('/about', 'PagesController@about');
 //Route::get('/login', 'PagesController@login');
 //Route::get('/register', 'PagesController@register');
-//Route::resource('games','GamesController');
 
+Route::resource('games','GamesController');
 
 Auth::routes();
 
@@ -25,6 +25,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

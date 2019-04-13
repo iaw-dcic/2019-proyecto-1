@@ -3,13 +3,13 @@
     <div class="container">
         <div class="footer-left-pic">
             <!--<img src="img/prueba1.png" alt=""> -->
-            <img src="img/footer-left-pic.png" alt="">
+            <img src="{{asset('img/footer-left-pic.png')}}">
         </div>
         <div class="footer-right-pic">
-            <img src="img/footer-right-pic.png" alt="">
+            <img src="{{asset('img/footer-right-pic.png')}}">
         </div>
         <a href="#" class="footer-logo">
-            <img src="./img/logo.png" alt="">
+            <img src="{{asset('/img/logo.png')}}">
         </a>
         <ul class="main-menu footer-menu">
             <li><a href="">Home</a></li>
