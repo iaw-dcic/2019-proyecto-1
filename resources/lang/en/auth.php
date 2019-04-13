@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'No encontramos esta direccion de email. Por favor revisala o registrate.',
+    'failed' => 'Error en el email o contraseña. Por favor intente nuevamente.',
     'throttle' => 'Demasiados intentos fallidos de loguearse. Intenta nuevamente en :seconds segundos.',
 
 ];

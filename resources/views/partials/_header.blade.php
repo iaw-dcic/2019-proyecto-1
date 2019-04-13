@@ -19,6 +19,9 @@
                     <a href="./register">Registrarse</a> 
                 @endguest
                 @auth
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
                     <a href="./logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 Salir
                             </a> /

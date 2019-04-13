@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" />
     <link rel="stylesheet" href="css/magnific-popup.css" />
     <link rel="stylesheet" href="css/animate.css" />
-    <link rel="stylesheet" href="css/bootstrap-social.css" />
+
 
     <!-- Main Stylesheets -->
     <link rel="stylesheet" href="css/style.css" />
