@@ -19,10 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
-    ->name('login.provider')
-    ->where('driver', implode('|', config('auth.socialite.drivers')));
-
-Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')
-    ->name('login.callback')
-    ->where('driver', implode('|', config('auth.socialite.drivers')));
+Route::prefix('login')->group(function () {
+    Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
+    Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.provider.callback');
+});

@@ -44,8 +44,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider($driver)
-    {
+    public function redirectToProvider($driver){
         return Socialite::driver($driver)->redirect();
     }
 
@@ -54,8 +53,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback($driver)
-    {
+    public function handleProviderCallback($driver){
         try {
             $user = Socialite::driver($driver)->user();
         } catch (\Exception $e) {

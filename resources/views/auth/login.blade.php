@@ -37,8 +37,8 @@
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
               <hr class="my-4">
-              <a href="{{ route('login.provider', 'google') }}" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</a>
-              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="button"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>
+              <a href="{{url('/')}}/login/google" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Sign in with Google</a>
+              <a href="{{url('/')}}/login/facebook" class="btn btn-lg btn-facebook btn-block text-uppercase"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</a>
 
               <div class="form-label-group">
                 @if (Route::has('password.request'))
