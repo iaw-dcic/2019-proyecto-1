@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('registro', function () {
+    return "Pagina registro";
+})->name('registrar');
+
+Route::get('ingreso','PageController@ingreso')->name('ingresar');
+
+Route::get('/', 'PageController@inicio')->name('index');
