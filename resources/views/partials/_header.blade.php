@@ -11,10 +11,24 @@
             <a href="home.html" class="site-logo">
                 <img src="./img/logo.png" alt="">
             </a>
+
             <nav class="top-nav-area w-100">
                 <div class="user-panel">
-                    <a href="./login">Login</a> / <a href="./register">Registro</a>
+                @guest
+                    <a href="./login">Ingresar</a> / 
+                    <a href="./register">Registrarse</a> 
+                @endguest
+                @auth
+                    <a href="./logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                Salir
+                            </a> /
+                    <a href="./register">Registrarse</a> 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endauth
                 </div>
+
                 <!-- Menu -->
                 <ul class="main-menu primary-menu">
                     <li><a href="./">Inicio</a></li>
