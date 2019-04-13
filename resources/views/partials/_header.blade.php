@@ -15,8 +15,8 @@
             <nav class="top-nav-area w-100">
                 <div class="user-panel">
                 @guest
-                    <a href="./login">Ingresar</a> / 
-                    <a href="./register">Registrarse</a> 
+                    <a href="{{ url('login') }}">Ingresar</a> / 
+                    <a href="{{ url('register') }}">Registrarse</a> 
                 @endguest
                 @auth
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
