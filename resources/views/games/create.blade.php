@@ -24,7 +24,7 @@
                     <div class="card-header">{{ __('Agregar juego') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('games/store') }}">
                             @csrf
 
                             <div class="form-group row">
@@ -37,7 +37,15 @@
                                                         <strong>{{ $errors->first('name') }}</strong>
                                                     </span> @endif
                                 </div>
-                            </div>                     
+                            </div>     
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                                    {{ __('Agregar juego') }}
+                                                </button>
+                                </div>
+                            </div>                
                            
                         </form>
                     </div>
