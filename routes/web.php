@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('registro', function () {
-    return "Pagina registro";
-})->name('registrar');
-
-Route::get('ingreso','PageController@ingreso')->name('ingresar');
-
 Route::get('/', 'PageController@inicio')->name('index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
