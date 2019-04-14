@@ -13,6 +13,13 @@
 
 Route::get('/', 'PageController@inicio')->name('index');
 
+Route::get('/login/facebook')->name('login-facebook');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//facebook
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
