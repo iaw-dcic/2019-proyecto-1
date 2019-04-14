@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Game;
 
 class GamesController extends Controller
 {
@@ -34,7 +35,19 @@ class GamesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'title' => 'required',
+            //  'company' => 'required'
+        ));
+
+        $game = new Game;
+
+        $game->title = $request->title;
+        //$game-> company = $request->company;
+
+        $game->save();
+
+        return redirect()->route('games.show', $game->id);
     }
 
     /**
@@ -44,9 +57,7 @@ class GamesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
+    { }
 
     /**
      * Show the form for editing the specified resource.
