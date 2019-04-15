@@ -15,7 +15,7 @@ use Auth;
         $usuarios = User::orderBy('nombre', 'ASC')->get(); 
         //$ingredientes = Ingrediente_deReceta::
         return view('home', [
-            'user' => $user,
+            //'user' => $user,
             'title' => 'Inicio', 
             'recetas' => $recetas,
             'usuarios' => $usuarios

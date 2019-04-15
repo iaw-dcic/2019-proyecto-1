@@ -12,7 +12,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-      <a href="{{ route('receta') }}">  <img src="img/spaghetti.jpg" class="d-block w-100" alt="spaghetti"></a>
+      <a href="#">  <img src="img/spaghetti.jpg" class="d-block w-100" alt="spaghetti"></a>
         <div class="carousel-caption d-none d-md-block">
           <h5>Spaghetti</h5>
           <p>Riquisimos spaghetti con salsa y atún</p>
@@ -46,7 +46,7 @@
   <!--  Seccion del buscador -->
 
 <section class="buscador">
-<form action="{{route('busqueda')}}" method="POST" role="search" > {{csrf_field() }}   <!--  protege busqueda-->
+<form action="#" method="POST" role="search" > {{csrf_field() }}   <!--  protege busqueda-->
 
 <div class="input-group mb-3">
 <label class="sr-only" for="inlineFormInput">busqueda</label>
