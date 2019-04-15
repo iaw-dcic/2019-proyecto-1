@@ -35,3 +35,6 @@ Route::get('/profile',function(){ //example.com/profile (needs profile info)
 Route::get('/list',function(){ //example.com/list (needs List name)
     return view('list');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
