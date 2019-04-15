@@ -22,7 +22,22 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = Book::all();
+
+        $data['books'] = $books;
+
+        return view('book.index', $data);
+    }
+
+    public function list($id)
+    {
+
+        $books = Book::where('user_id', $id)->get();
+
+        $data['books'] = $books;
+
+        return view('book.index', $data);
+
     }
 
     /**
@@ -86,7 +101,15 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $book = Book::find($book);
+
+        $book->name=$request->name;
+        $book->author=$request->author;
+        $book->isbn=$request->ISBN;
+
+        if ($book->save()) {
+            return redirect()->route('book.update')->with('status', 'Éxito');
+        }
     }
 
     /**
