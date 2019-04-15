@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use Illuminate\Http\Request;
+use Auth;
 
 class BookController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +32,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('book.create');
     }
 
     /**
@@ -35,7 +43,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $book = New Book();
+
+        $book->name=$request->name;
+        $book->author=$request->author;
+        $book->isbn=$request->ISBN;
+        $book->user_id = Auth::user()->id;
+
+        if ($book->save()) {
+            return redirect()->route('book.create')->with('status', 'Éxito');
+        }
     }
 
     /**
