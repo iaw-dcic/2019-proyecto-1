@@ -14,4 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/','RecetasController@index');
+ 
+Route::get('login', 'UserController@login')->name('login');
+
+   
+Route::get('auth/{provider}', 'UserController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback', 'UserController@handleProviderCallback');
  
