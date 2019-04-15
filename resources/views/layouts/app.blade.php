@@ -64,8 +64,10 @@
                             @else
                                 <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    @if(auth()->user()->avatar)
+                                    @if(auth()->user()->avatar && auth()->user()->provider_id)
                                         <img id='avatarUser' src="{{ auth()->user()->avatar }}" alt="avatar" width="32" height="32">
+                                    @elseif(auth()->user()->avatar && !(auth()->user()->provider_id))
+                                        <img id='avatarUser' src="../{{ auth()->user()->avatar }}" alt="avatar" width="32" height="32">
                                     @endif
                                     {{ auth()->user()->name }} <span class="caret"></span>
                                 </a>

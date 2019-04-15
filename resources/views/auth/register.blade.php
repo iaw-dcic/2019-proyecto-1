@@ -7,12 +7,12 @@
         <div class="background-color card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Sign up</h5>
-            <form autocomplete="off" method="POST" action="{{ route('register') }}" class="form-signup">
+            <form enctype="multipart/form-data" autocomplete="off" method="POST" action="{{ route('register') }}" class="form-signup">
               @csrf
 
               <div id='avatar-content' class="col">
                 <img id='avatarImage' src="{{ asset('images/default.png') }}" alt="avatar" width="100" height="100">
-                <input id='fileAvatar' name='avatar' type="file" accept="image/*" required autofocus>
+                <input id='fileAvatar' name='avatar' type="file" accept="image/*">
               </div>
 
               <div class="form-label-group">
@@ -25,16 +25,12 @@
                 <label for="inputName">Name</label>
               </div>
 
-              <div class="row">
+              <div class="form-row">
                 <div class="col">
-                  <input data-provide="datepicker"  id="birthdate" class="form-control date" name="birthdate" placeholder="Birthdate" required autofocus>
+                  <input type='text' data-provide="datepicker" id="birthdate" class="form-control date" name="birthdate" placeholder="Birthdate yy-mm-dd" required>
                 </div>
                 <div class="col">
                   <select name='country' id="inputCountry" class="form-control" required autofocus>
-                    <option selected>Country</option>
-                    <option value="1">...</option>
-                    <option value="2">...</option>
-                    <option value="3">...</option>
                   </select>
                 </div>
               </div>
