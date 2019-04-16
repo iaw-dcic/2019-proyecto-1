@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
 
 
  
-  <link href=" css/login.css" rel="stylesheet">    
+  <link href="{{ asset('css/login.css') }}" rel="stylesheet">    
  
 </head>
 <body>
