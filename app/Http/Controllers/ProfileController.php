@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Profile;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class ProfileController extends Controller
             'surname' => 'required',
             'city' => 'required'
         ]);
-        $profile = Profile::query()->where('user_id',6)->first();
+        $profile = Profile::query()->where('user_id', Auth::user()->id)->first();
         $profile -> Nombre = $request ->input('name');
         $profile -> Apellido = $request -> input('surname');
         $profile -> Ciudad = $request -> input('city');
