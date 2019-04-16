@@ -19,8 +19,8 @@
         <p class="hint-text">Inicia sesión con tus redes sociales</p>
 		<div class="social-btn text-center">
 			<a href="{{ route('social.auth', 'facebook') }}" class="btn btn-primary btn-lg" title="Facebook"><i class="fa fa-facebook"></i></a>
-			<a href="#" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
-			<a href="#" class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
+			<a href="{{ route('social.auth', 'twitter') }}" class="btn btn-info btn-lg" title="Twitter"><i class="fa fa-twitter"></i></a>
+			<a href="{{ route('social.auth', 'google') }} " class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
 		</div>
         <div class="or-seperator"><b>o</b></div>
         <div class="form-group">

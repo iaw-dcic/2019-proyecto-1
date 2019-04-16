@@ -6,6 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Socialite;
 use App\User;
+
  
   class UserController extends Controller
 {
@@ -14,7 +15,7 @@ use App\User;
     }
    
 
-    // Metodo encargado de la redireccion a Facebook
+    // Metodo encargado de la redireccion a Facebook/Google
     public function redirectToProvider($provider)
     {
         return Socialite::driver($provider)->redirect();
@@ -22,18 +23,25 @@ use App\User;
     
     // Metodo encargado de obtener la información del usuario
     public function handleProviderCallback($provider)
-    {
+    {      
+         
         // Obtenemos los datos del usuario
+        if($provider != 'twitter'){
         $social_user = Socialite::driver($provider)->stateless()->user(); 
+
+         }
+        else
+        $social_user = Socialite::driver($provider)->user(); 
         // Comprobamos si el usuario ya existe
-        if ($user = User::where('email', $social_user->email)->first()) { 
+        if ($user = User::where('email', $social_user->getEmail())->first()) { 
+           
             return $this->authAndRedirect($user); // Login y redirección
         } else {  
             // En caso de que no exista creamos un nuevo usuario con sus datos.
             $user = User::create([
-                'nombre' => $social_user->name,
-                'email' => $social_user->email,
-                 'avatar'=>$social_user->avatar
+                'nombre' => $social_user->getName(),
+                'email' => $social_user->getEmail(),
+                'avatar'=>  $social_user->getavatar()
             ]);
 
             return $this->authAndRedirect($user); // Login y redirección
@@ -47,4 +55,12 @@ use App\User;
 
         return redirect()->to('/');
     }
+
+    public function logout(){
+        Auth::logout();
+        return  redirect()->to('/');
+    }
+
+   
 }
+    
