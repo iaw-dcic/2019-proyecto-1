@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Profile;
 use App\User;
 use Socialite;
 use App\Http\Controllers\Controller;
@@ -66,6 +67,14 @@ class LoginController extends Controller
             $user-> email =  $userSocial->email;
             $user-> password = bcrypt($userSocial->name);
             $user-> save();
+
+            $profile = new Profile;
+            $profile -> user_id = $user -> id;
+            $profile -> Nombre = $user -> name;
+            $profile -> Apellido = " ";
+            $profile -> Ciudad = " ";
+            $profile -> save();
+
             Auth::login($user);
         }
         else{
