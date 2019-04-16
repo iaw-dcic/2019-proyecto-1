@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/firstPage', function () {
-    return view('newPage');
+Route::get('/signup', function () {
+    return view('signup');
 });
+
+Route::get('/public', function () {
+    return view('public');
+});
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+
