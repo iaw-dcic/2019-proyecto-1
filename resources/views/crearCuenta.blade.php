@@ -1,26 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear cuenta</title>
+@extends('layout')
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+@section('scripts')
+<title>Crear cuenta</title>
 
-    <!-- Main css -->
+<!-- Font Icon -->
+<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-    <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet" >
-    <script type="text/javascript" src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
+<!-- css -->
+<link rel="stylesheet" href="css/style.css">
 
-       <!-- JS -->
-       <script src="jquery/jquery.min.js"></script>
+<!-- JS -->
+<script src="jquery/jquery.min.js"></script>
 
-</head>
-<body>
+@endsection
 
-    <div class="main">
+@section('content')
+<div class="links">
+                    <a href="/">Home</a>
+                  
+                </div>
+@endsection
+
+@section('content2')
+<br>
+
+<div class="main">
 
         <!-- Sign up form -->
         <section class="signup">
@@ -65,5 +69,6 @@
        
     </div>
 
-</body>
-</html>
+@endsection
+
+

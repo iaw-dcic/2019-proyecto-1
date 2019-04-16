@@ -15,6 +15,7 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
       
+      @yield('scripts')
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -29,7 +30,7 @@
   </div>
 </nav>
       
-            <h2>@yield('content2')</h2>
+            @yield('content2')
     
     </body>
 </html>

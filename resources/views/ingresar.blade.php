@@ -1,32 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ingresar</title>
+@section('scripts')
+<title>Ingresar</title>
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<!-- Font Icon -->
+<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-    <!-- css -->
-    <link rel="stylesheet" href="css/style.css">
+<!-- css -->
+<link rel="stylesheet" href="css/style.css">
 
-    <!--GOOGLE LOGIN-->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <meta name="google-signin-client_id"
-        content="676910351742-45qh05i7772jatj6r1beae53aoq9581j.apps.googleusercontent.com">
-    <script src="js/script.js"></script>
+<!-- JS -->
+<script src="jquery/jquery.min.js"></script>
+@endsection
 
-    <!-- JS -->
-    <script src="jquery/jquery.min.js"></script>
-</head>
+@section('content')
+<div class="links">
+                    <a href="/">Home</a>
+                  
+                </div>
+@endsection
 
-<body>
-
-    <div class="main">
+@section('content2')
+<br>
+<div class="main">
         <!-- Sing in  Form -->
         <section class="signin">
             <div class="container">
@@ -71,8 +67,4 @@
         </section>
         </div>
     </div>
-
-
-</body>
-
-</html>
+@endsection
