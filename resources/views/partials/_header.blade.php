@@ -42,10 +42,11 @@
                 <ul class="main-menu primary-menu">
                     <li><a href="./">Inicio</a></li>
                     <li><a href="./games">Juegos</a>
-                        <ul class="sub-menu">
+                        <!--<ul class="sub-menu">
                             <li><a href="game-single.html">Game Singel</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
+                    <li><a href="./addGame">Agregar juego</a></li>
                     <li><a href="./about">Nosotros</a></li>
                 </ul>
             </nav>

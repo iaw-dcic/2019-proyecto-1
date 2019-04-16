@@ -11,6 +11,11 @@ class PagesController extends Controller
     public function games(){
     	return view('pages.games');
     }
+
+    public function addGame() {
+        return view ('games.create');
+    }
+
     public function home(){
     	return view('pages.home');
     }

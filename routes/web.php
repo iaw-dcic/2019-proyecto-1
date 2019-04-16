@@ -16,6 +16,7 @@ Route::get('/about', 'PagesController@about');
 
 Route::resource('games','GamesController');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/addGame', 'PagesController@addGame');
 
 Auth::routes();
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');

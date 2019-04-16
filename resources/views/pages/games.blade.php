@@ -30,7 +30,13 @@
 <!-- Games section -->
 <section class="games-section">
 	<div class="container">
-		<ul class="game-filter">
+
+	<div class="justify-content-center text-left">
+		<div class="container">
+			<a href="/games/create" class="site-btn">Agregar juego<img src="img/icons/double-arrow.png" alt="#"/></a>
+			</div>
+	</div>
+	<ul class="game-filter">
 			<li><a href="">A</a></li>
 			<li><a href="">B</a></li>
 			<li><a href="">C</a></li>

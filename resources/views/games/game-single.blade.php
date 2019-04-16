@@ -1,16 +1,16 @@
 @extends('layouts.app') 
-@section('title',' | Juego') 
+@section('title',' | Juegos') 
 @section('content')
 
 
 <!-- Page top section -->
 <section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/1.jpg')}} ">
     <div class="page-info">
-        <h2>Juegos</h2>
+        <h2>{{strtoupper($game->title)}}</h2>
         <div class="site-breadcrumb">
             <a href="/">Inicio</a> /
             <a href="/games"> Juegos </a> /
-            <span>{{$game->title}}</span>
+            <span>{{ucfirst($game->title)}}</span>
         </div>
     </div>
 
@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
                 <!--<div class="gs-meta">11.11.18  /  in <a href="">Games</a></div>-->
-                <h2 class="gs-title">{{$game->title}}</h2>
+                <h2 class="gs-title">{{ucfirst($game->title)}}</h2>
                 <!--<h4>Gameplay</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus.</p>
 					<h4>Conclusion</h4>
