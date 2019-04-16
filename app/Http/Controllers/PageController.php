@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Profile;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -12,13 +12,9 @@ class PageController extends Controller
         return view('index', compact('listaDeBienes'));
     }
 
-    public function ingreso()
-    {
-        return "Pagina ingreso";
-    }
-
-    public function registro()
-    {
-        return "Pagina registro";
+    public function editProfile()
+    {   
+        $profile = Profile::query()->where('user_id',6)->first();
+        return view('profile/edit-profile',compact('profile'));
     }
 }

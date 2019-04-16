@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/profiles', 'ProfileController@store');
+
+Route::get('/editProfile', 'PageController@editProfile');
+
 //facebook
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
