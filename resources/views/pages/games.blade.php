@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Page top section -->
-<section class="page-top-section set-bg" data-setbg="img/page-top-bg/3.jpg">
+<section class="page-top-section set-bg" data-setbg="{{asset('img/page-top-bg/3.jpg')}}">
 	<div class="page-info">
 		<h2>Juegos</h2>
 		<div class="site-breadcrumb">
@@ -14,49 +14,115 @@
 </section>
 <!-- Page top end-->
 
+<section class="games-section">
+	<h1> Juegos </h1>
+	@if(count($games) > 0)
+	@foreach($games as $game)
+	<div class="well">
+		<h3><a href="/games/{{$game->id}}">{{$game->title}}</h3>
+	</div>
+	@endforeach 
+	@else
+	<p> No se encontraron juegos </p>
+	@endif
+</section>
 
-<!-- Blog page -->
-<section class="blog-page">
+<!-- Games section -->
+<section class="games-section">
 	<div class="container">
+		<ul class="game-filter">
+			<li><a href="">A</a></li>
+			<li><a href="">B</a></li>
+			<li><a href="">C</a></li>
+			<li><a href="">D</a></li>
+			<li><a href="">E</a></li>
+			<li><a href="">F</a></li>
+			<li><a href="">G</a></li>
+			<li><a href="">H</a></li>
+			<li><a href="">I</a></li>
+			<li><a href="">J</a></li>
+			<li><a href="">K</a></li>
+			<li><a href="">L</a></li>
+			<li><a href="">M</a></li>
+			<li><a href="">N</a></li>
+			<li><a href="">O</a></li>
+			<li><a href="">P</a></li>
+			<li><a href="">Q</a></li>
+			<li><a href="">R</a></li>
+			<li><a href="">S</a></li>
+			<li><a href="">T</a></li>
+			<li><a href="">U</a></li>
+			<li><a href="">V</a></li>
+			<li><a href="">W</a></li>
+			<li><a href="">X</a></li>
+			<li><a href="">Y</a></li>
+			<li><a href="">Z</a></li>
+		</ul>
 		<div class="row">
-			<div class="col-xl-9 col-lg-8 col-md-7">
-				<ul class="blog-filter">
-					<li><a href="#">Racing</a></li>
-					<li><a href="#">Shooters</a></li>
-					<li><a href="#">Strategy</a></li>
-					<li><a href="#">Online</a></li>
-				</ul>
-				<div class="big-blog-item">
-					<img src="img/blog-big/1.jpg" alt="#" class="blog-thumbnail">
-					<div class="blog-content text-box text-white">
-						<div class="top-meta">11.11.18 / in <a href="">Games</a></div>
-						<h3>The best VR games on the market</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua.....</p>
-						<a href="#" class="read-more">Read More <img src="img/icons/double-arrow.png" alt="#" /></a>
+			<div class="col-xl-7 col-lg-8 col-md-7">
+				<div class="row">
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/1.jpg" alt="#">
+							<h5>Zombie Appocalipse 2</h5>
+							<a href="game-single.html" class="read-more">Read More   <img src="{{asset('img/icons/double-arrow.png')}}"></a>
+						</div>
 					</div>
-				</div>
-				<div class="big-blog-item">
-					<img src="img/blog-big/2.jpg" alt="#" class="blog-thumbnail">
-					<div class="blog-content text-box text-white">
-						<div class="top-meta">11.11.18 / in <a href="">Games</a></div>
-						<h3>The best online game is out now!</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua.....</p>
-						<a href="#" class="read-more">Read More <img src="img/icons/double-arrow.png" alt="#" /></a>
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/2.jpg" alt="#">
+							<h5>Dooms Day</h5>
+							<a href="game-single.html" class="read-more">Read More <img src="{{asset('img/icons/double-arrow.png')}}"> </a>
+						</div>
 					</div>
-				</div>
-				<div class="big-blog-item">
-					<img src="img/blog-big/3.jpg" alt="#" class="blog-thumbnail">
-					<div class="blog-content text-box text-white">
-						<div class="top-meta">11.11.18 / in <a href="">Games</a></div>
-						<h3>The best online game is out now!</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Quis ipsum suspendisse ultrices gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua.....</p>
-						<a href="#" class="read-more">Read More <img src="img/icons/double-arrow.png" alt="#" /></a>
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/3.jpg" alt="#">
+							<h5>The Huricane</h5>
+							<a href="game-single.html" class="read-more">Read More  <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/4.jpg" alt="#">
+							<h5>Star Wars</h5>
+							<a href="game-single.html" class="read-more">Read More  <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/5.jpg" alt="#">
+							<h5>Candy land</h5>
+							<a href="game-single.html" class="read-more">Read More  <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/6.jpg" alt="#">
+							<h5>E.T.</h5>
+							<a href="game-single.html" class="read-more">Read More  <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/7.jpg" alt="#">
+							<h5>Zombie Appocalipse 2</h5>
+							<a href="game-single.html" class="read-more">Read More  <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/8.jpg" alt="#">
+							<h5>Dooms Day</h5>
+							<a href="game-single.html" class="read-more">Read More  <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="game-item">
+							<img src="img/games/9.jpg" alt="#">
+							<h5>The Huricane</h5>
+							<a href="game-single.html" class="read-more">Read More  <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						</div>
 					</div>
 				</div>
 				<div class="site-pagination">
@@ -65,55 +131,8 @@
 					<a href="#">03.</a>
 				</div>
 			</div>
-			<div class="col-xl-3 col-lg-4 col-md-5 sidebar">
+			<div class="col-xl-3 col-lg-4 col-md-5 sidebar game-page-sideber">
 				<div id="stickySidebar">
-					<div class="widget-item">
-						<form class="search-widget">
-							<input type="text">
-							<button>search</button>
-						</form>
-					</div>
-					<div class="widget-item">
-						<h4 class="widget-title">Trending</h4>
-						<div class="trending-widget">
-							<div class="tw-item">
-								<div class="tw-thumb">
-									<img src="./img/blog-widget/1.jpg" alt="#">
-								</div>
-								<div class="tw-text">
-									<div class="tw-meta">11.11.18 / in <a href="">Games</a></div>
-									<h5>The best online game is out now!</h5>
-								</div>
-							</div>
-							<div class="tw-item">
-								<div class="tw-thumb">
-									<img src="./img/blog-widget/2.jpg" alt="#">
-								</div>
-								<div class="tw-text">
-									<div class="tw-meta">11.11.18 / in <a href="">Games</a></div>
-									<h5>The best online game is out now!</h5>
-								</div>
-							</div>
-							<div class="tw-item">
-								<div class="tw-thumb">
-									<img src="./img/blog-widget/3.jpg" alt="#">
-								</div>
-								<div class="tw-text">
-									<div class="tw-meta">11.11.18 / in <a href="">Games</a></div>
-									<h5>The best online game is out now!</h5>
-								</div>
-							</div>
-							<div class="tw-item">
-								<div class="tw-thumb">
-									<img src="./img/blog-widget/4.jpg" alt="#">
-								</div>
-								<div class="tw-text">
-									<div class="tw-meta">11.11.18 / in <a href="">Games</a></div>
-									<h5>The best online game is out now!</h5>
-								</div>
-							</div>
-						</div>
-					</div>
 					<div class="widget-item">
 						<div class="categories-widget">
 							<h4 class="widget-title">categories</h4>
@@ -128,37 +147,57 @@
 						</div>
 					</div>
 					<div class="widget-item">
-						<h4 class="widget-title">Latest Comments</h4>
-						<div class="latest-comments">
-							<div class="lc-item">
-								<img src="./img/blog-widget/1.jpg" class="lc-avatar" alt="#">
-								<div class="tw-text"><a href="">Maria Smith</a> <span>On</span> The best online game out there </div>
-							</div>
-							<div class="lc-item">
-								<img src="./img/blog-widget/2.jpg" class="lc-avatar" alt="#">
-								<div class="tw-text"><a href="">Maria Smith</a> <span>On</span> The best online game out there </div>
-							</div>
-							<div class="lc-item">
-								<img src="./img/blog-widget/3.jpg" class="lc-avatar" alt="#">
-								<div class="tw-text"><a href="">Maria Smith</a> <span>On</span> The best online game out there </div>
-							</div>
-							<div class="lc-item">
-								<img src="./img/blog-widget/4.jpg" class="lc-avatar" alt="#">
-								<div class="tw-text"><a href="">Maria Smith</a> <span>On</span> The best online game out there </div>
-							</div>
+						<div class="categories-widget">
+							<h4 class="widget-title">platform</h4>
+							<ul>
+								<li><a href="">Xbox</a></li>
+								<li><a href="">X box 360</a></li>
+								<li><a href="">Play Station</a></li>
+								<li><a href="">Play Station VR</a></li>
+								<li><a href="">Nintendo Wii</a></li>
+								<li><a href="">Nintendo Wii U</a></li>
+							</ul>
 						</div>
 					</div>
 					<div class="widget-item">
-						<a href="#" class="add">
-								<img src="./img/add.jpg" alt="">
-							</a>
+						<div class="categories-widget">
+							<h4 class="widget-title">Genre</h4>
+							<ul>
+								<li><a href="">Online</a></li>
+								<li><a href="">Adventure</a></li>
+								<li><a href="">S.F.</a></li>
+								<li><a href="">Strategy</a></li>
+								<li><a href="">Racing</a></li>
+								<li><a href="">Shooter</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<!-- Blog page end-->
+<!-- Games end-->
+
+
+<!-- Featured section -->
+<section class="featured-section">
+	<div class="featured-bg set-bg" data-setbg="{{asset('img/featured-bg.jpg')}}"></div>
+	<div class="featured-box">
+		<div class="text-box">
+			<div class="top-meta">11.11.18 / in <a href="">Games</a></div>
+			<h3>The game you’ve been waiting for is out now</h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+				ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+				magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo
+				ipsum. Donec pellentesque vestibulum metus...</p>
+			<a href="#" class="read-more">Read More    <img src="{{asset('img/icons/double-arrow.png')}}"> </a>
+		</div>
+	</div>
+</section>
+<!-- Featured section end-->
+
 
 
 <!-- Newsletter section -->

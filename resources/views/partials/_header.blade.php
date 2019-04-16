@@ -6,6 +6,13 @@
 <!-- Header section -->
 <header class="header-section">
     <div class="header-warp">
+
+        <div class="header-social d-flex justify-content-end">
+            <p>Escribinos!:</p>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <!--<a href="#"><i class="logo email"></i></a>-->
+        </div>
+
         <div class="header-bar-warp d-flex">
             <!-- site logo -->
             <a href="home.html" class="site-logo">
@@ -14,22 +21,21 @@
 
             <nav class="top-nav-area w-100">
                 <div class="user-panel">
-                @guest
-                    <a href="{{ url('login') }}">Ingresar</a> / 
-                    <a href="{{ url('register') }}">Registrarse</a> 
-                @endguest
-                @auth
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    @guest
+                    <a href="{{ url('login') }}">Ingresar</a> /
+                    <a href="{{ url('register') }}">Registrarse</a> @endguest @auth
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
                     <a href="./logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 Salir
                             </a> /
-                    <a href="./register">Registrarse</a> 
+                    <a href="./register">Registrarse</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                @endauth
+                    @endauth
                 </div>
 
                 <!-- Menu -->

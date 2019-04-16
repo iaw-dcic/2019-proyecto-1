@@ -14,47 +14,30 @@
 </section>
 <!-- Page top end-->
 
-
-<!-- Contact page -->
 <section class="contact-page">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Agregar juego') }}</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{route('games.store') }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Nombre del juego') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}"
-                                        required autofocus>
-                                         @if ($errors->has('title'))
-                                             <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('title') }}</strong>
-                                             </span>
-                                         @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                                    {{ __('Agregar juego') }}
-                                                </button>
-                                </div>
-                            </div>
-
-                        </form>
+  
+       <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
+           
+            <!-- content -->
+            <div class="sub-main-w3">
+                <form action="{{ route('games.store') }}" method="post">
+                     @csrf <!-- {{ csrf_field() }} -->
+                    <div class="form-style-agile">
+                        <label>
+                            <i class="fas fa-gamepad"></i>Nombre del juego</label>
+                        <input placeholder="Ej: CS GO" name="title" type="text" required="">
                     </div>
-                </div>
+                    <div class="form-style-agile">
+                        <label>
+                            <i class="fas fa-users"></i>Nombre de la empresa</label>
+                        <input placeholder="company" name="company" type="text">
+                    </div>
+                 
+                    <input type="submit" value="Listo">
+                    
+                </form>
             </div>
-        </div>
-    </div>
 </section>
-<!-- Contact page end-->
 @endsection
+
+

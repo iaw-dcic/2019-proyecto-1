@@ -14,7 +14,8 @@ class GamesController extends Controller
      */
     public function index()
     {
-        return view('pages.games');
+        $games = Game::orderBy('title','asc')->get();
+        return view('pages.games')->with('games', $games);
     }
 
     /**
@@ -47,7 +48,7 @@ class GamesController extends Controller
 
         $game->save();
 
-        return redirect()->route('games.show', $game->id);
+        return redirect('games');
     }
 
     /**
@@ -57,7 +58,10 @@ class GamesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { }
+    { 
+        $game= Game::find($id);
+        return view('games.game-single')->with('game',$game);
+    }
 
     /**
      * Show the form for editing the specified resource.
