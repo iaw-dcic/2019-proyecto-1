@@ -12,7 +12,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-      <a href="#">  <img src="img/spaghetti" class="d-block w-100" alt="spaghetti"></a>
+      <a href="#">  <img src="{{ asset('img/spaghetti.jpg') }}" class="d-block w-100" alt="spaghetti"></a>
         <div class="carousel-caption d-none d-md-block">
           <h5>Spaghetti</h5>
           <p>Riquisimos spaghetti con salsa y atún</p>
@@ -67,7 +67,7 @@
     <div class="row">
    
       <div class="col-lg-4">
-      <img src="img/osvaldo.jpg" class="rounded-circle"   alt="Osvaldo Gross" > 
+      <img src="{{asset('img/osvaldo.jpg')}}" class="rounded-circle"   alt="Osvaldo Gross" > 
         <h2>Osvaldo Gross</h2>
         <p>Lic en geoquimica y chef pâtissier. Es un reconocido pastelero a nivel mundial y es muy conocido por sus ciclos televisivos tanto en Utilísima Satelital como en elgourmet.com</p>
         <p><a class="btn btn-secondary" href="#" role="button">Ver Perfil &raquo;</a></p>

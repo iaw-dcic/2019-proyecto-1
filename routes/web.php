@@ -12,7 +12,7 @@
 */
  
 Route::get('/','RecetasController@index');
-Route::get('testpath',  function () { return app_path(); });
+Route::get('testpath',  function () { return public_path(); });
 Route::get('login', 'UserController@login')->name('login');
 Route::get('logout', 'UserController@logout')->name('logout');
    
