@@ -15,7 +15,7 @@
     <script type="text/javascript" src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
 
        <!-- JS -->
-       <script src="vendor/jquery/jquery.min.js"></script>
+       <script src="jquery/jquery.min.js"></script>
 
 </head>
 <body>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>Acepto todos los  <a href="/crearcuenta/condiciones" target="_blank" class="term-service">Términos y condiciones de servicio</a></label>
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>Acepto todos los  <a href="/registrar/condiciones" target="_blank" class="term-service">Términos y condiciones de servicio</a></label>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Registrarme"/>

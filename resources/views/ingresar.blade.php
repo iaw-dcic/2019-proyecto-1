@@ -10,7 +10,7 @@
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-    <!-- Main css -->
+    <!-- css -->
     <link rel="stylesheet" href="css/style.css">
 
     <!--GOOGLE LOGIN-->
@@ -21,7 +21,7 @@
     <script src="js/script.js"></script>
 
     <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="jquery/jquery.min.js"></script>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                        <a href="/crearcuenta" class="signup-image-link">Crear una cuenta</a>
+                        <a href="/registrar" class="signup-image-link">Crear una cuenta</a>
                     </div>
 
                     <div class="signin-form">

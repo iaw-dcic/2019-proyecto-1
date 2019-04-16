@@ -15,14 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ingresar', function () {
-    return view('ingresar');
-});
+Route::get('/ingresar', 'ingresarController@ingresar');
 
-Route::get('/crearcuenta', function () {
-    return view('crearCuenta');
-});
+Route::get('/registrar', 'ingresarController@registrar');
 
-Route::get('/crearcuenta/condiciones', function () {
-    return view('condiciones');
-});
+Route::get('/registrar/condiciones', 'ingresarController@condiciones');
