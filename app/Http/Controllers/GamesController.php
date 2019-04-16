@@ -14,7 +14,7 @@ class GamesController extends Controller
      */
     public function index()
     {
-        $games = Game::orderBy('title','asc')->get();
+        $games = Game::orderBy('title', 'asc')->get();
         return view('pages.games')->with('games', $games);
     }
 
@@ -58,9 +58,9 @@ class GamesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
-        $game= Game::find($id);
-        return view('games.game-single')->with('game',$game);
+    {
+        $game = Game::find($id);
+        return view('games.game-single')->with('game', $game);
     }
 
     /**
@@ -71,7 +71,8 @@ class GamesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $game = Game::find($id);
+        return view('games.edit')->with('game', $game);
     }
 
     /**
@@ -83,7 +84,19 @@ class GamesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'title' => 'required',
+            //  'company' => 'required'
+        ));
+
+        $game = Game::find($id);
+
+        $game->title = $request->title;
+        //$game-> company = $request->company;
+
+        $game->save();
+
+        return redirect('games');
     }
 
     /**
@@ -94,6 +107,8 @@ class GamesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $game = Game::find($id);
+        $game->delete();
+        return redirect('games');
     }
 }

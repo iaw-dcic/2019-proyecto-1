@@ -70,12 +70,35 @@
 								</div>
 							</div>
 						</div>
-					</div> -->
+                    </div> -->
+                <div class="justify-content-center text-left">
+                    <div class="container">
+                        <a href="/games/{{$game->id}}/edit" class="site-btn">Editar juego<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+                    </div>
+                </div>
+
+                <div class="justify-content-center text-right">
+                    <div class="container">
+                        <form action="{{ route('games.destroy', $game->id) }}" method="post">
+                            {{ method_field('DELETE') }} @csrf
+                            <!-- {{ csrf_field() }} -->
+                            <input type="submit" value="Eliminar juego">
+                        </form>
+                    </div>
+
+                </div>
+
+
+
             </div>
         </div>
     </div>
 </section>
 <!-- Games end-->
+
+
+
+
 
 <!--<section class="game-author-section">
 		<div class="container">

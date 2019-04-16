@@ -36,6 +36,7 @@
 			<a href="/games/create" class="site-btn">Agregar juego<img src="img/icons/double-arrow.png" alt="#"/></a>
 			</div>
 	</div>
+	<hr><hr> <!-- TODO - Cambiar CSS -->
 	<ul class="game-filter">
 			<li><a href="">A</a></li>
 			<li><a href="">B</a></li>
