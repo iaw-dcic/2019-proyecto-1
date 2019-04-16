@@ -7,7 +7,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
     
-    <link href=" css/estilo.css" rel="stylesheet">    
+    <link href="css/estilo.css" rel="stylesheet">    
 
     <!-- Bootstrap core CSS -->
     
