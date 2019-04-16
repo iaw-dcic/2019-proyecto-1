@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/ingresar', function () {
+    return view('ingresar');
+});
+
+Route::get('/crearcuenta', function () {
+    return view('crearCuenta');
+});
+
+Route::get('/crearcuenta/condiciones', function () {
+    return view('condiciones');
+});
