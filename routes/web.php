@@ -14,7 +14,7 @@
 Route::get('/','RecetasController@index');
 Route::get('testpath',  function () { return app_path(); });
 Route::get('login', 'UserController@login')->name('login');
-
+Route::get('logout', 'UserController@logout')->name('logout');
    
 Route::get('auth/{provider}', 'UserController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'UserController@handleProviderCallback');

@@ -26,7 +26,7 @@
 <ul class="nav navbar-nav ml-auto">
 	<li class="dropdown">
          @if(Auth::guest())
-
+        
           <a href="#" class="dropdown-toggle" id="textoLogin" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
 			     
             <ul id="login-dp" class="dropdown-menu">
@@ -35,15 +35,14 @@
              </ul>	
           @endif
           @if($user = Auth::user())
-             
+          <a class="navbar-brand" href="/"><img src="{{$user->avatar}}" alt="logo" width=60 heigh=30 ></a>
             <a href="#" class="dropdown-toggle" id="textoLogin" data-toggle="dropdown"> {{$user->nombre}} <span class="caret"></span></a>
-			     
+	
            <ul id="login-dp" class="dropdown-menu">
              <a class="dropdown-item" href="#">Mi Perfil</a>
-             <a class="dropdown-item" href="#">Cerrar Sesion</a>									 
+             <a class="dropdown-item" href="{{route('logout')}}">Cerrar Sesion</a>									 
             </ul>	
             @endif
     </li>
   </ul>
 </nav>
-  
