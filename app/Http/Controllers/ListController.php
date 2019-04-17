@@ -11,7 +11,7 @@ class ListController extends Controller
     public function index(){
     	$listas = Lista::all();
 
-    	return view('lists', ['listas' => $listas]);
+    	return view('lista.lists', ['listas' => $listas]);
     }
 
     public function store(){
@@ -26,13 +26,13 @@ class ListController extends Controller
 
     public function show(Lista $list){
 
-        return view('show', compact('list'));
+        return view('lista.show', compact('list'));
 
     }
 
     public function edit(Lista $list){
 
-        return view('edit', compact('list'));
+        return view('lista.edit', compact('list'));
 
     }
 
@@ -49,6 +49,6 @@ class ListController extends Controller
     }
 
     public function create(){
-        return view('create');
+        return view('lista.create');
     }
 }
