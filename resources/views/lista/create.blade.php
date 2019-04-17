@@ -1,7 +1,7 @@
 @extends('mainTemplate')
 
 @section('content')
-	<h1>Seccion de listas</h1>
+	<h1>Agregar lista</h1>
 
 	<div class="container">
 		<form method="POST" action="/lists">

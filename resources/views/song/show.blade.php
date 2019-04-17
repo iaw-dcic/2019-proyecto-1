@@ -1,10 +1,11 @@
 @extends('mainTemplate')
 
 @section('content')
-	
-	<h1>{{$song->title}}</h1>
-
-	<p class="h5">Album: {{ $song->album }}</p>
-	<p class="h5">Band: {{ $song->band }}</p>
-
+	<div class = "container w-25" style="padding-top: 20px;">
+		<ul class="list-group">
+			<li class="list-group-item active">Título: {{$song->title}}</li>
+			<li class="list-group-item">Album: {{ $song->album }}</li>
+			<li class="list-group-item">Band: {{ $song->band }}</li>
+		</ul>
+	</div>
 @endsection

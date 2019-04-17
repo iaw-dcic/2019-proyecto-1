@@ -2,9 +2,13 @@
 
 @section('content')
 	
-	<h1>{{$list->title}}</h1>
-	<a href="{{$list->id}}/edit">editar</a>
-
+	<h1 style="text-align: center">{{$list->title}}</h1>
+		
+	<ul class="list-group-flush w-25" style="padding-bottom: 50px; padding-top: 50px">
+		<li class="list-group-item"><a href="{{$list->id}}/edit">editar</a></li>
+		<li class="list-group-item"><a href="{{$list->id}}/create">agregar canción</a></li>
+	</ul>
+	
 	<ul class="list-group">
 		
 		@foreach ($list->songs as $song)
