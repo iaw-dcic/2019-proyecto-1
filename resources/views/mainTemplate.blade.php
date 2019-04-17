@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -17,7 +17,7 @@
 				<a class="nav-link" href="/lists">My lists</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/create">Add song</a>
+				<a class="nav-link" href="/create">Add list</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav">

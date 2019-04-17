@@ -19,10 +19,16 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/create', function () {
-    return view('create');
-});
+Route::get('/lists', 'ListController@index');
 
-Route::get('/lists', 'ElementsController@allElements');
+Route::get('/create', 'ListController@create');
 
-Route::post('/lists', 'ElementsController@store');
+Route::post('/lists', 'ListController@store');
+
+Route::get('/lists/{list}', 'ListController@show');
+
+Route::get('/lists/{list}/edit', 'ListController@edit');
+
+Route::patch('/lists/{list}', 'ListController@update');
+
+Route::delete('/lists/{list}', 'ListController@destroy');

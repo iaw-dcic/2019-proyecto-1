@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateElementsTable extends Migration
+class CreateListasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateElementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('elements', function (Blueprint $table) {
+        Schema::create('listas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('name');
-            $table->String('album');
-            $table->String('band');
+            $table->String('title');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateElementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('elements');
+        Schema::dropIfExists('listas');
     }
 }
