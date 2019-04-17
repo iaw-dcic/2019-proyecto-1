@@ -32,3 +32,5 @@ Route::get('/lists/{list}/edit', 'ListController@edit');
 Route::patch('/lists/{list}', 'ListController@update');
 
 Route::delete('/lists/{list}', 'ListController@destroy');
+
+Route::get('/songs/{song}', 'SongController@show');
