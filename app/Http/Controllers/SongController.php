@@ -32,4 +32,23 @@ class SongController extends Controller
 
     	return back();
     }
+
+    public function destroy(Song $song){
+        $id = $song->lista_id;
+        $song->delete();
+
+        return redirect('/lists/'.$id);
+    }
+
+    public function edit(Song $song){
+        return view('song.edit', compact('song'));
+    }
+
+    public function update(Song $song){
+        $song->title = request('title');
+        $song->album = request('album');
+        $song->band = request('band');
+        $song->save();
+        return redirect('/lists/'.$song->lista_id);
+    }
 }

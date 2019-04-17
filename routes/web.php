@@ -38,3 +38,9 @@ Route::get('/songs/{song}', 'SongController@show');
 Route::get('/lists/{list}/create', 'SongController@create');
 
 Route::post('/songs/{list}', 'SongController@store');
+
+Route::delete('/songs/{song}', 'SongController@destroy');
+
+Route::get('/songs/{song}/edit', 'SongController@edit');
+
+Route::patch('/songs/{song}', 'SongController@update');

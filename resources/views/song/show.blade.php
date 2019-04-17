@@ -7,5 +7,6 @@
 			<li class="list-group-item">Album: {{ $song->album }}</li>
 			<li class="list-group-item">Band: {{ $song->band }}</li>
 		</ul>
+		<a href="/songs/{{$song->id}}/edit">editar</a>
 	</div>
 @endsection
