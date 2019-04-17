@@ -22,19 +22,51 @@
             <nav class="top-nav-area w-100">
                 <div class="user-panel">
                     @guest
-                    <a href="{{ url('login') }}">Ingresar</a> /
-                    <a href="{{ url('register') }}">Registrarse</a> @endguest @auth
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        <a href="{{ url('login') }}">Ingresar</a> /
+                        <a href="{{ url('register') }}">Registrarse</a>
+                    @endguest
+                    
+                    @auth
+
+
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Cerrar sesion') }}
+                            </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                    </li>
+
+
+
+
+
+                    <!--<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                         v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
                     <a href="./logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 Salir
-                            </a> /
-                    <a href="./register">Registrarse</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            </a> / -->
+                    <!--<a href="./register">Registrarse</a>-->
+                    <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
-                    </form>
+                    </form> -->
+
+
+
+
+
+
+
                     @endauth
                 </div>
 
