@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Get home
+Route::get('/', 'ControladorInicio@index');
+
+//Get agregar
+Route::get('/agregar', 'ControladorAgregar@agregar');
+
+//Get editar
+Route::get('/editar', 'ControladorEditar@editar');
+
+//Get eliminar
+Route::get('/eliminar', 'ControladorEliminar@eliminar');
