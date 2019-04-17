@@ -20,3 +20,7 @@ Route::get('/ingresar', 'ingresarController@ingresar');
 Route::get('/registrar', 'ingresarController@registrar');
 
 Route::get('/registrar/condiciones', 'ingresarController@condiciones');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
