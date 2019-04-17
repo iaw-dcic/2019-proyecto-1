@@ -12,6 +12,9 @@
                         @csrf
 
                         <div class="form-group row">
+                        <div id='content-img' class="container ">
+                            <img class="sesion" src="/images/img_avatar.png" alt="Avatar">
+                        </div>
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">

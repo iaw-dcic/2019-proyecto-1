@@ -5,3 +5,16 @@
     -o-background-size: cover;
     background-size: cover;
    }*/
+
+   img.sesion {
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+  }
+
+  #content-img{
+      text-align: center;
+  }

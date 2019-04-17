@@ -14,7 +14,8 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $albums = Album::all();
+        return View('album.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        //
+        return 'hola Mundo';
     }
 
     /**

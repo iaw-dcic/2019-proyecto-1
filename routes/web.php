@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+Route::get('/albums','AlbumController@index')->name('albums');
+Route::get('/albums/Createalbum','AlbumController@create')->name('createAlbum');
+
+
 //Rutas de ejemplo TUTORIAL
 
 Route::get('/movies', function () {
@@ -26,6 +32,7 @@ Route::get('movie/{id}', function ($id) {
 })->where('id', '[0-9]+');
 
 
+//Route::get('albums/CreateAlbum','AlbumController');
 
 Auth::routes();
 
