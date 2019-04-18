@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Game;
 use App\User;
+Use Alert;
 
 class GamesController extends Controller
 {
@@ -60,8 +61,9 @@ class GamesController extends Controller
         $game->user_id = auth()->user()->id;
 
         $game->save();
-
-        return redirect('games');
+        
+        alert()->success('Listo!','El juego fue guardado en tu lista.');
+        return redirect('games');   
     }
 
     /**
