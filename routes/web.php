@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/profiles', 'ProfileController@store');
 
-Route::get('/editProfile', 'PageController@editProfile');
+Route::get('/editProfile', 'PageController@editProfile')->name('editProfile');
 
 //facebook
 
