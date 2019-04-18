@@ -15,42 +15,58 @@
 <!-- Page top end-->
 
 <section class="contact-page">
-  
-       <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
-           
-            <!-- content -->
-            <div class="sub-main-w3">
-                <form action="{{ route('games.store') }}" method="post">
-                     @csrf <!-- {{ csrf_field() }} -->
-                    <div class="form-style-agile">
-                        <label>
+
+    <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
+
+    <!-- content -->
+    <div class="sub-main-w3">
+        <form action="{{ route('games.store') }}" method="post">
+            @csrf
+            <!-- {{ csrf_field() }} -->
+            <div class="form-style-agile">
+                <label>
                             <i class="fas fa-edit"></i>Nombre del juego</label>
-                        <input name="title" type="text" required="">
-                    </div>
-
-
-                    <!-- Select Multiple -->
-               
-
-
-
-
-                    <div class="form-style-agile">
-                        <label>
-                            <i class="fas fa-gamepad"></i>¿En qué plataformas lo jugas?</label>
-                        <input name="platform" type="text" required>
-                    </div>
-                    <div class="form-style-agile">
-                            <label>
-                                <i class="fas fa-thumbs-up"></i>¿Qué valoración le das?</label>
-                            <input name="rating" type="text" required>
-                    </div>
-                 
-                    <input type="submit" value="Listo">
-                    
-                </form>
+                <input name="title" type="text" required="">
             </div>
+
+            <div class="form-style-agile">
+                <label><i class="fas fa-gamepad"></i>¿En qué consola lo jugas?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="platform" value="pc">
+                    <label class="form-check-label">
+                            PC
+                    </label>
+                </div>
+                <div class="form-check" name="platform">
+                    <input class="form-check-input" type="checkbox"  name="platform" value="ps4">
+                    <label class="form-check-label">
+                            Playstation 4
+                    </label>
+                </div>
+
+                <div class="form-check" name="platform">
+                    <input class="form-check-input" type="checkbox"  name="platform" value="ps3">
+                    <label class="form-check-label">
+                          Playstation 3
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="form-style-agile">
+                <label><i class="fas fa-thumbs-up"></i>¿Qué valoración le das?</label>
+                <select type="text" class="custom-dropdown" name="rating">
+                          <option>Excelente</option>
+                          <option>Muy bueno</option>
+                          <option>Bueno</option>
+                          <option>Regular</option>
+                          <option>Malo</option>
+                        </select>
+            </div>
+
+            <input type="submit" value="Listo">
+
+        </form>
+    </div>
 </section>
 @endsection
-
-

@@ -299,6 +299,7 @@ h1 span {
     color: #E91E63;
 }
 
+.custom-dropdown,
 .form-style-agile input[type="text"],
 .form-style-agile input[type="password"] {
     width: 100%;
@@ -633,7 +634,11 @@ i.icon_g_plus {
     transition: 0.5s all;
 }
 
-/*-- //copyright --*/
+.custom-border {
+    border-left: 2px solid #E91E63;
+}
+
+
 
 /*--responsive--*/
 

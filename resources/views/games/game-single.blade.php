@@ -30,6 +30,8 @@
 			<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
 				<!--<div class="gs-meta">11.11.18  /  in <a href="">Games</a></div>-->
 				<h2 class="gs-title">{{ucfirst($game->title)}}</h2>
+				<h3 class="gs-title">{{ucfirst($game->rating)}}</h3>
+				<h4 class="gs-title">{{ucfirst($game->platform)}}</h4>
 				<!--<h4>Gameplay</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus.</p>
 					<h4>Conclusion</h4>

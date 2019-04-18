@@ -28,6 +28,9 @@ class GamesController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
+        if (count($user->games) == 0) {
+            alert()->success('Listo!','No tenes ningun juego cargado amigo.');
+        }
         return view('pages.games')->with('games', $user->games);
     }
 
@@ -49,6 +52,7 @@ class GamesController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, array(
             'title' => 'required',
             'platform' => 'required',
@@ -58,7 +62,8 @@ class GamesController extends Controller
         $game = new Game;
 
         $game->title = $request->title;
-        //$game-> company = $request->company;
+        $game->platform = $request->platform;
+        $game->rating = $request->rating;
         $game->user_id = auth()->user()->id;
 
         $game->save();
@@ -108,13 +113,15 @@ class GamesController extends Controller
     {
         $this->validate($request, array(
             'title' => 'required',
-            //  'company' => 'required'
+            'rating' => 'required',
+            'platform' => 'required'
         ));
 
         $game = Game::find($id);
 
         $game->title = $request->title;
-        //$game-> company = $request->company;
+        $game->rating = $request->rating;
+        $game->platform = $request->company;
 
         $game->save();
 
@@ -131,6 +138,7 @@ class GamesController extends Controller
     {
         $game = Game::find($id);
         $game->delete();
+        alert()->info('Atención!','El juego fue eliminado');
         return redirect('games');
     }
 }
