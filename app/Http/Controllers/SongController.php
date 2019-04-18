@@ -9,7 +9,11 @@ use App\Song;
 use App\Lista;
 
 class SongController extends Controller
-{
+{   
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function show(Song $song){
 
     	return view('song.show', compact('song'));

@@ -1,4 +1,4 @@
-@extends('mainTemplate')
+@extends('secondTemplate')
 
 @section('content')
 	<h1>Seccion de listas</h1>

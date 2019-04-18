@@ -1,4 +1,4 @@
-@extends('mainTemplate')
+@extends('secondTemplate')
 
 @section('content')
 	<div class = "container w-25" style="padding-top: 20px;">

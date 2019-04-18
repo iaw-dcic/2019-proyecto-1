@@ -1,4 +1,4 @@
-@extends('mainTemplate')
+@extends('secondTemplate')
 
 @section('content')
 	<h1>Agregar canción</h1>

@@ -44,3 +44,7 @@ Route::delete('/songs/{song}', 'SongController@destroy');
 Route::get('/songs/{song}/edit', 'SongController@edit');
 
 Route::patch('/songs/{song}', 'SongController@update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use App\Lista;
 
 class ListController extends Controller
-{
+{   
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index(){
-    	$listas = Lista::all();
+    	$listas = Lista::where('user_id', auth()->id())->get();
 
     	return view('lista.lists', ['listas' => $listas]);
     }
@@ -18,6 +22,8 @@ class ListController extends Controller
     	$lista = new Lista;
 
     	$lista->title = request('title');
+
+        $lista->user_id = auth()->id();
 
     	$lista->save();
 
