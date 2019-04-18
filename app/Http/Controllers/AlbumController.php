@@ -15,7 +15,7 @@ class AlbumController extends Controller
     public function index()
     {
         $albums = Album::all();
-        return View('album.index');
+        return View('album.index',['users'=>$albums]);
     }
 
     /**
@@ -36,7 +36,7 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //faltan agregar las reglas de validación del lado cliente...!!
         
         $album = new Album;
         $album->name = request('name');
@@ -46,9 +46,11 @@ class AlbumController extends Controller
         $album->link = request('youtubeLink');
         $album->save();
         
-        return View('album.index');
+        //return View('album.index');
+        return redirect()->action(
+            'AlbumController@index'
+        );
 
-        //return $request;
     }
 
     /**
