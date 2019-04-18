@@ -84,7 +84,13 @@ class GamesController extends Controller
      */
     public function edit($id)
     {
-        $game = Game::find($id);
+        $game = Game::find($id);  
+
+        //Check for correct user
+        if(auth()->user()->id !== $game->user_id) {
+            return redirect('/games')->with('error', 'Pagina no autorizada'); //TODO: Ver esto porque no anda, hacer l mismo para eliminar y ver
+        }
+
         return view('games.edit')->with('game', $game);
     }
 

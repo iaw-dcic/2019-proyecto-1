@@ -34,7 +34,7 @@
                         <input placeholder="company" value="{{$game->company}}" name="company" type="text">
                     </div>
                     
-                    <input type="submit" value="Listo">
+                    <input type="submit" value="Finalizar edición">
                 </form>
             </div>
 </section>

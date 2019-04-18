@@ -5,14 +5,14 @@
 
 <!-- Page top section -->
 <section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/1.jpg')}} ">
-    <div class="page-info">
-        <h2>{{strtoupper($game->title)}}</h2>
-        <div class="site-breadcrumb">
-            <a href="/">Inicio</a> /
-			<a href="{{ url('games') }}">Juegos</a> /	
-            <span>{{ucfirst($game->title)}}</span>
-        </div>
-    </div>
+	<div class="page-info">
+		<h2>{{strtoupper($game->title)}}</h2>
+		<div class="site-breadcrumb">
+			<a href="/">Inicio</a> /
+			<a href="{{ url('games') }}">Juegos</a> /
+			<span>{{ucfirst($game->title)}}</span>
+		</div>
+	</div>
 
 
 </section>
@@ -21,16 +21,16 @@
 
 <!-- Games section -->
 <section class="games-single-page">
-    <div class="container">
-        <!--<a href="/games" class="site-btn-back">Volver a mis juegos <img src="{{asset('img/icons/double-arrow.png')}}"></a> -->
-        <div class="game-single-preview">
-            <img src="{{asset('img/games/big.jpg')}}">
-        </div>
-        <div class="row">
-            <div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
+	<div class="container">
+		<!--<a href="/games" class="site-btn-back">Volver a mis juegos <img src="{{asset('img/icons/double-arrow.png')}}"></a> -->
+		<div class="game-single-preview">
+			<img src="{{asset('img/games/big.jpg')}}">
+		</div>
+		<div class="row">
+			<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
 				<!--<div class="gs-meta">11.11.18  /  in <a href="">Games</a></div>-->
-                <h2 class="gs-title">{{ucfirst($game->title)}}</h2>
-                <!--<h4>Gameplay</h4>
+				<h2 class="gs-title">{{ucfirst($game->title)}}</h2>
+				<!--<h4>Gameplay</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus.</p>
 					<h4>Conclusion</h4>
 					<p>Nulla ut maximus mauris. Sed malesuada at sapien sed euismod. Vestibulum pharetra in sem id laoreet. Cras metus ex, placerat nec justo quis, luctus posuere ex. Vivamus volutpat nibh ac sollicitudin imperdiet. Donec scelerisque lorem sodales odio ultricies, nec rhoncus ex lobortis. Vivamus tincidunt sit amet sem id varius. Donec ele-mentum aliquet tortor. Curabitur justo mi, efficitur sed eros aliquet, dictum molestie eros. Nullam scelerisque convallis gravida. Morbi id lorem accumsan, scelerisque enim laoreet, sollicitudin neque. Vivamus volutpat nibh ac sollicitudin imperdiet. Donec scelerisque lorem sodales odio ultricies, nec rhoncus ex lobortis. Vivamus tincidunt sit amet sem id varius. Donec ele-mentum aliquet tortor. Curabitur justo mi, efficitur sed eros aliqueDonec vitae tellus sodales, congue augue at, biben-dum justo. Pellentesque non dolor et magna volutpat pharetra eget vel ligula. Maecenas facilisis vestibulum mattis. Sed sagittis gravida urna. Cras nec mi risus.
@@ -70,29 +70,30 @@
 								</div>
 							</div>
 						</div>
-                    </div> -->
-                <div class="justify-content-center text-left">
-                    <div class="container">
-						<a href="{{route('games.edit', ['game' => $game->id])}}" class="site-btn">Editar juego<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
-                    </div>
-                </div>
+					</div> -->
+				@if(Auth::user()->id == $game->user_id)
+					<div class="justify-content-center text-left">
+						<div class="container">
+							<a href="{{route('games.edit', ['game' => $game->id])}}" class="site-btn">Editar juego<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						</div>
+					</div>
 
-                <div class="justify-content-center text-right">
-                    <div class="container">
-                        <form action="{{ route('games.destroy', $game->id) }}" method="post">
-                            {{ method_field('DELETE') }} @csrf
-                            <!-- {{ csrf_field() }} -->
-                            <input type="submit" value="Eliminar juego">
-                        </form>
-                    </div>
+					<div class="justify-content-center text-right">
+						<div class="container">
+							<form action="{{ route('games.destroy', $game->id) }}" method="post">
+								{{ method_field('DELETE') }} @csrf
+								<!-- {{ csrf_field() }} -->
+								<input type="submit" value="Eliminar juego">
+							</form>
+						</div>
+					</div>
+				@endif
 
-                </div>
 
 
-
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </section>
 <!-- Games end-->
 

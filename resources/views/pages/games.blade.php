@@ -35,7 +35,6 @@
 			<div class="container">			
 				<a href="{{route('games.create') }}" class="site-btn">Agregar nuevo juego<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
 				<br><br>
-				<h4 style="color:white;">Juegos de {{$game->user->name}}</h4>
 			</div>
 		</div>
 		<hr>
@@ -100,7 +99,7 @@
 				@endforeach
 			</table>
 			@else
-			<h3> No se encontro ningun juego. </h3>
+			<h3> No se encontró ningún juego. </h3>
 			@endif
 
 
