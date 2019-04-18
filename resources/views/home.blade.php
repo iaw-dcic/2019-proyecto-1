@@ -19,14 +19,14 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/tiramisu.jpg" class="d-block w-100" alt="tiramisu">
+        <img src="{{ asset('img/tiramisu.jpg') }}" class="d-block w-100" alt="tiramisu">
         <div class="carousel-caption d-none d-md-block">
           <h5>Tiramisú</h5>
           <p>Verdadera receta del clásico postre italiano.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/cupcakes.jpg" class="d-block w-100" alt="cupcakes">
+        <img src="{{ asset('img/cupcakes.jpg') }}" class="d-block w-100" alt="cupcakes">
         <div class="carousel-caption d-none d-md-block">
           <h5>Cupcakes</h5>
           <p>Espectaculares cupcakes de naranja con crema</p>
@@ -46,7 +46,7 @@
   <!--  Seccion del buscador -->
 
 <section class="buscador">
-<form action="#" method="POST" role="search" > {{csrf_field() }}   <!--  protege busqueda-->
+<form action="#" method="GET" role="search" > {{csrf_field() }}   <!--  protege busqueda-->
 
 <div class="input-group mb-3">
 <label class="sr-only" for="inlineFormInput">busqueda</label>
@@ -73,13 +73,13 @@
         <p><a class="btn btn-secondary" href="#" role="button">Ver Perfil &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-      <img src="img/narda.jpg" class="rounded-circle"  alt="Narda Lepes" > 
+      <img src="{{ asset('img/narda.jpg') }}" class="rounded-circle"  alt="Narda Lepes" > 
         <h2>Narda Lepes</h2>
         <p>Cocinera y presentadora de televisión argentina en "El gourmet"con ciclos como "Doña Petrona por Narda"	. Conocida por programas como "Dueños de la cocina"</p>
         <p><a class="btn btn-secondary" href="#" role="button">Ver Perfil  &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-      <img src="img/donato.jpg" class="rounded-circle"   alt="Donato de Santis" > 
+      <img src="{{ asset('img/donato.jpg') }}" class="rounded-circle"   alt="Donato de Santis" > 
         <h2>Donato de Santis</h2>
         <p>Cocinero italiano especializado en la cocina de ese país. Desde el año 2000 reside en Buenos Aires, donde fundó su propio restaurante, Cucina Paradiso.</p>
         <p><a class="btn btn-secondary" href="#" role="button">Ver Perfil &raquo;</a></p>

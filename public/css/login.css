@@ -117,3 +117,16 @@ font-size: 20px;
   background-color: #3358ff !important;
   border-color: lightblue;
 }
+.nav-tabs > li, .nav-pills > li {
+  float:none;
+  display:inline-block;
+}
+
+.nav-tabs {
+  text-align:center;
+}
+.big{font-size:19px;}
+ul{padding-bottom:20px;}
+.q, p,i {
+color: #b7bbc4;
+}

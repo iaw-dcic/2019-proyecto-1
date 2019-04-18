@@ -14,6 +14,13 @@
 </head>
 <body>
 <div class="signin-form">
+<ul class="nav nav-tabs" role="tablist">
+	<li class="active"><a href="#new" role="tab" data-toggle="tab" class="big">Inicia Sesion</a></li>
+	<li><a href="#crea" role="tab" data-toggle="tab" class="big">Crea tu cuenta</a></li>
+ </ul>
+<div class="tab-content">
+	<div class="tab-pane fade in active" id="new"><br>
+	
     <form action="/examples/actions/confirmation.php" method="post">
 		<h2>Inicia Sesión</h2>
         <p class="hint-text">Inicia sesión con tus redes sociales</p>
@@ -23,16 +30,7 @@
 			<a href="{{ route('social.auth', 'google') }} " class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
 		</div>
         <div class="or-seperator"><b>o</b></div>
-        <div class="form-group">
-        <label   >Nombre 
-        	<input type="text" class="form-control input-lg" name="nombre" placeholder=" " required="required">
-            </label>
-        </div>
-        <div class="form-group">
-        <label   >Apellido 
-        	<input type="text" class="form-control input-lg" name="apellido" placeholder=" " required="required">
-        </label>
-         </div>
+     
         <div class="form-group">
         <label   >Usuario 
             <input type="text" class="form-control input-lg" name="usuario" placeholder=" " required="required">
@@ -49,8 +47,30 @@
         </div>
         <div class="text-center small"><a href="#">Olvidaste tu contraseña ?</a></div>
     </form>
-    <div class="text-center small">No tienes cuenta? <a href="#">Crea tu cuenta</a></div>
+     
 </div>
+ 
+<div class="tab-pane fade" id="crea">
+					<br>
+					<fieldset>
+						<div class="form-group">
+							<div class="right-inner-addon">
+								<i class="glyphicon glyphicon-envelope"></i>
+								<input class="form-control input-lg" placeholder="Email Address" type="text">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="right-inner-addon">
+								<i class="glyphicon glyphicon-lock"></i>
+								<input class="form-control input-lg" placeholder="Password" type="password">
+							</div>
+						</div>
+					</fieldset>
+					<br><div class=" text-center">
+					<button class="btn btn-primary">LOGIN</button></div>
+				</div>
+			</div>
+			<br>
 </body>
 
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
