@@ -9,4 +9,8 @@ class Game extends Model
     protected $table = 'games';
     public $primaryKey = 'id';
     public $timestamps = true;
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }

@@ -7,7 +7,7 @@
     <div class="page-info">
         <h2>Ingresar</h2>
         <div class="site-breadcrumb">
-            <a href="./">Inicio</a> /
+            <a href="/">Inicio</a> /
             <span>Ingresar</span>
         </div>
     </div>
@@ -70,7 +70,8 @@
                                     </button>
                                    
                                     <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('O ingresar con:') }}</label>
-                                    <a href="login/github" class="btn btn-primary"> 
+                                    <!--<a href="{{ route('login', ['service' => 'github']) }}" class="btn btn-primary"> -->
+                                    <a href="login/github" class="btn btn-primary">
                                         @include('partials._socialNetworks') 
                                         Github
                                     </a>  

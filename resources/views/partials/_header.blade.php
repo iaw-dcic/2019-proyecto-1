@@ -36,7 +36,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                {{ __('Cerrar sesion') }}
+                                <p style="color:black;"> Cerrar sesión </p>
                             </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -72,14 +72,15 @@
 
                 <!-- Menu -->
                 <ul class="main-menu primary-menu">
-                    <li><a href="./">Inicio</a></li>
-                    <li><a href="./games">Juegos</a>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="{{route('games.index')}}">Juegos</a>
                         <!--<ul class="sub-menu">
                             <li><a href="game-single.html">Game Singel</a></li>
                         </ul> -->
                     </li>
-                    <li><a href="./addGame">Agregar juego</a></li>
-                    <li><a href="./about">Nosotros</a></li>
+                    
+                    <li><a href="{{route('games.create')}}">Agregar juego</a></li>
+                    <li><a href="{{url('about') }}">Nosotros</a></li>
                 </ul>
             </nav>
         </div>

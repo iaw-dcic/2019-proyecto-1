@@ -8,9 +8,6 @@
 <script src="{{ URL::asset('js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ URL::asset('js/main.js') }}"></script>
 
-
-<!-- Contact form -->
-
 <!-- Video js -->
 <script src="{{ URL::asset('js/jquery.vide.min.js') }}"></script>
 <!-- //Video js -->

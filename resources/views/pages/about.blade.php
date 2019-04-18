@@ -7,7 +7,7 @@
     <div class="page-info">
         <h2>Informacion</h2>
         <div class="site-breadcrumb">
-            <a href="./">Inicio</a> /
+            <a href="/">Inicio</a> /
             <span>Informacion</span>
         </div>
     </div>

@@ -9,7 +9,7 @@
         <h2>{{strtoupper($game->title)}}</h2>
         <div class="site-breadcrumb">
             <a href="/">Inicio</a> /
-            <a href="/games"> Juegos </a> /
+			<a href="{{ url('games') }}">Juegos</a> /	
             <span>{{ucfirst($game->title)}}</span>
         </div>
     </div>
@@ -28,7 +28,7 @@
         </div>
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
-                <!--<div class="gs-meta">11.11.18  /  in <a href="">Games</a></div>-->
+				<!--<div class="gs-meta">11.11.18  /  in <a href="">Games</a></div>-->
                 <h2 class="gs-title">{{ucfirst($game->title)}}</h2>
                 <!--<h4>Gameplay</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquamet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum posuere porttitor justo id pellentesque. Proin id lacus feugiat, posuere erat sit amet, commodo ipsum. Donec pellentesque vestibulum metus.</p>
@@ -73,7 +73,7 @@
                     </div> -->
                 <div class="justify-content-center text-left">
                     <div class="container">
-                        <a href="/games/{{$game->id}}/edit" class="site-btn">Editar juego<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+						<a href="{{route('games.edit', ['game' => $game->id])}}" class="site-btn">Editar juego<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                     </div>
                 </div>
 

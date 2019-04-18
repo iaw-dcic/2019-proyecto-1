@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Game;
+use App\User;
 
 class GamesController extends Controller
 {
+     /**
+     * Create a new controller instance
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +25,9 @@ class GamesController extends Controller
      */
     public function index()
     {
-        $games = Game::orderBy('title', 'asc')->get();
-        return view('pages.games')->with('games', $games);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        return view('pages.games')->with('games', $user->games);
     }
 
     /**
@@ -45,6 +57,7 @@ class GamesController extends Controller
 
         $game->title = $request->title;
         //$game-> company = $request->company;
+        $game->user_id = auth()->user()->id;
 
         $game->save();
 

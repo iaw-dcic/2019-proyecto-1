@@ -7,7 +7,7 @@
     <div class="page-info">
         <h2>Agregar juego</h2>
         <div class="site-breadcrumb">
-            <a href="./">Inicio</a> /
+            <a href="/">Inicio</a> /
             <span>Agregar juego</span>
         </div>
     </div>

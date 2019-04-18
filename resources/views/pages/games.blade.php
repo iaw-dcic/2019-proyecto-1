@@ -14,7 +14,7 @@
 </section>
 <!-- Page top end-->
 
-<section class="games-section">
+<!--<section class="games-section">
 	<h1> Juegos </h1>
 	@if(count($games) > 0)
 	@foreach($games as $game)
@@ -25,19 +25,23 @@
 	@else
 	<p> No se encontraron juegos </p>
 	@endif
-</section>
+</section> -->
 
 <!-- Games section -->
 <section class="games-section">
 	<div class="container">
 
-	<div class="justify-content-center text-left">
-		<div class="container">
-			<a href="/games/create" class="site-btn">Agregar juego<img src="img/icons/double-arrow.png" alt="#"/></a>
+		<div class="justify-content-center text-left">
+			<div class="container">			
+				<a href="{{route('games.create') }}" class="site-btn">Agregar nuevo juego<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+				<br><br>
+				<h4 style="color:white;">Juegos de {{$game->user->name}}</h4>
 			</div>
-	</div>
-	<hr><hr> <!-- TODO - Cambiar CSS -->
-	<ul class="game-filter">
+		</div>
+		<hr>
+		<hr>
+		<!-- TODO - Cambiar CSS -->
+		<ul class="game-filter">
 			<li><a href="">A</a></li>
 			<li><a href="">B</a></li>
 			<li><a href="">C</a></li>
@@ -66,6 +70,43 @@
 			<li><a href="">Z</a></li>
 		</ul>
 		<div class="row">
+
+			@if(count($games)>0)
+			<table class="table table-stripped">
+				@foreach($games as $game)
+				<tr>
+					<td>
+						<div class="well">
+							<h3><a href="/games/{{$game->id}}">{{$game->title}}</h3>
+
+						</div>
+					</td>							
+					<td>
+						<a href="{{route('games.edit', ['game' => $game->id])}}" class="site-btn">Editar juego</a>
+					</td>
+					<td>
+						<div class="justify-content-center text-right">
+							<div class="container">
+								<form class="site-btn" action="{{ route('games.destroy', $game->id) }}" method="post">
+									{{ method_field('DELETE') }} @csrf
+									<!-- {{ csrf_field() }} -->
+									<input type="submit" value="Eliminar juego">
+								</form>
+							</div>
+
+						</div>
+					</td>
+				</tr>
+				@endforeach
+			</table>
+			@else
+			<h3> No se encontro ningun juego. </h3>
+			@endif
+
+
+
+
+			<!--  -->
 			<div class="col-xl-7 col-lg-8 col-md-7">
 				<div class="row">
 					<div class="col-lg-4 col-md-6">
@@ -181,8 +222,8 @@
 					</div>
 				</div>
 			</div>
+			</div>
 		</div>
-	</div>
 </section>
 <!-- Games end-->
 
