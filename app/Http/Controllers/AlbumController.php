@@ -25,7 +25,7 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        return 'hola Mundo';
+        return View('album.create');
     }
 
     /**
@@ -37,6 +37,18 @@ class AlbumController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $album = new Album;
+        $album->name = request('name');
+        $album->mynote = 10;
+        $album->bandName = request('band');
+        $album->description = request('coment');  
+        $album->link = request('youtubeLink');
+        $album->save();
+        
+        return View('album.index');
+
+        //return $request;
     }
 
     /**

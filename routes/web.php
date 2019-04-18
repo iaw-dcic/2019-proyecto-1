@@ -37,3 +37,4 @@ Route::get('movie/{id}', function ($id) {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/createAlbum','AlbumController@store');

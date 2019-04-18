@@ -14,14 +14,14 @@ class CreateAlbumsTable extends Migration
     public function up()
     {
         Schema::create('albums', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('mynote');
             //chequeo correspondiente a ver si existe... herencia y demas cosas a refaccionar
             //en siguientes versiones...
             $table->string('name', 100);
             $table->string('bandName', 100);		
             $table->text('description');
-            //Link a youtube...
+            //Link a  youtube...
             $table->text('link');	
             $table->timestamps();
         });
