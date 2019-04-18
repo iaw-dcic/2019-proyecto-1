@@ -51,7 +51,8 @@ class GamesController extends Controller
     {
         $this->validate($request, array(
             'title' => 'required',
-            //  'company' => 'required'
+            'platform' => 'required',
+            'rating' => 'required'
         ));
 
         $game = new Game;

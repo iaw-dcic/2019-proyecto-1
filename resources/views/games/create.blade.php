@@ -24,13 +24,26 @@
                      @csrf <!-- {{ csrf_field() }} -->
                     <div class="form-style-agile">
                         <label>
-                            <i class="fas fa-gamepad"></i>Nombre del juego</label>
-                        <input placeholder="Ej: CS GO" name="title" type="text" required="">
+                            <i class="fas fa-edit"></i>Nombre del juego</label>
+                        <input name="title" type="text" required="">
                     </div>
+
+
+                    <!-- Select Multiple -->
+               
+
+
+
+
                     <div class="form-style-agile">
                         <label>
-                            <i class="fas fa-users"></i>Nombre de la empresa</label>
-                        <input placeholder="company" name="company" type="text">
+                            <i class="fas fa-gamepad"></i>¿En qué plataformas lo jugas?</label>
+                        <input name="platform" type="text" required>
+                    </div>
+                    <div class="form-style-agile">
+                            <label>
+                                <i class="fas fa-thumbs-up"></i>¿Qué valoración le das?</label>
+                            <input name="rating" type="text" required>
                     </div>
                  
                     <input type="submit" value="Listo">
