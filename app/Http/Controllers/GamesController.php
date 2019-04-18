@@ -59,23 +59,9 @@ class GamesController extends Controller
             'rating' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ));
-
-        // Handle File Upload
-        if ($request->hasFile('cover_image')) {
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-
+        
+        $fileNameToStore = $this->handleFileUpload($request);
+       
         $game = new Game;
 
         $game->title = $request->title;
@@ -136,22 +122,7 @@ class GamesController extends Controller
             'cover_image' => 'image|nullable|max:1999'
         ));
 
-        // Handle File Upload
-        if ($request->hasFile('cover_image')) {
-            // Get filename with the extension
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-            // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-
+        $fileNameToStore = handleFileUpload($request);
 
         $game = Game::find($id);
 
@@ -177,5 +148,25 @@ class GamesController extends Controller
         $game->delete();
         alert()->info('Atención!', 'El juego fue eliminado');
         return redirect('games');
+    }
+
+    protected function handleFileUpload(Request $request)
+    {
+        // Handle File Upload
+        if ($request->hasFile('cover_image')) {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+        return $fileNameToStore;
     }
 }
