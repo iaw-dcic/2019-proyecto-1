@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Book;
+use App\Lista;
 use Illuminate\Http\Request;
 use Auth;
 
-class BookController extends Controller
+class ListaController extends Controller
 {
-
     public function __construct()
     {
 
         $this->middleware('auth');
+
+        $this->middleware('book.privacy')->only('show');
     }
 
     /**
@@ -22,14 +23,13 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
 
-        $data['books'] = $books;
+        $lista = Lista::all();
 
-        return view('book.index', $data);
+        return $lista;
+       
     }
 
-   
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +37,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('book.create');
+       return view('lista.create');
     }
 
     /**
@@ -48,67 +48,64 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $book = New Book();
+        $lista = New Lista();
 
-        $book->name=$request->name;
-        $book->author=$request->author;
-        $book->isbn=$request->ISBN;
-        $book->user_id = Auth::user()->id;
+        $lista->name=$request->name;
+        //$lista->description=$request->description;
+        $lista->user_id = Auth::user()->id;
 
-        if ($book->save()) {
-            return redirect()->route('book.create')->with('status', 'Éxito');
+        if ($lista->save()) {
+            return redirect()->route('lista.create')->with('status', 'Éxito');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Book  $book
+     * @param  \App\lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($lista)
     {
-        //
+        $lista = Lista::find($lista);
+        $name = $lista->name;
+        $books = $lista->book;
+
+        $data['name'] = $name;
+        $data['books'] = $books;
+
+        return view('lista.index', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Book  $book
+     * @param  \App\lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit(lista $lista)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Book  $book
+     * @param  \App\lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, lista $lista)
     {
-        $book = Book::find($book);
-
-        $book->name=$request->name;
-        $book->author=$request->author;
-        $book->isbn=$request->ISBN;
-
-        if ($book->save()) {
-            return redirect()->route('book.update')->with('status', 'Éxito');
-        }
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Book  $book
+     * @param  \App\lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy(lista $lista)
     {
         //
     }

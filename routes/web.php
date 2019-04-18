@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/app');
 });
 
 Auth::routes();
@@ -21,3 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/book', 'BookController');
 Route::get('/book/list/{id}', 'BookController@list');
+
+Route::resource('/list', 'ListaController');
+
+
+
+Route::get('/template', function () {
+    return view('template');
+});

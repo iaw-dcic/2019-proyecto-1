@@ -35,7 +35,7 @@
                             <label for="author" class="col-md-4 col-form-label text-md-right">{{ __('Author') }}</label>
 
                             <div class="col-md-6">
-                                <input id="author" type="author" class="form-control{{ $errors->has('author') ? ' is-invalid' : '' }}" name="author" value="{{ old('author') }}" required>
+                                <input id="author" type="text" class="form-control{{ $errors->has('author') ? ' is-invalid' : '' }}" name="author" value="{{ old('author') }}" required>
 
                                 @if ($errors->has('author'))
                                     <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                             <label for="ISBN" class="col-md-4 col-form-label text-md-right">{{ __('ISBN') }}</label>
 
                             <div class="col-md-6">
-                                <input id="ISBN" type="ISBN" class="form-control{{ $errors->has('ISBN') ? ' is-invalid' : '' }}" name="ISBN" value="{{ old('ISBN') }}" required>
+                                <input id="ISBN" type="text" class="form-control{{ $errors->has('ISBN') ? ' is-invalid' : '' }}" name="ISBN" value="{{ old('ISBN') }}" required>
 
                                 @if ($errors->has('ISBN'))
                                     <span class="invalid-feedback" role="alert">
