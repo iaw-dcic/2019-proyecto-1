@@ -24,7 +24,7 @@
 	<div class="container">
 		<!--<a href="/games" class="site-btn-back">Volver a mis juegos <img src="{{asset('img/icons/double-arrow.png')}}"></a> -->
 		<div class="game-single-preview">
-			<img src="{{asset('img/games/big.jpg')}}">
+			<img src="/storage/cover_images/{{$game->cover_image}}">
 		</div>
 		<div class="row">
 			<div class="col-xl-9 col-lg-8 col-md-7 game-single-content">
