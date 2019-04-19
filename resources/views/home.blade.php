@@ -1,23 +1,44 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="shortcut icon" href="/images/logo 16.ico">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/home-bootstrap.css">
+	</head>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+	<body>
+		<ul>
+			<li><a class="active" href="/home">Inicio</a></li>
+			<li><a href="/profile">Mi perfil</a></li>
+			<li><a href="#contact">Configuración</a></li>
+			<li style="float:right"><a href="/">Cerrar sesión</a></li>
+		</ul>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+		<div style="padding:20px;margin-top:30px;height:1500px;">
+			<h1>Fixed Top Navigation Bar</h1>
+			<h2>Scroll this page to see the effect</h2>
+			<h2>The navigation bar will stay at the top of the page while scrolling</h2>
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+			<p>Some text some text some text some text..</p>
+		</div>
+	</body>
+</html>
