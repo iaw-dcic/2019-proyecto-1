@@ -6,9 +6,10 @@
 
         <title>Catalogo de Juegos</title>
 
-        <!-- Fonts -->
+      
         <link href="{{ asset('css/homeStyle.css') }}" rel="stylesheet">
         <link href= "{{asset('css/reason1Color.css')}}" rel="stylesheet">
+          <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -22,10 +23,10 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}" class="loginBot">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}" class="registerBot">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -35,20 +36,17 @@
                 <div class="title m-b-md">
                     Bienvenido a la libreria de Juegos!
                 </div>
-
                 <div class="reason reason1">
                     <h3> Tus catalogos en todo momento </h3>
                     <p> crea tus listas para juegos acorde a tus necesidades y 
                         accedelas desde donde quieras en todo momento</p>                
                 </div>
-
                 <div class="reason reason2">
                     <h3>Listas que se adaptan a tus necesidades</h3>
                     <p>Accede a tus listas con tan solo acceder a tu sesión 
                     y modificalas a tu gusto, siempre puedes agregar o quitar juegos de una lista
                     y el sistema relflejará los cambios en tiempo real</p>
                 </div>
-
                 <div class="reason reason3">
                     <h3>Una sociedad de listas</h3>
                     <p>Comparte tus listas con tan solo presionar un botón 

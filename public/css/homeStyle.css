@@ -5,12 +5,12 @@ html, body {
     font-weight: 200;
     height: 100vh;
     margin: 0;
+
 }
 
 .full-height {
     height: 100vh;
 }
-
 
 
 .flex-center {
@@ -35,12 +35,17 @@ html, body {
     width: 100%;
 }
 
-.reason1 > h3 {
+.reason{
+   display: inline-table;
+   width: 100%;
+    
+}
+.reason > h3 {
     font-family: 'Quicksand', sans-serif;
     font-weight: 400;
     font-size: 40px;
 }
-.reason1 > p{
+.reason > p{
     font-family: 'Raleway', sans-serif;
     font-size: 18px;
     font-weight: 400;
@@ -52,13 +57,29 @@ html, body {
 }
 
 .links > a {
-    color: #636b6f;
+    color: #222527;
     padding: 0 25px;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: .1rem;
     text-decoration: none;
+    transition: 0.5s;
     text-transform: uppercase;
+  
+}
+
+.loginBot:hover{
+    transition:0.5;
+    transform: scale(1.5);
+    background: orange;
+    margin-top: 0%;
+
+}
+
+.registerBot:hover{
+    transition:0.5;
+    transform: scale(1.5);
+    background: rgb(54, 175, 135);
 }
 
 .m-b-md {
