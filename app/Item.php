@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Lista extends Model
+class Item extends Model
 {
     protected $fillable = [
-        'name', 'genre', 'description', 'visibility', 'user_id',
+        'songname', 'artist', 'album', 'list_id',
     ];
-    //
 }

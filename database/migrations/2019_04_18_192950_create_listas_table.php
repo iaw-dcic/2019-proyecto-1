@@ -16,13 +16,13 @@ class CreateListasTable extends Migration
         Schema::create('listas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string("name");
-            $table->string("type");
+            $table->string("genre");
             $table->text('description');
             $table->boolean('visibility');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('type')->references('name')->on('tipos');
+            $table->foreign('genre')->references('name')->on('generos');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

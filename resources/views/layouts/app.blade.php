@@ -28,6 +28,10 @@
 
     <!-- Main Stylesheet File -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/switchbuttons.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/personalstyles.css') }}" rel="stylesheet">
+
+    @yield('headcontent')
 
     <!-- =======================================================
     Theme Name: Regna
@@ -82,10 +86,10 @@
                             <a href="#">{{ __('Mis Listas') }}</a>
                         </li>
                         <li class="menu-has-children"><a href="#">
-                            <img class="rounded-circle mr-1" width="20px" height="20px" src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}">  {{ Auth::user()->username }} </a>
+                                <img class="rounded-circle mr-1" width="20px" height="20px" src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}"> {{ Auth::user()->username }} </a>
                             <ul>
                                 <li>
-                                <a href="{{ route('user.profile') }}">{{ __('Perfil') }}</a>
+                                    <a href="{{ route('user.profile') }}">{{ __('Perfil') }}</a>
                                 </li>
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
@@ -121,6 +125,7 @@
     <script src="{{ asset('/lib/superfish/superfish.min.js') }}"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('/js/crearlista.js') }}"></script>
 
 </body>
 

@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/create-list', 'ListCreatorController@index')->name('create-list');
+//Route::post('/create-list', 'ListCreatorController@store')->name('create-list');
+Route::post('/create-list',['as' => 'form_url', 'uses' => 'ListCreatorController@store'])->name('create-list');
 Route::get('/profile', 'UserController@profile')->name('user.profile');
 Route::get('/profile/{username}', 'ProfileController@viewprofile')->name('view.profile')->where('username', '[A-Za-z]+');
 Route::post('/profile', 'UserController@update_profile')->name('user.profile.update');

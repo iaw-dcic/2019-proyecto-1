@@ -14,13 +14,14 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->string('name');
+            $table->string('songname');
+            $table->string('artist');
+            $table->string('album');
             $table->unsignedBigInteger('list_id');
-            $table->text("description");
             $table->timestamps();
 
             $table->foreign('list_id')->references('id')->on('listas');
-            $table->primary(['name','list_id']);
+            $table->primary(['songname','list_id']);
         });
     }
 
