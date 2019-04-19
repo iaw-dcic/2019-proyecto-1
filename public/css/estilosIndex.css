@@ -3,7 +3,9 @@ body
   margin: 0 !important;
   padding: 0 !important;
   overflow: auto;
+  background-color: whitesmoke;
 }
+
 
 #panelDescripcion
 {
@@ -37,20 +39,37 @@ body
 
 #carouselExampleControls
 {
-  margin: 50px auto;
-  width: 900px;
-  height: 300px;
+  width: 100%;
+  margin-top: 5px;
+  height:500px;
 }
 
 #panelCarrusel
 {
-  margin: 50px auto;
   height: 100%;
   width: 100%;
+
 }
 
 #imagenCarrusel
 {
   height: 100%;
   width: 100%;
+}
+
+
+#panelCompartido
+{
+    width: 900px;
+    height: auto;
+    text-align: center;
+    margin: 50px auto;
+}
+#tituloPrincipal
+{
+  font-style: inherit;
+  color: black;
+  border: 15px;
+  margin-top: 20px;
+  size: 50%;
 }

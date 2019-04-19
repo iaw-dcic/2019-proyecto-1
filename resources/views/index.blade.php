@@ -12,13 +12,22 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" id="panelCarrusel">
             <div class="carousel-item active">
-            <img src="/imgs/series.png" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="/imgs/breakingbad.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/images.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="/imgs/hannibal.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/descarga.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="/imgs/got.jpeg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="/imgs/strangers.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="/imgs/greys.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="/imgs/orphan.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -29,6 +38,13 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+    </div>
+ 
+    <!--PANEL DE LAS SERIES COMPARTIDAS POR LOS USUARIOS-->
+    <div id= "panelCompartido">
+        <div>
+            <h1 id="tituloPrincipal">Series Compartidas</h1>
+        </div>
     </div>
 
     <div id="panelDescripcion">
