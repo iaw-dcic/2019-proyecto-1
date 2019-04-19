@@ -12,8 +12,10 @@
 */
  
 Route::get('/','RecetasController@index');
-Route::get('registrarse',  function () { return view('registrarse'); });
+
+Route::post('/store', 'UserController@store');
 Route::get('login', 'UserController@login')->name('login');
+Route::get('crea', 'UserController@crea')->name('crea');
 Route::get('logout', 'UserController@logout')->name('logout');
    
 Route::get('auth/{provider}', 'UserController@redirectToProvider')->name('social.auth');

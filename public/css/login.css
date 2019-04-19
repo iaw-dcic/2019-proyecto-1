@@ -2,11 +2,14 @@ body {
   color: #434343;
 background: #dfe7e9;
 font-family: 'Varela Round', sans-serif;
+left:15rem;
 }
+
 .form-control {
 font-size: 16px;
 transition: all 0.4s;
 box-shadow: none;
+padding: 1rem;
 }
 .form-control:focus {
   border-color: blue;
@@ -75,22 +78,22 @@ text-align: center;
 line-height: 40px;
 background: #fff;
 display: inline-block;
-  border: 1px solid #e0e0e0;
+border: 1px solid #e0e0e0;
 border-radius: 50%;
-  position: relative;
-  top: -22px;
-  z-index: 1;
+position: relative;
+top: -22px;
+z-index: 1;
 }
 .social-btn .btn {
 color: #fff;
-  margin: 10px 0 0 30px;
+margin: 10px 0 0 30px;
 font-size: 15px;
-  width: 55px;
-  height: 55px;
-  line-height: 38px;
-  border-radius: 50%;
+width: 55px;
+height: 55px;
+line-height: 38px;
+border-radius: 50%;
 font-weight: normal;
-  text-align: center;
+text-align: center;
 border: none;
 transition: all 0.4s;
 }	
@@ -130,3 +133,5 @@ ul{padding-bottom:20px;}
 .q, p,i {
 color: #b7bbc4;
 }
+
+ 

@@ -10,10 +10,16 @@ use App\User;
  
   class UserController extends Controller
 {
+
+
+    
+
     public function login(){
         return view('loginform');
     }
-   
+    public function crea(){
+        return view('loginform');
+    }
 
     // Metodo encargado de la redireccion a Facebook/Google
     public function redirectToProvider($provider)
@@ -21,6 +27,20 @@ use App\User;
         return Socialite::driver($provider)->redirect();
     }
     
+    public function store(request $request){
+        print_r($request->input);
+        $this->validate(request(), [
+            'nombre' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+        
+        $user = User::create(request(['nombre','apellido','email', 'password']));
+        
+        Auth::login($user);
+        
+        return redirect()->to('/');
+    }
     // Metodo encargado de obtener la información del usuario
     public function handleProviderCallback($provider)
     {      

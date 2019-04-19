@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="pagina web para iaw uns">
-<title>Bootstrap Sign in Form with Circular Social Buttons</title>
+<title>Login Recetas</title>
 
 
  
@@ -13,15 +13,16 @@
  
 </head>
 <body>
-<div class="signin-form">
+    
+ 
+<div class="container" id="caja">
 <ul class="nav nav-tabs" role="tablist">
-	<li class="active"><a href="#new" role="tab" data-toggle="tab" class="big">Inicia Sesion</a></li>
-	<li><a href="#crea" role="tab" data-toggle="tab" class="big">Crea tu cuenta</a></li>
+	<li class="{{ (Request::is('login') ? 'active' : '') }}"><a href="#new" role="tab" data-toggle="tab" class="big">Inicia Sesion</a></li>
+	<li class="{{ (Request::is('crea') ? 'active' : '') }}"><a href="#crea" role="tab" data-toggle="tab" class="big">Crea tu cuenta</a></li>
  </ul>
 <div class="tab-content">
-	<div class="tab-pane fade in active" id="new"><br>
-	
-    <form action="/examples/actions/confirmation.php" method="post">
+	<div class="{{ (Request::is('login') ? 'tab-pane fade in active' : 'tab-pane fade') }}" id="new"><br>
+	 
 		<h2>Inicia Sesión</h2>
         <p class="hint-text">Inicia sesión con tus redes sociales</p>
 		<div class="social-btn text-center">
@@ -50,27 +51,42 @@
      
 </div>
  
-<div class="tab-pane fade" id="crea">
+<div class="{{ (Request::is('crea') ? 'tab-pane fade in active' : 'tab-pane fade') }}" id="crea">
 					<br>
 					<fieldset>
-						<div class="form-group">
-							<div class="right-inner-addon">
+						<div class="form-group"  >
+                        <form accept-charset="UTF-8" role="form" method="POST" action="{{URL::to('/store')}}">
+                        {{ csrf_field() }}
+                                <label class="sr-only"> Nombre </label>
+								<input name='nombre'class="form-control input-lg" placeholder="Nombre" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only"> Apellido </label>
+								<input name='apellido'class="form-control input-lg" placeholder="Apellido" type="text">
+							</div>
+                            <div class="form-group">
+                                <label class="sr-only"> email </label>
 								<i class="glyphicon glyphicon-envelope"></i>
-								<input class="form-control input-lg" placeholder="Email Address" type="text">
+								<input name='email'class="form-control input-lg" placeholder="Email" type="email">
 							</div>
-						</div>
-						<div class="form-group">
-							<div class="right-inner-addon">
-								<i class="glyphicon glyphicon-lock"></i>
-								<input class="form-control input-lg" placeholder="Password" type="password">
+					 
+						 
+                            <div class="form-group">
+                                <i class="glyphicon glyphicon-lock"></i>
+                                <label class="sr-only"> password </label>
+								<input name='password'class="form-control input-lg" placeholder="Password" type="password">
 							</div>
-						</div>
+                        
+                    
 					</fieldset>
 					<br><div class=" text-center">
-					<button class="btn btn-primary">LOGIN</button></div>
+                    <button class="btn btn-primary">Crear</button></div>
+</form>
 				</div>
 			</div>
-			<br>
+            <br>
+           
+</div>
 </body>
 
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

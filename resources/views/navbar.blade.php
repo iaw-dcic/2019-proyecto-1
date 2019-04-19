@@ -31,7 +31,7 @@
 			     
             <ul id="login-dp" class="dropdown-menu">
 					  	<a class="dropdown-item" href="{{route('login')}}">Ingrese</a>
-							<a class="dropdown-item" href="#">Crea tu cuenta</a>									 
+							<a class="dropdown-item" href="{{route('crea')}}">Crea tu cuenta</a>									 
              </ul>	
           @endif
           @if($user = Auth::user())
