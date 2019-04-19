@@ -10,8 +10,7 @@
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">    
 
     <!-- Bootstrap core CSS -->
-    <script type="text/javascript" src="{{ asset('js/perfiles.js') }}"></script>
-
+ 
     <title>Recetario</title>
   </head>
    @include('navbar')

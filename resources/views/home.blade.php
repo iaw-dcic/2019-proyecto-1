@@ -12,6 +12,7 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
+        
       <a href="#">  <img src="{{ asset('img/spaghetti.jpg') }}" class="d-block w-100" alt="spaghetti"></a>
         <div class="carousel-caption d-none d-md-block">
           <h5>Spaghetti</h5>
@@ -65,30 +66,24 @@
   <h3> Los usuarios más valorados </h3>
     <!-- TRES COLUMNAS ABAJO DEL CAROUSEL -->
     <div class="row">
+    <?php  $count=0 ?>
+     @foreach($usuarios as $usuario)
+      @if($count < 3)
+    <div class="col-lg-4">
+    <?php  $ruta='img/'.$usuario->id.'.jpg' ?>
+      <img src="{{ $usuario->avatar}}" class="rounded-circle"   alt= "{{$usuario->nombre}}"> 
+        <h2>{{$usuario->nombre}}
+            @if($usuario->apellido != null)
+                {{$usuario->apellido}}
+            @endif
+        </h2>
+        <p>{{$usuario->descripcion}}</p>
+        <p><a class="btn btn-secondary"  role="button" href="{{route('verPerfil',['id'=>$usuario->id])}}";>Ver Perfil &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <?php $count++ ?>
+      @endif
+    @endforeach
      
-      <div class="col-lg-4">
-      <img src="{{asset('img/osvaldo.jpg')}}" class="rounded-circle"   alt="Osvaldo Gross" > 
-        <h2>Osvaldo Gross</h2>
-        <p>Lic en geoquimica y chef pâtissier. Es un reconocido pastelero a nivel mundial y es muy conocido por sus ciclos televisivos tanto en Utilísima Satelital como en elgourmet.com</p>
-        <p><a class="btn btn-secondary"  role="button" href="{{route('verPerfil', ['id'=>1])}}";>Ver Perfil &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-      <img src="{{ asset('img/narda.jpg') }}" class="rounded-circle"  alt="Narda Lepes" > 
-      <?php  $usuario=$usuarios->find(1) ?>
-         
-        <h2>{{$usuario->nombre}}</h2>
-        <p>Cocinera y presentadora de televisión argentina en "El gourmet"con ciclos como "Doña Petrona por Narda"	. Conocida por programas como "Dueños de la cocina"</p>
-        <p><a class="btn btn-secondary" href="{{route('verPerfil',['id'=>$usuario->id])}}" role="button">Ver Perfil  &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-      <img src="{{ asset('img/donato.jpg') }}" class="rounded-circle"   alt="Donato de Santis" > 
-        <h2>Donato de Santis</h2>
-        <p>Cocinero italiano especializado en la cocina de ese país. Desde el año 2000 reside en Buenos Aires, donde fundó su propio restaurante, Cucina Paradiso.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">Ver Perfil &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-    
-    
     </section>
     <section class="recetas">
     <!-- van las listas recetas -->
@@ -97,28 +92,33 @@
         <div class="col" id="salados">
            
              <h3> Salados </h3>
-            
+             <ul id="contenedorListado" class="list-group">
                @foreach ($recetas as $receta)
                  @if($receta->categoria==0) 
-                   <li> {{ $receta->nombre }}</li>
+                   <li> {{ $receta->nombre }}</li> 
                    @endif
+                   
                @endforeach
-            
-        </div>
+               </ul>  
+          </div>
+       
+   
     <div class="col"  id="dulces">
-    <h3> Dulce </h3>
-    <ul id="contenedorListado" class="list-group">
-                <div class="row">
+        <h3> Dulce </h3>
+     
+        <ul id="contenedorListadoDulce" class="list-group">
+                
                        @foreach ($recetas as $receta)
                          @if($receta->categoria==1)
                          <li> {{ $receta->nombre }}</li>
                          @endif   
+                        
                         @endforeach
-                   
-                </div>
+                      
+             
             </ul>    
+            </div>
     
-    </div>
   </div>
   </section>
     <!-- /END THE FEATURETTES -->

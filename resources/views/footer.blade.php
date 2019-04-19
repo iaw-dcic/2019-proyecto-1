@@ -11,8 +11,8 @@
         <div class="col-md-6 mt-md-0 mt-3">
 
           <!-- Content -->
-          <h5 class="text-uppercase">Footer </h5>
-          <p>Esta página fue hecha como proyecto de IAW para la Universidad Nacional del Sur.</p>
+          <h5 id="footer-h" class="text-uppercase">Footer </h5>
+          <p id="footer-p">Esta página fue hecha como proyecto de IAW para la Universidad Nacional del Sur.</p>
 
         </div>
         <!-- Grid column -->
@@ -27,7 +27,7 @@
             <!-- Links -->
          
 
-            <ul class="list-unstyled">
+            <ul class="list-footer">
               <li>
                 <a href="/">Volver a Inicio</a>
               </li>
@@ -51,7 +51,7 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2019:Copyright
-      <a href="https://github.com/LuArceredillo">https://github.com/LuArceredillo </a>
+      <a  href="https://github.com/LuArceredillo" id="github">https://github.com/LuArceredillo </a>
     </div>
     <!-- Copyright -->
 

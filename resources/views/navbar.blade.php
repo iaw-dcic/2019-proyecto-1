@@ -35,10 +35,12 @@
              </ul>	
           @endif
           @if($user = Auth::user())
-          <a class="navbar-brand" href="/"><img src="{{$user->avatar}}" alt="logo" width=60 heigh=30 ></a>
+          
             <a href="#" class="dropdown-toggle" id="textoLogin" data-toggle="dropdown"> {{$user->nombre}} <span class="caret"></span></a>
-	
-           <ul id="login-dp" class="dropdown-menu">
+            @if($user->avatar !=null)
+            <a class="navbar-brand" href="/"><img src="{{$user->avatar}}" alt="logo" width=60 heigh=30 ></a>
+            @endif
+           <ul id="login-dp " class="dropdown-menu">
              <a class="dropdown-item" href="#">Mi Perfil</a>
              <a class="dropdown-item" href="{{route('logout')}}">Cerrar Sesion</a>									 
             </ul>	

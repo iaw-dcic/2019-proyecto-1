@@ -3,27 +3,28 @@
 
 <div class="container-fluid">
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" id="perfil">
         <h3>
            Perfil
         </h3>
         <div class="row">
-            <div class="col-md-4">
-                <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg">
+            <div class="col-md-4"style="background-color: lightgray">
+                <img alt="{{$perfil->nombre}}"  src="{{$perfil->avatar}}">
                 <dl>
                     <dt>
                        Nombre: 
                     </dt>
-                    <dd>
-                    {{$perfil->nombre}}
-                    </dd>
-                    <dt>
+                                 <dd>
+                                 {{$perfil->nombre}}
+                                </dd>
+                    @if($perfil->apellido !=null)
+                     <dt>
                         Apellido
                     </dt>
                     <dd>
-                   
+                       {{$perfil->apellido}}
                     </dd>
-                     
+                     @endif
                     <dt>
                     Email
                     </dt>

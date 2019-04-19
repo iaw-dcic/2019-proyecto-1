@@ -1,6 +1,33 @@
 /* GLOBAL STYLES
+
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
+#github{
+  color:white !important;
+}
+.page-footer{
+  background: #212529;
+}
+
+ #footer-p{
+  color:white !important;
+}
+#footer-h{
+  color:white !important;
+}
+.footer-copyright{
+ color:white;
+}
+#volver{
+ color:white;
+}
+#iaw{
+ color:white;
+}
+
+.list-footer > li > a {
+  color:white !important;
+}
 #titulo-perfil{
   margin-top: 1rem;
 }
@@ -54,7 +81,9 @@ body {
 #topNav {
   margin-bottom:0;
 }
-  
+#perfil{
+  margin-top:2rem;
+}
   /* CUSTOMIZE THE CAROUSEL
   -------------------------------------------------- */
   
@@ -185,15 +214,4 @@ body {
   color: white;
 }
  
- 
- 
-#copyright{
-  color:white;
-}
-#volver{
-  color:white;
-}
-#iaw{
-  color:white;
-}
  

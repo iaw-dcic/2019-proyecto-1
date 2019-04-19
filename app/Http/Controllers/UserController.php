@@ -83,7 +83,7 @@ use App\Receta;
 
     public function perfil($id){
         $perfil=User::find($id); 
-        $recetas= Receta::where('id_autor', 1)->get();
+        $recetas= Receta::where('id_autor', $id)->get();
 
         return view('perfil', [
             'perfil' =>  $perfil,
