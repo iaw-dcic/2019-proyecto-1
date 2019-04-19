@@ -1,26 +1,23 @@
-@extends('layout')
+@extends('layouts.app')
 
-@section('body')
-    <nav class="navbar navbar-default fadeInDown">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">List Maker</a>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    You are logged in!
+                </div>
             </div>
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#">Top voted</a>
-                </li>
-                <li>
-                    <a href="#">Most viewed</a>
-                </li>
-                <li>
-                    <a href="#">New lists</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-            <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
         </div>
-    </nav>
+    </div>
+</div>
 @endsection

@@ -12,7 +12,19 @@
 */
 
 Route::get('/', 'PagesController@home');
-
 Route::get('login', 'PagesController@login');
-
 Route::get('signup', 'PagesController@signup');
+
+Route::resource('myLists', 'UserListsController');
+
+Route::post('myLists/{myList}/items', 'ListItemsController@store');
+Route::delete('items/{item}', 'ListItemsController@destroy');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
