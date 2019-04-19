@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Game;
 use App\User;
-use Alert;
+use Auth;
+
 
 class GamesController extends Controller
 {
@@ -16,7 +17,7 @@ class GamesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index']]);
     }
 
     /**
@@ -26,12 +27,13 @@ class GamesController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        /*if (count($user->games) == 0) {
-            alert()->success('Listo!', 'No tenes ningun juego cargado amigo.');
-        }*/
-        return view('pages.games')->with('games', $user->games);
+        if (Auth::user()) {
+            $user_id = auth()->user()->id;
+            $user = User::find($user_id);
+            return view('pages.games')->with('games', $user->games);
+        } else {
+            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
+            return redirect()->guest('/login');        }
     }
 
     /**
@@ -59,9 +61,9 @@ class GamesController extends Controller
             'rating' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ));
-        
+
         $fileNameToStore = $this->handleFileUpload($request);
-       
+
         $game = new Game;
 
         $game->title = $request->title;

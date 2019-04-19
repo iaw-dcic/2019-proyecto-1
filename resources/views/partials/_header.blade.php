@@ -22,11 +22,8 @@
             <nav class="top-nav-area w-100">
                 <div class="user-panel">
                     @guest
-                        <a href="{{ url('login') }}">Ingresar</a> /
-                        <a href="{{ url('register') }}">Registrarse</a>
-                    @endguest
-                    
-                    @auth
+                    <a href="{{ url('login') }}">Ingresar</a> /
+                    <a href="{{ url('register') }}">Registrarse</a> @endguest @auth
 
 
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
@@ -34,10 +31,14 @@
                         </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('profile') }}">
+                            <p style="color:black;"> Mi perfil </p>
+                        </a>
+
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                <p style="color:black;"> Cerrar sesión </p>
-                            </a>
+                        document.getElementById('logout-form').submit();">
+                            <p style="color:black;"> Cerrar sesión </p>
+                        </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -72,7 +73,7 @@
                             <li><a href="game-single.html">Game Singel</a></li>
                         </ul> -->
                     </li>
-                    
+
                     <li><a href="{{route('games.create')}}">Agregar juego</a></li>
                     <li><a href="{{url('profile') }}">Mi perfil</a></li>
                     <li><a href="{{url('about') }}">Preguntas frecuentes</a></li>

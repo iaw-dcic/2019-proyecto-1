@@ -25,7 +25,8 @@
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-7">
                 <div class="section-title text-white">
-                    <h2>Perfil de usuario</h2>
+                <h3>Actualmente tu lista de juegos está en modo privado</h3>
+                <a href="#" class="read-more">Pasarla a modo público<img src="img/icons/double-arrow.png" alt="#"/></a>
                 </div>
                
                 <!-- Blog item -->
@@ -40,7 +41,7 @@
                         <div class="top-meta">Juegos: {{$data['userGames']}}</div>
                        
                         <br><br><br><br><br><br>
-                        <a href="#" class="read-more">Editar perfil <img src="img/icons/double-arrow.png" alt="#"/></a>
+                        <a href="#" class="read-more">Editar avatar <img src="img/icons/double-arrow.png" alt="#"/></a>
                         
                     </div>
                 </div>

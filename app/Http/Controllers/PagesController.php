@@ -3,9 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Game;
+use Auth;
 
 class PagesController extends Controller
 {
+
+    /**
+     * Create a new controller instance
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['home', 'about', 'games', 'profile']]);
+    }
 
     public function home()
     {
@@ -24,18 +35,24 @@ class PagesController extends Controller
 
     public function profile()
     {
-        $user = auth()->user();
-        $userGames = Game::where('user_id', $user->id)->get();
-        $arrayOfGamesTitle = [];
-        foreach ($userGames as $game) {
-            array_push($arrayOfGamesTitle, $game->title);
+        if ($user = Auth::user()) {
+                $user = auth()->user();
+                $userGames = Game::where('user_id', $user->id)->get();
+                $arrayOfGamesTitle = [];
+                foreach ($userGames as $game) {
+                    array_push($arrayOfGamesTitle, $game->title);
+                }
+
+                $data = [
+                    'user'  => $user,
+                    'userGames'   => implode(" - ", $arrayOfGamesTitle),
+                ];
+
+                return view('pages.profile')->with('data', $data);
+            } else {
+            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
+            return redirect()->guest('/login');
+           
         }
-
-        $data = [
-            'user'  => $user,
-            'userGames'   => implode(" - ",$arrayOfGamesTitle),
-        ];
-
-        return view('pages.profile')->with('data', $data);
     }
 }

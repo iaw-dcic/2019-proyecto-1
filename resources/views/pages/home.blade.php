@@ -1,8 +1,7 @@
 @extends('layouts.app') 
-
 @section('title',' | Inicio')
-
 @section('content')
+@include('sweetalert::alert')
 
 <!-- Hero section -->
 <section class="hero-section overflow-hidden">
