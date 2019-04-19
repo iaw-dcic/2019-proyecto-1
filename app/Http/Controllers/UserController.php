@@ -6,7 +6,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Socialite;
 use App\User;
-
+use App\Receta;
  
   class UserController extends Controller
 {
@@ -81,6 +81,15 @@ use App\User;
         return  redirect()->to('/');
     }
 
+    public function perfil($id){
+        $perfil=User::find($id); 
+        $recetas= Receta::where('id_autor', 1)->get();
+
+        return view('perfil', [
+            'perfil' =>  $perfil,
+            'recetas' =>$recetas
+        ]);
+    }
    
 }
     

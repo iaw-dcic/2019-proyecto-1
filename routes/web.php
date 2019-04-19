@@ -12,7 +12,7 @@
 */
  
 Route::get('/','RecetasController@index');
-
+Route::get('verPerfil/{id}', 'UserController@perfil')->name('verPerfil');
 Route::post('/store', 'UserController@store');
 Route::get('login', 'UserController@login')->name('login');
 Route::get('crea', 'UserController@crea')->name('crea');

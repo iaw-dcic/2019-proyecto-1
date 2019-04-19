@@ -65,18 +65,20 @@
   <h3> Los usuarios más valorados </h3>
     <!-- TRES COLUMNAS ABAJO DEL CAROUSEL -->
     <div class="row">
-   
+     
       <div class="col-lg-4">
       <img src="{{asset('img/osvaldo.jpg')}}" class="rounded-circle"   alt="Osvaldo Gross" > 
         <h2>Osvaldo Gross</h2>
         <p>Lic en geoquimica y chef pâtissier. Es un reconocido pastelero a nivel mundial y es muy conocido por sus ciclos televisivos tanto en Utilísima Satelital como en elgourmet.com</p>
-        <p><a class="btn btn-secondary" href="#" role="button">Ver Perfil &raquo;</a></p>
+        <p><a class="btn btn-secondary"  role="button" href="{{route('verPerfil', ['id'=>1])}}";>Ver Perfil &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
       <img src="{{ asset('img/narda.jpg') }}" class="rounded-circle"  alt="Narda Lepes" > 
-        <h2>Narda Lepes</h2>
+      <?php  $usuario=$usuarios->find(1) ?>
+         
+        <h2>{{$usuario->nombre}}</h2>
         <p>Cocinera y presentadora de televisión argentina en "El gourmet"con ciclos como "Doña Petrona por Narda"	. Conocida por programas como "Dueños de la cocina"</p>
-        <p><a class="btn btn-secondary" href="#" role="button">Ver Perfil  &raquo;</a></p>
+        <p><a class="btn btn-secondary" href="{{route('verPerfil',['id'=>$usuario->id])}}" role="button">Ver Perfil  &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
       <img src="{{ asset('img/donato.jpg') }}" class="rounded-circle"   alt="Donato de Santis" > 
@@ -121,4 +123,5 @@
   </section>
     <!-- /END THE FEATURETTES -->
     </div>
+
 @endsection
