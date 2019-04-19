@@ -61,12 +61,6 @@
                         @csrf
                     </form> -->
 
-
-
-
-
-
-
                     @endauth
                 </div>
 
@@ -80,6 +74,7 @@
                     </li>
                     
                     <li><a href="{{route('games.create')}}">Agregar juego</a></li>
+                    <li><a href="{{url('profile') }}">Mi perfil</a></li>
                     <li><a href="{{url('about') }}">Preguntas frecuentes</a></li>
                 </ul>
             </nav>

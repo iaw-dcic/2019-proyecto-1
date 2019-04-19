@@ -3,7 +3,6 @@
 @section('title',' | Inicio')
 
 @section('content')
-@endsection
 
 <!-- Hero section -->
 <section class="hero-section overflow-hidden">
@@ -33,3 +32,5 @@
     </div>
 </section>
 <!-- Newsletter section end -->
+
+@endsection
