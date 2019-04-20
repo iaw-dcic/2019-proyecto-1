@@ -50,7 +50,7 @@ class PagesController extends Controller
 
                 return view('pages.profile')->with('data', $data);
             } else {
-            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
+            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tu perfil.');
             return redirect()->guest('/login');
            
         }

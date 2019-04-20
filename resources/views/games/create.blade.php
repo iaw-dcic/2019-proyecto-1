@@ -8,6 +8,7 @@
         <h2>Agregar juego</h2>
         <div class="site-breadcrumb">
             <a href="/">Inicio</a> /
+            <a href="{{ url('games') }}">Juegos</a> /
             <span>Agregar juego</span>
         </div>
     </div>
@@ -33,7 +34,7 @@
 
             <!-- Console -->
             <div class="form-style-agile">
-                <label><i class="fas fa-gamepad"></i>¿En qué consola lo jugas?</label>
+                <label><i class="fas fa-gamepad"></i>¿En qué consola lo jugas principalmente?</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="console" value="PC">
                     <label class="form-check-label">

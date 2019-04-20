@@ -23,7 +23,8 @@
                 <div class="user-panel">
                     @guest
                     <a href="{{ url('login') }}">Ingresar</a> /
-                    <a href="{{ url('register') }}">Registrarse</a> @endguest @auth
+                    <a href="{{ url('register') }}">Registrarse</a> @endguest 
+                    @auth
 
 
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
@@ -73,9 +74,10 @@
                             <li><a href="game-single.html">Game Singel</a></li>
                         </ul> -->
                     </li>
-
+                    @auth
                     <li><a href="{{route('games.create')}}">Agregar juego</a></li>
                     <li><a href="{{url('profile') }}">Mi perfil</a></li>
+                    @endauth
                     <li><a href="{{url('about') }}">Preguntas frecuentes</a></li>
                 </ul>
             </nav>

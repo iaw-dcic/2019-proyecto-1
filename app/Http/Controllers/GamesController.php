@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Game;
 use App\User;
 use Auth;
@@ -17,7 +18,7 @@ class GamesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index', 'create']]);
     }
 
     /**
@@ -30,10 +31,13 @@ class GamesController extends Controller
         if (Auth::user()) {
             $user_id = auth()->user()->id;
             $user = User::find($user_id);
+            //$posts = Post::orderBy('title','desc')->get();
+            //$posts = Post::orderBy('created_at','desc')->paginate(10);
             return view('pages.games')->with('games', $user->games);
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
-            return redirect()->guest('/login');        }
+            return redirect()->guest('/login');
+        }
     }
 
     /**
@@ -43,7 +47,12 @@ class GamesController extends Controller
      */
     public function create()
     {
-        return view('games.create');
+        if (Auth::user()) {
+            return view('games.create');
+        } else {
+            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
+            return redirect()->guest('/login');
+        }
     }
 
     /**
@@ -65,18 +74,17 @@ class GamesController extends Controller
         $fileNameToStore = $this->handleFileUpload($request);
 
         $game = new Game;
-
-        $game->title = $request->title;
-        $game->console = $request->console;
-        $game->rating = $request->rating;
         $game->user_id = auth()->user()->id;
+        $game->title = $request->title;
+        $game->rating = $request->rating;
         $game->cover_image = $fileNameToStore;
-
+        $game->console = $request->console;
         $game->save();
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
         return redirect('games');
     }
+
 
     /**
      * Display the specified resource.
@@ -98,12 +106,12 @@ class GamesController extends Controller
      */
     public function edit($id)
     {
-        $game = Game::find($id);
 
+        $game = Game::find($id);
         //Check for correct user
-        if (auth()->user()->id !== $game->user_id) {
+        /*if (auth()->user()->id !== $game->user_id) {
             return redirect('/games')->with('error', 'Pagina no autorizada'); //TODO: Ver esto porque no anda, hacer l mismo para eliminar y ver
-        }
+        }*/
 
         return view('games.edit')->with('game', $game);
     }
@@ -120,21 +128,22 @@ class GamesController extends Controller
         $this->validate($request, array(
             'title' => 'required',
             'rating' => 'required',
-            'console' => 'console',
+            'console' => 'required',
             'cover_image' => 'image|nullable|max:1999'
         ));
 
-        $fileNameToStore = handleFileUpload($request);
+        $fileNameToStore = $this->handleFileUpload($request);
 
         $game = Game::find($id);
-
         $game->title = $request->title;
         $game->rating = $request->rating;
         $game->console = $request->console;
-        $game->cover_image = $fileNameToStore;
-
+        if($request->hasFile('cover_image')){
+            $game->cover_image = $fileNameToStore;
+        }
         $game->save();
 
+        alert()->success('Listo!', 'El juego fue editado correctamente.');
         return redirect('games');
     }
 
@@ -147,6 +156,16 @@ class GamesController extends Controller
     public function destroy($id)
     {
         $game = Game::find($id);
+        // Check for correct user
+        if (auth()->user()->id !== $game->user_id) {
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+        }
+
+        if($game->cover_image != 'noimage.jpg'){
+            // Delete Image
+            Storage::delete('public/cover_images/'.$game->cover_image);
+        }
+
         $game->delete();
         alert()->info('Atención!', 'El juego fue eliminado');
         return redirect('games');
