@@ -47,7 +47,7 @@
 								<h4 class="widget-title">Información</h4>
 								<ul>
 									<li>Nombre<span style="color:white">{{ucfirst($game->title)}}</span></li>
-									<li>Consola<span style="color:white">{{ucfirst($game->console)}}</span></li>
+									<li>Consola preferida<span style="color:white">{{ucfirst($game->console)}}</span></li>
 									<li>Valoración<span style="color:white">{{ucfirst($game->rating)}}</span></li>
 									<li>Modo de juego<span style="color:white">Solitario/Multijugador</span></li>
 									<li>Género<span style="color:white">Deportes</span></li>

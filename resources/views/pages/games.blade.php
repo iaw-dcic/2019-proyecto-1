@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('title',' | Juegos') 
 @section('content')
-	@include('sweetalert::alert')
+@include('sweetalert::alert')
 
 <!-- Page top section -->
 <section class="page-top-section set-bg" data-setbg="{{asset('img/page-top-bg/3.jpg')}}">
@@ -64,12 +64,15 @@
 					</div>
 					@endforeach
 
+					<div class="col-lg-8 col-md-6">
+							<!--<a href="#" class="active">01.</a>
+							<a href="#">02.</a>
+							<a href="#">03.</a> -->
+							{!! $games->render();!!}
+					</div>
+
 				</div>
-				<div class="site-pagination">
-					<a href="#" class="active">01.</a>
-					<a href="#">02.</a>
-					<a href="#">03.</a>
-				</div>
+				
 			</div>
 			<div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">
 				<div id="stickySidebar">
@@ -89,7 +92,6 @@
 	</div>
 
 	@else
-
 
 	<div class="row">
 		<div class="col-xl-12 col-lg-12 col-md-12">

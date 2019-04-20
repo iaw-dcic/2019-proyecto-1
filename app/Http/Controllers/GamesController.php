@@ -31,10 +31,14 @@ class GamesController extends Controller
     {
         if (Auth::user()) {
             $user_id = auth()->user()->id;
-            $user = User::find($user_id);
             //$posts = Post::orderBy('title','desc')->get();
             //$posts = Post::orderBy('created_at','desc')->paginate(10);
-            return view('pages.games')->with('games', $user->games);
+
+            $games = Game::where('user_id', '=', $user_id)
+                ->orderBy('title', 'ASC')
+                ->paginate(9);
+               
+            return view('pages.games')->with('games', $games);
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
             return redirect()->guest('/login');
@@ -190,7 +194,7 @@ class GamesController extends Controller
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
             // Upload Image
-            $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            //$request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
             $request->file('cover_image')->storeAs('public/cover_images/thumbnail', $fileNameToStore);
 
             //Resize image here
@@ -199,7 +203,6 @@ class GamesController extends Controller
                 $constraint->aspectRatio();
             });
             $img->save($thumbnailpath);
-
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
