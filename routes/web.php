@@ -32,3 +32,9 @@ Route::get('/profile', function () {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/items', 'itemsController@index')->name('items');
