@@ -21,6 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/profiles', 'ProfileController@store');
 
+Route::post('/lista-libros/create', 'ListaLibroController@store')->name('crearListaLibros');
+
+Route::delete('/lista-libros/{id}', 'ListaLibroController@destroy')->name('delete-lista-libros');
+Route::get('/lista-libros', 'ListaLibroController@index')->name('listaLibros');
+Route::get('/lista-libros/{id}', 'LibroController@create')->name('add-libro');
+Route::post('/lista-libros/{id}/add', 'LibroController@store')->name('store-libro');
+
 Route::get('/editProfile', 'PageController@editProfile')->name('editProfile');
 
 //facebook

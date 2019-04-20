@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
+    public function listaLibros(){
+        return $this->hasMany(ListaLibro::class);
+    }
+
     public function profile(){
         return $this->hasOne(Profile::class);
     }
