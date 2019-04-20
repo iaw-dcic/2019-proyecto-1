@@ -29,61 +29,43 @@
                 <label>
                     <i class="fas fa-edit"></i>Nombre del juego</label>
                 <input name="title" value="{{ $game->title }}" type="text" required="">
+                <div class="invalid-feedback">
+                    El nombre es obligatorio
+                </div>
             </div>
+
             <!-- Console -->
             <div class="form-style-agile">
-                <label><i class="fas fa-gamepad"></i>¿En qué consola lo jugas?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="console" value="PC">        
-                    <label class="form-check-label">
-                                PC
-                        </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="console" value="Playstation 4">
-                    <label class="form-check-label">
-                                Playstation 4
-                        </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="console[]" value="Playstation 3">
-                    <label class="form-check-label">
-                              Playstation 3
-                        </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="console" value="Otra">
-                    <label class="form-check-label">
-                                  Otra
-                            </label>
-                </div>
-
+                <label><i class="fas fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente? *</label>
+                <select type="text" class="custom-dropdown" name="console" required>
+                    <option disabled selected value style="display:none"> -- Selecciona una consola -- </option>
+                    <option {{ $game->console == 'PC' ? 'selected' : '' }}>PC</option>
+                    <option {{ $game->console == 'Playstation 4' ? 'selected' : '' }}>Playstation 4</option>
+                    <option {{ $game->console == 'Xbox One' ? 'selected' : '' }}>Xbox One</option>
+                    <option {{ $game->console == 'Nintendo Switch' ? 'selected' : '' }}>Nintendo Switch</option>
+                    <option>Otra</option>
+                </select>
             </div>
 
             <!-- Rating -->
             <div class="form-style-agile">
                 <label><i class="fas fa-thumbs-up"></i>¿Qué valoración le das?</label>
-                <select type="text" class="custom-dropdown" name="rating">
-                <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
-                <option>Excelente</option>
-                <option>Muy bueno</option>
-                <option>Bueno</option>
-                <option>Regular</option>
-                <option>Malo</option>
-        </select>
+                <select type="text" class="custom-dropdown" name="rating" required>
+                    <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
+                    <option {{ $game->rating == 'Excelente' ? 'selected' : '' }}>Excelente</option>
+                    <option {{ $game->rating == 'Muy bueno' ? 'selected' : '' }}>Muy bueno</option>
+                    <option {{ $game->rating == 'Bueno' ? 'selected' : '' }}>Bueno</option>
+                    <option {{ $game->rating == 'Regular' ? 'selected' : '' }}>Regular</option>
+                    <option {{ $game->rating == 'Malo' ? 'selected' : '' }}>Malo</option>
+                </select>
             </div>
 
             <!-- Cover image -->
             <div class="form-style-agile">
-                <label><i class="fas fa-picture-o"></i>Portada</label>
+                <label><i class="fas fa-picture-o"></i>Cambiar portada</label>
                 <br>
-                <label class="btn btn-info">
-            Seleccionar <input type="file" hidden class="form-control-file" name="cover_image">
-        </label>
+                <label class="btn btn-info"> Seleccionar <input type="file" hidden class="form-control-file" name="cover_image"></label>
             </div>
-
 
 
             <input type="submit" value="Finalizar edición">

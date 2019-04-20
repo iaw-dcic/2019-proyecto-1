@@ -1235,6 +1235,18 @@ ol {
 	/* IE6-9 fallback on horizontal gradient */
 }
 
+.custom-form {
+	padding: 104px 0;
+	background:#0c062e;
+	/* Old browsers */
+	/* FF3.6-15 */
+	background: -webkit-linear-gradient(45deg, #0c062e 0%, #2d1854 100%);
+	/* Chrome10-25,Safari5.1-6 */
+	background: -o-linear-gradient(45deg, #0c062e 0%, #2d1854 100%);
+	background: linear-gradient(45deg, #0c062e 0%, #2d1854 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#501755', endColorstr='#2d1854', GradientType=1);
+}
+
 .game-single-preview {
 	margin-bottom: 108px;
 }
@@ -1767,4 +1779,26 @@ ol {
 		float: none;
 		margin-bottom: 20px;
 	}
+
+	.btn-file {
+		position: relative;
+		overflow: hidden;
+	}
+	.btn-file input[type=file] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-width: 100%;
+		min-height: 100%;
+		font-size: 100px;
+		text-align: right;
+		filter: alpha(opacity=0);
+		opacity: 0;
+		outline: none;
+		background: white;
+		cursor: inherit;
+		display: block;
+	}
+
+
 }

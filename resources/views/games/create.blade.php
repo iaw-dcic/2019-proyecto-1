@@ -15,7 +15,7 @@
 </section>
 <!-- Page top end-->
 
-<section class="contact-page">
+<section class="custom-form">
 
     <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
 
@@ -26,79 +26,62 @@
             <!-- {{ csrf_field() }} -->
             <!-- Name -->
             <div class="form-style-agile">
-                <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre del juego </label>
+                <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre del juego *</label>
                 <input name="title" type="text" class="form-control" required>
                 <div class="invalid-feedback">
                     El nombre es obligatorio
-                 </div>
+                </div>
             </div>
 
             <!-- Console -->
             <div class="form-style-agile">
-                <label><i class="fas fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="console" value="PC" required>
-                    <label class="form-check-label">
-                            PC
-                    </label>
-
-                    <div class="invalid-feedback">
-                        La selección de una consola es obligatoria
-                     </div>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="console" value="Playstation 4" required>
-                    <label class="form-check-label">
-                            Playstation 4
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="console" value="Xbox One" required>
-                    <label class="form-check-label">
-                          Xbox One
-                    </label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="console" value="Nintendo Switch" required>
-                    <label class="form-check-label">
-                          Nintendo Switch
-                    </label>
-                </div>
-
-                <div class="form-check">
-                        <input class="form-check-input" type="radio" name="console" value="Otra" required>
-                        <label class="form-check-label">
-                            Otra
-                        </label>
-                </div>
-
+                <label><i class="fas fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente? *</label>
+                <select type="text" class="custom-dropdown" name="console" required>
+                              <option disabled selected value style="display:none"> -- Selecciona una consola -- </option>
+                              <option>PC</option>
+                              <option>Playstation 4</option>
+                              <option>Xbox One</option>
+                              <option>Nintendo Switch</option>
+                              <option>Otra</option>
+                </select>
             </div>
 
-             <!-- Rating -->
+            <!-- Rating -->
             <div class="form-style-agile">
-                <label><i class="fas fa-thumbs-up" aria-hidden="true"></i>¿Qué valoración le das?</label>
+                <label><i class="fas fa-thumbs-up" aria-hidden="true"></i>¿Qué valoración le das? *</label>
                 <select type="text" class="custom-dropdown" name="rating" required>
-                          <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
+                          <option disabled selected value style="display:none"> -- Selecciona una valoración -- </option>
                           <option>Excelente</option>
                           <option>Muy bueno</option>
                           <option>Bueno</option>
                           <option>Regular</option>
                           <option>Malo</option>
                         </select>
-                        <div class="invalid-feedback">Example invalid custom select feedback</div>
             </div>
 
-             <!-- Cover image -->
-            <div class="form-style-agile">
-                <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada</label>
+            <!-- Cover image -->
+            <!--<div class="form-style-agile">
+                <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
                 <br>
                 <label class="btn btn-info">
-                       Seleccionar <input type="file" hidden class="form-control-file" name="cover_image">
-                </label>             
+                           Seleccionar <input type="file" hidden class="form-control-file" name="cover_image">
+                    </label>
+            </div> -->
+
+            <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
+            <div class="input-group">
+                <label class="input-group-btn">
+                        <span class="btn btn-primary">
+                            Seleccionar&hellip; <input type="file" style="display: none;">
+                        </span>
+                    </label>
+                <input type="text" class="form-control" readonly>
+                <br><br>
             </div>
-           
+
+            <!-- -->
+            
+            <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
 
             <input type="submit" value="Listo">
 
@@ -106,4 +89,3 @@
     </div>
 </section>
 @endsection
-

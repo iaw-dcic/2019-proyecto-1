@@ -14,3 +14,6 @@
 
 <!--Form validation -->
 <!--<script src="{{ URL::asset('js/form-custom-validation.js')}}"></script> -->
+
+<script src="{{ URL::asset('js/image-upload-file.js')}}"></script>
+
