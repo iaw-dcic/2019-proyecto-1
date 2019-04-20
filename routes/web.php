@@ -23,7 +23,7 @@ Route::post('/profiles', 'ProfileController@store');
 Route::get('/profiles/{id}', 'ProfileController@index');
 
 Route::post('/lista-libros/create', 'ListaLibroController@store')->name('crearListaLibros');
-
+Route::get('/users', 'PageController@search')->name('search-profile');   
 Route::delete('/lista-libros/{id}', 'ListaLibroController@destroy')->name('delete-lista-libros');
 Route::get('/lista-libros', 'ListaLibroController@index')->name('listaLibros');
 Route::get('/lista-libros/{id}', 'LibroController@create')->name('add-libro');

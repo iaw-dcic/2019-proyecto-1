@@ -29,8 +29,8 @@
       
     <a class="navbar-brand col-2" href="{{route('index')}}" >BWEB - Bienes web</a>
 
-      <form class="form-inline col">
-        <input class="form-control mr-sm-2" type="search" placeholder="Buscar usuarios" aria-label="Search">
+    <form class="form-inline col" action="{{route('search-profile')}}"  method="GET">
+        <input class="form-control mr-sm-2" type="search" name="perfil" placeholder="Buscar usuarios" aria-label="Search">
         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
       </form>
 
