@@ -28,13 +28,13 @@
             <!-- Name -->
             <div class="form-style-agile">
                 <label>
-                            <i class="fas fa-edit"></i>Nombre del juego</label>
+                            <i class="fas fa-edit" aria-hidden="true"></i>Nombre del juego</label>
                 <input name="title" type="text" required>
             </div>
 
             <!-- Console -->
             <div class="form-style-agile">
-                <label><i class="fas fa-gamepad"></i>¿En qué consola lo jugas principalmente?</label>
+                <label><i class="fas fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente?</label>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="console" value="PC">
                     <label class="form-check-label">
@@ -66,7 +66,7 @@
 
              <!-- Rating -->
             <div class="form-style-agile">
-                <label><i class="fas fa-thumbs-up"></i>¿Qué valoración le das?</label>
+                <label><i class="fas fa-thumbs-up" aria-hidden="true"></i>¿Qué valoración le das?</label>
                 <select type="text" class="custom-dropdown" name="rating">
                           <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
                           <option>Excelente</option>
@@ -79,7 +79,7 @@
 
              <!-- Cover image -->
             <div class="form-style-agile">
-                <label><i class="fas fa-picture-o"></i>Portada</label>
+                <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada</label>
                 <br>
                 <label class="btn btn-info">
                        Seleccionar <input type="file" hidden class="form-control-file" name="cover_image">

@@ -50,14 +50,13 @@
 			<li><a href="">Z</a></li>
 		</ul>
 		<div class="row">
-
 			<div class="col-xl-7 col-lg-8 col-md-7">
 				<div class="row">
 
 					@foreach($games as $game)
 					<div class="col-lg-4 col-md-6">
 						<div class="game-item">
-							<img src="img/games/1.jpg" alt="#"> <!--Agregar href que lleve a los mismos de aca abajo -->
+							<a href="/games/{{$game->id}}"> <img class="img-thumbnail img-fluid" src="{{ asset("storage/cover_images/$game->cover_image") }}" alt="Cover image"></a>
 							<h5><a href="/games/{{$game->id}}" style="color: white">{{$game->title}}</a></h5>
 							<a href="/games/{{$game->id}}" class="read-more">info del juego <img src="{{asset('img/icons/double-arrow.png')}}"></a>
 						</div>
@@ -71,34 +70,18 @@
 					<a href="#">03.</a>
 				</div>
 			</div>
-			<div class="col-xl-3 col-lg-4 col-md-5 sidebar game-page-sideber">
+			<div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">
 				<div id="stickySidebar">
 					<div class="widget-item">
 						<div class="categories-widget">
-							<h4 class="widget-title">categories</h4>
+							<h4 class="widget-title" style="color: beige; text-decoration: underline">Acceso rápido</h4>
 							<ul>
-								<li><a href="">Games</a></li>
-								<li><a href="">Gaming Tips & Tricks</a></li>
-								<li><a href="">Online Games</a></li>
-								<li><a href="">Team Games</a></li>
-								<li><a href="">Community</a></li>
-								<li><a href="">Uncategorized</a></li>
+								<li><a href="{{route('games.create') }}" style="color:azure ">Agregar otro juego</a></li>
+								<li><a href="" style="color:azure">Buscar juegos de otro usuario</a></li>
 							</ul>
 						</div>
 					</div>
-					<div class="widget-item">
-						<div class="categories-widget">
-							<h4 class="widget-title">platform</h4>
-							<ul>
-								<li><a href="">Xbox</a></li>
-								<li><a href="">X box 360</a></li>
-								<li><a href="">Play Station</a></li>
-								<li><a href="">Play Station VR</a></li>
-								<li><a href="">Nintendo Wii</a></li>
-								<li><a href="">Nintendo Wii U</a></li>
-							</ul>
-						</div>
-					</div>
+				
 				</div>
 			</div>
 		</div>
@@ -122,5 +105,9 @@
 
 
 </section>
+
+
+
+
 <!-- Games end-->
 @endsection

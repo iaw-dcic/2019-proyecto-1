@@ -739,7 +739,8 @@ ol {
 }
 
 .categories-widget {
-	background: #34164b;
+	/*background: #34164b;*/
+	background: #0c062e;
 	padding: 55px 0 25px;
 }
 
@@ -1269,7 +1270,8 @@ ol {
 }
 
 .rating-widget {
-	background: #34164b;
+	/*background: #34164b; */
+	background: #0c062e;
 	padding: 55px 0 30px;
 }
 

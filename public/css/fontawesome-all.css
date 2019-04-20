@@ -1859,13 +1859,13 @@ readers do not read off random characters that represent icons */
   content: "\f1e6"; }
 
 .fa-plus:before {
-  content: "\f067"; }
+  content: "\ffff"; }
 
 .fa-plus-circle:before {
-  content: "\f055"; }
+  content: "\ffff"; }
 
 .fa-plus-square:before {
-  content: "\f0fe"; }
+  content: "\ffff"; }
 
 .fa-podcast:before {
   content: "\f2ce"; }
