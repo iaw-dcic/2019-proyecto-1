@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $listaDeBienes = ['bien1', 'bien2'];
-        return view('index',compact('listaDeBienes'));
+        $listaDeBienes = \App\Libro::all();
+        return view('index', compact('listaDeBienes'));
     }
 }

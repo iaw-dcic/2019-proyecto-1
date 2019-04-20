@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/profiles', 'ProfileController@store');
+Route::get('/profiles/{id}', 'ProfileController@index');
 
 Route::post('/lista-libros/create', 'ListaLibroController@store')->name('crearListaLibros');
 
