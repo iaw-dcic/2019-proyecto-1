@@ -24,39 +24,51 @@
         <form action="{{ route('games.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- {{ csrf_field() }} -->
-
             <!-- Name -->
             <div class="form-style-agile">
-                <label>
-                            <i class="fas fa-edit" aria-hidden="true"></i>Nombre del juego</label>
-                <input name="title" type="text" required>
+                <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre del juego </label>
+                <input name="title" type="text" class="form-control" required>
+                <div class="invalid-feedback">
+                    El nombre es obligatorio
+                 </div>
             </div>
 
             <!-- Console -->
             <div class="form-style-agile">
                 <label><i class="fas fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente?</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="console" value="PC">
+                    <input class="form-check-input" type="radio" name="console" value="PC" required>
                     <label class="form-check-label">
                             PC
                     </label>
+
+                    <div class="invalid-feedback">
+                        La selección de una consola es obligatoria
+                     </div>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="console" value="Playstation 4">
+                    <input class="form-check-input" type="radio" name="console" value="Playstation 4" required>
                     <label class="form-check-label">
                             Playstation 4
                     </label>
                 </div>
 
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="console" value="Playstation 3">
+                    <input class="form-check-input" type="radio" name="console" value="Xbox One" required>
                     <label class="form-check-label">
-                          Playstation 3
+                          Xbox One
                     </label>
                 </div>
 
                 <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="console" value="Otra">
+                    <input class="form-check-input" type="radio" name="console" value="Nintendo Switch" required>
+                    <label class="form-check-label">
+                          Nintendo Switch
+                    </label>
+                </div>
+
+                <div class="form-check">
+                        <input class="form-check-input" type="radio" name="console" value="Otra" required>
                         <label class="form-check-label">
                             Otra
                         </label>
@@ -67,7 +79,7 @@
              <!-- Rating -->
             <div class="form-style-agile">
                 <label><i class="fas fa-thumbs-up" aria-hidden="true"></i>¿Qué valoración le das?</label>
-                <select type="text" class="custom-dropdown" name="rating">
+                <select type="text" class="custom-dropdown" name="rating" required>
                           <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
                           <option>Excelente</option>
                           <option>Muy bueno</option>
@@ -75,6 +87,7 @@
                           <option>Regular</option>
                           <option>Malo</option>
                         </select>
+                        <div class="invalid-feedback">Example invalid custom select feedback</div>
             </div>
 
              <!-- Cover image -->
@@ -93,3 +106,4 @@
     </div>
 </section>
 @endsection
+

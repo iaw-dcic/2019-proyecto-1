@@ -11,3 +11,6 @@
 <!-- Video js -->
 <script src="{{ URL::asset('js/jquery.vide.min.js') }}"></script>
 <!-- //Video js -->
+
+<!--Form validation -->
+<!--<script src="{{ URL::asset('js/form-custom-validation.js')}}"></script> -->

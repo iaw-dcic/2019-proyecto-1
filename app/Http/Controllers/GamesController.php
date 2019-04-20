@@ -36,7 +36,8 @@ class GamesController extends Controller
 
             $games = Game::where('user_id', '=', $user_id)
                 ->orderBy('title', 'ASC')
-                ->paginate(9);
+                ->paginate(9)
+                ->onEachSide(3);
                
             return view('pages.games')->with('games', $games);
         } else {
