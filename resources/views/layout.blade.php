@@ -8,7 +8,7 @@
     <meta name="generator" content="Jekyll v3.8.5">
     
     <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">    
-
+    @yield('script')
     <!-- Bootstrap core CSS -->
  
     <title>Recetario</title>

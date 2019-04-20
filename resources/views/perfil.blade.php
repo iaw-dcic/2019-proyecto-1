@@ -1,4 +1,5 @@
 @extends('layout')
+ 
 <body>
 
 <div class="container-fluid">
@@ -25,23 +26,33 @@
                     <dt>
                        Nombre: 
                     </dt>
-                         <dd>
+                   
+                         <dd id="perfil.nombre">
                         {{$perfil->nombre}}
-                        </dd>
+                           </dd>
+                           
                     @if($perfil->apellido !=null)
                      <dt>
                         Apellido
                     </dt>
-                    <dd>
+                    <dd id="perfil.apellido">
                        {{$perfil->apellido}}
                     </dd>
                      @endif
+
                     <dt>
                     Email
                     </dt>
-                    <dd>
+                    <dd id="perfil.email">
                     {{$perfil->email}}
                     </dd>
+                    <dt>
+                       Descripcion (opcional):
+                    </dt>
+                    <dd id="descripcion">
+                    
+                    </dd>
+                    
                     <dt>
                        Se unio:
                     </dt>
@@ -49,9 +60,11 @@
                     {{$perfil->created_at}}
                     </dd>
                 </dl> 
-                <button type="button" class="btn btn-success">
+                 <div id="lugarBoton">
+                <button id="button" type="button" class="btn btn-success" onclick="editarUsuario({{$perfil}})">
                     Editar
                 </button>
+                 </div>
                  </div>
               
             
@@ -59,51 +72,35 @@
             </div>    
             </div> 
                
-           
+         <!-- Lado derecho, las listas del usuario -->  
             <div class="col-md-8">
                 <div class="list-group">
-                     <a href="#" class="list-group-item list-group-item-action active">Saladas</a>
-                    
-            
+                     
                   <?php  $count=0 ?>
-                     @foreach($recetas as $receta)
-                        @if($receta->categoria ==0)
+          
+                     @foreach($listas as $lista)
+                      
+                     <a href="#" class="list-group-item list-group-item-action active"> {{$lista->nombre}}</a>
                         <div class="list-group-item">
                         <h4 class="list-group-item-heading">
-                           {{ $receta->nombre }}
+                            @foreach($recetas as $receta)
+                               @if($receta->listaId->nombre == $lista->nombre)
+                                   {{$receta->nombre}}
+                              @endif
+                           @endforeach
                         </h4>
                         <?php $count++ ?>
                         </div>
-                        @endif
+                       
                     @endforeach     
                     
                     <div class="list-group-item justify-content-between">
-                        Total Saladas: <span class="badge badge-secondary badge-pill">{{$count}}</span>
+                        Total: <span class="badge badge-secondary badge-pill">{{$count}}</span>
 
                     </div>
                     <br>
-                        <div class="list-group">
-                     <a href="#" class="list-group-item list-group-item-action active">Dulces:</a>
-                    
-            
-                  <?php  $countDulce=0 ?>
-                     @foreach($recetas as $receta)
-                        @if($receta->categoria ==1)
-                        <div class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                           {{ $receta->nombre }}
-                        </h4>
-                        <?php $countDulce++ ?>
-                        </div>
-                        @endif
-                    @endforeach     
-                    
-                    <div class="list-group-item justify-content-between">
-                        Total Dulces: <span class="badge badge-secondary badge-pill">{{$count}}</span>
-                     
-
-
-                    </div> <a href="#" class="list-group-item list-group-item-action active justify-content-between">Total <span class="badge badge-light badge-pill">{{$count + $countDulce}}</span></a>
+                       
+                    </div> <a href="#" class="list-group-item list-group-item-action active justify-content-between">Total <span class="badge badge-light badge-pill">{{$count }}</span></a>
                 </div>
             </div>
         </div>
@@ -111,7 +108,8 @@
 </div>
 </div>
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/scripts.js"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/scripts.js')}}"></script>
+<script src="{{ asset('/js/editarPerfil.js') }}"></script>
 </body>

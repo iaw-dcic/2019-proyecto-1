@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+ Route::get('editarUsuario', 'UserController@editar')->name('editarUsuario');
  
 Route::get('/','RecetasController@index');
 Route::get('verPerfil/{id}', 'UserController@perfil')->name('verPerfil');

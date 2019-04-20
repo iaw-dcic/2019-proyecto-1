@@ -10,4 +10,8 @@ class Receta extends Model
     {
         return $query->where('nombre', '<=', $nombre);
     }
+    public function listaId()
+{
+    return $this->belongsTo(\App\Lista::class, 'lista_id');
+}
 }

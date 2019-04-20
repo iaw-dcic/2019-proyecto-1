@@ -9,9 +9,8 @@
         <th> Nombre </th>
         <th> Descripcion </th>
         <th> Pasos </th>
-        <th> Ingrediente</th>
-        <th> Medida </th>
-        <th> Cantidad </th>
+        <th></th>
+         
         </tr>
         </thead>
     <tbody>
@@ -24,6 +23,9 @@
           <td>{{ $receta->pasos }}</td>
           <td>
           <table>
+              <th> Ingredientes</th>
+              <th> Medida</th>
+              <th> Cantidad</th>
           @foreach($ingredientes as $ingrediente)
           
              @if($ingrediente->receta_id == $receta->id)

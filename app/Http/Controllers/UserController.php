@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Socialite;
 use App\User;
 use App\Receta;
- 
+use App\Lista;
   class UserController extends Controller
 {
 
@@ -83,11 +83,13 @@ use App\Receta;
 
     public function perfil($id){
         $perfil=User::find($id); 
+        $listas=Lista::where('usuario','=',$id)->get();
         $recetas= Receta::where('id_autor', $id)->get();
 
         return view('perfil', [
             'perfil' =>  $perfil,
-            'recetas' =>$recetas
+            'recetas' =>$recetas,
+            'listas' =>$listas
         ]);
     }
    
