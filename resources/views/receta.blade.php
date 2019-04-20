@@ -1,34 +1,50 @@
 @extends('layout')
 
 @section('content')
-@if(isset($details))
-<div  class="tabla">
+ 
+<div  class="table-responsive">
     <table class="table">
     <thead class="thead-dark">
        <tr>
         <th> Nombre </th>
         <th> Descripcion </th>
         <th> Pasos </th>
-        <th> Ingredientes <th>
+        <th> Ingrediente</th>
+        <th> Medida </th>
+        <th> Cantidad </th>
         </tr>
         </thead>
     <tbody>
         
-        @foreach($details as $receta)
+        @foreach($recetas as $receta)
         <tr>
-      
+          
           <td> {{$receta->nombre }}</td>
           <td> {{$receta->descripcion}} </td>
           <td>{{ $receta->pasos }}</td>
+          <td>
+          <table>
           @foreach($ingredientes as $ingrediente)
-          <td>{{ $ingrediente }}</td>
+          
+             @if($ingrediente->receta_id == $receta->id)
+                  <tr>
+                 <td>{{ $ingrediente->ingredienteId->nombre }}</td>
+                    
+                   
+                 <td>{{ $ingrediente->medidaId->nombre }} </td>
+                  <td>{{ $ingrediente->cantidad }}</td> 
+                
+          @endif
+         
           @endforeach
+        </table>
+        </td>
+        </tr>
           @endforeach
     </tbody>    
-    @else 
-    <p>NO HAY NADA CHE </p>
+</table>
  </div>
- @endif
+  
 
  @stop
 

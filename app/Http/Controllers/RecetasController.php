@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Receta;
+use App\Ingrediente_de_receta;
 use App\User;
 use Auth;
   class RecetasController extends Controller
@@ -25,6 +26,14 @@ use Auth;
         $cocineros = User::all();
         return view('cocineros', ['cocineros'=> $cocineros]);
    }
+   public function receta(){
+    $recetas = Receta::all();
+    return view('receta', [
+        'recetas'=> $recetas,
+         'ingredientes' => Ingrediente_de_receta::all()
+        
+        ]);
+}
    
 
 }

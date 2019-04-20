@@ -12,7 +12,12 @@
             <div class="col-md-4"style="background-color: lightgray">
                 <div class="row">
                 <div class="col-md-6"style="background-color: lightgray">
-                <img alt="{{$perfil->nombre}}"  src="{{$perfil->avatar}}" class="rounded-circle">
+                @if($perfil->avatar != null)
+                <img alt="{{$perfil->nombre}}"  src="{{asset($perfil->avatar)}}" class="rounded-circle">
+                @endif
+                @if($perfil->avatar == null)
+                <img alt="{{$perfil->nombre}}"  src="{{asset('img/usuario.png')}}" class="rounded-circle">
+                @endif
                 </div>
 
                 <div class="col-md-6"style="background-color: lightgray">

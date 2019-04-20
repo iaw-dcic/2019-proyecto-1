@@ -70,9 +70,15 @@
      @foreach($usuarios as $usuario)
       @if($count < 3)
     <div class="col-lg-4">
-    <?php  $ruta='img/'.$usuario->id.'.jpg' ?>
-      <img src="{{ $usuario->avatar}}" class="rounded-circle"   alt= "{{$usuario->nombre}}"> 
-        <h2>{{$usuario->nombre}}
+    
+           @if($usuario->avatar != null)
+                <img alt="{{$usuario->nombre}}"  src="{{asset($usuario->avatar)}}" class="rounded-circle">
+          @endif
+          @if($usuario->avatar ==null)
+                <img alt="{{$usuario->nombre}}"  src="{{asset('img/usuario.png')}}" class="rounded-circle">
+                @endif
+          
+                <h2>{{$usuario->nombre}}
             @if($usuario->apellido != null)
                 {{$usuario->apellido}}
             @endif

@@ -14,6 +14,7 @@
 Route::get('/','RecetasController@index');
 Route::get('verPerfil/{id}', 'UserController@perfil')->name('verPerfil');
 Route::get('cocineros','RecetasController@cocineros')->name('cocineros');
+Route::get('receta','RecetasController@receta')->name('receta');
 /*  Usuarios  */
 
 Route::post('/store', 'UserController@store');
