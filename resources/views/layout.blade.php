@@ -16,8 +16,6 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <p class="navbar-text navbar-center"> <a href="#" class="navbar-link"> Browse Public Lists </a> </p>
-                <button type="button" class="btn btn-default navbar-btn navbar-right">Sign in</button>
-                <button type="button" class="btn btn-default navbar-btn navbar-right">Sign up</button>
             </div>
         </nav>
         @yield('cuerpo')

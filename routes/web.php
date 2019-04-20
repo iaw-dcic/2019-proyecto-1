@@ -16,25 +16,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login',function(){ //example.com/login
-    return view('login');
-});
 
-Route::get('/register',function(){ //example.com/register
-    return view('register');
-});
+Route::get('/profile','listsController@index');
 
-Route::get('/passwordreset',function(){ //example.com/resetpassword
-    return view('passwordreset');
-});
-
-Route::get('/profile',function(){ //example.com/profile (needs profile info)
-    return view('profile');
-});
-
-Route::get('/list',function(){ //example.com/list (needs List name)
+Route::get('/profile/list',function(){ //example.com/list (needs List name)
     return view('list');
 });
+
+Route::get('/profile/createList', 'listsControler@create');
+
+Route::post('/profile','listsController@store');
+
+Route::get('/publicLists', function(){
+    return view('publicLists');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
