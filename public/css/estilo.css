@@ -214,4 +214,30 @@ body {
   color: white;
 }
  
+ /* - Tareas - */
+ .tareas{
+   margin-top:2rem;
+ }
+.tareas .lista {
+	list-style: none;
+}
  
+.tareas .lista li {
+	border-bottom: 1px solid #B6B6B6;
+}
+ 
+.tareas .lista li a {
+	color: #212121;
+	display: block;
+	padding: 30px 0;
+	text-decoration: none;
+}
+
+ 
+.tareas .lista li a:hover {
+  text-decoration: underline;
+}
+.perfil img{
+  width:100;
+  height:100;
+}

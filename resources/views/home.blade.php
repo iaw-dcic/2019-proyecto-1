@@ -78,7 +78,7 @@
             @endif
         </h2>
         <p>{{$usuario->descripcion}}</p>
-        <p><a class="btn btn-secondary"  role="button" href="{{route('verPerfil',['id'=>$usuario->id])}}";>Ver Perfil &raquo;</a></p>
+        <p><a class="btn btn-secondary"  role="button" href="{{route('verPerfil',['id'=>$usuario->id])}}">Ver Perfil &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <?php $count++ ?>
       @endif

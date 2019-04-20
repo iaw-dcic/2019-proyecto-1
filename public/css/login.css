@@ -2,9 +2,9 @@ body {
   color: #434343;
 background: #dfe7e9;
 font-family: 'Varela Round', sans-serif;
-left:15rem;
-}
+ }
 
+ 
 .form-control {
 font-size: 16px;
 transition: all 0.4s;
@@ -130,8 +130,11 @@ font-size: 20px;
 }
 .big{font-size:19px;}
 ul{padding-bottom:20px;}
-.q, p,i {
-color: #b7bbc4;
+.q, p {
+color: black;
+}
+i{
+  color:white;
 }
 
  

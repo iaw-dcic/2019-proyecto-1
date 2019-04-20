@@ -7,16 +7,22 @@
         <h3>
            Perfil
         </h3>
+        <div class="perfil">
         <div class="row">
             <div class="col-md-4"style="background-color: lightgray">
-                <img alt="{{$perfil->nombre}}"  src="{{$perfil->avatar}}">
+                <div class="row">
+                <div class="col-md-6"style="background-color: lightgray">
+                <img alt="{{$perfil->nombre}}"  src="{{$perfil->avatar}}" class="rounded-circle">
+                </div>
+
+                <div class="col-md-6"style="background-color: lightgray">
                 <dl>
                     <dt>
                        Nombre: 
                     </dt>
-                                 <dd>
-                                 {{$perfil->nombre}}
-                                </dd>
+                         <dd>
+                        {{$perfil->nombre}}
+                        </dd>
                     @if($perfil->apellido !=null)
                      <dt>
                         Apellido
@@ -41,7 +47,14 @@
                 <button type="button" class="btn btn-success">
                     Editar
                 </button>
-            </div>
+                 </div>
+              
+            
+                
+            </div>    
+            </div> 
+               
+           
             <div class="col-md-8">
                 <div class="list-group">
                      <a href="#" class="list-group-item list-group-item-action active">Saladas</a>
@@ -92,7 +105,7 @@
     </div>
 </div>
 </div>
-
+</div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/scripts.js"></script>

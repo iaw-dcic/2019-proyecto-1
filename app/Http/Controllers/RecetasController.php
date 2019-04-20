@@ -21,6 +21,10 @@ use Auth;
             'usuarios' => $usuarios
         ]);
     }
-    
+    public function cocineros(){
+        $cocineros = User::all();
+        return view('cocineros', ['cocineros'=> $cocineros]);
+   }
+   
 
 }

@@ -7,19 +7,17 @@
 <meta name="description" content="pagina web para iaw uns">
 <title>Login Recetas</title>
 
-
- 
-  <link href="{{ asset('css/login.css') }}" rel="stylesheet">    
+ <link href="{{ asset('css/login.css') }}" rel="stylesheet">    
  
 </head>
 <body>
     
  
 <div class="container" id="caja">
-<ul class="nav nav-tabs" role="tablist">
+<ol class="nav nav-tabs" role="tablist">
 	<li class="{{ (Request::is('login') ? 'active' : '') }}"><a href="#new" role="tab" data-toggle="tab" class="big">Inicia Sesion</a></li>
 	<li class="{{ (Request::is('crea') ? 'active' : '') }}"><a href="#crea" role="tab" data-toggle="tab" class="big">Crea tu cuenta</a></li>
- </ul>
+ </ol>
 <div class="tab-content">
 	<div class="{{ (Request::is('login') ? 'tab-pane fade in active' : 'tab-pane fade') }}" id="new"><br>
 	 

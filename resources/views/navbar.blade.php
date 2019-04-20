@@ -11,7 +11,7 @@
                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
 			        	</li>
 				        <li class="nav-item active">
-                      <a class="nav-link" href="#">Cocineros  </a>
+                      <a class="nav-link" href="{{route('cocineros')}}">Cocineros  </a>
 			          	</li>
 				        <li class="nav-item active dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"   data-toggle="dropdown">Recetas</a>
