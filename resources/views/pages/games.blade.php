@@ -54,9 +54,10 @@
 				<div class="row">
 
 					@foreach($games as $game)
+					
 					<div class="col-lg-4 col-md-6">
 						<div class="game-item">
-							<a href="/games/{{$game->id}}"> <img class="img-thumbnail img-fluid" src="{{ asset("storage/cover_images/$game->cover_image") }}" alt="Cover image"></a>
+							<a href="/games/{{$game->id}}"> <img class="img-thumbnail img-fluid" src="{{ asset("storage/cover_images/thumbnail/$game->cover_image") }}" alt="Cover image"></a>
 							<h5><a href="/games/{{$game->id}}" style="color: white">{{$game->title}}</a></h5>
 							<a href="/games/{{$game->id}}" class="read-more">info del juego <img src="{{asset('img/icons/double-arrow.png')}}"></a>
 						</div>

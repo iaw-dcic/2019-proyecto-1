@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Game;
 use App\User;
+use Intervention\Image\Facades\Image;
 use Auth;
 
 
@@ -138,7 +139,7 @@ class GamesController extends Controller
         $game->title = $request->title;
         $game->rating = $request->rating;
         $game->console = $request->console;
-        if($request->hasFile('cover_image')){
+        if ($request->hasFile('cover_image')) {
             $game->cover_image = $fileNameToStore;
         }
         $game->save();
@@ -161,9 +162,9 @@ class GamesController extends Controller
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
-        if($game->cover_image != 'noimage.jpg'){
+        if ($game->cover_image != 'noimage.jpg') {
             // Delete Image
-            Storage::delete('public/cover_images/'.$game->cover_image);
+            Storage::delete('public/cover_images/' . $game->cover_image);
         }
 
         $game->delete();
@@ -175,16 +176,30 @@ class GamesController extends Controller
     {
         // Handle File Upload
         if ($request->hasFile('cover_image')) {
-            // Get filename with the extension
+
+            // Get filename with the extension 
             $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+
             // Get just filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
+
+            // Get just extension
             $extension = $request->file('cover_image')->getClientOriginalExtension();
+
             // Filename to store
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+
             // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            $request->file('cover_image')->storeAs('public/cover_images/thumbnail', $fileNameToStore);
+
+            //Resize image here
+            $thumbnailpath = public_path('storage/cover_images/thumbnail/' . $fileNameToStore);
+            $img = Image::make($thumbnailpath)->resize(220, 220, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($thumbnailpath);
+
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
