@@ -55,4 +55,12 @@ class PagesController extends Controller
            
         }
     }
+
+    public function changeGamesMode($newMode) {
+        $user = auth()->user();
+        $user->gamesMode = $newMode;
+        $user->save();
+        alert()->success('Listo!', 'Tu lista de juegos ahora esta en modo '.$newMode);
+        return redirect()->guest('/profile');
+    }
 }

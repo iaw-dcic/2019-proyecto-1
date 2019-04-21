@@ -20,6 +20,8 @@
 <section class="games-section">
 	<div class="container">
 
+		@auth
+		
 		@if(count($games)>0)
 		<ul class="game-filter">
 			<li><a href="">A</a></li>
@@ -54,7 +56,7 @@
 				<div class="row">
 
 					@foreach($games as $game)
-					
+
 					<div class="col-lg-4 col-md-6">
 						<div class="game-item">
 							<a href="/games/{{$game->id}}"> <img class="img-thumbnail img-fluid" src="{{ asset("storage/cover_images/thumbnail/$game->cover_image") }}" alt="Cover image"></a>
@@ -62,14 +64,12 @@
 							<a href="/games/{{$game->id}}" class="read-more">info del juego <img src="{{asset('img/icons/double-arrow.png')}}"></a>
 						</div>
 					</div>
-					@endforeach
+					@endforeach {!! $games->render();!!}
+					<!--TODO- VER ESTILO -->
 
-			
-					{!! $games->render();!!} <!--TODO- VER ESTILO -->
-				
 
 				</div>
-				
+
 			</div>
 			<div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">
 				<div id="stickySidebar">
@@ -78,11 +78,12 @@
 							<h4 class="widget-title" style="color: beige; text-decoration: underline">Acceso rápido</h4>
 							<ul>
 								<li><a href="{{route('games.create') }}" style="color:azure ">Agregar otro juego</a></li>
+								<li><a href="{{url('profile') }}" style="color:azure ">Mi perfil</a></li>
 								<li><a href="" style="color:azure">Buscar juegos de otro usuario</a></li>
 							</ul>
 						</div>
 					</div>
-				
+
 				</div>
 			</div>
 		</div>
@@ -101,8 +102,8 @@
 	</div>
 
 
-	@endif
-
+	@endif 
+	@endauth
 
 </section>
 

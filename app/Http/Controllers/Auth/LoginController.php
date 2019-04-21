@@ -68,9 +68,12 @@ class LoginController extends Controller
             $newUser->email = $user->getEmail();
             $newUser->name = $user->getName();
             $newUser->provider_id = $user->getId();
+            $newUser->gamesMode = 'privado';
         }
 
         Auth::login($newUser, true);
         return redirect($this->redirectTo);
     }
+
+ 
 }

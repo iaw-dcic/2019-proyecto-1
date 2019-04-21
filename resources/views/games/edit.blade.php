@@ -61,11 +61,18 @@
             </div>
 
             <!-- Cover image -->
-            <div class="form-style-agile">
-                <label><i class="fas fa-picture-o"></i>Cambiar portada</label>
-                <br>
-                <label class="btn btn-info"> Seleccionar <input type="file" hidden class="form-control-file" name="cover_image"></label>
+            <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
+            <div class="input-group">
+                <label class="input-group-btn">
+                           <span class="btn btn-primary">
+                               Seleccionar&hellip; <input type="file" name="cover_image" style="display: none;">
+                           </span>
+                       </label>
+                <input type="text" class="form-control" value="{{$game->cover_image}}" readonly>
+                <br><br>
             </div>
+
+            <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
 
 
             <input type="submit" value="Finalizar edición">

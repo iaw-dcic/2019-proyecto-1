@@ -14,6 +14,7 @@
 Route::get('/','PagesController@home');
 Route::get('/about', 'PagesController@about');
 Route::get('/profile', 'PagesController@profile');
+Route::get('/profile/{newMode}', 'PagesController@changeGamesMode');
 
 Route::resource('games','GamesController');
 //Route::get('/home', 'HomeController@index')->name('home');

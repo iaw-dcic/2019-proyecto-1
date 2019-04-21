@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('title',' | Perfil') 
 @section('content')
-
+@include('sweetalert::alert')
 
 <!-- Page top section -->
 <section class="page-top-section set-bg" data-setbg="img/page-top-bg/4.jpg">
@@ -17,16 +17,19 @@
 </section>
 <!-- Page top end-->
 
-
-
 <!-- Blog section -->
 <section class="blog-section spad">
     <div class="container">
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-7">
                 <div class="section-title text-white">
-                <h3>Actualmente tu lista de juegos está en modo privado</h3>
-                <a href="#" class="read-more">Pasarla a modo público<img src="img/icons/double-arrow.png" alt="#"/></a>
+                <h3 style="color: beige;">Actualmente tu lista de juegos está en modo <a href="" style="color:azure">{{$data['user']->gamesMode}}</h3>
+                <br>
+                @if ($data['user']->gamesMode == 'privado') 
+                    <a href="{{ url('profile/publico')}}" class="read-more">Pasarla a modo público<img src="img/icons/double-arrow.png" alt="#"/></a>
+                @else 
+                    <a href="{{ url('profile/privado')}}" class="read-more">Pasarla a modo privado<img src="img/icons/double-arrow.png" alt="#"/></a>
+                @endif
                 </div>
                
                 <!-- Blog item -->

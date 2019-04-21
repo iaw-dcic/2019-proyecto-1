@@ -38,11 +38,10 @@ class GamesController extends Controller
                 ->orderBy('title', 'ASC')
                 ->paginate(9)
                 ->onEachSide(3);
-               
             return view('pages.games')->with('games', $games);
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
-            return redirect()->guest('/login');
+            return view('pages.games');
         }
     }
 
