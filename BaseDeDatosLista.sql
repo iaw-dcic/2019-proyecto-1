@@ -1,8 +1,8 @@
 #Archivo de manejo de datos para el proyecto 1 de Ingenieria de Aplicaciones Web
 
-CREATE DATABASE lista_proyecto_1;
+CREATE DATABASE proyecto1iaw;
 
-USE lista_proyecto_1;
+USE proyecto1iaw;
 
 #---------------------------------------------------------
 

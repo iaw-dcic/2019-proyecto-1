@@ -17,6 +17,7 @@
                     You are logged in!
                 </div>
             </div>
+            <button type="button" onclick="location.href='{{ url('songs/create') }}'">Create New List</button>
         </div>
     </div>
 </div>

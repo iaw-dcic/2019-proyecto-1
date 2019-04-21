@@ -1,24 +1,22 @@
+@extends('layouts.app')
+
 <!DOCTYPE html>
 
 <html>
 
     <head>
 
-        <title>@yield('title', 'Laravel')</title> <!--(nombre de la pagina, nombre por defecto si no se pone nada)-->
+        <title>@yield('myLayoutTitle', 'Laravel')</title>
 
     </head>
 
     <body>
 
-        @yield('content') <!--La seccion definica como content va a ubicarse aca-->
+        <div class="myContainer">
 
-        <ul>
+            @yield('myLayoutContent')
             
-            <a href="/">Volver</a>
-            <a href="/test">TEST</a>
-            <a href="/about">About</a>
-
-        </ul>
+        </div>
 
     </body>
 

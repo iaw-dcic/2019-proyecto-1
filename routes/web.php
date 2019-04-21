@@ -11,28 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@home');
 
-Route::get('/test', function () {
-    return view('test');
-});
+Route::resource('songs', 'SongsController')->middleware('auth');
 
-Route::get('/about', function () {
-    return view('about');
-});
-
-//Route::get('/', PageController@home);
+Route::get('/profile', 'PagesController@profile')->middleware('auth');
 
 //En app/http/controllers estan todos los controladores
 //Es obligatorio usar templates
 //php artisan make:controller nombreDelPhp   para crear un controlador
-//En controller/auth esta todo lo del login hecho
-//En .env esta la info de como conectarse a la base de datos. Debe haber uno por entorno de desarrollo
 //En database/migrations estan las tablas de datos
 //Investigar sobre como agregar usuarios falsos
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Preguntar por:
+//la foreign key doble en create lists table en database
+//como poner List::find etc en ListController.php
+//como hacer la lista
+//poner que un boton lleve a una nueva pagina dentro de un .blade.php
