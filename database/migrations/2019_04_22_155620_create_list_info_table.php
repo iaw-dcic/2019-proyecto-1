@@ -14,7 +14,7 @@ class CreateListInfoTable extends Migration
     public function up()
     {
         Schema::create('list_info', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamps();
             $table->string('name')->index()->nullable($value=false);
             $table->boolean('public');

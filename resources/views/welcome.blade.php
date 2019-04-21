@@ -17,7 +17,7 @@
        
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -29,7 +29,6 @@
                             <a href="{{ route('register') }}" class="registerBot">Register</a>
                         @endif
                     @endauth
-                    <a href="{{route('readme')}}">Readme</a>
                 </div>
             @endif
 

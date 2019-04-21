@@ -12,19 +12,19 @@ html, body {
     height: 100vh;
 }
 
-
+/* 
 .flex-center {
     align-items: center;
     display: flex;
     justify-content: center;
-}
+} */
 
 .position-ref {
     position: relative;
 }
 
 .top-right {
-    position: absolute;
+    position: fixed;
     right: 10px;
     top: 18px;
 }
@@ -33,6 +33,7 @@ html, body {
     text-align: center;
     box-sizing: border-box;
     width: 100%;
+    padding-top: 60px;
 }
 
 .reason{
