@@ -17,3 +17,6 @@
 
 <script src="{{ URL::asset('js/image-upload-file.js')}}"></script>
 
+<!-- Search table -->
+<script src="{{ URL::asset('vendor/select2/select2.min.js')}}"></script>
+<script src="{{ URL::asset('js/search-table-main.js')}}"></script>

@@ -52,5 +52,11 @@
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   
+  <!-- Search table -->
+  <link rel="stylesheet" href="{{ URL::asset('/css/search-table-util.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('vendor/select2/select2.min.css') }}">
+  @yield('search-specific-style')
+
 
 </head>

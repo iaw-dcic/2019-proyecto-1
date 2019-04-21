@@ -23,3 +23,8 @@ Auth::routes();
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('/searchUser/{userSearch}', 'SearchUserController@searchUser');
+Route::get('/searchUser', 'SearchUserController@searchUser');
+
+
+

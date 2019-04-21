@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('title',' | Juegos') 
 @section('content')
-@include('sweetalert::alert')
+	@include('sweetalert::alert')
 
 <!-- Page top section -->
 <section class="page-top-section set-bg" data-setbg="{{asset('img/page-top-bg/3.jpg')}}">
@@ -20,9 +20,7 @@
 <section class="games-section">
 	<div class="container">
 
-		@auth
-		
-		@if(count($games)>0)
+		@auth @if(count($games)>0)
 		<ul class="game-filter">
 			<li><a href="">A</a></li>
 			<li><a href="">B</a></li>
@@ -67,7 +65,6 @@
 					@endforeach {!! $games->render();!!}
 					<!--TODO- VER ESTILO -->
 
-
 				</div>
 
 			</div>
@@ -102,8 +99,37 @@
 	</div>
 
 
-	@endif 
-	@endauth
+	@endif @endauth 
+	
+	@guest
+	<!-- Blog page -->
+	<div class="row">
+		<div class="col-xl-9 col-lg-8 col-md-7">
+			<ul class="blog-filter">
+				<li><a href="{{route('login')}}">Iniciar sesión</a></li>
+				<li><a href="#">Registrarse</a></li>
+				<li><a href="#">Preguntas frecuentes</a></li>
+			</ul>
+			<br><br>
+			<div class="big-blog-item">
+				<div class="blog-content text-box text-white">
+					<h3 style="color:bisque">Buscar otros usuarios: </h3>
+					<div class="widget-item">
+						<form class="search-widget" action="{{url('searchUser') }}" method="get">
+							@csrf
+							<input name="searchTerm" type="text" placeholder="Ingresar el nombre...">
+							<button><i class="fa fa-search" aria-hidden="true"></i>  Buscar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+
+	</div>
+	<!-- Blog page end-->
+	@endguest
 
 </section>
 
