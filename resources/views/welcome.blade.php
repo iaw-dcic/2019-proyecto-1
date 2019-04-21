@@ -29,6 +29,7 @@
                             <a href="{{ route('register') }}" class="registerBot">Register</a>
                         @endif
                     @endauth
+                    <a href="{{route('readme')}}">Readme</a>
                 </div>
             @endif
 

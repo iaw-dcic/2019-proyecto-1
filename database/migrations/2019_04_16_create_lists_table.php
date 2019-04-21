@@ -17,6 +17,7 @@ class CreatePasswordResetsTable extends Migration
             $table->string('name')->index()->nullable($value=false)->unique();
             $table->increments('id')->autoincrement()->unique();
             $table->timestamp('created_at')->nullable();
+            $table->boolean('public');
         });
     }
 
@@ -27,6 +28,6 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_info');
+        Schema::dropIfExists('list_info');
     }
 }

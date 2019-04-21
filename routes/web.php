@@ -23,6 +23,10 @@ Route::get('/profile/list',function(){ //example.com/list (needs List name)
     return view('list');
 });
 
+Route::get('/readme',function(){
+    return view('readme');
+});
+
 Route::get('/profile/createList', 'listsControler@create');
 
 Route::post('/profile','listsController@store');
