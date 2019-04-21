@@ -17,6 +17,28 @@
 
   #content-img{
       text-align: center;
+
+    }
+
+   nav{
+
+    background-color: antiquewhite; 
+
+
+
+   } 
+   #bg-div{
+       background-image: url("/images/main2.jpg");
+       opacity: 0.9;
+
+
+   }
+
+   
+  footer{
+    background-color: antiquewhite; 
+
   }
+  
 
   

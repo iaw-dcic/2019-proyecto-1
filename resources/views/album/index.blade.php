@@ -4,6 +4,7 @@
 
 <div class="container">
     <p>Albums</p>
+    <img class="card-img" src="/images/main.jpg" alt="Card image">
     @if (! empty($users))
     <table class="table">
   <thead>
@@ -15,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-  @foreach ($users as $user)
+  @foreach ($albums as $album)
     <tr>
       <th scope="row">1</th>
       <td>{{$user->name}}</td>
