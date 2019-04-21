@@ -11,16 +11,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->truncateTables([
-            'users',
-            'movies',
-            'movies_lists'
-        ]);
+  //      $this->truncateTables([
+  //          'users',
+  //          'movies',
+  //          'movies_lists'
+  //      ]);
 
         // $this->call(UsersTableSeeder::class);
-        $this->call(MoviesSeeder::class);
-        $this->call(UsersSeeder::class);
-        $this->call(MoviesListsSeeder::class);
+  //      $this->call(MoviesSeeder::class);
+  //      $this->call(UsersSeeder::class);
+  //      $this->call(MoviesListsSeeder::class);
     }
 
     protected function truncateTables(array $tables)

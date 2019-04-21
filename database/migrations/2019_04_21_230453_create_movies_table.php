@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCollectionsTable extends Migration
+class CreateMoviesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateCollectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('collections', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-   
+            $table->string('name')->unique();
+            $table->string('director');
+            $table->integer('premier_date');
+            $table->unsignedBigInteger('movieslists_id');
+            $table->foreign('movieslists_id')->references('id')->on('movies');
+
         });
     }
 
@@ -27,6 +32,6 @@ class CreateCollectionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('movies');
     }
 }
