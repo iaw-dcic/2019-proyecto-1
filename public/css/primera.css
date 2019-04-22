@@ -1,5 +1,11 @@
-.registrarme
+.bg-custom
 {
-  margin-right: 10px;
+  background-color: rgb(189, 204, 189);
 }
 
+.fuenteTitulo
+{
+  font-family: 'Dokdo', cursive;
+  font-family: 'Roboto Mono', monospace;  
+  font-size: 25px;
+}

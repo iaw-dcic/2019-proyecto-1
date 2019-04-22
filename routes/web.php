@@ -11,20 +11,25 @@
 |
 */
 
-//Get home
-Route::get('/', 'ControladorInicio@index');
+//Home
+Route::get('/', 'ControladorVistas@index');
 
-//Get agregar
-Route::get('/agregar', 'ControladorAgregar@agregar');
+//Agregar
+Route::get('/agregar', 'ControladorVistas@agregar') -> middleware('auth');
+Route::post('agregar', 'SeriesController@store')-> middleware('auth');
 
-//Get editar
-Route::get('/editar', 'ControladorEditar@editar');
+//Editar
+Route::get('/editar/{id}', 'ControladorVistas@editar')-> middleware('auth');
+Route::post('editar', 'SeriesController@update')-> middleware('auth');
 
-//Get eliminar
-Route::get('/eliminar', 'ControladorEliminar@eliminar');
+//Eliminar
+Route::get('/miPerfil', 'ControladorVistas@miPerfil')-> middleware('auth');
 
-//Get iniciarSesion
-Route::get('login', 'Auth\LoginController@showLoginForm') -> name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout') -> name('logout');
+//Iniciar Sesion
+Route::get('/login', 'Auth\LoginController@showLoginForm') -> name('login');
+Route::post('/login', 'Auth\LoginController@login');
+Route::post('/logout', 'Auth\LoginController@logout') -> name('logout');
 
+Auth::routes();
+
+Route::resource('serie','SeriesController');

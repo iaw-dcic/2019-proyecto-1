@@ -21,11 +21,11 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Una vez logueado se redirecciona al perfil 
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/miPerfil';
 
     /**
      * Create a new controller instance.

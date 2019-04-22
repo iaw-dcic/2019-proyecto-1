@@ -29,6 +29,15 @@
             <div class="carousel-item">
             <img src="/imgs/orphan.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
+            <div class="carousel-item">
+            <img src="/imgs/vikingos.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="/imgs/blackmirror.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            </div>
+            <div class="carousel-item">
+            <img src="/imgs/twd.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -39,17 +48,12 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
- 
+    
     <!--PANEL DE LAS SERIES COMPARTIDAS POR LOS USUARIOS-->
     <div id= "panelCompartido">
         <div>
             <h1 id="tituloPrincipal">Series Compartidas</h1>
         </div>
     </div>
-
-    <div id="panelDescripcion">
-        <a class="botonABM" type="button" href="/agregar">Agregar serie</a>
-        <a class="botonABM" type="button" href="/editar">Editar serie</a>
-        <a class="botonABM" type="button" href="/eliminar">Eliminar serie</a>
-    </div>
+    
 @stop
