@@ -7,11 +7,14 @@ Route::get('/', function () {
 
 Route::get('/user','UserController@index');
 
-Route::get('/login','LoginController@index');
+Route::get('/user/login','UserController@login')->name('users.login');
 
-Route::get('/register','RegisterController@index');
+Route::get('/user/register','UserController@create')->name('users.register');
 
-Route::get('/navbar','NavbarController@index');
+Route::post('user/create','UserController@store');
 
-Route::get('/search',"SearchController@index");
+//Route::get('/navbar','NavbarController@index');
+
+Route::get('/search',"SearchController@index")->name('search');
+
 

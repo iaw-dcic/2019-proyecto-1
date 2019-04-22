@@ -17,39 +17,50 @@
 @endsection
 
 @section('content')
+	@if($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach($errors->all() as $error)
+					<li>{{ $error}}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 	<div class="d-flex justify-content-center h-100">
 		<div class="card h-100	">
 			<div class="card-header">
 				<h3>Registrarme</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form method="POST" action="{{url('user/create')}}">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="usuario">
+						<input type="text" name="name" class="form-control" placeholder="nombre" value="{{old('name')}}">
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="email">
+						<input type="email" name="email" class="form-control" placeholder="email" value="{{old('email')}}">
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-lock"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="contraseña">
+						<input type="password" name="password" class="form-control" placeholder="contraseña">
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-lock"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="repetir contraseña">
+						<input type="password" name="repeat_password" class="form-control" placeholder="repetir contraseña">
 					</div>
 					<div class="form-group">
-						<input type="button" value="Registrarme" class="btn btn-primary btn-lg btn-block login-button">
+						<input type="submit" value="Registrarme" class="btn btn-primary btn-lg btn-block login-button">
 					</div>
 				</form>
 			</div>

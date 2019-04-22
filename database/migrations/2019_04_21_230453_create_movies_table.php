@@ -19,8 +19,6 @@ class CreateMoviesTable extends Migration
             $table->string('name')->unique();
             $table->string('director');
             $table->integer('premier_date');
-            $table->unsignedBigInteger('movieslists_id');
-            $table->foreign('movieslists_id')->references('id')->on('movies');
 
         });
     }

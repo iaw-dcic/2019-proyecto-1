@@ -33,7 +33,7 @@
             <a class="nav-link" href="#" title="My lists"><i class="fas fa-database"></i> Mis listas <i class="fas fa-database shortmenu animate"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{asset('/register')}}" title="Registrarme"><i class="fas fa-id-card"></i> Registrarme <i class="fas fa-id-card shortmenu animate"></i></a>
+            <a class="nav-link" href="{{asset('/user/register')}}" title="Registrarme"><i class="fas fa-id-card"></i> Registrarme <i class="fas fa-id-card shortmenu animate"></i></a>
           </li>
         </ul>
         <ul class="navbar-nav ml-md-auto d-md-flex">
