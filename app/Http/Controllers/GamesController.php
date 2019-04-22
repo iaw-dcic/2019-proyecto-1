@@ -91,6 +91,7 @@ class GamesController extends Controller
         $game->save();
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
+
         return redirect('games');
     }
 
@@ -152,6 +153,7 @@ class GamesController extends Controller
         $game->mode = $request->mode;
         $game->genre = $request->genre;
         if ($request->hasFile('cover_image')) {
+            Storage::delete('public/cover_images/thumbnail/' . $game->cover_image);
             $game->cover_image = $fileNameToStore;
         }
         $game->save();
@@ -176,7 +178,7 @@ class GamesController extends Controller
 
         if ($game->cover_image != 'noimage.jpg') {
             // Delete Image
-            Storage::delete('public/cover_images/' . $game->cover_image);
+            Storage::delete('public/cover_images/thumbnail/' . $game->cover_image);
         }
 
         $game->delete();
@@ -184,7 +186,7 @@ class GamesController extends Controller
         return redirect('games');
     }
 
-    protected function handleFileUpload(Request $request)
+    private function handleFileUpload(Request $request)
     {
         // Handle File Upload
         if ($request->hasFile('cover_image')) {

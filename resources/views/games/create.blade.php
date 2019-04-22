@@ -18,6 +18,7 @@
 <section class="custom-form">
 
     <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
+    <h3 style="color:bisque; text-align:center;margin-bottom:20px"> Datos del juego </h3>
 
     <!-- content -->
     <div class="sub-main-w3">
@@ -74,8 +75,6 @@
             </div>    
 
             <!--Mode -->
-            
-            <!--Genre -->
             <div class="form-style-agile">
                     <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
                     <select type="text" class="custom-dropdown" name="mode" required>
@@ -85,7 +84,6 @@
                               <option>Solitario/Multijugador</option>
                     </select>
             </div>    
-
 
             <!-- Cover image -->
             <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>

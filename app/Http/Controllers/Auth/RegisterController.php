@@ -63,11 +63,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        alert()->success('Bievenido!', 'Te registraste correctamente!.');
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'gamesMode' => 'privado',
         ]);
+
     }
+
+   
 }
