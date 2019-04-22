@@ -32,14 +32,16 @@ class SongsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        Song::create(
-            request()->validate([
-                'song_name' => 'required',
-                'artist' => 'required',
-                'album' => 'required',
-                'release_year' => ['required', 'digits_between:1,2050']
-            ])
-        );
+        Song::create(request()->validate([
+            'list_name' => 'required'
+        ]));
+
+        /*Song::create(request()->validate([
+            'song_name' => 'required',
+            'artist' => 'required',
+            'album' => 'required',
+            'release_year' => ['required', 'digits_between:1,2050']
+        ]));*/
 
         return redirect('/songs');
     }
@@ -59,7 +61,6 @@ class SongsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit(Song $song) {
-
         return view('songs.edit', compact('songs'));
     }
 

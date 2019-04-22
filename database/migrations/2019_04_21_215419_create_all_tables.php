@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateAllTables extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('all_tables', function (Blueprint $table) {
+            $table->bigIncrements('list_id')->primary();
+            $table->string('list_name');
+            $table->string('owner');
+            $table->foreign('owner')->references('name')->on('users');
+            $table->boolean('public');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('all_tables');
+    }
+}

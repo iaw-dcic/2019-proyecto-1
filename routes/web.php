@@ -32,3 +32,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //como poner List::find etc en ListController.php
 //como hacer la lista
 //poner que un boton lleve a una nueva pagina dentro de un .blade.php
+//esta bien hecho el store?
+//el action en el form de edit y create.blade
+
+//recordar modificar el .env
