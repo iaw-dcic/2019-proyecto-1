@@ -1,0 +1,45 @@
+#banner{
+    text-align: center;
+}
+
+#nameUser{
+    color: white;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#nameUserEdit{
+    color: black;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#name{
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: x-large;
+}
+
+#profileInfo{
+    text-align: center;
+}
+
+#banner-content {
+    background: url("../images/background.png") no-repeat center;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.editSelects{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-left: 12px;
+}
+  
+.backlines{
+    outline: none;
+    background-color: white !important;
+    border: 0;
+}

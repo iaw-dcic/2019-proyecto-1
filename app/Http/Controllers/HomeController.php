@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Country;
+use App\Genre;
+use App\SentimentalSituation;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $countries = Country::all();
+        $genres = Genre::all();
+        $situations = SentimentalSituation::all();
+        return view('home', compact('countries', 'genres', 'situations'));
     }
 }

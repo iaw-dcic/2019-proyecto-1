@@ -26,9 +26,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/texts.css') }}" rel="stylesheet">
     <link href="{{ asset('datepicker/bootstrap-datepicker.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/principal.css') }}" rel="stylesheet">
     @guest
         <link href="{{ asset('css/login-register.css') }}" rel="stylesheet">
     @endguest
+
+    @if(auth()->user())
+        <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+    @endif
 </head>
 <body>
     <div id="app">
@@ -44,14 +49,10 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
 
                         </ul>
-
-                        <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
-                            <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -65,9 +66,9 @@
                                 <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if(auth()->user()->avatar && auth()->user()->provider_id)
-                                        <img id='avatarUser' src="{{ auth()->user()->avatar }}" alt="avatar" width="32" height="32">
+                                        <img id='avatarUser' src="{{ auth()->user()->avatar }}" alt="avatar" width="22" height="22">
                                     @elseif(auth()->user()->avatar && !(auth()->user()->provider_id))
-                                        <img id='avatarUser' src="../{{ auth()->user()->avatar }}" alt="avatar" width="32" height="32">
+                                        <img id='avatarUser' src="../{{ auth()->user()->avatar }}" alt="avatar" width="22" height="22">
                                     @endif
                                     {{ auth()->user()->name }} <span class="caret"></span>
                                 </a>
