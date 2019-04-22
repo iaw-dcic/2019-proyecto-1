@@ -8,12 +8,11 @@ use Socialite;
 use App\User;
 use App\Receta;
 use App\Lista;
+use Illuminate\Validation\Rules;
+use App\Http\Requests\UserRequest;
   class UserController extends Controller
 {
-
-
     
-
     public function login(){
         return view('loginform');
     }
@@ -27,19 +26,23 @@ use App\Lista;
         return Socialite::driver($provider)->redirect();
     }
     
-    public function store(request $request){
-        print_r($request->input);
-        $this->validate(request(), [
-            'nombre' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
+   
+    public function store(UserRequest $request){
+        
+       
+      //  $this->validate($request, $rules);
+
+        User::create([
+            'nombre' => $request->nombre,
+            'email' =>$request->email,
+            'apellido'=>  $request->apellido,
+            'password'=>  $request->password
         ]);
         
-        $user = User::create(request(['nombre','apellido','email', 'password']));
         
         Auth::login($user);
         
-        return redirect()->to('/');
+        return back()->with('status','Datos cargados correctamente');
     }
     // Metodo encargado de obtener la información del usuario
     public function handleProviderCallback($provider)
