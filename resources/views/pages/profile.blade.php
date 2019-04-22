@@ -4,7 +4,7 @@
 @include('sweetalert::alert')
 
 <!-- Page top section -->
-<section class="page-top-section set-bg" data-setbg="img/page-top-bg/4.jpg">
+<section class="page-top-section set-bg" data-setbg="{{asset('img/page-top-bg/4.jpg')}}">
     <div class="page-info">
         <h2>Perfil</h2>
         <div class="site-breadcrumb">
@@ -26,9 +26,9 @@
                 <h3 style="color: beige;">Actualmente tu lista de juegos está en modo <a href="" style="color:azure">{{$data['user']->gamesMode}}</h3>
                 <br>
                 @if ($data['user']->gamesMode == 'privado') 
-                    <a href="{{ url('profile/publico')}}" class="read-more">Pasarla a modo público<img src="img/icons/double-arrow.png" alt="#"/></a>
+                    <a href="{{ url('profile/publico')}}" class="read-more">Pasarla a modo público<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                 @else 
-                    <a href="{{ url('profile/privado')}}" class="read-more">Pasarla a modo privado<img src="img/icons/double-arrow.png" alt="#"/></a>
+                    <a href="{{ url('profile/privado')}}" class="read-more">Pasarla a modo privado<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                 @endif
                 </div>
                
@@ -44,7 +44,7 @@
                         <div class="top-meta">Juegos: {{$data['userGames']}}</div>
                        
                         <br><br><br><br><br><br>
-                        <a href="#" class="read-more">Editar avatar <img src="img/icons/double-arrow.png" alt="#"/></a>
+                        <a href="#" class="read-more">Editar avatar <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                         
                     </div>
                 </div>

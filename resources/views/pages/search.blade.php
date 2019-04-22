@@ -54,7 +54,7 @@
                                     Nombres de los juegos
                                 </div>
                                 <div class="cell" data-title="Location">
-                                <a href="" >{{$user->id}}</a>
+                                <a href="{{ route('user_profile', $user->name)}}" >Link al perfil</a>
                                 </div>
                         </div>
 

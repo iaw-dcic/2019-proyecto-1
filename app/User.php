@@ -40,4 +40,9 @@ class User extends Authenticatable
     public function games() {
         return $this->hasMany('App\Game');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }

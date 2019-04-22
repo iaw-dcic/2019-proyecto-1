@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use Auth;
+use App\User;
 
 class PagesController extends Controller
 {
@@ -15,7 +16,7 @@ class PagesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['home', 'about', 'games', 'profile']]);
+        $this->middleware('auth', ['except' => ['home', 'about', 'games', 'profile','getUserProfile']]);
     }
 
     public function home()
@@ -36,31 +37,51 @@ class PagesController extends Controller
     public function profile()
     {
         if ($user = Auth::user()) {
-                $user = auth()->user();
-                $userGames = Game::where('user_id', $user->id)->get();
-                $arrayOfGamesTitle = [];
-                foreach ($userGames as $game) {
-                    array_push($arrayOfGamesTitle, $game->title);
-                }
+            $user = auth()->user();
+            $userGames = Game::where('user_id', $user->id)->get();
+            $arrayOfGamesTitle = [];
+            foreach ($userGames as $game) {
+                array_push($arrayOfGamesTitle, $game->title);
+            }
 
-                $data = [
-                    'user'  => $user,
-                    'userGames'   => implode(" - ", $arrayOfGamesTitle),
-                ];
+            $data = [
+                'user'  => $user,
+                'userGames'   => implode(" - ", $arrayOfGamesTitle),
+            ];
 
-                return view('pages.profile')->with('data', $data);
-            } else {
+            return view('pages.profile')->with('data', $data);
+        } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tu perfil.');
             return redirect()->guest('/login');
-           
         }
     }
 
-    public function changeGamesMode($newMode) {
+    public function getUserProfile($userName)
+    {
+            $user = User::where('name', $userName)->first();
+            $userGames = Game::where('user_id', $user->id)->get();
+            $arrayOfGamesTitle = [];
+            foreach ($userGames as $game) {
+                array_push($arrayOfGamesTitle, $game->title);
+            }
+
+            $data = [
+                'user'  => $user,
+                'userGames'   => implode(" - ", $arrayOfGamesTitle),
+            ];
+
+            return view('pages.profile')->with('data', $data);
+
+        }
+
+    
+
+    public function changeGamesMode($newMode)
+    {
         $user = auth()->user();
         $user->gamesMode = $newMode;
         $user->save();
-        alert()->success('Listo!', 'Tu lista de juegos ahora esta en modo '.$newMode);
+        alert()->success('Listo!', 'Tu lista de juegos ahora esta e n  modo '.$newMode);
         return redirect()->guest('/profile');
     }
 }

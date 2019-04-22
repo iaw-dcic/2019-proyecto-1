@@ -13,8 +13,14 @@
 
 Route::get('/','PagesController@home');
 Route::get('/about', 'PagesController@about');
-Route::get('/profile', 'PagesController@profile');
-Route::get('/profile/{newMode}', 'PagesController@changeGamesMode');
+
+
+//Route::get('/user/profile/{user}', 'UserProfileController@index')->name('user_profile')->middleware('auth');
+
+
+
+
+//Route::get('/profile/{newMode}', 'PagesController@changeGamesMode');
 
 Route::resource('games','GamesController');
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -25,6 +31,10 @@ Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallb
 
 Route::get('/searchUser/{userSearch}', 'SearchUserController@searchUser');
 Route::get('/searchUser', 'SearchUserController@searchUser');
+
+Route::get('/profile/{username}', 'PagesController@getUserProfile')->name('user_profile');
+
+
 
 
 
