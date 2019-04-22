@@ -73,7 +73,9 @@ class GamesController extends Controller
             'title' => 'required',
             'console' => 'required',
             'rating' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
+            'mode' => 'required',
+            'genre' => 'required'
         ));
 
         $fileNameToStore = $this->handleFileUpload($request);
@@ -84,6 +86,8 @@ class GamesController extends Controller
         $game->rating = $request->rating;
         $game->cover_image = $fileNameToStore;
         $game->console = $request->console;
+        $game->mode = $request->mode;
+        $game->genre = $request->genre;
         $game->save();
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
@@ -134,7 +138,9 @@ class GamesController extends Controller
             'title' => 'required',
             'rating' => 'required',
             'console' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
+            'cover_image' => 'image|nullable|max:1999',
+            'mode' => 'required',
+            'genre' => 'required'
         ));
 
         $fileNameToStore = $this->handleFileUpload($request);
@@ -143,6 +149,8 @@ class GamesController extends Controller
         $game->title = $request->title;
         $game->rating = $request->rating;
         $game->console = $request->console;
+        $game->mode = $request->mode;
+        $game->genre = $request->genre;
         if ($request->hasFile('cover_image')) {
             $game->cover_image = $fileNameToStore;
         }

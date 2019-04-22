@@ -60,6 +60,31 @@
                 </select>
             </div>
 
+             <!--Genre -->
+             <div class="form-style-agile">
+                    <label><i class="fas fa-bomb" aria-hidden="true"></i> ¿A qué género pertence el juego?*</label>
+                    <select type="text" class="custom-dropdown" name="genre" required>
+                              <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
+                              <option {{ $game->genre == 'Accion' ? 'selected' : '' }}>Accion</option>
+                              <option {{ $game->genre == 'Disparos' ? 'selected' : '' }}>Disparos</option>
+                              <option {{ $game->genre == 'Deportes' ? 'selected' : '' }}>Deportes</option>
+                              <option {{ $game->genre == 'Aventura' ? 'selected' : '' }}>Aventura</option>
+                              <option {{ $game->genre == 'Estrategia' ? 'selected' : '' }}>Estrategia</option>
+                              <option {{ $game->genre == 'Otro' ? 'selected' : '' }}>Otro</option>
+                    </select>
+            </div>    
+
+            <!--Mode -->
+            <div class="form-style-agile">
+                    <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
+                    <select type="text" class="custom-dropdown" name="mode" required>
+                              <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
+                              <option {{ $game->mode == 'Solitario' ? 'selected' : '' }}>Solitario</option>
+                              <option {{ $game->mode == 'Multijugador' ? 'selected' : '' }}>Multijugador</option>
+                              <option {{ $game->mode == 'Solitario/Multijugador' ? 'selected' : '' }}>Solitario/Multijugador</option>
+                    </select>
+            </div>    
+
             <!-- Cover image -->
             <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
             <div class="input-group">

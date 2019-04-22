@@ -59,6 +59,34 @@
                         </select>
             </div>
 
+            <!--Genre -->
+            <div class="form-style-agile">
+                    <label><i class="fas fa-bomb" aria-hidden="true"></i> ¿A qué genero pertence el juego?*</label>
+                    <select type="text" class="custom-dropdown" name="genre" required>
+                              <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
+                              <option>Accion</option>
+                              <option>Disparos</option>
+                              <option>Deportes</option>
+                              <option>Aventura</option>
+                              <option>Estrategia</option>
+                              <option>Otro</option>
+                    </select>
+            </div>    
+
+            <!--Mode -->
+            
+            <!--Genre -->
+            <div class="form-style-agile">
+                    <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
+                    <select type="text" class="custom-dropdown" name="mode" required>
+                              <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
+                              <option>Solitario</option>
+                              <option>Multijugador</option>
+                              <option>Solitario/Multijugador</option>
+                    </select>
+            </div>    
+
+
             <!-- Cover image -->
             <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
             <div class="input-group">
