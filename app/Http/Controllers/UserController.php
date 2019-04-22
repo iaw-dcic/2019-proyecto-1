@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    public function index(){
+		
+	//	$users= DB::table('users')->get();
+	 $users = User::all();
+	//	if (request()->has('empty')) {
+    //        $users = [];
+     //   } else {
+         //   $users = [
+           //     'Joel', 'Ellie', 'Tess', 'Tommy', 'Bill',
+           // ];
+     //   }
+	 
+	 
+		
+	return view('users.index', ['users'=> $users, 
+						  'title'=> 'Listado de usuarios']); 
+	}
+
+	public function show($id){
+		$user= User::find($id);
+		
+//		dd($user);
+		
+		return view('users.show',compact('user'));
+	}
+	
+	public function create(){
+	  return view('users.create');
+	}
+	
+	public function login(){  
+		return view('users.login');
+		
+	}
+	
+	public function store(){
+		$data =request()->all();
+		
+	   User::create([
+            'name' => $data['nombre'],
+            'email' => $data['correo'],
+            'password' => bcrypt($data['clave'])
+        ]);
+		
+		return redirect()->route('users.index');
+	}
+	
+}
