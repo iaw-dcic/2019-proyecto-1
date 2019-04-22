@@ -12,8 +12,9 @@
 */
 
 Route::get('/', 'PagesController@home');
-Route::get('login', 'PagesController@login');
-Route::get('signup', 'PagesController@signup');
+Route::get('/topVoted', 'PagesController@topVoted');
+Route::get('/mostViewed', 'PagesController@mostViewed');
+Route::get('/newLists', 'PagesController@newLists');
 
 Route::resource('myLists', 'UserListsController');
 
