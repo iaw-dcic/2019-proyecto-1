@@ -14,12 +14,15 @@ class CreateAllTables extends Migration
     public function up()
     {
         Schema::create('all_tables', function (Blueprint $table) {
-            $table->bigIncrements('list_id')->primary();
+            $table->bigIncrements('list_id')->unique();
             $table->string('list_name');
             $table->string('owner');
-            $table->foreign('owner')->references('name')->on('users');
             $table->boolean('public');
             $table->timestamps();
+        });
+
+        Schema::table('all_tables', function($table) {
+            $table->foreign('owner')->references('name')->on('users');
         });
     }
 

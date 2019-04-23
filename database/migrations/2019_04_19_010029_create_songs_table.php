@@ -14,16 +14,18 @@ class CreateSongsTable extends Migration
     public function up()
     {
         Schema::create('songs', function (Blueprint $table) {
-            $table->integer('list_id');
-            $table->string('list_name');
-            $table->foreign(['list_id','list_name'])->references(['list_id','list_name'])->on(['all_tables', 'all_tables']);
-            $table->bigIncrements('song_id')->primary();
+            $table->bigIncrements('song_id');
             $table->string('song_name');
             $table->string('artist');
             $table->string('album');
             $table->integer('release_year');
             $table->string('notes');
+            $table->integer('list_id')->unique();
             $table->timestamps();
+        });
+
+        Schema::table('songs', function($table) {
+            $table->foreign('list_id')->references('list_id')->on('all_tables');
         });
     }
 

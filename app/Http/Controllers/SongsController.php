@@ -32,7 +32,7 @@ class SongsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        Song::create(request()->validate([
+        Table::create(request()->validate([
             'list_name' => 'required'
         ]));
 
