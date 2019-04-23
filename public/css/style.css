@@ -1,19 +1,26 @@
 body{
 background-color: white;
+font-family: 'Poppins', sans-serif;
 }
 
 .jumbotron{
   background-color: #F9E79F;
-
 }
 
 .album{
   background-color: white;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 100;
 }
 
 .card-header{
   background-color: #F9E79F;
   border: #F9E79F;
+  
+}
+
+.card-title{
+  font-family: 'Poppins',sans-serif;
 }
 
 .btn-primary{
