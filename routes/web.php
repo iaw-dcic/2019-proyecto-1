@@ -29,7 +29,11 @@ Route::get('/home/cargarlibros/{id}', 'BookController@index');
 Route::post('/home/cargarlibros/{id}', 'BookController@store');
 
 Route::get('/home','CollectionController@index');
-Route::post('/home','CollectionController@store');
+
+Route::get('/home/editCollection','CollectionController@load');
+Route::post('/home/editCollection','CollectionController@store');
+Route::get('/home/editCollection/{id}','CollectionController@delete');
+
 
 Route::get('/home/perfil','UserController@index');
 

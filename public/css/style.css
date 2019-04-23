@@ -23,7 +23,22 @@ font-family: 'Poppins', sans-serif;
   font-family: 'Poppins',sans-serif;
 }
 
+.card-link{
+  font-weight: 800;
+  font-size: 16px;
+}
+
 .btn-primary{
   background-color: #FFB04B;
   border:#FFB04B;
+}
+
+.btn-link{
+  font-weight: 800;
+  font-size: 16px;
+}
+
+
+.btn-link-font{
+  font-weight: 300;
 }

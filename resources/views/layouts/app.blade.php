@@ -38,8 +38,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @guest
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="/welcome">Colecciones</a>
+                        </li>
+                        @endif
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home/editCollection">Editar</a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="/home/perfil">Perfil</a>
+                        </li>
+                        @endguest
                     </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -69,13 +84,6 @@
                                     @csrf
                                 </form>
 
-                                <a class="dropdown-item" href="/home/perfil">
-                                    {{ __('Perfil') }}
-                                </a>
-
-                                <a class="dropdown-item" href="/home">
-                                    {{ __('Mis Colecciones') }}
-                                </a>
 
                             </div>
                         </li>

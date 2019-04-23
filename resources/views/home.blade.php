@@ -32,33 +32,6 @@
     </div>
   </div>
 
-<form method="POST" action="/home">
-  {{csrf_field()}}
 
-  <div class="album py-5">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-4">
-          <div class="col mb-4">
-            <div class="card" style="width: 18rem;">
-              <div class="card-body">
-                <h4>Cargar nueva lista</h4>
-                <h5 class="card-title"><input type="text" class="form-control" name="title" placeholder="Titulo"></h5>
-                <p class="card-text"><textarea class="form-control" name="description" rows="3"></textarea></p>
-
-               
-                <button type="submit" class="card-link"> Cargar</button>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  
   
   @endsection

@@ -22,7 +22,27 @@ class CollectionController extends Controller
  
         $collec = Collection::all();
 
-        return view('home',compact('collec'));
+        return view('editCollection',compact('collec'));
      }
+
+     public function load()
+    {
+        $collec = Collection::all();
+
+        return view('editCollection', compact('collec'));
+    }
+
+    public function eliminar($id){
+        return view('delete',compact('id'));
+    }
+
+    public function delete($id){
+
+        $collec=Collection::find($id);
+      
+        $collec->delete($collec->id_collection);
+      
+        return redirect()->load(); 
+        }
 
 }

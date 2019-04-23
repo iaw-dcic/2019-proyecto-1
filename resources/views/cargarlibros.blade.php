@@ -51,7 +51,7 @@
 
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
                 <br>
-                <button type="submit" class="card-link"> Cargar</button>
+                <button type="submit" class="btn btn-link"> Cargar</button>
 
               </div>
             </div>
