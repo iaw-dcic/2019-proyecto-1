@@ -8,25 +8,25 @@
   </div>
 </div>
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-body">
-
-          <div class="form-group row">
-            <h4>{{ auth()->user()->name }} </h4>
-          </div>
-          <div class="form-group row">
-            <label for="bio" class="col-md-4 col-form-label text-md-right">{{ __('Bio') }}</label>
-
-            <div class="col-md-6">
-              <input id="bio" type="text" class="form-control" name="bio">
-            </div>
-          </div>
-        </div>
-      </div>
+  <form method="POST" action="/home/perfil">
+    <div class="form-group">
+      <h4 for="formGroupExampleInput">Nombre y apellido: </h4>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ auth()->user()->name }}">
     </div>
-  </div>
+    <div class="form-group">
+      <h4 for="formGroupExampleInput">Email </h4>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="{{ auth()->user()->email }}">
+    </div>
+    <div class="form-group">
+      <h4 for="formGroupExampleInput2">Ciudad</h4>
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="{{ auth()->user()->ciudad }}">
+    </div>
+    <div class="form-group">
+      <h4 for="formGroupExampleInput2">Bio</h4>
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="{{ auth()->user()->bio }}">
+    </div>
+    <button type="button" class="btn btn-link">Actualizar</button>
+  </form>
 </div>
 
 
