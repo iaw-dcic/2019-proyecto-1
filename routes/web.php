@@ -28,12 +28,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Preguntar por:
-//la foreign key doble en create lists table en database
-//como poner List::find etc en ListController.php
-//como hacer la lista
-//poner que un boton lleve a una nueva pagina dentro de un .blade.php
+//como hacer la lista => campos editables
+//poner que un boton lleve a una nueva pagina dentro de un .blade.php => no hay problema
 //esta bien hecho el store?
 //el action en el form de edit y create.blade
-//BigIncrement define como primario?
 
-//recordar modificar el .env
+
+//para ponerle el nombre de la lista, le puedo poner el nombre de la lista como un campo invisible
+//no editable en el form, y ahi queda parte del request para asociarlo en el controlador
+
+//separar el controlador de lista y de cancion

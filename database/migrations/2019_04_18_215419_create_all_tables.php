@@ -14,7 +14,7 @@ class CreateAllTables extends Migration
     public function up()
     {
         Schema::create('all_tables', function (Blueprint $table) {
-            $table->bigIncrements('list_id')->unique();
+            $table->unsignedBigInteger('list_id')->primary();
             $table->string('list_name');
             $table->string('owner');
             $table->boolean('public');
