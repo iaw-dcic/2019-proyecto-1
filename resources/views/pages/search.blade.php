@@ -51,7 +51,6 @@
                                     Nombre usuario
                                 </div>
                                 <div class="cell" data-title="Job Title">
-                                    Nombres de los juegos
                                 </div>
                                 <div class="cell" data-title="Location">
                                 <a href="{{ route('user_profile', $user->name)}}" >Link al perfil</a>

@@ -35,7 +35,7 @@
                         <!--<a class="dropdown-item" href="{{ url('profile') }}">
                             <p style="color:black;"> Mi perfil </p>
                         </a> -->
-                        <a class="dropdown-item" href="{{ route('user_profile',auth()->user())}}"> Mi perfil </a>
+                        <a class="dropdown-item" href="{{ route('user_profile',auth()->user())}}"> <p style="color:black;"> Mi perfil </p></a>
 
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -78,7 +78,7 @@
                     @auth
                     <li><a href="{{route('games.create')}}">Agregar juego</a></li>
             
-                    <li><a href="{{ route('user_profile', Auth::user()->name) }}"> Perfil de  {{ Auth::user()->name }} </a></li>
+                    <li><a href="{{ route('user_profile', Auth::user()->name) }}">Perfil</a></li>
                     @endauth
                     <li><a href="{{url('about') }}">Preguntas frecuentes</a></li>
                 </ul>

@@ -42,6 +42,7 @@
 											<li>Valoración<span style="color:white">{{ucfirst($game->rating)}}</span></li>
 											<li>Género<span style="color:white">{{ucfirst($game->genre)}}</span></li>
 											<li>Modo de juego<span style="color:white">{{ucfirst($game->mode)}}</span></li>
+											<li>Lista<span style="color:white">{{ucfirst($game->listing->name)}}</span></li>
 										</ul>
 		
 									</div>
