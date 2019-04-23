@@ -22,10 +22,8 @@
 
 </head>
 <body>
-<div id="page-container">
-<div id="content-wrap">
 
-    <div id="app">
+    <div id="content">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -74,7 +72,7 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+            
         </nav>
 
         <main class="py-4">
@@ -83,7 +81,7 @@
     </div>
     
     <!-- Footer -->
-<footer  class="page-footer font-small tea pt-4" >
+<footer  class="footer page-footer font-small tea pt-4" >
 
 <!-- Footer Text -->
 <div class="container-fluid text-center text-md-left">
