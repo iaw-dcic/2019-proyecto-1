@@ -34,7 +34,7 @@ Route::get('/searchUser', 'SearchUserController@searchUser');
 
 Route::get('/profile/{username}', 'PagesController@getUserProfile')->name('user_profile');
 
-
+Route::resource('listings','ListingController');
 
 
 

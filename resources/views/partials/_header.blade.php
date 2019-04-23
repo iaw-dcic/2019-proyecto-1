@@ -76,6 +76,7 @@
                         </ul> -->
                     </li>
                     @auth
+                    <li><a href="{{route('listings.index')}}">Listas</a></li>
                     <li><a href="{{route('games.create')}}">Agregar juego</a></li>
             
                     <li><a href="{{ route('user_profile', Auth::user()->name) }}">Perfil</a></li>
