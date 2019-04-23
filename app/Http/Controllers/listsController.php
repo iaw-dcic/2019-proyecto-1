@@ -22,7 +22,9 @@ class listsController extends Controller
 
         $lista->titulo = request('titulo');
 
-        $lista->descripción = request('listaDescription');
+        $lista->descripcion = request('listaDescription');
+        
+        $lista->juegos = [];
 
         $lista->save(); //guarda la lista en la DB
         return redirect('/profile');

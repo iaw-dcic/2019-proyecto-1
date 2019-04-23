@@ -82,6 +82,12 @@ html, body {
     background: rgb(54, 175, 135);
 }
 
+.readmeBot:hover{
+    transition:0.5;
+    transform:scale(1.5);
+    background: rgb(69, 6, 216);
+}
+
 .m-b-md {
     margin-bottom: 30px;
 }

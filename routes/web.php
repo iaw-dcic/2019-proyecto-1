@@ -17,23 +17,26 @@ Route::get('/', function () {
 });
 
 
-Route::get('/profile','listsController@index');
+Route::get('/profile','listsController@index')->name('profile');
 
 Route::get('/profile/list',function(){ //example.com/list (needs List name)
     return view('list');
-});
+})->name('lists');
 
 Route::get('/readme',function(){
-    return view('readme');
-});
+    return view('/readme');
+})->name('readme');
 
-Route::get('/profile/createList', 'listsControler@create');
+Route::get('/profile/createList', 'listsControler@create')->name('createList');
 
-Route::post('/profile','listsController@store');
+Route::post('/profile','listsController@store')->name('profile');
 
 Route::get('/publicLists', function(){
     return view('publicLists');
 });
+
+Route::get('/profile/createGame', 'gameController@create');
+Route::post('/profile/createGame', 'gameController@store');
 
 Auth::routes();
 
