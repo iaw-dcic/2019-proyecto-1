@@ -8,12 +8,10 @@
         <title>Styre</title>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="{{asset('css/navbarstyle.css')}}" rel="stylesheet">
-
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        @yield('head')
+        <link href="{{asset('css/searchstyle.css')}}" rel="stylesheet">
 </head>
 <body>
   <div id="wrapper" class="animate">
@@ -26,31 +24,32 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav animate side-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{asset('/search')}}" title="Search"><i class="fas fa-search"></i> Buscar lista <i class="fas fa-search shortmenu animate"></i></a>
+            <a class="nav-link" href="{{asset('/search')}}" title="Búsqueda"><i class="fas fa-search"></i> Búsqueda <i class="fas fa-search shortmenu animate"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" title="New List"><i class="fas fa-list"></i> Crear lista <i class="fas fa-list shortmenu animate"></i></a>
+            <a class="nav-link" href="#" title="Nueva lista"><i class="fas fa-list"></i> Crear lista <i class="fas fa-list shortmenu animate"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" title="My lists"><i class="fas fa-database"></i> Mis listas <i class="fas fa-database shortmenu animate"></i></a>
+            <a class="nav-link" href="#" title="Mis listas"><i class="fas fa-database"></i> Mis listas <i class="fas fa-database shortmenu animate"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{asset('/register')}}" title="Registrarme"><i class="fas fa-id-card"></i> Registrarme <i class="fas fa-id-card shortmenu animate"></i></a>
+            <a class="nav-link" href="{{asset('/users')}}" title="Usuarios"><i class="fas fa-users"></i> Usuarios <i class="fas fa-users shortmenu animate"></i></a>
           </li>
         </ul>
         <ul class="navbar-nav ml-md-auto d-md-flex">
-          <li class="nav-item">
-            <a class="nav-link" href="{{asset('/login')}}"><i class="fas fa-user"></i> Mi perfil</a>
+        <li class="nav-item">
+            <a class="nav-link" href="{{asset('/profile')}}" title="Mi perfil"><i class="fas fa-user"></i> Mi perfil </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{asset('/')}}"><i class="fas fa-key"></i> Cerrar sesión</a>
+            <a class="nav-link" href="{{asset('/')}}" title="Salir"><i class="fas fa-power-off"></i> Salir </a>
           </li>
         </ul>
       </div>
     </nav>
   </div>
 <main role="main" class="container-fluid">
-	 @yield('content')
+    @yield('content')
 </main>
+
 </body>
 </html>

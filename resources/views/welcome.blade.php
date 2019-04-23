@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>LOGO</title>    
+        <title>Styre</title>    
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link href="{{asset('css/welcome.css')}}" rel="stylesheet">
     </head>
@@ -14,7 +14,8 @@
             <p>Styre</p>
                  Styre
              </h1>
-             <a href="{{asset('/search')}}" class="btn">Comenzar</a>
+             <a href="{{asset('/search')}}" class="btn">Ingresar como invitado</a>
+             <a href="{{asset('/login')}}" class="btn mt5">Iniciar sesión</a>
         </section>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

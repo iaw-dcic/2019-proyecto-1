@@ -24,24 +24,18 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav animate side-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{asset('/search')}}" title="Search"><i class="fas fa-search"></i> Buscar lista <i class="fas fa-search shortmenu animate"></i></a>
+            <a class="nav-link" href="{{asset('/search')}}" title="Búsqueda"><i class="fas fa-search"></i> Búsqueda <i class="fas fa-search shortmenu animate"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" title="New List"><i class="fas fa-list"></i> Crear lista <i class="fas fa-list shortmenu animate"></i></a>
+            <a class="nav-link" href="{{asset('/users')}}" title="Usuarios"><i class="fas fa-users"></i> Usuarios<i class="fas fa-users shortmenu animate"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" title="My lists"><i class="fas fa-database"></i> Mis listas <i class="fas fa-database shortmenu animate"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{asset('/user/register')}}" title="Registrarme"><i class="fas fa-id-card"></i> Registrarme <i class="fas fa-id-card shortmenu animate"></i></a>
+            <a class="nav-link" href="{{asset('/register')}}" title="Registrarme"><i class="fas fa-id-card"></i> Registrarme <i class="fas fa-id-card shortmenu animate"></i></a>
           </li>
         </ul>
         <ul class="navbar-nav ml-md-auto d-md-flex">
           <li class="nav-item">
-            <a class="nav-link" href="{{asset('/login')}}"><i class="fas fa-user"></i> Mi perfil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{asset('/')}}"><i class="fas fa-key"></i> Cerrar sesión</a>
+            <a class="nav-link" href="{{asset('/')}}" title="Salir"><i class="fas fa-power-off"></i> Salir</a>
           </li>
         </ul>
       </div>
