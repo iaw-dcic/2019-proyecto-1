@@ -1,28 +1,26 @@
 @extends('layouts.app')
 
-@section('content')
 
+@section('content')
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Colecciones</h1>
+    <h1 class="display-4">Libros</h1>
     <p class="lead">Coleccion de libros.com</p>
   </div>
 </div>
 
-
-<div class="album py-5">
+<div class="album py-5 bg-light">
     <div class="container">
       <div class="row">
-        @foreach ($collec as $colec)
+        @foreach ($books as $bk)
         <div class="col-md-4">
           <div class="col mb-4">
             <div class="card" style="width: 18rem;">
               <div class="card-body">
-                <h5 class="card-title">{{$colec->title}}</h5>
-
-                <p class="card-text">{{$colec->description}}</p>
-               
-                <a href="/welcome/loadbook/{{$colec->id_collection}}" class="card-link"> Ver</a>
+                <h5 class="card-title">{{$bk->title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{$bk->category}}</h6>
+                <p class="card-text">{{$bk->description}}</p>
+                
                 
               </div>
             </div>
@@ -31,5 +29,6 @@
         @endforeach
       </div>
     </div>
-  </div>
-@endsection
+  </div>  
+ 
+  @endsection

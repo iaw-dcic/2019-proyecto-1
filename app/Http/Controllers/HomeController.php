@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $collec = Collection::all();
+
+        return view('welcome',compact('collec'));
     }
 }

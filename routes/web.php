@@ -11,21 +11,25 @@
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-Route::get('/ingresar', 'ingresarController@ingresar');
 
-Route::get('/registrar', 'ingresarController@registrar');
+//Usuario no registrado
 
-Route::get('/registrar/condiciones', 'ingresarController@condiciones');
+Route::get('/','NotRegisterController@loadCollection');
+Route::get('/welcome','NotRegisterController@loadCollection');
+Route::get('/welcome/loadbook/{id}','NotRegisterController@loadBooks');
+
+
+//Usuario registrado
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/welcome', 'BooksControllers@index');
-Route::get('/welcome/cargar', 'BooksControllers@cargar');
-Route::post('/welcome', 'BooksControllers@store');
+Route::get('/home/cargarlibros/{id}', 'BookController@index');
+Route::post('/home/cargarlibros/{id}', 'BookController@store');
+
+Route::get('/home','CollectionController@index');
+Route::post('/home','CollectionController@store');
+
+Route::get('/home/perfil','UserController@index');
+
