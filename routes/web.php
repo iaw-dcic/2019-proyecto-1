@@ -26,6 +26,7 @@ Route::resource('/list', 'ListaController');
 
 
 
+
 Route::get('/template', function () {
     return view('template');
 });

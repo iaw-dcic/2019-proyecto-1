@@ -55,7 +55,7 @@ class ListaController extends Controller
         $lista->user_id = Auth::user()->id;
 
         if ($lista->save()) {
-            return redirect()->route('lista.create')->with('status', 'Éxito');
+            return redirect()->route('list.create')->with('status', 'Éxito');
         }
     }
 
