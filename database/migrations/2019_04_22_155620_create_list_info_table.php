@@ -14,9 +14,10 @@ class CreateListInfoTable extends Migration
     public function up()
     {
         Schema::create('list_info', function (Blueprint $table) {
-            $table->increments('id');
+            $table->unsignedBigInteger('id');
+            $table->primary('id');
             $table->timestamps();
-            $table->string('name')->index()->nullable($value=false);
+            $table->string('name')->nullable($value=false);
             $table->boolean('public');
             $table->engine = 'InnoDB';
         });

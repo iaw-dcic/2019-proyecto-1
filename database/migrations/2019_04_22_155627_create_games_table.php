@@ -20,9 +20,10 @@ class CreateGamesTable extends Migration
             $table->string('genre');
             $table->string('company');
             $table->date('release_date');
-            $table->integer('list_id')->nullable();
-            $table->foreign('list_id')->references('id')->on('list_info');
             $table->engine = 'InnoDB';
+            $table->unsignedBigInteger('list_id');
+            $table->foreign('list_id')->references('id')->on('list_info')->onDelete('cascade');
+            
         });
     }
 
