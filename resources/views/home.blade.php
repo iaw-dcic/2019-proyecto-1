@@ -40,7 +40,10 @@
 								<a class="nav-link" href="{{ route('register') }}"><span class="glyphicon glyphicon-user"></span> {{ __('Register') }}</a>
 							</li>
 						@endif
-					@else
+						@else
+						<li class="nav-item">
+							<a class="nav-link" href="/{{ Auth::user()->id }}/myLists">Manage lists</a>
+						</li>
 						<li class="nav-item dropdown">
 							<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 								{{ Auth::user()->username }} <span class="caret"></span>

@@ -16,7 +16,7 @@ class CreateListsTable extends Migration
         Schema::create('user_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('list_name');
-			$table->unsignedInteger('author_id');
+			$table->unsignedInteger('user_id');
 			$table->boolean('public')->default(false);
             $table->timestamps();
         });

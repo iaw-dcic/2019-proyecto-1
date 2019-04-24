@@ -11,21 +11,13 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
-Route::get('/topVoted', 'PagesController@topVoted');
-Route::get('/mostViewed', 'PagesController@mostViewed');
-Route::get('/newLists', 'PagesController@newLists');
+Route::resource('/{user}/myLists', 'UserListsController');
 
-Route::resource('myLists', 'UserListsController');
-
-Route::post('myLists/{myList}/items', 'ListItemsController@store');
-Route::delete('items/{item}', 'ListItemsController@destroy');
+Route::post('/{user}/myLists/{myList}/items', 'ListItemsController@store');
+Route::delete('/{user}/myLists/{myList}/items/{item}', 'ListItemsController@destroy');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@redHome')->name('home');

@@ -1,14 +1,23 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('body')
-    <title>Lists</title>
-    <h1>My Lists</h1>
+	<h1>{{$user->username}}'s lists</h1>
 	<ul>
 		@foreach ($lists as $list)
-			<li>
-				<a href="{{ $list->id }}">{{$list->list_name}}</a>
-			</li>
+				@if(Auth::user()->id == $user->id)
+					<form method="POST" action="/{{Auth::user()->id}}/myLists/{{ $list->id }}">
+						@method('DELETE')
+						@csrf
+						<a href="/{{Auth::user()->id}}/myLists/{{ $list->id }}">{{$list->list_name}}</a>
+						<button type="submit"> Delete </button>
+					</form>
+				@else
+					<li>{{$list->list_name}}</li>
+
+				@endif
 		@endforeach
 	</ul>
-	<a href="/myLists/create">Create new list</a>
+	@if(Auth::user()->id == $user->id)
+		<a href="/{{Auth::user()->id}}/myLists/create">Create new list</a>
+	@endif
 @endsection

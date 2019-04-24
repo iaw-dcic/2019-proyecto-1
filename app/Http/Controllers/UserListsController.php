@@ -5,49 +5,55 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\UserList;
+use \App\User;
 
 class UserListsController extends Controller {
 
-    public function index(){
-        $lists = UserList::all();
-        return view('userlists.index', ['lists' => $lists]);
+    public function index($id){
+		$lists = UserList::where('user_id', auth()->id())->get();
+		$user = User::findOrFail($id);
+        return view('userlists.index', compact('user','lists'));
     }
 
-    public function create(){
-        return view('userlists.create');
+    public function create($id){
+        $user = User::findOrFail($id);
+        return view('userlists.create', compact('user'));
     }
 
-    public function store(){
+    public function store($id){
+        $user = User::findOrFail($id);
 		request()->validate([
-			'list_name' => ['required', 'min:3']
+			'list_name' => ['required', 'min:3'],
 		]);
 		UserList::create([
 			'list_name' => request('list_name'),
-			'author_id' => 1
+			'user_id' => $user->id
 		]);
 
-        return redirect('/myLists');
+        return redirect('/'.$id.'/myLists');
     }
 
-    public function show($id){
-        $list = UserList::findOrFail($id);
-        return view('userlists.show', compact('list'));
+    public function show($userid, $id){
+		$user = User::findOrFail($userid);
+		$list = UserList::findOrFail($id);
+        return view('userlists.show', compact('user', 'list'));
     }
 
-    public function update($id){
+    public function update($userid, $id){
         $list = UserList::findOrFail($id);
         $list->list_name = request('list_name');
         $list->save();
-        return redirect('/myLists');
+        return redirect('/'.$userid.'/myLists');
     }
 
-    public function destroy($id){
+    public function destroy($userid, $id){
         UserList::findOrFail($id)->delete();
-        return redirect('/myLists');
+        return redirect('/'.$userid.'/myLists');
     }
 
-    public function edit($id){
+    public function edit($userid, $id){
+		$user = User::findOrFail($userid);
         $list = UserList::findOrFail($id);
-        return view ('userlists.edit', compact('list'));
+        return view ('userlists.edit', compact('user', 'list'));
     }
 }
