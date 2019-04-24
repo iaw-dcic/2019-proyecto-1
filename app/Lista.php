@@ -9,7 +9,7 @@ class Lista extends Model
     protected $table = "listas";
 
     //el 'id' lo agrega por defecto
-    protected $fillable = ['user_id','nombre','cantidad_canciones','fecha_creacion','fecha_ult_actualizacion'];
+    protected $fillable = ['user_id','nombre','cantidad_canciones'];
 
     //ver   si     hay que agregar el    timestamp  --------^
 

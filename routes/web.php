@@ -20,11 +20,19 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'],function(){
     
     //creamos todas las rutas posibles de un usuario con 'resource'
+    /*
+    URI:
+    GET /admin/users    (index)
+    GET /admin/users/create (create)
+    GET /admin/users/1  (show)
+    POST /admin/users/store (store)
+    GET /admin/users/1/edit (edit)
+    PATCH /admin/users/1 (update)
+    DELETE /admin/users/1  (destroy)
+    */
+                //usuarios      //controlador
     Route::resource('users','UsuariosController');
-
-
 });
-
 
 
 

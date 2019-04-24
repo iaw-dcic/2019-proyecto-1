@@ -18,8 +18,6 @@ class ListasTabla extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('nombre');
             $table->integer('cantidad_canciones');
-            $table->date('fecha_creacion');
-            $table->date('fecha_ult_actualizacion');
             $table->timestamps();
 
             //relacion constraint
