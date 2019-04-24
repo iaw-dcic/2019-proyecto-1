@@ -70,13 +70,18 @@
                 <!-- Menu -->
                 <ul class="main-menu primary-menu">
                     <li><a href="/">Inicio</a></li>
+                    <li><a href="{{route('listings.index')}}">Listas</a> <!--TODO: Pasar auth user name -->
+                        @auth
+                        <ul class="sub-menu">
+                            <li><a href="{{route('listings.create')}}"> Nueva lista </a></li>
+                        </ul></li>
+                        @endauth
                     <li><a href="{{route('games.index')}}">Juegos</a>
                         <!--<ul class="sub-menu">
                             <li><a href="game-single.html">Game Singel</a></li>
                         </ul> -->
                     </li>
                     @auth
-                    <li><a href="{{route('listings.index')}}">Listas</a></li>
                     <li><a href="{{route('games.create')}}">Agregar juego</a></li>
             
                     <li><a href="{{ route('user_profile', Auth::user()->name) }}">Perfil</a></li>

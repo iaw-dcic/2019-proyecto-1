@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Listing extends Model
 {
     public function games() {
-        return $this->hasMany('App\Game');
+        return $this->belongsToMany('App\Game');
     }
 
+    /*public function user() {
+        return $this->belongsTo('App\User');
+    }*/
+    
 }

@@ -8,7 +8,7 @@ use App\Game;
 use App\User;
 use Intervention\Image\Facades\Image;
 use Auth;
-
+use App\Listing;
 
 class GamesController extends Controller
 {
@@ -38,6 +38,7 @@ class GamesController extends Controller
                 ->orderBy('title', 'ASC')
                 ->paginate(9)
                 ->onEachSide(3);
+
             return view('pages.games')->with('games', $games);
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
@@ -53,6 +54,7 @@ class GamesController extends Controller
     public function create()
     {
         if (Auth::user()) {
+            //TODO: Pasarle las listas que posee $listings = encontrar listas del usuario
             return view('games.create');
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
@@ -90,6 +92,17 @@ class GamesController extends Controller
         $game->genre = $request->genre;
         $game->save();
 
+        //Pruebas de listas
+        $listing = Listing::find([1,2]);
+        $game->listings()->attach($listing);
+
+       // dd($game);
+        //exit;
+
+
+        //
+
+
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
 
         return redirect('games');
@@ -105,7 +118,18 @@ class GamesController extends Controller
     public function show($id)
     {
         $game = Game::find($id);
-        return view('games.game-single')->with('game', $game);
+
+        $listNames = [];
+        foreach ($game->listings as $listing) {
+            array_push($listNames,$listing->title);
+        }
+
+        $data = [
+            'game'  => $game,
+            'listings'   =>implode(" - ", $listNames),
+        ];
+
+        return view('games.game-single')->with('data', $data);
     }
 
     /**
@@ -170,7 +194,9 @@ class GamesController extends Controller
      */
     public function destroy($id)
     {
+
         $game = Game::find($id);
+
         // Check for correct user
         if (auth()->user()->id !== $game->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
@@ -181,9 +207,15 @@ class GamesController extends Controller
             Storage::delete('public/cover_images/thumbnail/' . $game->cover_image);
         }
 
-        $game->delete();
+        $game->delete();     
+        $game->listings()->detach();
+
         alert()->info('Atención!', 'El juego fue eliminado');
         return redirect('games');
+    }
+
+    public function removeListing(Game $game) {
+        
     }
 
     private function handleFileUpload(Request $request)

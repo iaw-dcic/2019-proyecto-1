@@ -54,11 +54,17 @@
 				<div class="row">
 
 					@foreach($games as $game)
-
 					<div class="col-lg-4 col-md-6">
 						<div class="game-item">
 							<a href="/games/{{$game->id}}"> <img class="img-thumbnail img-fluid" src="{{ asset("storage/cover_images/thumbnail/$game->cover_image") }}" alt="Cover image"></a>
 							<h5><a href="/games/{{$game->id}}" style="color: white">{{$game->title}}</a></h5>
+							<h3>El juego esta en estas listas:</h3>
+
+							<ul>
+								@foreach($game->listings as $listing)
+								<li>{{ $listing->title }}</li>
+								@endforeach
+							</ul>
 							<a href="/games/{{$game->id}}" class="read-more">info del juego <img src="{{asset('img/icons/double-arrow.png')}}"></a>
 						</div>
 					</div>
@@ -99,9 +105,7 @@
 	</div>
 
 
-	@endif @endauth 
-	
-	@guest
+	@endif @endauth @guest
 	<!-- Blog page -->
 	<div class="row">
 		<div class="col-xl-9 col-lg-8 col-md-7">
@@ -124,7 +128,7 @@
 				</div>
 			</div>
 
-			
+
 		</div>
 
 	</div>

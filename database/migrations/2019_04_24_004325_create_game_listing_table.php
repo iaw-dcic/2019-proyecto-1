@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddListingIdToGames extends Migration
+class CreateGameListingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddListingIdToGames extends Migration
      */
     public function up()
     {
-        Schema::table('games', function (Blueprint $table) {
-            $table->integer('listing_id')->nullable()->unsigned();
+        Schema::create('game_listing', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('game_id')->unsigned();
+            $table->integer('listing_id')->unsigned();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddListingIdToGames extends Migration
      */
     public function down()
     {
-        Schema::table('games', function (Blueprint $table) {
-            $table->dropColumn('listing_id');
-        });
+        Schema::dropIfExists('game_listing');
     }
 }

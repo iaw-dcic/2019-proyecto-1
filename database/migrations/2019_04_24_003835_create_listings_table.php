@@ -14,8 +14,8 @@ class CreateListingsTable extends Migration
     public function up()
     {
         Schema::create('listings', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+            $table->bigIncrements('id');
+            $table->string('title');
             $table->boolean('is_public');
             $table->timestamps();
         });

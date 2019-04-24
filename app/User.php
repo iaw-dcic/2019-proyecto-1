@@ -36,13 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-   /* public function games() {
-        return $this->hasMany('App\Game');
-    }*/
-
+    
     public function getRouteKeyName()
     {
         return 'name';
     }
+    /*public function listings() {
+        return $this->hasMany('App\Listing');
+    }*/
+
+   
 }

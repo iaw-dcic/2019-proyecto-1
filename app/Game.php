@@ -14,7 +14,7 @@ class Game extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function listing() {
-        return $this->belongsTo('App\Listing');
+    public function listings() {
+        return $this->belongsToMany('App\Listing');
     }
 }
