@@ -26,13 +26,45 @@ use Auth;
         $cocineros = User::all();
         return view('cocineros', ['cocineros'=> $cocineros]);
    }
-   public function receta(){
+   
+   public function recetas(){
     $recetas = Receta::all();
-    return view('receta', [
+    return view('recetas', [
         'recetas'=> $recetas,
          'ingredientes' => Ingrediente_de_receta::all()
         
         ]);
+}
+public function recetasCategoria($categoria){
+    $recetas = Receta::where('categoria',$categoria)->get();
+    return view('recetas', [
+        'recetas'=> $recetas,
+         'ingredientes' => Ingrediente_de_receta::all()
+        
+        ]);
+}
+public function receta($nombre){
+    $receta= Receta::where('nombre',$nombre)->get();
+    return view('receta',[
+        'receta'=> $receta]);
+}
+public function agregarReceta(Request $request, $id){
+    $nombre= $request->nombre;
+    $categoria= $request->categoria;
+    $descripcion= $request->descr;
+    $pasos= $request->pasos;
+    $lista=$request->lista;
+    $autor= $id;
+  
+    $receta=  Receta::create([
+        'nombre' => $nombre,
+        'descripcion' =>$descripcion,
+        'pasos'=>  $pasos,
+        'id_autor'=>  $autor,
+        'lista_id'=>$lista,
+        'categoria'=>$categoria
+    ]);
+    return back()->with('status','Datos cargados correctamente');
 }
    
 

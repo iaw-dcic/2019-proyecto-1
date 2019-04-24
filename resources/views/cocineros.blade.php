@@ -9,8 +9,12 @@
                 <li>
                     <div class="row">
                         <div class="col-1">
+                        @if($cocinero->avatar == null)
+                        <img src="{{asset('img/usuario.png')}}"  alt= "{{$cocinero->nombre}}" height=100 width=100> 
+                        @else
                         <img src="{{ $cocinero->avatar}}"  alt= "{{$cocinero->nombre}}" height=100 width=100> 
-                       </div>
+                        @endif
+                    </div>
                        <div class="col-9">
                            <a  href="{{route('verPerfil',['id'=>$cocinero->id])}}">
                                 {{$cocinero->nombre}}

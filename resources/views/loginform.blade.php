@@ -29,26 +29,35 @@
 			<a href="{{ route('social.auth', 'google') }} " class="btn btn-danger btn-lg" title="Google"><i class="fa fa-google"></i></a>
 		</div>
         <div class="or-seperator"><b>o</b></div>
-     
+        @if(Session::has('mensaje_error'))
+            {{ Session::get('mensaje_error') }}
+        @endif
+         <form method="post" action="{{route('login')}}">
+         {{ csrf_field() }}
+        
+        </div>
         <div class="form-group">
-        <label   >Usuario 
-            <input type="text" class="form-control input-lg" name="usuario" placeholder=" " required="required">
+        <label   >Email 
+            <input type="email" class="form-control input-lg" name="email" placeholder=" " required="required">
         </label>
         </div>
 		<div class="form-group">
         <label   >Contraseña
-            <input type="password" class="form-control input-lg" name="contraseña" placeholder=" " required="required">
+            <input type="password" class="form-control input-lg" name="password" placeholder=" " required="required">
         </label>
         </div>  
         <div class="form-group">
-
-            <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Inicia Sesión</button>
+        <label>  Recuerdame 
+            <input type="checkbox" name="remember" value="true">
+               
+            </label>
+         <button type="submit" class="btn btn-success btn-lg btn-block signup-btn">Inicia Sesión</button>
         </div>
         <div class="text-center small"><a href="#">Olvidaste tu contraseña ?</a></div>
     </form>
      
 </div>
- 
+<div class="tab-content">
 <div class="{{ (Request::is('crea') ? 'tab-pane fade in active' : 'tab-pane fade') }}" id="crea">
 					<br>
 					<fieldset>

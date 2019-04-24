@@ -14,7 +14,7 @@ class CreateRecetasTable extends Migration
     public function up()
     {
         Schema::table('recetas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+           
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('pasos');
@@ -22,6 +22,8 @@ class CreateRecetasTable extends Migration
             $table->unsignedBigInteger('lista_id');
             $table->foreign('id_autor')->references('id')->on('users');
             $table->foreign('lista_id')->references('id')->on('listas_de_recetas');
+            $table->primary(['nombre']);
+            $table->primary(['nombre','lista_id']);
             $table->timestamps();
         });
     }

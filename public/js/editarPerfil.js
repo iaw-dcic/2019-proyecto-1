@@ -35,3 +35,9 @@ function editarUsuario(perfil) {
     document.getElementById("botonGuardar").style.visibility = "visible";
 }
 
+function cargarModal(lista) {
+    var id = lista.id;
+    var nombre = lista.nombre;
+    document.getElementById('selectLista').innerHTML += '<option selected="true" value="' + id + '" >' + nombre + ' </option>';
+
+}

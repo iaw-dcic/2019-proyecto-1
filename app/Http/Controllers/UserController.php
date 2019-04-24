@@ -8,29 +8,54 @@ use Socialite;
 use App\User;
 use App\Receta;
 use App\Lista;
+use App\Ingrediente;
+use App\Medida;
 use Illuminate\Validation\Rules;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Redirect;
+
   class UserController extends Controller
 {
     
     public function login(){
         return view('loginform');
     }
+    public function postLogin(Request $request ) {
+        if (Auth::attempt ( array (
+                'email' => $request->get ( 'email' ),
+                'password' => $request->get ( 'password' ) 
+            ) )) {
+            
+            return Redirect::to ('/');
+        } else {
+            return back()->with('mensaje_error','Error');
+        }
+    }
+     
     public function crea(){
         return view('loginform');
     }
-    public function actualizar(UserRequest $request,$id){
+
+    /*Actualiza el perfil del usuario */
+    public function actualizar(Request $request,$id){
         $user =  User::find($id);
        
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->email = $request->email;
-        $user->descr = $request->descr;
+        
+        
+        $user->descripcion = $request->descr;
         if($user->save()){
-            return redirect('/');}
+            
+        
+            return back()->with('status','Datos cargados correctamente');}
+        else{
+            return view('cocineros');
+        }
          
      
-        return back()->with('status','Datos actualizados correctamente');
+         
     }
 
     // Metodo encargado de la redireccion a Facebook/Google
@@ -45,7 +70,7 @@ use App\Http\Requests\UserRequest;
        
       //  $this->validate($request, $rules);
 
-        User::create([
+       $user=  User::create([
             'nombre' => $request->nombre,
             'email' =>$request->email,
             'apellido'=>  $request->apellido,
@@ -101,11 +126,14 @@ use App\Http\Requests\UserRequest;
         $perfil=User::find($id); 
         $listas=Lista::where('usuario','=',$id)->get();
         $recetas= Receta::where('id_autor', $id)->get();
-
+        $ingredientes= Ingrediente::all();
+        $medidas= Medida::all();
         return view('perfil', [
             'perfil' =>  $perfil,
             'recetas' =>$recetas,
-            'listas' =>$listas
+            'listas' =>$listas,
+            'ingredientes' => $ingredientes,
+            'medidas' => $medidas
         ]);
     }
    

@@ -29,13 +29,13 @@
 
             <ul class="list-footer">
               <li>
-                <a href="/">Volver a Inicio</a>
+                <a href="/or1">Volver a Inicio</a>
               </li>
               <li>
-                <a href="#!">Cocineros</a>
+                <a href="{{route('cocineros')}}">Cocineros</a>
               </li>
               <li>
-                <a href="#!">Recetas</a>
+                <a href="{{route('recetas')}}">Recetas</a>
               </li>
               
             </ul>

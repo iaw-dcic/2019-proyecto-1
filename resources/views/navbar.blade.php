@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                       <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                       <a class="nav-link" href="/pr1">Home <span class="sr-only">(current)</span></a>
 			        	</li>
 				        <li class="nav-item active">
                       <a class="nav-link" href="{{route('cocineros')}}">Cocineros  </a>
@@ -16,8 +16,10 @@
 				        <li class="nav-item active dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"   data-toggle="dropdown">Recetas</a>
        			         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-         				        <a class="dropdown-item" href="#">Dulces</a>
-         				       <a class="dropdown-item" href="#">Saladas</a>
+         				        <a class="dropdown-item" href="{{route('recetaCategoria',['categoria'=>1])}}">Dulces</a>
+                        <a class="dropdown-item" href="{{route('recetaCategoria',['categoria'=>0])}}">Saladas</a>
+                        <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="{{route('recetas')}}">Todas</a>
                     </div>
                  </li>
          
@@ -41,7 +43,7 @@
             <a class="navbar-brand" href="/"><img src="{{$user->avatar}}" alt="logo" width=60 heigh=30 ></a>
             @endif
            <ul id="login-dp " class="dropdown-menu">
-             <a class="dropdown-item" href="#">Mi Perfil</a>
+             <a class="dropdown-item" href="{{route('verPerfil',['id'=>$user->id])}}">Mi Perfil</a>
              <a class="dropdown-item" href="{{route('logout')}}">Cerrar Sesion</a>									 
             </ul>	
             @endif

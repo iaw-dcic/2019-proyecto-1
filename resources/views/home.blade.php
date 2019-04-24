@@ -59,7 +59,8 @@
 </form>
 
 </section>
-  <!--  LOS TRES ICONOS CON LOS USUARIOS MAS CONOCIDOS
+
+<!--  LOS TRES ICONOS CON LOS USUARIOS MAS CONOCIDOS
   =====ESTA PUESTO EN UNA SECCION APARTE -->
   <section class="iconos">
   <div class="container marketing">
@@ -91,43 +92,60 @@
     @endforeach
      
     </section>
+  <!-- Seccion de las primeras 5 recetas dulces y las 5 saladas -->
+
     <section class="recetas">
     <!-- van las listas recetas -->
     <div class="container-fluid">
     <div class="row">
-        <div class="col" id="salados">
-           
-             <h3> Salados </h3>
-             <ul id="contenedorListado" class="list-group">
-               @foreach ($recetas as $receta)
-                 @if($receta->categoria==0) 
-                   <li> {{ $receta->nombre }}</li> 
-                   @endif
-                   
-               @endforeach
-               </ul>  
-          </div>
-       
-   
-    <div class="col"  id="dulces">
-        <h3> Dulce </h3>
-     
-        <ul id="contenedorListadoDulce" class="list-group">
-                
-                       @foreach ($recetas as $receta)
-                         @if($receta->categoria==1)
-                         <li> {{ $receta->nombre }}</li>
-                         @endif   
-                        
-                        @endforeach
-                      
-             
-            </ul>    
+        
+    <div class="col-md-12">
+    <h1 class="text-center"> Recetas más populares </h1>
+			<div class="row">
+				<div class="col-md-6">
+        <h3> Mejores recetas Saladas: </h3>
+					<div class="row">
+          @foreach($recetas as $receta)
+            @if($receta->categoria ==0)
+						<div class="col-md-4">
+							<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+						</div>
+						<div class="col-md-8">
+							<h3>
+								 {{$receta->nombre}}
+              </h3>
+              <p> Autor: <a href="{{route('verPerfil',['id'=>$receta->id_autor])}}"> {{$receta->autorId->nombre}}</a> </p>
             </div>
-    
+            @endif
+          @endforeach
+					</div>
+				</div>
+				<div class="col-md-6">
+        <h3> Mejores recetas Dulces: </h3>
+					<div class="row">
+          @foreach($recetas as $receta)
+            @if($receta->categoria ==1)
+						<div class="col-md-4">
+							<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+						</div>
+						<div class="col-md-8">
+							<h3>
+              {{$receta->nombre}}
+              </h3>
+              <p> Autor: <a href="{{route('verPerfil',['id'=>$receta->id_autor])}}"> {{$receta->autorId->nombre}}</a> </p>
+             
+            </div>
+            @endif
+          @endforeach
+					</div>
+				</div>
+			</div>
+		</div>
+  
+  </div>
   </div>
   </section>
     <!-- /END THE FEATURETTES -->
     </div>
-
+    
 @endsection

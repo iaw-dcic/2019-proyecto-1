@@ -14,17 +14,17 @@ class CreateIngredientesDeRecetaTable extends Migration
     public function up()
     {
         Schema::create('ingredientes_de_receta', function (Blueprint $table) {
-            $table->bigIncrements('id');
+           $table->bigIncrements('id');
             $table->timestamps();
            
             
-            $table->unsignedBigInteger('receta_id');
+            $table->string('receta_nombre');
             $table->unsignedBigInteger('medida_id');
             $table->unsignedBigInteger('ingrediente_id');
             $table->unsignedBigInteger('cantidad');
             
             
-            $table->foreign('receta_id')->references('id')->on('recetas');
+            $table->foreign('receta_nombre')->references('nombre')->on('recetas');
             $table->foreign('medida_id')->references('id')->on('medidas');
             $table->foreign('ingrediente_id')->references('id')->on('ingredientes');
         });
