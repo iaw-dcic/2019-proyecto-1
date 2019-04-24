@@ -4,6 +4,9 @@ namespace Haiku\Http\Controllers\Auth;
 
 use Haiku\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+use Haiku\User;
 
 class LoginController extends Controller
 {
@@ -54,8 +57,22 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
 
+        $githubUser = Socialite::driver('github')->user();
+        //dd($githubUser);
+        //add user to database
+        $user = User::where('provider_id', $githubUser->getId())->first();
+        if(! $user){
+                    $user = User::create([
+                        'email' => $githubUser->getEmail(),
+                        'name' => $githubUser->getName(),
+                        'provider_id' => $githubUser->getId(),
+                        
+
+                    ]);
+        }
+        Auth::login($user,true);
         // $user->token;
+        return redirect('/home');    
     }
 }

@@ -57,7 +57,7 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a href="#" class="btn btn-primary" role="button" aria-pressed="true">Login with Github</a>
+                                <a href="login/github" class="btn btn-primary" role="button" aria-pressed="true">Login with Github</a>
 
                                 
 
