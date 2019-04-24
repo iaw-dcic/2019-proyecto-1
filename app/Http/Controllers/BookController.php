@@ -18,19 +18,16 @@ class BookController extends Controller
 
     public function store($id){
        $book = new Book();
-       $book ->title = request('title');
-       $book ->category = request('category');
-       $book ->description = request('description');
+       $book->title = request('title');
+       $book->category = request('category');
+       $book->description = request('description');
+       $book->id_collection = $id;
 
        $book->save();
 
-       $cb = new Collectionbook();
-       $cb -> id_book = 2;
-       $cb -> id_collection = 4;
-       $cb -> save();
+      // $books = Book::where('id_collection', '=', $id);
+      $books = Book::all();
 
-       $books = Book::all();
-    
        return view('cargarlibros', compact('books','id'));
     }
 

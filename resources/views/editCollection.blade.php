@@ -21,7 +21,7 @@
 
                             <p class="card-text">{{$colec->description}}</p>
                             <h1>{{$colec->id_collection}}</h1>
-                            <a href="/home/cargarlibros/{{$colec->id_collection}}" class="card-link"> Ver</a>
+                            <a href="/home/cargarlibros/{{$colec->id}}" class="card-link"> Ver</a>
 
                             <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Eliminar</button>
 
@@ -33,16 +33,18 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                     
                                         </div>
+
                                         <div class="modal-body">
                                             <h4>Eliminar</h4>
                                             <p>Desea eliminar la coleccion de libros?</p>
                                         </div>
-                                        <div class="modal-footer">
-                                            <form method="POST" action="/home/editCollection/{{$colec->id_collection}}">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-                                            </form>
-                                        </div>
+                                        <form method="POST" action="/home/editCollection/{{$colec->id}}"> {{csrf_field()}}
+
+                                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Aceptar</button>
+
+                                        </form>
                                     </div>
 
                                 </div>

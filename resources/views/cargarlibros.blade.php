@@ -31,7 +31,7 @@
     </div>
   </div>  
 
-<form method="POST" action="/home/cargarlibros/{$id}">
+<form method="POST" action="/home/cargarlibros/{{$id}}">
   {{csrf_field()}}
 
   <div class="album py-5 bg-light">
@@ -42,7 +42,7 @@
           <div class="col mb-4">
             <div class="card" style="width: 18rem;">
               <div class="card-body">
-                <h4>Cargar nuevo archivo {$id}</h4>
+                <h4>Cargar nuevo archivo {{$id}}</h4>
                 <h5 class="card-title"><input type="text" class="form-control" name="title" placeholder="Titulo"></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><input type="text" class="form-control" name="category" placeholder="Categoria"></h6>
                 <h6 class="card-subtitle mb-2 text-muted"><input type="text" class="form-control" name="author" placeholder="Autor"></h6>

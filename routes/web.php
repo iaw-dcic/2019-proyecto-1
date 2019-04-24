@@ -32,7 +32,7 @@ Route::get('/home','CollectionController@index');
 
 Route::get('/home/editCollection','CollectionController@load');
 Route::post('/home/editCollection','CollectionController@store');
-Route::get('/home/editCollection/{id}','CollectionController@delete');
+Route::post('/home/editCollection/{id}','CollectionController@delete');
 
 
 Route::get('/home/perfil','UserController@index');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Collection;
+use App\Book;
 
 class CollectionController extends Controller
 {
@@ -40,18 +41,16 @@ class CollectionController extends Controller
 
     public function delete($id)
     {
+        $libros = Book::where('id_collection', '=', $id);
 
-        // Conseguimos el objeto
-        $coleccion = Collection::where('id_collection', '=', $id)->first();
+        $libros->delete();
 
-        // Lo eliminamos de la base de datos
+        $coleccion = Collection::where('id', '=', $id)->first();
+
         $coleccion->delete();
 
+        $collec = Collection::all();
 
-     //   $collec = Collection::find($id);
-
-       // $collec->delete($collec->id_collection);
-
-        return redirect()->load();
+        return view('editCollection', compact('collec'));
     }
 }

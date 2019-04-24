@@ -20,8 +20,8 @@
                 <h5 class="card-title">{{$colec->title}}</h5>
 
                 <p class="card-text">{{$colec->description}}</p>
-               <h1>{{$colec->id_collection}}</h1>
-                <a href="/home/cargarlibros/{{$colec->id_collection}}" class="card-link"> Ver</a>
+               <h1>{{$colec->id}}</h1>
+                <a href="/home/cargarlibros/{{$colec->id}}" class="card-link"> Ver</a>
                 
               </div>
             </div>

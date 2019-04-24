@@ -22,7 +22,7 @@
 
                 <p class="card-text">{{$colec->description}}</p>
                
-                <a href="/welcome/loadbook/{{$colec->id_collection}}" class="card-link"> Ver</a>
+                <a href="/welcome/loadbook/{{$colec->id}}" class="card-link"> Ver</a>
                 
               </div>
             </div>
