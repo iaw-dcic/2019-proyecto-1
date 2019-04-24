@@ -46,14 +46,32 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="ISBN" class="col-md-4 col-form-label text-md-right">{{ __('ISBN') }}</label>
+                            <label for="isbn" class="col-md-4 col-form-label text-md-right">{{ __('ISBN') }}</label>
 
                             <div class="col-md-6">
-                                <input id="ISBN" type="text" class="form-control{{ $errors->has('ISBN') ? ' is-invalid' : '' }}" name="ISBN" value="{{ old('ISBN') }}" required>
+                                <input id="isbn" type="text" class="form-control{{ $errors->has('isbn') ? ' is-invalid' : '' }}" name="isbn" value="{{ old('isbn') }}" required>
 
-                                @if ($errors->has('ISBN'))
+                                @if ($errors->has('isbn'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('ISBN') }}</strong>
+                                        <strong>{{ $errors->first('isbn') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="list_id" class="col-md-4 col-form-label text-md-right">{{ __('Lista') }}</label>
+                            <div class="col-md-6">
+                                <select id="list_id" class="form-control{{ $errors->has('list_id') ? ' is-invalid' : '' }}" name="list_id" value="{{ old('list_id') }}" required>
+                                    @foreach($lists as $key => $list)
+                                        <option value="{{ $key }}">{{ $list->name }}</option>
+                                    @endforeach
+
+                                </select>
+
+                                @if ($errors->has('list_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('list_id') }}</strong>
                                     </span>
                                 @endif
                             </div>

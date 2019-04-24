@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Lista: {{$name}}</div>
+                <div class="card-header">Lista: {{$name}} - {{($is_public ==0) ? 'Lista no Pública' : 'Lista Pública' }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -20,7 +20,6 @@
                             <th>Nombre</th>
                             <th>Autor</th>
                             <th>ISBN</th>
-                            <th>¿Es pública?</th>
                         </tr>
                         @foreach($books as $book)
                         <tr>
@@ -28,7 +27,6 @@
                             <td>{{ $book->name }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->isbn }}</td>
-                            <td>{{ ($book->public_list ==0) ? 'No' : 'Sí' }}</td>
                         </tr>
                         @endforeach
                         

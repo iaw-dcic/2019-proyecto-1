@@ -20,8 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/book', 'BookController');
-Route::get('/book/list/{id}', 'BookController@list');
 
+
+Route::get('user/{userid}/list', 'ListaController@publicLists');
 Route::resource('/list', 'ListaController');
 
 

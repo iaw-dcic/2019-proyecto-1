@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Lista;
+use Auth;
 
 
 class CheckBookPrivacy
@@ -20,7 +21,7 @@ class CheckBookPrivacy
        $id = $request->route()->parameter('list');
        $lista = Lista::find($id);
 
-       if($lista->public_list==0){
+       if(Auth::user()->id !== $lista->user_id && $lista->public_list==0){
 
           return redirect()->route('home');
        }

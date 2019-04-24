@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Lista;
 use Illuminate\Http\Request;
 use Auth;
+use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
 {
@@ -37,7 +39,17 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('book.create');
+
+        $lists = Auth::user()->list()->get();
+
+        if($lists) {
+            $data['lists'] = $lists;
+        } else {
+            $data['lists'] = [];
+        }
+
+
+        return view('book.create', $data);
     }
 
     /**
@@ -46,14 +58,15 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
         $book = New Book();
 
         $book->name=$request->name;
         $book->author=$request->author;
-        $book->isbn=$request->ISBN;
+        $book->isbn=$request->isbn;
         $book->user_id = Auth::user()->id;
+        $book->list_id=$request->list_id;
 
         if ($book->save()) {
             return redirect()->route('book.create')->with('status', 'Éxito');
