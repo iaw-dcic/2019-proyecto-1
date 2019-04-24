@@ -48,3 +48,9 @@ Route::patch('/songs/{song}', 'SongController@update');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/search', 'searchController@onSearch');
+
+Route::get('/search/{user}', 'searchController@seeUserProfile');
+
+Route::get('/search/{user}/{list}', 'searchController@seeUserList');

@@ -43,6 +43,9 @@ class ListController extends Controller
     }
 
     public function update(Lista $list){
+        $value = request('isPublic') == 'on' ? 1 : 0;
+
+        $list->public = $value;
         $list->title = request('title');
         $list->save();
         return redirect('/lists');

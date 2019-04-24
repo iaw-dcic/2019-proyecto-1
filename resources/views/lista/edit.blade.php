@@ -13,6 +13,18 @@
 				<input type="text" class="form-control" name="title" value="{{$list->title}}">
 			</div>
 
+			@if ($list->public == 0)
+				<div class="custom-control custom-checkbox" style="margin-bottom: 20px">
+	    			<input type="checkbox" class="custom-control-input" name="isPublic" id="defaultUnchecked">
+	    			<label class="custom-control-label" for="defaultUnchecked">Publica</label>
+				</div>
+			@else 
+				<div class="custom-control custom-checkbox" style="margin-bottom: 20px">
+	    			<input type="checkbox" class="custom-control-input" name="isPublic" id="defaultUnchecked" checked>
+	    			<label class="custom-control-label" for="defaultUnchecked">Publica</label>
+				</div>
+			@endif
+
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Editar</button>
 			</div>

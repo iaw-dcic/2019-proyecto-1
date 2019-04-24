@@ -7,13 +7,23 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+	<nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: #e3f2fd;">
 		<div class="container">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
                 	@yield('leftside')
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+
+	                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					    	<form class="form-inline ml-auto" method="GET" action="/search">
+					      		<div class="md-form my-0">
+				        		<input class="form-control mr-sm-2" type="text" name="user" placeholder="Search" aria-label="Search">
+					    	  	</div>
+					    	</form>
+					 	 </div>
+
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About</a>
                         </li>

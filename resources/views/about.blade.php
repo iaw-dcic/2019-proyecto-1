@@ -1,4 +1,4 @@
-@extends('mainTemplate')
+@extends('secondTemplate')
 
 @section('content')
 	<h1>Acerca de lo que pinte</h1>
