@@ -241,3 +241,11 @@ body {
   width:100;
   height:100;
 }
+#botonGuardar{
+  visibility: hidden;
+}
+input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+ 

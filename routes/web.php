@@ -19,6 +19,9 @@ Route::get('receta','RecetasController@receta')->name('receta');
 /*  Usuarios  */
 
 Route::post('/store', 'UserController@store');
+
+Route::post('actualizarPerfil/ ', 'UserController@actualizar')->name('actualizarPerfil');
+
 Route::get('login', 'UserController@login')->name('login');
 Route::get('crea', 'UserController@crea')->name('crea');
 Route::get('logout', 'UserController@logout')->name('logout');

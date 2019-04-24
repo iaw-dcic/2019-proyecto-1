@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 <body>
-
+ 
 <div class="container-fluid">
 <div class="row">
     <div class="col-md-12" id="perfil">
@@ -20,57 +20,60 @@
                 <img alt="{{$perfil->nombre}}"  src="{{asset('img/usuario.png')}}" class="rounded-circle">
                 @endif
                 </div>
-
-                <div class="col-md-6"style="background-color: lightgray">
-                <dl>
-                    <dt>
-                       Nombre: 
-                    </dt>
-                   
-                         <dd id="perfil.nombre">
-                        {{$perfil->nombre}}
-                           </dd>
-                           
+                
+                <div id="datos" class="col-md-6"style="background-color: lightgray">
+                 <!--
+                    <form id="form-editar-perfil" accept-charset="UTF-8" role="form" method="POST" action="{{route('actualizarPerfil',['id'=>$perfil->id])}}"  >
+                    -->
+                    <form id="form-editar-perfil" accept-charset="UTF-8" role="form" method="POST" action="{{route('actualizarPerfil')}}"  >
+                    {{ csrf_field() }}
+                     <div class="form-group" id="perfil.nombre">
+                        <label class=" "> Nombre: <br>
+                         {{$perfil->nombre}} </label> 
+                     </div>
+               
+                
+                    <div class="form-group" id="perfil.apellido">
                     @if($perfil->apellido !=null)
-                     <dt>
-                        Apellido
-                    </dt>
-                    <dd id="perfil.apellido">
-                       {{$perfil->apellido}}
-                    </dd>
-                     @endif
+                        <label class=" "> Apellido: <br>
+                         {{$perfil->apellido}} </label> 
+                         @endif
+                     </div>
+                    
+                     
+                     <div class="form-group" id="perfil.email">
+                        <label class=" "> Email:<br>
+                         {{$perfil->email}} </label> 
+                     </div>
+                    
+                    <div class="form-group" id="perfil.descr">
+                        <label class=" "> Descripcion (opcional): <br>
+                        @if($perfil->descr !=null)
+                         {{$perfil->descr}} 
+                        @endif
+                         </label> 
+                     </div>
+                    
+                     <div class="form-group">
+                        <label class=" "> Se unio:
+                        <br> {{$perfil->created_at}} </label> 
+                     </div>
 
-                    <dt>
-                    Email
-                    </dt>
-                    <dd id="perfil.email">
-                    {{$perfil->email}}
-                    </dd>
-                    <dt>
-                       Descripcion (opcional):
-                    </dt>
-                    <dd id="descripcion">
-                    
-                    </dd>
-                    
-                    <dt>
-                       Se unio:
-                    </dt>
-                    <dd>
-                    {{$perfil->created_at}}
-                    </dd>
-                </dl> 
+                     <button id="botonGuardar" class="btn btn-primary" >Guardar</button></div>
+                     </form>
+        
                  <div id="lugarBoton">
                 <button id="button" type="button" class="btn btn-success" onclick="editarUsuario({{$perfil}})">
                     Editar
                 </button>
+      
                  </div>
                  </div>
               
             
                 
             </div>    
-            </div> 
+           
                
          <!-- Lado derecho, las listas del usuario -->  
             <div class="col-md-8">
@@ -110,8 +113,10 @@
 </div>
 
 </body>
+<!--
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/scripts.js')}}"></script>
+-->
 <script src="{{ asset('/js/editarPerfil.js') }}"></script>
 @stop

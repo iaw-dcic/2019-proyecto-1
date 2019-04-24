@@ -3,31 +3,35 @@ function editarUsuario(perfil) {
     var id = perfil.id;
     var nombre = perfil.nombre;
     var email = perfil.email;
-    document.getElementById('perfil.nombre').innerHTML = ' <label class="sr-only"> nombre </label> '
-        + '<form>  <input type="text" class="form-control input-lg" name="Nombre" placeholder="' + nombre + '"></form>';
-    document.getElementById('perfil.email').innerHTML = ' <label class="sr-only"> email </label> '
-        + '<form>  <input type="text" class="form-control input-lg" name="Nombre" placeholder="' + email + '"></form>';
+
+    document.getElementById('perfil.nombre').innerHTML = ' <label> Nombre: </label><br> '
+        + '<div class="form-group"  > <input type="text" required class="form-control input-lg" name="nombre" value="' + nombre + '"  ></div>';
+
+    document.getElementById('perfil.email').innerHTML = ' <label> email: </label><br> '
+        + '<div class="form-group"  >     <input type="email" required class="form-control input-lg" name="email" value="' + email + '"  ></div>';
 
     var apellido = perfil.apellido;
     if (apellido != null) {
-        document.getElementById('perfil.apellido').innerHTML = ' <label class="sr-only"> Apellido </label> '
-            + '<form>  <input type="text" class="form-control input-lg" name="Nombre" placeholder="' + apellido + '"></form>';
-        contentEditable = 'true';
+        document.getElementById('perfil.apellido').innerHTML = ' <label> Apellido: </label><br> '
+            + '<div class="form-group"  >     <input type="text" class="form-control input-lg" name="apellido" value="' + apellido + '"></div>';
+
+    }
+    else {
+        document.getElementById('perfil.apellido').innerHTML = ' <label> Apellido: </label><br> '
+            + '<div class="form-group"  >     <input type="text" class="form-control input-lg" name="apellido" placeholder=""></div>';
     }
     var descr = perfil.descr;
     if (descr != null) {
-        document.getElementById('descripcion').innerHTML = '<form>  <input  type="text" class="form-control input-lg" name="Nombre" placeholder="' + descr + '"></form>';
+        document.getElementById('perfil.descr').innerHTML = '<label> Descripcion (opcional): </label> <br> '
+            + '<div class="form-group"  >   <input type="text" class="form-control input-lg" name="descr" value="' + descr + '"></div>';
     }
     else {
-        document.getElementById('descripcion').innerHTML += '<form>  <input  type="text" class="form-control input-lg" name="descr" placeholder=" "></form>';
+
+        document.getElementById('perfil.descr').innerHTML = ' <label> Descripcion (opcional): </label><br> '
+            + '<div class="form-group"  >     <input  type="text" class="form-control input-lg" name="descr" placeholder=" "></div>';
     }
 
     document.getElementById('button').remove();
-    document.getElementById('lugarBoton').innerHTML += '<button id="button" type="submit" class="btn btn-success" onclick="guardar()">'
-        + '   Guardar </button>';
+    document.getElementById("botonGuardar").style.visibility = "visible";
 }
 
-function guardar() {
-
-
-}

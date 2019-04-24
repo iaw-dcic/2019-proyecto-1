@@ -19,6 +19,19 @@ use App\Http\Requests\UserRequest;
     public function crea(){
         return view('loginform');
     }
+    public function actualizar(UserRequest $request,$id){
+        $user =  User::find($id);
+       
+        $user->nombre = $request->nombre;
+        $user->apellido = $request->apellido;
+        $user->email = $request->email;
+        $user->descr = $request->descr;
+        if($user->save()){
+            return redirect('/');}
+         
+     
+        return back()->with('status','Datos actualizados correctamente');
+    }
 
     // Metodo encargado de la redireccion a Facebook/Google
     public function redirectToProvider($provider)
