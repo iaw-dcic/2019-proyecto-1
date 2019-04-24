@@ -11,7 +11,7 @@
               @csrf
 
               <div id='avatar-content' class="col">
-                <img id='avatarImage' src="{{ asset('images/default.png') }}" alt="avatar" width="100" height="100">
+                <img class='avatarImage' src="{{ asset('images/default.png') }}" alt="avatar" width="120" height="120">
                 <input id='fileAvatar' name='avatar' type="file" accept="image/*">
               </div>
 

@@ -25,3 +25,5 @@ Route::prefix('login')->group(function () {
     Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
     Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.provider.callback');
 });
+
+Route::post('updateuser', 'HomeController@updateUser')->name('updateuser');

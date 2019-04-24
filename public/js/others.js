@@ -4,7 +4,7 @@ $( document ).ready(function() {
         'autoclose': true
     });
 
-    $('#avatarImage').on('click', function(){
+    $('.avatarImage').on('click', function(){
         $('#fileAvatar').trigger('click');
     });
 
@@ -17,7 +17,7 @@ function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            $('#avatarImage').attr('src', e.target.result);
+            $('.avatarImage').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }

@@ -32,6 +32,7 @@
     @endguest
 
     @if(auth()->user())
+        <script src="{{ asset('js/profile.js') }}" type="text/javascript"></script>
         <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
     @endif
 </head>
@@ -66,9 +67,9 @@
                                 <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if(auth()->user()->avatar && auth()->user()->provider_id)
-                                        <img id='avatarUser' src="{{ auth()->user()->avatar }}" alt="avatar" width="22" height="22">
+                                        <img class='avatarUser' src="{{ auth()->user()->avatar }}" alt="avatar" width="22" height="22">
                                     @elseif(auth()->user()->avatar && !(auth()->user()->provider_id))
-                                        <img id='avatarUser' src="../{{ auth()->user()->avatar }}" alt="avatar" width="22" height="22">
+                                        <img class='avatarUser' src="../{{ auth()->user()->avatar }}" alt="avatar" width="22" height="22">
                                     @endif
                                     {{ auth()->user()->name }} <span class="caret"></span>
                                 </a>

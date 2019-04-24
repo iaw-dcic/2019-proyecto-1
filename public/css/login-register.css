@@ -13,7 +13,7 @@ body{
     background-size: cover;
 }
 
-#avatarImage{
+.avatarImage{
     border-radius: 50%;
     border: 3px solid #3b5998;
 }
