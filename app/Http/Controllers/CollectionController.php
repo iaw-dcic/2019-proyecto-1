@@ -19,6 +19,7 @@ class CollectionController extends Controller
     {
         $colecc = new Collection();
         $colecc->title = request('title');
+        $colecc->category = request('category');
         $colecc->description = request('description');
         $colecc->save();
 

@@ -10,7 +10,8 @@ class BookController extends Controller
 {
     public function index($id)
     {
-        $books = Book::all();
+        $books = Book::where('id_collection', '=', $id);
+
 
         return view('cargarlibros', compact('books','id'));
     }
@@ -19,14 +20,14 @@ class BookController extends Controller
     public function store($id){
        $book = new Book();
        $book->title = request('title');
-       $book->category = request('category');
-       $book->description = request('description');
+       $book->author = request('author');
+      // $book->file = request('file');
        $book->id_collection = $id;
 
        $book->save();
 
-      // $books = Book::where('id_collection', '=', $id);
-      $books = Book::all();
+       $books = Book::where('id_collection', '=', $id);
+       //  $books = Book::all();
 
        return view('cargarlibros', compact('books','id'));
     }

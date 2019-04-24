@@ -18,10 +18,7 @@
             <div class="card" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">{{$bk->title}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{$bk->category}}</h6>
-                <p class="card-text">{{$bk->description}}</p>
-                
-                
+                <h6 class="card-subtitle mb-2 text-muted">{{$bk->author}}</h6>              
               </div>
             </div>
           </div>
@@ -42,14 +39,10 @@
           <div class="col mb-4">
             <div class="card" style="width: 18rem;">
               <div class="card-body">
-                <h4>Cargar nuevo archivo {{$id}}</h4>
+                <h4>Cargar nuevo archivo</h4>
                 <h5 class="card-title"><input type="text" class="form-control" name="title" placeholder="Titulo"></h5>
-                <h6 class="card-subtitle mb-2 text-muted"><input type="text" class="form-control" name="category" placeholder="Categoria"></h6>
                 <h6 class="card-subtitle mb-2 text-muted"><input type="text" class="form-control" name="author" placeholder="Autor"></h6>
-
-                <p class="card-text"><textarea class="form-control" name="description" rows="3"></textarea></p>
-
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              <!--  <input type="file" class="form-control-file" id="exampleFormControlFile1"> -->
                 <br>
                 <button type="submit" class="btn btn-link"> Cargar</button>
 
