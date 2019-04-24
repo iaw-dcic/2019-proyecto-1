@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Listing;
+use Auth;
 
 class ListingsController extends Controller
 {
@@ -16,7 +17,7 @@ class ListingsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => []]);
+        $this->middleware('auth', ['except' => ['index','create']]);
     }
 
     /**
@@ -26,8 +27,21 @@ class ListingsController extends Controller
      */
     public function index()
     {
-        $listings = Listing::all();
-        return view('listings.index')->with('listings',$listings);
+        if (Auth::user()) {
+            $user_id = auth()->user()->id;
+            $listings = Listing::where('user_id', '=', $user_id)->get();
+            
+            $data = [
+                'listings'  => $listings,
+                'listOwnerName'   => Auth::user()->name,
+            ];
+
+            return view('listings.listing-index')->withData($data);
+        } else {
+            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus listas.');
+            //return view('listings.index'); //Poner logica en listings.index parecida a games.blade para ponerle un buscador de listas
+            return redirect()->guest('/login'); 
+        }    
     }
 
     /**
@@ -37,7 +51,12 @@ class ListingsController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()) {      
+            return view('listings.listing-create'); 
+        } else {
+            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para crear una lista.');
+            return redirect()->guest('/login');
+        }
     }
 
     /**
@@ -48,7 +67,19 @@ class ListingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'title' => 'required',
+            'visibility' => 'required',
+        ));
+
+        $listing = new Listing;
+        $listing->title = $request->title;
+        $listing->visibility = $request->visibility;
+        $listing->user_id = auth()->user()->id;
+       // $listing->save();
+
+        alert()->success('Listo!', 'La lista fue creada');
+        return redirect('listings');
     }
 
     /**
@@ -95,4 +126,18 @@ class ListingsController extends Controller
     {
         //
     }
+
+    public function getUserListings($userName)
+    {
+            $user = User::where('name', $userName)->first();
+            $userListings = Listing::where('user_id', $user->id)->get();
+
+            $data = [
+                'listings'   => $userListings,
+                'listOwnerName'  => $user->name,
+            ];
+
+            return view('pages.profile')->with('data', $data);
+    }
+
 }

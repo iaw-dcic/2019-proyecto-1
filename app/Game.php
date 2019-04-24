@@ -10,9 +10,9 @@ class Game extends Model
     public $primaryKey = 'id';
     public $timestamps = true;
 
-    public function user() {
+    /*public function user() {
         return $this->belongsTo('App\User');
-    }
+    }*/
 
     public function listings() {
         return $this->belongsToMany('App\Listing');

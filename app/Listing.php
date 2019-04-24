@@ -10,8 +10,8 @@ class Listing extends Model
         return $this->belongsToMany('App\Game');
     }
 
-    /*public function user() {
+    public function user() {
         return $this->belongsTo('App\User');
-    }*/
+    }
     
 }

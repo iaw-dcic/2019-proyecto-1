@@ -30,7 +30,9 @@ class GamesController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $user_id = auth()->user()->id;
+            /*$user_id = auth()->user()->id;
+
+            //Formas de mandar los games:
             //$posts = Post::orderBy('title','desc')->get();
             //$posts = Post::orderBy('created_at','desc')->paginate(10);
 
@@ -43,7 +45,7 @@ class GamesController extends Controller
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
             return view('pages.games');
-        }
+        */}
     }
 
     /**
@@ -55,7 +57,7 @@ class GamesController extends Controller
     {
         if (Auth::user()) {
             //TODO: Pasarle las listas que posee $listings = encontrar listas del usuario
-            return view('games.create');
+            return view('games.create'); //->with('listings',$listings)
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
             return redirect()->guest('/login');
@@ -83,7 +85,7 @@ class GamesController extends Controller
         $fileNameToStore = $this->handleFileUpload($request);
 
         $game = new Game;
-        $game->user_id = auth()->user()->id;
+      //  $game->user_id = auth()->user()->id;
         $game->title = $request->title;
         $game->rating = $request->rating;
         $game->cover_image = $fileNameToStore;
@@ -91,7 +93,7 @@ class GamesController extends Controller
         $game->mode = $request->mode;
         $game->genre = $request->genre;
         $game->save();
-
+        
         //Pruebas de listas
         $listing = Listing::find([1,2]);
         $game->listings()->attach($listing);
@@ -198,9 +200,9 @@ class GamesController extends Controller
         $game = Game::find($id);
 
         // Check for correct user
-        if (auth()->user()->id !== $game->user_id) {
+       /* if (auth()->user()->id !== $game->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
-        }
+        }*/
 
         if ($game->cover_image != 'noimage.jpg') {
             // Delete Image

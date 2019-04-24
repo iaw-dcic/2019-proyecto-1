@@ -24,7 +24,7 @@
 <div class="limiter">
     <div class="container-table100">
         <div class="wrap-table100">
-            <h3 style="color:bisque; text-align:center"> Listas de {{Auth::user()->name}} </h3>
+            <h3 style="color:bisque; text-align:center"> Listas de {{$data['listOwnerName']}} </h3>
 
             <div class="table">
                 <br>
@@ -44,14 +44,14 @@
                     </div>
                     @endguest
                 </div>
-                @foreach($listings as $listing)
+                @foreach($data['listings'] as $listing)
                 <div class="row">
                     <div class="cell" data-title="Full Name">
-                        Juegos de steam
+                        {{$listing->title}}
                     </div>
                     <div class="cell" data-title="Age">
 
-                    @if($listing->is_public) Si
+                    @if($listing->visibility == 'Publica') Si
                     @else No     @endif
 
 

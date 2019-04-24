@@ -25,13 +25,10 @@
         <form action="{{ route('games.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- {{ csrf_field() }} -->
-            <!-- Name -->
+            <!-- Title-->
             <div class="form-style-agile">
                 <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre del juego *</label>
                 <input name="title" type="text" class="form-control" required>
-                <div class="invalid-feedback">
-                    El nombre es obligatorio
-                </div>
             </div>
 
             <!-- Console -->

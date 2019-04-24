@@ -36,14 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function getRouteKeyName()
     {
         return 'name';
     }
-    /*public function listings() {
+    
+    public function listings() {
         return $this->hasMany('App\Listing');
-    }*/
+    }
 
    
 }
