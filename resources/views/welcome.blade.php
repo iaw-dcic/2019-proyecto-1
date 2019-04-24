@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container" id="bg-div">
+    <div class="container">
      
       @if (! empty($users))
 
@@ -32,6 +32,7 @@
 
     
             
+    </div>
     </div>
 
 @endsection
