@@ -11,7 +11,7 @@
     @include('admin.template.navBar.nav')
 
     <section>
-        @include('admin.template.navBar.flash-message')
+       
         @yield('content')
     </section>     
 

@@ -32,6 +32,11 @@ Route::group(['prefix' => 'admin'],function(){
     */
                 //usuarios      //controlador
     Route::resource('users','UsuariosController');
+
+
+
+    Route::resource('listas','ListasController');
+
 });
 
 

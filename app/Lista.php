@@ -27,4 +27,12 @@ class Lista extends Model
  }
 
 
+ //mensajes de error
+ public static function messages($id = '') {
+    return [
+        'name.required' => 'Debe ingresar un nombre para la lista',
+        'cantidad_canciones.required' => 'Debe ingresar la cantidad de canciones que posee la lista',
+    ];
+}
+
 }

@@ -42,17 +42,19 @@ class UsuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
      //A traves de un POST
-    public function store(Request $request)
+    public function store()
     { 
-        //creo nuevo usuario
-          $user= new User($request->all());
-        //cifro contrasenia
-          $user->password = bcrypt($request->password);
-        //guardo el nuevo usuario
-          $user -> save();
+        //2da capa de validacion: si no la pasa me redirige a la misma pagina
+        $atributos= request()->validate([
+                        'name'=> ['required','min:3'],
+                        'email'=> 'required',
+                        'password'=> ['required', 'min:4'],
+                    ],User::messages());
 
-         //Vuelvo al listado usando un get y muestro un mensaje flash
-         return redirect()->route('users.index')->with('success','Usuario \''.$user->name.'\' ha sido creado con exito!');
+        //con los atributos ya validados, creo el usuario
+        $user = User::create($atributos);
+
+        return redirect()->route('users.index')->with('success','Usuario \''.$user->name.'\' ha sido creado con exito!');
     }
 
 
@@ -63,6 +65,7 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //muestra las canciones de una lista en este caso
     public function show($id)
     {
         //
@@ -74,10 +77,9 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //encuentro ese objeto
-        $user= User::find($id);
+        //recibo ese objeto
         //y se lo paso a la vista
         return view('admin/users/edit',compact('user'));
     }
@@ -90,12 +92,13 @@ class UsuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     //en request recibo los nuevos datos del usuario
-    public function update(Request $request, $id)
+    public function update(User $user)
     {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email= $request->email;
-        $user->save();
+        $user->update(request()->validate([
+                            'name'=> ['required','min:3'],
+                            'email'=> 'required',
+                            'password'=> ['required', 'min:4'],
+                        ],User::messages()));
         
          //Vuelvo al listado usando un get y muestro un mensaje flash
          return redirect()->route('users.index')->with('info','Usuario \''.$user->name.'\' ha sido editado con exito!');
@@ -107,8 +110,12 @@ class UsuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        dd('quiero eliminar el id: '.$id);
+        //$user= User::findOrFail($id);  no necesario si recibo el user en lugar de: recibir id y luego buscar ese user
+
+        $user->delete();
+         //Vuelvo al listado usando un get y muestro un mensaje flash
+         return redirect()->route('users.index')->with('warning','Usuario \''.$user->name.'\' ha sido eliminado!');
     }
 }

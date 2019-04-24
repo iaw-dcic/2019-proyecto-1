@@ -44,6 +44,13 @@ class User extends Authenticatable
     }
 
 
-
+    //mensajes de error
+    public static function messages($id = '') {
+        return [
+            'name.required' => 'Debe ingresar un nombre de usuario',
+            'email.required' => 'Debe ingresar un email',
+            'password.required' => 'Debe ingresar una password'
+        ];
+    }
 
 }
