@@ -10,7 +10,7 @@
 
 
 @section('content')
-<!--credits to https://bootsnipp.com/snippets/E1nNa -->
+{{--credits to https://bootsnipp.com/snippets/E1nNa --}}
 <div class="container">
         <div class="row">
             <div class="col-12">
@@ -101,10 +101,14 @@
 
                                     </div>
                                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="CreatedLists-tab">
-                                      @if($listas.length != 0) 
+                                      @if(!$listas->isEmpty()) 
                                         @foreach($lista as $listas)
                                             <li> {{ $lista->titulo }} </li>
                                         @endfoeach
+                                        <div class="btn-group" role="group" >
+                                          <button type="button" class="btn btn-default">Crear Lista</button>
+                                          <button type="button" class="btn btn-default">Crear Juego</button>
+                                        </div>
                                       @else
                                         @if(Auth::user()->name != )
                                       @endif

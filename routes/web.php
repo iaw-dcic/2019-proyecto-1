@@ -27,9 +27,9 @@ Route::get('/readme',function(){
     return view('/readme');
 })->name('readme');
 
-Route::get('/profile/createList', 'listsControler@create')->name('createList');
+Route::get('/profile/createList', 'listsControler@create')->name('createList')->middleware('auth');
 
-Route::post('/profile','listsController@store')->name('profile');
+Route::post('/profile','listsController@store')->name('profile')->middleware('auth');
 
 Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
 
@@ -37,5 +37,6 @@ Route::get('/profile/createGame', 'gameController@create');
 Route::post('/profile/createGame', 'gameController@store');
 
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');

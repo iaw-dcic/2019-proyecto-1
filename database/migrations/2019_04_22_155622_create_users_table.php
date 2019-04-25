@@ -21,9 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->unsignedBigInteger('list_id');
             $table->engine = 'InnoDB';
-            $table->foreign('list_id')->references('id')->on('list_info')->onDelete('cascade');
         });
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class publicListsController extends Controller
@@ -12,9 +13,11 @@ class publicListsController extends Controller
      * @var string
      */
     protected $table = 'public_list_info';
+    protected $InfoListas;
+
 
     public function index(){
-        $public_list_info= DB::table('public_list_info')->where('public',1);
-        return view('publicLists',['listas'=> $public_list_info]);
+        $InfoListas= DB::table('public_list_info')->where('public',1)->get();
+        return view('publicLists')-> with('listas',$InfoListas);
     }
 }
