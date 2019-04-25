@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Listbook\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\UserList' => 'App\Policies\UserListPolicy',
-        'App\ListElement' => 'App\Policies\ListElementPolicy',
+        'Listbook\UserList' => 'Listbook\Policies\UserListPolicy',
+        'Listbook\ListElement' => 'Listbook\Policies\ListElementPolicy',
     ];
 
     /**

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Listbook\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UserList;
-use App\ListElement;
+use Listbook\UserList;
+use Listbook\ListElement;
 
 class ListElementsController extends Controller
 {

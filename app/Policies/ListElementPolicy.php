@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Policies;
+namespace Listbook\Policies;
 
-use App\User;
-use App\ListElement;
-use App\UserList;
+use Listbook\User;
+use Listbook\ListElement;
+use Listbook\UserList;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ListElementPolicy
@@ -14,8 +14,8 @@ class ListElementPolicy
     /**
      * Determine whether the user can modify the list element in the userlist.
      *
-     * @param  \App\User  $user
-     * @param  \App\ListElement  $listElement
+     * @param  \Listbook\User  $user
+     * @param  \Listbook\ListElement  $listElement
      * @return mixed
      */
     public function modify(User $user, ListElement $listElement)

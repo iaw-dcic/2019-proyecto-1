@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Listbook;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -42,6 +42,6 @@ class User extends Authenticatable
     }
 
     public function addList($UserList) {
-        $this->lists()->create($UserList);
+        return $this->lists()->create($UserList);
     }
 }

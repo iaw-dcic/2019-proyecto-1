@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Listbook\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use Listbook\User;
 
 class ProfileController extends Controller
 {

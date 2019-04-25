@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Listbook\Http\Controllers;
 
-use App\UserList;
-use App\User;
+use Listbook\UserList;
+use Listbook\User;
 use Illuminate\Http\Request;
 
 class UserListsController extends Controller
@@ -15,7 +15,7 @@ class UserListsController extends Controller
      */
     public function index()
     {
-        $userLists = UserList::where('public', 1)->get();
+        $userLists = UserList::where('public', 1)->paginate(8);
         return view('pages.userlist.index', compact('userLists'));
     }
 
@@ -29,8 +29,8 @@ class UserListsController extends Controller
     {
         abort_if(auth()->id() !== $user->id, 403); //en caso de que el cliente modifique el POST manualmente
         $listAttr = $this->validateRequest();
-        $user->addList($listAttr + ["user_id" => $user->id]);
-        return back();
+        $newUserList = $user->addList($listAttr + ["user_id" => $user->id]);
+        return redirect('/userlists/'.$newUserList->id);
     }
 
     protected function validateRequest() {
@@ -43,7 +43,7 @@ class UserListsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UserList  $userList
+     * @param  \Listbook\UserList  $userList
      * @return \Illuminate\Http\Response
      */
     public function show(UserList $userlist)
@@ -59,7 +59,7 @@ class UserListsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UserList  $userList
+     * @param  \Listbook\UserList  $userList
      * @return \Illuminate\Http\Response
      */
     public function edit(UserList $userlist)
@@ -71,7 +71,7 @@ class UserListsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UserList  $userList
+     * @param  \Listbook\UserList  $userList
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, UserList $userlist)
@@ -84,7 +84,7 @@ class UserListsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UserList  $userList
+     * @param  \Listbook\UserList  $userList
      * @return \Illuminate\Http\Response
      */
     public function destroy(UserList $userlist)

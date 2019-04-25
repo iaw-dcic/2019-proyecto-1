@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'IAW-2019'),
+    'name' => env('APP_NAME', 'Listbook'),
 
     /*
     |--------------------------------------------------------------------------
@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Listbook\Providers\AppServiceProvider::class,
+        Listbook\Providers\AuthServiceProvider::class,
+        // Listbook\Providers\BroadcastServiceProvider::class,
+        Listbook\Providers\EventServiceProvider::class,
+        Listbook\Providers\RouteServiceProvider::class,
 
     ],
 

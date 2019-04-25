@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace Listbook\Policies;
 
-use App\User;
-use App\UserList;
+use Listbook\User;
+use Listbook\UserList;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserListPolicy
@@ -13,8 +13,8 @@ class UserListPolicy
     /**
      * Determine whether the user can modify the user list.
      *
-     * @param  \App\User  $user
-     * @param  \App\UserList  $userList
+     * @param  \Listbook\User  $user
+     * @param  \Listbook\UserList  $userList
      * @return mixed
      */
     public function modify(User $user, UserList $userlist)
