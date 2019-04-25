@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/perfil', 'ProfileController@index')->name('perfil');
 
+Route::get('/mis-listas', function (){
+    return view('mis-listas');
+})->middleware('auth')->name('mis-listas');
+
 
 //Listas de bienes
 

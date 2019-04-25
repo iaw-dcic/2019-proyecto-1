@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="title">HOME PAGE</div>
+        <div class="title">Mis listas
+        </div>
     </div>
 @endsection
