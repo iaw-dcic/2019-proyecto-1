@@ -8,9 +8,7 @@
                 <div class="card-body">
                     <div id='banner'>
                         <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
-                            @if(auth()->user()->avatar && auth()->user()->provider_id)
-                                <img class='avatarUser' src="{{ auth()->user()->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
-                            @elseif(auth()->user()->avatar && !(auth()->user()->provider_id))
+                            @if(auth()->user()->avatar)
                                 <img class='avatarUser' src="../{{ auth()->user()->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
                             @endif
                         </a>
@@ -23,12 +21,27 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    hola mundo
+            <div class="accordion" id="accordionExample">
+                <div class="card" data-toggle="collapse" data-target="#collapseOne">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button type="button" class="btn btn-link"><i class="fa fa-plus"></i> TITULO</button>									
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="content-more">
+        <button id="btn-more" class="btn">
+            <span>+</span>
+        </button>
     </div>
 </div>
 
@@ -41,14 +54,15 @@
                 <h4 class="modal-title" id="myModalLabel">About this profile</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
-            <form id="editForm" method="POST" action="{{ url('updateuser') }}">
+            <form enctype="multipart/form-data" id="editForm" method="POST" action="{{ url('updateuser') }}">
                 @csrf
                 <div class="modal-body">
                     <div id='profileInfo'>
-                        @if(auth()->user()->avatar && auth()->user()->provider_id)
-                            <img id='avatarEdit' class='avatarEdit' src="{{ auth()->user()->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
-                        @elseif(auth()->user()->avatar && !(auth()->user()->provider_id))
-                            <img id='avatarEdit' class='avatarEdit' src="../{{ auth()->user()->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
+                        @if(auth()->user()->avatar)
+                            <a id="refImage">
+                                <img id='avatarEdit' class='avatarEdit' src="../{{ auth()->user()->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
+                                <input id='fileAvatar' name='avatar' type="file" accept="image/*">
+                            </a>
                         @endif
                         <input class="my-form-control backlines" id="name" name='name' value='{{ auth()->user()->name }}' disabled>
                     </div>
@@ -119,10 +133,23 @@
                     @if(auth()->user())
                         <button type="button" id="editButton" class="btn btn-primary" value="edit">Edit</button>
                     @endif
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button type="button" id='closeButton' class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
                 </div>
             </form>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class='col'>
+                    <img src="" id="imagepreview" width="100%" height="100%">
+                </div>      
+            </div>
+        </div>
+    </div>
+  </div>
 </div>
 @endsection

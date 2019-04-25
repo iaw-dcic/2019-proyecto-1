@@ -35,6 +35,11 @@
 .avatarUser:hover{
     -webkit-transform:scale(1.1);
     transform:scale(1.1);
+    filter: opacity(.8);
+}
+
+#fileAvatar{
+    display: none;
 }
 
 #profileInfo{
@@ -78,4 +83,37 @@
 .my-form-control[readonly] {
     background-color: #e9ecef;
     opacity: 1;
+}
+
+#content-more{
+    width:90px;
+    height:240px;
+    position:absolute;
+    right:0;
+    bottom:0;
+}
+
+#btn-more{
+    width:60px;
+    height:60px;
+    border-radius:100%;
+    background:rgb(29, 39, 103);
+    right:0;
+    bottom:0;
+    position:absolute;
+    margin-right:32px;
+    margin-bottom:32px;
+    border:none;
+    outline:none;
+    color:#FFF;
+    font-size:36px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition:.3s;
+    padding: 0;
+}
+
+#btn-more:active {
+    color: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 16px rgb(255, 1, 1);
+    transition: all 0.03s ease;
 }

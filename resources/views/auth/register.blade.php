@@ -11,8 +11,10 @@
               @csrf
 
               <div id='avatar-content' class="col">
-                <img class='avatarImage' src="{{ asset('images/default.png') }}" alt="avatar" width="120" height="120">
-                <input id='fileAvatar' name='avatar' type="file" accept="image/*">
+                <a href="#">
+                  <img class='avatarImage' src="{{ asset('images/default.png') }}" alt="avatar" width="120" height="120">
+                  <input id='fileAvatar' name='avatar' type="file" accept="image/*">
+                </a>
               </div>
 
               <div class="form-row">

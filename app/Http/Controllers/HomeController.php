@@ -46,6 +46,17 @@ class HomeController extends Controller
                 $user->$key = $request->$key;
             }
         }
+
+        if($request->file('avatar') != null){
+            $extencion = '.' . $request->file('avatar')->getClientOriginalExtension();
+
+            $path = 'storage/app/' . $request->file('avatar')->storeAs(
+                'uploads/user-'.$user->id.'', 'avatar-' . $user->id . $extencion . ''
+            );
+
+            $user->avatar = $path;
+        }
+        
         $user->save();
         return back();
     }
