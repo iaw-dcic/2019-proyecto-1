@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="shortcut icon" href="/images/logo 16.ico">
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="/css/home-bootstrap.css">
 	</head>
@@ -10,7 +9,7 @@
 		<ul>
 			<li><a class="active" href="/home">Inicio</a></li>
 			<li><a href="/profile">Mi perfil</a></li>
-			<li><a href="#contact">Configuración</a></li>
+			<li><a href="#create_list">Crear lista</a></li>
 			<li style="float:right"><a href="/">Cerrar sesión</a></li>
 		</ul>
 

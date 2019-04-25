@@ -11,30 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/signup', function () {
-    return view('signup');
-});
-
-Route::get('/public', function () {
-    return view('public');
-});
-
-Route::get('/home', function () {
-    return view('home');
-});
-
-Route::get('/profile', function () {
-    return view('profile');
-});
-
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'PagesController@getHome')->name('home');
+Route::get('/home', 'PagesController@getHome')->name('home');
+Route::get('/profile', 'PagesController@getProfile')->name('profile');
+Route::get('/signin', 'PagesController@getSignIn')->name('signin');
+Route::get('/guest', 'PagesController@getGuest')->name('guest');
+Route::get('/settings', 'PagesController@getSettings')->name('settings');
 
-Route::get('/items', 'itemsController@index')->name('items');
+
+Route::get('/goals', 'goalsController@getGoals')->name('goals');
+
+Route::get('/myLists', 'listsController@getMyLists')->name('myLists');
