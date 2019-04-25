@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/readme', function () {
+    return view('readme');
+});
 
 Auth::routes();
 

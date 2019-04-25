@@ -28,6 +28,7 @@
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
+                    <a href="{{url('/readme')}}">Read me</a>
                 </div>
             @endif
 
