@@ -22,6 +22,7 @@ Route::get('/albums','AlbumController@index')->name('albums');
 Route::get('/albums/Createalbum','AlbumController@create')->name('createAlbum');
 
 Route::get('/profile', 'ApiController@profile')->name('profile');
+Route::post('profile','ApiController@updateAvatar')->name('avatar');
 
 
 
