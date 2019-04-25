@@ -21,6 +21,10 @@ Route::get('/','ApiController@index');
 Route::get('/albums','AlbumController@index')->name('albums');
 Route::get('/albums/Createalbum','AlbumController@create')->name('createAlbum');
 
+Route::get('/profile', 'ApiController@profile')->name('profile');
+
+
+
 
 //Rutas de ejemplo TUTORIAL
 
@@ -40,7 +44,7 @@ Route::get('movie/{id}', function ($id) {
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ApiController@index')->name('home');
 Route::post('/createAlbum','AlbumController@store');
 
 Auth::routes();

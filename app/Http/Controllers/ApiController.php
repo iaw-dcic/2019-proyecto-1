@@ -15,4 +15,9 @@ class ApiController extends Controller
         $users = User::all();
         return view('welcome',['users'=>$users,'albums'=>$albums]);
     }
+
+    public function profile(){
+        return 'hola mundo';
+
+    }
 }
