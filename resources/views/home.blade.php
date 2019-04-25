@@ -108,7 +108,7 @@
           @foreach($recetas as $receta)
             @if($receta->categoria ==0)
 						<div class="col-md-4">
-							<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+							<img alt="foto receta" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
 						</div>
 						<div class="col-md-8">
 							<h3>
@@ -126,7 +126,7 @@
           @foreach($recetas as $receta)
             @if($receta->categoria ==1)
 						<div class="col-md-4">
-							<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
+            <img alt="foto receta" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
 						</div>
 						<div class="col-md-8">
 							<h3>

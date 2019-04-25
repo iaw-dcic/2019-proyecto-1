@@ -13,6 +13,7 @@ use App\Medida;
 use Illuminate\Validation\Rules;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
   class UserController extends Controller
 {
@@ -28,7 +29,7 @@ use Illuminate\Support\Facades\Redirect;
             
             return Redirect::to ('/');
         } else {
-            return back()->with('mensaje_error','Error');
+            return back()->with('mensaje_error','Datos ingresados incorrectamente');
         }
     }
      
@@ -74,7 +75,7 @@ use Illuminate\Support\Facades\Redirect;
             'nombre' => $request->nombre,
             'email' =>$request->email,
             'apellido'=>  $request->apellido,
-            'password'=>  $request->password
+            'password'=>Hash::make( $request->password)
         ]);
         
         
