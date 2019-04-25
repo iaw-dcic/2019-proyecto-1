@@ -19,30 +19,43 @@ Route::resource('albums', 'AlbumsController')->middleware('auth');
 
 Route::get('/profile', 'PagesController@profile')->middleware('auth')->name('profile');
 
-//Es obligatorio usar templates
 //php artisan make:controller nombreDelPhp -r para crear un controlador
 //Investigar sobre como agregar usuarios falsos
-//la lista son campos editables
-//poner que un boton lleve a una nueva pagina dentro de un .blade.php => no hay problema
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-//Preguntar por que, a pesar de que le puse el nombre createAlbum.blade.php para albums/createAlbum,
-//se registra el directorio como albums/create
-
-//Preguntar por que se borran los usuarios cada vez que hago migrate:rollback
-
-//Que va en el validate =>required()? (en el controller). Y en el fillable?
+//Preguntar por que se borran los usuarios cada vez que hago migrate:rollback => es normal
 
 
 
 
-//para ponerle el nombre de la lista, le puedo poner el nombre de la lista como un campo invisible
-//no editable en el form, y ahi queda parte del request para asociarlo en el controlador
 
 //Album es el tipo
 //album es la variable
 //albums es la direccion
+
+
+
+
+//en el heroku, la parte de crear un procfile en el laravel es importante.
+
+//Si tira error 500 al hacer deploy, es porque falta el .env. Para esto se va a settings, a config vars,
+//y se crea una APP_KEY y como valor lo mismo que la app key que esta en el .env.
+
+//una vez que se esta corriendo la pagina, se va a overview, a add-ons. Buscar JawsDB MySQL o ClearDB
+//ir a configurar en el add on y buscar el jaws mysql para instalarla. Poner la version gratis.
+//si no andan, usar Heroku Postgres
+
+//cuando la base de datos ya este conectada, se tiene que correr el migrate por comando de heroku
+
+//para el pull request, voy a mi proyecto en git. Apretar en new pull request. Poner compare across 
+//forks para hacer el pull req a otro repo. Poner como base el proyecto original iaw-dcic y a la 
+//derecha poner el mio, con el branch master. Se deberian poder ver los commit y las diferencias entre 
+//codigos. 
+//Poner titulo (entrega proyecto 1) y comentario. Ahi ya esta entregado.
+
+//Para la performance, usando chrome, ir a audits en inspect element
+//probar desktop. checkear performance y accesibilidad. Simular red 3g, y poner clear storage quiza
+//probarlo en varias paginas

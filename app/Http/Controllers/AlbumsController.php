@@ -32,14 +32,38 @@ class AlbumsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    /*public function store(Request $request) {
         Album::create(request()->validate([
             'list_name' => 'required',
             'public' => 'required',
-            'owner' => 'required'
+            'owner' => 'required',
         ]));
 
         return redirect('/albums');
+    }*/
+
+    public function store()
+    {
+        $rules = array(
+            'list_name' => 'required',
+            'public' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('albums/createAlbum')->withErrors($validator)->withInput(Input::except('password'));
+        } else {
+            // store
+            $album = new Album;
+            $album->list_name = Input::get('list_name');
+            $album->public = Input::get('public');
+            $album->owner = Auth::user()->name;
+            $album->save();
+
+            Session::flash('message', 'Successfully created!');
+            return redirect('/albums');
+            //return Redirect::to('albums');
+        }
     }
 
     /**
