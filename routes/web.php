@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/perfil', 'ProfileController@index')->name('perfil');
+
+
+//Listas de bienes
+
+
+Route::get('/prueba', function (){
+    return view('prueba');
+})->name('prueba');
