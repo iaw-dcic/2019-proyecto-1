@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAllTables extends Migration
-{
+class CreateAlbumsTable extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,15 +12,16 @@ class CreateAllTables extends Migration
      */
     public function up()
     {
-        Schema::create('all_tables', function (Blueprint $table) {
-            $table->unsignedBigInteger('list_id')->primary();
+        Schema::create('albums', function (Blueprint $table) {
+            $table->increments('list_id');
             $table->string('list_name');
             $table->string('owner');
             $table->boolean('public');
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
 
-        Schema::table('all_tables', function($table) {
+        Schema::table('albums', function($table) {
             $table->foreign('owner')->references('name')->on('users');
         });
     }
@@ -33,6 +33,6 @@ class CreateAllTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('all_tables');
+        Schema::dropIfExists('albums');
     }
 }

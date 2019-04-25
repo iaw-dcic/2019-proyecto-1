@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Song;
+use App\Album;
 use Illuminate\Http\Request;
 
-class SongsController extends Controller {
+class AlbumsController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $song = Song::all();
+        $album = Album::all();
 
-        return view('songs.indexSong',compact('song'));
+        return view('albums.indexAlbum',compact('album'));
     }
 
     /**
@@ -23,7 +23,7 @@ class SongsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        return view('songs.createSong');
+        return view('albums.createAlbum');
     }
 
     /**
@@ -33,15 +33,13 @@ class SongsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        Song::create(request()->validate([
-            'song_name' => 'required',
-            'artist' => 'required',
-            'album' => 'required',
-            'release_year' => ['required', 'digits_between:1,2050'],
-            'notes' => 'required'
+        Album::create(request()->validate([
+            'list_name' => 'required',
+            'public' => 'required',
+            'owner' => 'required'
         ]));
 
-        return redirect('/songs');
+        return redirect('/albums');
     }
 
     /**
@@ -49,8 +47,8 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Song $song) {
-        return view('songs.showSong', compact('song'));
+    public function show(Album $album) {
+        return view('albums.showAlbum', compact('album'));
     }
 
     /**
@@ -58,8 +56,8 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Song $song) {
-        return view('songs.editSong', compact('songs'));
+    public function edit(Album $album) {
+        return view('albums.editAlbum', compact('album'));
     }
 
     /**
@@ -68,10 +66,10 @@ class SongsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Song $song) {
-        $song->update(request(['song_name', 'artist', 'album', 'release_year', 'notes']));
+    public function update(Request $request, Album $album) {
+        $album->update(request(['list_name', 'public']));
 
-        return redirect('/songs');
+        return redirect('/albums');
     }
 
     /**
@@ -79,9 +77,9 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Song $song) {
-        $song->delete;
+    public function destroy(Album $album) {
+        $album->delete;
 
-        return redirect('/songs');
+        return redirect('/albums');
     }
 }

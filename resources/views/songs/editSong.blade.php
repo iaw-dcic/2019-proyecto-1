@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('myLayoutTitle', 'Listas')
+@section('myLayoutTitle', 'Songs')
 
 @section('myLayoutContent')
 

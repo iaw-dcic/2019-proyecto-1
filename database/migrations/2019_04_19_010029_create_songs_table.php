@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSongsTable extends Migration
-{
+class CreateSongsTable extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,18 +13,19 @@ class CreateSongsTable extends Migration
     public function up()
     {
         Schema::create('songs', function (Blueprint $table) {
-            $table->unsignedBigInteger('song_id')->primary();
+            $table->increments('song_id');
             $table->string('song_name');
             $table->string('artist');
             $table->string('album');
             $table->integer('release_year');
             $table->string('notes');
-            $table->unsignedBigInteger('list_id');
+            $table->integer('list_id',false,true);
             $table->timestamps();
+            $table->engine = 'InnoDB';
         });
 
         Schema::table('songs', function($table) {
-            $table->foreign('list_id')->references('list_id')->on('all_tables');
+            $table->foreign('list_id')->references('list_id')->on('albums');
         });
     }
 
