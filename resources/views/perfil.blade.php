@@ -72,25 +72,46 @@
             
                 
             </div>    
-           
+            <?php  $count=0 ?>
                
          <!-- Lado derecho, las listas del usuario -->  
             <div class="col-md-8">
+            @foreach($listas as $lista)
                 <div class="list-group">
-                     
-                  <?php  $count=0 ?>
-          
-                     @foreach($listas as $lista)
-                      
+            
+                     <?php  $count=0 ?>
+                     <div class="row">
+                    <div class="col-11">
                      <a href="#" class="list-group-item list-group-item-action active"> {{$lista->nombre}}</a>
+                    </div>
+                     <div class="col-1">
+                             @if(Auth::user() == $perfil)
+                            <a id="tachoTitulo" href="{{route('borrarLista',['id'=>$lista->id])}}"> 
+                                <i class="fas fa-trash-alt fa-lg"></i> 
+                            </a>
+                            @endif
+                        </div>
+                        </div>
                         <div class="list-group-item">
                        
                             @foreach($recetas as $receta)
                                @if($receta->listaId->nombre == $lista->nombre)
+                            <div class="row">
+                            <div class="col-11">
                               <a href="{{route('receta',['nombre'=>$receta->nombre])}}">  <h4 id="nombreReceta" class="list-group-item-heading">   
                                    {{$receta->nombre}}</h4>
                                 </a>
                                 <?php $count++ ?>
+                                </div> 
+                            <div class="col-1">
+                             @if(Auth::user() == $perfil)
+                            <a  id="tacho" href="{{route('borrarReceta',['nombre'=>$receta->nombre])}}"> 
+                                <i class="fas fa-trash-alt fa-lg"></i> 
+                            </a>
+                            @endif
+                            </div>  
+                            </div> 
+                            <hr>
                               @endif
                            @endforeach
                         
@@ -98,21 +119,24 @@
                         </div>
                         <div class="list-group-item justify-content-between">
                         Total: <span class="badge badge-secondary badge-pill">{{$count}}</span>
-                 @if(Auth::user() == $perfil) 
-                    <button class="float-right btn " type="button" data-toggle="modal" data-target="#modalForm"  onClick="cargarModal({{$lista}})"> 
-                        Agregar receta a la lista </button>
-                @endif
-                    </div>
-                    <br>
-                    @endforeach     
+                        @if(Auth::user() == $perfil) 
+                             <button class="float-right btn " type="button" data-toggle="modal" data-target="#modalForm"  onClick="cargarModal({{$lista}})"> 
+                                 Agregar receta a la lista </button>
+                         @endif
+                        </div>
+                    <br> 
+                     
                     
                    
                        
-                    </div> 
+                </div> 
+                <br>
+                @endforeach   
                     <a href="#" class="list-group-item list-group-item-action active justify-content-between">Total <span class="badge badge-light badge-pill">{{$count }}</span></a>
+                    @if(Auth::user() == $perfil) 
                     <button class="float-right btn " type="button" data-toggle="modal" data-target="#modalLista" > 
                         Agregar lista </button>
-               
+                      @endif
                 </div>
               
             </div>
@@ -124,91 +148,8 @@
 
 </body>
 <!-- Modal -->
-<div class="modal fade" id="modalForm" role="dialog">
-    <div class="modal-dialog modal-lg" >
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Agregar Receta</h4>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">Close</span>
-                </button>
-              
-            </div>
-            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <p class="statusMsg"></p>
-                <form role="form" method="post" action="{{route('agregarReceta',['id_autor' =>$perfil->id ])}}">
-                {{ csrf_field() }}
-                     <div class="form-group">
-                        <label   for="inputName">Lista</label>
-                        <select class="form-control" id="selectLista" name="lista" disabled >
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputName">Nombre</label>
-                        <input name="nombre" type="text" class="form-control" placeholder="Nombre de la receta"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputMessage">Categoria:</label>
-                        <select name="categoria" class="form-control">
-                            <option value="1">Dulce </option>
-                            <option value="0">Salado </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputMessage">Decripción:</label>
-                        <textarea name="descr" class="form-control"  placeholder="Descripcion de la receta"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputMessage">Pasos:</label>
-                        <textarea name="pasos" class="form-control"   placeholder="Pasos de la receta"></textarea>
-                    </div>
-                    <div class="row">
-                      <div class="col-6">
-                            <div class="form-group">  
-                             <label for="inputMessage">Ingrediente:</label>
-                             <select name="ingrediente"class="form-control">
-                              @foreach($ingredientes as $ingrediente)
-                                <option value="{{$ingrediente->id}}">{{$ingrediente->nombre}} </option>
-                               @endforeach
-                            </select>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="row">
-                              <div class="col-6">
-                                 <div class="form-group">  
-                                     <label for="inputMessage">Cantidad:</label>
-                                    <input name="cantidad" type="text" class="form-control" placeholder="">
-                                  </div>
-                              </div>
-                              <div class="col-6">
-                                 <div class="form-group">  
-                                     <label for="inputMessage">Medida:</label>
-                                     <select name="medida"class="form-control">
-                                        @foreach($medidas as $medida)
-                                          <option value="{{$medida->id}}">{{$medida->nombre}} </option>
-                                         @endforeach
-                                      </select>
-                                  </div>
-                              </div>
-                        </div></div>
-
-                    </div>
-                    <button id="botonAgregar" class="btn btn-primary" >Agregar</button></div>
-                </form>
-            </div>
-            
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
+@include('modalRecetas')
+@include('modalLista')
 
 
 <!--
@@ -217,4 +158,5 @@
 <script src="{{asset('js/scripts.js')}}"></script>
 -->
 <script src="{{ asset('/js/editarPerfil.js') }}"></script>
+<link defer rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 @stop

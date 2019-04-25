@@ -1,4 +1,6 @@
 @extends('layout')
 @section('content')
-<h2>{{ $receta[0]->nombre}} </h2>
+<br><br><br><br>
+{{ print_r($request, true) }} 
+<br><br><br>
 @stop

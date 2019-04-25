@@ -28,7 +28,7 @@
               <th> Cantidad</th>
           @foreach($ingredientes as $ingrediente)
           
-             @if($ingrediente->receta_id == $receta->id)
+             @if($ingrediente->receta_nombre == $receta->nombre)
                   <tr>
                  <td>{{ $ingrediente->ingredienteId->nombre }}</td>
                     

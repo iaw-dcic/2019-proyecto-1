@@ -38,6 +38,7 @@ function editarUsuario(perfil) {
 function cargarModal(lista) {
     var id = lista.id;
     var nombre = lista.nombre;
-    document.getElementById('selectLista').innerHTML += '<option selected="true" value="' + id + '" >' + nombre + ' </option>';
+    document.getElementById('selectLista').innerHTML += '<select class="form-control" name="lista"   >'
+        + '<option selected="true" value="' + id + '" >' + nombre + ' </option>';
 
 }

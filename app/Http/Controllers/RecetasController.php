@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Receta;
 use App\Ingrediente_de_receta;
 use App\User;
+use App\Lista;
 use Auth;
   class RecetasController extends Controller
 {
@@ -53,19 +54,38 @@ public function agregarReceta(Request $request, $id){
     $categoria= $request->categoria;
     $descripcion= $request->descr;
     $pasos= $request->pasos;
-    $lista=$request->lista;
-    $autor= $id;
-  
+   $lista= $request->input("lista");
+    
     $receta=  Receta::create([
         'nombre' => $nombre,
         'descripcion' =>$descripcion,
         'pasos'=>  $pasos,
-        'id_autor'=>  $autor,
+        'id_autor'=>$id,
         'lista_id'=>$lista,
         'categoria'=>$categoria
     ]);
+   
+ return back()->with('status','Datos cargados correctamente');
+}
+public function agregarLista(Request $request, $id){
+    $nombre= $request->nombre;
+     
+  
+   Lista::create([
+        'nombre' => $nombre,
+        'usuario'=>$id
+    ]);
     return back()->with('status','Datos cargados correctamente');
 }
-   
 
+public function borrarReceta(Request $request, $nombre){
+    $deleted = Receta::where('nombre', $nombre)->delete();
+     
+    return back();
+}
+public function borrarLista(Request $request, $id){
+    $deleted = Lista::destroy($id);
+     
+    return back();
+}
 }

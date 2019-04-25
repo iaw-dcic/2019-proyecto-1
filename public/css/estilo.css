@@ -251,6 +251,19 @@ input:invalid {
  #nombreReceta{
   color:black;
 }
+#tacho{
+  color:black;
+ 
+}
+
+#tachoTitulo{
+  color:black;
+  
+}
 .table-responsive{
   margin-top:2rem;
+}
+#boton-borrar{
+  background-color: transparent;
+  border-color: transparent;
 }
