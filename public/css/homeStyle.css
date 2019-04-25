@@ -12,13 +12,6 @@ html, body {
     height: 100vh;
 }
 
-/* 
-.flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-} */
-
 .position-ref {
     position: relative;
 }
@@ -85,7 +78,13 @@ html, body {
 .readmeBot:hover{
     transition:0.5;
     transform:scale(1.5);
-    background: rgb(69, 6, 216);
+    background: rgb(14, 200, 233);
+}
+
+.publicListsBot:hover{
+    transition:0.5;
+    transform:scale(1.5);
+    background: rgba(185, 179, 90, 0.432);
 }
 
 .m-b-md {

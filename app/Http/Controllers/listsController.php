@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class listsController extends Controller
 {
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'list_info';
+
     public function index(){
         $listas = auth()->user()->listas; //Obtengo todas las listas del usuario
 

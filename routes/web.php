@@ -31,9 +31,7 @@ Route::get('/profile/createList', 'listsControler@create')->name('createList');
 
 Route::post('/profile','listsController@store')->name('profile');
 
-Route::get('/publicLists', function(){
-    return view('publicLists');
-});
+Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
 
 Route::get('/profile/createGame', 'gameController@create');
 Route::post('/profile/createGame', 'gameController@store');

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('extraScripts')
-
+<script src="{{ asset('js/profileLogic.js') }}" defer></script>
 @endsection
 
 @section('extraStyles')
-
+    <link href="{{asset('css/profileView.css')}}" rel="stylesheet">
 @endsection
 
 
@@ -27,9 +27,8 @@
                                     </div>
                                 </div>
                                 <div class="userData ml-3">
-                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);">Some Name</a></h2>
-                                    <h6 class="d-block"><a href="javascript:void(0)">1,500</a> Video Uploads</h6>
-                                    <h6 class="d-block"><a href="javascript:void(0)">300</a> Blog Posts</h6>
+                                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"> </a></h2>
+                                    <h6 class="d-block"><a href="javascript:void(0)">1,500</a> Lists Uploaded</h6>
                                 </div>
                                 <div class="ml-auto">
                                     <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
@@ -55,18 +54,18 @@
                                             <div class="col-sm-3 col-md-2 col-5">
                                                 <label style="font-weight:bold;">Full Name</label>
                                             </div>
-                                            <div class="col-md-8 col-6">
-                                                Jamshaid Kamran
+                                            <div class="col-md-8 col-6" id="username">
+                                                {{ Auth::user()->name }}
                                             </div>
                                         </div>
                                         <hr />
 
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
-                                                <label style="font-weight:bold;">Birth Date</label>
+                                                <label style="font-weight:bold;">E-Mail</label>
                                             </div>
-                                            <div class="col-md-8 col-6">
-                                                March 22, 1994.
+                                            <div class="col-md-8 col-6" id="UserBirthdate">
+                                            {{ Auth::user()->email }}
                                             </div>
                                         </div>
                                         <hr />
@@ -101,10 +100,14 @@
                                         <hr />
 
                                     </div>
-                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
-                                       @foreach($lista as $listas)
-                                        <li> {{ $lista->titulo }} </li>
-                                       @endfoeach
+                                    <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="CreatedLists-tab">
+                                      @if($listas.length != 0) 
+                                        @foreach($lista as $listas)
+                                            <li> {{ $lista->titulo }} </li>
+                                        @endfoeach
+                                      @else
+                                        @if(Auth::user()->name != )
+                                      @endif
                                     </div>
                                 </div>
                             </div>
