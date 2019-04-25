@@ -10,13 +10,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
 
 
+Route::get('/listas', 'ListasController@index')->name('listas.index');
+Route::get('/listas/create','ListasController@create');
+Route::post('/listas/create','ListasController@store');
+Route::get('/listas/{id}/edit','ListasController@edit');  
+Route::patch('/listas/{id}','ListasController@update');
+//Route::get('/listas/{id}/canciones','ListasController@show');
+Route::delete('/listas/{id}','ListasController@destroy');
+
+Route::get('/listas/{id}','CancionesController@index')->name('canciones.index');   
+Route::post('/listas/{id}/create','CancionesController@create')->name('canciones.create');
+
+Route::resource('users','UsuariosController');
+/*
 Route::group(['prefix' => 'admin'],function(){
     
     //creamos todas las rutas posibles de un usuario con 'resource'
@@ -29,15 +40,15 @@ Route::group(['prefix' => 'admin'],function(){
     GET /admin/users/1/edit (edit)
     PATCH /admin/users/1 (update)
     DELETE /admin/users/1  (destroy)
-    */
+    
                 //usuarios      //controlador
     Route::resource('users','UsuariosController');
 
 
 
-    Route::resource('listas','ListasController');
+    Route::resource('listas','UsuariosController');
 
-});
+});*/
 
 
 
@@ -47,3 +58,5 @@ Route::fallback(function(){
 
 
 });
+
+

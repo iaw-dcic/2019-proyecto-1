@@ -17,7 +17,7 @@ class ListasTabla extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->string('nombre');
-            $table->integer('cantidad_canciones');
+            $table->string('descripcion');
             $table->timestamps();
 
             //relacion constraint

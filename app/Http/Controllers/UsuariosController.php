@@ -20,7 +20,7 @@ class UsuariosController extends Controller
         $users=  User::orderBy('name','ASC')->paginate(3);
 
         //retorno la vista y le paso los usuarios de $users
-        return view ('admin.users.index',compact('users'));
+        return view ('users.index',compact('users'));
     }
 
 
@@ -31,7 +31,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        return view('admin/users/create');
+        return view('users/create');
     }
 
 
@@ -47,7 +47,7 @@ class UsuariosController extends Controller
         //2da capa de validacion: si no la pasa me redirige a la misma pagina
         $atributos= request()->validate([
                         'name'=> ['required','min:3'],
-                        'email'=> 'required',
+                        'email'=> ['required','unique:users'],
                         'password'=> ['required', 'min:4'],
                     ],User::messages());
 
@@ -81,7 +81,7 @@ class UsuariosController extends Controller
     {
         //recibo ese objeto
         //y se lo paso a la vista
-        return view('admin/users/edit',compact('user'));
+        return view('users/edit',compact('user'));
     }
 
     /**
@@ -97,7 +97,6 @@ class UsuariosController extends Controller
         $user->update(request()->validate([
                             'name'=> ['required','min:3'],
                             'email'=> 'required',
-                            'password'=> ['required', 'min:4'],
                         ],User::messages()));
         
          //Vuelvo al listado usando un get y muestro un mensaje flash

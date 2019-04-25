@@ -9,7 +9,7 @@ class Lista extends Model
     protected $table = "listas";
 
     //el 'id' lo agrega por defecto
-    protected $fillable = ['user_id','nombre','cantidad_canciones'];
+    protected $fillable = ['user_id','nombre','descripcion'];
 
     //ver   si     hay que agregar el    timestamp  --------^
 
@@ -30,8 +30,9 @@ class Lista extends Model
  //mensajes de error
  public static function messages($id = '') {
     return [
-        'name.required' => 'Debe ingresar un nombre para la lista',
-        'cantidad_canciones.required' => 'Debe ingresar la cantidad de canciones que posee la lista',
+        'nombre.required' => 'Debe ingresar un nombre para la lista',
+        'nombre.min' =>'El nombre de la lista debe ser de 3 caracteres o mas',
+        'descripcion.required' => 'Debe ingresar una descripcion de la lista',
     ];
 }
 

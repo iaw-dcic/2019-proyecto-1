@@ -49,6 +49,7 @@ class User extends Authenticatable
         return [
             'name.required' => 'Debe ingresar un nombre de usuario',
             'email.required' => 'Debe ingresar un email',
+            'email.uniqued' => 'Ya existe un usuario con ese email',
             'password.required' => 'Debe ingresar una password'
         ];
     }
