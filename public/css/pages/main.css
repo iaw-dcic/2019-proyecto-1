@@ -1,0 +1,24 @@
+.material-dark{
+  background-color: #000a12;
+}
+.material-light{
+  background-color: #4f5b62;
+}
+.material-primary{
+  background-color: #263238;
+}
+a,body{
+  color: whitesmoke!important;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+}
+
+.card{
+  margin-top: 1rem;
+}
+.nav-link:hover, .navbar-brand:hover, .links>a:hover{
+  color: #4f5b62 !important;
+}
+hr{
+  border-color:  whitesmoke;
+}

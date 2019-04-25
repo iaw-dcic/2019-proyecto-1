@@ -4,67 +4,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Proyecto 1</title>
+        <title>MovieLists</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="{{asset('css/FontAwesome/all.css')}}">
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+        @section('js_extra')
+        @endsection
+        @section('css_extra')
+        <link rel="stylesheet" href="{{asset('css/pages/welcome.css')}}">
+        @endsection
+        @include('includes.head')
 
-            .full-height {
-                height: 100vh;
-            }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
+    <body class="material-dark">
+        <div class="flex-center position-ref ">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -79,15 +31,26 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Proyecto 1
+            <div class="container ">
+                <div class="title m-b-md content">
+                  MovieLists
+                </div>
+                <div class="card material-light">
+                  <div class="card-header material-dark">
+                      @auth
+                        Listas
+                      @else
+                        Listas publicas
+                      @endauth
+                  </div>
+
+                  <div class="card-body material-regular">
+                    <i class="fas fa-film" style="font-size:4rem;"></i>
+                  </div>
                 </div>
 
-                <div class="links">
-
-                </div>
             </div>
         </div>
+
     </body>
 </html>
