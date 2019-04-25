@@ -248,15 +248,14 @@ input:invalid {
   box-shadow: 0 0 5px 1px red;
 }
 
- #nombreReceta{
+ .nombreReceta{
   color:black;
 }
-#tacho{
+.tacho{
   color:black;
- 
-}
+ }
 
-#tachoTitulo{
+.tachoTitulo{
   color:black;
   
 }
@@ -266,4 +265,11 @@ input:invalid {
 #boton-borrar{
   background-color: transparent;
   border-color: transparent;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #0069ff !important; 
+  border-color: #007bff !important;
 }

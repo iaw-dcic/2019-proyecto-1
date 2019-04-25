@@ -86,7 +86,7 @@
                     </div>
                      <div class="col-1">
                              @if(Auth::user() == $perfil)
-                            <a id="tachoTitulo" href="{{route('borrarLista',['id'=>$lista->id])}}"> 
+                            <a class="tachoTitulo" href="{{route('borrarLista',['id'=>$lista->id])}}"> 
                                 <i class="fas fa-trash-alt fa-lg"></i> 
                             </a>
                             @endif
@@ -98,14 +98,14 @@
                                @if($receta->listaId->nombre == $lista->nombre)
                             <div class="row">
                             <div class="col-11">
-                              <a href="{{route('receta',['nombre'=>$receta->nombre])}}">  <h4 id="nombreReceta" class="list-group-item-heading">   
+                              <a class="nombreReceta" href="{{route('receta',['nombre'=>$receta->nombre])}}">  <h4 class="list-group-item-heading">   
                                    {{$receta->nombre}}</h4>
                                 </a>
                                 <?php $count++ ?>
                                 </div> 
                             <div class="col-1">
                              @if(Auth::user() == $perfil)
-                            <a  id="tacho" href="{{route('borrarReceta',['nombre'=>$receta->nombre])}}"> 
+                            <a  class="tacho" href="{{route('borrarReceta',['nombre'=>$receta->nombre])}}"> 
                                 <i class="fas fa-trash-alt fa-lg"></i> 
                             </a>
                             @endif

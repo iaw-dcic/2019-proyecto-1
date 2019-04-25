@@ -7,7 +7,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
     
-    <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">    
+    <link defer href="{{ asset('css/estilo.css') }}" rel="stylesheet">    
     
     <!-- Bootstrap core CSS -->
  
@@ -28,7 +28,7 @@
    
 
     <!-- scripts para el carousel  -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"   crossorigin="anonymous">
+    <link defer rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"   crossorigin="anonymous">
     
     <script defer  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
      
