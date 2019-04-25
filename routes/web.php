@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile','ProfileController@showProfile')->name('profile');
+
+Route::get('/editProfile','EditProfileController@editProfile')->name('editprofile');
+
+Route::post('/home','HomeController@addItem')->name('addItem');
