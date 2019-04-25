@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 use App\Genero;
 use App\Lista;
 use App\Item;
-use Auth;
+use DB;
+use Validator;
+use Illuminate\Validation\ValidationException;
 
 class ListCreatorController extends Controller
 {
@@ -28,42 +31,86 @@ class ListCreatorController extends Controller
      */
     public function index()
     {
-        $generos = Genero::get('name');
-        return view('createlist',['generos' => $generos]);
+        $generos = Genero::get('genre');
+        return view('lists/createlist', ['generos' => $generos]);
     }
 
     public function store(Request $request)
     {
+        $userId = auth()->user()->id;
+
+        /*$request->validate([
+            'listname' => 'required|'.
+                            Rule::unique('listas')->where(function ($query) use ($userId) {
+                                return $query->where('user_id','=',$userId);}).
+                            '|string|max:255',
+            'genre' => 'required|exists:generos|string|max:255',
+            'descripcion' => 'nullable|string|max:755',
+            'songnames' => 'required',
+            'songnames.*' => 'required|string|max:255',
+            'artists' => 'required',
+            'artists.*' => 'required|string|max:255',
+            'albums' => 'required',
+            'albums.*' => 'required|string|max:255',
+        ]);*/
+
+        $request->validate([
+            'listname' => 'required|' .
+                Rule::unique('listas')->where(function ($query) use ($userId) {
+                    return $query->where('user_id', '=', $userId);
+                }) .
+                '|string|max:255',
+            'genre' => 'required|exists:generos|string|max:255',
+            'descripcion' => 'nullable|string|max:755',
+            'songs' => 'required|array',
+            'songs.*' => 'required|array|size:3',
+            'songs.*.*' => 'required|string|max:255',
+        ]);
+
         $data = $request->all();
 
         $visibility = false;
-        if(array_key_exists("visibility",$data)){
+        if (array_key_exists("visibility", $data)) {
             $visibility = true;
         }
 
-        $lista = Lista::create([
-            'name' => $data['listname'],
-            'genre' => $data['genre'],
-            'description' => $data['description'],
-            'visibility' => $visibility,
-            'user_id' => auth()->user()->id,
-        ]);
-
-        $idLista = $lista['id'];
-        $canciones = $data['songnames'];
-        $artistas = $data['artists'];
-        $albunes = $data['albums'];
-
-        $cantCanciones = count($canciones);
-        for($i = 0, $size = $cantCanciones; $i < $size; $i++) {
-            $item = Item::create([
-                'songname' => $canciones[$i],
-                'artist' => $artistas[$i],
-                'album' => $albunes[$i],
-                'list_id' => $idLista,
-            ]);
+        $description = "";
+        if ($data['description'] != null) {
+            $description = $data['description'];
         }
 
-        return redirect('/lists/');
+        try {
+            DB::beginTransaction();
+
+            $lista = Lista::create([
+                'listname' => $data['listname'],
+                'genre' => $data['genre'],
+                'description' => $description,
+                'visibility' => $visibility,
+                'user_id' => $userId,
+            ]);
+
+            $idLista = $lista['id'];
+            $canciones = $data['songs'];
+            foreach ($canciones as $cancion) {
+                $item = Item::create([
+                    'songname' => $cancion['song'],
+                    'artist' => $cancion['artist'],
+                    'album' => $cancion['album'],
+                    'list_id' => $idLista,
+                ]);
+            }
+            DB::commit();
+            return redirect('/mylists');
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            $repetidos = array_keys($canciones, $cancion);
+            $validator = Validator::make([], []);
+            foreach ($repetidos as $divrepetido) {
+                $validator->errors()->add($divrepetido, "Error Item Duplicado");
+            }
+            throw new ValidationException($validator);
+        }
     }
 }

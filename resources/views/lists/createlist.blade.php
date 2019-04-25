@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('headcontent')
-    <script src="{{ asset('/js/crearlista.js') }}"></script>
+<script src="{{ asset('/js/crearlista.js') }}"></script>
 @endsection
 
 @section('sectioncontent')
@@ -12,20 +12,29 @@
             <div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('create-list') }}">
-                    @csrf
-
+                        @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label class="text-white" for="listname">Nombre de la Lista</label>
-                                <input type="text" class="form-control" id="listname" name="listname" required>
+                                <input type="text" class="form-control {{ $errors->has('listname') ? ' is-invalid' : '' }}" id="listname" name="listname" required>
+                                @if ($errors->has('listname'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('listname') }}</strong>
+                                </span>
+                                @endif
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="genero" class="text-white">{{ __('Genero') }}</label>
-                                <select class="form-control" name="genre">
+                                <select class="form-control {{ $errors->has('genre') ? ' is-invalid' : '' }}" id='genre' name="genre">
                                     @foreach($generos as $genero)
-                                    <option>{{$genero->name}}</option>
+                                    <option>{{$genero->genre}}</option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('genre'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('genre') }}</strong>
+                                </span>
+                                @endif
                             </div>
                             <div class="form-group col-md-2">
                                 <div class="form-row ml-4">
@@ -42,49 +51,31 @@
 
                         <div class="form-group">
                             <label class="text-white" for="description">Descripcion (Opcional)</label>
-                            <textarea class="form-control" rows="2" id="description" name="description"></textarea>
+                            <textarea class="form-control" rows="2" id="description" name="description{{ $errors->has('description') ? ' is-invalid' : '' }}"></textarea>
+                            @if ($errors->has('description'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('description') }}</strong>
+                            </span>
+                            @endif
                         </div>
 
                         <div class="additemsdiv scrollbar-primary">
                             <div class="mr-2">
                                 <div id="songscontainer">
-                                    <div class="form-row">
+                                    <div class="form-row {{ $errors->has('song0') ? ' is-danger' : '' }}">
                                         <div class="form-group col-md-4">
                                             <label class="text-white" for="songname">Nombre de Cancion</label>
-                                            <input type="text" class="form-control" id="songname" name="songnames[]" required>
+                                            <input type="text" class="form-control" id="songname" value="{{ old('songs[song0][song]') }}" name="songs[song0][song]" required>
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label class="text-white" for="artist">Artista</label>
-                                            <input type="text" class="form-control" id="artist" name="artists[]"required>
+                                            <input type="text" class="form-control" id="artist" value="{{ old('songs[song0][artist]') }}" name="songs[song0][artist]" required>
                                         </div>
 
                                         <div class="form-group col-md-3">
                                             <label class="text-white" for="album">Album</label>
-                                            <input type="text" class="form-control" id="album" name="albums[]" required>
-                                        </div>
-                                    </div>
-
-                                    <div id="divsong1">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label class="text-white" for="songname">Nombre de Cancion</label>
-                                                <input type="text" class="form-control" id="songname" name="songnames[]" required>
-                                            </div>
-
-                                            <div class="form-group col-md-3">
-                                                <label class="text-white" for="artist">Artista</label>
-                                                <input type="text" class="form-control" id="artist" name="artists[]" required>
-                                            </div>
-
-                                            <div class="form-group col-md-3">
-                                                <label class="text-white" for="album">Album</label>
-                                                <input type="text" class="form-control" id="album" name="albums[]" required>
-                                            </div>
-
-                                            <div class="form-group col-md-2 align-self-end">
-                                                <button class="btn btn-danger" type="button" id="song1" onclick="quitarCancion(this.id)">Quitar</button>
-                                            </div>
+                                            <input type="text" class="form-control" id="album" value="{{ old('songs[song0][album]') }}" name="songs[song0][album]" required>
                                         </div>
                                     </div>
                                 </div>
@@ -98,6 +89,15 @@
                             <button type="submit" class="btn btn-primary">Crear Lista</button>
                         </div>
                     </form>
+                    @if ($errors->any())
+                    <div>
+                        <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                 </div>
             </div>
 

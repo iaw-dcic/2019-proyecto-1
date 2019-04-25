@@ -12,7 +12,6 @@ class ProfileController extends Controller
     {
         //dd($username);
         $user = User::where('username', '=', $username)->get(['username', 'avatar']);
-
-        return view('profile', ['user' => $user->first()]);
+        return view('profile/profile', ['user' => $user->first()]);
     }
 }

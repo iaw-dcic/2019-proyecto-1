@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateItemsTable extends Migration
+class CreateLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
-            $table->string('songname');
-            $table->string('artist');
-            $table->string('album');
+        Schema::create('likes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('username');
             $table->unsignedBigInteger('list_id');
             $table->timestamps();
 
             $table->foreign('list_id')->references('id')->on('listas');
-            $table->primary(['songname','artist','album','list_id']);
+            $table->foreign('username')->references('username')->on('users');
         });
     }
 
@@ -32,6 +31,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('likes');
     }
 }
