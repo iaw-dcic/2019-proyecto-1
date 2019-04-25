@@ -10,20 +10,20 @@
 			{{ csrf_field() }}
 			<div class="form-group">
 				<label>Titutlo</label>
-				<input type="text" class="form-control" name="title" value="{{$list->title}}">
+				<input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" 
+				name="title" value="{{$list->title}}">
+				@if ($errors->has('title'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('title') }}</strong>
+	                </span>
+                @endif
 			</div>
 
-			@if ($list->public == 0)
 				<div class="custom-control custom-checkbox" style="margin-bottom: 20px">
-	    			<input type="checkbox" class="custom-control-input" name="isPublic" id="defaultUnchecked">
+	    			<input type="checkbox" class="custom-control-input" name="isPublic" id="defaultUnchecked"
+	    			{{ ($list->public == 1) ? 'checked' : '' }}>
 	    			<label class="custom-control-label" for="defaultUnchecked">Publica</label>
 				</div>
-			@else 
-				<div class="custom-control custom-checkbox" style="margin-bottom: 20px">
-	    			<input type="checkbox" class="custom-control-input" name="isPublic" id="defaultUnchecked" checked>
-	    			<label class="custom-control-label" for="defaultUnchecked">Publica</label>
-				</div>
-			@endif
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Editar</button>

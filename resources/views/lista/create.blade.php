@@ -10,9 +10,15 @@
 			<div class="form-group">
 				<div class="input-group">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="">Nombre de la lista</span>
+				    <span class="input-group-text" id="">Nombre de la lista</span>				
 				  </div>
-				  <input type="text" class="form-control" name="title">
+				  <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" 
+				  value="{{ old('title') }}">
+				  		@if ($errors->has('title'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('title') }}</strong>
+        	                </span>
+                        @endif
 				</div>
 			</div>
 			<div class="form-group">

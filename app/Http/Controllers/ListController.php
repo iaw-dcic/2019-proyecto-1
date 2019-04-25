@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Lista;
 
+use Illuminate\Validation\Rule;
+
 class ListController extends Controller
 {   
     public function __construct(){
@@ -19,6 +21,24 @@ class ListController extends Controller
     }
 
     public function store(){
+
+        $myLists = Lista::where('user_id', auth()->id())->get();
+
+        $titulos = $myLists->map(function ($list) {
+            return collect($list->toArray())
+                ->only(['title'])
+                ->all();
+        });
+
+        $array = [];
+        foreach ($titulos as $titulo) {
+            $array[] = $titulo['title'];
+        }
+
+        request()->validate([
+            'title' => ['required', Rule::notIn($array)]
+        ]);
+
     	$lista = new Lista;
 
     	$lista->title = request('title');
@@ -32,17 +52,41 @@ class ListController extends Controller
 
     public function show(Lista $list){
 
+        abort_if($list->user_id != auth()->id(), 403);
+
         return view('lista.show', compact('list'));
 
     }
 
     public function edit(Lista $list){
 
+        abort_if($list->user_id != auth()->id(), 403);
+
         return view('lista.edit', compact('list'));
 
     }
 
     public function update(Lista $list){
+
+        $myLists = Lista::where('user_id', auth()->id())->get();
+
+        $titulos = $myLists->map(function ($list) {
+            return collect($list->toArray())
+                ->only(['title'])
+                ->all();
+        });
+
+        $array = [];
+        foreach ($titulos as $titulo) {
+            if ($list->title != $titulo['title']){
+                $array[] = $titulo['title'];
+            }
+        }
+
+        request()->validate([
+            'title' => ['required', Rule::notIn($array)]
+        ]);
+
         $value = request('isPublic') == 'on' ? 1 : 0;
 
         $list->public = $value;
