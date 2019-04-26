@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Lista;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class listsController extends Controller
 {

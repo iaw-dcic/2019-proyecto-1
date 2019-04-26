@@ -98,33 +98,31 @@
                                                 <label style="font-weight:bold;">Something</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                Something
+                                            @if(!$listas->isEmpty()) 
+                                                @foreach($lista as $listas)
+                                                    <li> {{ $lista->titulo }} </li>
+                                                @endfoeach
+                                        
+                                            @else
+                                                <div class="alert alert-primary divAlerta" role="alert">
+                                                        <h4 class="alert-heading">Nada que ver por aquí</h4>
+                                                        <p class="mb-0"> poruqé no creas unas listas? <p>
+                                                </div>
+                                            @endif
                                             </div>
                                         </div>
                                         <hr />
 
                                     </div>
                                     <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="CreatedLists-tab">
-                                      @if(!$listas->isEmpty()) 
-                                        @foreach($lista as $listas)
-                                            <li> {{ $lista->titulo }} </li>
-                                        @endfoeach
-                                        
-                                      @else
-                                        nada que ver aqui
-                                      @endif
-                                      <div class="btn-group" role="group" >
-                                          <button type="button" class="btn btn-default">Crear Lista</button>
-                                          <button type="button" class="btn btn-default">Crear Juego</button>
+      
+                             
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </div>
