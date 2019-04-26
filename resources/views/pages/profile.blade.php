@@ -9,7 +9,7 @@
         <h2>Perfil</h2>
         <div class="site-breadcrumb">
             <a href="/">Inicio</a> /
-            <span>{{$data['user']->name}}</span>
+            <span>{{$user->name}}</span>
         </div>
     </div>
 </section>
@@ -22,16 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-9 col-lg-8 col-md-7">
-                <div class="section-title text-white">
-                <h3 style="color: beige;">Actualmente tu lista de juegos está en modo <a href="" style="color:azure">{{$data['user']->gamesMode}}</h3>
-                <br>
-                @if ($data['user']->gamesMode == 'privado') 
-                    <a href="{{ url('profile/publico')}}" class="read-more">Pasarla a modo público<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
-                @else 
-                    <a href="{{ url('profile/privado')}}" class="read-more">Pasarla a modo privado<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
-                @endif
-                </div>
-               
+          
                 <!-- Blog item -->
                 <div class="blog-item">
                     <div class="blog-thumb">
@@ -39,9 +30,9 @@
                     </div>
                     <div class="blog-text text-box text-white">
                         <h3>Información</h3>
-                        <div class="top-meta">Nombre: {{$data['user']->name}}</div>
-                        <div class="top-meta">Email: {{$data['user']->email}}</div>
-                        <div class="top-meta">Juegos: {{$data['userGames']}}</div>
+                        <div class="top-meta">Nombre: {{$user->name}}</div>
+                        <div class="top-meta">Email: {{$user->email}}</div>
+                        <div class="top-meta">Listas {{$listingsTitles}}</div>
                        
                         <br><br><br><br><br><br>
                         <a href="#" class="read-more">Editar avatar <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>

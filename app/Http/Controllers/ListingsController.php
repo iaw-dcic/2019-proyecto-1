@@ -17,7 +17,7 @@ class ListingsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index','create']]);
+        $this->middleware('auth', ['except' => ['index', 'create']]);
     }
 
     /**
@@ -30,7 +30,7 @@ class ListingsController extends Controller
         if (Auth::user()) {
             $user_id = auth()->user()->id;
             $listings = Listing::where('user_id', '=', $user_id)->get();
-            
+
             $data = [
                 'listings'  => $listings,
                 'listOwnerName'   => Auth::user()->name,
@@ -40,8 +40,8 @@ class ListingsController extends Controller
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus listas.');
             //return view('listings.index'); //Poner logica en listings.index parecida a games.blade para ponerle un buscador de listas
-            return redirect()->guest('/login'); 
-        }    
+            return redirect()->guest('/login');
+        }
     }
 
     /**
@@ -51,8 +51,8 @@ class ListingsController extends Controller
      */
     public function create()
     {
-        if (Auth::user()) {      
-            return view('listings.listing-create'); 
+        if (Auth::user()) {
+            return view('listings.listing-create');
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para crear una lista.');
             return redirect()->guest('/login');
@@ -91,7 +91,7 @@ class ListingsController extends Controller
     public function show($id)
     {
         $listing = Listing::find($id);
-       return view('listings.listing-show')->withListing($listing);
+        return view('listings.listing-show')->withListing($listing);
     }
 
     /**
@@ -147,15 +147,14 @@ class ListingsController extends Controller
 
     public function getUserListings($userName)
     {
-            $user = User::where('name', $userName)->first();
-            $userListings = Listing::where('user_id', $user->id)->get();
+        $user = User::where('name', $userName)->first();
+        $userListings = Listing::where('user_id', $user->id)->get();
 
-            $data = [
-                'listings'   => $userListings,
-                'listOwnerName'  => $user->name,
-            ];
+        $data = [
+            'listings'   => $userListings,
+            'listOwnerName'  => $user->name,
+        ];
 
-            return view('pages.profile')->with('data', $data);
+        return view('pages.profile')->with('data', $data);
     }
-
 }

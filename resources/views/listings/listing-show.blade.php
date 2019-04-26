@@ -18,8 +18,11 @@
 <!-- Games section -->
 <section class="games-section">
     <div class="container">
-        @auth @if($listing->games()->count() > 0)
 
+        @auth 
+        
+        @if($listing->games()->count() > 0)
+        
         <div class="row">
             <div class="col-xl-7 col-lg-8 col-md-7">
                 <div class="row">

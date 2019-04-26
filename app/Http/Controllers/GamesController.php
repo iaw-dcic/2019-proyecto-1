@@ -30,21 +30,30 @@ class GamesController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            /*$user_id = auth()->user()->id;
+            $user_id = auth()->user()->id;
+
+            $listings = Listing::where('user_id', '=', $user_id)->get();
+            dd($listings);
+            exit;
+
+
+            $games= [];
+            foreach($listings as $listing) {
+                array_push($games,$listing->games);
+            }
+
+            dd($games);
+            exit;
 
             //Formas de mandar los games:
             //$posts = Post::orderBy('title','desc')->get();
             //$posts = Post::orderBy('created_at','desc')->paginate(10);
 
-            $games = Game::where('user_id', '=', $user_id)
-                ->orderBy('title', 'ASC')
-                ->paginate(9)
-                ->onEachSide(3);
-
+          
             return view('pages.games')->with('games', $games);
         } else {
            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
-            return view('pages.games');*/ }
+            return view('pages.games'); }
     }
 
     /**

@@ -76,7 +76,7 @@
                             <li><a href="{{route('listings.create')}}"> Nueva lista </a></li>
                         </ul></li>
                         @endauth
-                    <li><a href="{{route('games.index')}}">Juegos</a>
+                   <!-- <li><a href="{{route('games.index')}}">Juegos</a> -->
                         <!--<ul class="sub-menu">
                             <li><a href="game-single.html">Game Singel</a></li>
                         </ul> -->
