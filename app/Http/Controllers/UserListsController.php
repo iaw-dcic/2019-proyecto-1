@@ -27,9 +27,11 @@ class UserListsController extends Controller {
 		request()->validate([
 			'list_name' => ['required', 'min:3'],
 		]);
+		$public = request('public') == "on" ? 1 : 0;
 		$userList = UserList::create([
 			'list_name' => request('list_name'),
-			'user_id' => $user->id
+			'user_id' => $user->id,
+			'public' => $public
 		]);
 		foreach (request('item_name') as $item) {
 			$userList->addItem(['description' => $item]);
