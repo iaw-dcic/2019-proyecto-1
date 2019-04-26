@@ -97,10 +97,7 @@ class GamesController extends Controller
         
         //Pruebas de listas
         $listings= $request->listing;
-        dd($listings);
-        exit;
-        $listing = Listing::find([4]);
-        $game->listings()->attach($listing);
+        $game->listings()->attach($listings);
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
 

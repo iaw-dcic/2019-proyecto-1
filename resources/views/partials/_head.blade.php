@@ -1,8 +1,8 @@
 <head>
   <title>{{config('app.name')}} @yield('title')</title>
   <meta charset="UTF-8">
-  <meta name="description" content="EndGam Gaming Magazine Template">
-  <meta name="keywords" content="endGam,gGaming, magazine, html">
+  <meta name="description" content="GG Games, IAW 2019">
+  <meta name="keywords" content="laravel,gg-gaming,website, html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   
@@ -46,17 +46,15 @@
   <!-- Main Stylesheets -->
   <link rel="stylesheet" href="{{ URL::asset('/css/style.css') }}">
 
-
-  <!--[if lt IE 9]>
-		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  
   <!-- Search table -->
   <link rel="stylesheet" href="{{ URL::asset('/css/search-table-util.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{URL::asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('vendor/select2/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('vendor/select2/select2.css') }}">
   @yield('search-specific-style')
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
 
 
 </head>
+
