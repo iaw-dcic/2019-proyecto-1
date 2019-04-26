@@ -6,6 +6,15 @@
 
  <h1>{{ $title }}</h1>
 
+  <ul>
+        @forelse ($listas as $usermovie)
+             <li>{{$usermovie->id}}){{ $usermovie->nombre }}
+			 <a href="{{ url("/listas/{$usermovie->id}") }}">Ver detalles</a>
+        @empty
+            <li>No hay listas disponibles.</li>
+        @endforelse
+    </ul>
+ 
  <table class="table">
   <thead>
     <tr>

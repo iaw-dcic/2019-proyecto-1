@@ -18,9 +18,17 @@ class CreateMoviesTable extends Migration
 			
 			$table->string('titulo', 100);
 			$table->string('director', 100);
-			$table->integer('año');
+			
+			$table->unsignedBigInteger('lista'); 
 			
             $table->timestamps();
+        });
+		
+		   Schema::table('movies', function (Blueprint $table) {
+           
+			$table->foreign('lista')->references('id')->on('usermovies');
+		//	$table->foreign('movies_id')->references('id')->on('movies');
+			
         });
     }
 
@@ -31,6 +39,8 @@ class CreateMoviesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movies');
+        Schema::disableForeignKeyConstraints();
+		Schema::drop('movies');
+		Schema::enableForeignKeyConstraints();
     }
 }

@@ -1,25 +1,28 @@
 @extends('layout')
 
-@section('title', "Crear usuario")
+@section('title', "Editar usuario")
 
 @section('content')
    
 	  <div class="card">
 	
-	  <h4 class="card-header">Crear usuario</h4>
+	  <h4 class="card-header">Editar usuario</h4>
         <div class="card-body">
 	
-	 <form method="POST" action="{{ url('usuarios') }}">
+	 <form method="POST" action="{{ url("usuarios/{$user->id}") }}">
+	 
+	  {{ method_field('PUT') }}
+	 
 	  {{ csrf_field() }}
-	  
 	 <div class="form-group">
 	  	<label for="name">Nombre y apellido</label>
-		<input type="text" name="nombre" id="name" class="form-control" placeholder="Micaela Melo" required autofocus>
+		<input type="text" name="nombre" id="name" class="form-control" placeholder="Micaela Melo" value="{{ old('name', $user->name) }}">
+		
 	</div>
 	 
     <div class="form-group">
 	  	<label for="email">E-Mail</label>
-		<input type="email" name="correo" id="email" class="form-control" placeholder="filmik@example" required autofocus>
+		<input type="email" name="correo" id="email" class="form-control" placeholder="filmik@example" value="{{ old('email', $user->email) }}">
 	</div>
 	
 	<div class="form-group">
@@ -34,7 +37,7 @@
 	  </div>
 	  
 	  <center>
-	  <button class="btn btn-primary" type="submit">Registrarse</button>
+	  <button class="btn btn-primary" type="submit">Actualizar</button>
 	  </center>
 	  
 	  <a href="{{ route('users.index') }}">Regresar al listado de usuarios</a>

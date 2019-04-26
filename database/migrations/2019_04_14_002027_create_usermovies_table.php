@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserMovieTable extends Migration
+class CreateUserMoviesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateUserMovieTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_movie', function (Blueprint $table) {
+        Schema::create('usermovies', function (Blueprint $table) {
             $table->bigIncrements('id');
 			$table->string('nombre');
 			
 			$table->unsignedBigInteger('creador_id'); 
 			 
-			$table->unsignedBigInteger('movies_id'); 
+	//		$table->unsignedBigInteger('movies_id'); 
 			
 			
             $table->timestamps();
         });
 		
-		   Schema::table('user_movie', function (Blueprint $table) {
+		   Schema::table('usermovies', function (Blueprint $table) {
            
 			$table->foreign('creador_id')->references('id')->on('users');
-			$table->foreign('movies_id')->references('id')->on('movies');
+		//	$table->foreign('movies_id')->references('id')->on('movies');
 			
         });
     }
@@ -40,11 +40,9 @@ class CreateUserMovieTable extends Migration
      */
     public function down()
     {
-           Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['creador_id']);
-            $table->dropColumn('creador_id');
-			$table->dropForeign(['movies_id']);
-            $table->dropColumn('movies_id');
-        });
+        Schema::disableForeignKeyConstraints();
+		Schema::drop('usermovies');
+		Schema::enableForeignKeyConstraints();
+
     }
 }

@@ -10,8 +10,10 @@
              <li>{{$user->id}}{{ $user->name }}, ({{ $user->email }})
 			 <a href="{{ url("/usuarios/{$user->id}") }}">Ver detalles</a>
 			 </li>
-        @empty
-            <li>No hay usuarios registrados.</li>
+        
+		@empty
+        
+			<li>No hay usuarios registrados.</li>
         @endforelse
     </ul>
 @endsection

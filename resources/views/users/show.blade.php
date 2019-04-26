@@ -4,9 +4,11 @@
 
 @section('content')
      <h1>Perfil del usuario #{{$user->id}}</h1>
-
-    <p>Nombre del usuario: {{ $user->name }}</p>
-    <p>Correo electrónico: {{ $user->email }}</p>
 	
-   
+    <p>Nombre del usuario: {{ $user->name }}</p>
+    <p>Correo electrónico: {{ $user->email }}</p>	
+    <p>Listas: </p>
+	
+	
+	
 @endsection

@@ -28,7 +28,7 @@
 	  </div>
 	  
 	  <center>
-	  <button class="btn btn-primary" href="{{ asset('/usuarios') }}" type="submit">Iniciar sesión</button>
+	  <button class="btn btn-primary" type="submit">Iniciar sesión</button>
 	  </center>
 	  
 	  <a href="{{ route('users.index') }}">Regresar al listado de usuarios</a>

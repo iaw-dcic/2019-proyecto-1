@@ -1,17 +1,21 @@
 @extends('layout')
+
 @section('title', "Crear lista")
+
 @section('content')
-     <h1> Crear lista </h1>
+     <h1> Agregar peli </h1>
 	 
 	<div class="container">
     <div class="row clearfix">
+	
 		<div class="col-md-12 column">
-		 <form method="POST" action="{{ url('home') }}">
+		<form method="POST" action="{{ url("/listas/{$usermovie->id}") }}">
+		 
 		@csrf
+
 		<div class="form-group">
 	  	<label for="inputList"></label> 
 
-		<input type="Nombre de lista" name="nombre" id="inputList" class="form-control" placeholder="Nombre de la lista" required autofocus>
 		</div>
 			
 			<table class="table table-bordered table-hover" id="tab_logic">
@@ -75,7 +79,7 @@
 	</H1>
 	
 	<H1 align="CENTER">
-	    <button type="submit" class="btn btn-primary">Crear lista</button>
+	    <button type="submit" class="btn btn-primary">Crear peli</button>
 			</H1>
 			</form>
 </div>
