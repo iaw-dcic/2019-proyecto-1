@@ -23,3 +23,9 @@ TODO
 ## Herramienta Audit de Chrome
 
 TODO
+
+## Deploy en Heroku
+
+1. Crear una cuenta en https://www.heroku.com/
+1. Crear la aplicación ![Ver](screenshot/screenshot1.png)
+
