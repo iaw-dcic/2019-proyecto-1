@@ -1,6 +1,15 @@
 @extends('layouts.appIndex')
 
 @section('contenido')
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
     <div class="row">
         <form class="form-group" method="POST" action='{{route('store-libro',['id' => $id])}}'>

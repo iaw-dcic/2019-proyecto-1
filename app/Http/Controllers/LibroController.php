@@ -35,6 +35,12 @@ class LibroController extends Controller
      */
     public function store(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'Genero' => 'required|unique:posts|max:255',
+            'Titulo' => 'required',
+            'Autor' => 'required',
+            'FechaPublicacion' => 'required'
+        ]);
         $libro = new Libro;
         $libro -> lista_libro_id = $id;
         $libro -> Genero = $request ->input('Genero');
