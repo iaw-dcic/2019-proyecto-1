@@ -11,14 +11,14 @@ class NotRegisterController extends Controller
 {
     public function loadCollection()
     {
-        $collec = Collection::all();
+        $collec = Collection::where('pp', 1)->get();
 
         return view('welcome',compact('collec'));
     }
 
     public function loadBooks($id)
     {
-        $books = Book::all();
+        $books = Book::where('collection_id', $id)->get();
 
         return view('loadbook', compact('books','id'));
     }

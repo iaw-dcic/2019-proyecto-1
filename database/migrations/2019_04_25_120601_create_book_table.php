@@ -17,7 +17,8 @@ class CreateBookTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('author'); 
-            $table->integer('id_collection');
+            $table->integer('collection_id')->unsigned();
+            $table->foreign('collection_id')->references('id')->on('collections')->onDelete('cascade');;
             $table->timestamps();
         });
     }

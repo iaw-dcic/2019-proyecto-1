@@ -10,9 +10,10 @@ class CollectionController extends Controller
 {
     public function index()
     {
-        $collec = Collection::all();
+        $id=auth()->user()->id;
+        $collec = Collection::where('user_id', $id)->get();
 
-        return view('home', compact('collec'));
+        return view('home', compact('collec','id'));
     }
 
     public function store()
@@ -21,36 +22,40 @@ class CollectionController extends Controller
         $colecc->title = request('title');
         $colecc->category = request('category');
         $colecc->description = request('description');
+        $colecc->user_id = auth()->user()->id;
+        $colecc->pp=0;  //coleccion privada
+
+        if(request('description')=='Publica')
+            $colecc->pp=1;  //coleccion publica
+        
         $colecc->save();
 
-        $collec = Collection::all();
+        $id=auth()->user()->id;
+        $collec = Collection::where('user_id', $id)->get();
 
         return view('editCollection', compact('collec'));
     }
 
     public function load()
     {
-        $collec = Collection::all();
+        $id=auth()->user()->id;
+        $collec = Collection::where('user_id', $id)->get();
 
         return view('editCollection', compact('collec'));
     }
 
-    public function eliminar($id)
-    {
-        return view('delete', compact('id'));
-    }
-
     public function delete($id)
     {
-        $libros = Book::where('id_collection', '=', $id);
-
-        $libros->delete();
+  //      $books = Book::where('collection_id', $id)->get();
+//$books = Book::all();
+  
+//$books->delete();
 
         $coleccion = Collection::where('id', '=', $id)->first();
-
         $coleccion->delete();
 
-        $collec = Collection::all();
+        $id=auth()->user()->id;
+        $collec = Collection::where('user_id', $id)->get();
 
         return view('editCollection', compact('collec'));
     }

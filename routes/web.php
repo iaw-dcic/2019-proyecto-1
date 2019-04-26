@@ -27,6 +27,7 @@ Auth::routes();
 
 Route::get('/home/cargarlibros/{id}', 'BookController@index');
 Route::post('/home/cargarlibros/{id}', 'BookController@store');
+Route::post('/home/cargarlibros/{id}', 'BookController@delete');
 
 Route::get('/home','CollectionController@index');
 

@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Book;
-use App\Collectionbook;
 
 class BookController extends Controller
 {
     public function index($id)
     {
-        $books = Book::where('id_collection', '=', $id);
-
-
+        $books = Book::where('collection_id', $id)->get();
         return view('cargarlibros', compact('books','id'));
     }
 
@@ -21,18 +18,25 @@ class BookController extends Controller
        $book = new Book();
        $book->title = request('title');
        $book->author = request('author');
-      // $book->file = request('file');
-       $book->id_collection = $id;
+       $book->collection_id = $id;
 
        $book->save();
 
-       $books = Book::where('id_collection', '=', $id);
-       //  $books = Book::all();
-
+       $books = Book::where('collection_id', $id)->get();
+       
        return view('cargarlibros', compact('books','id'));
     }
 
-    public function destroy(){
-        
+    public function delete($id)
+    {
+        $book = Book::where('id', '=', $id)->first();
+        $id2 = $book ->collection_id;
+
+        $books = Book::where('id', '=', $id)->first();
+        $books->delete();
+
+$books = Book::where('collection_id', $id2)->get();
+       
+return view('cargarlibros', compact('books','id2'));
     }
 }

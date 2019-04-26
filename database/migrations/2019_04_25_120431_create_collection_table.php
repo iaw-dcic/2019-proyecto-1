@@ -14,10 +14,13 @@ class CreateCollectionTable extends Migration
     public function up()
     {
         Schema::create('collections', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('title');
             $table->text('category');
             $table->text('description');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->integer('pp');
             $table->timestamps();
         });
     }

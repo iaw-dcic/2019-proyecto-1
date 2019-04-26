@@ -20,7 +20,7 @@
                             <h5 class="card-title">{{$colec->title}}</h5>
                             <h6 class="card-title">{{$colec->category}}</h6>
                             <p class="card-text">{{$colec->description}}</p>
-                        
+
                             <a href="/home/cargarlibros/{{$colec->id}}" class="card-link"> Ver</a>
 
                             <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Eliminar</button>
@@ -33,7 +33,6 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                     
                                         </div>
 
                                         <div class="modal-body">
@@ -41,11 +40,9 @@
                                             <p>Desea eliminar la coleccion de libros?</p>
                                         </div>
                                         <div class="modal-footer">
-                                        <form method="POST" action="/home/editCollection/{{$colec->id}}"> {{csrf_field()}}
-
-                                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Aceptar</button>
-
-                                        </form>
+                                            <form method="POST" action="/home/editCollection/{{$colec->id}}"> {{csrf_field()}}
+                                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Aceptar</button>
+                                            </form>
                                         </div>
                                     </div>
 
@@ -77,6 +74,15 @@
                                 <h5 class="card-title"><input type="text" class="form-control" name="title" placeholder="Titulo"></h5>
                                 <h5 class="card-title"><input type="text" class="form-control" name="category" placeholder="Categoria"></h5>
                                 <p class="card-text"><textarea class="form-control" name="description" rows="3"></textarea></p>
+
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline1" name="pp" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline1">Publica</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline2" name="pp" class="custom-control-input">
+                                    <label class="custom-control-label" for="customRadioInline2">Privada</label>
+                                </div>
 
 
                                 <button type="submit" class="btn btn-link"> Cargar</button>
