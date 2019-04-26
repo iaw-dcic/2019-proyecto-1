@@ -39,8 +39,8 @@ class ListingsController extends Controller
             return view('listings.listing-index')->withData($data);
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus listas.');
-            //return view('listings.index'); //Poner logica en listings.index parecida a games.blade para ponerle un buscador de listas
-            return redirect()->guest('/login');
+            return view('listings.listing-index'); //Poner logica en listings.index parecida a games.blade para ponerle un buscador de listas
+            //return redirect()->guest('/login');
         }
     }
 
