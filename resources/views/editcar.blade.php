@@ -9,26 +9,25 @@
 <div class="row justify-content-center">
 <div class="col-sm-6">
 <div class="card">
-<div class="card-header">Crear lista</div>
+<div class="card-header">Editar auto</div>
 <div class="card-body">
-<form method="POST" action="/list/create">
+<form method="POST" action="/list/{{$car->lista_id}}/car/{{$car->id}}/update">
+    {{method_field('PATCH')}}
     {{csrf_field()}}
   <div class="form-group">
-    <label for="nombre">Nombre de la lista</label>
-    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+    <label for="brand">Marca</label>
+    <input type="text" class="form-control" name="brand" placeholder="Marca" value={{$car->brand}} required>
+    <label for="model">Modelo</label>
+    <input type="text" class="form-control" name="model" placeholder="Modelo" value={{$car->model}} required>
+    <label for="version">Versión</label>
+    <input type="text" class="form-control" name="version" placeholder="Versión" value={{$car->version}} required>
   </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" name="compartir">
-    <label class="form-check-label" for="compartir">Compartir lista</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Crear</button>
+  <button type="submit" class="btn btn-primary">Editar</button>
 </form>
 </div>
 </div>
 </div>
 </div>
 </div>
-
-
 
 @endsection

@@ -7,7 +7,7 @@
 
 <div class="container">
 <div class="row justify-content-center">
-<div class="col-md-8">
+<div class="col-sm-6">
 @auth
 @if (Auth::user()->id==$lista->user_id)
 <form method="POST" action="/list/{{$lista->id}}">
@@ -27,9 +27,11 @@
             <label class="form-check-label" for="compartir">Visible</label>
         </div>
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        <button type="button" class="btn btn-primary" onclick="window.location='{{ route('profile', Auth::user()->id) }}'">Agregar</button>
-    </div>
-  </form>
+        </div>
+    </form>
+    <form method="GET" action="/list/{{$lista->id}}/car/create">
+    <button type="submit" class="btn btn-primary">Agregar auto</button>
+    </form>
   @else
     <h2>{{$lista->name}}</h2>
   @endif
@@ -42,8 +44,12 @@
     <tr>
       <th scope="col">Marca</th>
       <th scope="col">Modelo</th>
-      <th scope="col">Version</th>
-      <th scope="col"></th>
+      <th scope="col">Versión</th>
+      @auth
+            @if (Auth::user()->id==$lista->user_id)
+                <th scope="col"></th>
+            @endif
+        @endauth
     </tr>
   </thead>
   <tbody>
@@ -52,8 +58,22 @@
       <th>{{$car->brand}}</th>
       <td>{{$car->model}}</td>
       <td>{{$car->version}}</td>
-      <td><button type="button" class="btn btn-success" onclick="window.location='{{ route('profile', Auth::user()->id) }}'">Editar</button>
-      <button type="button" class="btn btn-danger" onclick="window.location='{{ route('profile', Auth::user()->id) }}'">Borrar</button></td>
+      @auth
+            @if (Auth::user()->id==$lista->user_id)
+            <td>
+            <div class="row">
+            <form method="GET" action="/list/{{$lista->id}}/car/{{$car->id}}/edit">
+                <button type="submit" class="btn btn-success">Editar</button>
+            </form>
+            <form method="POST" action="/list/{{$lista->id}}/car/{{$car->id}}/edit">
+                {{method_field('DELETE')}}
+                {{csrf_field()}}
+                <button type="submit" class="btn btn-danger">Borrar</button>
+            </form>
+            </div>
+            </td>
+            @endif
+        @endauth
     @endforeach
   </tbody>
 </table>

@@ -23,8 +23,20 @@ Route::get('profile/{id}', 'PagesController@profile')->name('profile')->where('i
 
 Route::get('/list/create', 'PagesController@createlist');
 
-Route::post('/list/create', 'PagesController@store');
+Route::post('/list/create', 'PagesController@store')->name('listcreate');
 
 Route::get('/list/{id}', 'PagesController@list')->name('list');
 
 Route::patch('/list/{id}', 'PagesController@update');
+
+Route::get('/list/{id}/car/create', 'PagesController@createcar');
+
+Route::post('/list/{id}/car/create', 'PagesController@storecar');
+
+Route::get('/list/{id}/car/{carid}/edit', 'PagesController@editcar');
+
+Route::patch('/list/{id}/car/{carid}/update', 'PagesController@updatecar');
+
+Route::delete('/list/{id}/car/{carid}/edit', 'PagesController@deletecar');
+
+Route::get('/publiclists', 'PagesController@publiclists')->name('publiclists');
