@@ -28,4 +28,23 @@ TODO
 
 1. Crear una cuenta en https://www.heroku.com/
 1. Crear la aplicación ![Ver](screenshots/screenshot1.png)
+1. Elija un nombre único ![Ver](screenshots/screenshot2.png)
+1. Vaya al tab deploy, conecte a su cuenta de Github ![Ver](screenshots/screenshot3.png)
+1. Busque su repositorio y haga click en connect ![Ver](screenshots/screenshot4.png)
+1. Habilite los deploy automáticos (opcional, también puede hacer deploys manuales) ![Ver](screenshots/screenshot5.png)
+1. En el tab settings, haga click en 'Reveal Config Vars' ![Ver](screenshots/screenshot6.png)
+1. Agregue la variable de entorno API_KEY ![Ver](screenshots/screenshot7.png)
+1. Agregue el archivo Procfile ![Ver](screenshots/screenshot8.png)
+1. Vaya a https://www.cleardb.com/login.view y registre una cuenta ![Ver](screenshots/screenshot9.png)
+1. Ingrese sus datos, el número de teléfono puede no tiene que ser válido ![Ver](screenshots/screenshot10.png)
+1. Verifique su email para poder continuar ![Ver](screenshots/screenshot11.png)
+1. Cree su usuario y contraseña ![Ver](screenshots/screenshot12.png)
+1. Registre los datos del perfil faltantes, no necesitan ser válidos ![Ver](screenshots/screenshot13.png)
+1. Haga click en New Datastore ![Ver](screenshots/screenshot14.png)
+1. Seleccione Google Cloud Platform ![Ver](screenshots/screenshot15.png)
+1. Seleccione la opción Free (de prueba por 90 días) ![Ver](screenshots/screenshot16.png)
+1. Haga click en Create Datastore ![Ver](screenshots/screenshot17.png)
+1. Haga click en el nombre de la base de datos ![Ver](screenshots/screenshot18.png)
+1. Seleccione el tab "System Information" ![Ver](screenshots/screenshot19.png)
+1. Aquí encontrará el nombre de la base de datos, el hostname, el usuario y la contraseña. el puerto es el 3306. ![Ver](screenshots/screenshot20.png)
 
