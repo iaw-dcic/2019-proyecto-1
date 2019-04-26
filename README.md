@@ -18,11 +18,23 @@ Eso debería permitirle acceder a http://127.0.0.1:8000
 
 ## Creación del Pull Request para la entrega
 
-TODO
+1. Vaya a `https://github.com/<github-user>/proyecto-1`
+1. Haga click en 'New pull request'
+1. Haga click en 'compare across forks'
+1. Seleccione como base respository a `iaw-dcic/proyecto-1`
+1. Seleccione como head repository a su repositorio y branch donde tiene el proyecto.
+1. Haga click en "Create pull request"
+1. Escriba como título del Pull Request "Entrega Proyecto 1".
+1. Puede agregar un comentario que considere apropiado.
+1. Finalmente, haga click en "Create pull request".
 
 ## Herramienta Audit de Chrome
 
-TODO
+1. En cada página que desee evaluar (hagalo para al menos 3 páginas de su proyecto)
+1. En chrome, abra la herramienta del desarrollador (Fn 12)
+1. Seleccione las opciones que se muestran en la siguiente captura ![Ver](screenshots/screenshot21.png)
+1. Ejecute la auditoria
+1. Analice los resultados e intente corregir posibles errores reportados por la misma.
 
 ## Deploy en Heroku
 
