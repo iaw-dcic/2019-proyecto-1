@@ -4,6 +4,8 @@
 @stop 
 @section('title',' | Listas') 
 @section('content')
+@include('sweetalert::alert')
+
 
 <!-- Page top section -->
 <section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/4.jpg')}}">

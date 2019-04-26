@@ -52,6 +52,7 @@
   <link rel="stylesheet" href="{{ URL::asset('vendor/select2/select2.css') }}">
   @yield('search-specific-style')
 
+  <!--Multiple select forms Bootstrap-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
 

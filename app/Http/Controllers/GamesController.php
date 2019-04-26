@@ -56,7 +56,7 @@ class GamesController extends Controller
     public function create()
     {
         if (Auth::user()) {
-            $userListings = Listing::where("user_id","=", auth()->user()->id)->get();
+            $userListings = auth()->user()->listings()->select('title','id')->get();
             return view('games.create')->withListings($userListings);
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
@@ -72,7 +72,6 @@ class GamesController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->validate($request, array(
             'title' => 'required',
             'console' => 'required',
@@ -80,13 +79,12 @@ class GamesController extends Controller
             'cover_image' => 'image|nullable|max:1999',
             'mode' => 'required',
             'genre' => 'required',
-            'listing' => 'required'
+            'listings' => 'required'
         ));
 
         $fileNameToStore = $this->handleFileUpload($request);
 
         $game = new Game;
-      //  $game->user_id = auth()->user()->id;
         $game->title = $request->title;
         $game->rating = $request->rating;
         $game->cover_image = $fileNameToStore;
@@ -95,8 +93,7 @@ class GamesController extends Controller
         $game->genre = $request->genre;
         $game->save();
         
-        //Pruebas de listas
-        $listings= $request->listing;
+        $listings= $request->listings;
         $game->listings()->attach($listings);
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
