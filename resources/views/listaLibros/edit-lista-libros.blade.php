@@ -48,12 +48,24 @@
                     </div>
                 </div>
             </form>
+            <!-- Toggle Button -->
+            <form action="{{route('toggle-list', ['id'=> $lista->id])}}" method="POST">
+                @csrf
+                <button class="btn btn-success">
+                    @if ($lista->privada)
+                        Hacer publica
+                    @else
+                        Hacer privada
+                    @endif
+                </button>
+            </form>
+
             <!-- Delete Button -->
             <form action="{{route('delete-lista-libros', ['id'=> $lista->id])}}" method="POST">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
         
-                    <button class="btn btn-danger">Borrar</button>
+                    <button class="btn btn-danger">Borrar lista</button>
             </form>
             @endforeach 
         </div>        

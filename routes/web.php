@@ -30,7 +30,7 @@ Route::get('/lista-libros/{id}', 'LibroController@create')->name('add-libro');
 Route::post('/lista-libros/{id}/add', 'LibroController@store')->name('store-libro');
 
 Route::get('/editProfile', 'PageController@editProfile')->name('editProfile');
-
+Route::post('/toggle-list', 'ListaLibroController@toggleList')->name('toggle-list');
 //facebook
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');

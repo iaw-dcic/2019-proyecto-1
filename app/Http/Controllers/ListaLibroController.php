@@ -43,6 +43,14 @@ class ListaLibroController extends Controller
         return redirect('lista-libros');
     }
 
+    public function toggleList(Request $request){
+        $id = $request->input('id');
+        $lista = ListaLibro::find($id);
+        $lista->privada = !$lista->privada;
+        $lista -> save();
+        return redirect('lista-libros');
+    }
+
     /**
      * Display the specified resource.
      *
