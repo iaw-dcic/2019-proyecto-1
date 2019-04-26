@@ -27,6 +27,11 @@ Route::get('/readme',function(){
     return view('/readme');
 })->name('readme');
 
+Route::resources([
+    'lists' => 'listsController',
+    'games' => 'gamesController'
+]);
+
 Route::get('/profile/createList', 'listsControler@create')->name('createList')->middleware('auth');
 
 Route::post('/profile','listsController@store')->name('profile')->middleware('auth');

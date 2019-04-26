@@ -16,12 +16,6 @@ html, body {
     position: relative;
 }
 
-.top-right {
-    position: fixed;
-    right: 10px;
-    top: 18px;
-}
-
 .content {
     text-align: center;
     box-sizing: border-box;
@@ -35,8 +29,9 @@ html, body {
     
 }
 .reason > h3 {
+    
     font-family: 'Quicksand', sans-serif;
-    font-weight: 400;
+    font-weight: 900;
     font-size: 40px;
 }
 .reason > p{
@@ -48,43 +43,6 @@ html, body {
 
 .title {
     font-size: 84px;
-}
-
-.links > a {
-    color: #222527;
-    padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    transition: 0.5s;
-    text-transform: uppercase;
-  
-}
-
-.loginBot:hover{
-    transition:0.5;
-    transform: scale(1.5);
-    background: orange;
-
-}
-
-.registerBot:hover{
-    transition:0.5;
-    transform: scale(1.5);
-    background: rgb(54, 175, 135);
-}
-
-.readmeBot:hover{
-    transition:0.5;
-    transform:scale(1.5);
-    background: rgb(14, 200, 233);
-}
-
-.publicListsBot:hover{
-    transition:0.5;
-    transform:scale(1.5);
-    background: rgba(185, 179, 90, 0.432);
 }
 
 .m-b-md {

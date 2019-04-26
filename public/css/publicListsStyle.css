@@ -1,5 +1,7 @@
-.NoLists{
-    font-family: 'Josefin Sans', sans-serif;
+.divAlerta{
+    position: center;
+}
+
+.divAlerta > h4, p{
     text-align: center;
-    font-size: 40px;
 }

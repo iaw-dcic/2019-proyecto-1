@@ -24,7 +24,7 @@
     
    
 
-    <title>{{ config('app.name', 'Catalogo de Juegos') }}</title>
+    <title>@yield('titulo')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -53,7 +53,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @yield('leftNav')
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -96,6 +96,8 @@
             @yield('content')
         </main>
     </div>
+
+    @yield('extraContent')
    
 </body>
 </html>
