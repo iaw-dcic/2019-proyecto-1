@@ -33,6 +33,9 @@
                         Nombre de la lista
                     </div>
                     <div class="cell">
+                        Cantidad de juegos
+                    </div>
+                    <div class="cell">
                         ¿Es pública?
                     </div>
                     <div class="cell">
@@ -49,18 +52,21 @@
                     <div class="cell" data-title="Full Name">
                         {{$listing->title}}
                     </div>
-                    <div class="cell" data-title="Age">
 
-                    @if($listing->visibility == 'Publica') Si
-                    @else No     @endif
-
-
+                    <div class="cell" data-title="Number Of Games">
+                        {{$listing->games()->count()}}
                     </div>
+
+                    <div class="cell" data-title="Age">
+                        @if($listing->visibility == 'Publica') Si @else No @endif
+                    </div>
+
+
                     <div class="cell" data-title="Job Title">
-                        <a href="">Link a la lista</a>
+                             <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
                     </div>
                     @guest
-                    <div class="cell" data-title="Location">
+                    <div class="cell" data-title="Location">    
                         <a href="">Link al perfil</a>
                     </div>
                     @endguest

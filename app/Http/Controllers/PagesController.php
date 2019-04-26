@@ -72,7 +72,7 @@ class PagesController extends Controller
 
             return view('pages.profile')->with('data', $data);
 
-        }
+    }
 
     
 

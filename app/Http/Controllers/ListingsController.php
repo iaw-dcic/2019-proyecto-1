@@ -76,7 +76,7 @@ class ListingsController extends Controller
         $listing->title = $request->title;
         $listing->visibility = $request->visibility;
         $listing->user_id = auth()->user()->id;
-       // $listing->save();
+        $listing->save();
 
         alert()->success('Listo!', 'La lista fue creada');
         return redirect('listings');
@@ -90,7 +90,8 @@ class ListingsController extends Controller
      */
     public function show($id)
     {
-        //
+        $listing = Listing::find($id);
+       return view('listings.listing-show')->withListing($listing);
     }
 
     /**
@@ -101,7 +102,8 @@ class ListingsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $listing = Listing::find($id);
+        return view('listings.listing-edit')->withListing($listing);
     }
 
     /**
@@ -113,7 +115,19 @@ class ListingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, array(
+            'title' => 'required',
+            'visibility' => 'required',
+        ));
+
+        $listing = Listing::find($id);
+
+        $listing->title = $request->title;
+        $listing->visibility = $request->visibility;
+        $listing->save();
+
+        alert()->success('Listo!', 'La lista fue editada');
+        return redirect('listings');
     }
 
     /**
@@ -124,7 +138,11 @@ class ListingsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $listing = Listing::find($id);
+        $listing->games()->detach();
+        $listing->delete();
+        alert()->info('Atención!', 'La lista fue eliminada');
+        return redirect('listings');
     }
 
     public function getUserListings($userName)

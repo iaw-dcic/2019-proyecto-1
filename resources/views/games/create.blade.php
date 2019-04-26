@@ -25,10 +25,22 @@
         <form action="{{ route('games.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- {{ csrf_field() }} -->
+
             <!-- Title-->
             <div class="form-style-agile">
                 <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre del juego *</label>
                 <input name="title" type="text" class="form-control" required>
+            </div>
+
+            <!-- List -->
+            <div class="form-style-agile">
+                <label><i class="fas fa-gamepad" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
+                <select type="text" class="custom-dropdown" name="listing" required>
+                    <option disabled selected value style="display:none"> -- Selecciona una o más listas -- </option>
+                    @foreach($listings as $listing)
+                        <option value="{{ $listing->title}}"> {{ $listing->title}} </option>
+                    @endforeach
+                    </select>
             </div>
 
             <!-- Console -->
@@ -59,8 +71,8 @@
 
             <!--Genre -->
             <div class="form-style-agile">
-                    <label><i class="fas fa-bomb" aria-hidden="true"></i> ¿A qué genero pertence el juego?*</label>
-                    <select type="text" class="custom-dropdown" name="genre" required>
+                <label><i class="fas fa-bomb" aria-hidden="true"></i> ¿A qué genero pertence el juego?*</label>
+                <select type="text" class="custom-dropdown" name="genre" required>
                               <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
                               <option>Accion</option>
                               <option>Disparos</option>
@@ -69,18 +81,18 @@
                               <option>Estrategia</option>
                               <option>Otro</option>
                     </select>
-            </div>    
+            </div>
 
             <!--Mode -->
             <div class="form-style-agile">
-                    <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
-                    <select type="text" class="custom-dropdown" name="mode" required>
+                <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
+                <select type="text" class="custom-dropdown" name="mode" required>
                               <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
                               <option>Solitario</option>
                               <option>Multijugador</option>
                               <option>Solitario/Multijugador</option>
                     </select>
-            </div>    
+            </div>
 
             <!-- Cover image -->
             <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
@@ -93,7 +105,7 @@
                 <input type="text" class="form-control" readonly>
                 <br><br>
             </div>
-            
+
             <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
 
             <input type="submit" value="Listo">

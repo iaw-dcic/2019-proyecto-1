@@ -43,9 +43,9 @@ class GamesController extends Controller
 
             return view('pages.games')->with('games', $games);
         } else {
-            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
-            return view('pages.games');
-        */}
+           alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
+            return view('pages.games');*/
+        }
     }
 
     /**
@@ -56,8 +56,8 @@ class GamesController extends Controller
     public function create()
     {
         if (Auth::user()) {
-            //TODO: Pasarle las listas que posee $listings = encontrar listas del usuario
-            return view('games.create'); //->with('listings',$listings)
+            $userListings = Listing::where("user_id","=", auth()->user()->id)->get();
+            return view('games.create')->withListings($userListings);
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
             return redirect()->guest('/login');
@@ -79,7 +79,8 @@ class GamesController extends Controller
             'rating' => 'required',
             'cover_image' => 'image|nullable|max:1999',
             'mode' => 'required',
-            'genre' => 'required'
+            'genre' => 'required',
+            'listing' => 'required'
         ));
 
         $fileNameToStore = $this->handleFileUpload($request);
@@ -95,15 +96,11 @@ class GamesController extends Controller
         $game->save();
         
         //Pruebas de listas
-        $listing = Listing::find([1,2]);
+        $listings= $request->listing;
+        dd($listings);
+        exit;
+        $listing = Listing::find([4]);
         $game->listings()->attach($listing);
-
-       // dd($game);
-        //exit;
-
-
-        //
-
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
 
@@ -252,4 +249,5 @@ class GamesController extends Controller
         }
         return $fileNameToStore;
     }
+
 }
