@@ -21,7 +21,7 @@
         @auth @if($listing->games()->count() > 0)
 
         <div class="row">
-            <div class="col-xl-9 col-lg-9 col-md-9">
+            <div class="col-xl-7 col-lg-8 col-md-7">
                 <div class="row">
                     @foreach($listing->games as $game)
                     <div class="col-lg-4 col-md-6">
@@ -56,24 +56,23 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 sidebar game-page-sideber">
-                <div class="row">
-                    <div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
-                    <a href="{{route('games.create')}}" class="site-btn">Agregar juego a la lista</a><br><br><br>
-                        <a href="{{ route('listings.edit', $listing->id)}}" class="site-btn">Editar lista</a>
-                        <br /><br /><br />
-
-                        <form class="read-more" action="{{ route('listings.destroy', $listing->id) }}" method="post">
-                            {{ method_field("DELETE") }} @csrf
-                            <!-- {{ csrf_field() }} -->
-                            <button type="submit" class="site-btn">
-                                Eliminar lista
-                            </button>
+            <div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">             
+                   <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
+                        <a href="{{route('games.create')}}" class="site-btn">Agregar juego a la lista</a><br><br><br>
+                            <a href="{{ route('listings.edit', $listing->id)}}" class="site-btn">Editar lista</a>
                             <br /><br /><br />
-                        </form>
+
+                            <form class="read-more" action="{{ route('listings.destroy', $listing->id) }}" method="post">
+                                {{ method_field("DELETE") }} @csrf
+                                <!-- {{ csrf_field() }} -->
+                                <button type="submit" class="site-btn">
+                                    Eliminar lista
+                                </button>
+                                <br /><br /><br />
+                            </form>
+                        </div>
                     </div>
-                </div>
-               
             </div>
         </div>
 

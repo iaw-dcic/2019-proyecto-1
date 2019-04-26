@@ -44,8 +44,7 @@ class GamesController extends Controller
             return view('pages.games')->with('games', $games);
         } else {
            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
-            return view('pages.games');*/
-        }
+            return view('pages.games');*/ }
     }
 
     /**
@@ -56,7 +55,7 @@ class GamesController extends Controller
     public function create()
     {
         if (Auth::user()) {
-            $userListings = auth()->user()->listings()->select('title','id')->get();
+            $userListings = auth()->user()->listings()->select('title', 'id')->get();
             return view('games.create')->withListings($userListings);
         } else {
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
@@ -92,13 +91,12 @@ class GamesController extends Controller
         $game->mode = $request->mode;
         $game->genre = $request->genre;
         $game->save();
-        
-        $listings= $request->listings;
+
+        $listings = $request->listings;
         $game->listings()->attach($listings);
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
-
-        return redirect('games');
+        return redirect('listings');
     }
 
 
@@ -114,12 +112,12 @@ class GamesController extends Controller
 
         $listNames = [];
         foreach ($game->listings as $listing) {
-            array_push($listNames,$listing->title);
+            array_push($listNames, $listing->title);
         }
 
         $data = [
             'game'  => $game,
-            'listings'   =>implode(" - ", $listNames),
+            'listings'   => implode(" - ", $listNames),
         ];
 
         return view('games.game-single')->with('data', $data);
@@ -133,14 +131,19 @@ class GamesController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()) {
+            $game = Game::find($id);
+            $listings = auth()->user()->listings()->select('title', 'id')->get();
 
-        $game = Game::find($id);
+            return view('games.edit',compact('game', 'listings'));
+        } else {
+            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
+            return redirect()->guest('/login');
+        }
         //Check for correct user
         /*if (auth()->user()->id !== $game->user_id) {
             return redirect('/games')->with('error', 'Pagina no autorizada'); //TODO: Ver esto porque no anda, hacer l mismo para eliminar y ver
         }*/
-
-        return view('games.edit')->with('game', $game);
     }
 
     /**
@@ -175,6 +178,10 @@ class GamesController extends Controller
         }
         $game->save();
 
+        $listings = $request->listings;
+        $game->listings()->sync($listings);
+
+
         alert()->success('Listo!', 'El juego fue editado correctamente.');
         return redirect('games');
     }
@@ -191,7 +198,7 @@ class GamesController extends Controller
         $game = Game::find($id);
 
         // Check for correct user
-       /* if (auth()->user()->id !== $game->user_id) {
+        /* if (auth()->user()->id !== $game->user_id) {
             return redirect('/posts')->with('error', 'Unauthorized Page');
         }*/
 
@@ -200,16 +207,15 @@ class GamesController extends Controller
             Storage::delete('public/cover_images/thumbnail/' . $game->cover_image);
         }
 
-        $game->delete();     
+        $game->delete();
         $game->listings()->detach();
 
         alert()->info('Atención!', 'El juego fue eliminado');
         return redirect('games');
     }
 
-    public function removeListing(Game $game) {
-        
-    }
+    public function removeListing(Game $game)
+    { }
 
     private function handleFileUpload(Request $request)
     {
@@ -243,5 +249,4 @@ class GamesController extends Controller
         }
         return $fileNameToStore;
     }
-
 }
