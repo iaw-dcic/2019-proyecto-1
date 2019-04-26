@@ -17,7 +17,7 @@
                         <a class="nav-link" href="{{ url('/contact') }}">Contacto</a>
                 </li>
             </ul>
-
+            <div class="dropdown-divider"></div>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->

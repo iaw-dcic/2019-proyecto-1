@@ -16,15 +16,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'PageController@index');
 
-Route::get('/about', function () {
-    return view('about');
-});
+Route::get('/users', 'PageController@users');
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/about', 'PageController@about');
+
+Route::get('/contact', 'PageController@contact');
 
