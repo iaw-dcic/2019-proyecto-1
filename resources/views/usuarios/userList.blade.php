@@ -14,7 +14,7 @@
 		</ul>
 	@else
 		<div class="container" style="text-align: center; padding-top: 50px;">
-			<p class="h5" style="color: darkgrey;">La lista esta vacía</p>
+			<p class="h5" style="color: darkgrey;">This list is empty</p>
 		</div>
 	@endif
 

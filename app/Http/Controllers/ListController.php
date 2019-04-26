@@ -36,7 +36,7 @@ class ListController extends Controller
         }
 
         request()->validate([
-            'title' => ['required', Rule::notIn($array)]
+            'title' => ['required', Rule::notIn($array), 'min:3', 'max:255']
         ]);
 
     	$lista = new Lista;
@@ -47,7 +47,7 @@ class ListController extends Controller
 
     	$lista->save();
 
-    	return redirect('/create');
+    	return redirect('/lists');
     }
 
     public function show(Lista $list){

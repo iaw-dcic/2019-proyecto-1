@@ -2,19 +2,24 @@
 
 @section('content')
 	
-	<h1 style="text-align: center">{{$list->title}}</h1>
+	<h1 class="text-center font-weight-light mt-1 my-3">{{$list->title}}</h1>
 		
 	<ul class="list-group-flush w-25" style="padding-bottom: 50px; padding-top: 50px">
-		<li class="list-group-item"><a href="{{$list->id}}/edit">editar</a></li>
-		<li class="list-group-item"><a href="{{$list->id}}/create">agregar canción</a></li>
+		<li class="list-group-item"><a href="{{$list->id}}/edit">edit</a></li>
+		<li class="list-group-item"><a href="{{$list->id}}/create">add song</a></li>
 	</ul>
-	
-	<ul class="list-group">
-		
-		@foreach ($list->songs as $song)
-			<li class="list-group-item"><a href="/songs/{{$song->id}}">{{ $song->title }} ({{ $song->band }})</a></li>
-		@endforeach
+		@if (count($list->songs)>0)
+		<ul class="list-group">
+			
+			@foreach ($list->songs as $song)
+				<li class="list-group-item"><a href="/songs/{{$song->id}}">{{ $song->title }} ({{ $song->band }})</a></li>
+			@endforeach
 
-	</ul>
+		</ul>
+		@else
+			<div class="container mt-5">
+				<p class="h5 text-center font-weight-light mt-1 my-3" style="color: darkgrey;">No songs in this list</p>
+			</div>
+		@endif
 
 @endsection

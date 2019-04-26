@@ -10,29 +10,44 @@
 			<div class="form-group">
 				<div class="input-group">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="">Título de la canción</span>
+				    <span class="input-group-text" id="">Song</span>
 				  </div>
-				  <input type="text" class="form-control" name="title">
+				  <input type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}">
+				    @if ($errors->has('title'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('title') }}</strong>
+    	                </span>
+        	        @endif
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="input-group">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="">Album de la canción</span>
+				    <span class="input-group-text" id="">Album</span>
 				  </div>
-				  <input type="text" class="form-control" name="album">
+				  <input type="text" class="form-control{{ $errors->has('album') ? ' is-invalid' : '' }}" name="album" value="{{ old('album') }}">
+			 		@if ($errors->has('album'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('album') }}</strong>
+    	                </span>
+        	        @endif
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="input-group">
 				  <div class="input-group-prepend">
-				    <span class="input-group-text" id="">Banda de la canción</span>
+				    <span class="input-group-text" id="">Artist</span>
 				  </div>
-				  <input type="text" class="form-control" name="band">
+				  <input type="text" class="form-control{{ $errors->has('band') ? ' is-invalid' : '' }}" name="band" value="{{ old('band') }}">
+				    @if ($errors->has('band'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('band') }}</strong>
+    	                </span>
+        	        @endif
 				</div>
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-success">Crear canción</button>
+				<button type="submit" class="btn btn-success">Add song!</button>
 			</div>
 		</form>
 	</div>

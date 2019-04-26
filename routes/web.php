@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
 Route::get('/about', function () {
     return view('about');
@@ -54,3 +54,9 @@ Route::get('/search', 'searchController@onSearch');
 Route::get('/search/{user}', 'searchController@seeUserProfile');
 
 Route::get('/search/{user}/{list}', 'searchController@seeUserList');
+
+Route::get('/edit_profile', 'ProfileController@edit');
+
+Route::patch('/edit_profile', 'ProfileController@update');
+
+Route::get('/profile', 'ProfileController@show');

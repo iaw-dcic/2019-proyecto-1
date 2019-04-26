@@ -1,17 +1,22 @@
 @extends('secondTemplate')
 
 @section('content')
-	<h1>Seccion de listas</h1>
+	<h1 class="text-center font-weight-light mt-1 my-3">My lists</h1>
 
-	<ul class = "list-group">
+	@if (count($listas)>0)
 
+		@foreach ($listas as $lista)
+		<ul class = "list-group">
+			<li class = "list-group-item"><a href="/lists/{{$lista->id}}">{{ $lista -> title }}</a></li>
+		<ul class = "list-group">
+		@endforeach
 
-	@foreach ($listas as $lista)
+	@else
 
-		<li class = "list-group-item"><a href="/lists/{{$lista->id}}">{{ $lista -> title }}</a></li>
-	
-	@endforeach
+			<div class="container mt-5">
+				<p class="h5 text-center font-weight-light mt-1 my-3" style="color: darkgrey;">Seems like this is empty</p>
+			</div>
 
-	<ul class = "list-group">
+	@endif
 
 @endsection

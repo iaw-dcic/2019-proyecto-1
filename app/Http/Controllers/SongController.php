@@ -16,15 +16,30 @@ class SongController extends Controller
 
     public function show(Song $song){
 
+        $list = Lista::where('id', $song->lista_id)->get();
+
+        abort_if(auth()->id() != $list[0]->user_id, 403);
+
     	return view('song.show', compact('song'));
     
     }
 
     public function create(Lista $list){
+
+        abort_if(auth()->id() != $list->user_id, 403);
+
     	return view('song.create', compact('list'));
+
     }
 
     public function store(Lista $list){
+
+        request()->validate([
+            'title' => ['required', 'max:255'],
+            'album' => ['required', 'max:255'],
+            'band' => ['required', 'max:255']
+        ]);
+
     	$cancion = new Song;
 
     	$cancion->title = request('title');
@@ -34,7 +49,7 @@ class SongController extends Controller
 
     	$cancion->save();
 
-    	return back();
+    	return redirect('/lists/'.$list->id);
     }
 
     public function destroy(Song $song){
@@ -45,6 +60,11 @@ class SongController extends Controller
     }
 
     public function edit(Song $song){
+
+        $list = Lista::where('id', $song->lista_id)->get();
+
+        abort_if(auth()->id() != $list[0]->user_id, 403);
+
         return view('song.edit', compact('song'));
     }
 
