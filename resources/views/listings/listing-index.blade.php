@@ -51,24 +51,24 @@
                 </div>
                 @foreach($data['listings'] as $listing)
                 <div class="row">
-                    <div class="cell" data-title="Full Name">
+                    <div class="cell" data-title="Titulo de la lista">
                         {{$listing->title}}
                     </div>
 
-                    <div class="cell" data-title="Number Of Games">
+                    <div class="cell" data-title="Cantidad de juegos">
                         {{$listing->games()->count()}}
                     </div>
 
-                    <div class="cell" data-title="Age">
+                    <div class="cell" data-title="¿Pública o privada?">
                         @if($listing->visibility == 'Publica') Si @else No @endif
                     </div>
 
 
-                    <div class="cell" data-title="Job Title">
+                    <div class="cell" data-title="Link a la lista">
                              <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
                     </div>
                     @guest
-                    <div class="cell" data-title="Location">    
+                    <div class="cell" data-title="Link al perfil">    
                         <a href="">Link al perfil</a>
                     </div>
                     @endguest

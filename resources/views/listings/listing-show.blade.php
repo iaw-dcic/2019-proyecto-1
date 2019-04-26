@@ -59,7 +59,7 @@
             <div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">             
                    <div class="row">
                         <div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
-                        <a href="{{route('games.create')}}" class="site-btn">Agregar juego a la lista</a><br><br><br>
+                        <a href="{{route('games.create')}}" class="site-btn">Agregar otro juego a la lista</a><br><br><br>
                             <a href="{{ route('listings.edit', $listing->id)}}" class="site-btn">Editar lista</a>
                             <br /><br /><br />
 

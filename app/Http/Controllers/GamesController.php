@@ -91,9 +91,16 @@ class GamesController extends Controller
         $game->mode = $request->mode;
         $game->genre = $request->genre;
         $game->save();
+        ///////////////////////////////////////////////////////
 
         $listings = $request->listings;
-        $game->listings()->attach($listings);
+
+        //Attach listing only if doesnt already exists
+        foreach ($listings as $listing) {
+            if (!$game->listings->contains($listing)) {
+                $game->listings()->attach($listing);
+            }    
+        }
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
         return redirect('listings');
@@ -134,10 +141,10 @@ class GamesController extends Controller
         if (Auth::user()) {
             $game = Game::find($id);
             $listings = auth()->user()->listings()->select('title', 'id')->get();
-
-            return view('games.edit',compact('game', 'listings'));
+            alert()->info('Atención!', 'Los cambios realizados se reflejarán en todas las listas donde tengas este juego');
+            return view('games.edit', compact('game', 'listings'));
         } else {
-            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
+            alert()->info('Atención!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
             return redirect()->guest('/login');
         }
         //Check for correct user
@@ -183,7 +190,7 @@ class GamesController extends Controller
 
 
         alert()->success('Listo!', 'El juego fue editado correctamente.');
-        return redirect('games');
+        return redirect('listings');
     }
 
     /**

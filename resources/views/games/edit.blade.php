@@ -1,6 +1,7 @@
 @extends('layouts.app') 
 @section('title',' | Editar juego') 
 @section('content')
+@include('sweetalert::alert')
 
 <!-- Page top section -->
 <section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/4.jpg')}}">
@@ -17,7 +18,7 @@
 <!-- Page top end-->
 
 <section class="contact-page">
-
+        <h3 style="color:bisque; text-align:center"> Editando <span style="color:azure">{{$game->title}} </span></h3> <br><br>
     <!-- content -->
     <div class="sub-main-w3">
         <form action="{{ route('games.update', $game->id) }}" method="post" enctype="multipart/form-data">
@@ -37,9 +38,9 @@
              <!-- Listings -->
              <div class="form-style-agile">
                     <label><i class="fas fa-list-ul" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
-                        <select class="selectpicker" name="listings[]" title="Seleccionar una o más listas" multiple data-live-search="true" data-style="btn-primary" data-width="100%">
+                        <select class="selectpicker" name="listings[]" title="Seleccionar una o más listas" multiple data-live-search="true" data-style="btn-primary" data-width="100%" required>
                                 @foreach($listings as $listing)
-                                   <option value="{{ $listing->title}}"> {{ $listing->title}} </option>
+                                   <option value="{{ $listing->id}}"> {{ $listing->title}} </option>
                                 @endforeach
                         </select> 
             </div>
