@@ -40,7 +40,7 @@ class ListaLibroController extends Controller
         $listaLibro = new ListaLibro;
         $listaLibro -> user_id = \Auth::user()->id;
         $listaLibro -> save();
-        return redirect('editProfile');
+        return redirect('lista-libros');
     }
 
     /**
@@ -86,6 +86,9 @@ class ListaLibroController extends Controller
     public function destroy($id)
     {
         $lista = ListaLibro::find($id);
+        foreach ($lista->libros as $libro) {
+            $libro -> delete();
+        }
         $lista -> delete();
         $user = \Auth::user();
         $listas = $user->listaLibros;

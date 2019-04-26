@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $listaDeBienes = \App\Libro::all();
-        return view('index', compact('listaDeBienes'));
+        $listaDeListas = ListaLibro::where('privada',0)->get();
+        return view('index', compact('listaDeListas'));
     }
 }

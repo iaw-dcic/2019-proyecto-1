@@ -5,14 +5,15 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Profile;
 use App\Libro;
+use App\ListaLibro;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function inicio()
     {
-        $listaDeBienes = Libro::all();
-        return view('index', compact('listaDeBienes'));
+        $listaDeListas = ListaLibro::where('privada',0)->get();
+        return view('index', compact('listaDeListas'));
     }
 
     public function search()

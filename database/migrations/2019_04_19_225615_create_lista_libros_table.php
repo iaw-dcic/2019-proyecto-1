@@ -16,6 +16,7 @@ class CreateListaLibrosTable extends Migration
         Schema::create('lista_libros', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
+            $table->boolean('privada')->default(true);
             $table->timestamps();
         });
     }

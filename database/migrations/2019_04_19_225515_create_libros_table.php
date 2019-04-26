@@ -17,7 +17,7 @@ class CreateLibrosTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('lista_libro_id');
             $table->string('Autor');
-            $table->date('Fecha de publicación');
+            $table->date('Fecha_de_publicación');
             $table->string('Genero');
             $table->string('Titulo');
             $table->timestamps();

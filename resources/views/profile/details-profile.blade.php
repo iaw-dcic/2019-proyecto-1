@@ -13,13 +13,13 @@
                 <li class="list-group-item">Ciudad: {{$user->profile->Ciudad}}</li>
             </ul>
         </div>
-        @foreach ($user->listaLibros as $listas)
+        @foreach ($listasPublicas as $listas)
         @if ($listas->libros->count() !== 0)
         <tr>
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">{{$listas->id}}</th>
+                    <th scope="col">#</th>
                     <th scope="col">Titulo</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Genero</th>
@@ -36,8 +36,7 @@
                     @endforeach 
                 </tbody>
             </table>
-        </tr>
-                    
+           </tr>                    
         @endif
     @endforeach
 </div>

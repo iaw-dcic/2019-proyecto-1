@@ -40,7 +40,7 @@ class LibroController extends Controller
         $libro -> Genero = $request ->input('Genero');
         $libro -> Titulo = $request ->input('Titulo'); 
         $libro -> Autor = $request ->input('Autor');
-        $libro -> Fecha_de_publicacion = $request ->input('FechaPublicacion');
+        $libro -> Fecha_de_publicación = $request ->input('FechaPublicacion');
         $libro -> save();
     
         $user = \Auth::user();
