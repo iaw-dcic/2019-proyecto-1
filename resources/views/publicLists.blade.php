@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('titulo')
+    Listas Publicas
+@endsection
+
 @section('extraStyles')
 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
 <link href="{{asset('css/publicListsStyle.css')}}" rel="stylesheet">

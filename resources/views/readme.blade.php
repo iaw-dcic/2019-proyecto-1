@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('titulo')
+            Readme
+@endsection
+
 @section('extraStyles')
-<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Abel|Lobster|Merriweather" rel="stylesheet">
 <link href= "{{asset('css/readmeStyle.css')}}" rel="stylesheet">
 @endsection
 

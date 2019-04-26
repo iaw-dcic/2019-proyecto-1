@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('titulo')
+            Perfil
+ @endsection
+
 @section('extraScripts')
 <script src="{{ asset('js/profileLogic.js') }}" defer></script>
 @endsection
@@ -9,7 +13,7 @@
 @endsection
 
 
-@section('content')
+@section('extraContent')
 {{--credits to https://bootsnipp.com/snippets/E1nNa --}}
 <div class="container">
         <div class="row">
@@ -105,13 +109,14 @@
                                         @foreach($lista as $listas)
                                             <li> {{ $lista->titulo }} </li>
                                         @endfoeach
-                                        <div class="btn-group" role="group" >
+                                        
+                                      @else
+                                        nada que ver aqui
+                                      @endif
+                                      <div class="btn-group" role="group" >
                                           <button type="button" class="btn btn-default">Crear Lista</button>
                                           <button type="button" class="btn btn-default">Crear Juego</button>
                                         </div>
-                                      @else
-                                        @if(Auth::user()->name != )
-                                      @endif
                                     </div>
                                 </div>
                             </div>

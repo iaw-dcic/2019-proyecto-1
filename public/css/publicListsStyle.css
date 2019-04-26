@@ -1,7 +1,10 @@
 .divAlerta{
     position: center;
+    padding-top:5%;
+    padding-bottom: 5%;
 }
 
 .divAlerta > h4, p{
     text-align: center;
+    font-size: 35px;
 }

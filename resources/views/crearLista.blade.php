@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('titulo')
+    Creemos una Lista
+@endsection
 
 @section('content')
     <h1> Crea una nueva lista aquí! </h1>

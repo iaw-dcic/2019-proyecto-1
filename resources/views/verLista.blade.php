@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('titulo')
+  Ver Lista
+@endsection
+
 @section('content')
 
 <ul class="list-group">

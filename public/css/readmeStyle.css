@@ -1,12 +1,14 @@
 .Autoria{
     text-align: center;
-    font-size: 40px;
+    font-size: 80px;
+    padding-top: 10%;
 }
 
 .titulo{
     text-align: center;
     font-family: 'Lobster', cursive;
     font-weight: 400;
+    font-size: 80px;
 }
 .all-Info{
     font-family: 'Abel', sans-serif;

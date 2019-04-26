@@ -26,6 +26,8 @@ html, body {
 .reason{
    display: inline-table;
    width: 100%;
+   padding-top: 5%;
+   padding-bottom: 5%;
     
 }
 .reason > h3 {
@@ -33,11 +35,12 @@ html, body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 900;
     font-size: 40px;
+    padding-bottom: 5%;
 }
 .reason > p{
     font-family: 'Raleway', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 20px;
+    font-weight: 650;
 
 }
 

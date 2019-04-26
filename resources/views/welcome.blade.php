@@ -8,9 +8,7 @@
             <link href="{{ asset('css/homeStyle.css') }}" rel="stylesheet">
             <link href= "{{asset('css/reason1Color.css')}}" rel="stylesheet">
             <!-- Fonts -->
-            <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-            <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Raleway|Quicksand|Nunito:200,600" rel="stylesheet">
         @endsection
        
         @section('leftNav')
