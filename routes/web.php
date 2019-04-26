@@ -37,5 +37,5 @@ Route::post('/home/editCollection/{id}','CollectionController@delete');
 
 
 Route::get('/home/perfil','UserController@index');
-Route::post('/home/perfil','UserController@actualizar');
+Route::post('/home/perfil','UserController@update');
 
