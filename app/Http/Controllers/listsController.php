@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Lista;
+use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class listsController extends Controller
 {
+
+    protected $table = 'list_info';
+
     /**
      * Display a listing of the resource.
      *
@@ -15,10 +20,11 @@ class listsController extends Controller
      */
     public function index()
     {
+        
         if(Auth::check()){
-            
-            $listas = auth()->user()->listas; //Obtengo todas las listas del usuario
-            return view('profiles/{ {{Auth::user()->id}} ',compact('listas')); //devuelvo una view junto con las listas
+            $id = Auth::user()->id ;
+            $listas = DB::table('list_info')->where('user_id',Auth::user()->id)->get(); //Obtengo todas las listas del usuario
+            return view('lists.index',compact('listas','id')); //devuelvo una view junto con las listas
         }
         else{
             //es un guest mirando otro usuario, buscar lista del usuario visitado
@@ -43,7 +49,7 @@ class listsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         $this->middleware('auth');
 
@@ -51,13 +57,11 @@ class listsController extends Controller
             'titulo' => ['required', 'min:5', 'max:255'],
             'listaDescripcion' => ['required', 'min:5', 'max:255']
         ]);
+        
+        
 
-        Lista::create([
-            $validated,
-            'juegos' => []
-        ]);
+        $user->addList(request('titulo'), request('listaDescripcion'), request('public'));
 
-        return redirect('profiles/{ {{Auth::user()->id}} } ');
     }
 
     /**
@@ -114,6 +118,8 @@ class listsController extends Controller
         $lista->delete();
         return redirect('lists');
     }
+
+   
 
     //return request()->all(); //devuelve todos los datos a la pagina (token incluido)
 }

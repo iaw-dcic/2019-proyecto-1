@@ -1,16 +1,16 @@
 @extends('layout.appContent')
 
 @section('titulo')
-    Listas
+    Listas de {{$id}}
 @endsection
 
 @section('content')
  <h1> Listas </h1>
  
  <div class="list-group">
-    @foreach($lists as $list)
+    @foreach($lista as $listas)
      
-        <a href="/lists/{$list->id}" class="list-group-item list-group-item-action"> {{$list->name}} </a> 
+        <a href="/lists/{$list->id}" class="list-group-item list-group-item-action"> {{$lista->name}} </a> 
        
     @endforeach
  </div>

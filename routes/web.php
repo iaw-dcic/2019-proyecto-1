@@ -22,14 +22,16 @@ Route::get('/readme',function(){
 })->name('readme');
 
 Route::resources([
-    'lists' => 'listsController',
-    'games' => 'gamesController'
-    
+    'lists' => 'listsController',    
 ]);
 
 Route::resource('profiles','profileController')->only('show','edit','update','destroy');
 
 Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
+
+Route::get('/Listas/{id}' ,function($id,$listas){
+    return view('Listas'.$id);
+})->name('Lists');
 
 Auth::routes();
 

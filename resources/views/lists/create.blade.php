@@ -26,7 +26,7 @@
                             <input type="text" class="form-control" id="list_description" aria-describedby="list_description" placeholder="Ingresa una descripcion" name="listaDescripcion" required value="{{old('listaDescripcion')}}">
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="publicList">
+                            <input type="checkbox" class="form-check-input" id="publicList" name='public'>
                             <label class="form-check-label" for="publicList">será la Lista Publica?</label>
                             <small id="publicList" class="form-text text-muted">si esto esta activo, tu lista podrá ser vista por otros usuario e invitados</small>
                         </div>

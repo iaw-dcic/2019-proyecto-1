@@ -69,12 +69,11 @@
                                 </li>
                             @endif
                         @else
-                        <div class="btn-group" role="group" aria-label="Profile Options">
-                            <a id="navbarDropdown" class="nav-link btn btn-primary" href="/profiles/{{ Auth::user()->name }}" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+                        <li class="nav-item">
+                                    <a class="nav-link" href="/profiles/{{ Auth::user()->name }}">{{ Auth::user()->name }}</a>
+                        </li>
 
-                            <div>
+                        <li class="nav-item">
                                 <a class="nav-link btn btn-secondary  btn-sm" role="button" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -84,8 +83,7 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                            </div>
-                        </div>
+                        </li>
                         @endguest
                     </ul>
                 </div>

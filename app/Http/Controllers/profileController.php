@@ -58,7 +58,7 @@ class profileController extends Controller
      */
     public function edit(User $user)
     {
-        return redirect('profiles/{{$user->name}}/editar',compact('user'));
+        return redirect('profiles.edit',compact('user'));
     }
 
     /**
