@@ -48,7 +48,7 @@ Eso debería permitirle acceder a http://127.0.0.1:8000
 1. Agregue la variable de entorno API_KEY ![Ver](screenshots/screenshot7.png)
 1. Agregue el archivo Procfile ![Ver](screenshots/screenshot8.png)
 1. Vaya a https://www.cleardb.com/login.view y registre una cuenta ![Ver](screenshots/screenshot9.png)
-1. Ingrese sus datos, el número de teléfono puede no tiene que ser válido ![Ver](screenshots/screenshot10.png)
+1. Ingrese sus datos, el número de teléfono no tiene que ser válido ![Ver](screenshots/screenshot10.png)
 1. Verifique su email para poder continuar ![Ver](screenshots/screenshot11.png)
 1. Cree su usuario y contraseña ![Ver](screenshots/screenshot12.png)
 1. Registre los datos del perfil faltantes, no necesitan ser válidos ![Ver](screenshots/screenshot13.png)
