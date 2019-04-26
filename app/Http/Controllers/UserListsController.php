@@ -9,51 +9,58 @@ use \App\User;
 
 class UserListsController extends Controller {
 
-    public function index($id){
-		$lists = UserList::where('user_id', auth()->id())->get();
-		$user = User::findOrFail($id);
-        return view('userlists.index', compact('user','lists'));
+    public function index($username){
+		$useraux = User::where('username', $username)->get();
+		$user = $useraux->first();
+        return view('userlists.index', compact('user'));
     }
 
-    public function create($id){
-        $user = User::findOrFail($id);
+    public function create($username){
+		$useraux = User::where('username', $username)->get();
+		$user = $useraux->first();
         return view('userlists.create', compact('user'));
     }
 
-    public function store($id){
-        $user = User::findOrFail($id);
+    public function store($username){
+		$useraux = User::where('username', $username)->get();
+		$user = $useraux->first();
 		request()->validate([
 			'list_name' => ['required', 'min:3'],
 		]);
-		UserList::create([
+		$userList = UserList::create([
 			'list_name' => request('list_name'),
 			'user_id' => $user->id
 		]);
+		foreach (request('item_name') as $item) {
+			$userList->addItem(['description' => $item]);
+		}
 
-        return redirect('/'.$id.'/myLists');
+		return redirect('/'.$username.'/myLists');
     }
 
-    public function show($userid, $id){
-		$user = User::findOrFail($userid);
+    public function show($username, $id){
+		$useraux = User::where('username', $username)->get();
+		$user = $useraux->first();
 		$list = UserList::findOrFail($id);
         return view('userlists.show', compact('user', 'list'));
     }
 
-    public function update($userid, $id){
+    public function update($username, $id){
         $list = UserList::findOrFail($id);
         $list->list_name = request('list_name');
         $list->save();
-        return redirect('/'.$userid.'/myLists');
+        return redirect('/'.$username.'/myLists');
     }
 
-    public function destroy($userid, $id){
+    public function destroy($username, $id){
         UserList::findOrFail($id)->delete();
-        return redirect('/'.$userid.'/myLists');
+        return redirect('/'.$username.'/myLists');
     }
 
-    public function edit($userid, $id){
-		$user = User::findOrFail($userid);
-        $list = UserList::findOrFail($id);
+    public function edit($username, $id){
+		$useraux = User::where('username', $username)->get();
+		$user = $useraux->first();
+		$list = UserList::findOrFail($id);
         return view ('userlists.edit', compact('user', 'list'));
     }
 }

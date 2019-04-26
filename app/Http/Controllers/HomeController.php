@@ -29,4 +29,14 @@ class HomeController extends Controller
 	public function redHome(){
 		return redirect('home');
 	}
+
+	public function topVoted(){
+		return response()->json(['content'=> view('home.topVoted')->render()]);
+	}
+	public function mostViewed(){
+		return response()->json(['content'=> view('home.mostViewed')->render()]);
+	}
+	public function newLists(){
+		return response()->json(['content'=> view('home.newLists')->render()]);
+	}
 }

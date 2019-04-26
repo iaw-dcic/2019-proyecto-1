@@ -32,14 +32,14 @@
 
 				<input id="username" placeholder="Username" type="text" class="{{$fadeIn}} {{$second}} {{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
 				@if ($errors->has('username'))
-					<div class="error-label invalid-feedback {{$fadeIn}} {{$second}}" role="alert">
+					<div class="error-label invalid-feedback" role="alert">
 						<strong>{{ $errors->first('userame') }}</strong>
 					</div>
 				@endif
 
 				<input id="email" type="text" placeholder="E-Mail" class="{{$fadeIn}} {{$second}} {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 				@if ($errors->has('email'))
-					<div class="error-label invalid-feedback {{$fadeIn}} {{$second}}" role="alert">
+					<div class="error-label invalid-feedback" role="alert">
 						<strong>{{ $errors->first('email') }}</strong>
 					</div>
 				@endif
@@ -47,7 +47,7 @@
 				<input id="password" type="password" placeholder="Password" class="{{$fadeIn}} {{$second}} {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
 				@if ($errors->has('password'))
-					<div class="error-label invalid-feedback {{$fadeIn}} {{$second}}" role="alert">
+					<div class="error-label invalid-feedback " role="alert">
 						<strong>{{ $errors->first('password') }}</strong>
 					</div>
 				@endif

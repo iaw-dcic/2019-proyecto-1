@@ -2,3 +2,7 @@
 	font-style: normal;
 	color: #dd4b39;
 }
+
+.nav-item{
+	cursor: pointer;
+}

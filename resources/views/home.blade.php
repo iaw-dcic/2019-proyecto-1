@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('body')
-	<?php
-		$topVotedSelected = false;
-		$mostViewedSelected = false;
-		$newListsSelected = false;
-	?>
 	<div id="app">
 		<nav class="navbar navbar-default fadeInDown">
 			<div class="container-fluid">
@@ -14,17 +9,15 @@
 						{{ config('app.name', 'ListMaker') }}
 					</a>
 				</div>
-
 				<ul class="nav navbar-nav">
-					@yield('selectedTab')
-					<li class="{{ $topVotedSelected ? 'active' : '' }}">
-						<a href="/topVoted">Top voted</a>
+					<li class="nav-item active" id="top-voted">
+						<a>Top voted</a>
 					</li>
-					<li class="{{ $mostViewedSelected ? 'active' : '' }}">
-						<a href="/mostViewed">Most viewed</a>
+					<li class="nav-item" id="most-viewed">
+						<a>Most viewed</a>
 					</li>
-					<li class="{{ $newListsSelected ? 'active' : '' }}">
-						<a href="/newLists">New lists</a>
+					<li class="nav-item" id="new-lists">
+						<a>New lists</a>
 					</li>
 				</ul>
 
@@ -42,7 +35,7 @@
 						@endif
 						@else
 						<li class="nav-item">
-							<a class="nav-link" href="/{{ Auth::user()->id }}/myLists">Manage lists</a>
+							<a class="nav-link" href="/{{ Auth::user()->username }}/myLists">Manage lists</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -50,6 +43,10 @@
 							</a>
 
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="/profile/{{ Auth::user()->username }}">
+									User Profile
+								</a>
+								<br>
 								<a class="dropdown-item" href="{{ route('logout') }}"
 									onclick="event.preventDefault();
 													document.getElementById('logout-form').submit();">
@@ -66,8 +63,8 @@
 			</div>
 		</nav>
 
-		<main class="py-4">
-			@yield('content')
+		<main id="content" class="py-4">
 		</main>
 	</div>
+	<script src="{{ asset('js/home.js') }}" defer></script>
 @endsection

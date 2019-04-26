@@ -17,6 +17,7 @@ class CreateListsTable extends Migration
             $table->bigIncrements('id');
             $table->string('list_name');
 			$table->unsignedInteger('user_id');
+			$table->integer('likes')->default(0);
 			$table->boolean('public')->default(false);
             $table->timestamps();
         });

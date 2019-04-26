@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/profile/{user}', 'UserController@index');
+
 Route::resource('/{user}/myLists', 'UserListsController');
 
 Route::post('/{user}/myLists/{myList}/items', 'ListItemsController@store');
@@ -21,3 +23,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@redHome')->name('home');
+
+Route::get('/topVoted', 'HomeController@topVoted');
+Route::get('/mostViewed', 'HomeController@mostViewed');
+Route::get('/newLists', 'HomeController@newLists');

@@ -3,7 +3,7 @@
 @section('body')
 	<h1>{{ $list->list_name }}</h1><br>
 
-	<a href="/{{$user->id}}/myLists/{{ $list->id }}/edit">Edit</a><br>
+	<a href="/{{$user->username}}/myLists/{{ $list->id }}/edit">Edit</a><br>
 
 	@if($list->items->count())
 		<ul>
