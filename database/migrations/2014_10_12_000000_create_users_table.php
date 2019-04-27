@@ -1,22 +1,22 @@
 <?php
-
+//Todas las clases del laravel tienen Illuminate como nombre de espacio
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class CreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
-     *
-     * @return void
+     * Metodo para crear la tabla de usuarios.
      */
     public function up()
     {
+        //users es el nombre de la tabla que quiero crear y coincide con el nombre del archivo.
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->Increments('user_id'); //INTEGER UNSIFNED - AUTOINCREMENT
+            $table->string('name'); // VARCHAR
+            $table->string('email')->unique(); //VARCHAR - UNIQUE
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -25,9 +25,7 @@ class CreateUsersTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
-     *
-     * @return void
+     * Elimina la tabla de usuarios.
      */
     public function down()
     {
