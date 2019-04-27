@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlaylistsTable extends Migration
+class CreateVideosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreatePlaylistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('playlists', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->unsignedInteger('id')->autoincrement();
-            $table->string('name');
-            $table->unsignedInteger('user_id');
-            $table->boolean('public')->default(false);
-            $table->integer('likes')->default(0);
+            $table->unsignedInteger('playlist_id');
+            $table->string('url');
+            $table->string('category');
+            $table->string('subcategory');
+            $table->string('title');
+            $table->string('channel');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreatePlaylistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('playlists');
+        Schema::dropIfExists('videos');
     }
 }
