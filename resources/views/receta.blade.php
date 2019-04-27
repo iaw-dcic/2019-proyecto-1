@@ -35,7 +35,7 @@
 				</div>
 				<div class="col-md-8">
                    
-					<img alt="{{$receta[0]->nombre}}" src="{{asset('img/huevosrevueltos.jpg')}}" />
+					<img alt="{{$receta[0]->nombre}}" src="{{asset($receta[0]->imagen)}}" />
                     <div class="row">
                         <h3> Pasos de la receta: </h3>
                         <hr>

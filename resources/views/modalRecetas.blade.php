@@ -15,32 +15,37 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
-                <form id="miForm" role="form" method="post" action="{{route('agregarReceta',['id_autor' =>$perfil->id ])}}">
+                <form id="miForm" role="form" enctype="multipart/form-data" method="post" action="{{route('agregarReceta',['id_autor' =>$perfil->id ])}}">
                 {{ csrf_field() }}
                      <div class="form-group">
-                        <label  id="selectLista" for="inputName">Lista</label>
+                        <label  id="selectLista" for="inputName" >Lista</label>
                         
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="inputName">Nombre</label>
-                        <input name="nombre" type="text" class="form-control" placeholder="Nombre de la receta"/>
+                        <input name="nombre" type="text"  class="form-control" placeholder="Nombre de la receta"/>
                     </div>
                     <div class="form-group">
                         <label for="inputMessage">Categoria:</label>
-                        <select name="categoria" class="form-control">
+                        <select name="categoria" class="form-control" >
                             <option value="1">Dulce </option>
                             <option value="0">Salado </option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="inputMessage">Decripción:</label>
-                        <textarea name="descr" class="form-control"  placeholder="Descripcion de la receta"></textarea>
+                        <textarea name="descr" class="form-control"  placeholder="Descripcion de la receta" ></textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputMessage">Pasos:</label>
-                        <textarea name="pasos" class="form-control"   placeholder="Pasos de la receta"></textarea>
+                        <textarea name="pasos" class="form-control"   placeholder="Pasos de la receta" ></textarea>
                     </div>
+                    <div class="form-group">
+                             <label for="inputMessage">Imagen:</label>
+                             <input type="file" name="filename" class="form-control">
+                              </div>
+
                    <hr>
                     
                       

@@ -10,6 +10,8 @@ use App\Lista;
 use Auth;
 use Session;
 use App\Http\Requests\RecetaRequest;
+use App\ImageModel;
+use Image;
   class RecetasController extends Controller
 {
    
@@ -54,20 +56,35 @@ public function receta($nombre){
         'ingredientes' =>$ingredientes
         ]);
 }
-public function agregarReceta( Request $request, $id){
+public function agregarReceta(RecetaRequest $request, $id){
+
+
     $nombre= $request->nombre;
     $categoria= $request->categoria;
     $descripcion= $request->descr;
     $pasos= $request->pasos;
-   $lista= $request->lista;
+    $lista= $request->lista;
     
+   $originalImage= $request->file('filename');
+    if($originalImage!=null){
+         $thumbnailImage = Image::make($originalImage);
+         $originalPath = public_path().'/img/';
+         $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+         $thumbnailImage->resize(150,150);
+         $imagen='img/'.time().$originalImage->getClientOriginalName();
+    }
+    else{
+        $imagen=null;
+    }
+   
     $receta=  Receta::create([
         'nombre' => $nombre,
         'descripcion' =>$descripcion,
         'pasos'=>  $pasos,
         'id_autor'=>$id,
         'lista_id'=>$lista,
-        'categoria'=>$categoria
+        'categoria'=>$categoria,
+        'imagen' =>$imagen
     ]);
      
      return back()->with('status',$nombre);

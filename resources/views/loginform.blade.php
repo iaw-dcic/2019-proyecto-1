@@ -63,7 +63,7 @@
 					<br>
 					<fieldset>
 				 
-                        <form accept-charset="UTF-8" role="form" method="POST" action="{{URL::to('/store')}}">
+                        <form accept-charset="UTF-8" role="form" method="POST" enctype="multipart/form-data"  action="{{URL::to('/store')}}">
                           {{ csrf_field() }}
                           <div class="form-group">
                                 <label class="sr-only"> Nombre </label>
@@ -85,7 +85,10 @@
                                 <label class="sr-only"> password </label>
 								<input name='password'class="form-control input-lg" placeholder="Password" type="password">
 							</div>
-                        
+                            <div class="form-group">
+                             <label for="inputMessage">Imagen:</label>
+                             <input type="file" name="filename" class="form-control">
+                              </div>
                     
 					</fieldset>
 					<br><div class=" text-center">

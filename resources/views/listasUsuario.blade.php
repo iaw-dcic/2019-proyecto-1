@@ -1,6 +1,18 @@
 <?php  $count=0 ?>
   <!-- Lado derecho, las listas del usuario -->  
+ 
+   
    <div class="col-md-8">
+   @if ($errors->any())
+    <div class="alert alert-danger">
+    <h4> Corrige los errores: </h4>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
       @foreach($listas as $lista)
          <div class="list-group">
            <?php  $count=0 ?>

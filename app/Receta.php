@@ -8,7 +8,7 @@ class Receta extends Model
 {
 
     protected $fillable = [
-        'nombre', 'descripcion', 'pasos','id_autor','lista_id','categoria'
+        'nombre', 'descripcion', 'pasos','id_autor','lista_id','categoria','imagen'
     ];
 
     public function scopeNombre($query,$nombre)

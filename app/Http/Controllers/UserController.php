@@ -10,6 +10,9 @@ use App\Receta;
 use App\Lista;
 use App\Ingrediente;
 use App\Medida;
+use App\ImageModel;
+use Image;
+ 
 use Illuminate\Validation\Rules;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Redirect;
@@ -67,21 +70,33 @@ use Illuminate\Support\Facades\Hash;
     
    
     public function store(UserRequest $request){
+
+
+        $originalImage= $request->file('filename');
+        if($originalImage!=null){
+        $thumbnailImage = Image::make($originalImage);
         
-       
+        $originalPath = public_path().'/img/';
+        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+        $thumbnailImage->resize(150,150);
+        }
+        else{
+            $imagen=null;
+        }
       //  $this->validate($request, $rules);
 
        $user=  User::create([
             'nombre' => $request->nombre,
             'email' =>$request->email,
             'apellido'=>  $request->apellido,
-            'password'=>Hash::make( $request->password)
+            'password'=>Hash::make( $request->password),
+            'avatar' =>$imagen
         ]);
         
         
         Auth::login($user);
         
-        return back()->with('status','Datos cargados correctamente');
+        return redirect()->to('/');
     }
     // Metodo encargado de obtener la información del usuario
     public function handleProviderCallback($provider)
