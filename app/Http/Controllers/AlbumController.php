@@ -18,6 +18,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
+        
         $albums = Album::all();
         return View('album.index',['albums'=>$albums]);
     }
@@ -29,7 +30,13 @@ class AlbumController extends Controller
      */
     public function create()
     {
-        return View('album.create');
+        $user = Auth::user();
+        if($user){
+            Auth::login($user,true);
+            return View('album.create');
+        }
+        else
+          return redirect()->route('home');
     }
 
     /**
