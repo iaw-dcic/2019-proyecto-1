@@ -47,13 +47,13 @@
   <!--  Seccion del buscador -->
 
 <section class="buscador">
-<form action="#" method="GET" role="search" > {{csrf_field() }}   <!--  protege busqueda-->
-
+<form action="{{route('busqueda')}}" method="GET" role="search" >   <!--  protege busqueda-->
+ 
 <div class="input-group mb-3">
 <label class="sr-only" for="inlineFormInput">busqueda</label>
-  <input type="text" name="query" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <input type="text" name="buscador" class="form-control" placeholder="Nombre receta" aria-label="Nombre receta" aria-describedby="button-addon2">
   <div class="input-group-append">
-    <button class="btn btn-outline-secondary " type="button" id="button-addon2">Buscar</button>
+    <button class="btn btn-outline-secondary " type="submit" id="button-addon2">Buscar</button>
   </div>
 </div>
 </form>
@@ -64,7 +64,7 @@
   =====ESTA PUESTO EN UNA SECCION APARTE -->
   <section class="iconos">
   <div class="container marketing">
-  <h3> Los usuarios más valorados </h3>
+  <h3 id="usuariosMas"> Los usuarios más valorados </h3>
     <!-- TRES COLUMNAS ABAJO DEL CAROUSEL -->
     <div class="row">
     <?php  $count=0 ?>
@@ -73,13 +73,13 @@
     <div class="col-lg-4">
     
            @if($usuario->avatar != null)
-                <img alt="{{$usuario->nombre}}"  src="{{asset($usuario->avatar)}}" class="rounded-circle">
+                <img  alt="{{$usuario->nombre}}"  src="{{asset($usuario->avatar)}}" class="rounded-circle">
           @endif
           @if($usuario->avatar ==null)
-                <img alt="{{$usuario->nombre}}"  src="{{asset('img/usuario.png')}}" class="rounded-circle">
+                <img   alt="{{$usuario->nombre}}"  src="{{asset('img/usuario.png')}}" class="imgusuario rounded-circle">
                 @endif
           
-                <h2>{{$usuario->nombre}}
+                <h2 class="usuarioNombre">{{$usuario->nombre}}
             @if($usuario->apellido != null)
                 {{$usuario->apellido}}
             @endif
@@ -100,10 +100,14 @@
     <div class="row">
         
     <div class="col-md-12">
-    <h1 class="text-center"> Recetas más populares </h1>
+    <div class="row" id="recetasTitulo">
+      <h1  class="text-center"> Recetas más populares </h1>
+    </div>
+ 
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6" id="mejoresSaladas">
         <h3> Mejores recetas Saladas: </h3>
+        <hr>
 					<div class="row">
           @foreach($recetas as $receta)
             @if($receta->categoria ==0)
@@ -111,17 +115,18 @@
 							<img alt="foto receta" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
 						</div>
 						<div class="col-md-8">
-							<h3>
-								 {{$receta->nombre}}
-              </h3>
-              <p> Autor: <a href="{{route('verPerfil',['id'=>$receta->id_autor])}}"> {{$receta->autorId->nombre}}</a> </p>
-            </div>
+							<h3 >
+							<a  href="{{route('receta',['nombre'=>$receta->nombre])}}" style="color:black"> {{$receta->nombre}} </a>
+              </h3> 
+              <p> Autor: <a href="{{route('verPerfil',['id'=>$receta->id_autor])}}"style="color:black"> {{$receta->autorId->nombre}}</a> </p>        
+                </div>
             @endif
           @endforeach
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6"  id="mejoresDulces">
         <h3> Mejores recetas Dulces: </h3>
+        <hr>
 					<div class="row">
           @foreach($recetas as $receta)
             @if($receta->categoria ==1)
@@ -130,9 +135,9 @@
 						</div>
 						<div class="col-md-8">
 							<h3>
-              {{$receta->nombre}}
+             <a  href="{{route('receta',['nombre'=>$receta->nombre])}}" style="color:black"> {{$receta->nombre}} </a>
               </h3>
-              <p> Autor: <a href="{{route('verPerfil',['id'=>$receta->id_autor])}}"> {{$receta->autorId->nombre}}</a> </p>
+              <p> Autor: <a href="{{route('verPerfil',['id'=>$receta->id_autor])}}"style="color:black"> {{$receta->autorId->nombre}}</a> </p>
              
             </div>
             @endif

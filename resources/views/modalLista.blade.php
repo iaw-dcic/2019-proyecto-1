@@ -19,7 +19,14 @@
                      
                     <div class="form-group">
                         <label for="inputName">Nombre</label>
-                        <input name="nombre" type="text" class="form-control" placeholder="Nombre de la receta"/>
+                        <input name="nombre" type="text" class="form-control" placeholder="Nombre de la lista"/>
+                    </div>
+                    <div class="form-group">
+                    <label for="inputMessage">Privacidad de la lista:</label>
+                        <select name="privacidad" class="form-control">
+                            <option value="0">Privada </option>
+                            <option value="1">Publica </option>
+                        </select>
                     </div>
                     
                      

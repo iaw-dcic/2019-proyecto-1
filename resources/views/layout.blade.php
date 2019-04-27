@@ -7,10 +7,16 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
     
+
+
+
+
+    
+    <script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link defer href="{{ asset('css/estilo.css') }}" rel="stylesheet">    
     
     <!-- Bootstrap core CSS -->
- 
+     @yield('head')
     <title>Recetario</title>
   </head>
    @include('navbar')
@@ -23,10 +29,9 @@
 </main>  
   @include('footer')
 
- 
-    <script defer  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   
-
+  
+     @yield('scripts')
+    <script src="{{ asset('/js/editarPerfil.js') }}"></script>
     <!-- scripts para el carousel  -->
     <link defer rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"   crossorigin="anonymous">
     

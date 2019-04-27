@@ -1,14 +1,14 @@
 <!--  NAVBAR -->
   
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
-         <a class="navbar-brand" href="/"><img src="{{ asset('img/recetario.png') }}" alt="logo" width=60 heigh=30 ></a>
+         <a class="navbar-brand" href="{{route('home')}}"><img src="{{ asset('img/recetario.png') }}" alt="logo" width=60 heigh=30 ></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
             </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                       <a class="nav-link" href="/pr1">Home <span class="sr-only">(current)</span></a>
+                       <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
 			        	</li>
 				        <li class="nav-item active">
                       <a class="nav-link" href="{{route('cocineros')}}">Cocineros  </a>

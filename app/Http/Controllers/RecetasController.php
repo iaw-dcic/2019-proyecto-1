@@ -8,6 +8,8 @@ use App\Ingrediente_de_receta;
 use App\User;
 use App\Lista;
 use Auth;
+use Session;
+use App\Http\Requests\RecetaRequest;
   class RecetasController extends Controller
 {
    
@@ -46,15 +48,18 @@ public function recetasCategoria($categoria){
 }
 public function receta($nombre){
     $receta= Receta::where('nombre',$nombre)->get();
+    $ingredientes= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
     return view('receta',[
-        'receta'=> $receta]);
+        'receta'=> $receta,
+        'ingredientes' =>$ingredientes
+        ]);
 }
-public function agregarReceta(Request $request, $id){
+public function agregarReceta( Request $request, $id){
     $nombre= $request->nombre;
     $categoria= $request->categoria;
     $descripcion= $request->descr;
     $pasos= $request->pasos;
-   $lista= $request->input("lista");
+   $lista= $request->lista;
     
     $receta=  Receta::create([
         'nombre' => $nombre,
@@ -64,18 +69,34 @@ public function agregarReceta(Request $request, $id){
         'lista_id'=>$lista,
         'categoria'=>$categoria
     ]);
+     
+     return back()->with('status',$nombre);
+}
+public function agregarIngrediente( Request $request, $nombreReceta){
    
- return back()->with('status','Datos cargados correctamente');
+    $medida_id=$request->medida;
+    $ingrediente=$request->ingrediente;
+    $cantidad=$request->cantidad;
+    
+    $receta=  ingrediente_de_receta::create([
+        'receta_nombre' => $nombreReceta,
+        'ingrediente_id' =>$ingrediente,
+        'cantidad'=>  $cantidad,
+        'medida_id' => $medida_id
+    ]);
+     
+     return back()->with('msj','Ingrediente agregado');
 }
 public function agregarLista(Request $request, $id){
     $nombre= $request->nombre;
-     
+    $privacidad= $request->privacidad;
   
    Lista::create([
         'nombre' => $nombre,
-        'usuario'=>$id
+        'usuario'=>$id,
+        'public'=>$privacidad
     ]);
-    return back()->with('status','Datos cargados correctamente');
+    return back();
 }
 
 public function borrarReceta(Request $request, $nombre){
@@ -87,5 +108,16 @@ public function borrarLista(Request $request, $id){
     $deleted = Lista::destroy($id);
      
     return back();
+}
+
+public function busqueda(Request $request){
+    $valor= $request->buscador;
+    $receta = Receta::where('nombre', 'LIKE', "%{$valor}%")->get();
+ 
+    
+    
+    $nombre= $receta[0]->nombre;
+    $ingredientes= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
+    return redirect()->route('receta', [$nombre]);
 }
 }
