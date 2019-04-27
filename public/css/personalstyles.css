@@ -10,6 +10,18 @@
     overflow-x: hidden;
 }
 
+.sectionSize {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.panelSize {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 /* Scrollbar styles */
 
 .scrollbar {
@@ -148,6 +160,11 @@ button.filtrar-backgound:hover,
 button.filtrar-backgound:focus{
     border: none;
     background-color: #0d9b6e !important;
+  }
+
+.paddingSeccion{
+    padding-top:50px; 
+    padding-bottom:50px;
   }
 
 input[type='text'], textarea{

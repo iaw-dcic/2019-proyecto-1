@@ -22,9 +22,9 @@
                         <tbody>
                             @foreach($listas as $lista)
                             <tr>
-                                <td>{{$lista->listname}}</td>
+                                <td><a href="/lists/{{$lista->id}}">{{$lista->listname}}</a></td>
                                 <td>{{$lista->genre}}</td>
-                                <td><textarea readonly disabled class="scrollbar-primary" cols="45" rows="3">{{$lista->description}}</textarea></td>
+                                <td><textarea readonly disabled class="scrollbar-primary" style="border-radius:15px" cols="45" rows="3">{{$lista->description}}</textarea></td>
                                 <td>{{ $lista->visibility ? __('Público') : __('Privado') }}</td>
                                 <td>{{$lista->views}}</td>
                                 <td>{{$lista->likes}}</td>

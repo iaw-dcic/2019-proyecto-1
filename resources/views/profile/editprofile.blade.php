@@ -11,11 +11,9 @@
                         <img width="100px" height="100px" class="rounded-circle" src="{{ asset('uploads/avatars/'.$user['avatar']) }}">
                         <h4 class="text-white">{{ $user['username'] }}</h4>
                     </div>
-                </div>
-                <div class="d-inline-flex p-2 bd-highlight display: block">
-                            {{ $user['description'] }}
-                        
-
+                    <div class="col-md-4">
+                        <textarea class="scrollbar-primary mt-4" style="border-radius:15px" rows="4" cols="50" id="description" readonly disabled>{{ $user['description'] }}</textarea>
+                    </div>
                 </div>
                 <h2 class="text-white">Editar Perfil</h2>
                 <form method="POST" action="{{ route('user.profile.update') }}" enctype="multipart/form-data">

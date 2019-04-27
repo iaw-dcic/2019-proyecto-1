@@ -13,11 +13,11 @@
       Portfolio Section
     ============================-->
 <section id="listas">
-    <div class="wow fadeInUp col-lg-12">
+    <div class="wow fadeInUp col-lg-12 paddingSeccion">
         <div class="section-header">
             <h3 class="section-title">Listas Públicas</h3>
         </div>
-        <div class="panel panel-primary text-center">
+        <div class="panel panel-primary text-center sectionSize">
             <div class="panel-heading">
                 <form method="POST" action="{{ route('home-filter') }}">
                     @csrf
@@ -50,7 +50,7 @@
                     </div>
                 </form>
             </div>
-            <div class="panel-body additemsdiv scrollbar-primary">
+            <div class="panel-body additemsdiv scrollbar-primary panelSize">
                 <ul class="list-group">
                     @foreach($listas as $lista)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
