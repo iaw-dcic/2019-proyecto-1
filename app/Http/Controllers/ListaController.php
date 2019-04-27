@@ -14,7 +14,8 @@ class ListaController extends Controller
 
         $this->middleware('auth');
 
-        $this->middleware('book.privacy')->only('show');
+        //$this->middleware('book.privacy')->only('show');
+        $this->middleware('book.privacy', ['only' => ['show', 'edit','index']]);
     }
 
     /**
@@ -24,10 +25,21 @@ class ListaController extends Controller
      */
     public function index()
     {
+        $listas = Lista::all();
 
-        $lista = Lista::all();
+        $data['listas'] = $listas;
 
-        return $lista;
+        return view('lista.show', $data);
+    }
+
+    public function indexAll($userid)
+    {
+       
+        $lists = User::find($userid)->list()->get();
+
+        $data['lists'] = $lists;
+
+        return view('lista.indexAll', $data);
        
     }
 
@@ -106,7 +118,7 @@ class ListaController extends Controller
     public function edit($lista)
     {
 
-        $list = Lista::find($lista)->first();
+        $list = Lista::find($lista);
 
         $data['list'] = $list;
 

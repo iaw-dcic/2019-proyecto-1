@@ -25,6 +25,8 @@ Route::resource('/book', 'BookController');
 Route::get('user/{userid}/list', 'ListaController@publicLists');
 Route::resource('/list', 'ListaController');
 
+Route::get('user/{userid}/list', 'ListaController@indexAll');
+
 
 
 

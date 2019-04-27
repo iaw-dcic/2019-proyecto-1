@@ -25,6 +25,8 @@ class BookRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:255',
+            'author' => 'required|min:3|max:255',
+            'isbn' => 'required|min:10|max:13',
             'list_id' => 'required|numeric'
         ];
     }

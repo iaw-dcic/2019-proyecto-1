@@ -90,9 +90,17 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit($libro)
     {
-        //
+        $book = Book::find($libro);
+
+        $lists = Auth::user()->list()->get();
+
+        $data['lists'] = $lists;
+        $data['book'] = $book;
+
+        return view('book.edit', $data);
+        //return $lists;
     }
 
     /**
@@ -104,14 +112,16 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $book = Book::find($book);
+        $book = Book::find($book)->first();
 
         $book->name=$request->name;
         $book->author=$request->author;
-        $book->isbn=$request->ISBN;
+        $book->isbn=$request->isbn;
+        $book->list_id=$request->list_id;
 
         if ($book->save()) {
-            return redirect()->route('book.update')->with('status', 'Éxito');
+           // return redirect()->route('book.update')->with('status', 'Éxito');
+            return redirect()->route('book.edit', ['id' => $book->id])->with('status', 'Éxito');
         }
     }
 
