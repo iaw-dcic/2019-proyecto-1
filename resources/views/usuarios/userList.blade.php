@@ -8,7 +8,7 @@
 		<ul class="list-group">
 			
 			@foreach ($songs as $song)
-				<li class="list-group-item"><a href="/songs/{{$song->id}}">{{ $song->title }} ({{ $song->band }})</a></li>
+				<li class="list-group-item"><a href="/search/{{$user->id}}/{{$list->id}}/{{$song->id}}">{{ $song->title }} ({{ $song->band }})</a></li>
 			@endforeach
 
 		</ul>

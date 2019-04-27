@@ -55,8 +55,14 @@ Route::get('/search/{user}', 'searchController@seeUserProfile');
 
 Route::get('/search/{user}/{list}', 'searchController@seeUserList');
 
+Route::get('/search/{user}/{list}/{song}', 'searchController@seeUserSong');
+
 Route::get('/edit_profile', 'ProfileController@edit');
 
 Route::patch('/edit_profile', 'ProfileController@update');
 
 Route::get('/profile', 'ProfileController@show');
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

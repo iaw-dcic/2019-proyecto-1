@@ -69,10 +69,18 @@ class SongController extends Controller
     }
 
     public function update(Song $song){
+        
+        request()->validate([
+            'title' => ['required', 'max:255'],
+            'album' => ['required', 'max:255'],
+            'band' => ['required', 'max:255']
+        ]);
+
         $song->title = request('title');
         $song->album = request('album');
         $song->band = request('band');
         $song->save();
         return redirect('/lists/'.$song->lista_id);
+        
     }
 }

@@ -1,7 +1,7 @@
 @extends('secondTemplate')
 
 @section('content')
-	<h1>Agregar canción</h1>
+	<h1 class="text-center font-weight-light mt-1 my-3">Add new song</h1>
 
 	<div class="container" style="padding-top: 20px">
 		<form method="POST" action="/songs/{{$list->id}}">

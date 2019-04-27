@@ -1,7 +1,7 @@
 @extends('mainTemplate')
 
 @section('content')
-<h1 class="text-center" style="padding-top: 70px">Bienvenido</h1>
-<br>
-<p class="text-center">esto es de prueba</p>
+<div class="container">
+	<div class="display-1 text-muted text-center mt-5 pt-5">Welcome</div>
+</div>
 @endsection

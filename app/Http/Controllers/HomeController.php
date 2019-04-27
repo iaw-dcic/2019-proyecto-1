@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Lista;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $listas = Lista::where('user_id', auth()->id())->get();
+
+        $number = count($listas);
+
+        return view('home', compact('number'));
     }
 }

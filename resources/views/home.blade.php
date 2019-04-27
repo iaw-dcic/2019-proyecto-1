@@ -2,22 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+    <h1 class="display-2 text-muted text-center mt-5 pt-5">Hello, {{Auth::user()->name}}</h1>
+    <p class="h4 text-muted text-center mt-5 pt-5">You currently have {{$number}} {{ $number == 1 ? "list" : "lists" }}</p>
 </div>
 @endsection

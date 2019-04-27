@@ -22,7 +22,7 @@ class SearchController extends Controller
 	}
 
 	public function seeUserProfile(User $user){
-		abort_if($user->id == auth()->id(), 403);
+		abort_if($user->id == auth()->id(), 403, 'Sorry, you are not authorized');
 
 		$listas = Lista::where([
 			['user_id', $user->id],
@@ -34,9 +34,17 @@ class SearchController extends Controller
 
 	public function seeUserList(User $user, Lista $list){
 		abort_if($list->public == 0, 403);
+		abort_if($user->id == auth()->id(), 403, 'Sorry, you are not authorized');
 
 		$songs = Song::where('lista_id', $list->id)->get();
 
-		return view('usuarios.userList', compact('list', 'songs'));
+		return view('usuarios.userList', compact('user', 'list', 'songs'));
+	}
+
+	public function seeUserSong(User $user, Lista $list, Song $song){
+		abort_if($list->public == 0, 403);
+		abort_if($user->id == auth()->id(), 403, 'Sorry, you are not authorized');
+
+		return view('usuarios.userSong', compact('song'));
 	}
 }
