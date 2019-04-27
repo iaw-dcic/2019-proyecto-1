@@ -34,11 +34,11 @@
                         <br><br>
                         <div class="big-blog-item">
                             <div class="blog-content text-box text-white">
-                                <h3 style="color:bisque">Buscar otros usuarios: </h3>
+                                <h3 style="color:bisque">Buscar listas de otros usuarios: </h3>
                                 <div class="widget-item">
                                     <form class="search-widget" action="{{url('searchUser') }}" method="get">
                                         @csrf
-                                        <input name="searchTerm" type="text" placeholder="Ingresar el nombre...">
+                                        <input name="searchTerm" type="text" placeholder="Ingresar nombre de usuario o juego...">
                                         <button><i class="fa fa-search" aria-hidden="true"></i>  Buscar</button>
                                     </form>
                                 </div>

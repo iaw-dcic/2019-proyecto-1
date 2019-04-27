@@ -716,7 +716,14 @@ i.icon_g_plus {
 }
 
 .footer-social h2 {
-    margin: 2em 0 1em;
+    margin: 3em 0 1em;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.not-user h5 {
+    margin: 3em 5em 1em;
     color: #fff;
     font-weight: 500;
     letter-spacing: 1px;
@@ -816,6 +823,7 @@ i.icon_g_plus {
     .sub-main-w3 form {
         padding: 25px 14px;
     }
+    .not-user h5,
     .footer-social h2 {
         font-size: 15px;
     }
