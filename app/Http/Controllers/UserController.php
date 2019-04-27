@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -16,7 +17,12 @@ class UserController extends Controller
 	public function edit($username){
 		$useraux = User::where('username', $username)->get();
 		$user = $useraux->first();
-		return view('profile.edit', compact('user'));
+		if($user->id == Auth::user()->id){
+			return view('profile.edit', compact('user'));
+		}
+		else{
+			abort('403', 'Unauthorized access');
+		}
 	}
 
 	public function update($username){

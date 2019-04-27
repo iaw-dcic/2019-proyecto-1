@@ -1,0 +1,36 @@
+#formContent{
+	padding: 20px;
+}
+
+ul{
+	margin:0px;
+	padding:0px;
+}
+
+.link{
+	text-align: center;
+}
+
+/**
+ * Profile image component
+ */
+ .profile-header-container{
+    margin: 0 auto;
+}
+
+img.img-circle {
+    width: 40px;
+	height: 40px;
+}
+
+.profile-header {
+    margin-top: 43px;
+}
+
+.userinfo {
+	text-align: left;
+}
+
+.username{
+	margin-left: 10px;
+}

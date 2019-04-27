@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserList;
 
 class HomeController extends Controller
 {
@@ -31,12 +32,13 @@ class HomeController extends Controller
 	}
 
 	public function topVoted(){
-		return response()->json(['content'=> view('home.topVoted')->render()]);
+		return response()->json(['content'=> view('home.homeposts', ['lists' => []])->render()]);
 	}
 	public function mostViewed(){
-		return response()->json(['content'=> view('home.mostViewed')->render()]);
+		return response()->json(['content'=> view('home.homeposts', ['lists' => []])->render()]);
 	}
 	public function newLists(){
-		return response()->json(['content'=> view('home.newLists')->render()]);
+		$lists = UserList::orderBy('created_at', 'desc')->where('public', true)->take(10)->get();
+		return response()->json(['content'=> view('home.homeposts', compact('lists'))->render()]);
 	}
 }

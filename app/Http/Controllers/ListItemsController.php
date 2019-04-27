@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\UserList;
 use App\ListItem;
 use App\User;
+use Auth;
 
 class ListItemsController extends Controller{
 	public function __construct()
@@ -16,9 +17,14 @@ class ListItemsController extends Controller{
 	public function edit($username, $listid, $itemid){
 		$useraux = User::where('username', $username)->get();
 		$user = $useraux->first();
-		$list = UserList::findOrFail($listid);
-		$item = ListItem::findOrFail($itemid);
-		return view('listitems.edit', compact('user', 'list', 'item'));
+		if($user->id == Auth::user()->id){
+			$list = UserList::findOrFail($listid);
+			$item = ListItem::findOrFail($itemid);
+			return view('listitems.edit', compact('user', 'list', 'item'));
+		}
+		else{
+			abort('403', 'Unauthorized access');
+		}
 	}
 
 	public function update($username, $listid, $itemid){

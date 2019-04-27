@@ -1,8 +1,23 @@
 @extends('layouts.app')
 
+@section('stylesheets')
+	<link rel="stylesheet" href="{{asset('css/profile.css')}}">
+@endsection
+
 @section('body')
-	<div><img src="/public/{{$user->image}}"/></div>
-	<h1>{{$user->username}}'s profile</h1><br>
+	<div class="container">
+		<div class="row">
+			<div class="profile-header-container">
+				<div class="profile-header-img">
+					<img class="img-circle" src="{{asset($user->image)}}" />
+					<!-- badge -->
+					<div class="rank-label-container">
+						<span class="label label-default rank-label">{{$user->username}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	@if($user->nickname != "")
 		<h2>{{$user->nickname}}</h2><br>
 	@endif

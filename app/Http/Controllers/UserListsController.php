@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use \App\UserList;
 use \App\User;
+use Auth;
 
 class UserListsController extends Controller {
 
@@ -13,7 +14,7 @@ class UserListsController extends Controller {
 		$useraux = User::where('username', $username)->get();
 		$user = $useraux->first();
         return view('userlists.index', compact('user'));
-    }
+	}
 
     public function create($username){
 		$useraux = User::where('username', $username)->get();
@@ -34,18 +35,17 @@ class UserListsController extends Controller {
 			'public' => $public
 		]);
 		return redirect('/'.$username.'/myLists');
-    }
+	}
 
-    public function show($username, $id){
-		$useraux = User::where('username', $username)->get();
-		$user = $useraux->first();
-		$list = UserList::findOrFail($id);
-        return view('userlists.show', compact('user', 'list'));
-    }
+	public function show(){
+		abort('404', 'Not Found');
+	}
 
     public function update($username, $id){
         $list = UserList::findOrFail($id);
-        $list->list_name = request('list_name');
+		$list->list_name = request('list_name');
+		request('public') == "on" ? 1 : 0;
+		$list->public = request('public') == "on" ? 1 : 0;
         $list->save();
         return redirect('/'.$username.'/myLists');
     }
@@ -58,7 +58,12 @@ class UserListsController extends Controller {
     public function edit($username, $id){
 		$useraux = User::where('username', $username)->get();
 		$user = $useraux->first();
-		$list = UserList::findOrFail($id);
-        return view ('userlists.edit', compact('user', 'list'));
+		if($user->id == Auth::user()->id){
+			$list = UserList::findOrFail($id);
+			return view ('userlists.edit', compact('user', 'list'));
+		}
+		else{
+			abort('403', 'Unauthorized access');
+		}
     }
 }

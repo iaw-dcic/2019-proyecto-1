@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
+@section('stylesheets')
+	<link rel="stylesheet" href="{{ asset('css/wrappers.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/posts.css') }}">
+@endsection
+
 @section('body')
-	<div id="app">
-		<nav class="navbar navbar-default fadeInDown">
+	<div id="homepagebody">
+
+		<nav class="navbar navbar-default fadeInDown navbar-fixed-top" >
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand" href="{{ url('/') }}">
@@ -23,6 +29,16 @@
 
 				<!-- Right Side Of Navbar -->
 				<ul class="nav navbar-nav navbar-right ml-auto">
+					<li>
+						<form class="navbar-form" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" name="q">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+						</form>
+					</li>
 					<!-- Authentication Links -->
 					@guest
 						<li class="nav-item">
