@@ -6,11 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model
 {
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     //
         /**
      * The table associated with the model.
      *
      * @var string
      */
+
+    
     protected $table = 'albums';
 }

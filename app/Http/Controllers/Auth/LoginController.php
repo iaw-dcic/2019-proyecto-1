@@ -67,6 +67,7 @@ class LoginController extends Controller
                         'email' => $githubUser->getEmail(),
                         'name' => $githubUser->getName(),
                         'provider_id' => $githubUser->getId(),
+                        'avatar' => $githubUser->getAvatar(),
                         
 
                     ]);

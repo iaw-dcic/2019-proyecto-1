@@ -4,6 +4,10 @@ namespace Haiku\Http\Controllers;
 
 use Haiku\Album;
 use Illuminate\Http\Request;
+use Haiku\User;
+use Auth;
+
+
 
 class AlbumController extends Controller
 {
@@ -37,8 +41,9 @@ class AlbumController extends Controller
     public function store(Request $request)
     {
         //faltan agregar las reglas de validación del lado cliente...!!
-        
+        $user  = Auth::user();
         $album = new Album;
+        $album->user_id = $user->id;
         $album->name = request('name');
         $album->mynote = 10;
         $album->bandName = request('band');

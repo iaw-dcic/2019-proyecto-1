@@ -48,6 +48,8 @@ Auth::routes();
 Route::get('/home', 'ApiController@index')->name('home');
 Route::post('/createAlbum','AlbumController@store');
 
+Route::get('/showUser/{id}','ApiController@showUser')->name('showUser');
+
 Auth::routes();
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');

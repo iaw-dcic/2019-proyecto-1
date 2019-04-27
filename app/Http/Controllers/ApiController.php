@@ -23,6 +23,18 @@ class ApiController extends Controller
 
     }
 
+    public function showUser($id){
+       
+       
+        $user = User::find($id);
+        $albums= User::find($id)->albums;
+
+        //dd($albums);
+        return view('users/showUser',['user'=>$user,'albums'=>$albums]);
+
+      
+    }
+
     public function updateAvatar(Request $request){
         //Handle the user upload to avatar
         if($request->hasFile('avatar')){
