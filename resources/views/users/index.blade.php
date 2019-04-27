@@ -8,7 +8,7 @@
     <ul>
         @forelse ($users as $user)
              <li>{{$user->id}}{{ $user->name }}, ({{ $user->email }})
-			 <a href="{{ url("/usuarios/{$user->id}") }}">Ver detalles</a>
+			 <a href="{{ url("/usuarios/{$user->id}") }}">Ver perfil</a>
 			 </li>
         
 		@empty

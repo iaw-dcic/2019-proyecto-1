@@ -1,17 +1,19 @@
 @extends('layout')
 
-@section('title', "Ingresar pelicula")
+@section('title', "Editar pelicula")
 
 @section('content')
-     <h1> Agregar peli </h1>
+     <h1> Editar peli </h1>
 	 
 	<div class="container">
     <div class="row clearfix">
 	
 		<div class="col-md-12 column">
-		<form method="POST" action="{{ url("/listas/{$usermovie->id}") }}">
+		<form method="POST" action="{{ url("/listas/{$usermovie->id}/{$movie->id}") }}">
 		 
-		@csrf
+			  {{ method_field('PUT') }}
+			 
+			  {{ csrf_field() }}
 
 		<div class="form-group">
 	  	<label for="inputList"></label> 
@@ -30,7 +32,6 @@
 						<th class="text-center">
 							Director
 						</th>
-						
 					</tr>
 					
 
@@ -38,13 +39,13 @@
 				<tbody>
 					<tr id='addr0'>
 						<td>
-						1
+						
 						</td>
 						<td>
-						<input type="text" name='titulo'  placeholder='Título' class="form-control"/>
+						<input type="text" name='titulo'  placeholder='Título' class="form-control" value="{{ old('titulo', $movie->titulo) }}"/>
 						</td>
 						<td>
-						<input type="text" name='director' placeholder='Director' class="form-control"/>
+						<input type="text" name='director' placeholder='Director' class="form-control" value="{{ old('director', $movie->director) }}"/>
 						</td>
 						
 					</tr>
@@ -58,16 +59,8 @@
 		</div>
 	</div>			
 	
- <!--	<H1 align="CENTER">
-		<a id="add_row" class="btn btn-primary" href='#' > + Pelicula </a>
-		 
-		 
-	
-	  <td class="text-center"><a id="delete_row"  class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> - Pelicula</a></td>
-	</H1>
-	 -->
 	<H1 align="CENTER">
-	    <button type="submit" class="btn btn-primary">Agregar peli</button>
+	    <button type="submit" class="btn btn-primary">Editar peli</button>
 			</H1>
 			</form>
 </div>

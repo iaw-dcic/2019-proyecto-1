@@ -40,26 +40,47 @@ class MovieItemController extends Controller
 	public function create(Usermovie $usermovie){
 		return view('movie.createmovie', ['usermovie'=> $usermovie]); //tengo q hacer vista de peli
 	}
-	
-	//HAY QUE MOSTRAR LAS PELIS EN SHOWLIST Y LISTO 
+
 	public function store(Usermovie $usermovie){
-	//	dd($usermovie->id);
-		/*
-		   Movie::create(request()->validate([
-            'titulo' => 'required',
-            'director' => 'required'
-        ]));
-		*/
 		Movie::create([
            	'titulo' => request('titulo'),
-			'director' =>  request('titulo'),
+			'director' =>  request('director'),
 			'lista' => $usermovie->id
-			
         ]);
-		
-	//	return $Request;
 		
 		return redirect()->route('lists.show', ['usermovie'=> $usermovie]);
 	}
+	
+	public function destroy(Usermovie $usermovie, Movie $movie){
+	
+	//	$lista= Usermovie::find($usermovie);
+		
+	//	$peli=Movie::where('lista',$lista->id)
+	//				->where('id',$movie)
+	//				->get();
+					
+		$movie->delete();
+
+		return redirect()->route('lists.show',  ['usermovie'=> $usermovie, 
+												'movie'=> $movie]);
+	}
+	
+	public function edit(Usermovie $usermovie, Movie $movie){
+		return view('movie.editmovie', ['usermovie'=> $usermovie, 
+												'movie'=> $movie]);
+	}
+	
+	public function update(Usermovie $usermovie, Movie $movie){
+
+		$movie->titulo = request('titulo');
+        $movie->director = request('director');
+		$movie->lista = $usermovie->id;
+		
+        $movie->save();
+		
+		return redirect()->route('lists.show', ['usermovie'=> $usermovie, 
+												'movie'=> $movie]);
+	}
+	
 
 }

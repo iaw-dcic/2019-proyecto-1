@@ -26,6 +26,9 @@ Route::post('/home', 'MovieController@store')->name('movie.store');
 
 Route::get('/usuarios', 'UserController@index')->name('users.index');
 
+Route::delete('/usuarios/{user}', 'UserController@destroy')->name('users.delete');
+Route::delete('/listas/{usermovie}/{movie}', 'MovieItemController@destroy')->name('movies.delete');
+
 Route::get('/usuarios/{user}', 'UserController@show')
 	->where('user','[0-9]+')
 	->name('users.show');
@@ -40,18 +43,18 @@ Auth::routes();
 
 Auth::routes(['register' => false]);
 
-Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
+Route::get('/usuarios/{usermovie}/{movie}/editar', 'MovieItemController@edit')->name('movies.edit');
 
 Route::put('/usuarios/{user}', 'UserController@update');
+Route::put('/listas/{usermovie}/{movie}', 'MovieItemController@update');
 
 Route::post('/usuarios', 'UserController@store');	
 
 Route::get('/listas/{usermovie}/addmovie', 'MovieItemController@create')
 	->where('usermovie','[0-9]+');
 	
-Route::get('/listas/{usermovie}/movies', 'MovieItemController@index')
-	->where('usermovie','[0-9]+');
-	
+	Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
+
 Route::post('/listas/{usermovie}', 'MovieItemController@store');	
 	
 // Route::get('/home', 'HomeController@index')->name('home');

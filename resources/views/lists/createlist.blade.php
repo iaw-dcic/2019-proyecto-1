@@ -13,7 +13,7 @@
 
 		<input type="Nombre de lista" name="nombre" id="inputList" class="form-control" placeholder="Nombre de la lista" required autofocus>
 		</div>
-			
+	<!-- 		
 			<table class="table table-bordered table-hover" id="tab_logic">
 				<thead>
 					<tr >
@@ -30,7 +30,7 @@
 					</tr>
 					
 
-				</thead>
+		</thead>
 				<tbody>
 					<tr id='addr0'>
 						<td>
@@ -46,10 +46,17 @@
 					</tr>
                     <tr id='addr1'></tr>
 					
-				</tbody>
-				
+				</tbody>			
 			</table>
-			 
+			
+			<H1 align="CENTER">
+		<a id="add_row" class="btn btn-primary" href='#' > + Pelicula </a>
+		 
+		 
+	
+	  <td class="text-center"><a id="delete_row"  class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> - Pelicula</a></td>
+	</H1>
+--->			 
 			
 		</div>
 	</div>
@@ -66,13 +73,7 @@
 	</label>
 	</div>				
 	
-	<H1 align="CENTER">
-		<a id="add_row" class="btn btn-primary" href='#' > + Pelicula </a>
-		 
-		 
 	
-	  <td class="text-center"><a id="delete_row"  class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> - Pelicula</a></td>
-	</H1>
 	
 	<H1 align="CENTER">
 	    <button type="submit" class="btn btn-primary">Crear lista</button>

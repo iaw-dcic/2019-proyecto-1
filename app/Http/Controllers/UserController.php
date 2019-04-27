@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Usermovie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,10 @@ class UserController extends Controller
 
 	public function show($id){
 		$user= User::find($id);
+		$pelis= Usermovie::where('creador_id',$id)->get();
 		
 //		dd($user);	
-		return view('users.show',compact('user'));
+		return view('users.show',['user'=> $user, 'pelis'=> $pelis]);
 	}
 	
 	public function create(){
@@ -64,5 +66,11 @@ class UserController extends Controller
         $user->save();
 		
 		return redirect()->route('users.show', ['user'=> $user]);
+	}
+	
+	function destroy(User $user) {
+		$user->delete();
+
+    return redirect()->route('users.index');
 	}
 }
