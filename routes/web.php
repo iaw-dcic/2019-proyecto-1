@@ -25,7 +25,7 @@ Route::get('/about', 'PagesController@about');
 Route::resource('games','GamesController');
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Auth::routes(['verify'=> true]);
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
 

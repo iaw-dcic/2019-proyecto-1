@@ -61,13 +61,18 @@ class LoginController extends Controller
     {
         $user = Socialite::driver($service)->user();
 
+        //If user is registered with social networks, its username will be the name in lowercase and without spaces
+        $username = str_replace(' ','', strtolower($user->getName()));
+      
         $newUser = User::where('email', $user->getEmail())->first();
 
         if (!$newUser) {
             $newUser = new User;
             $newUser->email = $user->getEmail();
+            $newUser->userName = $username;
             $newUser->name = $user->getName();
             $newUser->provider_id = $user->getId();
+    
         }
 
         Auth::login($newUser, true);

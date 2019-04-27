@@ -17,7 +17,8 @@ class PagesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['home', 'about', 'games', 'profile','getUserProfile']]);
+       $this->middleware('auth', ['except' => ['home', 'about', 'games', 'profile','getUserProfile']]);
+      // $this->middleware(['auth', 'verified']); 
     }
 
     public function home()
@@ -25,7 +26,7 @@ class PagesController extends Controller
         return view('pages.home');
     }
 
-    public function about()
+    public function about() 
     {
         return view('pages.about');
     }
@@ -90,14 +91,5 @@ class PagesController extends Controller
 
     }
 
-    
 
-    public function changeGamesMode($newMode)
-    {
-        $user = auth()->user();
-       // $user->gamesMode = $newMode;
-        $user->save();
-        alert()->success('Listo!', 'Tu lista de juegos ahora esta e n  modo '.$newMode);
-        return redirect()->guest('/profile');
-    }
 }

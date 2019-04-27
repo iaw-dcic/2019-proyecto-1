@@ -100,7 +100,7 @@
 
             <!-- Name -->
             <div class="form-style-agile">
-                <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre *</label>
+                <label> <i class="fas fa-edit" aria-hidden="true"></i> Nombre *</label>
                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"
                     required autofocus> @if ($errors->has('name'))
                 <span class="invalid-feedback" role="alert">
@@ -108,21 +108,20 @@
                                     </span> @endif
             </div>
 
-            <div class="form-group row">
-                <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+            <!-- Username -->
+            <div class="form-style-agile">
+                <label> <i class="fas fa-user" aria-hidden="true"></i> Nombre de usuario *</label>
 
-                <div class="col-md-6">
-                    <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username"
-                        value="{{ old('username') }}"> @if ($errors->has('username'))
-                    <span class="invalid-feedback" role="alert">
+                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" 
+                    value="{{ old('username') }}" required> @if ($errors->has('username'))
+                <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('username') }}</strong>
                                     </span> @endif
-                </div>
             </div>
 
             <!--Email -->
             <div class="form-style-agile">
-                <label> <i class="fa fa-envelope" aria-hidden="true"></i>Email *</label>
+                <label> <i class="fa fa-envelope" aria-hidden="true"></i> Email *</label>
 
                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
                     required> @if ($errors->has('email'))
@@ -135,7 +134,7 @@
 
             <!-- Password -->
             <div class="form-style-agile">
-                <label> <i class="fa fa-unlock-alt" aria-hidden="true"></i>Contraseña *</label>
+                <label> <i class="fa fa-unlock-alt" aria-hidden="true"></i> Contraseña *</label>
                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
                     required> @if ($errors->has('password'))
 
