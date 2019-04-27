@@ -3,17 +3,18 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    Hola {{auth()->user()->name}}
-                </div>
+        <div class="col-md-6">
+            <div class="card rounded-big">
+                <h4 class="card-header bg-dark">
+                    Hola, {{auth()->user()->name}}!
+                </h4>
                 <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                    <a class="card-link" href="{{ url(auth()->user()->id,'playlists')}}">Ver mis playlists</a>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

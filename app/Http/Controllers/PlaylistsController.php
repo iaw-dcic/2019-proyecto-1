@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Playlist;
+use App\User;
 
 class PlaylistsController extends Controller
 {
@@ -12,10 +13,12 @@ class PlaylistsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $playlists = Playlist::all();
+        //obtengo las playlists del user
+        $playlists = Playlist::all()->where('user_id',$request->user()->id);
 
+        //las paso a la vista
         return view('playlists.index',compact('playlists'));
     }
 
@@ -48,7 +51,9 @@ class PlaylistsController extends Controller
      */
     public function show($id)
     {
-        //
+        $playlist = Playlist::findOrFail($id);
+
+        return view('playlists.show',compact('playlist'));
     }
 
     /**

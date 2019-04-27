@@ -11,10 +11,6 @@
 |
 */
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/', 'PageController@index');
 
 Route::get('/users', 'PageController@users');
@@ -25,6 +21,9 @@ Route::get('/contact', 'PageController@contact');
 
 Route::get('/settings', 'PageController@settings');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 /* Rutas para playlists */
-Route::resource('/playlists', 'PlaylistsController');
+Route::resource('{user}/playlists', 'PlaylistsController');
 

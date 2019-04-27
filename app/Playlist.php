@@ -8,11 +8,11 @@ class Playlist extends Model
 {
     public function videos()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasMany('App\Video');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User');
     }
 }

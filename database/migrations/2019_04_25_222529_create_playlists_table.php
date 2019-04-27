@@ -14,8 +14,9 @@ class CreatePlaylistsTable extends Migration
     public function up()
     {
         Schema::create('playlists', function (Blueprint $table) {
-            $table->unsignedInteger('id')->autoincrement();
+            $table->increments('id');
             $table->string('name');
+            $table->text('description');
             $table->unsignedInteger('user_id');
             $table->boolean('public')->default(false);
             $table->integer('likes')->default(0);
