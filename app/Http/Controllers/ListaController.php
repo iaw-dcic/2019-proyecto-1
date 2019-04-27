@@ -15,7 +15,7 @@ class ListaController extends Controller
         $this->middleware('auth');
 
         //$this->middleware('book.privacy')->only('show');
-        $this->middleware('book.privacy', ['only' => ['show', 'edit','index']]);
+        $this->middleware('book.privacy', ['only' => ['show', 'edit']]);
     }
 
     /**

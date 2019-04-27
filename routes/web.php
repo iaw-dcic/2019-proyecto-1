@@ -27,6 +27,11 @@ Route::resource('/list', 'ListaController');
 
 Route::get('user/{userid}/list', 'ListaController@indexAll');
 
+Route::resource('/profile', 'ProfileController');
+
+//Route::get('profile/', 'ProfileController@index');
+
+
 
 
 

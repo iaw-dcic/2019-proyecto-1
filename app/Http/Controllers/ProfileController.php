@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -13,7 +14,15 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $userData = Auth::user();
+
+        if($userData) {
+            $data['userData'] = $userData;
+        } else {
+            $data['userData'] = [];
+        }
+
+        return view('profile.index', $data);
     }
 
     /**
@@ -23,7 +32,15 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+         $userData = Auth::user();
+
+        if($userData) {
+            $data['userData'] = $userData;
+        } else {
+            $data['userData'] = [];
+        }
+
+        return view('profile.create', $data);
     }
 
     /**
@@ -34,7 +51,20 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $user->name=$request->name;
+        $user->surname=$request->surname;
+        $user->username=$request->username;
+        $user->email=$request->email;
+        //$user->password=bcrypt($request->password);
+        $user->telephone=$request->telephone;
+        $user->address=$request->address;
+
+        if ($user->save()) {
+           // return redirect()->route('book.update')->with('status', 'Éxito');
+            return redirect()->route('profile.create')->with('status', 'Éxito');
+        }
     }
 
     /**
@@ -56,7 +86,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -68,7 +98,7 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
