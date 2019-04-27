@@ -54,10 +54,8 @@ class gamesController extends Controller
      */
     public function show(Juego $juego)
     {
-        $juegoShow = [
-
-        ];
-        return view('')->with('infoJuego',$juegoShow);
+        $juegoid = request('id');
+        return view('games.show{ {{$juegoid}} }')->with('infoJuego',$juegoShow);
     }
 
     /**

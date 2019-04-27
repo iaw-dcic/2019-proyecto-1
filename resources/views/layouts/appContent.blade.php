@@ -70,7 +70,7 @@
                             @endif
                         @else
                         <div class="btn-group" role="group" aria-label="Profile Options">
-                            <a id="navbarDropdown" class="nav-link btn btn-primary" href="profiles.show" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link btn btn-primary" href="/profiles/{{ Auth::user()->name }}" role="button"  aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 

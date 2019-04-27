@@ -18,7 +18,7 @@ class listsController extends Controller
         if(Auth::check()){
             
             $listas = auth()->user()->listas; //Obtengo todas las listas del usuario
-            return view('profile',compact('listas')); //devuelvo una view junto con las listas
+            return view('profiles/{ {{Auth::user()->id}} ',compact('listas')); //devuelvo una view junto con las listas
         }
         else{
             //es un guest mirando otro usuario, buscar lista del usuario visitado
@@ -34,7 +34,7 @@ class listsController extends Controller
     public function create()
     {
         $this->middleware('auth');
-        return view('crearLista');
+        return view('lists/crear');
     }
 
     /**
@@ -47,17 +47,17 @@ class listsController extends Controller
     {
         $this->middleware('auth');
 
-        request()->validate([
-            'titulo' => 'required',
-            'listaDescripcion' => 'required'
+        $validated = request()->validate([
+            'titulo' => ['required', 'min:5', 'max:255'],
+            'listaDescripcion' => ['required', 'min:5', 'max:255']
         ]);
 
         Lista::create([
-            request('titulo','listaDescripcion','public','userID'),
+            $validated,
             'juegos' => []
         ]);
 
-        return redirect('/profile');
+        return redirect('profiles/{ {{Auth::user()->id}} } ');
     }
 
     /**
@@ -69,7 +69,7 @@ class listsController extends Controller
     public function show(Lista $lista)
     {
         
-       return view('lists.show', compact('lista'));
+       return view('lists/{ {{lista->id}} }', compact('lista'));
        //return view('verLista')->with('lista',$listaShow);
 
     }
@@ -98,7 +98,7 @@ class listsController extends Controller
         $this->middleware('auth');
 
         $lista->update( request('titulo','listaDescripcion','public','userID')); 
-        return redirect('/profile');
+        return redirect('profiles/{ {{Auth::user()->id}} }');
     
     }
 

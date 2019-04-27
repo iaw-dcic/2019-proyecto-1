@@ -46,7 +46,8 @@ class profileController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $name = $user->name;
+        return view('profiles.show')->with('user',$user);
     }
 
     /**
@@ -57,7 +58,7 @@ class profileController extends Controller
      */
     public function edit(User $user)
     {
-        return redirect('profiles.edit',compact('user'));
+        return redirect('profiles/{{$user->name}}/editar',compact('user'));
     }
 
     /**

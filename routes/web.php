@@ -24,6 +24,7 @@ Route::get('/readme',function(){
 Route::resources([
     'lists' => 'listsController',
     'games' => 'gamesController'
+    
 ]);
 
 Route::resource('profiles','profileController')->only('show','edit','update','destroy');

@@ -14,7 +14,7 @@
     @if(!$listas->isEmpty())
     <div class="list-group">
         @foreach($lista as $listas)
-            <li><a href="{{route('lists/{{list->id}}')}}" class="list-group-item list-group-item-action">{{$lista->titulo}}</a> </li>
+            <li><a href="{{route('lists/{list->id}') }}" class="list-group-item list-group-item-action">{{$lista->titulo}}</a> </li>
         @endforeach
     </div>
         

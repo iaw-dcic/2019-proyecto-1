@@ -16,7 +16,7 @@
                 <div class="card-header">{{ __('llena los datos de tu lista aquí!') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/lists/{{$list->id}}">
+                    <form method="POST" action="/lists/{$list->id}">
                         @method('PATCH')
                         @csrf
                         <div>

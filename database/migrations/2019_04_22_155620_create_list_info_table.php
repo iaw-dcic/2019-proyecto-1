@@ -15,6 +15,7 @@ class CreateListInfoTable extends Migration
     {
         Schema::create('list_info', function (Blueprint $table) {
             $table->unsignedBigInteger('id');
+            $table->primary('id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->string('name')->nullable($value=false);

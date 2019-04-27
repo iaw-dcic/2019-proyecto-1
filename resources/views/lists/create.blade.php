@@ -15,15 +15,15 @@
                 <div class="card-header">{{ __('llena los datos de tu lista aquí!') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/profile">
+                    <form method="POST" action="/profiles/{ {Auth::user->id} }">
                         @csrf
                         <div class="form-group">
-                            <label for="list_title">Titulo del Juego</label>
-                            <input type="text" class="form-control" id="list_title" aria-describedby="listHelp" placeholder="Ingresa el nombre de la lista">
+                            <label for="list_title">Titulo de la lista</label>
+                            <input type="text" class="form-control" id="list_title" aria-describedby="listHelp" placeholder="Ingresa el nombre de la lista" name="title" required value="{{old('title')}}">
                         </div>
                         <div class="form-group">
                             <label for="list_description">Descripcion</label>
-                            <input type="text" class="form-control" id="list_description" aria-describedby="list_description" placeholder="Ingresa una descripcion">
+                            <input type="text" class="form-control" id="list_description" aria-describedby="list_description" placeholder="Ingresa una descripcion" name="listaDescripcion" required value="{{old('listaDescripcion')}}">
                         </div>
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="publicList">
