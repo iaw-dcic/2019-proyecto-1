@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('title',' | Login') 
 @section('content')
-    @include('sweetalert::alert')
+@include('sweetalert::alert')
 
 
 <!-- Page top section -->
@@ -105,7 +105,7 @@
             <!-- {{ csrf_field() }} -->
             <!-- Title -->
             <div class="form-style-agile">
-                <label> <i class="fas fa-envelope-o" aria-hidden="true"></i>Email *</label>
+                <label> <i class="fa fa-envelope" aria-hidden="true"></i>Email *</label>
                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
                     required autofocus> @if ($errors->has('email'))
                 <span class="invalid-feedback" role="alert">
@@ -115,7 +115,7 @@
             </div>
 
             <div class="form-style-agile">
-                <label> <i class="fas fa-envelope-o" aria-hidden="true"></i>Contraseña *</label>
+                <label> <i class="fa fa-unlock-alt" aria-hidden="true"></i>Contraseña *</label>
 
                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
                     required> @if ($errors->has('password'))
@@ -158,6 +158,9 @@
             </div>
             <!--Social networks end-->
 
+            <!-- Not user -->
+                <h5 style="color:white"> Todavía no tenes cuenta? <a href="register">Registrate!</a></h5>
+            <!-- Not user end -->
            
 
 

@@ -311,7 +311,7 @@ h1 span {
     box-sizing: border-box;
     border: none;
     background: #fff;
-    border-left: 2px solid #E91E63;
+    border-left: 2px solid white;
 }
 
 .sub-main-w3 input[type="submit"] {
@@ -539,7 +539,7 @@ h1 span {
   }
 
   .fa-github {
-      background: orangered;
+      background: forestgreen;
       color: white;
   }
   
@@ -760,7 +760,7 @@ i.icon_g_plus {
 }
 
 .custom-border {
-    border-left: 2px solid #E91E63;
+    border-left: 2px solid white;
 }
 
 
