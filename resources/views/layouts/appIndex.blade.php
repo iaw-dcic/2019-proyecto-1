@@ -7,9 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Bootstrap core JavaScript -->
+
   <title>Bienes web - El portal mas grande de Bahia Blanca y la region</title>
 
   <meta charset="utf-8">
@@ -60,7 +62,7 @@
                         {{ __('Logout') }}
                     </a>
 
-                    <a class="dropdown-item" href="{{ route('editProfile') }}"
+                    <a class="dropdown-item" href="{{ route('edit-profile') }}"
                       >
                       Editar perfil
                    </a>
@@ -72,17 +74,6 @@
             </li>
         @endguest
       </ul>
-      
-      {{-- <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-          <a class="nav-link" href="{{ route('ingresar')}}">Ingresar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('registrar')}}">Registrarse</a>
-          </li>
-        </ul>
-      </div>       --}}
     </div>
   </nav>
 
@@ -100,9 +91,7 @@
     <!-- /.container -->
   </footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 

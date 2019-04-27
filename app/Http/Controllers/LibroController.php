@@ -7,36 +7,16 @@ use Illuminate\Http\Request;
 
 class LibroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($id)
     {
         return view('libros/add-libro',compact('id'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'Genero' => 'required|unique:posts|max:255',
+            'Genero' => 'required',
             'Titulo' => 'required',
             'Autor' => 'required',
             'FechaPublicacion' => 'required'
@@ -49,53 +29,23 @@ class LibroController extends Controller
         $libro -> Fecha_de_publicación = $request ->input('FechaPublicacion');
         $libro -> save();
     
-        $user = \Auth::user();
-        $listas = $user->listaLibros;
-        return view('listaLibros/edit-lista-libros', compact('listas'));
+        return redirect()->route('listaLibros');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Libro  $libro
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Libro $libro)
+    public function edit(Request $request)
     {
-        //
+        $libro = Libro::findOrFail($request->id_libro);
+        $libro -> Titulo = $request->titulo;
+        $libro -> Autor = $request->autor;
+        $libro -> Genero = $request->genero;
+        $libro -> save();
+        return redirect()->route('listaLibros');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Libro  $libro
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Libro $libro)
+    public function destroy(Request $request)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Libro  $libro
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Libro $libro)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Libro  $libro
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Libro $libro)
-    {
-        //
+        $libro = Libro::findOrFail($request->id_libro);
+        $libro -> delete();
+        return back();
     }
 }

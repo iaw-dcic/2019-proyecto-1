@@ -96,4 +96,17 @@ class ProfileController extends Controller
     {
         //
     }
+
+    public function editProfile()
+    {   
+        $user = Auth::user();
+        if($user){
+            $profile = $user->profile;
+            $listaLibros = $user->listaLibros;
+            return view('profile/edit-profile',compact('profile','listaLibros'));
+        }
+        else{
+            return redirect('/');
+        }
+    }
 }

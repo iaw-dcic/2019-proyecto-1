@@ -24,12 +24,14 @@ Route::get('/profiles/{id}', 'ProfileController@index');
 
 Route::post('/lista-libros/create', 'ListaLibroController@store')->name('crearListaLibros');
 Route::get('/users', 'PageController@search')->name('search-profile');   
-Route::delete('/lista-libros/{id}', 'ListaLibroController@destroy')->name('delete-lista-libros');
+Route::delete('/lista-libros', 'ListaLibroController@destroy')->name('delete-lista-libros');
+Route::delete('/libro','LibroController@destroy')->name('delete-libro');
 Route::get('/lista-libros', 'ListaLibroController@index')->name('listaLibros');
 Route::get('/lista-libros/{id}', 'LibroController@create')->name('add-libro');
 Route::post('/lista-libros/{id}/add', 'LibroController@store')->name('store-libro');
+Route::post('/edit-libro', 'LibroController@edit')->name('edit-libro');
 
-Route::get('/editProfile', 'PageController@editProfile')->name('editProfile');
+Route::get('/profile/edit', 'ProfileController@editProfile')->name('edit-profile');
 Route::post('/toggle-list', 'ListaLibroController@toggleList')->name('toggle-list');
 //facebook
 

@@ -91,15 +91,15 @@ class ListaLibroController extends Controller
      * @param  \App\ListaLibro  $listaLibro
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $lista = ListaLibro::find($id);
+    
+        $lista = ListaLibro::findOrFail($request -> id_lista);
         foreach ($lista->libros as $libro) {
             $libro -> delete();
         }
+
         $lista -> delete();
-        $user = \Auth::user();
-        $listas = $user->listaLibros;
-        return view('listaLibros/edit-lista-libros', compact('listas'));
+        return back();
     }
 }
