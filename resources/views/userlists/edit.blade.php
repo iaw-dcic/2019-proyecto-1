@@ -7,15 +7,7 @@
     	@csrf
 
 		<input type="text" name="list_name" placeholder="list name" value= '{{ $list->list_name }}'>
-		<!--
-		@foreach ($list->items as $item)
-			<div>
-				<input type="text" name="item_name[]" placeholder="item name" value="{{$item->description}}">
-				<button type="submit delete-item">Delete</button><br>
-			</div>
-		@endforeach
-		-->
-		<br>
+
     	<button type="submit">Save changes</button>
     </form>
 

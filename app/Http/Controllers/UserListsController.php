@@ -33,10 +33,6 @@ class UserListsController extends Controller {
 			'user_id' => $user->id,
 			'public' => $public
 		]);
-		foreach (request('item_name') as $item) {
-			$userList->addItem(['description' => $item]);
-		}
-
 		return redirect('/'.$username.'/myLists');
     }
 

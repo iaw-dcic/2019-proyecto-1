@@ -18,17 +18,9 @@
 					<span class="slider round"></span>
 				</label>
 				<br>
-				<button id="addItemButton">Add item</button>
-				<div id="items">
-					<div>
-						<input type="text" name="item_name[]" placeholder="item name" value="{{ old('item_name')}}">
-						<button type="delete-input">-</button><br>
-					</div>
-				</div>
 				<input type="submit" value="Create list">
 			</form>
 		</div>
 	</div>
 	@include('errors')
-	<script src="{{ asset('js/createList.js') }}" defer></script>
 @endsection

@@ -42,6 +42,24 @@ return [
             'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
-    ],
+	],
+
+	'facebook' => [
+		'client_id' => '448988342512823',
+		'client_secret' => '5f80d0796a6698049f85d5ca4a1a4806',
+		'redirect' => 'http://localhost:8000/login/facebook/callback',
+	],
+
+	'twitter' => [
+		'client_id' => env('TWITTER_CLIENT_ID'),
+		'client_secret' => env('TWITTER_CLIENT_SECRET'),
+		'redirect' => 'http://your-callback-url',
+	],
+
+	'google' => [
+		'client_id' => env('GOOGLE_CLIENT_ID'),
+		'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+		'redirect' => 'http://your-callback-url',
+	],
 
 ];

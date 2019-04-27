@@ -6,3 +6,28 @@
 .nav-item{
 	cursor: pointer;
 }
+
+.priority{
+	border-radius: 50%;
+	align-content: center;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+}
+
+.priority-low{
+	background-color: green
+}
+
+.priority-medium{
+	background-color: yellow
+}
+
+.priority-high{
+	background-color: red
+}
+
+.item-name{
+	line-height: 20px;
+	text-align: center;
+}

@@ -12,8 +12,9 @@
 						<button type="submit"> Delete </button>
 					</form>
 				@else
-					<li>{{$list->list_name}}</li>
-
+					@if($list->public)
+						<li>{{$list->list_name}}</li>
+					@endif
 				@endif
 		@endforeach
 	</ul>
