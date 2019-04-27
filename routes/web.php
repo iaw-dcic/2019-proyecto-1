@@ -14,6 +14,8 @@ Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/profile/{user}', 'UserController@index');
+Route::patch('/profile/{user}', 'UserController@update');
+Route::get('/profile/{user}/edit', 'UserController@edit');
 
 Route::resource('/{user}/myLists', 'UserListsController');
 

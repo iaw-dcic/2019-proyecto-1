@@ -8,23 +8,23 @@
 }
 
 .priority{
-	border-radius: 50%;
+	border-radius: 15px;
 	align-content: center;
-	width: 20px;
-	height: 20px;
 	display: inline-block;
+	padding: 5px;
+	margin: 5px;
 }
 
 .priority-low{
-	background-color: green
+	background-color: #70db70
 }
 
 .priority-medium{
-	background-color: yellow
+	background-color: #ffff4d
 }
 
 .priority-high{
-	background-color: red
+	background-color: #ff4d4d
 }
 
 .item-name{

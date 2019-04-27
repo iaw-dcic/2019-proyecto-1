@@ -20,10 +20,11 @@
 				<form method="POST" action="/{{$user->username}}/myLists/{{$list->id}}/items/{{ $item->id }}">
 					@method('DELETE')
 					@csrf
-					<div class="priority priority-{{$item->priority}}"></div>
-					<span  class="item-name" data-toggle="tooltip" data-placement="right" title="{{$item->description}}">
-						{{$item->name}}
-					</span>
+					<div class="priority priority-{{$item->priority}}">
+						<span  class="item-name" data-toggle="tooltip" data-placement="right" title="{{$item->description}}">
+							{{$item->name}}
+						</span>
+					</div>
 					<a href="/{{$user->username}}/myLists/{{$list->id}}/items/{{$item->id}}/edit">Edit</a>
 					<button type="submit"> Delete </button>
 				</form>
