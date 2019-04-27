@@ -294,8 +294,8 @@ ol {
 	display: -webkit-inline-box;
 	display: -ms-inline-flexbox;
 	display: inline-flex;
-	width: 32px;
-	height: 32px;
+	width: 64px;
+	height: 64px;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -304,7 +304,7 @@ ol {
 	justify-content: center;
 	border-radius: 50%;
 	color: #fff;
-	font-size: 12px;
+	font-size: 25px;
 	margin-left: 13px;
 	-webkit-transition: all 0.3s;
 	-o-transition: all 0.3s;
