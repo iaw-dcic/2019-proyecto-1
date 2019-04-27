@@ -15,24 +15,21 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/theme.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
+
 
     <title>@yield('title','Mi web')</title>
   </head>
   <body>
 
-        <header>
-            @include('layouts.header')
-        </header>
+    @include('layouts.header')
 
-        <main role="main">
-            @yield('content')
-        </main>
+    <main role="main">
+        @yield('content')
+    </main>
 
-        <footer class="container">
-            @include('layouts.footer')
-        </footer>
+    @include('layouts.footer')
 
     {{--
     Optional JavaScript

@@ -15,7 +15,7 @@ class PageController extends Controller
     {
         $users = \App\User::all();
 
-        return view('users',compact('users',$users));
+        return view('users',compact('users'));
     }
 
     public function about()
@@ -26,5 +26,9 @@ class PageController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+    public function settings()
+    {
+        return view('settings');
     }
 }
