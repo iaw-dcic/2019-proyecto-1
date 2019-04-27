@@ -130,8 +130,6 @@
                                     </span> @endif
             </div>
 
-
-
             <!-- Password -->
             <div class="form-style-agile">
                 <label> <i class="fa fa-unlock-alt" aria-hidden="true"></i> Contraseña *</label>
@@ -150,6 +148,7 @@
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
             </div>
 
+            <!--Submit -->
             <input type="submit" value="Confirmar registro">
 
 

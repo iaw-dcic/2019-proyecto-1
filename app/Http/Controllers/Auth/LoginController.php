@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
 
 use App\User;
 
@@ -62,8 +64,8 @@ class LoginController extends Controller
         $user = Socialite::driver($service)->user();
 
         //If user is registered with social networks, its username will be the name in lowercase and without spaces
-        $username = str_replace(' ','', strtolower($user->getName()));
-      
+        $username = str_replace(' ', '', strtolower($user->getName()));
+
         $newUser = User::where('email', $user->getEmail())->first();
 
         if (!$newUser) {
@@ -72,12 +74,27 @@ class LoginController extends Controller
             $newUser->userName = $username;
             $newUser->name = $user->getName();
             $newUser->provider_id = $user->getId();
-    
         }
 
         Auth::login($newUser, true);
         return redirect($this->redirectTo);
     }
 
- 
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateLogin(Request $request)
+    {
+
+        $messages = ["{$this->username()}.exists" => 'No existe ninguna cuenta con este email.'];
+
+        $this->validate($request, [
+            $this->username() => "required|exists:users",
+            'password' => 'required',
+        ], $messages);
+    }
 }
