@@ -25,7 +25,7 @@ class CollectionController extends Controller
         $colecc->user_id = auth()->user()->id;
         $colecc->pp=0;  //coleccion privada
 
-        if(request('description')=='Publica')
+        if(request('pp')=='publica')
             $colecc->pp=1;  //coleccion publica
         
         $colecc->save();
@@ -46,11 +46,6 @@ class CollectionController extends Controller
 
     public function delete($id)
     {
-  //      $books = Book::where('collection_id', $id)->get();
-//$books = Book::all();
-  
-//$books->delete();
-
         $coleccion = Collection::where('id', '=', $id)->first();
         $coleccion->delete();
 
@@ -59,4 +54,44 @@ class CollectionController extends Controller
 
         return view('editCollection', compact('collec'));
     }
+
+    // public function update($id){
+    //     $coleccion = Collection::where('id', '=', $id)->first();
+  
+    //     if (request('name') == '')
+    //   {
+    //       $coleccion->name = auth()->user()->name;
+    //   }
+    //   else
+    //   {
+    //       $coleccion->name = request('name');
+    //   }
+  
+    //   if (request('city') == '')
+    //   {
+    //       $coleccion->ciudad = auth()->user()->ciudad;
+    //   }
+    //   else
+    //   {
+    //       $coleccion->ciudad = request('city');
+    //   }
+  
+    //   if (request('bio') == '')
+    //   {
+    //       $coleccion->bio = auth()->user()->bio;
+    //   }
+    //   else
+    //   {
+    //       $coleccion->bio = request('bio');
+    //   }
+  
+    //       $coleccion->save();
+
+    //       $id=auth()->user()->id;
+    //       $collec = Collection::where('user_id', $id)->get();
+  
+    //       return view('editCollection', compact('collec'));
+    //   }
+  
+    
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Collection;
 use App\Book;
+use App\User;
 
 
 class NotRegisterController extends Controller
@@ -21,5 +22,14 @@ class NotRegisterController extends Controller
         $books = Book::where('collection_id', $id)->get();
 
         return view('loadbook', compact('books','id'));
+    }
+
+    public function profile($id)
+    {
+        $perfil = User::find($id);
+
+        $listasPublicas = Collection::where(['user_id' => $id, 'pp' => 1])->get();
+
+        return view('profile', compact('perfil','listasPublicas'));
     }
 }

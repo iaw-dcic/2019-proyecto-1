@@ -38,9 +38,11 @@
                       <p>Desea eliminar el libro?</p>
                     </div>
                     <div class="modal-footer">
+                      <!--
                       <form method="POST" action="/home/cargarlibros/{{$bk->id}}"> {{csrf_field()}}
                         <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Aceptar</button>
                       </form>
+-->
                     </div>
                   </div>
 

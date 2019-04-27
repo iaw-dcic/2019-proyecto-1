@@ -19,9 +19,10 @@
             <div class="card" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">{{$colec->title}}</h5>
+                <a href="/welcome/profile/{{$colec->user->id}}"> {{$colec->user->name}}</a>
+                <br><br>
                 <h6 class="card-title">{{$colec->category}}</h6>
                 <p class="card-text">{{$colec->description}}</p>
-               
                 <a href="/welcome/loadbook/{{$colec->id}}" class="card-link"> Ver</a>
                 
               </div>

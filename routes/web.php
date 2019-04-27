@@ -17,7 +17,7 @@
 Route::get('/','NotRegisterController@loadCollection');
 Route::get('/welcome','NotRegisterController@loadCollection');
 Route::get('/welcome/loadbook/{id}','NotRegisterController@loadBooks');
-
+Route::get('/welcome/profile/{id}','NotRegisterController@profile');
 
 //Usuario registrado
 
@@ -27,13 +27,14 @@ Auth::routes();
 
 Route::get('/home/cargarlibros/{id}', 'BookController@index');
 Route::post('/home/cargarlibros/{id}', 'BookController@store');
-Route::post('/home/cargarlibros/{id}', 'BookController@delete');
+//Route::post('/home/cargarlibros/{id}', 'BookController@delete');
 
 Route::get('/home','CollectionController@index');
 
 Route::get('/home/editCollection','CollectionController@load');
 Route::post('/home/editCollection','CollectionController@store');
 Route::post('/home/editCollection/{id}','CollectionController@delete');
+Route::post('/home/editCollection/{id}','CollectionController@update');
 
 
 Route::get('/home/perfil','UserController@index');
