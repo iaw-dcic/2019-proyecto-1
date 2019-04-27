@@ -123,26 +123,28 @@ iframe {
     overflow: hidden;
 }
 
-.table {
+.my-table {
     width: 100%;
     display: table;
     margin: 0;
 }
 
 @media screen and (max-width: 768px) {
-    .table {
+    .my-table {
         display: block;
     }
 }
 
 .my-row {
     display: table-row;
-    background: #fff;
+    background: white;
+    text-align: center;
 }
 
 .my-row.header {
     color: #ffffff;
     background: #0c062e;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -224,13 +226,12 @@ iframe {
     width: 190px;
 }
 
-.table,
+.my-table,
 .my-row {
     width: 100% !important;
 }
 
 .my-row:hover {
-    background-color: #ececff;
     cursor: pointer;
 }
 
@@ -265,7 +266,7 @@ iframe {
         font-weight: unset !important;
     }
 
-    .table,
+    .my-table,
     .my-row,
     .cell {
         width: 100% !important;

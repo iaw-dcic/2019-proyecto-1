@@ -18,7 +18,7 @@
 <section class="custom-form">
 
     <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
-    <h3 style="color:bisque; text-align:center;margin-bottom:20px"> Datos de la lista </h3>
+    <h3 style="color:bisque; text-align:center;margin-bottom:20px"> Ingresar </h3>
 
     <!-- content -->
     <div class="sub-main-w3">
@@ -30,9 +30,6 @@
             <div class="form-style-agile">
                 <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre de la lista *</label>
                 <input name="title" type="text" class="form-control" required>
-                <div class="invalid-feedback">
-                    El nombre es obligatorio
-                </div>
             </div>
 
             <!-- Visibility -->

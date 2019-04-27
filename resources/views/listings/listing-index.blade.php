@@ -61,14 +61,13 @@
             
                
                 
-                @if (count($data['listings'])>0)
                         <div class="wrap-table100">
                            
                             <h3 style="color:bisque; text-align:center"> Listas de {{$data['listOwnerName']}} </h3>
             
-                            <div class="table">
+                            <div class="my-table">
                                 <br>
-                                <div class="row header no-hover">
+                                <div class="my-row header no-hover">
                                     <div class="cell">
                                         Nombre de la lista
                                     </div>
@@ -88,7 +87,7 @@
                                     @endguest
                                 </div>
                                 @foreach($data['listings'] as $listing)
-                                <div class="row">
+                                <div class="my-row">
                                     <div class="cell" data-title="Titulo de la lista">
                                         {{$listing->title}}
                                     </div>
@@ -118,8 +117,7 @@
             
                             </div>
                         </div>
-                @else
-                        <div class="my-row">
+                       <!-- <div class="my-row">
                                 <div class="col-xl-12 col-lg-12 col-md-12">
                                     <div class="text-white">
                                         <h3>Todavía no tenes ninguna lista!</h3>
@@ -127,8 +125,7 @@
                                     </div>
                                     <a href="{{route('listings.create') }}" class="site-btn">Crear una lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                                 </div>
-                        </div>
-                @endif
+                        </div> -->
                 @endauth
                
                 
