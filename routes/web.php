@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('profile/{id}', 'PagesController@profile')->name('profile')->where('id', '[0-9]+');
+Route::get('/profile/{id}', 'PagesController@profile')->name('profile')->where('id', '[0-9]+');
 
 Route::get('/list/create', 'PagesController@createlist');
 
@@ -40,3 +40,9 @@ Route::patch('/list/{id}/car/{carid}/update', 'PagesController@updatecar');
 Route::delete('/list/{id}/car/{carid}/edit', 'PagesController@deletecar');
 
 Route::get('/publiclists', 'PagesController@publiclists')->name('publiclists');
+
+Route::patch('/profile/{id}', 'PagesController@editprofile');
+
+Route::get('/profile/{id}/lists', 'PagesController@userlists')->name('userlists');
+
+Route::delete('/list/{id}', 'PagesController@deletelist');

@@ -9,8 +9,13 @@ class PagesController extends Controller
     public function profile($id){
 
         $user = \App\User::findorfail($id);
+        $dato = $user->datos;
+        if($dato==null)
+            $dato = new \App\Dato();
+            $dato->user_id = $id;
+            $dato->save(); 
 
-        return view('profile', compact('user'));
+        return view('profile', compact('user', 'dato'));
     }
 
     public function createlist(){
@@ -145,6 +150,63 @@ class PagesController extends Controller
 
         return view('publiclists', compact('lists'));
         
+    }
+
+    public function editprofile($id){
+
+        request()->validate([
+            'nombre' => 'required',
+            'edad' => 'nullable|numeric|between:5,200'
+        ]);
+
+        $user = \App\User::findorfail($id);
+        $dato = $user->datos;
+        $user->name = request('nombre');
+
+        if(request('edad')==null)
+            $dato->age = '0';
+        else
+            $dato->age = request('edad');
+
+        if(request('pais')==null)
+            $dato->country = '';
+        else
+            $dato->country = request('pais');
+
+        if(request('state')==null)
+            $dato->state = '';
+        else
+            $dato->state = request('state');
+
+        if(request('city')==null)
+            $dato->city = '';
+        else
+            $dato->city = request('city');
+
+        $user->save();
+        $dato->save();
+
+            return redirect()->route('profile', [$id]);
+        
+    }
+
+    public function userlists($id){
+
+        $user = \App\User::findorfail($id);
+        $lists = $user->lists;
+
+        return view('userlists', compact('lists', 'user'));
+        
+    }
+
+    public function deletelist($id){
+
+        $lista = \App\Lista::find($id);
+        $userid = $lista->user_id;
+        $lista->delete();
+
+        return redirect()->route('userlists', [$userid]);
+
     }
     
 }

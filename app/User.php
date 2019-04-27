@@ -42,4 +42,10 @@ class User extends Authenticatable
         return $this->hasMany(Lista::class);
 
     }
+
+    public function datos(){
+
+        return $this->hasOne(Dato::class);
+
+    }
 }

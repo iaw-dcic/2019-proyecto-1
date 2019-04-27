@@ -29,6 +29,11 @@
         <button type="submit" class="btn btn-primary">Guardar cambios</button>
         </div>
     </form>
+    <form method="POST" action="/list/{{$lista->id}}">
+                {{method_field('DELETE')}}
+                {{csrf_field()}}
+                <button type="submit" class="btn btn-danger">Borrar lista</button>
+    </form>
     <form method="GET" action="/list/{{$lista->id}}/car/create">
     <button type="submit" class="btn btn-primary">Agregar auto</button>
     </form>

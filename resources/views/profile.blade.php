@@ -11,7 +11,10 @@
 <div class="card">
 <div class="card-header">{{$user->name}}</div>
 <div class="card-body">
-<form method="POST" action="/list/create">
+@auth
+@if (Auth::user()->id==$user->id)
+<form method="POST" action="/profile/{{$user->id}}">
+    {{method_field('PATCH')}}
     {{csrf_field()}}
   <div class="form-group">
     <label for="nombre">Nombre de usuario</label>
@@ -19,22 +22,123 @@
   </div>
   <div class="form-group">
   <label for="edad">Edad</label>
-    <input type="text" class="form-control" name="edad" placeholder="Edad" required>
+    <input type="text" class="form-control" name="edad" placeholder="Edad" numeric value=
+    @if ($dato->age!='0')
+      {{$dato->age}}
+    @endif
+    >
   </div>
   <div class="form-group">
   <label for="pais">País</label>
-    <input type="text" class="form-control" name="pais" placeholder="País" required>
+    <input type="text" class="form-control" name="pais" placeholder="País" value=
+    @if ($dato->country!='')
+      {{$dato->country}}
+    @endif
+    >
   </div>
   <div class="form-group">
   <label for="state">Provincia/Estado</label>
-    <input type="text" class="form-control" name="state" placeholder="Provincia/Estado" required>
+    <input type="text" class="form-control" name="state" placeholder="Provincia/Estado" value=
+    @if ($dato->state!='')
+      {{$dato->state}}
+    @endif
+    >
   </div>
   <div class="form-group">
   <label for="city">Ciudad</label>
-    <input type="text" class="form-control" name="city" placeholder="Ciudad" required>
+    <input type="text" class="form-control" name="city" placeholder="Ciudad" value=
+    @if ($dato->city!='')
+      {{$dato->city}}
+    @endif
+    >
   </div>
-  <button type="submit" class="btn btn-primary">Editar</button>
+  <button type="submit" class="btn btn-primary">Guardar cambios</button>
 </form>
+<form method="GET" action="/profile/{{$user->id}}/lists">
+  <button type="submit" class="btn btn-primary">Ver listas</button>
+  </form>
+@else
+  <div class="form-group">
+  <label for="edad">
+    @if ($dato->age!='0')
+      Edad: {{$dato->age}}
+    @else
+      Edad: -
+    @endif
+  </label>
+  </div>
+  <div class="form-group">
+  <label for="pais">
+      @if ($dato->country!='')
+        País: {{$dato->country}}
+      @else
+        País: -
+      @endif
+  </label>
+  </div>
+  <div class="form-group">
+  <label for="state">
+      @if ($dato->state!='')
+        Provincia/Estado: {{$dato->state}}
+      @else
+        Provincia/Estado: -
+      @endif
+  </label>
+  </div>
+  <div class="form-group">
+  <label for="city">
+      @if ($dato->city!='')
+        Ciudad: {{$dato->city}}
+      @else
+        Ciudad: -
+      @endif
+  </label>
+  </div>
+  <form method="GET" action="/profile/{{$user->id}}/lists">
+  <button type="submit" class="btn btn-primary">Ver listas</button>
+  </form>
+@endif
+@else
+<div class="form-group">
+  <label for="edad">
+    @if ($dato->age!='0')
+      Edad: {{$dato->age}}
+    @else
+      Edad: -
+    @endif
+  </label>
+  </div>
+  <div class="form-group">
+  <label for="pais">
+      @if ($dato->country!='')
+        País: {{$dato->country}}
+      @else
+        País: -
+      @endif
+  </label>
+  </div>
+  <div class="form-group">
+  <label for="state">
+      @if ($dato->state!='')
+        Provincia/Estado: {{$dato->state}}
+      @else
+        Provincia/Estado: -
+      @endif
+  </label>
+  </div>
+  <div class="form-group">
+  <label for="city">
+      @if ($dato->city!='')
+        Ciudad: {{$dato->city}}
+      @else
+        Ciudad: -
+      @endif
+  </label>
+  </div>
+  <form method="GET" action="/profile/{{$user->id}}/lists">
+  <button type="submit" class="btn btn-primary">Ver listas</button>
+  </form>
+@endauth
 </div>
 </div>
 </div>
