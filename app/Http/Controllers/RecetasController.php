@@ -120,4 +120,11 @@ public function busqueda(Request $request){
     $ingredientes= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
     return redirect()->route('receta', [$nombre]);
 }
+
+public function listas(){
+    $listas=Lista::all();
+    return view('listas', [
+        'listas'=>$listas
+    ]);
+}
 }

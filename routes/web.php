@@ -37,3 +37,4 @@ Route::get('borrarLista/{id}','RecetasController@borrarLista')->name('borrarList
 Route::post('agregarReceta/{id_autor}','RecetasController@agregarReceta')->name('agregarReceta');
 Route::post('agregarLista/{id_autor}','RecetasController@agregarLista')->name('agregarLista');
 Route::post('agregarIngrediente/{nombreReceta}','RecetasController@agregarIngrediente')->name('agregarIngrediente');
+Route::get('listas','RecetasController@listas')->name('listas');

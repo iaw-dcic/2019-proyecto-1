@@ -22,7 +22,9 @@
                           <a class="dropdown-item" href="{{route('recetas')}}">Todas</a>
                     </div>
                  </li>
-         
+                 <li class="nav-item active">
+                      <a class="nav-link" href="{{route('listas')}}">Listas  </a>
+			          	</li>
              </ul>
 <!-- FORMULARIO LOGIN -->
 <ul class="nav navbar-nav ml-auto">
