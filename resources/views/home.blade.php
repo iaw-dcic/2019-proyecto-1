@@ -19,19 +19,21 @@
     </tr>
   </thead>
   <tbody>
-  
-      @forelse ($listas as $usermovie)
-              	
+   @forelse ($listas as $usermovie)
+           
     <tr>
       <th scope="row">{{$usermovie->id}})</th>
       <td>  <a href="{{ url("/listas/{$usermovie->id}") }}"> {{$usermovie->nombre}}</a>  </td>
-      <td > <a href="{{ url("/usuarios/{$usermovie->creador_id}") }}">{{ $usermovie->creador_id }} </a></td>
+	  @foreach($users as $user)
+		  @if($usermovie->creador_id==$user->id)
+		  <td > <a href="{{ url("/usuarios/{$usermovie->creador_id}") }}"> {{ $user->name }} </a></td> 
+		  @endif
+	  @endforeach
     </tr>
-  
-	
-	   @empty
-            <li>No hay listas disponibles.</li>
-        @endforelse
+	@empty
+       <li>No hay listas disponibles.</li>
+          	@endforelse
+		
   </tbody>
 </table>
 @endsection

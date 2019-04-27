@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Usermovie;
+use App\User;
 use Auth;
 use App\Movie;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +14,8 @@ class MovieController extends Controller
 		
 	//	$listas= DB::table('usermovies')->get();
 	 $listas = Usermovie::all();
-		
+	 $user= User::all();
+	
 	//	if (request()->has('empty')) {
     //        $users = [];
      //   } else {
@@ -24,7 +26,8 @@ class MovieController extends Controller
 
 		
 	return view('home', ['listas'=> $listas, 
-						  'title'=> 'Listas públicas ']); 
+						  'title'=> 'Listas públicas ',
+						  'users' => $user]); 
 	}
 
 	public function show($id){
