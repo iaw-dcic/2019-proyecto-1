@@ -129,11 +129,14 @@
                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old( 'remember') ? 'checked' : '' }}>
 
                     <label class="form-check-label" for="remember">
-                                            {{ __('Recordarme') }}
+                                          Recordarme
                                         </label>
                 </div>
             </div>
 
+            <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
+
+            <input type="submit" value="Ingresar">
 
 
             <!-- Social networks -->
@@ -164,9 +167,8 @@
            
 
 
-            <!--<label style="color:burlywood">Los campos marcados con un * son requeridos</label> -->
+            
 
-            <input type="submit" value="Listo">
 
         </form>
     </div>

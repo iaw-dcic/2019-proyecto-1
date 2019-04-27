@@ -16,7 +16,7 @@
 
 
 <!-- Contact page -->
-<section class="contact-page">
+<!--<section class="contact-page">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -84,6 +84,79 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Contact page end-->
+
+
+<section class="custom-form">
+
+    <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
+    <h3 style="color:bisque; text-align:center;margin-bottom:20px"> Registrarse </h3>
+
+    <!-- content -->
+    <div class="sub-main-w3">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
+
+            <!-- Name -->
+            <div class="form-style-agile">
+                <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre *</label>
+                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"
+                    required autofocus> @if ($errors->has('name'))
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span> @endif
+            </div>
+
+            <div class="form-group row">
+                <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+
+                <div class="col-md-6">
+                    <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username"
+                        value="{{ old('username') }}"> @if ($errors->has('username'))
+                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span> @endif
+                </div>
+            </div>
+
+            <!--Email -->
+            <div class="form-style-agile">
+                <label> <i class="fa fa-envelope" aria-hidden="true"></i>Email *</label>
+
+                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
+                    required> @if ($errors->has('email'))
+                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span> @endif
+            </div>
+
+
+
+            <!-- Password -->
+            <div class="form-style-agile">
+                <label> <i class="fa fa-unlock-alt" aria-hidden="true"></i>Contraseña *</label>
+                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
+                    required> @if ($errors->has('password'))
+
+                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span> @endif
+            </div>
+
+
+            <!--Password confirmation-->
+            <div class="form-style-agile">
+                <label for="password-confirm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Confirmar contraseña *</label>
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+            </div>
+
+            <input type="submit" value="Confirmar registro">
+
+
+
+        </form>
+
+    </div>
+</section>
 @endsection
