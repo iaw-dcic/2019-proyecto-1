@@ -25,7 +25,7 @@
     <tr>
       <th scope="row">{{$usermovie->id}})</th>
       <td>  <a href="{{ url("/listas/{$usermovie->id}") }}"> {{$usermovie->nombre}}</a>  </td>
-      <td >{{ $usermovie->creador_id }}</td>
+      <td > <a href="{{ url("/usuarios/{$usermovie->creador_id}") }}">{{ $usermovie->creador_id }} </a></td>
     </tr>
   
 	

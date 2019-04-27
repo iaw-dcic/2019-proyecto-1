@@ -34,6 +34,7 @@
 	  <td> <li>{{ $movie->id }}</li> </td>
       <td> <li>{{ $movie->titulo }}</li> </td>
       <td><li>{{ $movie->director }}</li></td>
+	  @if ( Auth::id()==$usermovie->creador_id)
 	  <td>
 		<form action="{{ route('movies.delete', ['usermovie'=> $usermovie->id, 
 												'movie'=> $movie->id])}}" method="POST">
@@ -46,6 +47,8 @@
 	  	<a href="{{ route('movies.edit',  ['usermovie'=> $usermovie->id, 
 												'movie'=> $movie->id]) }}">Editar</a>
 		</td>
+		@endif 
+		
     </tr>
   </tbody>
   

@@ -37,7 +37,7 @@
 								<a class="nav-link" href="{{ url('/home') }}">Home <span class="sr-only">(current)</span></a>
 					  
 								<li class="nav-item">
-								  <a class="nav-link" href="{{ asset('/usuarios') }}" >Usuarios</a> <span class="sr-only">(current)</span></a>
+								  <a class="nav-link" href="{{ asset('/usuarios') }}" >Comunidad</a> <span class="sr-only">(current)</span></a>
 								</li>
 						  </ul>
 						  
