@@ -13,7 +13,7 @@
 <body>
     
  
-<div class="container" id="caja">
+<div class="signin-form">
 <ol class="nav nav-tabs" role="tablist">
 	<li class="{{ (Request::is('login') ? 'active' : '') }}"><a href="#new" role="tab" data-toggle="tab" class="big">Inicia Sesion</a></li>
 	<li class="{{ (Request::is('crea') ? 'active' : '') }}"><a href="#crea" role="tab" data-toggle="tab" class="big">Crea tu cuenta</a></li>
@@ -35,7 +35,7 @@
          <form method="post" action="{{route('login')}}">
          {{ csrf_field() }}
         
-        </div>
+        
         <div class="form-group">
         <label   >Email 
             <input type="email" class="form-control input-lg" name="email" placeholder=" " required="required">
@@ -57,16 +57,18 @@
     </form>
      
 </div>
+<div class="signin-form">
 <div class="tab-content">
 <div class="{{ (Request::is('crea') ? 'tab-pane fade in active' : 'tab-pane fade') }}" id="crea">
 					<br>
 					<fieldset>
-						<div class="form-group"  >
+				 
                         <form accept-charset="UTF-8" role="form" method="POST" action="{{URL::to('/store')}}">
-                        {{ csrf_field() }}
+                          {{ csrf_field() }}
+                          <div class="form-group">
                                 <label class="sr-only"> Nombre </label>
 								<input name='nombre'class="form-control input-lg" placeholder="Nombre" type="text">
-                            </div>
+</div>
                             <div class="form-group">
                                 <label class="sr-only"> Apellido </label>
 								<input name='apellido'class="form-control input-lg" placeholder="Apellido" type="text">
@@ -105,7 +107,7 @@
 			</div>
             <br>
            
-</div>
+</div> 
 </body>
 
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

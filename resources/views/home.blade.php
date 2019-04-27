@@ -3,46 +3,43 @@
 
 @section('content')
  
-<div class="bd-example">
-  <div id="carousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carousel" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel" data-slide-to="1"></li>
-      <li data-target="#carousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        
-      <a href="#">  <img src="{{ asset('img/spaghetti.jpg') }}" class="d-block w-100" alt="spaghetti"></a>
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Spaghetti</h5>
-          <p>Riquisimos spaghetti con salsa y atún</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('img/tiramisu.jpg') }}" class="d-block w-100" alt="tiramisu">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Tiramisú</h5>
-          <p>Verdadera receta del clásico postre italiano.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="{{ asset('img/cupcakes.jpg') }}" class="d-block w-100" alt="cupcakes">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Cupcakes</h5>
-          <p>Espectaculares cupcakes de naranja con crema</p>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{{asset('img/cupcakes.jpg')}}" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+      <h5>...</h5>
+      <p>...</p>
   </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{asset('img/spaghetti.jpg')}}" alt="Second slide">
+      <div class="carousel-caption d-none d-md-block">
+         <h5>...</h5>
+         <p>...</p>
+    </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{asset('img/tiramisu.jpg')}}" alt="Third slide">
+      <div class="carousel-caption d-none d-md-block">
+    <h5>...</h5>
+    <p>...</p>
+  </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
   <!--  Seccion del buscador -->
 
