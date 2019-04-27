@@ -25,9 +25,9 @@
 			<div class="card-header">
 				<h3>Login</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
+					<a href="{{asset('/login/facebook')}}"><span><i class="fab fa-facebook-square"></i></span></a>
+					<a href="{{asset('/login/google')}}"><span><i class="fab fa-google-plus-square"></i></span></a>
+					<a href="{{asset('/login/twitter')}}"><span><i class="fab fa-twitter-square"></i></span></a>
 				</div>
 			</div>
 			<div class="card-body">
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="row align-items-center remember">
-						    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>Remember Me
+						    <input type="checkbox" name="remember" id="remember">Remember Me
 					    </div>
 
                         <div class="form-group">

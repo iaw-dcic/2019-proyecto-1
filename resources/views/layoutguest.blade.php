@@ -11,7 +11,9 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <link href="{{asset('css/searchstyle.css')}}" rel="stylesheet">
+
 </head>
 <body>
   <div id="wrapper" class="animate">
@@ -27,24 +29,18 @@
             <a class="nav-link" href="{{asset('/search')}}" title="Búsqueda"><i class="fas fa-search"></i> Búsqueda <i class="fas fa-search shortmenu animate"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" title="Nueva lista"><i class="fas fa-list"></i> Crear lista <i class="fas fa-list shortmenu animate"></i></a>
+            <a class="nav-link" href="{{asset('/users')}}" title="Usuarios"><i class="fas fa-users"></i> Usuarios<i class="fas fa-users shortmenu animate"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" title="Mis listas"><i class="fas fa-database"></i> Mis listas <i class="fas fa-database shortmenu animate"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{asset('/users')}}" title="Usuarios"><i class="fas fa-users"></i> Usuarios <i class="fas fa-users shortmenu animate"></i></a>
+            <a class="nav-link" href="{{asset('/register')}}" title="Registrarme"><i class="fas fa-id-card"></i> Registrarme <i class="fas fa-id-card shortmenu animate"></i></a>
           </li>
         </ul>
         <ul class="navbar-nav ml-md-auto d-md-flex">
           <li class="nav-item">
-            <label class="nav-link" title="Username"> Bienvenida/o </label>
+            <a class="nav-link" href="{{asset('/login')}}" title="Iniciar sesión"><i class="fas fa-user"></i> Iniciar sesión</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{asset('/profile')}}" title="Mi perfil"><i class="fas fa-user"></i> Mi perfil </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{asset('/')}}" title="Salir"><i class="fas fa-power-off"></i> Salir </a>
+            <a class="nav-link" href="{{asset('/')}}" title="Salir"><i class="fas fa-power-off"></i> Salir</a>
           </li>
         </ul>
       </div>

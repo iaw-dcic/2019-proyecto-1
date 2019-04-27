@@ -9,7 +9,9 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('userView');
+        $users = User::orderBy('id','ASC')->paginate(4);
+
+        return view('userslist')->with('users',$users);
     }
 
     public function show(User $user)
@@ -19,7 +21,7 @@ class UserController extends Controller
 
     public function login()
     {
-        return view('loginView');
+        return redirect()->route('user.login');
     }
 
     public function create()
@@ -29,25 +31,15 @@ class UserController extends Controller
 
     public function store()
     {
-            $data=request()->validate([
-                'name' => 'required',
-                'email' => ['required' , 'email', 'unique:users,email'],
-                'password' => 'required',
-            ],[
-                'name.required' => 'El campo Nombre es obligatorio',
-                'email.required' => 'El campo Email es obligatorio',
-                'email.email' => 'Ingrese una dirección de email válida',
-                'email.unique' => 'Ya existe usuario registrado con ese email',
-                'password.unique'=> 'El campo Contraseña es obligatorio'
-            ]);
+        $data=request()->all();
 
-            User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password'=> bcrypt($data['password'])
-            ]);
+        User::create([
+            'name'=> $data['name'],
+            'email'=> $data['email'],
+            'password'=>bcrypt($data['password'])
+        ]);
 
-            return redirect()->route('search');
+        return redirect()->route('users.index');
     }   
 
 

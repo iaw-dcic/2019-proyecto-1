@@ -1,7 +1,6 @@
-@extends('layout')
-
-@section('head')
-	@parent
+<!DOCTYPE html>
+<html>
+<head>
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -14,11 +13,10 @@
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link href="{{asset('css/loginstyle.css')}}" rel="stylesheet" />
-@endsection
-
-@section('content')
-<div class="d-flex justify-content-center h-100">
-		<div class="card h-100	">
+</head>
+<body>
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
 			<div class="card-header">
 				<h3>Registrarme</h3>
 				<div class="d-flex justify-content-end social_icon">
@@ -65,13 +63,6 @@
                                     </span>
                                 @endif
                         </div>
-                    
-                        <div class="input-group form-group">
-						    <div class="input-group-prepend">
-							    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-						    </div>
-						    <input id="password-confirm" type="password" name="password-confirm" class="form-control" placeholder="repetir contraseña" required>
-					    </div>
 
                         <div class="form-group">
 						    <input type="submit" value="Registrarme" class="btn btn-primary btn-lg btn-block login-button">
@@ -80,4 +71,5 @@
 			</div>
 		</div>
 	</div>
-@endsection
+</body>
+</html>

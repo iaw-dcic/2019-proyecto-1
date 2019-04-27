@@ -9,13 +9,12 @@
     </head>
     <body>
       <section class="welcome_section">
-          <p class="welcome_section_subtitle">Administra tus listas de forma simple y elegante!</p>
+          <p class="welcome_section_subtitle">Administra tus listas de películas de forma simple y elegante!</p>
             <h1 class="welcome_title">
             <p>Styre</p>
                  Styre
              </h1>
-             <a href="{{asset('/search')}}" class="btn">Ingresar como invitado</a>
-             <a href="{{asset('/login')}}" class="btn mt5">Iniciar sesión</a>
+             <a href="home" class="btn">Comenzar</a>
         </section>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

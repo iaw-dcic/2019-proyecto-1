@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class MovieController extends Controller
 {
     public function index()
     {
-        return view('registerView');
+        return view('home');
     }
 
     public function create()

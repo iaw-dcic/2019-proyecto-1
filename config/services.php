@@ -44,4 +44,22 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'client_id' => '584595908712002',
+        'client_secret' => '8f37e413cb44ca0ceb75c4fd55d14f69',
+        'redirect' => 'http://localhost:8000/login/facebook/callback',
+    ],
+
+    'twitter' => [
+        'client_id' => 'jqdhfot2BHCrg6oGfxSiEjHof',
+        'client_secret' => 'GPlBKfWZuhDXBlPhstsHRJ6mO00YoHvPxIqCVGZzdBdFqnlVZ8',
+        'redirect' => 'http://localhost:8000/login/twitter/callback',
+    ],
+
+    'google' => [
+        'client_id' => '212931990912-p4gcpc59h5aavllqlgo99ifjp26t3dr1.apps.googleusercontent.com',
+        'client_secret' => 'xQtvZt76cjvut3YeO9kjVMQl',
+        'redirect' => 'http://localhost:8000/login/google/callback',
+    ]
+
 ];
