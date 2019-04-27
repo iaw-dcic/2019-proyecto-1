@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "Cinefilo\\": "app/"
         },
         "classmap": [
             "database/seeds",

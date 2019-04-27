@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Cinefilo;
 
 use Illuminate\Database\Eloquent\Model;
 

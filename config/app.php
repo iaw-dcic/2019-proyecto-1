@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Cinefilo\Providers\AppServiceProvider::class,
+        Cinefilo\Providers\AuthServiceProvider::class,
+        // Cinefilo\Providers\BroadcastServiceProvider::class,
+        Cinefilo\Providers\EventServiceProvider::class,
+        Cinefilo\Providers\RouteServiceProvider::class,
 
     ],
 
