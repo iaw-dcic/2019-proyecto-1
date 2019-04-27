@@ -43,8 +43,6 @@ class HomeController extends Controller
         $data = $request->all();
         $generos = Genero::get('genre');
 
-        $listas;
-
         if('all'==$data['genre']){
             if('recent'==$data['orderby']){
                 $listas = Lista::where('visibility', true)->orderBy('created_at', 'desc')->take(10)->get(['id', 'listname','likes','views']);
@@ -72,11 +70,10 @@ class HomeController extends Controller
                     if('views'==$data['orderby']){
                         $listas = Lista::where('visibility', true)->where('genre',$data['genre'])->orderBy('views', 'desc')->take(10)->get(['id', 'listname','likes','views']);
                     }
-                }
+                } 
             }
         }
 
-        /*return view('home', ['generos' => $generos, 'listas' => $listas]);*/
-        return redirect()->back()->withInput(['generos' => $generos, 'listas' => $listas]);
+        return view('home', ['generos' => $generos, 'listas' => $listas]);
     }
 }

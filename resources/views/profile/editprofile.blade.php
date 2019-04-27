@@ -3,34 +3,65 @@
 @section('sectioncontent')
 <section id="hero">
     <div class="hero-container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <img width="100px" height="100px" class="rounded-circle" src="{{ asset('uploads/avatars/'.$user->avatar) }}">
-                <h2>{{ $user->name }}</h2>
-                <h4>Edit avatar</h4>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('user.profile.update') }}" enctype="multipart/form-data">
-                        
-                        @csrf
+        <div class="col-md-8">
+            <div class="card-body">
 
-                        <div class="form-group row">
-                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar (optional)') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="avatar" type="file" class="form-control" name="avatar">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Actualizar') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img width="100px" height="100px" class="rounded-circle" src="{{ asset('uploads/avatars/'.$user['avatar']) }}">
+                        <h4 class="text-white">{{ $user['username'] }}</h4>
+                    </div>
                 </div>
+                <div class="d-inline-flex p-2 bd-highlight display: block">
+                            {{ $user['description'] }}
+                        
 
+                </div>
+                <h2 class="text-white">Editar Perfil</h2>
+                <form method="POST" action="{{ route('user.profile.update') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group row">
+                        <label for="username" class="col-md-4 col-form-label text-md-right text-white">{{ __('Nombre de usuario') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" autofocus>
+
+                            @if ($errors->has('username'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('username') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="avatar" class="col-md-4 col-form-label text-md-right text-white">{{ __('Avatar') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="avatar" type="file" class="form-control text-white" name="avatar">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label text-md-right text-white" for="description">Descripcion</label>
+                        <div class="col-md-6">
+                            <textarea class="form-control scrollbar-primary" rows="4" id="description" name="description{{ $errors->has('description') ? ' is-invalid' : '' }}"></textarea>
+                            @if ($errors->has('description'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('description') }}</strong>
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Actualizar') }}
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

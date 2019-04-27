@@ -69,6 +69,9 @@
             <div class="col-xs-2 col-md-4">
                 <nav id="nav-menu-container">
                     <ul class="nav-menu mr-auto">
+                        <li>
+                            <a href="{{ route('home') }}">{{ __('Inicio') }}</a>
+                        </li>
                         @guest
                         <li>
                             <a href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
@@ -83,7 +86,7 @@
                             <a href="{{ route('create-list') }}">{{ __('Crear Lista') }}</a>
                         </li>
                         <li>
-                            <a href="#">{{ __('Mis Listas') }}</a>
+                            <a href="{{ route('mylists') }}">{{ __('Mis Listas') }}</a>
                         </li>
                         <li class="menu-has-children"><a href="#">
                                 <img class="rounded-circle mr-1" width="20px" height="20px" src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}"> {{ Auth::user()->username }} </a>

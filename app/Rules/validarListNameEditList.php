@@ -3,17 +3,21 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use App\Lista;
 
-class validarArregloItems implements Rule
+class validarListNameEditList implements Rule
 {
+    public $user_id;
+    public $list_id;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user_id,$list_id)
     {
-        //
+        $this->user_id = $user_id;
+        $this->list_id = $list_id;
     }
 
     /**
@@ -25,7 +29,8 @@ class validarArregloItems implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
+        $lista = Lista::where('user_id',$this->user_id)->where('id','<>',$this->list_id)->where('listname',$value)->first();
+        return $lista==null;
     }
 
     /**
@@ -35,6 +40,6 @@ class validarArregloItems implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'El nombre especificado ya es utilizado en sus listas';
     }
 }

@@ -4,6 +4,12 @@
     overflow-x: hidden;
 }
 
+.mylistsdiv {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 /* Scrollbar styles */
 
 .scrollbar {
@@ -146,6 +152,11 @@ button.filtrar-backgound:focus{
 
 input[type='text'], textarea{
     opacity: 0.6;
+}
+
+input[type='file']{
+    background : inherit;
+    border: none;
 }
 
 input[type='text']:focus ,textarea:focus{

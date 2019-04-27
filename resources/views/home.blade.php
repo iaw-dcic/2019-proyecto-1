@@ -2,20 +2,20 @@
 
 @section('sectioncontent')
 <section id="hero">
-    <div class="hero-container wow fadeInUp">
+    <div class="hero-container">
         <h1>Bienvenido</h1>
         <h2></h2>
-        <a href="#portfolio" class="btn-get-started">Listas Públicas</a>
+        <a href="#listas" class="btn-get-started">Listas Públicas</a>
     </div>
 </section><!-- #hero -->
 
 <!--==========================
       Portfolio Section
     ============================-->
-<section id="portfolio">
+<section id="listas">
     <div class="wow fadeInUp col-lg-12">
         <div class="section-header">
-            <h3 class="section-title">Listas Publicas</h3>
+            <h3 class="section-title">Listas Públicas</h3>
         </div>
         <div class="panel panel-primary text-center">
             <div class="panel-heading">
