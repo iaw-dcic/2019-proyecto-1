@@ -17,12 +17,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/profile','listsController@index')->name('profile');
-
-Route::get('/profile/list',function(){ //example.com/list (needs List name)
-    return view('list');
-})->name('lists');
-
 Route::get('/readme',function(){
     return view('/readme');
 })->name('readme');
@@ -32,14 +26,9 @@ Route::resources([
     'games' => 'gamesController'
 ]);
 
-Route::get('/profile/createList', 'listsControler@create')->name('createList')->middleware('auth');
-
-Route::post('/profile','listsController@store')->name('profile')->middleware('auth');
+Route::resource('profiles','profileController')->only('show','edit','update','destroy');
 
 Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
-
-Route::get('/profile/createGame', 'gameController@create');
-Route::post('/profile/createGame', 'gameController@store');
 
 Auth::routes();
 

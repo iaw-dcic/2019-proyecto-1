@@ -17,7 +17,7 @@ class CreatePublicListInfoTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('list_number');
-            $table->boolean('public');
+            $table->boolean('public')->default('false');
             $table->engine = 'InnoDB';
         });
 

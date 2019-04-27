@@ -46,11 +46,17 @@ class listsController extends Controller
     public function store(Request $request)
     {
         $this->middleware('auth');
-        $lista = new Lista();
-        $lista->titulo = request('titulo');
-        $lista->descripcion = request('listaDescription');
-        $lista->juegos = [];
-        $lista->save(); //guarda la lista en la DB
+
+        request()->validate([
+            'titulo' => 'required',
+            'listaDescripcion' => 'required'
+        ]);
+
+        Lista::create([
+            request('titulo','listaDescripcion','public','userID'),
+            'juegos' => []
+        ]);
+
         return redirect('/profile');
     }
 
@@ -62,12 +68,9 @@ class listsController extends Controller
      */
     public function show(Lista $lista)
     {
-       $listaShow = [
-        'nombre' => $lista->titulo,
-        'descripcion' => $lista->descripcion,
-        'juegos' => $lista->juegos
-       ];
-       return view('verLista')->with('lista',$listaShow);
+        
+       return view('lists.show', compact('lista'));
+       //return view('verLista')->with('lista',$listaShow);
 
     }
 
@@ -80,6 +83,7 @@ class listsController extends Controller
     public function edit(Lista $lista)
     {
         $this->middleware('auth');
+        return redirect('lists.edit',compact('lista'));
     }
 
     /**
@@ -92,6 +96,10 @@ class listsController extends Controller
     public function update(Request $request, Lista $lista)
     {
         $this->middleware('auth');
+
+        $lista->update( request('titulo','listaDescripcion','public','userID')); 
+        return redirect('/profile');
+    
     }
 
     /**
@@ -103,6 +111,8 @@ class listsController extends Controller
     public function destroy(Lista $lista)
     {
         $this->middleware('auth');
+        $lista->delete();
+        return redirect('lists');
     }
 
     //return request()->all(); //devuelve todos los datos a la pagina (token incluido)

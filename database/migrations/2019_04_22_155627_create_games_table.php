@@ -22,7 +22,7 @@ class CreateGamesTable extends Migration
             $table->date('release_date');
             $table->engine = 'InnoDB';
             $table->unsignedBigInteger('list_id');
-            $table->foreign('list_id')->references('id')->on('list_info')->onDelete('cascade');
+           
             
         });
     }
