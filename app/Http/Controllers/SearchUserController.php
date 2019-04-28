@@ -25,7 +25,10 @@ class SearchUserController extends Controller
         
         $user = User::where('id', $userId)->first();
        
-        $userListings = Listing::where('user_id', $userId)->get();
+        //$userListings = Listing::where('user_id', $userId)->get();
+        $userListings = Listing::where('user_id',$userId)
+                 ->where('visibility', 'Publica')
+                 ->get();
 
         $data = [
             'listings'  => $userListings,
