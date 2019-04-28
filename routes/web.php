@@ -18,6 +18,24 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/readme', function() {
+	return view('readme');
+});
+
 Route::get('/lists', 'MovieListController@index');
 Route::post('/lists', 'MovieListController@store');
 Route::get('/lists/create', 'MovieListController@create');
+Route::get('/lists/{list}/movies', 'MovieListController@show');
+Route::get('/lists/{list}/edit', 'MovieListController@edit');
+Route::patch('/lists/{list}', 'MovieListController@update');
+Route::delete('lists/{list}', 'MovieListController@delete');
+
+Route::get('/lists/{list}/createmovie', 'MovieController@create');
+Route::post('lists/{list}/movies', 'MovieController@store');
+Route::get('lists/{list}/movies/{movie}/editmovie', 'MovieController@edit');
+Route::patch('/lists/{list}/movies/{movie}', 'MovieController@update');
+Route::delete('/lists/{list}/movies/{movie}', 'MovieController@delete');
+
+Route::get('/search', 'SearchController@index');
+Route::post('/search', 'SearchController@show');
+Route::get('/searchresults/{user}', 'SearchController@showUser');

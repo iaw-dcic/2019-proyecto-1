@@ -6,16 +6,39 @@
 
 @section('content')
 
-	<ul>
-	@foreach($lists as $list)
-		<li>{{ $list->name }}</li>
-	@endforeach
-	</ul>
+	@if ($lists->isEmpty())
+		<h4 class="text-center">¡No tienes ninguna lista!</h4>
+	@endif
 
-	<a href="/lists/create">
-		<button type="button" class="btn btn-primary">
-        	{{ __('Añadir nueva lista') }}
-    	</button>
-    </a>
+	<div class="text-center">
+
+	@foreach($lists as $list)
+		<li class="list-group-item"><p class="lead">{{ $list->name }}</p></li> 
+
+		<div class="btn-group">
+			<a href="/lists/{{$list->id}}/movies">
+				<button type="button" class="btn btn-success">Ver</button>
+			</a>
+			<a href="/lists/{{$list->id}}/edit">
+				<button type="button" class="btn btn-success">Editar</button>
+			</a>
+			<form method="POST" action="/lists/{{$list->id}}">
+				@csrf
+				@method('DELETE')
+				<button type="submit" class="btn btn-danger">Eliminar</button>
+			</form>
+		</div>
+	@endforeach
+	</div>
+
+	<br/>
+
+	<div class="text-center">
+		<a href="/lists/create">
+			<button type="button" class="btn btn-primary">
+        		<h4>{{ __('Añadir nueva lista') }}</h4>
+    		</button>
+    	</a>
+	</div>
 
 @endsection
