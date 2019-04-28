@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListasDeRecetasTable extends Migration
+class CreateListasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreateListasDeRecetasTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->unsignedBigInteger('usuario');
-            $table->foreign('usuario')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateListasDeRecetasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('listas_de_recetas');
+        Schema::dropIfExists('listas');
     }
 }
