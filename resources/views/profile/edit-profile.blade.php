@@ -34,7 +34,7 @@
         </div>
         <div class="row">
                 <form  method="get"  class="form-group" action="{{route('listaLibros')}}">
-                    <button type ="submit" class ="btn btn-secondary" >
+                    <button type ="submit" class ="btn btn-secondary"  >
                             Administrar listas
                     </button>            
                 </form>

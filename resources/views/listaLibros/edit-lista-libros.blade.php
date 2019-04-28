@@ -1,8 +1,6 @@
 @extends('layouts.appIndex')
 
 @section('contenido')
-
-
   <!-- Bootstrap Boilerplate... -->
 
   <!-- Add icon library -->
