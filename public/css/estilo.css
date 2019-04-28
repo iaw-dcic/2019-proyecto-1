@@ -314,3 +314,14 @@ hr{
 .tareas .lista li a:hover {
  text-decoration: underline;
 }
+#imgreceta{
+  width:50%;
+  height: 50%;
+}
+
+#divIngredientes{
+  background: #fe8daf;
+}
+#h3ListaNombre{
+  background: #3fc1c9;
+}

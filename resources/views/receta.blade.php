@@ -18,7 +18,7 @@
                    
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4" id="divIngredientes">
 					<ul>
                         <h3> Ingredientes: </h3>
                         <hr>
@@ -35,7 +35,7 @@
 				</div>
 				<div class="col-md-8">
                    
-					<img alt="{{$receta[0]->nombre}}" src="{{asset($receta[0]->imagen)}}" />
+					<img id="imgreceta" alt="{{$receta[0]->nombre}}" src="{{asset($receta[0]->imagen)}}" />
                     <div class="row">
                         <h3> Pasos de la receta: </h3>
                         <hr>

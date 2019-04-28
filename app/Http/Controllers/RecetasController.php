@@ -138,9 +138,11 @@ public function busqueda(Request $request){
 }
 
 public function listas(){
-    $listas=Lista::all();
+    $listas= Lista::orderBy('nombre', 'ASC')->get();
+    $recetas=Receta::orderBy('nombre', 'ASC')->get();
     return view('listas', [
-        'listas'=>$listas
+        'listas'=>$listas,
+        'recetas' =>$recetas
     ]);
 }
 }
