@@ -131,9 +131,7 @@ public function borrarLista(Request $request, $id){
 public function busqueda(Request $request){
     $valor= $request->buscador;
     $receta = Receta::where('nombre', 'LIKE', "%{$valor}%")->get();
- 
-    
-    
+  
     $nombre= $receta[0]->nombre;
     $ingredientes= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
     return redirect()->route('receta', [$nombre]);
