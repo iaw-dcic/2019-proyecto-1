@@ -29,10 +29,11 @@
                                       </div> 
                                   <div class="col-1">
                                    
-                                      <a  class="tacho" href="{{route('borrarReceta',['nombre'=>$receta->nombre])}}"
+                                      <a aria-label="borrar {{$receta->nombre}}"   href="{{route('borrarReceta',['nombre'=>$receta->nombre])}}"
                                        onclick="return confirm('¿Seguro que deseas eliminar {{$receta->nombre}}?')">
                                          <i class="fas fa-trash-alt fa-lg"></i> 
-                                     </a>
+                                    
+                                        </a>
                                     
                                   </div>  
                                 </div> 

@@ -19,7 +19,7 @@
                         </a>
                         @endif
                     </div>
-                       <div class="col-9">
+                       <div class="col-9 columnaDerecha">
                            <a  href="{{route('receta',['nombre'=>$receta->nombre])}}">
                                   {{$receta->nombre}}
                       

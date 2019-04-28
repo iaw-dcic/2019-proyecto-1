@@ -15,7 +15,7 @@
                         <img src="{{ $cocinero->avatar}}"  alt= "{{$cocinero->nombre}}" height=100 width=100> 
                         @endif
                     </div>
-                       <div class="col-9">
+                       <div class="col-9 columnaDerecha">
                            <a  href="{{route('verPerfil',['id'=>$cocinero->id])}}">
                                 {{$cocinero->nombre}}
                              </a>
