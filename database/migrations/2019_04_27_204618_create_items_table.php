@@ -17,7 +17,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('item_id');
 
-            $table->integer('user_id')->unsigned();
+
+            $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('user_id')->on('users');
 
             $table->string('nombre_beer')->unique();
