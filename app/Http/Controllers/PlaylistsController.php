@@ -15,11 +15,12 @@ class PlaylistsController extends Controller
      */
     public function index(Request $request)
     {
-        //obtengo las playlists del user
-        $playlists = Playlist::all()->where('user_id',$request->user()->id);
+        //obtengo el user y su playlist
+        $user = User::find($request->user()->id);
+        $playlists = Playlist::all()->where('user_id',$user->id);
 
-        //las paso a la vista
-        return view('playlists.index',compact('playlists'));
+        //las paso a la vista user y playlists
+        return view('playlists.index',compact('user','playlists'));
     }
 
     /**
@@ -40,7 +41,21 @@ class PlaylistsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Valido la entrada
+        $datos = $request->validate([
+            'name' => 'required|string|unique:users|max:255',
+            'description' => 'string',
+        ]);
+
+        //Creo nueva playlist
+        $nuevaPlaylist = new Playlist;
+        $nuevaPlaylist->name = $datos['name'];
+        $nuevaPlaylist->description = $datos['description'];
+
+        //Guardo en DB con user
+        $request->user()->playlists()->save($nuevaPlaylist);
+
+        return redirect('home');
     }
 
     /**
@@ -49,11 +64,13 @@ class PlaylistsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $playlist = Playlist::findOrFail($id);
+        //obtengo el user y su playlist
+        $user = User::find($request->user()->id); //esto no es necesario
+        $playlist = Playlist::find($request->playlist);
 
-        return view('playlists.show',compact('playlist'));
+        return view('playlists.show',compact('user','playlist'));
     }
 
     /**

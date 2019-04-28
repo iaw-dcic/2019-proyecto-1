@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Playlist;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = \Auth::user();
+
+        return view('home',compact('user'));
     }
 }

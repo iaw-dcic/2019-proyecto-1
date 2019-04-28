@@ -9,7 +9,11 @@
                 @foreach ($playlist->videos as $video)
                     <li>
                         <a href="{{$video->url}}">
-                            {{$video->title}}
+                                @if ( empty($video->title) )
+                                    {{$video->url}}
+                                @else
+                                    {{$video->title}}
+                                @endif
                         </a>
                     </li>
                 @endforeach
