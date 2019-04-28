@@ -99,14 +99,22 @@ class AlbumController extends Controller
         //
     }
 
-    /**
+   /**
      * Remove the specified resource from storage.
      *
-     * @param  \Haiku\Album  $album
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return Response
      */
-    public function destroy(Album $album)
+    public function destroy($id)
     {
-        //
+        $nerd = Nerd::find($id);
+        $nerd->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the nerd!');
+        return redirect()->action(
+            'ApiController@profile'
+        );
+
     }
 }

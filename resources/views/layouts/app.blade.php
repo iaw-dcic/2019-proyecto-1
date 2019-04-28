@@ -9,8 +9,7 @@
 
     <title>{{ config('app.name', 'Haiku') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +18,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/appaux.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dataTables.css') }}" rel="stylesheet">
+
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
 
 </head>
 <body>
@@ -100,6 +104,21 @@
 
 </footer>
 <!-- Footer -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    
+    $(document).ready(function() {
+    $('#albums').DataTable();
+} );
+</script>
+
+
+
+
     
 </body>
 </html>
