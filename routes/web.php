@@ -31,6 +31,7 @@ Route::get('/searchUser/listings/{userId}', 'SearchUserController@getUserListing
 
 Route::get('/profile/{username}', 'PagesController@getUserProfile')->name('user_profile');
 
+Route::get('/deleteGameFromListing/{game}/{listing}','ListingsController@deleteGameFromListing')->name('delete_game_from_listing');
 Route::resource('listings','ListingsController');
 
 

@@ -222,9 +222,8 @@ class GamesController extends Controller
             // Delete Image
             Storage::delete('public/cover_images/thumbnail/' . $game->cover_image);
         }
-
-        $game->delete();
         $game->listings()->detach();
+        $game->delete();
 
         alert()->info('Atención!', 'El juego fue eliminado');
         return redirect('games');

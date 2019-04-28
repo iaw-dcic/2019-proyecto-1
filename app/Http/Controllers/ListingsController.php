@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Listing;
+use App\Game;
 use Auth;
 use App\User;
 
@@ -147,5 +148,11 @@ class ListingsController extends Controller
         return redirect('listings');
     }
 
+    public function deleteGameFromListing ($gameId,$listingId) {
+        $listing = Listing::find($listingId);
+        $listing->games()->detach(Game::find($gameId));
+        alert()->info('Atención!', 'El juego fue eliminado de la lista');
+        return redirect('listings');
+    }
    
 }

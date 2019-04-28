@@ -51,9 +51,10 @@
                                         asset('img/icons/double-arrow.png')
                                     }}"
                             /></a>
-                            <br />
-                            <br />
-                            <a href=""> Eliminar juego de la lista </a>
+                            <br/>
+                            @auth
+                                <a href="{{route('delete_game_from_listing',['gameId' => $game->id , 'listingId' => $listing->id])}}"> Eliminar juego de la lista </a>
+                            @endauth
                         </div>
                     </div>
                     @endforeach

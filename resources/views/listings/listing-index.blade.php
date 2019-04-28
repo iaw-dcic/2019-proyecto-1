@@ -38,6 +38,11 @@
                     <div class="cell">
                         Cantidad de juegos
                     </div>
+                    @auth
+                    <div class="cell">
+                        Visibilidad
+                    </div>
+                    @endauth
                     <div class="cell">
                         Lista
                     </div>
@@ -56,6 +61,11 @@
                     <div class="cell" data-title="Cantidad de juegos">
                         {{$listing->games()->count()}}
                     </div>
+                    @auth
+                    <div class="cell" data-title="Visibilidad">
+                            {{$listing->visibility}}
+                    </div>
+                    @endauth
 
                     <div class="cell" data-title="Link a la lista">
                         <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
