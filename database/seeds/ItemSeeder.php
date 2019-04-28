@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use \App\Item;
+
 
 
 class ItemSeeder extends Seeder
@@ -13,19 +15,25 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('items')->insert([
+        Item::Create([
             'nombre_beer' => 'IPA',
             'color' => 'palida',
             'gradoAlcohol' => 6.7,
             'gradoAmargor' => 15,
         ]);
-        DB::table('items')->insert([
+        // DB::table('items')->insert([
+        //     'nombre_beer' => 'IPA',
+        //     'color' => 'palida',
+        //     'gradoAlcohol' => 6.7,
+        //     'gradoAmargor' => 15,
+        // ]);
+        Item::Create([
             'nombre_beer' => 'SCOTCH',
             'color' => 'roja',
             'gradoAlcohol' => 6,
             'gradoAmargor' => 12,
         ]);
-        DB::table('items')->insert([
+        Item::Create([
             'nombre_beer' => 'HONEY',
             'color' => 'rubia',
             'gradoAlcohol' => 5.5,
