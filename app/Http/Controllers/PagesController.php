@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use Auth;
-use App\User;
-use App\Listing;
 
 class PagesController extends Controller
 {
@@ -63,39 +61,6 @@ class PagesController extends Controller
         }
     }*/
 
-    public function getUserProfile($userName)
-    {
-            $user = User::where('name', $userName)->first();
-
-            $userListings = Listing::where('user_id',$user->id)->get();
-
-          /*  $arrayOfListingsTitles= [];
-            foreach($userListings as $listing) {
-                array_push($arrayOfListingsTitles,$listing->title);
-            }
-            
-            $listingsTitles=  implode(" - ", $arrayOfListingsTitles);*/
-
-          
-            return view('pages.profile',compact('user','userListings'));
-            //return view('pages.profile',compact('user','listingsTitles'));
-           
-
-           /* $userGames = Game::where('user_id', $user->id)->get();
-            $arrayOfGamesTitle = [];
-            foreach ($userGames as $game) {
-                array_push($arrayOfGamesTitle, $game->title);
-            }
-
-            $data = [
-                'user'  => $user,
-                'userGames'   => implode(" - ", $arrayOfGamesTitle),
-            ];
-
-            return view('pages.profile')->with('data', $data);*/
-
-
-    }
-
+    
 
 }

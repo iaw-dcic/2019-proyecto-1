@@ -29,7 +29,9 @@ Route::get('/searchUser/{userSearch}', 'SearchUserController@searchUser');
 Route::get('/searchUser', 'SearchUserController@searchUser');
 Route::get('/searchUser/listings/{userId}', 'SearchUserController@getUserListings')->name('user_listings');
 
-Route::get('/profile/{username}', 'PagesController@getUserProfile')->name('user_profile');
+Route::get('/profile/{username}', 'UserController@getUserProfile')->name('user_profile');
+Route::post('/profile/{username}','UserController@update_avatar')->name('update_avatar');
+
 
 Route::get('/deleteGameFromListing/{game}/{listing}','ListingsController@deleteGameFromListing')->name('delete_game_from_listing');
 Route::resource('listings','ListingsController');

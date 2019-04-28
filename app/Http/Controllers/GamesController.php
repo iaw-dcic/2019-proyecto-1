@@ -29,7 +29,7 @@ class GamesController extends Controller
      */
     public function index()
     {
-        if (Auth::user()) {
+      /*  if (Auth::user()) {
             $user_id = auth()->user()->id;
 
             $listings = Listing::where('user_id', '=', $user_id)->get();
@@ -42,9 +42,6 @@ class GamesController extends Controller
                 array_push($games,$listing->games);
             }
 
-            dd($games);
-            exit;
-
             //Formas de mandar los games:
             //$posts = Post::orderBy('title','desc')->get();
             //$posts = Post::orderBy('created_at','desc')->paginate(10);
@@ -53,7 +50,7 @@ class GamesController extends Controller
             return view('pages.games')->with('games', $games);
         } else {
            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
-            return view('pages.games'); }
+            return view('pages.games'); }*/
     }
 
     /**
@@ -100,7 +97,6 @@ class GamesController extends Controller
         $game->mode = $request->mode;
         $game->genre = $request->genre;
         $game->save();
-        ///////////////////////////////////////////////////////
 
         $listings = $request->listings;
 
@@ -197,7 +193,6 @@ class GamesController extends Controller
         $listings = $request->listings;
         $game->listings()->sync($listings);
 
-
         alert()->success('Listo!', 'El juego fue editado correctamente.');
         return redirect('listings');
     }
@@ -253,12 +248,7 @@ class GamesController extends Controller
             //$request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
             $request->file('cover_image')->storeAs('public/cover_images/thumbnail', $fileNameToStore);
 
-            //Resize image here
-            $thumbnailpath = public_path('storage/cover_images/thumbnail/' . $fileNameToStore);
-            $img = Image::make($thumbnailpath)->resize(220, 220, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $img->save($thumbnailpath);
+           
         } else {
             $fileNameToStore = 'noimage.jpg';
         }

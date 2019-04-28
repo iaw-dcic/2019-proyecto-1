@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'username' => 'required|string|max:20|unique:users',
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar_image' => 'image|nullable|max:1999',
         ]);
     }
 
@@ -65,6 +66,8 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+        $fileNameToStore = $this->handleFileUpload($data);
+
         alert()->success('Bievenido!', 'Te registraste correctamente!.');
 
         return User::create([
@@ -72,8 +75,45 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar_image' => $fileNameToStore
+
         ]);
 
+    }
+
+    private function handleFileUpload(array $data)
+    {
+
+
+        
+        // Handle File Upload
+        if ($request->hasFile('cover_image')) {
+
+            // Get filename with the extension 
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
+            // Get just extension
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+
+            // Filename to store
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+
+            // Upload Image
+            $request->file('cover_image')->storeAs('public/cover_images/thumbnail', $fileNameToStore);
+
+            //Resize image here
+            $thumbnailpath = public_path('storage/cover_images/thumbnail/' . $fileNameToStore);
+            $img = Image::make($thumbnailpath)->resize(220, 220, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save($thumbnailpath);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+        return $fileNameToStore;
     }
 
    

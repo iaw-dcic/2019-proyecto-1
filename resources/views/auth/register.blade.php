@@ -148,6 +148,18 @@
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
             </div>
 
+            <!--Avatar -->
+             <label><i class="fas fa-picture-o" aria-hidden="true"></i>Avatar</label>
+             <div class="input-group">
+                 <label class="input-group-btn">
+                         <span class="btn btn-primary">
+                             Seleccionar&hellip; <input type="file" name="avatar" style="display: none;">
+                         </span>
+                     </label>
+                 <input type="text" class="form-control" readonly>
+                 <br><br>
+             </div>
+
             <!--Submit -->
             <input type="submit" value="Confirmar registro">
 

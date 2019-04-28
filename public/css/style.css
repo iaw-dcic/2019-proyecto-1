@@ -675,7 +675,7 @@ ol {
 .blog-item .blog-thumb {
 	width: 362px;
 	float: left;
-	margin-right: 30px;
+	margin-right: 0px;
 }
 
 .blog-item .text-box {
