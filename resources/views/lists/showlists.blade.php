@@ -16,7 +16,7 @@
 		<li class="list-group-item"><p class="lead">{{ $list->name }}</p></li> 
 
 		<div class="btn-group">
-			<a href="/lists/{{$list->id}}/movies">
+			<a href="/lists/{{$list->id}}">
 				<button type="button" class="btn btn-success">Ver</button>
 			</a>
 			<a href="/lists/{{$list->id}}/edit">

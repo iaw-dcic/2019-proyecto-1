@@ -23,11 +23,19 @@ class MovieController extends Controller
 
     	$movie->save();
 
-    	return redirect('lists/'.$id.'/movies');
+    	return redirect('lists/'.$id);
     }
 
     public function edit(MovieList $list, Movie $movie) {
-    	return view('movies.editmovie', compact('list'), compact('movie'));
+        if (auth()->user()==null)
+            return view('auth.login');
+        else if (auth()->user()->id != $list->user_id ||
+                $list->id != $movie->list_id)
+            return view('error');
+
+    	return view('movies.editmovie')
+                    ->with(compact('list'))
+                    ->with(compact('movie'));
     }
 
     public function update($idList, Movie $movie) {
@@ -38,12 +46,12 @@ class MovieController extends Controller
 
     	$movie->save();
 
-    	return redirect('lists/'.$idList.'/movies');
+    	return redirect('lists/'.$idList);
     }
 
     public function delete($idList, Movie $movie) {
         $movie->delete();
 
-        return redirect('lists/'.$idList.'/movies');
+        return redirect('lists/'.$idList);
     }
 }

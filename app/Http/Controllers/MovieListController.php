@@ -10,6 +10,10 @@ class MovieListController extends Controller
 {
     public function index() {
     	$user = auth()->user();
+
+        if ($user==null)
+            return view('auth.login');
+
     	$lists = MovieList::where('user_id', $user->id)
     						->get();
 
@@ -54,10 +58,17 @@ class MovieListController extends Controller
     }
 
     public function show(MovieList $list) {
-        $movies = \Cinefilo\Movie::where('list_id', $list->id)
-                                    ->get();
+        if (auth()->user()==null)
+            return view('auth.login');
+        else if (auth()->user()->id != $list->user_id)
+            return view('error');
 
-        return view('lists.list', compact('movies'), compact('list'));
+        $movies = Movie::where('list_id', $list->id)
+                        ->get();
+
+        return view('lists.list')
+                ->with(compact('movies'))
+                ->with(compact('list'));
     }
 
     public function delete(MovieList $list) {

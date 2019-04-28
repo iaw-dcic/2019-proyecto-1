@@ -6,7 +6,7 @@
 
 @section('content')
     <h2 class="text-center">Crear película</h2>
-	<form method="POST" action="/lists/{{$list->id}}/movies">
+	<form method="POST" action="/lists/{{$list->id}}">
                         @csrf
 
                         <div class="form-group row">

@@ -10,9 +10,10 @@
 	<div class="text-center">
 	<form method="POST" action="/search">
 		@csrf
-		<div class="col-md-6">
+		<div class="text-center">
             <input id="name" type="name" class="form-control" name="name" required autofocus>
         </div>
+        <br/>
         <button type="submit" class="btn btn-primary">
             {{ __('Buscar') }}
         </button>
