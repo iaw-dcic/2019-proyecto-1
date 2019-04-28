@@ -24,7 +24,7 @@ class CreateIngredientesDeRecetaTable extends Migration
             $table->unsignedBigInteger('cantidad');
             
             
-            $table->foreign('receta_nombre')->references('nombre')->on('recetas');
+            $table->foreign('receta_nombre')->references('nombre')->on('recetas')->onDelete('cascade');;
             $table->foreign('medida_id')->references('id')->on('medidas');
             $table->foreign('ingrediente_id')->references('id')->on('ingredientes');
         });

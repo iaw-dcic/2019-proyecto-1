@@ -13,12 +13,12 @@ class CreateListasDeRecetasTable extends Migration
      */
     public function up()
     {
-        Schema::table('listas', function (Blueprint $table) {
+        Schema::create('listas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('nombre');
             $table->unsignedBigInteger('usuario');
-            $table->foreign('usuario')->references('id')->on('users');
+            $table->foreign('usuario')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 

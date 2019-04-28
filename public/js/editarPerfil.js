@@ -4,6 +4,11 @@ function editarUsuario(perfil) {
     var nombre = perfil.nombre;
     var email = perfil.email;
 
+    document.getElementById("botonImagen").innerHTML = '<div class="form-group">'
+        + '  <label for="inputMessage">Imagen:</label>'
+        + ' <input type="file" name="filename" class="form-control">'
+        + '  </div>';
+
     document.getElementById('perfil.nombre').innerHTML = ' <label> Nombre: </label><br> '
         + '<div class="form-group"  > <input type="text" required class="form-control input-lg" name="nombre" value="' + nombre + '"  ></div>';
 

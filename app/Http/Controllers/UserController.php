@@ -47,13 +47,24 @@ use Illuminate\Support\Facades\Hash;
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->email = $request->email;
-        
-        
         $user->descripcion = $request->descr;
+
+        $originalImage= $request->file('filename');
+        
+        $thumbnailImage = Image::make($originalImage);
+        
+        $originalPath = public_path().'/img/';
+        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+        $thumbnailImage->resize(150,150);
+        $imagen='img/'.time().$originalImage->getClientOriginalName();
+        
+        
+        $user->avatar= $imagen;
+
         if($user->save()){
             
         
-            return back()->with('status','Datos cargados correctamente');}
+            return back()->with('msj','Datos cargados correctamente');}
         else{
             return view('cocineros');
         }
@@ -79,6 +90,7 @@ use Illuminate\Support\Facades\Hash;
         $originalPath = public_path().'/img/';
         $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
         $thumbnailImage->resize(150,150);
+        $imagen='img/'.time().$originalImage->getClientOriginalName();
         }
         else{
             $imagen=null;

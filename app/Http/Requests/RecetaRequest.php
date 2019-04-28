@@ -34,6 +34,7 @@ class RecetaRequest extends FormRequest
     public function messages(){
         return [
             'nombre.required' => 'Nombre es un campo obligatorio.',
+            'nombre.unique' => 'Ese nombre de receta ya esta en uso.',
             'categoria.required' => 'Categoria es un campo obligatorio.',
             'descr.required' => 'Descripcion es un campo obligatorio.',
             'pasos.required' => 'Pasos es un campo obligatorio.',

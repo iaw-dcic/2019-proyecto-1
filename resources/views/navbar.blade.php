@@ -42,7 +42,7 @@
           
             <a href="#" class="dropdown-toggle" id="textoLogin" data-toggle="dropdown"> {{$user->nombre}} <span class="caret"></span></a>
             @if($user->avatar !=null)
-            <a class="navbar-brand" href="/"><img src="{{$user->avatar}}" alt="logo" width=60 heigh=30 ></a>
+            <a class="navbar-brand" href="/"><img src="{{asset($user->avatar)}}" alt="logo" width=60 heigh=30 ></a>
             @endif
            <ul id="login-dp " class="dropdown-menu">
              <a class="dropdown-item" href="{{route('verPerfil',['id'=>$user->id])}}">Mi Perfil</a>

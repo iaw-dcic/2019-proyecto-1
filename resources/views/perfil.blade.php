@@ -21,10 +21,13 @@
                 @if($perfil->avatar == null)
                 <img alt="{{$perfil->nombre}}"  src="{{asset('img/usuario.png')}}" class="rounded-circle">
                 @endif
+                
+                
+                
                 </div>
                 
                 <div id="datos" class="col-md-6"style="background-color: lightgray">
-                    <form id="form-editar-perfil" accept-charset="UTF-8" role="form" method="POST" action="{{route('actualizar',['id'=>$perfil->id])}}"  >
+                    <form id="form-editar-perfil" enctype="multipart/form-data" accept-charset="UTF-8" role="form" method="POST" action="{{route('actualizar',['id'=>$perfil->id])}}"  >
                     {{ csrf_field() }}
                      <div class="form-group" id="perfil.nombre">
                         <label class=" "> Nombre: <br>
@@ -57,7 +60,9 @@
                         <label class=" "> Se unio:
                         <br> {{$perfil->created_at}} </label> 
                      </div>
+                     <div class="row" id="botonImagen">
 
+                    </div>
                      <button id="botonGuardar" class="btn btn-primary" >Guardar</button></div>
                      </form>
                

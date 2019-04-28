@@ -53,8 +53,7 @@
                         @if($count== 0)
                             <p> {{$perfil->nombre}} no tiene listas </p>
                         @endif
-                          <button class="float-right btn " type="button" data-toggle="modal" data-target="#modalLista" > 
-                              Agregar lista </button>
+                       
                            
                       </div>
                     
