@@ -2,6 +2,7 @@
 
 namespace App;
 
+use \App\Lista;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -22,7 +23,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for arrays.
      *
-     * @var array
+     * $hidden Eloquent me pone estos atributos ocultos
      */
     protected $hidden = [
         'password', 'remember_token',
@@ -36,4 +37,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**Declaracion de metodos estaticos corresponden a la clase y la clase va a corresponder
+     * a la tabla de la Base de Datos.
+     */
+    public static function findByEmail($email)
+    {
+        return User::where(compact('email'))->first();
+    }
+    /**Fin de declaracion de metodos estaticos */
+
+    /**Un usuario tiene muchas listas
+     * Se pone en plural para representar eso, estos detalles mejoran la legibilidad del codigo
+     */
+    public function lists()
+    {
+        return $this->hasMany(Lista::class);
+    }
 }

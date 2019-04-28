@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     {
         //users es el nombre de la tabla que quiero crear y coincide con el nombre del archivo.
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('user_id'); //INTEGER UNSIFNED - AUTOINCREMENT
+            $table->increments('id'); //INTEGER UNSIFNED - AUTOINCREMENT
             $table->string('name'); // VARCHAR
             $table->string('email')->unique(); //VARCHAR - UNIQUE
             $table->timestamp('email_verified_at')->nullable();

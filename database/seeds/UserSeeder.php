@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+
         /**Este codigo tiene exactamente la misma funcionalidad que los de abajo
          * Usa el modelo de laravel User, pero Eloquent se encarga de completar las columnas create_at y update_at
         */
@@ -52,6 +53,11 @@ class UserSeeder extends Seeder
             'email' => 'wirkonnen@gmail.com',
             'password' => bcrypt('wirkonnen'),
         ]);
+
+        /**Genero datos de prueba
+         * Laravel va a generar Listas de prueba de usuarios que le indique ahi
+        */
+        factory(User::class)->create();
 
     }
 }
