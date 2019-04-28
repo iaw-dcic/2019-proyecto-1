@@ -36,10 +36,11 @@ class ListGamesController extends Controller
     }
 
     public function show(int $idLista, int $idJuego)
-    {
+    {   
+        dd('hola');
         $datosJuego = DB::table('juegos')->where([ ['list_id',"=",$idLista,], ['id',"=",$idJuego] ])->get();
-    
-        return view('/lists/{{$idLista}}/{{$idJuego}}/show', compact('datosJuego'));
+        dd('listGames.show');
+        return view('listGames.show', compact('datosJuego'));
     }
 
       /**

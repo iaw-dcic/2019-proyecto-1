@@ -19,7 +19,7 @@
     <ul class= "list-group">
     @if($juegos->count())
         @foreach($juegos as $elem)
-            <li class="list-group-item"> <a href="/lists/{{$lista[0]->id}}/{{$elem->id}}/show" class="list-group-item list-group-item-action">{{$elem->name}}</a> </li>
+            <a href="#" class="list-group-item list-group-item-action">{{$elem->name}}</a> 
         @endforeach
     @else  
         <div class="alert alert-primary divAlerta text-center" role="alert">
@@ -45,7 +45,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="game_title">Titulo del Juego</label>
-                            <input type="text" class="form-control" id="game_title" aria-describedby="listHelp" placeholder="Ingresa el nombre de la lista" name="title" required value="{{old('title')}}">
+                            <input type="text" class="form-control" id="game_title" aria-describedby="listHelp" placeholder="Ingresa el nombre del juego" name="title" required value="{{old('title')}}">
                         </div>
                         <div class="form-group">
                             <label for="game_genre">Descripcion</label>

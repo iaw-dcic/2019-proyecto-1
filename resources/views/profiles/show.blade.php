@@ -11,7 +11,7 @@
 @section('content')
 <div class="jumbotron jumbotron-fluid welcome_info">
   <div class="container">
-    <h1 class="display-4">buenas {{$name}}</h1>
+    <h1 class="display-4">bienvenido {{$name}}</h1>
     <p class="lead">Bienvenido a tu página de usuario, desde aquí podrás consultar tus listas y juegos</p>
   </div>
 </div>

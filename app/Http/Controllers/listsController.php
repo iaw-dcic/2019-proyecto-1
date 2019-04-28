@@ -84,11 +84,9 @@ class listsController extends Controller
     public function show(int $id)
     {
 
-
         $lista = DB::table('listas')->where('id',$id)->get();
         $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
         return view('lists.show',compact('lista','juegos'));
-       //return view('verLista')->with('lista',$listaShow);
 
     }
 

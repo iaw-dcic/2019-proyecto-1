@@ -33,9 +33,8 @@ Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
 
 Route::post('/lists/{list}', 'ListGamesController@store');
 
-Route::get('/lists/{list}/{game}/show', 'ListGamesController@show');
+Route::get('/lists/{list}/games', 'ListGamesController@show')->name("gameInfo");
 
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
