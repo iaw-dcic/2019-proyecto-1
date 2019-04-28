@@ -12,9 +12,9 @@
          
         <div class="perfil">
         <div class="row">
-            <div class="col-md-4"style="background-color: lightgray">
+            <div class="col-md-4" id="md4">
                 <div class="row">
-                <div class="col-md-6"style="background-color: lightgray">
+                <div class="col-md-6" id="md6">
                 @if($perfil->avatar != null)
                 <img alt="{{$perfil->nombre}}"  src="{{asset($perfil->avatar)}}" class="rounded-circle">
                 @endif
@@ -26,7 +26,7 @@
                 
                 </div>
                 
-                <div id="datos" class="col-md-6"style="background-color: lightgray">
+                <div id="datos" class="col-md-6">
                     <form id="form-editar-perfil" enctype="multipart/form-data" accept-charset="UTF-8" role="form" method="POST" action="{{route('actualizar',['id'=>$perfil->id])}}"  >
                     {{ csrf_field() }}
                      <div class="form-group" id="perfil.nombre">

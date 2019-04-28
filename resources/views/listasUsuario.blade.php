@@ -2,7 +2,7 @@
   <!-- Lado derecho, las listas del usuario -->  
  
    
-   <div class="col-md-8">
+   <div class="col-md-8" style="background:lightblue">
    @if ($errors->any())
     <div class="alert alert-danger">
     <h4> Corrige los errores: </h4>
@@ -50,10 +50,10 @@
              <br>
              <div class="row">
                          
-          <a class="tachoTitulo" href="{{route('borrarLista',['id'=>$lista->id])}}"
+          <button class="float-right btn " type="button" href="{{route('borrarLista',['id'=>$lista->id])}}"
           onclick="return confirm('¿Seguro que deseas eliminar {{$lista->nombre}}?')">
-            <i class="fas fa-trash-alt fa-lg"></i> 
-           </a>
+           Eliminar lista
+              </button>     
         </div>
  <hr>
                       @endforeach  

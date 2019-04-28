@@ -123,7 +123,8 @@ use Illuminate\Support\Facades\Hash;
         $social_user = Socialite::driver($provider)->user(); 
         // Comprobamos si el usuario ya existe
         if ($user = User::where('email', $social_user->getEmail())->first()) { 
-           
+            $user->avatar= $social_user->getAvatar();
+            $user->save();
             return $this->authAndRedirect($user); // Login y redirección
         } else {  
             // En caso de que no exista creamos un nuevo usuario con sus datos.

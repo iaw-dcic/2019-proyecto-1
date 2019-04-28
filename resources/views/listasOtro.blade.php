@@ -1,7 +1,7 @@
 <?php  $count=0 ?>
                
                <!-- Lado derecho, las listas del usuario -->  
-                  <div class="col-md-8">
+                  <div class="col-md-8" style="background:lightblue">
                   @foreach($listas as $lista)
                    @if($lista->public)
                       <div class="list-group">

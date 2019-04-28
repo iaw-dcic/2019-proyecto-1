@@ -11,11 +11,14 @@
                    <br>
                  </h1>
                 <h5>   <small> por: <a href="{{route('verPerfil',['id'=>$receta[0]->autorId])}}"> {{$receta[0]->autorId->nombre}} </a> </small> </h5>
-               
+                @if(Auth::user()==$receta[0]->autorId)
+                <div class="float-right">
+                  <a href=""> Editar </a>
+                </div><br>
+                @endif
                 <hr>
-                <h3 class="estilo-nombre-chefs" itemprop="author">
+             
             
-                   
 			</div>
 			<div class="row">
 				<div class="col-md-4" id="divIngredientes">

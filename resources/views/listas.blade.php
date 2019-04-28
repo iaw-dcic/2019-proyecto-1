@@ -16,14 +16,14 @@
                        <div class="col-9">
                         
                              <h3 id="h3ListaNombre">   {{$lista->nombre}} </h3>
-                             <h5>   <small> por: <a href="{{route('verPerfil',['id'=> $lista->autorId->id])}}"> {{$lista->autorId->nombre}} </a> </small> </h5>
-                             <ul>
+                             <h5>   <small> por: <a href="{{route('verPerfil',['id'=>$lista->autorId])}}"> {{$lista->autorId->nombre}} </a> </small> </h5>
+                              <ul>
                              @foreach($recetas as $receta)
                                
                                 @if($receta->listaId->id == $lista->id)
                                 <li>
                                  <a href="{{route('receta',['nombre'=> $receta->nombre])}}" >{{$receta->nombre}}</a>
-</li>
+                                </li>
                                  @endif
                                
                             @endforeach
