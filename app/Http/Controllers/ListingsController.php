@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Listing;
 use Auth;
+use App\User;
 
 class ListingsController extends Controller
 {
@@ -17,7 +18,7 @@ class ListingsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'create']]);
+        $this->middleware('auth', ['except' => ['index', 'create', 'show', 'getUserListings']]);
     }
 
     /**
@@ -27,6 +28,7 @@ class ListingsController extends Controller
      */
     public function index()
     {
+
         if (Auth::user()) {
             $user_id = auth()->user()->id;
             $listings = Listing::where('user_id', '=', $user_id)->get();
@@ -38,11 +40,11 @@ class ListingsController extends Controller
 
             return view('listings.listing-index')->withData($data);
         } else {
-            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus listas.');
-            return view('listings.listing-index'); //Poner logica en listings.index parecida a games.blade para ponerle un buscador de listas
-            //return redirect()->guest('/login');
+            alert()->info('Atención!', 'Tenes que iniciar sesión o registrarte para ver tus listas.');
+            return view('listings.listing-search'); 
         }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -79,7 +81,7 @@ class ListingsController extends Controller
         $listing->save();
 
         alert()->success('Listo!', 'La lista fue creada');
-        return redirect('listings');
+        return view('listings.listing-show')->withListing($listing);
     }
 
     /**
@@ -145,16 +147,5 @@ class ListingsController extends Controller
         return redirect('listings');
     }
 
-    public function getUserListings($userName)
-    {
-        $user = User::where('name', $userName)->first();
-        $userListings = Listing::where('user_id', $user->id)->get();
-
-        $data = [
-            'listings'   => $userListings,
-            'listOwnerName'  => $user->name,
-        ];
-
-        return view('pages.profile')->with('data', $data);
-    }
+   
 }

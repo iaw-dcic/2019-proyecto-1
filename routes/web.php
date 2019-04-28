@@ -11,26 +11,23 @@
 |
 */
 
+//Pages
 Route::get('/','PagesController@home');
 Route::get('/about', 'PagesController@about');
+Route::get('/searchlisting', 'PagesController@searchListing');
 
-
-//Route::get('/user/profile/{user}', 'UserProfileController@index')->name('user_profile')->middleware('auth');
-
-
-
-
-//Route::get('/profile/{newMode}', 'PagesController@changeGamesMode');
-
+//Games resource
 Route::resource('games','GamesController');
-//Route::get('/home', 'HomeController@index')->name('home');
 
+//Auth
 Auth::routes(['verify'=> true]);
 Route::get('login/{service}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{service}/callback', 'Auth\LoginController@handleProviderCallback');
 
+//Searching
 Route::get('/searchUser/{userSearch}', 'SearchUserController@searchUser');
 Route::get('/searchUser', 'SearchUserController@searchUser');
+Route::get('/searchUser/listings/{userId}', 'SearchUserController@getUserListings')->name('user_listings');
 
 Route::get('/profile/{username}', 'PagesController@getUserProfile')->name('user_profile');
 

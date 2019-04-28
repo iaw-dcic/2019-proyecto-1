@@ -17,7 +17,7 @@ class PagesController extends Controller
      */
     public function __construct()
     {
-       $this->middleware('auth', ['except' => ['home', 'about', 'games', 'profile','getUserProfile']]);
+       //$this->middleware('auth', ['except' => ['home', 'about', 'games', 'profile','getUserProfile','searchlisting']]);
       // $this->middleware(['auth', 'verified']); 
     }
 
@@ -34,6 +34,11 @@ class PagesController extends Controller
     public function games()
     {
         return view('pages.games');
+    }
+
+    public function searchlisting() 
+    {
+        return view('listings.listing-search');
     }
 
     public function profile()

@@ -32,7 +32,7 @@
                         <h3>Información</h3>
                         <div class="top-meta">Nombre: {{$user->name}}</div>
                         <div class="top-meta">Email: {{$user->email}}</div>
-                        <div class="top-meta">Listas {{$listingsTitles}}</div>
+                        <div class="top-meta">Listas: {{$listingsTitles}}</div>
                        
                         <br><br><br><br><br><br>
                         <a href="#" class="read-more">Editar avatar <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>

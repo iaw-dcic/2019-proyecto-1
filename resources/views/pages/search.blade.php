@@ -28,7 +28,7 @@
 
 					<div class="table">
                         <br>
-						<div class="row header no-hover">
+						<div class="my-row header no-hover">
 							<div class="cell">
 								Nombre
 							</div>
@@ -36,24 +36,27 @@
 								Usuario
 							</div>
 							<div class="cell">
-								Juegos
+								Listas
 							</div>
 							<div class="cell">
 								Perfil
 							</div>
 						</div>
                         @foreach($users as $user)
-                        <div class="row">
-                                <div class="cell" data-title="Full Name">
+                        <div class="my-row">
+                                <div class="cell" data-title="Nombre">
                                     {{$user->name}}
                                 </div>
-                                <div class="cell" data-title="Age">
-                                    Nombre usuario
+                                <div class="cell" data-title="Nombre usuario">
+                                    {{$user->username}}
                                 </div>
-                                <div class="cell" data-title="Job Title">
+                                <div class="cell" data-title="Listas de juegos">
+                                    <a href="{{ route('user_listings', $user->id)}}" >Ver listas</a>
+
                                 </div>
-                                <div class="cell" data-title="Location">
-                                <a href="{{ route('user_profile', $user->name)}}" >Link al perfil</a>
+
+                                <div class="cell" data-title="Perfil">
+                                <a href="{{ route('user_profile', $user->name)}}" >Ver perfil</a>
                                 </div>
                         </div>
 
