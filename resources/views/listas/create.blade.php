@@ -35,12 +35,16 @@
                     </div>
             </div>
         
-    
             <div class="field">
-                    <div class="control">
-                        <button type="submit" class="button is-link"> </button>
-                    </div>
+                <label class="label" for="nombre">Visibilidad</label>
+                <div class="control">
+                        <input type="radio" class="input" name="visible" value="2" checked> Pública 
+                        <input type="radio" class="input" name="visible" value="0"> Privada<br>
                 </div>
-    
+            </div>
+
+            <div>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Agregar Lista</button>
+            </div>
         </form>
 @endsection

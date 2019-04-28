@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cancion;
+use App\Lista;
+use Auth;
 
 class CancionesController extends Controller
 {
@@ -12,13 +14,19 @@ class CancionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //recibo el id de lista
+    public function index($id)
     {
-        //id de lista
-        $canciones=  Cancion::orderBy('nombre','ASC')->paginate(10);
+        //busco el usuario y si no existe ninguno no me muestra nada (cuestion seguridad)
+        $user_id= Auth::user()->id;
 
-        //retorno la vista y le paso las listas
-        return view ('canciones.index',compact('canciones'));
+        $lista= Lista::findOrFail($id);
+        //id de lista
+        $canciones=  Cancion::where('lista_id',$id)->paginate(10);//-> orderBy('nombre','ASC')->paginate(10);
+
+
+        //retorno la vista y le paso las canciones y el id de lista
+        return view ('canciones.index',compact('canciones','lista'));
     }
 
     /**
@@ -28,7 +36,7 @@ class CancionesController extends Controller
      */
     public function create($lista)
     {
-        return view('canciones.create',compact($lista));
+        return view('canciones.create',compact('lista'));
     }
 
     /**
@@ -37,9 +45,26 @@ class CancionesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    //recibo la nueva cancion y el id de la lista a la q pertenecera dicha cancion
+    public function store(Request $request,$id)
     {
-        dd('Hacer store de canciones');
+
+        $cancion= new Cancion(
+            request()->validate([
+                   'nombre'=> ['required','min:3'],
+                   'duracion'=> 'required',
+                   'album'=> 'required','min:2',
+                   'autor'=> 'required',
+                   //'fecha_lanzamiento'=>'required',
+               ],Cancion::messages())
+           );
+   $lista_id= Lista::findOrfail($id)->id; 
+   
+   $cancion->fecha_lanzamiento= $request->fecha_lanzamiento;
+   $cancion->lista_id= $lista_id;    
+   $cancion->save();
+
+   return redirect('listas/'.$lista_id)->with('success','Cancion \''.$cancion->nombre.'\' ha sido creada con exito!');
     }
 
     /**
@@ -61,7 +86,10 @@ class CancionesController extends Controller
      */
     public function edit($id)
     {
-        //
+        //recibo ese objeto
+        $cancion= Cancion::findOrFail($id);
+        //y se lo paso a la vista           
+        return view('canciones/edit',compact('cancion','id'));
     }
 
     /**
@@ -73,7 +101,17 @@ class CancionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cancion= Cancion::findOrFail($id);
+
+        $cancion->update(request()->validate([
+                           'nombre'=> ['required','min:3'],
+                           'duracion'=> ['required'],
+                           'album'=> ['required','min:2'],
+                           'autor'=> 'required',
+                      ],Cancion::messages()));
+               
+         //Vuelvo al listado usando un get y muestro un mensaje flash
+         return redirect('listas/'.$cancion->lista_id)->with('info','Cancion \''.$cancion->nombre.'\' ha sido editada con exito!');
     }
 
     /**
@@ -82,8 +120,12 @@ class CancionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //recibo id de la cancion
     public function destroy($id)
     {
-        //
+        $cancion= Cancion::findOrFail($id);
+        $cancion->delete();
+           //Vuelvo al listado usando un get y muestro un mensaje flash
+        return redirect('listas/'.$cancion->lista_id)->with('warning','La cancion \''.$cancion->name.'\' ha sido eliminada!');
     }
 }

@@ -20,7 +20,7 @@ class CancionesTabla extends Migration
             $table->time('duracion');
             $table->string('album');
             $table->string('autor');
-            $table->date('fecha_lanzamiento');
+            $table->date('fecha_lanzamiento')->default('1111-11-11'); //aaaa-mm-dd
             $table->timestamps();
 
             //relacion constraint

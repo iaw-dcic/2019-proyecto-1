@@ -1,21 +1,30 @@
 @extends('main')
 
-@section('title','Lista de Usuarios')
+@section('title','MyMusic: Usuarios')
 
 @section('content')
+
+    <br> <br> <br>
     <table class="table table-striped">
         <head>
-            <th>ID</th>
-            <th>Nombre</th>
+            <th style="font-size:20px">Nombre Usuario</th>
             <th>Email</th>
+            <th>Cantidad de listas</th>
         </head>
 
         <body>
             @foreach($users as $user)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
+                    <td style="font-size:20px"> <a href="{{route('listas.index',['user'=>$user])}}">{{ $user->name }} </a></td>
+                    
+                    
                     <td>{{ $user->email }}</td>
+                    
+                    
+                    <td>{{ \App\Lista::where('user_id',$user->id)->count() }}</td>
+                    
+                    
+                    <!-- BOTONES  -->
                     <td>
                         <!--  boton de editar -->
                         <a href="/users/{{$user->id}}/edit" class="btn btn-warning"></a>

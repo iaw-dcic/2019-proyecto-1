@@ -23,7 +23,12 @@ class ListasController extends Controller
      */
     public function index()
     {
-        $listas=  Lista::orderBy('nombre','ASC')->paginate(5);
+        //busco el usuario actual
+        $user_id= Auth::user()->id;
+        //obtengo todas las listas de ese usuario
+        $listas= Lista::where('user_id', $user_id);//->where('visible',2);
+      
+        $listas=  $listas->paginate(5);
 
         //retorno la vista y le paso las listas
         return view ('listas.index',compact('listas'));
@@ -50,22 +55,19 @@ class ListasController extends Controller
          //2da capa de validacion: si no la pasa me redirige a la misma pagina
         // $atributos= request()->validate([
         //    'name'=> ['required','min:3'],
-        //    'cantidad_canciones'=> 'required',
-        //]);
-        $user_id= Auth::user()->id;
+        //   ..
 
         $lista= new Lista(
                  request()->validate([
                         'nombre'=> ['required','min:3'],
                         'descripcion'=> 'required',
+                        'visible'=>'required',
                     ],Lista::messages())
-            );
+                );
+        $user_id= Auth::user()->id; 
+        
         $lista->user_id= $user_id;    
-        //'user_id','nombre','cantidad_canciones'
-       //$atributos->user_id= $user_id;
-       // $lista = Lista::create($atributos);
         $lista->save();
-
         return redirect('listas')->with('success','Lista \''.$lista->nombre.'\' ha sido creada con exito!');
     }
 
@@ -115,7 +117,7 @@ class ListasController extends Controller
         
        // $lista->save();           
          //Vuelvo al listado usando un get y muestro un mensaje flash
-         return redirect('listas')->with('info','Lista \''.$lista->name.'\' ha sido editada con exito!');
+         return redirect('listas')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!');
     }
 
     /**

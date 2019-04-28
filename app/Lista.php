@@ -9,7 +9,7 @@ class Lista extends Model
     protected $table = "listas";
 
     //el 'id' lo agrega por defecto
-    protected $fillable = ['user_id','nombre','descripcion'];
+    protected $fillable = ['user_id','nombre','descripcion','visible',];
 
     //ver   si     hay que agregar el    timestamp  --------^
 
@@ -33,6 +33,7 @@ class Lista extends Model
         'nombre.required' => 'Debe ingresar un nombre para la lista',
         'nombre.min' =>'El nombre de la lista debe ser de 3 caracteres o mas',
         'descripcion.required' => 'Debe ingresar una descripcion de la lista',
+        'visible.required' => 'Debe seleccionar visibilidad de la lista',
     ];
 }
 

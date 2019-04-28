@@ -4,9 +4,9 @@
 
 @section('content')
 
-   <!-- Formulario de creacion de usuario  --> 
+   <!-- Formulario de creacion de cancion  --> 
     <!--                 uso la ruta store para hacer el post del formulario -->
-    <form method="POST" action="{{ action('CancionesController@store') }}">
+    <form method="POST" action="{{ action('CancionesController@store',$lista) }}">
             {{ csrf_field() }}
             <div class="field">
                 <label class="label" for="nombre">Nombre</label>
@@ -27,22 +27,27 @@
                     <div class="control">
                         <input type="text" class="input" name="album" placeholder="Album">
                     </div>
-                </div>
+            </div>
     
-                <div class="field">
+            <div class="field">
                         <label class="label" for="autor">Autor</label>
                         <div class="control">
                             <input type="text" class="input" name="autor" placeholder="Nombre Autor">
                         </div>
-                    </div>
+            </div>
 
 
             <div class="field">
+                    <label class="label" for="fecha_lanzamiento">Fecha lanzamiento (opcional)</label>
                     <div class="control">
-                        <button type="submit" class="button btn-submit"> </button>
+                        <input type="date" class="input" name="fecha_lanzamiento" placeholder="aaaa-mm-dd">
                     </div>
-                </div>
-    
+            </div>
+
+
+
+            <br>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Agregar Cancion</button>
         </form>
        
        

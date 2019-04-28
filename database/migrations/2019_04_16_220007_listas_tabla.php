@@ -18,6 +18,7 @@ class ListasTabla extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('nombre');
             $table->string('descripcion');
+            $table->tinyInteger('visible')->default(2);//0=false, otra cosa= true
             $table->timestamps();
 
             //relacion constraint

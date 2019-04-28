@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('main')
 
 @section('content')
 <div class="container">
@@ -14,15 +14,13 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Bienvenido {{ Auth::user()->name }}!  
                 </div>
             </div>
+
+            <br>
+            <a href="{{ action('ListasController@index') }}" class="btn btn-primary">Proceder</a><br>
         </div>
     </div>
-    <br>
-    <a href="{{ action('ListasController@index') }}" class="btn btn-primary">Proceder</a><br>
-
-
-
 </div>
 @endsection

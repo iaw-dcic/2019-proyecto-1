@@ -1,24 +1,41 @@
 @extends('main')
 
-@section('title','Lista de Canciones')
+@section('title','MyMusic: Listas canciones')
 
 @section('content')
 
+    <br>
+    <!-- boton agregar lista -->
     <a href="{{ action('ListasController@create') }}" class="btn btn-primary">Agregar Lista</a><br>
 
+    <br>
     <table class="table table-striped">
         <head>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
+            <th style="font-size:20px">Nombre Lista</th>
+            <th>Descripción</th>
+            <th>Visibilidad</th>
+            <th>Propietario</th>
         </head>
 
         <body>
             @foreach($listas as $lista)
                 <tr>
-                    <td> {{ $lista->id }}</td>
-                    <td> <a href="{{route('canciones.index',$lista->id)}}">{{ $lista->nombre }} </a></td>
+                    <!--   le paso el id de la lista para saber a donde voy a agregar canciones    -->
+                    <td style="font-size:20px"> <a href="{{route('canciones.index',['lista'=>$lista->id])}}">{{ $lista->nombre }} </a></td>
+                    
                     <td>{{ $lista->descripcion }}</td>
+
+                    @if($lista->visible ===0 )
+                        <td>Privada</td>
+                    @else                            
+                        <td>Pública</td>                       
+                    @endif
+
+                    <!-- muestro el nombre del propietario de la lista   --> 
+                    <td>   {{ \App\User::find($lista->user_id)->name  }}   </td>
+
+
+                     <!--  BOTONES -->
                     <td>
                         <!--  boton de editar -->
                         <a href="/listas/{{$lista->id}}/edit" class="btn btn-warning"></a>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\resources\views;
 use App\User;
+use Auth;
 
 
 class UsuariosController extends Controller
@@ -17,6 +18,10 @@ class UsuariosController extends Controller
      //listar usuarios
     public function index()
     {
+        //busco el usuario y si no existe ninguno no me muestra nada (cuestion seguridad)
+        if (!(Auth::check()))
+            return view('home');
+
         $users=  User::orderBy('name','ASC')->paginate(3);
 
         //retorno la vista y le paso los usuarios de $users

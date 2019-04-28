@@ -35,11 +35,6 @@
             </div>
         
     
-            <div class="field">
-                    <div class="control">
-                        <button type="submit" class="button btn-submit"> </button>
-                    </div>
-                </div>
-    
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Agregar Usuario</button>
         </form>
 @endsection

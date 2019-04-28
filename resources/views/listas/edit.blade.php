@@ -5,9 +5,6 @@
 @section('content')
     <h1>Editar Lista</h1>
 
-    @if(Session::has('flash_message'))
-    {{Session::get('flash_message')}}
-    @endif
 
      <!-- Mensaje flash  --> 
      @if ($errors->any())
@@ -34,19 +31,33 @@
             </div>
         </div>
 
+        <br>
         <div class="field">
-                <label class="label" for="descripcion">Descripcion</label>
+                <label class="label" for="descripcion">Descripción</label>
                 <div class="control">
-                    <input type="text" class="input" name="descripcion" value={{$lista->descripcion}}>
+                    <input type="text" class="input" name="descripcion" value='{{$lista->descripcion}}'>
                 </div>
         </div>
     
-
+        <br>
         <div class="field">
+                <label class="label" for="descripcion">Visibilidad</label>
                 <div class="control">
-                    <button type="submit" class="button"> </button>
+                    @if($lista->visible === 0)
+                        <input type="radio" class="input" name="visible" value="2"> Pública 
+                        <input type="radio" class="input" name="visible" value="0" checked> Privada <br>
+                    @else
+                        <input type="radio" class="input" name="visible" value="2" checked> Pública 
+                        <input type="radio" class="input" name="visible" value="0" > Privada <br>
+                    @endif
                 </div>
-            </div>
+        </div>
+
+        <br>
+
+        <div>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Aplicar cambios</button>
+        </div>
 
     </form>
 @endsection
