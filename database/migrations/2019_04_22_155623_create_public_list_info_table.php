@@ -14,15 +14,15 @@ class CreatePublicListInfoTable extends Migration
     public function up()
     {
         Schema::create('public_list_info', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamps();
-            $table->unsignedBigInteger('list_number');
+            $table->unsignedInteger('list_number');
             $table->boolean('public')->default('0');
             $table->engine = 'InnoDB';
         });
 
         Schema::table('public_list_info', function($table) {
-            $table->foreign('list_number')->references('id')->on('list_info')->onDelete('cascade');
+            $table->foreign('list_number')->references('id')->on('listas')->onDelete('cascade');
         });
     }
 

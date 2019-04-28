@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Lista;
 use App\Juego;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+
 
 class ListGamesController extends Controller
 {
-    public function store(Lista $lista){
-        $lista->addGame(request('name','genre','company','release_date'));
-        return back;
+    public function store(int $idLista){
+        
+        $juego = new Juego;
+        $juego->list_id=$idLista;
+        $juego->name=Input::get('title');
+        $juego->genre=Input::get('genre');
+        $juego->company=Input::get('company');
+        $juego->release_date=Input::get('release_date');
+        
+        $juego->save();
+        //$lista->addGame(request('name','genre','company','release_date'));
+        return back();
     }
 
      /**
@@ -23,10 +35,10 @@ class ListGamesController extends Controller
 
     }
 
-    public function show(Juego $juego)
+    public function show(int $idLista, int $idJuego)
     {
-        $juegoid = request('id');
-        return view('games.show{ {{$juegoid}} }')->with('infoJuego',$juegoShow);
+        $datosJuego = DB::table('juegos')->where('list_id',$idLista, 'id',$idJuego);
+        return view('/lists/{{$idLista}}/{{$idJuego}}', compact('juegoid'));
     }
 
       /**

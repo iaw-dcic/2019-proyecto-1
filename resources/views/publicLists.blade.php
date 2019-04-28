@@ -10,12 +10,12 @@
 @endsection
 
 @section('content')
-    <div class="d-flex flex-column">
-    @if(!$listas->isEmpty())
+    <div class="d-flex ">
+    @if(!$InfoListas->isEmpty())
     <div class="list-group">
-        @foreach($lista as $listas)
-            <li><a href="{{route('lists/{list->id}') }}" class="list-group-item list-group-item-action">
-            {{$lista->titulo}}</a> creada por {{$lista->user->name}} </li>
+        @foreach($InfoListas as $elem)
+            <a href="/lists/{{$elem->id}}" class="list-group-item list-group-item-action ">
+            {{$elem->name}}</a> creada por <a href="profiles/{{$elem->id}}"> {{$autores[$elem->name]}} </a> 
         @endforeach
     </div>
         

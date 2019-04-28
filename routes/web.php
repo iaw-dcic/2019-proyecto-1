@@ -25,13 +25,15 @@ Route::resources([
     'lists' => 'listsController',    
 ]);
 
+Route::post('/lists','listsController@store');
+
 Route::resource('profiles','profileController')->only('show','edit','update','destroy');
 
 Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
 
-Route::get('/Listas/{id}' ,function($id,$listas){
-    return view('Listas'.$id);
-})->name('Lists');
+Route::post('/lists/{list}', 'ListGamesController@store');
+
+Route::get('/lists/{list}/{game}', 'ListGamesController@show');
 
 Auth::routes();
 

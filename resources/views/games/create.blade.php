@@ -1,4 +1,4 @@
-@extends('layout.appContent')
+@extends('layouts.appContent')
 
 @section('titulo')
     Creemos un Juego

@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lista extends Model
 {
+
+    protected $table = "listas";
     protected $fillable = [
-        'titulo', 'descripcion', 'public'
+        'titulo', 'description', 'public', 'user_id', 'id'
     ];
 
     public function games(){

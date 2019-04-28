@@ -42,7 +42,8 @@ class User extends Authenticatable
         return $this->hasMany(Lista::class);
     }
 
-    public function addList($name, $description,$public){
+    public function addList(String $name,String $description,int $public){
+
         $this->List()->create(compact(['name' => $name, 'description'=> $description, 'public'=> $public]));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class profileController extends Controller
@@ -46,8 +47,9 @@ class profileController extends Controller
      */
     public function show(User $user)
     {
-        $name = $user->name;
-        return view('profiles.show')->with('user',$user);
+        $name = Auth::user()->name;
+        
+        return view('profiles.show')->with('name',$name);
     }
 
     /**
@@ -58,7 +60,7 @@ class profileController extends Controller
      */
     public function edit(User $user)
     {
-        return redirect('profiles.edit',compact('user'));
+        return view('profiles.edit');
     }
 
     /**

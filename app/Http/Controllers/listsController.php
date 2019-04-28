@@ -7,11 +7,11 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class listsController extends Controller
 {
 
-    protected $table = 'list_info';
 
     /**
      * Display a listing of the resource.
@@ -22,9 +22,9 @@ class listsController extends Controller
     {
         
         if(Auth::check()){
-            $id = Auth::user()->id ;
-            $listas = DB::table('list_info')->where('user_id',Auth::user()->id)->get(); //Obtengo todas las listas del usuario
-            return view('lists.index',compact('listas','id')); //devuelvo una view junto con las listas
+            $name = Auth::user()->name ;
+            $listas = DB::table('listas')->where('user_id',Auth::user()->id)->get(); //Obtengo todas las listas del usuario
+            return view('lists.index',compact('listas','name')); //devuelvo una view junto con las listas
         }
         else{
             //es un guest mirando otro usuario, buscar lista del usuario visitado
@@ -54,13 +54,24 @@ class listsController extends Controller
         $this->middleware('auth');
 
         $validated = request()->validate([
-            'titulo' => ['required', 'min:5', 'max:255'],
+            'title' => ['required', 'min:5', 'max:255'],
             'listaDescripcion' => ['required', 'min:5', 'max:255']
         ]);
-        
+        $public = 0;
+        if(Input::get('public') == 'on')
+            $public = 1;
         
 
-        $user->addList(request('titulo'), request('listaDescripcion'), request('public'));
+        $lista = new Lista;
+        $lista->user_id=Input::get('userID');
+        $lista->name=Input::get('title');
+        $lista->description=Input::get('listaDescripcion');
+        $lista->public=$public;
+        
+        $lista->save();
+
+        //$user->addList($titulo, $descripcion, $public);
+        return redirect('lists');
 
     }
 
@@ -70,10 +81,13 @@ class listsController extends Controller
      * @param  \App\Lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function show(Lista $lista)
+    public function show(int $id)
     {
-        
-       return view('lists/{ {{lista->id}} }', compact('lista'));
+
+
+        $lista = DB::table('listas')->where('id',$id)->get();
+        $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
+        return view('lists.show',compact('lista','juegos'));
        //return view('verLista')->with('lista',$listaShow);
 
     }

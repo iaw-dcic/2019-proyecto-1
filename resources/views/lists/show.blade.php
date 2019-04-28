@@ -1,27 +1,38 @@
-@extends('layout.appContent')
+@extends('layouts.appContent')
 
 @section('titulo')
   Ver Lista
 @endsection
 
+@section('extraStyles')
+<link href="{{asset('css/publicListsStyle.css')}}" rel="stylesheet">
+<link href="{{asset('css/listInfoStyle.css')}}" rel="stylesheet">
+@endsection
+
 @section('content')
 
 <ul class="list-group">
-  <li class="list-group-item">{{__('Nombre de la Lista: {{$lista->titulo}}')}}</li>
-  <li class="list-group-item">{{__('Descripción de la Lista: {{$lista->descripcion}}')}}</li>
-  <li class="list-group-item list">{{__('Juegos:')}}</li>
+  <li class="list-group-item">Nombre de la Lista: {{$lista[0]->name}}</li>
+  <li class="list-group-item">Descripción de la Lista: {{$lista[0]->description}}</li>
+  <li class="list-group-item list">Juegos:</li>
   <div>
     <ul class= "list-group">
-    @foreach($juego as $lista->juegos)
-        <li class="list-group-item"> <a href="{{route('/games/{$game->id}') }}" class="list-group-item list-group-item-action">{{$juego->nombre}}</a> </li>
-    @endforeach
+    @if($juegos->count())
+        @foreach($juegos as $elem)
+            <li class="list-group-item"> <a href="/lists/{{$lista[0]->id}}/{{$elem->id}}" class="list-group-item list-group-item-action">{{$elem->name}}</a> </li>
+        @endforeach
+    @else  
+        <div class="alert alert-primary divAlerta text-center" role="alert">
+            <h4 class="alert-heading">Nada que ver por aquí</h4>
+               <p class="mb-0 paragraph"> No hay juegos para ver, porque no creas uno? <p>
+        </div>
+    @endif
     </ul>
   </div>
 </ul>
 
-<div class="btn-group" role="group" aria-label="list options">
-    <a href="profiles/{{$profile->id}}/lists/{$list->id}/editar" class="btn btn-outline-info">Editar datos Lista</button>
-</div>
+<a href="/lists/{{$lista[0]->id}}/editar" class="btn btn-outline-info btn-block editBlock">Editar datos Lista</a>
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -30,7 +41,7 @@
                 <div class="card-header">{{ __('llena los datos de tu juego aquí!') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/profiles.show{ {{Auth::user->id}} }">
+                    <form method="POST" action="/lists/{{$lista[0]->id}}">
                         @csrf
                         <div class="form-group">
                             <label for="game_title">Titulo del Juego</label>
@@ -47,9 +58,6 @@
                         <div class="form-group">
                             <label for="release_date">fecha de salida</label>
                             <input type="date" class="form-control" id="release_date" aria-describedby="release_date" placeholder="Ingresa la fecha de salida del juego" name="release_date" required >
-                        </div>
-                        <div>
-                           <input type="hidden" name="userID" value="{{Auth::user()->id}}">
                         </div>
                         <div>
                             <button type="submit" class="btn btn-primary" >Crear Juego </button>
@@ -80,5 +88,5 @@
 </div>
 
 
-<a href="{{route('/profile/{$profile->id}') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Volver al Perfil</a>
+<a href="/profiles/{{Auth::user()->id}}" class="btn btn-primary btn-lg btn-block profBut" role="button" aria-pressed="true">Volver al Perfil</a>
 @endsection

@@ -5,28 +5,29 @@
 @endsection
 
 @section('content')
-    <h1> Crea una nueva lista aquí! </h1>
+    <h1 class="text-center"> Crea una nueva lista aquí! </h1>
 
 
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('llena los datos de tu lista aquí!') }}</div>
-
+                <div class="card-header text-center">{{ __('llena los datos de tu lista aquí!') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="/profiles/{ {Auth::user->id} }">
+                    <form method="POST" action="/lists">
                         @csrf
                         <div class="form-group">
                             <label for="list_title">Titulo de la lista</label>
-                            <input type="text" class="form-control" id="list_title" aria-describedby="listHelp" placeholder="Ingresa el nombre de la lista" name="title" required value="{{old('title')}}">
+                            <input type="text" class="form-control" id="list_title" aria-describedby="listHelp" 
+                                placeholder="Ingresa el nombre de la lista" name="title" required value="{{old('title')}}">
                         </div>
                         <div class="form-group">
                             <label for="list_description">Descripcion</label>
-                            <input type="text" class="form-control" id="list_description" aria-describedby="list_description" placeholder="Ingresa una descripcion" name="listaDescripcion" required value="{{old('listaDescripcion')}}">
+                            <input type="text" class="form-control" id="list_description" aria-describedby="list_description" placeholder="Ingresa una descripcion" 
+                                name="listaDescripcion" required value="{{old('listaDescripcion')}}">
                         </div>
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="publicList" name='public'>
+                            <input type="checkbox" class="form-check-input" id="publicList" name='public' {{ old('remember') ? 'checked' : '' }}>
                             <label class="form-check-label" for="publicList">será la Lista Publica?</label>
                             <small id="publicList" class="form-text text-muted">si esto esta activo, tu lista podrá ser vista por otros usuario e invitados</small>
                         </div>

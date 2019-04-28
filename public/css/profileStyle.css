@@ -1,5 +1,7 @@
 .action_buttons{
     position:center;
+    justify-content: center;
+    display: flex;
 }
 
 .welcome_info{

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGamesTable extends Migration
+class CreateJuegosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateGamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('juegos', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
             $table->string('name')->index()->nullable($value=false)->unique();
             $table->string('genre');
             $table->string('company');
             $table->date('release_date');
             $table->engine = 'InnoDB';
-            $table->unsignedBigInteger('list_id');
+            $table->unsignedInteger('list_id');
+            $table->foreign('list_id')->references('id')->on('listas');
            
             
         });

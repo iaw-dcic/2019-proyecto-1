@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\User;
 
 class publicListsController extends Controller
 {
@@ -12,12 +13,18 @@ class publicListsController extends Controller
      *
      * @var string
      */
-    protected $table = 'public_list_info';
+    protected $table = 'listas';
     protected $InfoListas;
 
 
     public function index(){
-        $InfoListas= DB::table('public_list_info')->where('public',1)->get();
-        return view('publicLists')-> with('listas',$InfoListas);
+        $InfoListas= DB::table('listas')->where('public',1)->get();
+        $autores = [];
+        foreach($InfoListas as $autor){
+            $autoria = User::find($autor->user_id);
+            $autores[$autor->name] = $autoria->name;
+        }
+        
+        return view('publicLists', compact('InfoListas', 'autores'));
     }
 }
