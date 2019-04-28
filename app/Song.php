@@ -12,4 +12,7 @@ class Song extends Model{
 
     protected $primaryKey = 'song_id';
 
+    public function album () {
+        return $this->belongsTo(Album::class,'list_id','list_id');
+    }
 }

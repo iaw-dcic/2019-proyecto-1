@@ -13,20 +13,21 @@
 
 Route::get('/', 'PagesController@home');
 
-Route::resource('songs', 'SongsController')->middleware('auth');
+Route::resource('albums/{album}/songs', 'SongsController')->middleware('auth');
 
 Route::resource('albums', 'AlbumsController')->middleware('auth');
 
 Route::get('/profile', 'PagesController@profile')->middleware('auth')->name('profile');
 
-//php artisan make:controller nombreDelPhp -r para crear un controlador
-//Investigar sobre como agregar usuarios falsos
+Route::get('/about', 'PagesController@about')->name('about');
+
+Route::get('/browse', 'PagesController@browse')->name('browse');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Preguntar por que se borran los usuarios cada vez que hago migrate:rollback => es normal
+//php artisan make:controller nombreDelPhp -r para crear un controlador
 
 
 

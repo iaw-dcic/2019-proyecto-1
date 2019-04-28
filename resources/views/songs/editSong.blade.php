@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('myLayoutTitle', 'Songs')
 
@@ -56,16 +56,6 @@
                 <button type="button" onclick="location.href='{{ url('home') }}'">Go Back</button>
             </div>
         </div>
-
-        @if ($errors->any())
-        <div class="notification is-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
 
     </form>
 

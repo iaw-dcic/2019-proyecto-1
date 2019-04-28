@@ -18,14 +18,14 @@ class CreateSongsTable extends Migration {
             $table->string('artist');
             $table->string('album');
             $table->integer('release_year');
-            $table->string('notes');
+            $table->string('notes')->nullable();
             $table->integer('list_id',false,true);
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
 
         Schema::table('songs', function($table) {
-            $table->foreign('list_id')->references('list_id')->on('albums');
+            $table->foreign('list_id')->references('list_id')->on('albums')->onDelete('cascade');
         });
     }
 

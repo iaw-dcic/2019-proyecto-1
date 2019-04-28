@@ -1,3 +1,3 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('myLayoutTitle', 'Songs')

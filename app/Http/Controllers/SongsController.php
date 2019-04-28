@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Song;
+use App\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Auth;
+use Redirect;
 
 class SongsController extends Controller {
     /**
@@ -32,16 +37,49 @@ class SongsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        Song::create(request()->validate([
+    public function store(Album $album) {
+        $attributes = array(
             'song_name' => 'required',
             'artist' => 'required',
             'album' => 'required',
             'release_year' => ['required', 'digits_between:1,2050'],
-            'notes' => 'required'
-        ]));
+            'notes' => 'nullable'
+        );
+        $validator = Validator::make(Input::all(), $attributes);
 
-        return redirect('/songs');
+        if ($validator->fails()) {
+            return Redirect::to('songs.createSong')->withErrors($validator)->withInput(Input::except('password'));
+        }
+        else {
+            $album->addSong($attributes);
+
+            return back();
+        }
+
+        /*$elements = array(
+            'song_name' => 'required',
+            'artist' => 'required',
+            'album' => 'required',
+            'release_year' => ['required', 'digits_between:1,2050'],
+            'notes' => 'nullable'
+        );
+        $validator = Validator::make(Input::all(), $elements);
+        
+        if ($validator->fails()) {
+            return Redirect::to('songs.createSong')->withErrors($validator)->withInput(Input::except('password'));
+        }
+        else {
+            $song = new Song;
+            $song->song_name = Input::get('song_name');
+            $song->artist = Input::get('artist');
+            $song->album = Input::get('album');
+            $song->release_year = Input::get('release_year');
+            $song->notes = Input::get('notes');
+            $song->list_id = $album->list_id;
+            $song->save();
+            
+            return Redirect::to('songs');
+        }*/
     }
 
     /**

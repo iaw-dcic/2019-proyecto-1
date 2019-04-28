@@ -1,0 +1,12 @@
+html, body {
+    text-align:center;
+}
+
+.listChoice li {
+    margin-top:2%;
+    font-size: 120%;
+}
+
+.listChoiceElem {
+    color: #636b6f;
+}

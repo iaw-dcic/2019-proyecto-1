@@ -16,13 +16,13 @@ class CreateAlbumsTable extends Migration {
             $table->increments('list_id');
             $table->string('list_name');
             $table->string('owner');
-            $table->boolean('public');
+            $table->boolean('public')->default(1);
             $table->timestamps();
             $table->engine = 'InnoDB';
         });
 
         Schema::table('albums', function($table) {
-            $table->foreign('owner')->references('name')->on('users');
+            $table->foreign('owner')->references('name')->on('users')->onDelete('cascade');
         });
     }
 

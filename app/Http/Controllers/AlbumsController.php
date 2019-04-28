@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Auth;
+use Redirect;
 
 class AlbumsController extends Controller {
     /**
@@ -32,37 +36,24 @@ class AlbumsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    /*public function store(Request $request) {
-        Album::create(request()->validate([
-            'list_name' => 'required',
-            'public' => 'required',
-            'owner' => 'required',
-        ]));
-
-        return redirect('/albums');
-    }*/
-
-    public function store()
-    {
-        $rules = array(
+    public function store() {
+        $attributes = array(
             'list_name' => 'required',
             'public' => 'required'
         );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), $attributes);
 
         if ($validator->fails()) {
-            return Redirect::to('albums/createAlbum')->withErrors($validator)->withInput(Input::except('password'));
-        } else {
-            // store
+            return Redirect::to('albums.createAlbum')->withErrors($validator)->withInput(Input::except('password'));
+        }
+        else {
             $album = new Album;
             $album->list_name = Input::get('list_name');
             $album->public = Input::get('public');
             $album->owner = Auth::user()->name;
             $album->save();
 
-            Session::flash('message', 'Successfully created!');
-            return redirect('/albums');
-            //return Redirect::to('albums');
+            return Redirect::to('albums');
         }
     }
 
@@ -102,7 +93,7 @@ class AlbumsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy(Album $album) {
-        $album->delete;
+        $album->delete();
 
         return redirect('/albums');
     }
