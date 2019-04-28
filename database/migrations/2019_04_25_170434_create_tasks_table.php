@@ -19,8 +19,8 @@ class CreateTasksTable extends Migration{
             $table->integer('quantity');
             $table->string('privacy');
             $table->timestamps();
-            //$table->unsignedBigInteger('user_id');
-            //$table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')->references('id')->on('users');
         });
     }
 

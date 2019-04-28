@@ -34,38 +34,41 @@
                                 <option>Private</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-outline-dark">Submit</button>
+                        <button type="submit" class="btn btn-outline-dark">Save</button>
                     </div>
                     </form>
                     <hr>
-                
-                    <table class="table table-hover">
+                    <table class="table table-hover task-table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Code</th>
                         <th scope="col">Product</th>
                         <th scope="col">Quantity</th>
+                        <th scope="col">Privacy</th>
+                        <th scope="col">OWNER</th>
                         </tr>
+                        @foreach($tasks as $task)
+                            <tr>
+                            <td>{{$task->id}}</td>
+                            <td>{{$task->cod}}</td>
+                            <td>{{$task->name}}</td>
+                            <td>{{$task->quantity}}</td>
+                            <td>{{$task->privacy}}</td>
+                            <td>{{$task->owner_id}}</td>
+                            <td>
+                            
+                            <form  method="POST" action ="/home/{{$task->id}}" >
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-outline-dark" >X</button>
+                            </form>
+                            </td>
+                            </tr>
+                        @endforeach
                     </thead>
                     <tbody>
-                        <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        </tr>
+                  
                     </tbody>
                     </table>
                 </div>
@@ -74,6 +77,8 @@
     </div>
 </div>
 @endsection
+
+
 
 
 

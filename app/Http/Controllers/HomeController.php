@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Task;
 
+use App\User;
+
 class HomeController extends Controller{
     /**
      * Create a new controller instance.
@@ -26,7 +28,8 @@ class HomeController extends Controller{
         return view('home');
     }
     
-    public function addItem(Request $request){
+    protected function addItem(Request $request){
+        
         $data = $request->all(); //parametros del formulario
         //Tengo que validar los datos antes de cargarlos en la base de datos
         //dd($data); //esto me muestra los datos ingresados
@@ -43,15 +46,34 @@ class HomeController extends Controller{
         ]);
 
       //ACA TENGO QUE DEVOLVER LA VISTA CON LOS DATOS 
+        $user = User::where('id',auth()->id())->get()[0];
+        $task = new Task;
+        $task->cod = $request->cod;
+        $task->name = $request->name;
+        $task->quantity = $request->quantity;
+        $task->privacy = $request->privacy;
+        $task->owner_id = $user->id;
+        $task->save();
 
-        $task = Task::create([
-            'cod' => $data['cod'],
-            'name' => $data['name'],
-            'quantity' => $data['quantity'],
-            'privacy' => $data['privacy'],
-        ]);
-
-        return view('home', ['tasks' => $task]);
+        //$tasks = Task::orderBy('created_at', 'asc')->get(['id','cod','name','quantity','privacy','owner_id']);
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','name','quantity','privacy','owner_id']);
+        return view('home', ['tasks' => $tasks]);
     
+    }
+    
+    protected function getTable(){
+
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','name','quantity','privacy','owner_id']);
+
+        return view('home', ['tasks' => $tasks]);
+    }
+
+    protected function destroy($id){
+
+        Task::findOrFail($id)->delete();
+        
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','name','quantity','privacy','owner_id']);
+
+        return view('home', ['tasks' => $tasks]);
     }
 }
