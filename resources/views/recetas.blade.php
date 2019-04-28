@@ -2,52 +2,35 @@
 
 @section('content')
  
-<div  class="table-responsive">
-    <table class="table">
-    <thead class="thead-dark">
-       <tr>
-        <th> Nombre </th>
-        <th> Descripcion </th>
-        <th> Pasos </th>
-        <th></th>
-         
-        </tr>
-        </thead>
-    <tbody>
-        
-        @foreach($recetas as $receta)
-        <tr>
-          
-          <td> {{$receta->nombre }}</td>
-          <td> {{$receta->descripcion}} </td>
-          <td>{{ $receta->pasos }}</td>
-          <td>
-          <table>
-              <th> Ingredientes</th>
-              <th> Medida</th>
-              <th> Cantidad</th>
-          @foreach($ingredientes as $ingrediente)
-          
-             @if($ingrediente->receta_nombre == $receta->nombre)
-                  <tr>
-                 <td>{{ $ingrediente->ingredienteId->nombre }}</td>
-                    
-                   
-                 <td>{{ $ingrediente->medidaId->nombre }} </td>
-                  <td>{{ $ingrediente->cantidad }}</td> 
-                
-          @endif
-         
-          @endforeach
-        </table>
-        </td>
-        </tr>
-          @endforeach
-    </tbody>    
-</table>
- </div>
-  
-
- @stop
-
+<div class="recetas">
+    <div class="wrap">
+            <ul class="lista" id="lista">
+            @foreach($recetas as $receta)
+                <li>
+                    <div class="row">
+                        <div class="col-1">
+                        @if($receta->imagen == null)
+                        <a  href="{{route('receta',['nombre'=>$receta->nombre])}}">
+                        <img src="{{asset('img/plato.png')}}"  alt= "{{$receta->nombre}}"  height=100 width=100> 
+                        </a>
+                        @else
+                        <a  href="{{route('receta',['nombre'=>$receta->nombre])}}">
+                        <img src="{{ $receta->imagen}}"  alt= "{{$receta->nombre}}" height=100 width=100> 
+                        </a>
+                        @endif
+                    </div>
+                       <div class="col-9">
+                           <a  href="{{route('receta',['nombre'=>$receta->nombre])}}">
+                                  {{$receta->nombre}}
+                      
+                             </a>
+                            <hr>
+                            <small>  <p> por : <a href="{{route('verPerfil',['id'=>$receta->autorId])}}"> {{$receta->autorId->nombre}}</a> </p>  </small>
+                            <p> {{$receta->descripcion}} </p>
+                        </div>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+</div>
  

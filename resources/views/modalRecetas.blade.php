@@ -90,11 +90,14 @@
             <p class="statusMsg"></p>
                 <form id="formIngredientes" role="form" method="post" action="{{route('agregarIngrediente',['nombreReceta' =>  Session::get('status') ])}}" >
                 {{ csrf_field() }}
+                
+        
+                @for ($i =1; $i <= 10 ; $i++) 
                  <div class="row">
                     <div class="col-6">
                     <div class="form-group">
                         <label for="inputMessage">Ingrediente:</label>
-                        <select name="ingrediente" class="form-control">
+                        <select name={{"ingrediente".$i}}  class="form-control">
                             @foreach($ingredientes as $ingrediente)
                             <option value="{{$ingrediente->id}}">{{$ingrediente->nombre}} </option>
                             @endforeach
@@ -104,7 +107,7 @@
                     <div class="col-3">
                     <div class="form-group">
                         <label for="inputMessage">Medida:</label>
-                        <select name="medida" class="form-control">
+                        <select name={{"medida".$i}} class="form-control">
                             @foreach($medidas as $medida)
                             <option value="{{$medida->id}}">{{$medida->nombre}} </option>
                             @endforeach
@@ -114,17 +117,21 @@
                     <div class="col-3">
                     <div class="form-group">
                         <label for="inputMessage">Cantidad:</label>
-                        <input name="cantidad" type="number" class="form-control" placeholder="Cantidad"/>
+                        <input name="{{"cantidad".$i}}" type="number" class="form-control" placeholder="Cantidad"/>
                     </div>
                     </div>
                    <hr>
                    </div>
                       
-                    </div>
+
+
+                @endfor
+                      
+                  
                     <br><br>
 
                   
-         <button type="submit" class="float-right btn " data-backdrop="static"  >  Guardar </button>
+            <button type="submit" class="float-right btn " data-backdrop="static"  >  Guardar </button>
 
                 </form>
                

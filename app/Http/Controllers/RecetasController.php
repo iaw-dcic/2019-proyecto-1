@@ -90,18 +90,19 @@ public function agregarReceta(RecetaRequest $request, $id){
      return back()->with('status',$nombre);
 }
 public function agregarIngrediente( Request $request, $nombreReceta){
+   for($i=1 ; $i<=10; $i++){
+    $medida_id=$request->get('medida'.$i);
+    $ingrediente=$request->get('ingrediente'.$i);
+    $cantidad=$request->get('cantidad'.$i);
    
-    $medida_id=$request->medida;
-    $ingrediente=$request->ingrediente;
-    $cantidad=$request->cantidad;
-    
+    if($cantidad!=null && $ingrediente!=null && $medida_id != null){
     $receta=  ingrediente_de_receta::create([
         'receta_nombre' => $nombreReceta,
         'ingrediente_id' =>$ingrediente,
         'cantidad'=>  $cantidad,
         'medida_id' => $medida_id
-    ]);
-     
+    ]);}
+    }
      return back()->with('msj','Ingrediente agregado');
 }
 public function agregarLista(Request $request, $id){

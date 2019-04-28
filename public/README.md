@@ -4,3 +4,4 @@
 Lucila Arceredillo
 
 Se uso la libreria Socialite, para el login con redes sociales
+Se uso la libreria ImageProvider para la carga de fotos

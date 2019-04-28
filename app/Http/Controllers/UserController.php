@@ -142,8 +142,8 @@ use Illuminate\Support\Facades\Hash;
         $perfil=User::find($id); 
         $listas=Lista::where('usuario','=',$id)->get();
         $recetas= Receta::where('id_autor', $id)->get();
-        $ingredientes= Ingrediente::all();
-        $medidas= Medida::all();
+        $ingredientes= Ingrediente::orderBy('nombre', 'ASC')->get();
+        $medidas= Medida::orderBy('nombre', 'ASC')->get();
         return view('perfil', [
             'perfil' =>  $perfil,
             'recetas' =>$recetas,

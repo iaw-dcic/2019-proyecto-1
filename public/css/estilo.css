@@ -287,3 +287,30 @@ input:invalid {
 }
 .imgusuario{
   color: white !important;}
+
+.recetas{
+  margin-top:3rem;
+}
+ 
+.recetas .lista {
+ list-style: none;
+}
+
+.recetas .lista li {
+ border-bottom: 1px solid #B6B6B6;
+}
+
+.recetas .lista li a {
+ color: #212121;
+ display: block;
+ 
+ text-decoration: none;
+}
+hr{
+ margin-top:0.5rem !important;
+
+}
+
+.tareas .lista li a:hover {
+ text-decoration: underline;
+}

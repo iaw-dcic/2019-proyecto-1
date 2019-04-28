@@ -10,7 +10,7 @@
                     {{$receta[0]->nombre}} 
                    <br>
                  </h1>
-                <h5>   <small> por: <a href=""> {{$receta[0]->autorId->nombre}} </a> </small> </h5>
+                <h5>   <small> por: <a href="{{route('verPerfil',['id'=>$receta[0]->autorId])}}"> {{$receta[0]->autorId->nombre}} </a> </small> </h5>
                
                 <hr>
                 <h3 class="estilo-nombre-chefs" itemprop="author">
@@ -40,6 +40,7 @@
                         <h3> Pasos de la receta: </h3>
                         <hr>
                     </div>
+                    
                     <div class="row">
                     
                      <p>
