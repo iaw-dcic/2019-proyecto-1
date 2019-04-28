@@ -22,7 +22,7 @@ class CreateGoalsTable extends Migration
             $table->unsignedBigInteger('lista_id');
             $table->timestamps();
 
-            $table->foreign('lista_id')->references('id')->on('listas');
+            $table->foreign('lista_id')->references('id')->on('listas')->onDelete('cascade');
         });
     }
 

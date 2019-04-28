@@ -9,7 +9,8 @@
 	<ul id='left-panel'>
 		<li><a href="/profile">Mi Perfil</a></li>
 		<li><a href="/myLists">Mis Listas</a></li>
-		<li><a class="active" href="/settings">Configuración</a></li>
+		<li><a href="/createList">Crear Lista</a></li>
+		<li><a class="active">Configuración</a></li>
 	</ul>
 
 
@@ -27,9 +28,8 @@
 						</div>
 						@endif
 
-						<div style="padding:20px;margin-top:30px;height:1500px;">
 							<h1>Goals</h1>
-						</div>
+						
 					</div>
 				</div>
 			</div>

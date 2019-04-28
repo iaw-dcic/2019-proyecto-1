@@ -20,7 +20,17 @@ Route::get('/signin', 'PagesController@getSignIn')->name('signin');
 Route::get('/guest', 'PagesController@getGuest')->name('guest');
 Route::get('/settings', 'PagesController@getSettings')->name('settings');
 
+Route::get('/myLists', 'listsController@getMyLists')->name('index');
+Route::get('/createList', 'listsController@createList')->name('create');
+Route::post('/myLists', 'listsController@storeList')->name('store');
+Route::get('/myList/{lista}/show', 'listsController@showList')->name('show');
+Route::get('/myList/{lista}/edit', 'listsController@editList')->name('edit');
+Route::patch('/myList/{lista}', 'listsController@updateList')->name('update');
+Route::delete('/myList/{lista}', 'listsController@destroyList')->name('delete');
 
-Route::get('/goals', 'goalsController@getGoals')->name('goals');
-
-Route::get('/myLists', 'listsController@getMyLists')->name('myLists');
+//Route::get('/goals', 'goalsController@getGoals')->name('getGoals');
+Route::post('/myList/{lista}/edit', 'goalsController@storeGoal')->name('store');
+//Route::get('/myList/{lista}/{goal}', 'goalsController@showGoal')->name('show');
+//Route::get('/myList/{lista}/{goal}/edit', 'goalsController@editGoal')->name('edit');
+//Route::patch('/myList/{lista}', 'goalsController@updateGoal')->name('update');
+Route::delete('/myList/{lista}/{goles}', 'goalsController@destroyGoal')->name('delete');

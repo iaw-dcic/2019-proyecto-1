@@ -8,7 +8,8 @@
 
 	<ul id='left-panel'>
 		<li><a href="/profile">Mi Perfil</a></li>
-		<li><a class="active" href="/myLists">Mis Listas</a></li>
+		<li><a class="active">Mis Listas</a></li>
+		<li><a href="/createList">Crear Lista</a></li>
 		<li><a href="/settings">Configuración</a></li>
 	</ul>
 
@@ -27,29 +28,40 @@
 						</div>
 						@endif
 
-						<div style="padding:20px;margin-top:30px;height:1500px;">
-							<h1>Mis Listas</h1>
+						<table>
+							<tr>
+								<th>Nombre</th>
+								<th style="text-align:center">Privacidad</th>
+								<th> </th>
+								<th> </th>
+							</tr>
 
-							<table>
-								<tr>
-									<th>Nombre</th>
-								</tr>
-								
-								@foreach ($listas as $lista)
-								
-								<tr>
-									<td>{{ $lista->name }}</td>
-								</tr>
-								@endforeach
+							@foreach ($listas as $lista)
 
-							</table>
+							<tr>
+								<td> <a href='/myList/{{ $lista->id }}/show' id='listas'> {{ $lista->name }} </a> </td>
+								@if($lista->public)
+								<td style="text-align:center; color:#00ff40">✔</td>
+								@else
+								<td style="color:red; text-align:center"><b>ꭗ</b></td>
+								@endif
+								<td><a href='myList/{{ $lista->id }}/edit'> Editar</a></td>
+								<td>
+									<form method="POST" action="myList/{{ $lista->id }}">
+										@method('DELETE')
+										@csrf
+										<button id='delete' type='submit'> Eliminar </button>
+									</form>
+								</td>
+							</tr>
+							@endforeach
 
-						</div>
+						</table>
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	@endsection
 </body>
