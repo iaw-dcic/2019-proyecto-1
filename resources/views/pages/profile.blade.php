@@ -29,13 +29,23 @@
                         <img src="./img/blog/1.jpg" alt="">
                     </div>
                     <div class="blog-text text-box text-white">
-                        <h3>Información</h3>
+                        <h3 style="color:bisque">Información</h3>
                         <div class="top-meta">Nombre: {{$user->name}}</div>
-                        <div class="top-meta">Email: {{$user->email}}</div>
-                        <div class="top-meta">Listas: {{$listingsTitles}}</div>
+                        <div class="top-meta">Nombre usuario: {{$user->username}}</div>
+                        <div class="top-meta">Listas: 
+                            @foreach($userListings as $listing) 
+                                @if ($listing->visibility == 'Publica')
+                                    <a href="{{route('listings.show',$listing->id)}}"> {{$listing->title}} </a>
+                                @endif
+                            @endforeach
+                          
+                        
+                        </div>
                        
-                        <br><br><br><br><br><br>
+                        <br><br><br><br>
+                        @auth
                         <a href="#" class="read-more">Editar avatar <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+                        @endauth
                         
                     </div>
                 </div>

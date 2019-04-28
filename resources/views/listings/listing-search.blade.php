@@ -1,6 +1,7 @@
 @extends('layouts.app') 
 @section('title',' | Buscar listas') 
 @section('content')
+@include('sweetalert::alert')
 
 <!-- Page top section -->
 <section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/4.jpg')}}">

@@ -41,7 +41,7 @@ class PagesController extends Controller
         return view('listings.listing-search');
     }
 
-    public function profile()
+    /*public function profile()
     {
         if ($user = Auth::user()) {
             $user = auth()->user();
@@ -61,7 +61,7 @@ class PagesController extends Controller
             alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tu perfil.');
             return redirect()->guest('/login');
         }
-    }
+    }*/
 
     public function getUserProfile($userName)
     {
@@ -69,15 +69,16 @@ class PagesController extends Controller
 
             $userListings = Listing::where('user_id',$user->id)->get();
 
-            $arrayOfListingsTitles= [];
+          /*  $arrayOfListingsTitles= [];
             foreach($userListings as $listing) {
                 array_push($arrayOfListingsTitles,$listing->title);
             }
             
-            $listingsTitles=  implode(" - ", $arrayOfListingsTitles);
+            $listingsTitles=  implode(" - ", $arrayOfListingsTitles);*/
 
-
-            return view('pages.profile',compact('user','listingsTitles'));
+          
+            return view('pages.profile',compact('user','userListings'));
+            //return view('pages.profile',compact('user','listingsTitles'));
            
 
            /* $userGames = Game::where('user_id', $user->id)->get();

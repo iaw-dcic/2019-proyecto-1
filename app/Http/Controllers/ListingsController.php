@@ -41,7 +41,7 @@ class ListingsController extends Controller
 
             return view('listings.listing-index')->withData($data);
         } else {
-            alert()->info('Atención!', 'Tenes que iniciar sesión o registrarte para ver tus listas.');
+            alert()->info('Atención!', 'Tenes que iniciar sesión o registrarte para crear o ver tus listas.');
             return view('listings.listing-search'); 
         }
     }

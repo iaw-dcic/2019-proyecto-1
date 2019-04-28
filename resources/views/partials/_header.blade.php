@@ -85,12 +85,7 @@
                     </li>
                     @endauth
                     @guest
-                    <li><a href="{{url('searchlisting')}}">Listas</a> 
-                       
-                        <ul class="sub-menu">   
-                            <li><a href=""> Buscar listas </a></li>
-                        </ul>
-                  
+                    <li><a href="{{route('listings.index')}}">Listas</a>      
                     </li>
                     @endguest
 
