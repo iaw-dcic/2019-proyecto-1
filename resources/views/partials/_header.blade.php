@@ -27,7 +27,9 @@
                     @auth
 
 
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="position: relative; padding-left:50px;">
+                            <img src="{{asset('storage/avatar_images/thumbnail').'/'.auth()->user()->avatar}}" style="width:32px; height:32px; position:absolute; top:0px;left:10px; border-radius:50%">
+
                             {{ Auth::user()->username }} <span class="caret"></span>
                         </a>
 
@@ -36,7 +38,7 @@
                             <p style="color:black;"> Mi perfil </p>
                         </a> -->
                         <a class="dropdown-item" href="{{ route('user_profile',auth()->user())}}"> <p style="color:black;"> Mi perfil </p></a>
-
+                        <a class="dropdown-item" href="{{ route('listings.index')}}"> <p style="color:black;"> Mis listas </p></a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                             <p style="color:black;"> Cerrar sesión </p>

@@ -24,10 +24,16 @@
 		<div class="game-single-preview">
 			<div class="row">
 				<div class="col-xl-5 col-lg-5 col-md-5 game-single-content">
-					<div class="gs-meta">Juego de <a href="{{route('games.index')}}">NombreUsuario</a></div>
 					<h2 class="gs-title">{{ucfirst($data['game']->title)}}</h2>
-					<a href="/games/{{$data['game']->id}}"> <img class="img-thumbnail img-fluid"
-						 src="{{asset('storage/cover_images/thumbnail').'/'.$data['game']->cover_image}}" alt="Cover"></a>
+
+					<div class="col-lg-7 col-md-6">
+
+						<div class="game-item">
+						<a href="/games/{{$data['game']->id}}"> <img class="img-thumbnail img-fluid"
+							src="{{asset('storage/cover_images/thumbnail').'/'.$data['game']->cover_image}}" alt="Cover"></a>
+						</div>
+					</div>
+						 
 				</div>
 
 				<div class="col-xl-5 col-lg-5 col-md-5 game-single-content">
@@ -52,20 +58,18 @@
 				</div>
 
 
+				@auth
+					<div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
+						<a href="{{route('games.edit', ['game' => $data['game']->id])}}" class="site-btn">Editar juego</a>
+						<br><br><br>
 
-
-				<div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
-					<a href="{{route('games.edit', ['game' => $data['game']->id])}}" class="site-btn">Editar juego</a>
-					<br><br><br>
-
-					<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
-						{{ method_field('DELETE') }} @csrf
-						<!-- {{ csrf_field() }} -->
-						<button type="submit" class="site-btn">Eliminar juego</button>
-
-					</form>
-
-				</div>
+						<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
+							{{ method_field('DELETE') }} @csrf
+							<!-- {{ csrf_field() }} -->
+							<button type="submit" class="site-btn">Eliminar juego</button>
+						</form>
+					</div>
+				@endauth
 			</div>
 		</div>
 

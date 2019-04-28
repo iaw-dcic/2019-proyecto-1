@@ -19,7 +19,7 @@ class GamesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'create']]);
+        $this->middleware('auth', ['except' => ['index', 'create','show']]);
     }
 
     /**
@@ -121,6 +121,7 @@ class GamesController extends Controller
     public function show($id)
     {
         $game = Game::find($id);
+
 
         $listNames = [];
         foreach ($game->listings as $listing) {
