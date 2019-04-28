@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Lists;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use Auth;
-
 use App\Lista;
 use App\Item;
 use DB;
 use App\Rules\validarListNameEditList;
 
-class ListController extends Controller
+class MyListsController extends Controller
 {
     public function __construct()
     {

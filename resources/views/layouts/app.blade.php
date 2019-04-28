@@ -56,17 +56,15 @@
 
             <div class="col-xs-8 col-md-4">
                 <nav class="navbar-inline">
-
-                    <form class="form-inline" role="search" action="{{url('home/searchredirect')}}">
+                    <form class="form-inline" role="search" action="{{url('home/search')}}">
                         <div class="form-group ml-sm-4 mr-sm-2">
                             <input type="text" class="form-control w-100" name='search' placeholder="Buscar ..." />
                         </div>
-
                     </form>
                 </nav>
             </div>
 
-            <div class="col-xs-2 col-md-4">
+            <div class="col-xs-2 col-md-4 col-lg-4">
                 <nav id="nav-menu-container">
                     <ul class="nav-menu mr-auto">
                         <li>

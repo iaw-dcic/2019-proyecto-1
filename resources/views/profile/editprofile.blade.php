@@ -12,7 +12,7 @@
                         <h4 class="text-white">{{ $user['username'] }}</h4>
                     </div>
                     <div class="col-md-4">
-                        <textarea class="scrollbar-primary mt-4" style="border-radius:15px" rows="4" cols="50" id="description" readonly disabled>{{ $user['description'] }}</textarea>
+                        <textarea class="scrollbar-primary mt-4" style="border-radius:15px; background-color: black;color:#fff;" rows="4" cols="50" id="description" readonly disabled>{{ $user['description'] }}</textarea>
                     </div>
                 </div>
                 <h2 class="text-white">Editar Perfil</h2>
