@@ -36,24 +36,32 @@
                                     )
                                 }}" alt="Cover image"></a
                             >
-                            <h5>
-                                <a
-                                    href="/games/{{$game->id}}"
-                                    style="color: white"
-                                    >{{$game->title}}</a
-                                >
-                            </h5>
+                            <div class="game-title">
+                                    <h5>
+                                            <a
+                                                href="/games/{{$game->id}}"
+                                                style="color: white"
+                                                >{{$game->title}}</a
+                                            >
+                                            
+                                    </h5>
+                            </div>
+                            <div class="game-info">
+                                <a href="{{route('games.show', $game->id)}}" class="read-more">info del juego
+                                        <img
+                                            src="{{
+                                                asset('img/icons/double-arrow.png')
+                                            }}"
+                                    /></a>
+                            </div>
+                            
+                        
 
                             <!-- <a href="/games/{{$game->id}}" class="read-more">info del juego <img src="{{asset('img/icons/double-arrow.png')}}"></a>                            -->
-                            <a href="{{route('games.show', $game->id)}}" class="read-more">info del juego
-                                <img
-                                    src="{{
-                                        asset('img/icons/double-arrow.png')
-                                    }}"
-                            /></a>
+                            
                             <br/>
                             @auth
-                                <a href="{{route('delete_game_from_listing',['gameId' => $game->id , 'listingId' => $listing->id])}}"> Eliminar juego de la lista </a>
+                                <a class="btn btn-danger" href="#" role="button">Eliminar de la lista</a>
                             @endauth
                         </div>
                     </div>
