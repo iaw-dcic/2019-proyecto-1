@@ -70,6 +70,9 @@ class RegisterController extends Controller
             'description' => "",
         ]);
 
+        $user->avatar = "default_avatar.png";
+        $user->save();
+
         return $user;
     }
 }

@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-md-4">
                     <label class="text-white" for="listname">Creado Por:</label>
-                    <img class="rounded-circle mr-1" width="50px" height="50px" src="{{ asset('uploads/avatars/'.$creator->avatar) }}">
+                    <img class="rounded-circle mr-1" width="50px" height="50px" src="{{ (substr_compare($creator->avatar, 'https://', 0, 8)==0) ? $creator->avatar : asset('uploads/avatars/'.$creator->avatar) }}">
                     <a class="text-white" style="a:active {color: red;}" href="/profile/{{$creator->username}}">{{$creator->username}}</a>
                 </div>
             </div>

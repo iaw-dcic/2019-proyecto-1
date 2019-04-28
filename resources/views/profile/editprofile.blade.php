@@ -8,7 +8,7 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <img width="100px" height="100px" class="rounded-circle" src="{{ asset('uploads/avatars/'.$user['avatar']) }}">
+                        <img width="100px" height="100px" class="rounded-circle" src="{{ (substr_compare($user['avatar'], 'https://', 0, 8)==0) ? $user['avatar'] : asset('uploads/avatars/'.$user['avatar']) }}">
                         <h4 class="text-white">{{ $user['username'] }}</h4>
                     </div>
                     <div class="col-md-4">

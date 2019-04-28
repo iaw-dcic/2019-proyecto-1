@@ -31,8 +31,7 @@
     <link href="{{ asset('css/switchbuttons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/personalstyles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/w3.css') }}" rel="stylesheet">
-
-    @yield('headcontent')
+    <link href="{{ asset('/lib/bootstrap-social/bootstrap-social.css') }}" rel="stylesheet">
 
     <!-- =======================================================
     Theme Name: Regna
@@ -50,8 +49,6 @@
     <header id="header">
         <div class="row">
             <div id="logo" class="pull-left col-xs-2 col-md-2">
-                <!-- Uncomment below if you prefer to use a text logo -->
-                <!--<h1><a href="#hero">Regna</a></h1>-->
             </div>
 
             <div class="col-xs-8 col-md-4">
@@ -64,7 +61,7 @@
                 </nav>
             </div>
 
-            <div class="col-xs-2 col-md-4 col-lg-4">
+            <div class="col-xs-2 col-md-6 col-lg-4">
                 <nav id="nav-menu-container">
                     <ul class="nav-menu mr-auto">
                         <li>
@@ -87,7 +84,7 @@
                             <a href="{{ route('mylists') }}">{{ __('Mis Listas') }}</a>
                         </li>
                         <li class="menu-has-children"><a href="#">
-                                <img class="rounded-circle mr-1" width="20px" height="20px" src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}"> {{ Auth::user()->username }} </a>
+                                <img class="rounded-circle mr-1" width="20px" height="20px" src="{{ (substr_compare(Auth::user()->avatar, 'https://', 0, 8)==0) ? Auth::user()->avatar : asset('uploads/avatars/'.Auth::user()->avatar) }}"> {{ Auth::user()->username }} </a>
                             <ul>
                                 <li>
                                     <a href="{{ route('user.profile') }}">{{ __('Perfil') }}</a>

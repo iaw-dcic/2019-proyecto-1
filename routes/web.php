@@ -33,4 +33,7 @@ Route::get('/lists/{list_id}','Lists\ListController@getList')->name('getList');
 Route::post('/lists','Lists\ListController@likeList')->name('likeList');
 Route::delete('/lists','Lists\ListController@unLikeList')->name('unLikeList');
 
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
+
 
