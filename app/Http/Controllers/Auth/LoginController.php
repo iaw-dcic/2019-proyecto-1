@@ -49,15 +49,15 @@ class LoginController extends Controller
 
         $user = User::where('email', $auth_user->email)
                         ->get();
-
-        dd($user);
-
+        
         if ($user==null) {
             $user = new User();
             $user->name = $auth_user->name;
             $user->email = $auth_user->email;
             $user->token = $auth_user->token;
+            dd($user);
             $user->save();
+
         } else
             $user->token = $auth_user->token;
 
