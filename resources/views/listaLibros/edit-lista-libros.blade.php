@@ -2,7 +2,15 @@
 
 @section('contenido')
   <!-- Bootstrap Boilerplate... -->
-
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+              <li class="m 5 p 5">{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+  @endif
   <!-- Add icon library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div class="container">
