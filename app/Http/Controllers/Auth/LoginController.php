@@ -44,8 +44,6 @@ class LoginController extends Controller
 
     public function handleProviderFacebookCallback() {
         $auth_user = Socialite::driver('facebook')->user();
-
-        dd($auth_user);
         
         $user = User::updateOrCreate(
             [
@@ -59,6 +57,6 @@ class LoginController extends Controller
 
         Auth::login($user, true);
         
-        return redirect()->to('/');
+        return redirect('/');
     }
 }
