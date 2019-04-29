@@ -26,6 +26,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /* Rutas para playlists */
+
 //GET PLAYLISTS DE USER @index
 Route::get('{user}/playlists', 'PlaylistsController@index')->name('playlists');
 
@@ -33,19 +34,18 @@ Route::get('{user}/playlists', 'PlaylistsController@index')->name('playlists');
 Route::post('{user}/playlists', 'PlaylistsController@store');
 
 //CREAR NUEVA PLAYLIST DE USER @create
-Route::get('{user}/create', 'PlaylistsController@create');
+Route::get('{user}/create', 'PlaylistsController@create')->name('create_playlist');
 
 //VER PLAYLIST DE USER @show
-Route::get('{user}/{playlist}', 'PlaylistsController@show');
+Route::get('{user}/{playlist}', 'PlaylistsController@show')->name('show_playlist');
 
 //BORRAR PLAYLIST @destroy
 Route::delete('/playlists/{playlist}', 'PlaylistsController@destroy');
 
 //EDITAR PLAYLIST DE USER @edit
-Route::get('{user}/{playlist}/edit', 'PlaylistsController@edit');
+Route::get('{user}/{playlist}/edit', 'PlaylistsController@edit')->name('edit_playlist');;
 
 //GUARDAR EDICION PLAYLIST DE USER @update
 Route::patch('{user}/{playlist}', 'PlaylistsController@update');
 
-//Route::resource('{user}/playlists', 'PlaylistsController');
 

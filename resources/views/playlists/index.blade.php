@@ -8,31 +8,35 @@
         </div>
     </div>
     <div class="row">
-        @foreach ($playlists as $playlist)
-        <div class="col-sm-4 fluid">
-            <div class="card text-center">
-                <div class="card-body bg-secondary rounded-big">
-                    <h3>
-                        <a class="card-link" href="{{ url($user->id,$playlist) }}">
-                            {{$playlist->name}}
-                        </a>
-                    </h3>
-                    <p  class="card-text">
-                        {{$playlist->description}}
-                    </p>
-                    <ol>
-                        @foreach ($playlist->videos() as $video)
-                            <li>
-                                <a class="class-link" href="{{$video->url}}">
-                                    {{$video->title}}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ol>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div>
+            <div class="card-deck">
+                    @foreach ($user->playlists as $playlist)
+                        <div class="card">
+                            <div class="card-body bg-secondary rounded-big">
+                                <h3>
+                                    <a class="card-link" href="{{ url($user->id,$playlist) }}">
+                                        {{$playlist->name}}
+                                    </a>
+                                </h3>
+                                <p  class="card-text">
+                                    {{$playlist->description}}
+                                </p>
+                                <ol>
+                                    @foreach ($playlist->videos as $video)
+                                        <li>
+                                            <a href="{{$video->url}}">
+                                                        @if ( empty($video->title) )
+                                                            {{$video->url}}
+                                                        @else
+                                                            {{$video->title}}
+                                                        @endif
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ol>
+                            </div>
+                    </div>
+                    @endforeach
+                </div><!-- card deck-->
+    </div><!-- row-->
+</div><!--container-->
 @endsection

@@ -5,6 +5,10 @@
             <div class="col-md-8">
                 <h3>{{$playlist->name}}</h3>
                 <p>{{$playlist->description}}</p>
+                <a class="btn btn-primary btn-sm"
+                href="{{action('PlaylistsController@edit',['user'=>$user,'playlist'=>$playlist]) }}" >
+                    Editar
+                </a>
                 <ol>
                 @foreach ($playlist->videos as $video)
                     <li>

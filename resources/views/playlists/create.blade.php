@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="container">
-        <h2>Nueva playlist de {{auth()->user()->id}}</h2>
+        <h2>Nueva playlist de {{auth()->user()->name}}</h2>
     </div>
     <div class="container">
         <form method="POST" action="{{ url(auth()->user()->id,'playlists') }}">
@@ -20,7 +20,8 @@
             <div class="form-group row">
                 <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descripcion') }}</label>
                 <div class="col-md-6">
-                    <input id="description" type="text-field" class="form-control" name="description" value="{{ old('description') }}" required>
+                    <textarea id="description" type="text-field" class="form-control" rows="3"
+                    name="description">@if ($errors->any()){{old('description')}}@endif</textarea>
                     @if ($errors->has('description'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('description') }}</strong>
@@ -35,6 +36,7 @@
                     </button>
                 </div>
             </div>
+
         </form>
         @if ($errors->any())
             <div class="alert alert-danger">

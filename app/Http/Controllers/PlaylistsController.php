@@ -8,15 +8,22 @@ use App\User;
 
 class PlaylistsController extends Controller
 {
-/**
+    public function __construct(){
+
+        $this->middleware('auth');//->except([]);
+
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        //obtengo el user y su playlist
-        $user = User::find($request->user()->id);
+        //obtengo el user y sus playlists
+        $user = User::find($request->user);
         $playlists = Playlist::all()->where('user_id',$user->id);
 
         //las paso a la vista user y playlists
@@ -39,36 +46,45 @@ class PlaylistsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(User $user,Request $request)
     {
         //Valido la entrada
         $datos = $request->validate([
-            'name' => 'required|string|unique:users|max:255',
+            'name' => 'required|string|unique:users|min:3|max:255',
             'description' => 'string',
         ]);
+
+        //Obtengo el usuario logueado
+        $user=auth()->user();
 
         //Creo nueva playlist
         $nuevaPlaylist = new Playlist;
         $nuevaPlaylist->name = $datos['name'];
         $nuevaPlaylist->description = $datos['description'];
+        $nuevaPlaylist->user_id = $user->id;
+
+        $this->authorize('update',$nuevaPlaylist);
 
         //Guardo en DB con user
-        $request->user()->playlists()->save($nuevaPlaylist);
+        $user->playlists()->save($nuevaPlaylist);
 
-        return redirect('home');
+        //Preparo variables para la redireccion
+        $parametros=[
+            'playlist' => $nuevaPlaylist->id,
+            'user' => $user->id
+        ];
+        return redirect()->route('show_playlist',$parametros);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(User $user,Playlist $playlist)
     {
-        //obtengo el user y su playlist
-        $user = User::find($request->user()->id); //esto no es necesario
-        $playlist = Playlist::find($request->playlist);
+        $this->authorize('view',$playlist);
 
         return view('playlists.show',compact('user','playlist'));
     }
@@ -79,9 +95,11 @@ class PlaylistsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user,Playlist $playlist)
     {
-        //
+        $this->authorize('update',$playlist);
+
+        return view('playlists.edit',compact('user','playlist'));
     }
 
     /**
@@ -91,9 +109,30 @@ class PlaylistsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user, Playlist $playlist, Request $request)
     {
-        //
+        //Chequeo que el usuario este autorizado para editar
+        $this->authorize('update',$playlist);
+
+        //Valido la entrada
+        $datos = $request->validate([
+            'name' => 'required|string|unique:users|min:3|max:255',
+            'description' => 'string',
+        ]);
+
+        //Asigno las modificaciones
+        $playlist->name = $datos['name'];
+        $playlist->description = $datos['description'];
+
+        //Actualizo con ediciones
+        $playlist->update();
+
+        //Preparo variables para la redireccion
+        $parametros=[
+            'playlist' => $playlist->id,
+            'user' => $user->id
+        ];
+        return redirect()->route('show_playlist',$parametros);
     }
 
     /**
@@ -104,6 +143,15 @@ class PlaylistsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //obtengo playlist
+        $playlist=Playlist::find($id);
+
+        //chequeo si el usuario es el dueño
+        $this->authorize('update',$playlist);
+
+        //elimino
+        $playlist->delete();
+
+        return redirect('home');
     }
 }

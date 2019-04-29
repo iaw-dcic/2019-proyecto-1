@@ -23,6 +23,10 @@ class CreateVideosTable extends Migration
             $table->string('channel')->nullable();
             $table->timestamps();
         });
+
+        Schema::table('videos', function (Blueprint $table) {
+            $table->foreign('playlist_id')->references('id')->on('playlists');
+        });
     }
 
     /**
