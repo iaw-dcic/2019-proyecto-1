@@ -49,7 +49,7 @@ class ProfileController extends Controller
         $profile -> Apellido = $request -> input('surname');
         $profile -> Ciudad = $request -> input('city');
         $profile -> save();
-        return redirect('editProfile');
+        return back();
     }
 
     /**
