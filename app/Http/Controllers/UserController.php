@@ -36,6 +36,7 @@ class UserController extends Controller
         if ($user == null)
             return view('auth.login');
 
+        dd(request('pass'));
         $user->password = request('pass');
         $user->save();
 
