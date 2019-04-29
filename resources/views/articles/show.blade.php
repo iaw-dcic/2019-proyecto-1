@@ -17,7 +17,7 @@
 
                         <div class="form-group row">
                             <label for="fabricationYear" class="col-md-4 col-form-label text-md-right">
-                            Price: ${{$article->price }}</label>                            
+                            Status: {{$article->estado }}</label>                            
                         </div>
 
                         <div class="form-group row">

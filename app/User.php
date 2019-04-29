@@ -37,8 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function inventory(){
-        return $this->hasOne('App\Inventory');
+    public function inventories(){
+        return $this->hasMany(Inventory::class);
     }
 }

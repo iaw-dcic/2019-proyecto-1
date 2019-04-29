@@ -23,9 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Project1WEB-AgustinGarcia
-                </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,6 +31,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <a class="navbar-brand" href="/users">Explore</a>
+                        <a class="navbar-brand" href="/readme">Readme</a>
 
                     </ul>
 
@@ -40,11 +40,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest                            
-                            <span id="exploreshow"></span>
-                                <script>
-                                    if (document.URL != "http://127.0.0.1:8000/articles" )
-                                        document.getElementById("exploreshow").innerHTML ='<a id="explorehref" class="nav-link" href="/articles">Explore</a>';                                                                           
-                                </script>
+                            
                             <span id="loginshow"></span>
                                 <script>
                                     if (document.URL != "http://127.0.0.1:8000/login")
@@ -63,8 +59,8 @@
                                     {{ Auth::user()->nick_name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="/articles">Explore</a>
-                                    <a class="nav-link" href="/users/{{{ Auth::user()->id }}}/edit">Profile</a>
+                                    <a class="nav-link" href="/inventories">My Inventories</a>
+                                    <a class="nav-link" href="/users/{{{ Auth::user()->id }}}">My Profile</a>
                                     <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

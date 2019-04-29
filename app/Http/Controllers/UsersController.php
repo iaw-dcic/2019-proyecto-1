@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Inventory;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Display a listing of the resource.
@@ -19,7 +19,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        dd('este es el index de users');
+        $inventories = Inventory::all();
+
+        return view('users.index',compact('inventories'));
     }
 
     /**
@@ -60,7 +62,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        dd('Este es el show de users');
+        return view('users.show',compact('user'));
     }
 
     /**
@@ -87,7 +89,7 @@ class UsersController extends Controller
         $user->update(request()->all());
         $user->save();
 
-        return redirect('/home');
+        return redirect('/');
     }    
 
     /**

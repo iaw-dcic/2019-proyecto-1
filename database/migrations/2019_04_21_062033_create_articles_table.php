@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->text('title',60);
             $table->integer('fabricationYear');
-            $table->integer('price');
+            $table->enum('estado', ['Original', 'Restored', 'Modified', 'Boosted']);
             $table->unsignedBigInteger('inventory_id')->unsigned();
             $table->unsignedBigInteger('user_id')->unsigned();
 

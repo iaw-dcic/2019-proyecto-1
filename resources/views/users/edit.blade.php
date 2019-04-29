@@ -11,13 +11,14 @@
 
                 <form method="POST" action="/users/{{Auth::user()->id}}">
                         @method('PATCH')
-                        @csrf 
+                        @csrf     
+
 
                         <div class="form-group row">
-                            <label for="user_name" class="col-md-4 col-form-label text-md-right">User Name</label>
+                            <label for="nick_name" class="col-md-4 col-form-label text-md-right">User Name</label>
 
                             <div class="col-md-6">
-                                <input id="user_name" type="text" class="form-control" name="email" value= "{{ Auth::user()->nick_name }}" readonly>
+                                <input id="nick_name" type="text" class="form-control" name="email" value= "{{ Auth::user()->nick_name }}" readonly>
                             </div>
                         </div>
 

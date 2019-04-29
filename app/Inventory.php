@@ -10,7 +10,7 @@ class Inventory extends Model
 
     protected $table= "inventories";    
     
-    protected $fillable= ['user_id','public_status'];
+    protected $fillable= ['title','user_id','public_status'];
 
     public function user()
     {

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Inventory;
 use Illuminate\Http\Request;
+use Auth;
 
 class ArticlesController extends Controller
 {
@@ -14,24 +16,29 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-
-        return view('articles.index',compact('articles'));
+        //$inventories = Inventory::all();
+        dd('este es el index de articles');
+        //return view('inventories.index',compact('inventories'));
     }
 
-    public function create()
+    public function create(Inventory $inventory)
     {
-        return view('articles.create');
+
+        return view('articles.create',compact('inventory'));
     }
-    public function store(Request $request)
+    
+    public function store(Inventory $inventory)
     {
-        Article::create(
-            request()->validate([
-                'title'=> ['required','string'],
-                'fabricationYear' => ['required','integer','min:1930','max:2019'],
-                'price' => ['required','integer','min:0']
-            ]));
-        return redirect('/articles');
+        
+        Article::create([
+            'user_id' =>Auth::user()->id,
+            'estado' => request('estado'),
+            'title' => request('title'),
+            'fabricationYear' => request('fabricationYear'),
+            'inventory_id'=> $inventory->id,
+            ]
+        );
+        return view('inventories.show',compact('inventory'));
     }
 
     public function show(Article $article)
@@ -61,13 +68,13 @@ class ArticlesController extends Controller
     {
         $atributes = request()->validate([
             'title'=> ['required','string'],
-            'fabricationYear' => ['required','integer','min:1930','max:2019'],
-            'price' => ['required','integer','min:0']
+            'fabricationYear' => ['required','integer','min:1870','max:2019'],
+            'estado' => ['required'],
         ]);
         $article->update($atributes);
         $article->save();
 
-        return redirect('/articles');
+        return redirect('/inventories');
     }
 
     /**
@@ -80,6 +87,6 @@ class ArticlesController extends Controller
     {
         $article->delete();
 
-        return redirect('/articles');
+        return redirect('/inventories');
     }
 }

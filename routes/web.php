@@ -15,12 +15,16 @@ Route::get('/', function () { return view('welcome'); });
 
 Route::get('/home', 'PagesController@home');
 
+Route::get('/readme', function () { return view('readme'); });
+
 Auth::routes();
 
 Route::resource('articles','ArticlesController');
 
 Route::resource('inventories','InventoriesController');
 
-Route::resource('users','UsersController');
+Route::get('/inventories/{inventory}/create','ArticlesController@create');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('articles/{inventory}','ArticlesController@store');
+
+Route::resource('users','UsersController');
