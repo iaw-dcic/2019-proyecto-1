@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         $user = \App\User::find($id);
         $listasPublicas = \App\ListaLibro::where(['user_id' => $id, 'privada' => false])->get();
-        return view('profile\details-profile',compact('user','listasPublicas'));
+        return view('profile/details-profile',compact('user','listasPublicas'));
     }
 
     /**
