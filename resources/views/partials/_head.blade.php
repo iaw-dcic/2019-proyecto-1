@@ -20,20 +20,20 @@
   <!-- Stylesheets -->
 
   <link rel="stylesheet" href="{{ URL::asset('//css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('/css/owl.carousel.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('/css/magnific-popup.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/font-awesome.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/magnific-popup.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/animate.css') }}">
 
 
   <!-- Form -->
   <!--===============================================================================================-->
    
   	<!-- css files -->
-  <link rel="stylesheet" href="{{ URL::asset('css/style-form-game.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/style-form-game.css') }}">
 
 	<!-- Style-CSS -->
-  <link rel="stylesheet" href="{{ URL::asset('css/fontawesome-all.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/fontawesome-all.css') }}">
   
 	<!-- Font-Awesome-Icons-CSS -->
 	<!-- //css files -->
@@ -44,12 +44,12 @@
       
 
   <!-- Main Stylesheets -->
-  <link rel="stylesheet" href="{{ URL::asset('/css/style.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/style.css') }}">
 
   <!-- Search table -->
-  <link rel="stylesheet" href="{{ URL::asset('/css/search-table-util.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
-  <link rel="stylesheet" href="{{ URL::asset('vendor/select2/select2.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/search-table-util.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
+  <link rel="stylesheet" href="{{ URL::asset('//vendor/select2/select2.css') }}">
   @yield('search-specific-style')
 
   <!--Multiple select forms Bootstrap-->
@@ -57,7 +57,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
- <!-- <link rel="stylesheet" href="{{ URL::asset('css/faq-custom.css') }}"> -->
+ <!-- <link rel="stylesheet" href="{{ URL::asset('//css/faq-custom.css') }}"> -->
 
 
 
