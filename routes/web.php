@@ -16,16 +16,18 @@ Route::get('/', function () {
 });
 
 /**Ruta hacia la página principal de la aplicación */
-Route::get('/index', 'UserController@index');
+Route::get('/usuarios', 'UserController@index')->name('users.index');
 
 /** Ruta para registrarse */
-Route::get('index/registrarse', 'UserController@registro');
+Route::get('usuarios/nuevo', 'UserController@create')->name('users.create');
 
-/**Ruta hacia la configuracion del usuario para configurar sus vistas 
+Route::post('usuarios/crear','UserController@store');
+/** */
+
+/**Ruta hacia la configuracion del usuario para configurar sus vistas
  * Para eso la enlazo con el controlador User Controller y la funcion es show
 */
-Route::get('/index/{id}', 'UserController@show');
+Route::get('/usuarios/{id}', 'UserController@show')->name('users.show');
 
 
 
- 
