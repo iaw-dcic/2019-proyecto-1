@@ -19,7 +19,7 @@
 
   <!-- Stylesheets -->
 
-  <link rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('//css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/magnific-popup.css') }}">
@@ -56,6 +56,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
+ <!-- <link rel="stylesheet" href="{{ URL::asset('css/faq-custom.css') }}"> -->
+
 
 
 </head>
