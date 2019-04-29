@@ -3,6 +3,8 @@
 @section('title','Crear Cancion')
 
 @section('content')
+    <br>
+    <h1>Crear Canción</h1>
 
    <!-- Formulario de creacion de cancion  --> 
     <!--                 uso la ruta store para hacer el post del formulario -->
@@ -16,9 +18,9 @@
             </div>
     
             <div class="field">
-                    <label class="label" for="duracion">Duracion</label>
+                    <label class="label" for="duracion">Duración</label>
                     <div class="control">
-                        <input type="time" class="input" name="duracion" placeholder="Duracion" >
+                        <input type="time" class="input" name="duracion" placeholder="Duración" >
                     </div>
             </div>
         
@@ -47,7 +49,7 @@
 
 
             <br>
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Agregar Cancion</button>
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Agregar Canción</button>
         </form>
        
        

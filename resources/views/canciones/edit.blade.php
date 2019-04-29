@@ -3,6 +3,7 @@
 @section('title','Editar Canción')
 
 @section('content')
+        <br>
         <h1>Editar Canción</h1>
 
      <!-- Mensaje flash  --> 
@@ -16,20 +17,13 @@
      </div>
      @endif
 
-    <!-- usa metodo             POST                    y on submit redirige a /listas  -->
 
-    <!-- al completar el formulario voy a listas.update y le paso la cancion
-    
-        o el id de cancion????
-        
-        
-        
-        ??
-                -->
-                            <!-- cancion es el nuevo request, id es la cancion a modificar -->
+    <!-- usa metodo             POST                    y on submit redirige a /listas  -->                       
+                                <!-- cancion es el nuevo request, id es la cancion a modificar -->
     <form method="POST" action="{{ action('CancionesController@update',$cancion,$id) }}">
+        {{ csrf_field() }}
             {{  method_field('PATCH') }}
-            {{ csrf_field() }}
+           
         <div class="field">
             <label class="label" for="nombre">Nombre Canción</label>
             <div class="control">

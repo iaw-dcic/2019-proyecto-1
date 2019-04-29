@@ -10,6 +10,14 @@ use Auth;
 
 class UsuariosController extends Controller
 {
+
+
+  //middleware
+  public function __construct()
+  {
+      $this->middleware('auth',['except'=>['index']]);
+  }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +26,7 @@ class UsuariosController extends Controller
      //listar usuarios
     public function index()
     {
-        //busco el usuario y si no existe ninguno no me muestra nada (cuestion seguridad)
-        if (!(Auth::check()))
-            return view('home');
+        //puedo ver la lista de usuarios, estando logueado o no
 
         $users=  User::orderBy('name','ASC')->paginate(3);
 
@@ -36,7 +42,7 @@ class UsuariosController extends Controller
      */
     public function create()
     {
-        return view('users/create');
+        return redirect('invalido');
     }
 
 

@@ -10,10 +10,13 @@ use Auth;
 class ListasController extends Controller
 {
 
+    //middleware
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except'=>['show','index']]);
     }
+    
+
 
 
     /**
@@ -23,16 +26,31 @@ class ListasController extends Controller
      */
     public function index()
     {
-        //busco el usuario actual
-        $user_id= Auth::user()->id;
-        //obtengo todas las listas de ese usuario
-        $listas= Lista::where('user_id', $user_id);//->where('visible',2);
+        //obtengo todas las listas publicas de mi app
+        $listas= Lista::where('visible',2);
       
         $listas=  $listas->paginate(5);
 
         //retorno la vista y le paso las listas
         return view ('listas.index',compact('listas'));
     }
+
+    //index para listas privadas (el usuario ya esta logueado)
+    public function indexPriv()
+    {
+        $user_id= Auth::user()->id;
+        //obtengo todas las listas publicas de mi app
+        $listas= Lista::where('visible',0)->where('user_id',$user_id);
+      
+        $listas=  $listas->paginate(5);
+
+        //retorno la vista y le paso las listas
+        return view ('listas.indexPriv',compact('listas'));
+    }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -44,6 +62,8 @@ class ListasController extends Controller
         return view('listas.create');
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,11 +72,7 @@ class ListasController extends Controller
      */
     public function store(Request $request)
     {
-         //2da capa de validacion: si no la pasa me redirige a la misma pagina
-        // $atributos= request()->validate([
-        //    'name'=> ['required','min:3'],
-        //   ..
-
+        //2da capa de validacion: si no la pasa me redirige a la misma pagina
         $lista= new Lista(
                  request()->validate([
                         'nombre'=> ['required','min:3'],
@@ -68,21 +84,16 @@ class ListasController extends Controller
         
         $lista->user_id= $user_id;    
         $lista->save();
-        return redirect('listas')->with('success','Lista \''.$lista->nombre.'\' ha sido creada con exito!');
+
+        //si es publica
+        if ($request->visible !=0)             
+            return redirect('listas/public')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!');
+        else
+            //si es privada (=0)
+            return redirect('listas/private')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!'); 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $lista= Lista::findOrFail($id);
-
-        return view('listas.show',compact('lista'));
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -97,6 +108,8 @@ class ListasController extends Controller
         //y se lo paso a la vista
         return view('listas/edit',compact('lista','id'));
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -115,10 +128,14 @@ class ListasController extends Controller
                            'descripcion'=> 'required',
                       ],Lista::messages()));
         
-       // $lista->save();           
-         //Vuelvo al listado usando un get y muestro un mensaje flash
-         return redirect('listas')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!');
+      
+         if ($request->visible !=0)             
+            return redirect('listas/public')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!');
+        else
+            return redirect('listas/private')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!');          
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -131,6 +148,6 @@ class ListasController extends Controller
         $lista= Lista::findOrFail($id);
         $lista->delete();
            //Vuelvo al listado usando un get y muestro un mensaje flash
-        return redirect('listas')->with('warning','La lista \''.$lista->name.'\' ha sido eliminada!');
+        return redirect('listas/public')->with('warning','La lista \''.$lista->name.'\' ha sido eliminada!');
     }
 }

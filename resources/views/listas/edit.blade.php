@@ -3,6 +3,7 @@
 @section('title','Editar Lista')
 
 @section('content')
+<br>
     <h1>Editar Lista</h1>
 
 
@@ -18,9 +19,7 @@
      @endif
 
     <!-- usa metodo             POST                    y on submit redirige a /listas  -->
-
     <!-- al completar el formulario voy a listas.update y le paso el id de lista  -->
-
     <form method="POST" action="{{ action('ListasController@update',$lista->id) }}">
             {{  method_field('PATCH') }}
             {{ csrf_field() }}

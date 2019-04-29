@@ -3,6 +3,8 @@
 @section('title','Crear Lista')
 
 @section('content')
+    <br>
+    <h1>Crear Lista</h1>
 
      <!-- Mensaje flash  --> 
     @if ($errors->any())
@@ -28,13 +30,15 @@
                 </div>
             </div>
     
+            <br>
             <div class="field">
-                    <label class="label" for="descripcion">Descripcion</label>
+                    <label class="label" for="descripcion">Descripción</label>
                     <div class="control">
-                        <input type="text" class="input {{ $errors->has('descripcion') ? 'is-danger' :''}}" name="descripcion" placeholder="Descripcion" >
+                        <input type="text" class="input {{ $errors->has('descripcion') ? 'is-danger' :''}}" name="descripcion" placeholder="Descripción" >
                     </div>
             </div>
-        
+            
+            <br>
             <div class="field">
                 <label class="label" for="nombre">Visibilidad</label>
                 <div class="control">
@@ -43,6 +47,7 @@
                 </div>
             </div>
 
+            <br>
             <div>
                 <button class="btn btn-success my-2 my-sm-0" type="submit">Agregar Lista</button>
             </div>

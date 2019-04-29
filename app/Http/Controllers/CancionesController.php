@@ -9,6 +9,16 @@ use Auth;
 
 class CancionesController extends Controller
 {
+
+     //middleware
+     public function __construct()
+     {
+         $this->middleware('auth',['except'=>['index']]);
+     }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +28,9 @@ class CancionesController extends Controller
     public function index($id)
     {
         //busco el usuario y si no existe ninguno no me muestra nada (cuestion seguridad)
-        $user_id= Auth::user()->id;
+        if (Auth::user() == null)
+            redirect('/login');
+
 
         $lista= Lista::findOrFail($id);
         //id de lista
@@ -58,11 +70,13 @@ class CancionesController extends Controller
                    //'fecha_lanzamiento'=>'required',
                ],Cancion::messages())
            );
-   $lista_id= Lista::findOrfail($id)->id; 
+        $lista_id= Lista::findOrfail($id)->id; 
    
-   $cancion->fecha_lanzamiento= $request->fecha_lanzamiento;
-   $cancion->lista_id= $lista_id;    
-   $cancion->save();
+        if($request->fecha_lanzamiento !=null)
+            $cancion->fecha_lanzamiento= $request->fecha_lanzamiento;
+   
+        $cancion->lista_id= $lista_id;    
+        $cancion->save();
 
    return redirect('listas/'.$lista_id)->with('success','Cancion \''.$cancion->nombre.'\' ha sido creada con exito!');
     }

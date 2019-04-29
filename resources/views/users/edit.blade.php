@@ -3,6 +3,8 @@
 @section('title','Editar Usuario')
 
 @section('content')
+
+    <br>
     <h1>Editar Usuario</h1>
 
    
@@ -29,6 +31,7 @@
             </div>
         </div>
 
+        <br>
         <div class="field">
                 <label class="label" for="email">Email</label>
                 <div class="control">
@@ -36,15 +39,10 @@
                 </div>
         </div>
 
-        <!-- aca deberia pedir la contraseña para ejectuar los cambios --> 
 
-    
-
-        <div class="field">
-                <div class="control">
-                    <button type="submit" class="button is-link"> </button>
-                </div>
-            </div>
-
+        <br>
+        <div>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Aplicar cambios</button>
+        </div>
     </form>
 @endsection
