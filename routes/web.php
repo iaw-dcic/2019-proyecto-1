@@ -32,3 +32,7 @@ Route::delete('/home/{task}','HomeController@destroy')->name('destroy');
 Route::get('/profile/{user}','ProfileController@showPublicProfile')->name('showPublicProfile');
 
 Route::get('/','WelcomeController@get');
+
+Route::post('/profile/{user}/edit','editController@edit')->name('edit');
+
+Route::post('/home/{task}','HomeController@changeVisibility')->name('changeVisibility');

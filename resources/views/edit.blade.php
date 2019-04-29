@@ -4,16 +4,19 @@
 <div class="container">
     
     <hr>
-    <form>
+    Change your profile
+    <hr>
+    <form method= "POST" action= "{{route('edit',Auth::user()->id)}}">
+    @csrf
     <div class="form-row">
         <div class="col-4">
-        <input type="text" class="form-control" placeholder="City">
+            <input name="name" id="name" type="text" class="form-control" placeholder="Name">
         </div>
         <div class="col">
-        <input type="text" class="form-control" placeholder="State">
+            <input name="nick" id="nick" type="text" class="form-control" placeholder="Nick">
         </div>
         <div class="col">
-        <input type="text" class="form-control" placeholder="Zip">
+            <input name="password" id="password" type="password" class="form-control" placeholder="Password">
         </div>
         <div>
             <button type="submit" class="btn btn-outline-dark">Save</button>

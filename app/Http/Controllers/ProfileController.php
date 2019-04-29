@@ -25,7 +25,7 @@ class ProfileController extends Controller{
 
         $user = User::find($id);
 
-        return view('edit');
+        return view('edit',compact('user'));
     }
 
     protected function showPublicProfile($id){

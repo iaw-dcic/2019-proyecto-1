@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Hello</div>
+                <div class="card-header">My List</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                         </div>
                     @endif
  
-                    You can add some item to your stock
+                    Add some Book to your list
                     <hr>
                     <form method="POST" action="{{ route('addItem')}}">
                     @csrf
@@ -23,10 +23,13 @@
                             <input name="cod" id="cod" type="number" min="1" class="form-control" placeholder="Code" required>
                         </div>
                         <div class="col">
-                            <input name="name" id="name" type="text" class="form-control" placeholder="Name" required>
+                            <input name="title" id="title" type="text" class="form-control" placeholder="Title" required>
                         </div>
                         <div class="col">
-                            <input name="quantity" id="quantity" type="number" min="1" class="form-control" placeholder="Quantity" required>
+                            <input name="author" id="author" type="text" class="form-control" placeholder="Author" required>
+                        </div>
+                        <div class="col">
+                            <input name="editorial" id="editorial" type="text" class="form-control" placeholder="Editorial" required>
                         </div>
                         <div class="col">
                             <select id="privacy" name="privacy" class="form-control">
@@ -43,28 +46,38 @@
                         <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Code</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Quantity</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Editorial</th>
                         <th scope="col">Privacy</th>
-                        <th scope="col">OWNER</th>
+                        <th scope="col">Public/Private</th>
+                        <th scope="col">Delete</th>
+                        
                         </tr>
                         @foreach($tasks as $task)
                             <tr>
                             <td>{{$task->id}}</td>
                             <td>{{$task->cod}}</td>
-                            <td>{{$task->name}}</td>
-                            <td>{{$task->quantity}}</td>
+                            <td>{{$task->title}}</td>
+                            <td>{{$task->author}}</td>
+                            <td>{{$task->editorial}}</td>
                             <td>{{$task->privacy}}</td>
-                            <td>{{$task->owner_id}}</td>
                             <td>
-                            
-                            <form  method="POST" action ="/home/{{$task->id}}" >
-                                @method('DELETE')
-                                @csrf
-                                <button class="btn btn-outline-dark" >X</button>
-                            </form>
+                                <form  >
+                                    @csrf
+                                    <button class="btn btn-outline-dark" >Change Privacy</button>
+                                </form>
                             </td>
+                            <td>
+                                <form  method="POST" action ="/home/{{$task->id}}" >
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-outline-dark" >X</button>
+                                </form>
+                            </td>
+                            
                             </tr>
+
                         @endforeach
                     </thead>
                     <tbody>

@@ -36,8 +36,8 @@ class HomeController extends Controller{
 
         $validatedData = $request->validate([
             'cod' => 'required|unique:tasks|max:255',
-            'name' => 'required',
-            'quantity' => 'required|max:255',
+            'title' => 'required',
+            'author' => 'required|max:255',
             //defino regla para los dos campos posibles de privacidad.
             //'privacy' => [
               //  'required',
@@ -49,21 +49,23 @@ class HomeController extends Controller{
         $user = User::where('id',auth()->id())->get()[0];
         $task = new Task;
         $task->cod = $request->cod;
-        $task->name = $request->name;
-        $task->quantity = $request->quantity;
+        $task->title = $request->title;
+        $task->author = $request->author;
+        $task->editorial = $request->editorial;
         $task->privacy = $request->privacy;
         $task->owner_id = $user->id;
+        $task->owner_name = $user->name;
         $task->save();
 
         //$tasks = Task::orderBy('created_at', 'asc')->get(['id','cod','name','quantity','privacy','owner_id']);
-        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','name','quantity','privacy','owner_id']);
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
         return view('home', ['tasks' => $tasks]);
     
     }
     
     protected function getTable(){
 
-        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','name','quantity','privacy','owner_id']);
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
 
         return view('home', ['tasks' => $tasks]);
     }
@@ -72,8 +74,33 @@ class HomeController extends Controller{
 
         Task::findOrFail($id)->delete();
         
-        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','name','quantity','privacy','owner_id']);
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
 
         return view('home', ['tasks' => $tasks]);
+    }
+
+    protected function changeVisibility($id){
+
+       // dd($id);
+
+        $tasks = Task::where('id',$id)->get(['privacy']);
+
+        if($tasks){
+
+            switch($tasks->privacy){
+              case 'Public':
+                  $tasks->update(['privacy'=> 'Private']);      
+                  break;
+              case 'Private':
+                  $tasks->update(['privacy'=> 'Public']);          
+                  break;
+          }
+        }
+
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
+        
+        return view('home', compact('task'));
+
+        
     }
 }

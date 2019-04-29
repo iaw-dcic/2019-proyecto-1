@@ -8,6 +8,6 @@ class Task extends Model
 {
     
     protected $fillable = [
-        'cod', 'name', 'quantity','privacy',
+        'cod', 'title', 'author','editorial','privacy',
     ];
 }
