@@ -26,8 +26,11 @@
 		</div>
 	</div>
 
+	<br/>
+	<div class="text-center">
 	<a href="/searchresults/{{$user->id}}/list/{{$list->id}}">	
 		<button type="button" class="btn btn-secondary">Volver</button>
 	</a>
+	</div>
 
 @endsection
