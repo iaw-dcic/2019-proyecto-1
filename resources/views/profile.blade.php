@@ -15,7 +15,38 @@
         </form>
         </div>
     </div>
-    <a href="{{ route('createAlbum') }}" class="btn btn-outline-success" role="button" aria-pressed="true">Agregar Album</a>
+
+    <table id="albums">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Album</th>
+            <th>Artista</th>
+            <th>Link</th>
+            <th></th>
+        </tr>
+     </thead>
+
+        <tbody>
+        @foreach($albums as $album)
+            <tr>
+            <td>{{$album->id}}</td>
+            <td>{{$album->name}}</td>
+            <td>{{$album->bandName}}</td>
+            <td>{{$album->link}}</td>
+            <td>
+            <a href="{{ route('createAlbum') }}" class="btn btn-outline-success" role="button" aria-pressed="true">Editar</a>
+            </td>
+            </tr>
+            @endforeach
+
+
+        </tbody>
+
+    </table>
+
+    <a href="{{ route('createAlbum') }}" class="btn btn-outline-success" role="button" aria-pressed="true">Agregar Nuevo Album</a>
+
 
 </div>    
 @endsection

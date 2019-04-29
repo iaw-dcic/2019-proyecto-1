@@ -8,13 +8,30 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form enctype="multipart/form-data"  method="POST" action="{{ route('register') }}">
                         @csrf
 
+                                <div class="container">
+                                <div class="container">
+    
+    <div class="avatar-upload">
+        <div class="avatar-edit">
+            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+            <label for="imageUpload"></label>
+        </div>
+        <div class="avatar-preview">
+            <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+            </div>
+        </div>
+    </div>
+</div>
+          
+
+
+
                         <div class="form-group row">
-                        <div id='content-img' class="container ">
-                            <img class="sesion" src="/images/img_avatar.png" alt="Avatar">
-                        </div>
+
+                  
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -77,4 +94,5 @@
         </div>
     </div>
 </div>
+
 @endsection

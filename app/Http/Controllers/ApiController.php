@@ -19,7 +19,9 @@ class ApiController extends Controller
     }
 
     public function profile(){
-        return view('profile',['user'=>Auth::user()]);
+        $user = Auth::user();
+        $albums= User::find($user->id)->albums;
+        return view('profile',['user'=>$user,'albums'=>$albums]);
 
     }
 

@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/appaux.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dataTables.css') }}" rel="stylesheet">
@@ -107,6 +108,7 @@
 <script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/dataTables.js')}}"></script>
 <script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
+<script src="{{asset('js/avatar.js')}}"></script>
 
 
 
