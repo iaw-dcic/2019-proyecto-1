@@ -20,6 +20,11 @@ Route::get('/readme', function () {
 
 Route::get('/edit_profile','PerfilController@index');
 
+Route::get('/create_list','ListaController@index');
+
+
+Route::resource('list','ListaController');
+
 Route::resource('profile','PerfilController');
 
 Auth::routes();

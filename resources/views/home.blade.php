@@ -39,7 +39,7 @@
                         <h3>My Lists</h3>
                       </div>
                       <div class="col-sm-2">
-                        <a href="#" title='Add new list'class="btn btn-secondary material-dark"><i class="far fa-plus-square"></i></a>
+                        <a href="{{ url('/create_list') }}" title='Add new list'class="btn btn-secondary material-dark"><i class="far fa-plus-square"></i></a>
                       </div>
                     </div>
 
@@ -57,6 +57,10 @@
                                         <div class="">
                                           <label for="">Tags:</label>
                                           <span>{{$lista->tags}}</span>
+                                        </div>
+                                        <div class="">
+                                          <label for="">Privacy: </label>
+                                          <span>@if($lista->publica == 0) Private @else Public @endif</span>
                                         </div>
                                       </div>
                                     </div>
