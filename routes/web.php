@@ -5,25 +5,35 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Routes for user
+
 Auth::routes();
-
-Route::get('/home','MovieController@index');
-
-Route::get('/users/{user}/edit','UserController@edit')->name('user.edit');
-
-Route::put('users/{user}','UserController@update');
 
 Route::get('/users','UserController@index')->name('users.index');
 
-Route::get('users/{user}','UserController@show')
-    ->where('user','[0-9]+')
-    ->name('users.show');
+Route::get('/{user}','UserController@show')
+        ->where('user','[0-9]+')
+        ->name('users.show');
 
-Route::get('lists/{id}','MovieController@show')
-    ->where('id','[0-9]+')
-    ->name('lists.show');
+Route::get('/edit/{user}','UserController@edit')->name('edit');
 
-Route::get('lists/new','MovieController@create');
+Route::put('/edit/{user}','UserController@update');
+
+Route::get('/lists','UserController@mylists')->name('lists');
+
+//Routes for lists of elements
+
+Route::get('/home','MovieController@index')->name('home');
+
+Route::get('/create_list',"ListController@create")->name('create_list');
+
+Route::post('/create_list',"ListController@store");
+
+Route::post('/editlist', 'MovieController@create');
+
+Route::get('/editlist/{id}', 'ListController@edit')->name('editlist');
+
+
 
 
 //Socialite

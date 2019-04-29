@@ -1,0 +1,75 @@
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url(https://vonjabucanin.files.wordpress.com/2013/03/silver-background.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 30rem;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(236, 239, 243, 0.568) !important;
+}
+
+.table_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: rgb(3, 54, 121);
+}
+
+.table_icon span:hover{
+    color: rgb(8, 85, 185);
+}
+.table-head{
+    font-size: 0.90rem;
+}
+
+.table-body{
+    font-size: 0.9rem;
+}
+
+.btn-primary{
+    font-size: 0.7rem;
+}
+
+.card-header h3{
+    color: black;
+    font-size:1.50rem;
+}
+.card-header h4{
+    color: black;
+    font-size:0.80rem;
+}
+.card-footer{
+    font-size: 0.9rem;
+}
+    
+.table_icon{
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+    
+.input-group-prepend span{
+    width: 50px;
+    background-color: rgba(146, 177, 174, 0.747);
+    color: black;
+    border:0 !important;
+}
+    
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}

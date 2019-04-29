@@ -38,6 +38,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function list(){
+        
+        return $this->hasMany(MovieList::class);
+    }
+
     function socialProviders()
     {
         return $this->hasMany(SocialProvider::class);

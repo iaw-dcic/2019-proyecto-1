@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    public function movieList(){
+    protected $fillable = [
+        'name',
+        'director',
+        'genre',
+        'list_id',
+    ];
 
+    public function movieList()
+    {
+        return $this->belongsTo(MovieList::class);
     }
 }
