@@ -100,4 +100,12 @@ return [
         ],
     ],
 
+    //Agrego esto segun dice la pag:
+    // https://laraveldaily.com/from-google-api-to-google-sign-in-with-laravel-socialite/
+    'socialite' => [
+        'drivers' => [
+            'google',
+        ],
+    ],
+
 ];
