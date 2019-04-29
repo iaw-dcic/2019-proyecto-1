@@ -62,11 +62,11 @@
                                     <i class="fa fa-facebook-official" aria-hidden="true">Ingresar con Facebook</i>
                                 </a>
 
-                                @if (Route::has('password.request'))
+                                {{-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>
