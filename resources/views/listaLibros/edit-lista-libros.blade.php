@@ -173,8 +173,8 @@
             </div>
         </div>
         </div>
-
-    <script async>    
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>    
             $('#eliminarLibro').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) 
             var id = button.data('id')
@@ -183,7 +183,7 @@
             })      
     </script>
 
-    <script async>    
+    <script >    
         $('#eliminarLista').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
         var id = button.data('id') 
@@ -192,7 +192,7 @@
         })      
     </script>
 
-    <script async>    
+    <script>    
         $('#editarLibro').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) 
         var id = button.data('id')
