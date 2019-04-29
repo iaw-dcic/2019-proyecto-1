@@ -34,6 +34,9 @@ class HomeController extends Controller
           $perfil -> edad = '';
           $perfil -> ciudad = '';
         }
-        return view('home',['perfil'=>$perfil]);
+
+        $listas = \App\Lista::where('id_user','=',Auth::user()->id)->simplePaginate(6);
+        //var_dump($listas);
+        return view('home',['perfil'=>$perfil,'listas'=>$listas]);
     }
 }

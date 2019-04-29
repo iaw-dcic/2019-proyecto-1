@@ -17,4 +17,5 @@ class Pelicula extends Model
 
     ];
 
+    protected $primaryKey = 'id_pelicula';
 }

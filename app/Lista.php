@@ -17,5 +17,5 @@ class Lista extends Model
 
     ];
 
-
+    protected $primaryKey = 'id_lista';
 }
