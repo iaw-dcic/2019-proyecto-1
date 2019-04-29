@@ -57,18 +57,6 @@ class LoginController extends Controller
             $user->save();
         } else
             $user->token = $auth_user->token;
-        
-        /*$user = User::updateOrCreate(
-            [
-                'email' => $auth_user->email
-            ],
-            [
-                'token' => $auth_user->token,
-            ]
-        );*/
-
-
-        dd($auth_user);
 
         Auth::login($user, true);
 
