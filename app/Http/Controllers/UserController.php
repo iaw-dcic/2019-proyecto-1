@@ -3,6 +3,7 @@
 namespace Cinefilo\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -36,7 +37,7 @@ class UserController extends Controller
         if ($user == null)
             return view('auth.login');
 
-        $user->password = request('pass');
+        $user->password = Hash::make(request('pass'));
         $user->save();
 
         return redirect('/');
