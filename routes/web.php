@@ -18,6 +18,10 @@ Route::get('/readme', function () {
     return view('readme');
 });
 
+Route::get('/edit_profile','PerfilController@index');
+
+Route::resource('profile','PerfilController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

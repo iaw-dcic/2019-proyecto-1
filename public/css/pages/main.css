@@ -22,3 +22,7 @@ a,body{
 hr{
   border-color:  whitesmoke;
 }
+.validation-failed{
+  font-size: 0.9rem;
+  color: #9b0000;
+}

@@ -20,6 +20,15 @@
                           <div class="">
                             Name: {{ Auth::user()->name }}
                           </div>
+                          <div class="">
+                              Edad: {{$perfil->edad}}
+                          </div>
+                          <div class="">
+                              Ciudad: {{$perfil->ciudad}}
+                          </div>
+                          <div class="">
+                            <a href="{{ url('/edit_profile') }}" class="btn btn-secondary material-dark"><i class="fas fa-user-edit"></i> Edit Info</a>
+                          </div>
                           <hr>
                         </div>
                     </div>
