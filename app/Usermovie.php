@@ -11,8 +11,7 @@ class Usermovie extends Model{
         'nombre',
 		'creador_id',
     ];
-	
-	
+		
 	public function movies(){
 		return $this->hasMany(Movie::class);
 	}

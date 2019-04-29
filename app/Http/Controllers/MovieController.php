@@ -74,5 +74,39 @@ class MovieController extends Controller
 		*/
 		return redirect('/home');;
 	}
+	
+	public function edit(Usermovie $usermovie){
+		return view('lists.editlist', ['usermovie'=> $usermovie]);
+	}
+	
+	public function update(Usermovie $usermovie){
+		$usermovie->nombre = request('nombre');
+		
+        $usermovie->save();
+		
+		return redirect()->route('lists.show', ['usermovie'=> $usermovie]);
+	}
+	
+	public function destroy(Usermovie $usermovie){
+	
+	//	$lista= Usermovie::find($usermovie);
+		
+		$peli=Movie::where('lista',$usermovie->id)->get();
+		
+		foreach ($peli as $movie){
+			$movie->delete();
+		}
+		
+		$usermovie->delete();
+		
+		//Para ir otra vez a home
+		$listas = Usermovie::all();
+		$user= User::all();
+		
+		return view('home', ['listas'=> $listas, 
+						  'title'=> 'Listas públicas ',
+						  'users' => $user]);
+	}
+	
 
 }

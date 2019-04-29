@@ -6,14 +6,21 @@
 
 <div id="main">
 	<h3> Lista #{{ $usermovie->nombre }}<small class="text-muted"> creada por{{$usermovie->creador_id}}</small> 
-
 	@if ( Auth::id()==$usermovie->creador_id)
-	
+	  <a href="{{ route('lists.edit',  ['usermovie'=> $usermovie->id]) }}">Editar nombre</a>
 	  <a align="right" href="{{ url("/listas/{$usermovie->id}/addmovie") }}"  class="btn icon-btn btn-success">+ Pelicula</a>
-
+	
+		<form action="{{ route('lists.delete', ['usermovie'=> $usermovie->id])}}" method="POST">
+			{{ csrf_field() }}
+			{{ method_field('DELETE') }}
+			
+			<button type="submit" onclick="return confirm('Desea eliminar esta lista?');">Eliminar</button>
+		</form>
+	
 	@endif 
 	
-</h3>
+	
+	</h3>
 </div>
 
 	<table class="table">
@@ -40,7 +47,8 @@
 												'movie'=> $movie->id])}}" method="POST">
 			{{ csrf_field() }}
 			{{ method_field('DELETE') }}
-			<button type="submit">Eliminar</button>
+			
+			<button type="submit" onclick="return confirm('Desea eliminar esta pelicula?');">Eliminar</button>
 		</form>
 	  </td>
 	   <td>
@@ -55,7 +63,8 @@
   @empty
         
 			<li>No hay pelis registradas.</li>
-        @endforelse
+  
+  @endforelse
 </table>
 
 @endsection

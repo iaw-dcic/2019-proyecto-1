@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Usermovie;
+use App\Movie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -69,8 +70,26 @@ class UserController extends Controller
 	}
 	
 	function destroy(User $user) {
+		
+		$lista=Usermovie::where('creador_id', $user->id)->get();
+		
+		foreach ($lista as $usermovie){
+		$peli=Movie::where('lista',$usermovie->id)->get();
+		
+			foreach ($peli as $movie){
+				$movie->delete();
+			}
+			
+			$usermovie->delete();
+		}
+		
 		$user->delete();
 
-    return redirect()->route('home');
+		$listas = Usermovie::all();
+		$user= User::all();
+		
+		return view('home', ['listas'=> $listas, 
+						  'title'=> 'Listas públicas ',
+						  'users' => $user]);
 	}
 }

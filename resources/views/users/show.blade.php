@@ -8,10 +8,15 @@
 	 @if(Auth::id()==$user->id)
 	<small>
 	<a href="{{ route('users.edit', $user) }}">Editar</a>
+
 	
-	
-	<!-- CAMBIAR ACA LO DE ELIMINAR POR POST Y ESO -->
-	<a href="{{ route('users.delete', $user) }}">Eliminar</a>
+
+	<form action="{{ route('users.delete', $user)}}" method="POST">
+			{{ csrf_field() }}
+			{{ method_field('DELETE') }}
+			<button type="submit" onclick="return confirm('Está seguro que quiere eliminar su cuenta?');" >Eliminar</button>
+	</form>
+		
 	</small>
 	
 	
