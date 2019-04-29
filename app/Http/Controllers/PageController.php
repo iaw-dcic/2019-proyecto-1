@@ -13,7 +13,6 @@ class PageController extends Controller
     public function inicio()
     {
         $listaDeListas = ListaLibro::where('privada',0)->get();
-        // $listaDeListas = [];
         return view('index', compact('listaDeListas'));
     }
 
@@ -21,7 +20,7 @@ class PageController extends Controller
     {
         $perfil = Input::get('perfil');
         $usuarios = \App\User::where('name','LIKE', "%$perfil%")->get();
-        return view('profile\search-profile', compact('usuarios', 'perfil'));
+        return view('profile/search-profile', compact('usuarios', 'perfil'));
     }
 
 

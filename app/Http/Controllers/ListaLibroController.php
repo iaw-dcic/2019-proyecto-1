@@ -19,17 +19,7 @@ class ListaLibroController extends Controller
         return view('listaLibros/edit-lista-libros', compact('listas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -51,41 +41,7 @@ class ListaLibroController extends Controller
         return redirect('lista-libros');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ListaLibro  $listaLibro
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ListaLibro $listaLibro)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ListaLibro  $listaLibro
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ListaLibro $listaLibro)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ListaLibro  $listaLibro
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ListaLibro $listaLibro)
-    {
-        //
-    }
-
-    /**
+     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\ListaLibro  $listaLibro
