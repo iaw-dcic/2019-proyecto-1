@@ -36,6 +36,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ asset('Imagenes/PageIcon.png') }}">
    
     @yield('extraStyles')
 </head>

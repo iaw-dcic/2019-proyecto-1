@@ -15,7 +15,7 @@
     <div class="list-group">
         @foreach($InfoListas as $elem)
             <a href="/lists/{{$elem->id}}" class="list-group-item list-group-item-action ">
-            {{$elem->name}}</a> creada por <a href="profiles/{{$elem->id}}"> {{$autores[$elem->name]}} </a> 
+            {{$elem->name}}</a> creada por <a href="profiles/{{$autores[$elem->name]}}"> {{$autores[$elem->name]}} </a> 
         @endforeach
     </div>
         

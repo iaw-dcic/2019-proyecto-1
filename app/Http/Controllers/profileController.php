@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class profileController extends Controller
@@ -42,14 +43,22 @@ class profileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $user
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(String $nameUs)
     {
-        $name = Auth::user()->name;
-        
-        return view('profiles.show')->with('name',$name);
+        $nameac = DB::table('users')->where('name',$nameUs)->get();
+        $name = Auth::user()->id;
+        if( ($nameac[0]->id) == $name){ //el usuario que entró es el creador de su cuenta
+            $name= Auth::user()->name;
+            return view('profiles.show')->with('name',$name);
+        }
+        else{ 
+            $nameac = $nameac[0]->name;  
+            return view('profiles.show')->with('name',$nameac); //es un usuario externo
+        }
+       
     }
 
     /**
