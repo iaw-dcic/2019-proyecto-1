@@ -12,7 +12,7 @@
                                 <img class='avatarUser' src="../{{ auth()->user()->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
                             @endif
                         </a>
-                        <h2 id='nameUser'>{{ auth()->user()->name }}</h3>
+                        <h2 id='nameUser'>{{ auth()->user()->name }}</h2>
                     </div>
                 </div>
             </div>
@@ -21,25 +21,75 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @if(count($lists) >= 1)
             <div class="accordion" id="accordionExample">
-                <div class="card" data-toggle="collapse" data-target="#collapseOne">
-                    <div class="card-header" id="headingOne">
+                @foreach($lists as $list)
+                <div class="card">
+                    <div data-toggle="collapse" data-target="#list{{ $list->id }}-card" class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                            <button type="button" class="btn btn-link"><i class="fa fa-plus"></i> TITULO</button>									
+                            <button type="button" class="btn btn-link"><i class="fa fa-plus"></i> {{ $list->name }}</button>									
                         </h2>
                     </div>
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div id="list{{ $list->id }}-card" class="collapse" data-parent="#accordionExample">
+                        <div class="modal-header">
+                            <button onClick="addItem({{ $list->id }});" data-toggle="modal" data-target="#itemModal" type="button" class="btn btn-success">NEW ITEM</button>
+
+                            <button type="button" onClick="editList({{ $list->id }}, '{{ $list->name }}', '{{ $list->description }}', '{{ $list->estate }}')" data-toggle="modal" data-target="#listEdit" class="btn btn-warning">EDIT LIST</button>
+
+                            <form method="POST" action="{{ url('deletelist') }}/{{ $list->id }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">DELETE LIST</button>
+                            </form>
+                        </div>
                         <div class="card-body">
-                            
+                            <div class="table-responsive">
+                                <table id="list{{ $list->id }}" class="table table-list table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Author</th>
+                                            <th>Editorial</th>
+                                            <th>Publication Date</th>
+                                            <th>Country</th>
+                                            <th>Synopsis</th>
+                                            <th class="content-options"></th>
+                                            <th class="content-options"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($list->items as $item)
+                                            <tr value='{{ $item->id }}' id='{{ $item->id }}'>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->author }}</td>
+                                                <td>{{ $item->editorial }}</td>
+                                                <td>{{ $item->publication_date }}</td>
+                                                <td>{{ $item->country_id }}</td>
+                                                <td>{{ $item->synopsis }}</td>
+                                                <td><button onClick="editItem({{ $item->id }});" data-toggle="modal" data-target="#itemEdit" class="editRow content-options btn btn-primary">EDIT</button></td>
+                                                <td><button class="deleteRow content-options btn btn-danger">DELETE</button></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
+            @else
+            <div class="card">
+                <div class="card-body title">
+                    Create a new list to start
+                </div>
+            </div>
+            @endif
         </div>
     </div>
+            
 
     <div id="content-more">
-        <button id="btn-more" class="btn">
+        <button data-toggle="modal" data-target="#listModal" id="btn-more" class="btn">
             <span>+</span>
         </button>
     </div>
@@ -151,5 +201,214 @@
         </div>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="listForm" method="POST" action="{{ url('createlist') }}">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="exampleModalLabel">New list</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="title" for="nameList">Name</label>
+                        <input type="text" class="form-control" name="name" id="nameList" placeholder="Enter name list" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="title" for="exampleFormControlTextarea1">Privacity</label>
+                        <br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="privacity" name="privacity" class="custom-control-input" value="0" checked>
+                            <label class="custom-control-label" for="privacity">Public</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="privacity2" name="privacity" class="custom-control-input" value="1">
+                            <label class="custom-control-label" for="privacity2">Private</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="title" for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeList" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create list</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="itemForm" method="POST" action="{{ url('createitem') }}">
+                @csrf
+
+                <input type="hidden" id="table_id" name="table_id" value="">
+
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="exampleModalLabel">New item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label class="title">Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Enter book name" required>
+                        </div>
+                        <div class="form-group col">
+                            <label class="title">Author</label>
+                            <input type="text" class="form-control" name="author" placeholder="Enter author name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label class="title">Editorial</label>
+                            <input type="text" class="form-control" name="editorial" placeholder="Enter editorial name" required>
+                        </div>
+                        <div class="form-group col">
+                            <label class="title">Publication Date</label>
+                            <input type='text' data-provide="datepicker" class="form-control date" id="publication_date" name="publication_date" placeholder="YY-mm-dd" required readonly>
+                        </div>
+                        <div class="form-group col">
+                            <label class="title">Country</label>
+                            <select name='country_id' class="form-control">
+                                <option selected disabled>Select</option>
+                                @foreach($countries as $country)
+                                    <option value="{{$country->country_id}}">{{$country->country_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label class="title">Synopsis</label>
+                            <textarea class="form-control" name="synopsis" rows="3" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeList" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="itemEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="editItemForm" method="POST" action="{{ url('edititem') }}">
+                @csrf
+
+                <input type="hidden" id="item_id" name="item_id" value="">
+
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="exampleModalLabel">Edit item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label class="title">Name</label>
+                            <input type="text" class="form-control" id="itemName" name="name" placeholder="Enter book name" required>
+                        </div>
+                        <div class="form-group col">
+                            <label class="title">Author</label>
+                            <input type="text" class="form-control" id="itemAuthor" name="author" placeholder="Enter author name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label class="title">Editorial</label>
+                            <input type="text" class="form-control" id="editorialName" name="editorial" placeholder="Enter editorial name" required>
+                        </div>
+                        <div class="form-group col">
+                            <label class="title">Publication Date</label>
+                            <input type='text' data-provide="datepicker" id="publicationDate" class="form-control date" id="publication_date" name="publication_date" placeholder="YY-mm-dd" required readonly>
+                        </div>
+                        <div class="form-group col">
+                            <label class="title">Country</label>
+                            <select id="country_id" name='country_id' class="form-control">
+                                <option selected disabled>Select</option>
+                                @foreach($countries as $country)
+                                    <option value="{{$country->country_id}}">{{$country->country_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label class="title">Synopsis</label>
+                            <textarea class="form-control" id="synopsis" name="synopsis" rows="3" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeList" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Edit item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="listEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form id="editListForm" method="POST" action="{{ url('editlist') }}">
+                @csrf
+
+                <input type="hidden" id="list_id" name="id" value="">
+
+                <div class="modal-header">
+                    <h5 class="modal-title title" id="exampleModalLabel">Edit list</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="title" for="nameList">Name</label>
+                        <input type="text" class="form-control" name="name" id="name_list" placeholder="Enter name list" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="title" for="exampleFormControlTextarea1">Privacity</label>
+                        <br>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="privacity_list" name="estate" class="custom-control-input" value="0" checked>
+                            <label class="custom-control-label" for="privacity_list">Public</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="privacity_list2" name="estate" class="custom-control-input" value="1">
+                            <label class="custom-control-label" for="privacity_list2">Private</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="title" for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" name="description" id="description_list" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeList" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Edit list</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 @endsection

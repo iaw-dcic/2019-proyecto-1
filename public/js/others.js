@@ -4,6 +4,17 @@ $( document ).ready(function() {
         'autoclose': true
     });
 
+    $('#publication_date').datepicker({
+        'format': 'yyyy-mm-dd',
+        'autoclose': true
+    });
+
+
+    $('#publicationDate').datepicker({
+        'format': 'yyyy-mm-dd',
+        'autoclose': true
+    });
+
     $('.avatarImage').on('click', function(){
         $('#fileAvatar').trigger('click');
     });

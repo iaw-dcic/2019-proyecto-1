@@ -27,3 +27,12 @@ Route::prefix('login')->group(function () {
 });
 
 Route::post('updateuser', 'HomeController@updateUser')->name('updateuser');
+Route::post('createlist', 'HomeController@createList')->name('createlist');
+Route::post('editlist', 'HomeController@editList')->name('editlist');
+Route::post('deletelist/{list_id}', 'HomeController@deleteList')->name('deletelist');
+
+Route::post('createitem', 'HomeController@createItem')->name('createitem');
+Route::post('edititem', 'HomeController@editItem')->name('edititem');
+Route::post('deleteitem', 'HomeController@deleteItem')->name('deleteitem');
+
+Route::get('getcountries', 'HomeController@getCountries');
