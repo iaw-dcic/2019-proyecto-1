@@ -80,7 +80,7 @@ class LoginController extends Controller
         else{
             Auth::login($findUser);
         }
-        return redirect($this->redirectTo);
+        return redirect()->route('index');
     }
 
 }

@@ -34,3 +34,8 @@ Route::post('/edit-libro', 'LibroController@edit')->name('edit-libro')->middlewa
 Route::get('/login/facebook')->name('login-facebook');
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+//redireccionar invalidos 
+Route::any('{query}', 
+  function() { return redirect('/'); })
+  ->where('query', '.*');
