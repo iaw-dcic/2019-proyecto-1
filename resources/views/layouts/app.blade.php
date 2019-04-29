@@ -20,7 +20,6 @@
     <link href="{{ asset('css/appaux.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dataTables.css') }}" rel="stylesheet">
 
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
 
@@ -104,10 +103,12 @@
 
 </footer>
 <!-- Footer -->
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/jquery.js')}}"></script>
+<script src="{{asset('js/dataTables.js')}}"></script>
+<script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
 
 <script>
     

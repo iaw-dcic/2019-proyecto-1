@@ -6,7 +6,8 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Nombre </th>
+            <th>Album</th>
+            <th>Artista</th>
             <th>Link</th>
         </tr>
      </thead>
@@ -16,6 +17,7 @@
             <tr>
             <td>{{$album->id}}</td>
             <td>{{$album->name}}</td>
+            <td>{{$album->bandName}}</td>
             <td>{{$album->link}}</td>
             </tr>
             @endforeach

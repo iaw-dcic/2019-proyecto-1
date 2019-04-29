@@ -48,11 +48,13 @@ class AlbumController extends Controller
     public function store(Request $request)
     {
         //faltan agregar las reglas de validación del lado cliente...!!
+
+        dd($request);
         $user  = Auth::user();
         $album = new Album;
         $album->user_id = $user->id;
+        $album->public = request('visibility');       
         $album->name = request('name');
-        $album->mynote = 10;
         $album->bandName = request('band');
         $album->description = request('coment');  
         $album->link = request('youtubeLink');

@@ -15,7 +15,6 @@ class CreateAlbumsTable extends Migration
     {
         Schema::create('albums', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('mynote');
             //chequeo correspondiente a ver si existe... herencia y demas cosas a refaccionar
             //en siguientes versiones...
             $table->string('name', 100);
@@ -23,7 +22,8 @@ class CreateAlbumsTable extends Migration
             $table->integer('user_id');	
             $table->text('description');
             //Link a  youtube...
-            $table->text('link');	
+            $table->text('link');
+            $table->boolean('public')->default(1);	
             $table->timestamps();
         });
     }

@@ -30,6 +30,16 @@
             </div>
 
         </div>
+
+        <div class="form-group row">
+            <label for="sel1" class="col-sm-3 col-form-label">Visibilidad : </label>
+            <div class="col-sm-9">
+            <select name="visibility" class="form-control " id="sel1">
+                <option value="1">Publica</option>
+                <option value="0">Privada</option>               
+            </select>
+            </div>
+        </div>
    
         <div class="form-group row">
     <label for="exampleFormControlTextarea1" class="col-sm-3 col-form-label">Valoracion Personal</label>
