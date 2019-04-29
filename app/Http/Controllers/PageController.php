@@ -12,8 +12,8 @@ class PageController extends Controller
 {
     public function inicio()
     {
-        // $listaDeListas = ListaLibro::where('privada',0)->get();
-        $listaDeListas = [];
+        $listaDeListas = ListaLibro::where('privada',0)->get();
+        // $listaDeListas = [];
         return view('index', compact('listaDeListas'));
     }
 
