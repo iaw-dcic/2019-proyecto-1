@@ -1,6 +1,6 @@
 <?php  $count=0 ?>
   <!-- Lado derecho, las listas del usuario -->  
- 
+  
    
    <div class="col-md-8" style="background:lightblue">
    @if ($errors->any())
@@ -14,9 +14,10 @@
     </div>
 @endif
       @foreach($listas as $lista)
+      {{session(['lista' => $lista])}}
          <div class="list-group">
            <?php  $count=0 ?>
-              <a href="#" class="list-group-item list-group-item-action active"> {{$lista->nombre}}</a>
+              <a href="#" class="list-group-item list-group-item-action active" data-toggle="modal" data-target="#cambiarPrivacidad"   > {{$lista->nombre}}</a>
                   <div class="list-group-item">
                       @foreach($recetas as $receta)
                          @if($receta->listaId->nombre == $lista->nombre)
@@ -54,7 +55,9 @@
           <button class="float-right btn " type="button" href="{{route('borrarLista',['id'=>$lista->id])}}"
           onclick="return confirm('¿Seguro que deseas eliminar {{$lista->nombre}}?')">
            Eliminar lista
-              </button>     
+          </button>  
+         
+            
         </div>
  <hr>
                       @endforeach  
@@ -78,3 +81,46 @@
           
           
  @include('modalLista')         
+ <div class="modal fade" id="cambiarPrivacidad" role="dialog">
+    <div class="modal-dialog modal-lg" >
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Cambiar Privacidad</h4>
+            
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Cerrar</span>
+                </button>
+              
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body" id="formulario">
+                <p class="statusMsg"></p>
+                <form id="formulario" role="form" method="post" action="{{route('cambiarPrivacidad',['id' =>Session::get('lista')->id ])}}">
+                {{ csrf_field() }}
+                     
+                    <div class="form-group">
+                        <label for="inputName">Nombre</label>
+                        <input name="nombre" type="text" class="form-control" placeholder="Nombre de la lista" value=" {{Session::get('lista') ->nombre }} " />
+                    </div>
+                    <div class="form-group">
+                    <label for="inputMessage">Privacidad de la lista:</label>
+                        <select name="privacidad" class="form-control">
+                            <option value="0">Privada </option>
+                            <option value="1">Publica </option>
+                        </select>
+                    </div>
+                    
+                     
+                    <br><br>
+
+                    <button id="botonAgregar" class="btn btn-primary float-right"   >Cambiar</button></div>
+                </form>
+            </div>
+            
+           
+        </div>
+    </div>
+</div>

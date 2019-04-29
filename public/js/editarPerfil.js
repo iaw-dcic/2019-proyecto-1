@@ -50,47 +50,6 @@ function cargarModal(lista) {
 
 }
 
-function agregarIngrediente(ingredientes) {
-    var agrega;
-    document.getElementById("botonmas").remove();
-    var veces = document.getElementById("ingnumero").value;
-    agrega += ingredientes[0].id;
-    /*   for (i = 1; i <= veces; i++) {
-           agrega += '<div class="row">'
-               + '<div class="col-6">'
-               + ' <div class="form-group">'
-               + '  <label for="inputMessage">Ingrediente:</label>'
-               + '  <select name="ingrediente' + i + '" class="form-control">';
-     
-           ingredientes.forEach(function (ingrediente) {
-               agrega += + ' <option value=" ' + ingrediente.id + ' ">'
-                   + ingrediente.nombre + ' </option>';
-           });
-           agrega += '    </select>'
-               + '</div>'
-               + ' </div>'
-               + ' <div class="col-3">'
-               + ' <div class="form-group">'
-               + '<label for="inputMessage">Medida:</label>'
-               + '    <select name="medida" class="form-control">';
-     
-           medidas.forEach(function (medida) {
-               agrega += + ' <option value=" ' + medida.id + ' "> '
-                   + medida.nombre + ' </option>';
-           });
-           agrega += '    </select>'
-               + '   </div>'
-               + ' </div>'
-               + '<div class="col-3">'
-               + '   <div class="form-group">'
-               + '   <label for="inputMessage">Cantidad:</label>'
-               + '  <input name="cantidad" type="number" class="form-control" placeholder="Cantidad" />'
-               + ' </div>'
-               + ' </div>'
-               + ' <hr>'
-               + '         </div>'
-               + '         </div>';
-       }*/
-    document.getElementById("ingredientesContainer").innerHTML = agrega;
-}
+
+
 

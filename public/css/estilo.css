@@ -40,22 +40,22 @@ vertical-align: middle;}
 .navbar{
   font-size: 20px !important;
 }
-#salados{
-  background: lightblue;
-}
-#dulces{
-  background: lightcoral;
-}
+
+ 
+
 body {
     padding-top: 3rem;
     padding-bottom: 3rem;
     color: #5a5a5a;
   }
+  
   .buscador{
     margin-top:1rem;
     margin-left: 5rem;
     margin-right:5rem;
   }
+
+
   .rounded-circle{
     margin-top: 1rem;
     width:140 px;
@@ -229,7 +229,7 @@ body {
 .tareas .lista li a {
 	color: #212121;
 	display: block;
-	padding: 30px 0;
+	padding: 5px 0;
 	text-decoration: none;
 }
 

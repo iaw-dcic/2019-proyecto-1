@@ -2,7 +2,15 @@
 
 
 @section('content')
- 
+@if( Session::has('errorReceta') )
+
+<script type="text/javascript">
+ $('#errorReceta').modal('show')
+</script>
+@endif
+
+
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -149,5 +157,31 @@
   </section>
     <!-- /END THE FEATURETTES -->
     </div>
-    
+
+
+ <div class="modal fade" id="errorReceta" role="dialog">
+    <div class="modal-dialog modal-lg alert alert-danger" >
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Error en receta</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Cerrar</span>
+                </button>
+              
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <p class="statusMsg"> {{Session::get('errorReceta')}}</p>
+                
+            </div>
+            
+           
+        </div>
+    </div>
+</div>
+   
 @endsection
+  

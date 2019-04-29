@@ -4,15 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="pagina web para iaw uns">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Lucila Arceredillo">
     <meta name="generator" content="Jekyll v3.8.5">
     
-
-
-
-
-    
-    <script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   
     <link defer href="{{ asset('css/estilo.css') }}" rel="stylesheet">    
     
     <!-- Bootstrap core CSS -->
@@ -33,9 +29,10 @@
      @yield('scripts')
     <script src="{{ asset('/js/editarPerfil.js') }}"></script>
     <!-- scripts para el carousel  -->
+    <script defer  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"   crossorigin="anonymous"></script>
     <link defer rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"   crossorigin="anonymous">
     
-    <script defer  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
+   <!-- <script defer  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script> -->
      
-    <script defer  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"   crossorigin="anonymous"></script>
+   
   </html>

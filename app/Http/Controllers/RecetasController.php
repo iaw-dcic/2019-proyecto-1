@@ -131,10 +131,13 @@ public function borrarLista(Request $request, $id){
 public function busqueda(Request $request){
     $valor= $request->buscador;
     $receta = Receta::where('nombre', 'LIKE', "%{$valor}%")->get();
-  
+    if($receta->isEmpty()){
+    return redirect()->back()->with("errorReceta", "No se encontro ninguna receta con ese nombre");
+     }
+    else{
     $nombre= $receta[0]->nombre;
     $ingredientes= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
-    return redirect()->route('receta', [$nombre]);
+    return redirect()->route('receta', [$nombre]);}
 }
 
 public function listas(){
@@ -144,5 +147,13 @@ public function listas(){
         'listas'=>$listas,
         'recetas' =>$recetas
     ]);
+}
+
+public function compartir(Request $request,$id){
+    $lista= Lista::find($id);
+    $lista->public= $request->privacidad;
+    $lista->nombre= $request->nombre;
+    $lista->save();
+    return redirect()->back();
 }
 }
