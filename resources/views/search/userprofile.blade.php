@@ -26,7 +26,7 @@
 				<li>@if($user->about==null)
 						{{'No especificado'}}
 					@else
-						{{$user->gender}}
+						{{$user->about}}
 					@endif
 				</li>
 			</ul>
