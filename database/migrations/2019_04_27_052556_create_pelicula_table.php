@@ -13,13 +13,13 @@ class CreatePeliculaTable extends Migration
      */
     public function up()
     {
-        Schema::create('pelicula', function (Blueprint $table) {
+        Schema::create('peliculas', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('listaid');
-            $table->foreign('listaid')->references('id')->on('lista');
+            $table->foreign('listaid')->references('id')->on('listas');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->date('fecha');
+            $table->string('genero');
             $table->timestamps();
         });
     }

@@ -13,12 +13,12 @@ class CreateListaTable extends Migration
      */
     public function up()
     {
-        Schema::create('lista', function (Blueprint $table) {
+        Schema::create('listas', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('userid');
             $table->foreign('userid')->references('id')->on('users');
             $table->string('nombre');
-            $table->boolean('visible');
+            $table->boolean('visible')->default(true);
             $table->timestamps();
         });
     }
