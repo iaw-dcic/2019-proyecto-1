@@ -31,7 +31,7 @@ class UserController extends Controller
     }
 
     public function updatePassword() {
-        $user = $auth()->user();
+        $user = auth()->user();
 
         if ($user == null)
             return view('auth.login');
