@@ -59,6 +59,8 @@ class LoginController extends Controller
         } else
             $user->token = $auth_user->token;
 
+        dd($user);
+
         Auth::login($user, true);
 
         if ($user->password == null)
