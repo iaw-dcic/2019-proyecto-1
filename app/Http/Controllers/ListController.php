@@ -52,7 +52,7 @@ class ListController extends Controller
 
     public function show(Lista $list){
 
-        abort_if($list->user_id != auth()->id(), 403);
+        abort_if($list->user_id != auth()->id(), 403, 'Sorry, you are not authorized');
 
         return view('lista.show', compact('list'));
 
@@ -60,7 +60,7 @@ class ListController extends Controller
 
     public function edit(Lista $list){
 
-        abort_if($list->user_id != auth()->id(), 403);
+        abort_if($list->user_id != auth()->id(), 403, 'Sorry, you are not authorized');
 
         return view('lista.edit', compact('list'));
 

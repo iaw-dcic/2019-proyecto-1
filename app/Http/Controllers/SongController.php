@@ -18,7 +18,7 @@ class SongController extends Controller
 
         $list = Lista::where('id', $song->lista_id)->get();
 
-        abort_if(auth()->id() != $list[0]->user_id, 403);
+        abort_if(auth()->id() != $list[0]->user_id, 403, 'Sorry, you are not authorized');
 
     	return view('song.show', compact('song'));
     
@@ -26,7 +26,7 @@ class SongController extends Controller
 
     public function create(Lista $list){
 
-        abort_if(auth()->id() != $list->user_id, 403);
+        abort_if(auth()->id() != $list->user_id, 403, 'Sorry, you are not authorized');
 
     	return view('song.create', compact('list'));
 
@@ -63,7 +63,7 @@ class SongController extends Controller
 
         $list = Lista::where('id', $song->lista_id)->get();
 
-        abort_if(auth()->id() != $list[0]->user_id, 403);
+        abort_if(auth()->id() != $list[0]->user_id, 403, 'Sorry, you are not authorized');
 
         return view('song.edit', compact('song'));
     }

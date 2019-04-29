@@ -4,7 +4,7 @@
 	
 	<h1 class="text-center font-weight-light mt-1 my-3">{{$list->title}}</h1>
 		
-	<ul class="list-group-flush w-25" style="padding-bottom: 50px; padding-top: 50px">
+	<ul class="list-group-flush w-25 py-5">
 		<li class="list-group-item"><a href="{{$list->id}}/edit">edit</a></li>
 		<li class="list-group-item"><a href="{{$list->id}}/create">add song</a></li>
 	</ul>
@@ -18,7 +18,7 @@
 		</ul>
 		@else
 			<div class="container mt-5">
-				<p class="h5 text-center font-weight-light mt-1 my-3" style="color: darkgrey;">No songs in this list</p>
+				<p class="h5 text-center font-weight-light mt-1 my-3 darkgrey">No songs in this list</p>
 			</div>
 		@endif
 

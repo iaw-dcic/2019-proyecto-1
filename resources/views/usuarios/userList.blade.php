@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	<h1 style="text-align: center">{{$list->title}}</h1>
+	<h1 class="text-center font-weight-light mt-1 my-3">{{$list->title}}</h1>
 	
 	@if (count($songs)>0)
 		<ul class="list-group">
@@ -13,8 +13,8 @@
 
 		</ul>
 	@else
-		<div class="container" style="text-align: center; padding-top: 50px;">
-			<p class="h5" style="color: darkgrey;">This list is empty</p>
+		<div class="container pt-5">
+			<p class="h5 darkgrey text-center">This list is empty</p>
 		</div>
 	@endif
 

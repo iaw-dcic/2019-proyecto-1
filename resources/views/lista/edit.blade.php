@@ -19,7 +19,7 @@
                 @endif
 			</div>
 
-				<div class="custom-control custom-checkbox" style="margin-bottom: 20px">
+				<div class="custom-control custom-checkbox mb-2">
 	    			<input type="checkbox" class="custom-control-input" name="isPublic" id="defaultUnchecked"
 	    			{{ ($list->public == 1) ? 'checked' : '' }}>
 	    			<label class="custom-control-label" for="defaultUnchecked">Public</label>

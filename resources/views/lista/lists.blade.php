@@ -14,7 +14,7 @@
 	@else
 
 			<div class="container mt-5">
-				<p class="h5 text-center font-weight-light mt-1 my-3" style="color: darkgrey;">Seems like this is empty</p>
+				<p class="h5 text-center font-weight-light mt-1 my-3 darkgrey">Seems like this is empty</p>
 			</div>
 
 	@endif

@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
 
-Route::get('/about', function () {
+Route::get('/readme', function () {
     return view('about');
 });
 

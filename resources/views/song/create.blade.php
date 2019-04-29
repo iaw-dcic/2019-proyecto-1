@@ -3,7 +3,7 @@
 @section('content')
 	<h1 class="text-center font-weight-light mt-1 my-3">Add new song</h1>
 
-	<div class="container" style="padding-top: 20px">
+	<div class="container pt-2">
 		<form method="POST" action="/songs/{{$list->id}}">
 			{{ csrf_field() }}
 
