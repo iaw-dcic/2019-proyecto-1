@@ -18,7 +18,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    ¡Bienvenido a Cinéfilo!
                 </div>
             </div>
         </div>

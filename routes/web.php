@@ -39,3 +39,6 @@ Route::post('/search', 'SearchController@show');
 Route::get('/searchresults/{user}', 'SearchController@showUser');
 Route::get('/searchresults/{user}/list/{list}', 'SearchController@showList');
 Route::get('/searchresults/{user}/list/{list}/movie/{movie}', 'SearchController@showMovie');
+
+Route::get('/editprofile', 'UserController@edit');
+Route::patch('/editprofile', 'UserController@update');

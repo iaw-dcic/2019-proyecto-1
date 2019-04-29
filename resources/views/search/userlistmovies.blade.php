@@ -8,19 +8,23 @@
 	<div class="text-center">
 		<h2>{{$movie->name}}</h2>
 	</div>
-	<div class="form-group row">
-    	<label for="name" class="col-md-4 col-form-label text-md-right">Nombre de la película: {{$movie->name}}</label>
+
+	<div class="text-center">
+		<div class="text-center">
+			<ul class="list-inline">
+				<li class="lead">Nombre de la película: </li> <li>{{$movie->name}}</li>
+			</ul>
+			<ul class="list-inline">
+				<li class="lead">Género: </li> <li>{{$movie->genre}}</li>
+			</ul>
+			<ul class="list-inline">
+				<li class="lead">Año de lanzamiento: </li> <li>{{$movie->year}}</li>
+			</ul>
+			<ul class="list-inline">
+				<li class="lead">Sinopsis: </li> <li>{{$movie->description}}</li>
+			</ul>
+		</div>
 	</div>
 
-	<div class="form-group row">
-    	<label for="Género" class="col-md-4 col-form-label text-md-right">Género: {{$movie->genre}}</label>
-	</div>
-
-	<div class="form-group row">
-		<label for="year" class="col-md-4 col-form-label text-md-right">Año de lanzamiento: {{$movie->year}}</label>
-	</div>
-
-	<div class="form-group row">
-    	<label for="description" class="col-md-4 col-form-label text-md-right">Sinopsis: {{$movie->description}}</label>
-	</div>
+	
 @endsection

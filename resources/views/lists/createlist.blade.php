@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <h2>Crear lista</h2>
+    <h2 class="text-center">Crear lista</h2>
 	<form method="POST" action="/lists">
                         @csrf
 
