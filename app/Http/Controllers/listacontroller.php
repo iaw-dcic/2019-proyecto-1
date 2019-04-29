@@ -62,7 +62,7 @@ class listacontroller extends Controller
 	        'visible' => $listapublica, ]);
 	 		
     		$listaid=$lista->id;
-        	return redirect()->route('getlista',[$listaid]);
+        	return redirect()->route('modificarlista',[$listaid]);
     	}else
     		return "ERROR: no se puede crear lista sin autenticarse";
 

@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editando {{$lista->name}}</div>
+                <div class="card-header">Editing " {{$lista->nombre}} "</div>
 
                 <div class="card-body">                    
                     
@@ -25,6 +25,7 @@
                           <th scope="col">Name</th>
                           <th scope="col">Description</th>
                           <th scope="col">Genre</th>
+                          <th scope="col">Remove</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -33,6 +34,7 @@
                                 <th scope="row">{{ $pelicula->nombre}}</th>
                                 <td>{{ $pelicula->descripcion}}</td>
                                 <td>{{ $pelicula->genero}}</td>
+                                <td><a type="button" class="btn btn-primary" href="/lista/get/{{$lista->id}}"><i class="fas fa-trash"></i></a></td>
                             </tr>
                         @endforeach
                         
