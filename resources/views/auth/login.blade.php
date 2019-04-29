@@ -63,7 +63,8 @@
                             </div>
                         </div>
                     </form>
-                    <div class="card">
+                </div>
+                <div class="card">
                         <div class="card-header">Login con Facebook</div>
 
                         <div class="card-body">
@@ -72,7 +73,6 @@
                             </a>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
