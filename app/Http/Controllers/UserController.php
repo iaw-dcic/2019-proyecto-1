@@ -25,4 +25,20 @@ class UserController extends Controller
 
     	return view('user.editprofile');
     }
+
+    public function changePassword() {
+        return view('user.changepassword');
+    }
+
+    public function updatePassword() {
+        $user = $auth()->user();
+
+        if ($user == null)
+            return view('auth.login');
+
+        $user->password = request('pass');
+        $user->save();
+
+        redirect('/');
+    }
 }

@@ -45,3 +45,5 @@ Route::get('/searchresults/{user}/list/{list}/movie/{movie}', 'SearchController@
 
 Route::get('/editprofile', 'UserController@edit');
 Route::patch('/editprofile', 'UserController@update');
+Route::get('/changepassword', 'UserController@changePassword');
+Route::patch('/changepassword', 'UserController@updatePassword');

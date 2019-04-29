@@ -67,6 +67,9 @@
                                     <a class="dropdown-item" href="/editprofile">
                                         {{ __('Configuración') }}
                                     </a>
+                                    <a class="dropdown-item" href="/changepassword">
+                                        {{ __('Cambiar contraseña') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

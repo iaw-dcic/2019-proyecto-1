@@ -53,11 +53,16 @@ class LoginController extends Controller
             ],
             [
                 'token' => $auth_user->token,
-                'name' => $auth_user->name
             ]
         );
 
+        if ($user->name == null)
+            $user->name = $auth_user->name;
+
         Auth::login($user, true);
+
+        if ($user->password == null)
+            return view('user.changepassword');
         
         return redirect('/');
     }
