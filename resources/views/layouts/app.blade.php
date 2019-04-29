@@ -39,8 +39,7 @@
 </head>
 <body>
     <div id="app">
-        @guest
-        @else
+        @if(Route::current()->getName() == "dashboard" || Route::current()->getName() == "home")
             <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
                 <div class="container">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-nav">
@@ -82,6 +81,9 @@
                                     {{ auth()->user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('home') }}">
+                                        My profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -98,7 +100,7 @@
                     </div>
                 </div>
             </nav>
-        @endguest
+        @endif
         <main class="py-4">
             @yield('content')
         </main>
