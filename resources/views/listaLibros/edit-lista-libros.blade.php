@@ -92,6 +92,14 @@
                 <button type="submit" class="btn btn-primary">Crear nueva lista de libros</button>
             </form>
         </div>
+        <div class="container border-0">
+            <form action="{{ route('edit-profile') }}" method="get">
+                @csrf
+                <button type="submit" class="btn btn-secondary">Editar perfil</button>
+            </form>
+        </div>
+
+        
     </div>
 
      <!-- Modal eliminar lista-->
