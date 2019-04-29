@@ -63,6 +63,15 @@
                             </div>
                         </div>
                     </form>
+                    <div class="card">
+                        <div class="card-header">Login con Facebook</div>
+
+                        <div class="card-body">
+                            <a class="btn btn-primary" href="/login/facebook">
+                                Facebook Login
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

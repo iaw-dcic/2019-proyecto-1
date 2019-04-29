@@ -4,6 +4,7 @@ namespace Cinefilo\Http\Controllers\Auth;
 
 use Cinefilo\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -36,4 +37,25 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-}
+
+    public function redirectToFacebookProvider() {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function handleProviderFacebookCallback() {
+        $auth_user = Socialite::driver('facebook')->user();
+        
+        $user = User::updateOrCreate(
+            [
+                'email' => $auth_user->email
+            ],
+            [
+                'token' => $auth_user->token,
+                'name' => $auth_user->name
+            ]
+        );
+
+        Auth::login($user, true);
+        
+        return redirect()->to('/');
+    }
