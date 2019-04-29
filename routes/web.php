@@ -51,6 +51,7 @@ Route::post('/createAlbum','AlbumController@store');
 Route::get('/showUser/{id}','ApiController@showUser')->name('showUser');
 
 Auth::routes();
+Route::get('/album/{id}','AlbumController@destroy')->name('eliminarAlbum');
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

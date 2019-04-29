@@ -35,7 +35,7 @@
             <td>{{$album->bandName}}</td>
             <td>{{$album->link}}</td>
             <td>
-            <a href="{{ route('createAlbum') }}" class="btn btn-outline-success" role="button" aria-pressed="true">Editar</a>
+            <a href="{{ route('eliminarAlbum', $album->id) }}" class="btn btn-outline-success" role="button" aria-pressed="true">Eliminar</a>
             </td>
             </tr>
             @endforeach

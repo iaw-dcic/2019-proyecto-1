@@ -109,11 +109,11 @@ class AlbumController extends Controller
      */
     public function destroy($id)
     {
-        $nerd = Nerd::find($id);
-        $nerd->delete();
+        $album = Album::find($id);
+        $album->delete();
 
         // redirect
-        Session::flash('message', 'Successfully deleted the nerd!');
+        //Session::flash('message', 'Successfully deleted the nerd!');
         return redirect()->action(
             'ApiController@profile'
         );
