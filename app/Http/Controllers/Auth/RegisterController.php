@@ -77,6 +77,6 @@ class RegisterController extends Controller
         $profile -> Ciudad = " ";
         $profile -> save();
 
-        return $user;
+        return redirect()->route('index');
     }
 }
