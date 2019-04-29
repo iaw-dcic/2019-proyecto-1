@@ -5,6 +5,7 @@ namespace Cinefilo\Http\Controllers\Auth;
 use Cinefilo\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
+use Auth;
 use \Cinefilo\User;
 
 class LoginController extends Controller
