@@ -1,4 +1,5 @@
 <?php
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,14 +20,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/perfil', 'ProfileController@index')->name('perfil');
-
-Route::get('/mis-listas', function (){
-    return view('mis-listas');
-})->middleware('auth')->name('mis-listas');
-
+Route::get('/usuario/perfil', 'ProfileController@index')->name('perfil');
 
 //Listas de bienes
+Route::get('/usuario/mis-listas', 'ListController@showAll')->middleware('auth')->name('mis-listas');
+
+Route::get('/usuario/mis-listas/crear-lista', function(){
+    return view('/listas/crear');
+})->middleware('auth')->name('crear-lista');
+
+Route::post('/usuario/mis-listas/crear-lista', 'ListController@create')->middleware('auth')->name('crear-lista');
+
+Route::post('/usuario/mis-listas/eliminar-lista/{id}', 'ListController@eliminar')->middleware('auth')->name('eliminar-lista');
 
 
 Route::get('/prueba', function (){
