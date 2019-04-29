@@ -18,17 +18,17 @@ class listsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         
         if(Auth::check()){
             $name = Auth::user()->name ;
             $listas = DB::table('listas')->where('user_id',Auth::user()->id)->get(); //Obtengo todas las listas del usuario
             return view('lists.index',compact('listas','name')); //devuelvo una view junto con las listas
-        }
-        else{
-            //es un guest mirando otro usuario, buscar lista del usuario visitado
-        }
+        }    
+    }
+
+    public function accederListasAjenas(){
         
     }
 

@@ -49,13 +49,14 @@ class profileController extends Controller
     public function show(String $nameUs)
     {
         $nameac = DB::table('users')->where('name',$nameUs)->get();
-        $name = Auth::user()->id;
-        if( ($nameac[0]->id) == $name){ //el usuario que entró es el creador de su cuenta
+        $name = Auth::user()->name;
+        //dd($nameac, $nameUs, $name, $nameac[0]->name, ($nameac[0]->name) == $name);
+        if( ($nameac[0]->name) == $name){ //el usuario que entró es el creador de su cuenta
             $name= Auth::user()->name;
             return view('profiles.show')->with('name',$name);
         }
         else{ 
-            $nameac = $nameac[0]->name;  
+            $nameac = $nameac[0]->name;
             return view('profiles.show')->with('name',$nameac); //es un usuario externo
         }
        

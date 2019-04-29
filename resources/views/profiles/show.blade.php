@@ -12,6 +12,7 @@
 <div class="jumbotron jumbotron-fluid welcome_info">
   <div class="container">
   @if(Auth::user()->name == $name)
+
     <h1 class="display-4">Bienvenido {{$name}}</h1>
     <p class="lead">Bienvenido a tu página de usuario, desde aquí podrás consultar tus listas y juegos</p>
   @else
@@ -33,8 +34,9 @@
             @csrf
             <button type="submit" class="btn btn-secondary btn-lg" >Eliminar Usuario </button>
           </form>
-        @else
           <a class="btn btn-secondary btn-lg" href="/lists" role="button">ver Listas</a>
+        @else
+          <a class="btn btn-secondary btn-lg" href="/lists/{{$name}}" role="button">ver Listas</a>
         @endif
       </div>
     </div>

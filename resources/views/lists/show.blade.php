@@ -19,7 +19,7 @@
     <ul class= "list-group">
     @if($juegos->count())
         @foreach($juegos as $elem)
-            <a href="#" class="list-group-item list-group-item-action">{{$elem->name}}</a> 
+            <a href="/lists/{{$lista[0]->id}}/games/{{$elem->id}}" class="list-group-item list-group-item-action">{{$elem->name}}</a> 
         @endforeach
     @else  
         <div class="alert alert-primary divAlerta text-center" role="alert">
