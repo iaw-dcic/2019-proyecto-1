@@ -50,6 +50,7 @@ class SearchController extends Controller
             return view('error');
 
         return view('search.userlistmovies')
+                    ->with(compact('user'))
                     ->with(compact('list'))
                     ->with(compact('movie'));
     }

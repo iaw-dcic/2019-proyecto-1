@@ -23,4 +23,8 @@
 
 	@endforeach
 	</div>
+
+	<a href="/searchresults/{{$user->id}}">	
+		<button type="button" class="btn btn-secondary">Volver</button>
+	</a>
 @endsection
