@@ -7,7 +7,7 @@
 @section('content')
 	<h2 class="text-center">Acerca De</h2>
 
-	<div clas="text-center">
+	<div class="text-center">
 		<p class="lead">Integrante</p>
 		<p>Franco Schroeder</p>
 		<br/>
