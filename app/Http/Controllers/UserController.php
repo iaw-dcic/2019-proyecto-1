@@ -39,6 +39,6 @@ class UserController extends Controller
         $user->password = request('pass');
         $user->save();
 
-        redirect('/');
+        return redirect('/');
     }
 }
