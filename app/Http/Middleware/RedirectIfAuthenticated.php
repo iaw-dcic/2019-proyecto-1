@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/mis-listas');
+            return redirect('/usuario/mis-listas');
         }
 
         return $next($request);
