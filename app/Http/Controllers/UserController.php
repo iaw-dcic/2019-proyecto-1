@@ -31,12 +31,12 @@ class UserController extends Controller
     }
 
     public function updatePassword() {
+        dd(request('pass'));
         $user = $auth()->user();
 
         if ($user == null)
             return view('auth.login');
 
-        dd(request('pass'));
         $user->password = request('pass');
         $user->save();
 
