@@ -56,6 +56,9 @@ class LoginController extends Controller
             ]
         );
 
+        if ($user == null)
+            dd($auth_user);
+
         if ($user->name == null)
             $user->name = $auth_user->name;
 
