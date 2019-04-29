@@ -10,7 +10,7 @@
 
     <h1 class="title">Create New Song</h1>
 
-    <form method="POST" action="/songs">
+    <form method="POST" action="/albums/{{ $album->list_id }}/songs">
 
         {{ csrf_field() }}
 
@@ -52,7 +52,7 @@
         </div>
         <div class="field">
             <div class="control">
-                <button type="button" onclick="location.href='{{ url()->previous() }}'">Go Back</button>
+                <button type="button" onclick="location.href='/albums/{{ $album->list_id }}'">Go Back</button>
             </div>
         </div>
     

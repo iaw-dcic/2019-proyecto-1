@@ -2,7 +2,8 @@
 
 namespace App;
 
-use Song;
+use App\Song;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Album extends Model{
@@ -21,7 +22,7 @@ class Album extends Model{
         return $this->belongsTo(User::class,'owner');
     }
 
-    public function addSong ($song) {
+    public function addSong (Song $song) {
         $this->songs()->create($song);
     }
 }

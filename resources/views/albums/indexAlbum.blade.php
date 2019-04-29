@@ -34,7 +34,14 @@
 
         <p id="emptyMessage">There are no lists created by this user.</p>
 
+
     @endif
+
+    <div class="field">
+        <div class="control">
+            <button type="button" onclick="location.href='/albums/create'">Add New List</button>
+        </div>
+    </div>
 
     <div class="field">
         <div class="control">

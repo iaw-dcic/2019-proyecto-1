@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Album;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller {
@@ -18,6 +19,7 @@ class PagesController extends Controller {
     }
 
     public function browse() {
-        return view('browse');
+        $album = Album::select('*')->where('public',1)->get();
+        return view('browse',compact('album'));
     }
 }

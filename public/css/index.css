@@ -1,3 +1,7 @@
 h1, ul, #emptyMessage, .field {
     margin-left:12%;
 }
+
+.field {
+    margin-top:1%;
+}

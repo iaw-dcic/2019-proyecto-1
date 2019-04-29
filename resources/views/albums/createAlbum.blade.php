@@ -35,7 +35,7 @@
         </div>
         <div class="field">
             <div class="control">
-                <button type="button" onclick="location.href='{{ url('home') }}'">Go Back</button>
+                <button type="button" onclick="location.href='{{ url()->previous() }}'">Go Back</button>
             </div>
         </div>
     

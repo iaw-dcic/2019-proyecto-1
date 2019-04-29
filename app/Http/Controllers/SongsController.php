@@ -16,7 +16,7 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index () {
         $song = Song::all();
 
         return view('songs.indexSong',compact('song'));
@@ -27,8 +27,8 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        return view('songs.createSong');
+    public function create (Album $album) {
+        return view('songs.createSong', ['album'=>$album]);
     }
 
     /**
@@ -37,7 +37,7 @@ class SongsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Album $album) {
+    public function store (Album $album) {
         $attributes = array(
             'song_name' => 'required',
             'artist' => 'required',
@@ -50,24 +50,7 @@ class SongsController extends Controller {
         if ($validator->fails()) {
             return Redirect::to('songs.createSong')->withErrors($validator)->withInput(Input::except('password'));
         }
-        else {
-            $album->addSong($attributes);
 
-            return back();
-        }
-
-        /*$elements = array(
-            'song_name' => 'required',
-            'artist' => 'required',
-            'album' => 'required',
-            'release_year' => ['required', 'digits_between:1,2050'],
-            'notes' => 'nullable'
-        );
-        $validator = Validator::make(Input::all(), $elements);
-        
-        if ($validator->fails()) {
-            return Redirect::to('songs.createSong')->withErrors($validator)->withInput(Input::except('password'));
-        }
         else {
             $song = new Song;
             $song->song_name = Input::get('song_name');
@@ -77,9 +60,9 @@ class SongsController extends Controller {
             $song->notes = Input::get('notes');
             $song->list_id = $album->list_id;
             $song->save();
-            
-            return Redirect::to('songs');
-        }*/
+
+            return back();
+        }
     }
 
     /**
@@ -87,7 +70,7 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Song $song) {
+    public function show (Song $song) {
         return view('songs.showSong', compact('song'));
     }
 
@@ -96,8 +79,8 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Song $song) {
-        return view('songs.editSong', compact('songs'));
+    public function edit (Album $album, Song $song) {
+        return view('songs.editSong', compact('album', 'song'));
     }
 
     /**
@@ -106,7 +89,7 @@ class SongsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Song $song) {
+    public function update (Request $request, Song $song) {
         $song->update(request(['song_name', 'artist', 'album', 'release_year', 'notes']));
 
         return redirect('/songs');
@@ -117,8 +100,8 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Song $song) {
-        $song->delete;
+    public function destroy (Song $song) {
+        $song->delete();
 
         return redirect('/songs');
     }

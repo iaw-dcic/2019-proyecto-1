@@ -10,7 +10,7 @@
 
     <h1 class="title">{{ $album->list_name }}</h1>
 
-    <div id="albumInfo" class="content"><b>Owner:</b> {{ $album->owner }}</div>
+    <div id="albumInfo" class="content"><b>Owner:</b> <a href="/profiles/{{ $album->owner }}">{{ $album->owner }}</a></div>
 
     <div id="albumInfo" class="content"><b>Status:</b> 
         @if($album->public == 1) Public
@@ -26,17 +26,17 @@
 
                 <li>
 
-                    <p>{{ $song->song_name }}</p>
+                    <p><b>Song Name: </b>{{ $song->song_name }} 
 
-                    <p>{{ $song->artist }}</p>
+                    <b>Artist: </b>{{ $song->artist }} 
 
-                    <p>{{ $song->album }}</p>
+                    <b>Album: </b>{{ $song->album }} 
 
-                    <p>{{ $song->release_year }}</p>
+                    <b>Release Year: </b>{{ $song->release_year }} 
 
-                    <p>{{ $song->notes }}</p>
+                    <b>Notes: </b>{{ $song->notes }}</p>
 
-                    <p><a href="/songs/{{ $song->song_id }}/edit">Edit</a></p>
+                    <p><a href="/albums/{{ $album->list_id }}/songs/{{ $song->song_id }}/edit">Edit</a></p>
 
                 </li>
 
@@ -48,13 +48,19 @@
 
     <p>
 
-        <a id="editButton" href="/albums/{{ $album->list_id }}/edit">Edit</a>
+        <a id="editListButton" href="/albums/{{ $album->list_id }}/edit">Edit List</a>
 
     </p>
 
     <p>
 
-        <a id="createButton" href="/songs/create">Add Song</a>
+        <a id="createButton" href="/albums/{{ $album->list_id }}/songs/create">Add Song</a>
+
+    </p>
+
+    <p>
+
+        <a id="createButton" href="/albums/">Go Back</a>
 
     </p>
 

@@ -25,8 +25,8 @@
         <div id="selectBox" class="field">
             <label class="label" for="public">List Privacy</label>
             <select class="form-control" name="public">
-                <option value=1>Public</option>
-                <option value=0>Private</option>
+                <option value=1 {{ ($album->public) == 1 ? 'selected="selected"' : '' }}>Public</option>
+                <option value=0 {{ ($album->public) == 0 ? 'selected="selected"' : '' }}>Private</option>
             </select>
         </div>
 

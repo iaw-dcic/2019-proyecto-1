@@ -17,7 +17,7 @@ Route::resource('albums/{album}/songs', 'SongsController')->middleware('auth');
 
 Route::resource('albums', 'AlbumsController')->middleware('auth');
 
-Route::get('/profile', 'PagesController@profile')->middleware('auth')->name('profile');
+Route::resource('profiles', 'UserProfileController');
 
 Route::get('/about', 'PagesController@about')->name('about');
 
@@ -26,17 +26,6 @@ Route::get('/browse', 'PagesController@browse')->name('browse');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-//php artisan make:controller nombreDelPhp -r para crear un controlador
-
-
-
-
-
-//Album es el tipo
-//album es la variable
-//albums es la direccion
-
 
 
 

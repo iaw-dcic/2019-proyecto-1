@@ -15,10 +15,10 @@ class AlbumsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $album = Album::all();
+    public function index () {
+        $album = Album::select('*')->where('owner',Auth::user()->name)->get();
 
-        return view('albums.indexAlbum',compact('album'));
+        return view('albums.indexAlbum', compact('album'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AlbumsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create () {
         return view('albums.createAlbum');
     }
 
@@ -36,7 +36,7 @@ class AlbumsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store() {
+    public function store () {
         $attributes = array(
             'list_name' => 'required',
             'public' => 'required'
@@ -62,7 +62,7 @@ class AlbumsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Album $album) {
+    public function show (Album $album) {
         return view('albums.showAlbum', compact('album'));
     }
 
@@ -71,7 +71,7 @@ class AlbumsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Album $album) {
+    public function edit (Album $album) {
         return view('albums.editAlbum', compact('album'));
     }
 
@@ -81,7 +81,7 @@ class AlbumsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Album $album) {
+    public function update (Request $request, Album $album) {
         $album->update(request(['list_name', 'public']));
 
         return redirect('/albums');
@@ -92,7 +92,7 @@ class AlbumsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Album $album) {
+    public function destroy (Album $album) {
         $album->delete();
 
         return redirect('/albums');

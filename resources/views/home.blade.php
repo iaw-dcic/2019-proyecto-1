@@ -26,9 +26,9 @@
                 </div>
 
                 <ul class="listChoice">
-                    <li><a class="listChoiceElem" href="{{ route('profile') }}">Profile</a>: Go to your profile</li>
-                    <li><a class="listChoiceElem" href="{{ url('albums/') }}">Your Lists</a>: Look and edit your existing albums</li>
-                    <li><a class="listChoiceElem" href="{{ url('albums/create') }}">Create New List</a>: Create a new, empty album list</li>
+                    <li><a class="listChoiceElem" href="/profiles/{{ Auth::user()->name }}">Profile</a>: Go to your profile</li>
+                    <li><a class="listChoiceElem" href="/albums/">Your Lists</a>: Look and edit your existing albums</li>
+                    <li><a class="listChoiceElem" href="/albums/create">Create New List</a>: Create a new, empty album list</li>
                     <li><a class="listChoiceElem" href="{{ route('browse') }}">Browse Lists</a>: Look through all of the existing lists</li>
                 </ul>
             </div>
