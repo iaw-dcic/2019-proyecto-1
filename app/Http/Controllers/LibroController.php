@@ -38,8 +38,8 @@ class LibroController extends Controller
             'Genero' => 'required',
             'Titulo' => 'required',
             'Autor' => 'required',
-            'FechaPublicacion' => 'required'
         ]);
+
         $libro = Libro::findOrFail($request->id_libro);
         $libro -> Titulo = $request->titulo;
         $libro -> Autor = $request->autor;
