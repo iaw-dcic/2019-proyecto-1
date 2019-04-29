@@ -25,19 +25,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Sacado de https://laraveldaily.com/from-google-api-to-google-sign-in-with-laravel-socialite/
-//Redirect
-Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
-    ->name('login.provider')
-    ->where('driver', implode('|', config('auth.socialite.drivers')));
-//Callback
-Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')
-    ->name('login.callback')
-    ->where('driver', implode('|', config('auth.socialite.drivers')));
-
-
-
-
 /* Rutas para playlists */
 
 //GET PLAYLISTS DE USER @index

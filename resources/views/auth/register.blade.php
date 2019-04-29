@@ -10,11 +10,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
-                        {{--Boton login de google--}}
-                        <a href="{{ route('login.provider', 'google') }}"
-                        class="btn btn-secondary">{{ __('Google Sign in') }}</a>
-
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 

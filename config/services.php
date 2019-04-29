@@ -44,12 +44,4 @@ return [
         ],
     ],
 
-
-    //https://laraveldaily.com/from-google-api-to-google-sign-in-with-laravel-socialite/
-    'google' => [
-        'client_id'     => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect'      => env('GOOGLE_REDIRECT'),
-    ],
-
 ];

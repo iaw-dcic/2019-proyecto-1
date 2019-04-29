@@ -49,12 +49,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{--si quiero un icono:--}}
-                                @if(auth()->user()->avatar)
-                                    <img src="{{ auth()->user()->avatar }}"
-                                    alt="avatar" width="32" height="32" style="margin-right: 8px;">
-                                @else
-                                    <i class="fas fa-user"></i>
-                                @endif
+                                <i class="fas fa-user"></i>
                                 {{--si quiero nombre:
                                     {{ Auth::user()->name }}
                                 --}}
