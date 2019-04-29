@@ -47,7 +47,7 @@ return [
     'facebook' => [
         'client_id' => '2267171326871155',
         'client_secret' => 'a3219dd5be956e1c674cd1abfb745470',
-        'redirect' => 'http://bweb-libros-iaw.herokuapp.com/login/facebook/callback',
+        'redirect' => 'https://bweb-libros-iaw.herokuapp.com/login/facebook/callback',
     ],
 
 ];
