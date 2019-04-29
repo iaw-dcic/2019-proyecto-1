@@ -48,9 +48,9 @@ class LoginController extends Controller
         $auth_user = Socialite::driver('facebook')->user();
 
         $user = User::where('email', $auth_user->email)
-                        ->get();
+                        ->first();
 
-        if ($user->isEmpty()) {
+        if ($user==null) {
             $user = new User();
             $user->name = $auth_user->name;
             $user->email = $auth_user->email;
