@@ -15,6 +15,8 @@
 
     <h1 class="display-4">Bienvenido {{$name}}</h1>
     <p class="lead">Bienvenido a tu página de usuario, desde aquí podrás consultar tus listas y juegos</p>
+    <p> tu e-mail es: {{Auth::user()->email}}</p>
+    
   @else
   <h1 class="display-4">Estas viendo el perfil de {{$name}}</h1>
     <p class="lead">Bienvenido al perfil de {{$name}}, aquí podrás consultar las listas públicas que este usuario creó</p>
@@ -36,7 +38,7 @@
           </form>
           <a class="btn btn-secondary btn-lg" href="/lists" role="button">ver Listas</a>
         @else
-          <a class="btn btn-secondary btn-lg" href="/lists/{{$name}}" role="button">ver Listas</a>
+          <a class="btn btn-secondary btn-lg" href="{{route('ListaAjena', $idActual)}}" role="button">ver Listas</a>
         @endif
       </div>
     </div>

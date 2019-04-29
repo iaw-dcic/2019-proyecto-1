@@ -37,9 +37,12 @@ class ListGamesController extends Controller
 
     public function show(int $idLista, int $idJuego)
     {   
-    
+        $idUsuario = DB::table('listas')->where('id',$idLista)->get();
+        $idUsuario = $idUsuario[0]->user_id;
+        $nombreUs = DB::table('users')->where('id',$idUsuario)->get();
+        $nombreUs = $nombreUs[0]->name;
         $datosJuego = DB::table('juegos')->where([ ['list_id',"=",$idLista,], ['id',"=",$idJuego] ])->get();
-        return view('lists.games.show', compact('datosJuego'));
+        return view('lists.games.show', compact('datosJuego','idLista','idUsuario','nombreUs'));
     }
 
       /**

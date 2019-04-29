@@ -33,7 +33,8 @@ Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
 
 Route::post('/lists/{list}', 'ListGamesController@store');
 
-Route::get('/lists/{profile}','listsController@accederListasAjenas' );
+Route::get('/listaAjena/{profile}','listsController@accederListasAjenas')->name("ListaAjena");
+Route::get('/listaAjena/{profile}/{list}','listsController@accederDatosListaAjena')->name("VerListaAjena");
 
 Route::get('/lists/{list}/games/{game}', 'ListGamesController@show')->name("gameInfo");
 

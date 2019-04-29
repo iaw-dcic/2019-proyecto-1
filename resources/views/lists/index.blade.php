@@ -10,16 +10,29 @@
 @endsection
 
 @section('content')
- <h1 class="text-center header"> Listas </h1>
+ <h1 class="text-center header"> 
+    @if(Auth::user()->name == $name)
+        Tus Listas
+    @else
+        Listas Publicas de {{$name}}
+    @endif  
+ </h1>
  
 
  <div class="d-flex flex-column text-center">
     @if(!$listas->isEmpty())
     <div class="list-group">
-        @foreach($listas as $elem)
-            <a href="/lists/{{$elem->id}}" class="list-group-item list-group-item-action">
-            {{$elem->name}}</a> 
-        @endforeach
+        @if(Auth::user()->name == $name)
+            @foreach($listas as $elem)
+                <a href="/lists/{{$elem->id}}" class="list-group-item list-group-item-action">
+                {{$elem->name}}</a> 
+            @endforeach
+        @else
+            @foreach($listas as $elem)
+                <a href="/listaAjena/{{$name}}/{{$elem->id}}" class="list-group-item list-group-item-action">
+                {{$elem->name}}</a> 
+            @endforeach
+        @endif
     </div>
         
     @else  

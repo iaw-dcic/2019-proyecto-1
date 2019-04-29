@@ -55,9 +55,10 @@ class profileController extends Controller
             $name= Auth::user()->name;
             return view('profiles.show')->with('name',$name);
         }
-        else{ 
+        else{
+            $name = $nameac[0]->id; 
             $nameac = $nameac[0]->name;
-            return view('profiles.show')->with('name',$nameac); //es un usuario externo
+            return view('profiles.show')->with('name',$nameac)->with('idActual',$name); //es un usuario externo
         }
        
     }

@@ -18,7 +18,7 @@ class listsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         
         if(Auth::check()){
@@ -28,8 +28,23 @@ class listsController extends Controller
         }    
     }
 
-    public function accederListasAjenas(){
-        
+    public function accederListasAjenas(int $id){
+        $listas = DB::table('listas')->where([ ['user_id', "=", $id], ['public',"=",1] ])->get();
+        $name = User::find($id)->name;
+        return view('lists.index',compact('listas','name')); //devuelvo una view junto con las listas
+
+    }
+
+    /*
+    * SE QUE ES UNA LISTA PUBLICA DEL USUARIO $idUsuario
+    */
+    public function accederDatosListaAjena(String $nomUsuario, int $idLista){
+
+        $idUsuario = DB::table('users')->where('name', $nomUsuario)->get();
+        $idUsuario = $idUsuario[0]->id;
+        $lista = DB::table('listas')->where([ ['id', "=", $idLista], ['user_id', "=", $idUsuario] ])->get();
+        $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
+        return view('lists.show',compact('lista','juegos','idUsuario'));
     }
 
     /**
@@ -83,10 +98,11 @@ class listsController extends Controller
      */
     public function show(int $id)
     {
-
+     
         $lista = DB::table('listas')->where('id',$id)->get();
         $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
-        return view('lists.show',compact('lista','juegos'));
+        $idUsuario = Auth::user()->id;
+        return view('lists.show',compact('lista','juegos','idUsuario'));
 
     }
 

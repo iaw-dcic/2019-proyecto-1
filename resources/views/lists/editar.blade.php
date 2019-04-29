@@ -13,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('llena los datos de tu lista aquí!') }}</div>
+                <div class="card-header">{{ __('cambia los dators de tu lista aquí!') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="/lists/{$list->id}">
@@ -38,7 +38,7 @@
                            <input type="hidden" name="userID" value="{{Auth::user()->id}}">
                         </div>
                         <div class="btn-group" role="group" aria-label="form buttons">
-                            <button type="submit" class="btn btn-primary">Editar Lista </button>
+                           
                            
                         <form method="POST" action="/lists/{{$list->id}}">
                             @method('DELETE')
