@@ -27,7 +27,7 @@ class ApiController extends Controller
        
        
         $user = User::find($id);
-        $albums= User::find($id)->albums;
+        $albums= User::find($id)->albums->where('public', 1);
 
         //dd($albums);
         return view('users/showUser',['user'=>$user,'albums'=>$albums]);

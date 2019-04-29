@@ -49,7 +49,7 @@ class AlbumController extends Controller
     {
         //faltan agregar las reglas de validación del lado cliente...!!
 
-        dd($request);
+        //dd($request);
         $user  = Auth::user();
         $album = new Album;
         $album->user_id = $user->id;
