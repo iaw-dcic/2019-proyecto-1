@@ -12,7 +12,7 @@ use Session;
 use App\Http\Requests\RecetaRequest;
 use App\ImageModel;
 use Image;
-use App\ingrediente;
+use App\Ingrediente;
 use App\Medida;
   class RecetasController extends Controller
 {
@@ -165,7 +165,7 @@ public function compartir(Request $request,$id){
 public function editar($nombre){
     $receta= Receta::where('nombre', $nombre)->get();
     $ingreceta= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
-    $ingredientes= ingrediente::all();
+    $ingredientes= Ingrediente::all();
     $medidas=Medida::all();
     return  view('editarReceta',[
         'receta' => $receta[0],
