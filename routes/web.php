@@ -22,17 +22,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/book', 'BookController');
 
 
-Route::get('user/{userid}/list', 'ListaController@publicLists');
+Route::get('user/{userid}/publicList', 'ListaController@publicLists');
 Route::resource('/list', 'ListaController');
 
-Route::get('user/{userid}/list', 'ListaController@indexAll');
 
-Route::resource('/profile', 'ProfileController');
+Route::prefix('profile')->name('profile.')->group(function () {
+   	Route::get('edit', 'ProfileController@edit')->name('edit');
+	Route::get('{id}', 'ProfileController@show')->name('show');
+	Route::post('store', 'ProfileController@store')->name('store');
+});
 
-//Route::get('profile/', 'ProfileController@index');
 
-
-
+Route::get('profile/{userid}/show', 'ProfileController@show');
 
 
 Route::get('/template', function () {

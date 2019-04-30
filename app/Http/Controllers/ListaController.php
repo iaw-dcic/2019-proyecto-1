@@ -6,16 +6,17 @@ use App\Lista;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Book;
 
 class ListaController extends Controller
 {
     public function __construct()
     {
 
-        $this->middleware('auth');
+        $this->middleware('auth')->except('publicLists', 'show');
 
         //$this->middleware('book.privacy')->only('show');
-        $this->middleware('book.privacy', ['only' => ['show', 'edit']]);
+        $this->middleware('book.privacy', ['only' => ['show']]);
     }
 
     /**
@@ -25,23 +26,13 @@ class ListaController extends Controller
      */
     public function index()
     {
-        $listas = Lista::all();
+        $lists = Auth::user()->list()->get();
 
-        $data['listas'] = $listas;
+        $data['listas'] = $lists;
 
-        return view('lista.show', $data);
+        return view('lista.index', $data);
     }
 
-    public function indexAll($userid)
-    {
-       
-        $lists = User::find($userid)->list()->get();
-
-        $data['lists'] = $lists;
-
-        return view('lista.indexAll', $data);
-       
-    }
 
      public function publicLists($userid)
     {
@@ -99,14 +90,7 @@ class ListaController extends Controller
         $data['books'] = $books;
         $data['is_public'] = $public_list;
 
-        return view('lista.index', $data);
-    }
-
-    public function showAll()
-    {
-        $lista = Lista::all();
-
-        return show($lista);
+        return view('lista.show', $data);
     }
 
     /**
@@ -153,8 +137,17 @@ class ListaController extends Controller
      * @param  \App\lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function destroy(lista $lista)
+    public function destroy($lista)
     {
-        //
+
+        if (Lista::where('id', $lista)->delete()) {
+        
+            $book = Book::where('list_id', $lista)->update(['list_id' => null]);
+
+        }
+
+        return redirect()->route('list.index');
+
+
     }
 }

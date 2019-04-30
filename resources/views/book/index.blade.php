@@ -20,7 +20,7 @@
                             <th>Nombre</th>
                             <th>Autor</th>
                             <th>ISBN</th>
-                            <th>Usuario ID</th>
+                            <th>Lista ID</th>
                             <th>Fecha de creación</th>
                         </tr>
                         @foreach($books as $book)
@@ -29,7 +29,7 @@
                             <td>{{ $book->name }}</td>
                             <td>{{ $book->author }}</td>
                             <td>{{ $book->isbn }}</td>
-                            <td>{{ $book->user_id }}</td>
+                            <td>{{ $book->list_id }}</td>
                             <td>{{ $book->created_at}}</td>
                         </tr>
                         @endforeach

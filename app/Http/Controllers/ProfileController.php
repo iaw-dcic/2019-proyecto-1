@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+
+        $this->middleware('auth', ['only' => ['index','create']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,9 +37,9 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function edit()
     {
-         $userData = Auth::user();
+        $userData = Auth::user();
 
         if($userData) {
             $data['userData'] = $userData;
@@ -40,7 +47,7 @@ class ProfileController extends Controller
             $data['userData'] = [];
         }
 
-        return view('profile.create', $data);
+        return view('profile.edit', $data);
     }
 
     /**
@@ -51,19 +58,21 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
+       
         $user = Auth::user();
 
         $user->name=$request->name;
         $user->surname=$request->surname;
         $user->username=$request->username;
         $user->email=$request->email;
-        //$user->password=bcrypt($request->password);
+        if($request->filled('password')) {
+            $user->password= bcrypt($request->password);
+        }
         $user->telephone=$request->telephone;
         $user->address=$request->address;
 
         if ($user->save()) {
-           // return redirect()->route('book.update')->with('status', 'Éxito');
-            return redirect()->route('profile.create')->with('status', 'Éxito');
+            return redirect()->route('profile.edit')->with('status', 'Éxito');
         }
     }
 
@@ -75,7 +84,16 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+       $user = User::find($id);
+        
+
+        if($user) {
+            $data['userData'] = $user;
+        } else {
+            $data['userData'] = [];
+        }
+
+        return view('profile.show', $data);
     }
 
     /**
@@ -84,10 +102,7 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        
-    }
+   
 
     /**
      * Update the specified resource in storage.

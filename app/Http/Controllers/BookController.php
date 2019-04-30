@@ -24,7 +24,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+        $books = Book::where('user_id', Auth::user()->id)->get();
 
         $data['books'] = $books;
 
@@ -131,8 +131,10 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($book)
     {
-        //
+        Book::where('id', $book)->delete();
+
+        return redirect()->route('book.index');
     }
 }
