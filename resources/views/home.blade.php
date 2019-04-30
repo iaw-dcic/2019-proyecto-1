@@ -117,7 +117,11 @@
           @foreach($recetas as $receta)
             @if($receta->categoria ==0)
 						<div class="col-md-4">
-							<img alt="foto receta" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
+              @if($receta->imagen != null )
+              <img alt="foto {{$receta->nombre}}"class="rounded-circle"  src= "{{asset( $receta->imagen)}}" width=140px heigh=120px />
+              @else
+              <img alt="foto {{$receta->nombre}}" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
+              @endif
 						</div>
 						<div class="col-md-8">
 							<h3 >
@@ -136,7 +140,11 @@
           @foreach($recetas as $receta)
             @if($receta->categoria ==1)
 						<div class="col-md-4">
-            <img alt="foto receta" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
+            @if($receta->imagen != null )
+              <img class="rounded-circle" alt="foto {{$receta->nombre}}"src= "{{asset( $receta->imagen)}}" width=140px heigh=120px />
+              @else
+              <img alt="foto {{$receta->nombre}}" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
+              @endif
 						</div>
 						<div class="col-md-8">
 							<h3>

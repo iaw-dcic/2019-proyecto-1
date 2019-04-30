@@ -12,6 +12,8 @@ use Session;
 use App\Http\Requests\RecetaRequest;
 use App\ImageModel;
 use Image;
+use App\Ingrediente;
+use App\Medida;
   class RecetasController extends Controller
 {
    
@@ -127,7 +129,11 @@ public function borrarLista(Request $request, $id){
      
     return back();
 }
-
+public function borrarIng(Request $request, $id){
+    $deleted = ingrediente_de_receta::destroy($id);
+     
+    return back();
+}
 public function busqueda(Request $request){
     $valor= $request->buscador;
     $receta = Receta::where('nombre', 'LIKE', "%{$valor}%")->get();
@@ -155,5 +161,78 @@ public function compartir(Request $request,$id){
     $lista->nombre= $request->nombre;
     $lista->save();
     return redirect()->back();
+}
+public function editar($nombre){
+    $receta= Receta::where('nombre', $nombre)->get();
+    $ingreceta= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
+    $ingredientes= Ingrediente::all();
+    $medidas=Medida::all();
+    return  view('editarReceta',[
+        'receta' => $receta[0],
+        'ingreceta' => $ingreceta,
+        'ingredientes'=>$ingredientes,
+        'medidas'=>$medidas
+    ]);
+}
+public function actualizar(Request $request, $nombre){
+    $recetas= Receta::where('nombre','=', $nombre)->get();
+    $receta=$recetas[0];
+
+    $nombreR= $request->nombre;
+    $categoria= $request->categoria;
+    $descripcion= $request->descr;
+    $pasos= $request->pasos;
+    $lista= $request->lista;
+    
+    
+    if($request->filename !=null){
+        $originalImage= $request->file('filename');
+        $thumbnailImage = Image::make($originalImage);
+        $originalPath = public_path().'/img/';
+        $thumbnailImage->save($originalPath.time().$originalImage->getClientOriginalName());
+        $thumbnailImage->resize(150,150);
+        $imagen='img/'.time().$originalImage->getClientOriginalName();
+        $receta->imagen=$imagen;
+    }
+    else{
+       $j= Receta::where('nombre',$nombre)->get();
+       $imagen= $j[0]->imagen;
+    }
+    Receta::where('nombre', $nombre)
+    ->update([
+        'nombre' => $nombreR,
+        'descripcion' =>$descripcion,
+        'pasos'=>  $pasos,
+        'lista_id'=>$lista,
+        'categoria'=>$categoria,
+        'imagen' =>$imagen
+        
+        ]);
+
+    //actualizar ingredientes
+    for($i=1 ; $i<=10; $i++){
+        $medida_id=$request->get('medida'.$i);
+        $ingrediente=$request->get('ingrediente'.$i);
+        $cantidad=$request->get('cantidad'.$i);
+        $id= $request->id;
+        if($cantidad!=null && $ingrediente!=null && $medida_id != null){
+           $ing=ingrediente_de_receta::find($id);
+             if($ing != null)   {     
+                $ing->update([
+                'ingrediente_id' =>$ingrediente,
+                 'cantidad'=>  $cantidad,
+                    'medida_id' => $medida_id ]);
+             }
+             else{
+                ingrediente_de_receta::create([
+                    'receta_nombre' => $nombre,
+                    'ingrediente_id' =>$ingrediente,
+                    'cantidad'=>  $cantidad,
+                    'medida_id' => $medida_id
+                ]);}
+             }
+        }
+        
+       return  $this->receta($nombre);
 }
 }

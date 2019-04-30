@@ -15,7 +15,7 @@
                         </a>
                         @else
                         <a  href="{{route('receta',['nombre'=>$receta->nombre])}}">
-                        <img src="{{ $receta->imagen}}"  alt= "{{$receta->nombre}}" height=100 width=100> 
+                        <img src="{{asset( $receta->imagen)}}"  alt= "{{$receta->nombre}}" height=100 width=100> 
                         </a>
                         @endif
                     </div>

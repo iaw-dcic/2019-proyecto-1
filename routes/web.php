@@ -14,7 +14,7 @@
 
 Route::post('/store', 'UserController@store');
 
-Route::post('actualizarPerfil/{id}', 'UserController@actualizar')->name('actualizar')->middleware('auth');
+Route::post('actualizarPerfil/{id}', 'UserController@actualizar')->name('actualizarPerfil')->middleware('auth');
 Route::get('editarUsuario', 'UserController@editar')->name('editarUsuario');
 Route::post('login', 'UserController@postLogin');
 Route::get('login', 'UserController@login')->name('login');
@@ -34,8 +34,11 @@ Route::get('/','RecetasController@index')->name('home');
 Route::get('receta/{nombre}','RecetasController@receta')->name('receta');
 Route::get('borrarReceta/{nombre}','RecetasController@borrarReceta')->name('borrarReceta');
 Route::get('borrarLista/{id}','RecetasController@borrarLista')->name('borrarLista');
+Route::get('borrarIngredientedereceta/{id}','RecetasController@borrarIng')->name('borrarIng');
 Route::post('agregarReceta/{id_autor}','RecetasController@agregarReceta')->name('agregarReceta');
 Route::post('agregarLista/{id_autor}','RecetasController@agregarLista')->name('agregarLista');
 Route::post('agregarIngrediente/{nombreReceta}','RecetasController@agregarIngrediente')->name('agregarIngrediente');
 Route::get('listas','RecetasController@listas')->name('listas');
 Route::post('cambiarPrivacidad/{id}','RecetasController@compartir')->name('cambiarPrivacidad');
+Route::get('editarReceta/{nombre}','RecetasController@editar')->name('editarReceta');
+Route::post('actualizarReceta/{nombre}','RecetasController@actualizar')->name('actualizar');

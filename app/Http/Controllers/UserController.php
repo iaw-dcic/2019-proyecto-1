@@ -48,7 +48,8 @@ use Illuminate\Support\Facades\Hash;
         $user->apellido = $request->apellido;
         $user->email = $request->email;
         $user->descripcion = $request->descr;
-
+    
+        if($request->filename !=null){
         $originalImage= $request->file('filename');
         
         $thumbnailImage = Image::make($originalImage);
@@ -60,6 +61,7 @@ use Illuminate\Support\Facades\Hash;
         
         
         $user->avatar= $imagen;
+    }
 
         if($user->save()){
             

@@ -27,7 +27,7 @@
                 </div>
                 
                 <div id="datos" class="col-md-6">
-                    <form id="form-editar-perfil" enctype="multipart/form-data" accept-charset="UTF-8" role="form" method="POST" action="{{route('actualizar',['id'=>$perfil->id])}}"  >
+                    <form id="form-editar-perfil" enctype="multipart/form-data" accept-charset="UTF-8" role="form" method="POST" action="{{route('actualizarPerfil',['id'=>$perfil->id])}}"  >
                     {{ csrf_field() }}
                      <div class="form-group" id="perfil.nombre">
                         <label class=" "> Nombre: <br>

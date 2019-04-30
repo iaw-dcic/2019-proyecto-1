@@ -13,13 +13,11 @@
                 <h5>   <small> por: <a href="{{route('verPerfil',['id'=>$receta[0]->autorId])}}"> {{$receta[0]->autorId->nombre}} </a> </small> </h5>
                 @if(Auth::user()==$receta[0]->autorId)
                 <div class="float-right">
-                  <a href=""> Editar </a>
+                  <a href="{{route('editarReceta',['nombre'=>$receta[0]->nombre])}}"> Editar </a>
                 </div><br>
                 @endif
                 <hr>
-             
-            
-			</div>
+      	</div>
 			<div class="row">
 				<div class="col-md-4" id="divIngredientes">
 					<ul>
@@ -47,7 +45,7 @@
                     <div class="row">
                     
                      <p>
-					 {{$receta[0]->descripcion}}
+				          	 {{$receta[0]->pasos}}
                     </p>
                     </div>
                  

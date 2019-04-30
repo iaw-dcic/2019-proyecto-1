@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Receta extends Model
-{
+{ 
 
     protected $fillable = [
         'nombre', 'descripcion', 'pasos','id_autor','lista_id','categoria','imagen'
