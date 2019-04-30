@@ -3,11 +3,10 @@
 @section('sectioncontent')
 <section id="hero">
     <div class="hero-container">
-    
             <div class="col-8 col-sm-6 col-md-6 col-lg-6">
                 <form class="form-login" action="{{ route('login') }}" method="post">
                     @csrf
-                    <img class="mb-4" src="/images/loginicon.png" alt="" width="100" height="100">
+                    <img class="mb-4" src="{{asset('img/loginicon.png')}}" alt="" width="100" height="100">
 
                     <h2>Ingrese sus datos</h2>
                     <label for="inputEmail" class="sr-only">Correo Electrónico</label>
@@ -45,7 +44,6 @@
                     </div>
                 </form>
             </div>
-   
     </div>
-</section><!-- #hero -->
+</section>
 @endsection

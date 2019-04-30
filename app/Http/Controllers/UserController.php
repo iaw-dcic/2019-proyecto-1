@@ -52,11 +52,10 @@ class UserController extends Controller
             $user->username = $data['username'];
             $modification = true;
         }
-
         if ($request->has('avatar')) {
             $filename = Auth::id() . '_' . time() . '.' . $request->avatar->getClientOriginalExtension();
             $request->avatar->move(public_path('/uploads/avatars'), $filename);
-            if (strcmp($user->avatar, "default_avatar.png") !== 0) {
+            if (strcmp($user->avatar, "default_avatar.png") !== 0 && substr_compare($user->avatar, 'https://', 0, 8)!==0) {
                 unlink(public_path('/uploads/avatars/' . $user->avatar));
             }
             $user->avatar = $filename;

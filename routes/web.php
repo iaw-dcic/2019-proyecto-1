@@ -36,4 +36,6 @@ Route::delete('/lists','Lists\ListController@unLikeList')->name('unLikeList');
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
+Route::get('/search','SearchController@index')->name('Search');
+
 

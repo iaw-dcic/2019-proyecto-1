@@ -7,11 +7,23 @@
 .mylistsdiv {
     height: 400px;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 .sectionSize {
     height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.panelSearchSize {
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.panelBodySearchSize {
+    height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -21,6 +33,18 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
+
+.hero-container2 {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
 
 /* Scrollbar styles */
 

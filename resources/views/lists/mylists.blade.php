@@ -2,9 +2,9 @@
 
 @section('sectioncontent')
 <section id="hero">
-    <div class="hero-container display: table">
+    <div class="hero-container2 display: table">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 offset-1 offset-sm-1 offset-md-1 offset-lg-1">
                 <div class="mylistsdiv scrollbar-primary">
                     <table class="table">
                         <thead>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Mi Pagina Web</title>
+    <title>Proyecto1 IAW</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -25,13 +25,13 @@
     <!-- Libraries CSS Files -->
     <link href="{{ asset('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/lib/bootstrap-social/bootstrap-social.css') }}" rel="stylesheet">
 
     <!-- Main Stylesheet File -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/switchbuttons.css') }}" rel="stylesheet">
     <link href="{{ asset('css/personalstyles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/w3.css') }}" rel="stylesheet">
-    <link href="{{ asset('/lib/bootstrap-social/bootstrap-social.css') }}" rel="stylesheet">
 
     <!-- =======================================================
     Theme Name: Regna
@@ -53,9 +53,9 @@
 
             <div class="col-xs-8 col-md-4">
                 <nav class="navbar-inline">
-                    <form class="form-inline" role="search" action="{{url('home/search')}}">
+                    <form class="form-inline" method="get" role="search" action="{{url('/search')}}">
                         <div class="form-group ml-sm-4 mr-sm-2">
-                            <input type="text" class="form-control w-100" name='search' placeholder="Buscar ..." />
+                            <input type="text" class="form-control w-100" name='search' value="{{ empty($search) ? '' : $search }}"placeholder="Buscar ..." />
                         </div>
                     </form>
                 </nav>
@@ -140,14 +140,9 @@
 
     <script src="{{ asset('/lib/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('/lib/jquery/jquery-migrate.min.js') }}"></script>
-    <script src="{{ asset('/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('/lib/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('/lib/counterup/counterup.min.js') }}"></script>
-    <script src="{{ asset('/lib/superfish/hoverIntent.js') }}"></script>
     <script src="{{ asset('/lib/superfish/superfish.min.js') }}"></script>
-
     <script src="{{ asset('js/main.js') }}"></script>
 
 </body>

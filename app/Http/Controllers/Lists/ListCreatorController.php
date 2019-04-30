@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Lists;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
 use App\Genero;
 use App\Lista;
 use App\Item;
 use DB;
 use Validator;
 use Illuminate\Validation\ValidationException;
+use App\Rules\validarNombreListaCrearLista;
 
 class ListCreatorController extends Controller
 {
@@ -39,32 +39,13 @@ class ListCreatorController extends Controller
     {
         $userId = auth()->user()->id;
 
-        /*$request->validate([
-            'listname' => 'required|'.
-                            Rule::unique('listas')->where(function ($query) use ($userId) {
-                                return $query->where('user_id','=',$userId);}).
-                            '|string|max:255',
-            'genre' => 'required|exists:generos|string|max:255',
-            'descripcion' => 'nullable|string|max:755',
-            'songnames' => 'required',
-            'songnames.*' => 'required|string|max:255',
-            'artists' => 'required',
-            'artists.*' => 'required|string|max:255',
-            'albums' => 'required',
-            'albums.*' => 'required|string|max:255',
-        ]);*/
-
         $request->validate([
-            'listname' => 'required|' .
-                Rule::unique('listas')->where(function ($query) use ($userId) {
-                    return $query->where('user_id', '=', $userId);
-                }) .
-                '|string|max:255',
-            'genre' => 'required|exists:generos|string|max:255',
-            'descripcion' => 'nullable|string|max:755',
-            'songs' => 'required|array',
-            'songs.*' => 'required|array|size:3',
-            'songs.*.*' => 'required|string|max:255',
+            'listname' => ['required','string','max:255', new validarNombreListaCrearLista($userId)],
+            'genre' => ['required','exists:generos','string','max:255'],
+            'descripcion' => ['nullable','string','max:755'],
+            'songs' => ['required','array'],
+            'songs.*' => ['required','array','size:3'],
+            'songs.*.*' => ['required','string','max:255'],
         ]);
 
         $data = $request->all();
@@ -105,11 +86,9 @@ class ListCreatorController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
 
-            $repetidos = array_keys($canciones, $cancion);
             $validator = Validator::make([], []);
-            foreach ($repetidos as $divrepetido) {
-                $validator->errors()->add($divrepetido, "Error Item Duplicado");
-            }
+            $validator->errors()->add('repeatsong', "Usted ha ingresado filas duplicadas");
+
             throw new ValidationException($validator);
         }
     }

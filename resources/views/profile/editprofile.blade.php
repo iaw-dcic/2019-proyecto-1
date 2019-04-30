@@ -5,7 +5,6 @@
     <div class="hero-container">
         <div class="col-md-8">
             <div class="card-body">
-
                 <div class="row">
                     <div class="col-md-4">
                         <img width="100px" height="100px" class="rounded-circle" src="{{ (substr_compare($user['avatar'], 'https://', 0, 8)==0) ? $user['avatar'] : asset('uploads/avatars/'.$user['avatar']) }}">
@@ -63,5 +62,5 @@
             </div>
         </div>
     </div>
-</section><!-- #hero -->
+</section>
 @endsection

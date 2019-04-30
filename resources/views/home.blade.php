@@ -7,11 +7,8 @@
         <h2></h2>
         <a href="#listas" class="btn-get-started">Listas Públicas</a>
     </div>
-</section><!-- #hero -->
+</section>
 
-<!--==========================
-      Portfolio Section
-    ============================-->
 <section id="listas">
     <div class="wow fadeInUp col-lg-12 paddingSeccion">
         <div class="section-header">
@@ -67,5 +64,5 @@
     </div>
 
     <script src="{{ asset('/js/filtrar.js') }}"></script>
-</section><!-- #portfolio -->
+</section>
 @endsection

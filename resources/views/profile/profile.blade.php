@@ -8,7 +8,7 @@
                 <div class="hero-container">
                     @if($user['username'])
                     <h1>Perfil de {{ $user->username }}</h1>
-                    <img width="100px" height="100px" class="rounded-circle" src="{{ asset('uploads/avatars/'.$user->avatar) }}">
+                    <img width="100px" height="100px" class="rounded-circle" src="{{ (substr_compare($user['avatar'], 'https://', 0, 8)==0) ? $user['avatar'] : asset('uploads/avatars/'.$user['avatar']) }}">
                     <textarea class="scrollbar-primary mt-4" style="border-radius:15px; background-color: black;color:#fff;" rows="6" cols="80" id="description" readonly disabled>{{ $user->description }}</textarea>
                     <a href="#listas" class="btn-get-started">Listas de {{ $user->username }}</a>
                     @else
@@ -19,9 +19,6 @@
             </div>
 </section><!-- #hero -->
 
-<!--==========================
-      Portfolio Section
-    ============================-->
 <section id="listas">
     <div class="wow fadeInUp col-lg-12 paddingSeccion">
         <div class="section-header">
@@ -45,5 +42,5 @@
     </div>
 
     <script src="{{ asset('/js/filtrar.js') }}"></script>
-</section><!-- #portfolio -->
+</section>
 @endsection

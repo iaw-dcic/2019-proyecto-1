@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function home()
     {
         $generos = Genero::get('genre');
-        $listas = Lista::where('visibility', true)->orderBy('created_at', 'desc')->take(10)->get(['id', 'listname','likes','views']);
+        $listas = Lista::where('visibility', true)->orderBy('created_at', 'desc')->take(50)->get(['id', 'listname','likes','views']);
         return view('home', ['generos' => $generos, 'listas' => $listas]);
     }
 
@@ -45,30 +45,30 @@ class HomeController extends Controller
 
         if('all'==$data['genre']){
             if('recent'==$data['orderby']){
-                $listas = Lista::where('visibility', true)->orderBy('created_at', 'desc')->take(10)->get(['id', 'listname','likes','views']);
+                $listas = Lista::where('visibility', true)->orderBy('created_at', 'desc')->take(50)->get(['id', 'listname','likes','views']);
             }
             else{
                 if('likes'==$data['orderby']){
-                    $listas = Lista::where('visibility', true)->orderBy('likes', 'desc')->take(10)->get(['id', 'listname','likes','views']);
+                    $listas = Lista::where('visibility', true)->orderBy('likes', 'desc')->take(50)->get(['id', 'listname','likes','views']);
                 }
                 else{
                     if('views'==$data['orderby']){
-                        $listas = Lista::where('visibility', true)->orderBy('views', 'desc')->take(10)->get(['id', 'listname','likes','views']);
+                        $listas = Lista::where('visibility', true)->orderBy('views', 'desc')->take(50)->get(['id', 'listname','likes','views']);
                     }
                 }
             }
 
         }else{
             if('recent'==$data['orderby']){
-                $listas = Lista::where('visibility', true)->where('genre',$data['genre'])->orderBy('created_at', 'desc')->take(10)->get(['id', 'listname','likes','views']);
+                $listas = Lista::where('visibility', true)->where('genre',$data['genre'])->orderBy('created_at', 'desc')->take(50)->get(['id', 'listname','likes','views']);
             }
             else{
                 if('likes'==$data['orderby']){
-                    $listas = Lista::where('visibility', true)->where('genre',$data['genre'])->orderBy('likes', 'desc')->take(10)->get(['id', 'listname','likes','views']);
+                    $listas = Lista::where('visibility', true)->where('genre',$data['genre'])->orderBy('likes', 'desc')->take(50)->get(['id', 'listname','likes','views']);
                 }
                 else{
                     if('views'==$data['orderby']){
-                        $listas = Lista::where('visibility', true)->where('genre',$data['genre'])->orderBy('views', 'desc')->take(10)->get(['id', 'listname','likes','views']);
+                        $listas = Lista::where('visibility', true)->where('genre',$data['genre'])->orderBy('views', 'desc')->take(50)->get(['id', 'listname','likes','views']);
                     }
                 } 
             }
