@@ -17,9 +17,16 @@
         <header class="masthead pt-0">
             <div class="container">
                 <div class="row h-100 align-items-center pb-5">
-                    <div class="col-lg-10 align-self-baseline">
+                    <div class="col-xs-6 align-self-baseline">
                         <h3 class="text-white font-weight-bold">{{ $user->username }}</h3>
                     </div>
+                    @if (Auth::check() && Auth::user()->id == $user->id)
+                    <div class="col-xs-6 align-self-baseline pl-2">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProfileModal">
+                            Edit profile
+                        </button>
+                    </div>
+                    @endif
                     @if ($user->country !== null)
                     <div class="col-lg-10 align-self-baseline mb-2">
                         <small><cite title="San Francisco, USA" class="text-white-75 font-weight-light mb-5">From {{ $user->country }}</cite></small>
@@ -28,57 +35,6 @@
                     <div class="col-lg-5 align-self-baseline">
                         <p class="text-white-75 font-weight-light mb-5 wrappedDescription">{{ $user->biography }}</p>
                     </div>
-                    @auth
-                        @if (Auth::user()->id == $user->id)
-                            <div class="editBioButton">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProfileModal">
-                                Edit profile
-                            </button>
-                            </div>
-                            <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="bioModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="bioModalLongTitle">Edit profile</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <form method="POST" action="/profile/{{ $user->id }}" role="form" enctype="multipart/form-data">
-                                            @method('PATCH')
-                                            @csrf
-                                            <div class="modal-body">
-                                                <h5>Profile picture</h5>
-                                                <div class="custom-file mb-3">
-                                                    <input type="file" class="custom-file-input" id="customFile" name="profile_picture">
-                                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                                </div>
-                                                <hr>
-                                                <h5>Country</h5>
-                                                <select id="countrySelect" name ="country">
-                                                    <option value=""></option>
-                                                    @foreach(Countries::getList('en', 'php') as $country) 
-                                                        <option value="{{ $country }}" {{ $user->country === $country ? 'selected':'' }}>{{ $country }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <hr>
-                                                <h5>Bio</h5>
-                                                <div class="form-group">
-                                                    <textarea class="form-control" name="biography" rows="3" maxlength="140"> {{ $user->biography }}</textarea>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <div>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endauth
                 </div>
             </div>
         </header>
@@ -148,4 +104,51 @@
         </div>
 </header>
 @endif
+
+@auth
+@if (Auth::user()->id == $user->id)
+    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="bioModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bioModalLongTitle">Edit profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="/profile/{{ $user->id }}" role="form" enctype="multipart/form-data">
+                    @method('PATCH')
+                    @csrf
+                    <div class="modal-body">
+                            <h5>Profile picture</h5>
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" id="customFile" name="profile_picture">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        <hr>
+                        <h5>Country</h5>
+                        <select id="countrySelect" name ="country">
+                            <option value=""></option>
+                                @foreach(Countries::getList('en', 'php') as $country) 
+                                    <option value="{{ $country }}" {{ $user->country === $country ? 'selected':'' }}>{{ $country }}</option>
+                                @endforeach
+                        </select>
+                        <hr>
+                        <h5>Bio</h5>
+                        <div class="form-group">
+                            <textarea class="form-control" name="biography" rows="3" maxlength="140"> {{ $user->biography }}</textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endif
+@endauth
 @endsection
