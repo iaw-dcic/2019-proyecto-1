@@ -11,7 +11,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/jquery-3.4.0.min.js') }}"></script>
     @yield('scripts')
 
     <!-- Fonts -->
@@ -34,8 +33,8 @@
                 <form method="GET" action="{{ route('search') }}">
                         <div class="input-group">
                             <div class="searchbar">
-                                <input class="search_input" type="text" name="username" placeholder="Search...">
-                                <input class="search_icon" type="image" src="/images/searchico.png">
+                                <input class="search_input" type="text" name="username" placeholder="Search..." aria-label="Search users here">
+                                <input class="search_icon" type="image" src="/images/searchico.png" alt="User search icon">
                             </div>
                         </div>
                     </form>
@@ -67,7 +66,7 @@
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userManagingDropdown">
                                         <a class="dropdown-item" href="/user/{{ Auth::user()->id }}">Profile</a>
-                                        <a class="dropdown-item" href="/about">About</a>
+                                        <a class="dropdown-item" href="/readme">Read me</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

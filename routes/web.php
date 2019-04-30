@@ -15,9 +15,9 @@ Auth::routes();
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('/home', 'PagesController@index')->name('home');
-Route::get('/search', 'SearchController@search')->name('search');
-Route::get('/about', 'PagesController@about')->name('about');
+Route::get('/readme', 'PagesController@readme')->name('readme');
 
+Route::get('/search', 'SearchController@search')->name('search');
 Route::get('/user/{user_id}', 'SearchController@showUser')->name('user.show');
 Route::get('/user/{user_id}/edit', 'UsersController@edit')->name('user.edit');
 Route::patch('/user/{user_id}', 'UsersController@update')->name('user.update');

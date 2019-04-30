@@ -28,26 +28,19 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('home.welcome_guest');
+        return view('home');
     }
 
-    public function about()
+    public function readme()
     {
-        return view('about');
+        return view('readme');
     }
 
-    public function welcome()
-    {   
-        if (Auth::guest())
-        {
-            return view('home.welcome_guest');
-        }else
-        {
-            $displayable_collections = Collection::where('user_id', Auth::user()->id)->get()->sortByDesc('updated_at');
-            $ids = $displayable_collections->pluck('id');
-            $displayable_items = Item::whereIn('collection_id', $ids)->get();
-            return view('home.welcome_user')->withItems($displayable_items)->withCollections($displayable_collections);
-        }
+    public function welcome(){
+        $displayable_collections = Collection::where('user_id', Auth::user()->id)->get()->sortByDesc('updated_at');
+        $ids = $displayable_collections->pluck('id');
+        $displayable_items = Item::whereIn('collection_id', $ids)->get();
+        return view('home.welcome_user')->withItems($displayable_items)->withCollections($displayable_collections);
     }
     
     public function search(Request $request){

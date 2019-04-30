@@ -14,7 +14,7 @@
                     <h1>{{$collection->name}}</h1>
                     @if (Auth::user()->id==$collection->user_id)
                         <div class="btn-group">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" name="Dropdown button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="/collections/{{$collection->id}}/edit">Edit</a>
