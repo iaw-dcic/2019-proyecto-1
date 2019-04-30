@@ -20,8 +20,6 @@ class ListElementPolicy
      */
     public function modify(User $user, ListElement $listElement)
     {
-        //solo el creador de la lista podrá modificar la misma
-        //dd($listElement->list()->user_id());
         $list_id = UserList::findOrFail($listElement->user_list_id);
         return $list_id->user_id == $user->id;
     }

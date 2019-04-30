@@ -94,8 +94,7 @@ class UserListsController extends Controller
 
     private function uploadListImage(UserList $userlist) {
         $filepath = $this->uploadImage(request()->file('userlist_picture'),'userlist'.$userlist->id,'userlists-pictures');
-        $userlist->image = $filepath;
-        $userlist->save();
+        $userlist->update(['image' => $filepath]);
         return back();
     }
 

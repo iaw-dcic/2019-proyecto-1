@@ -12,6 +12,7 @@
     </div>
 </header>
 
+@if($userLists->count())
 <div class="row wrap justify-content-center">
     @foreach ($userLists as $userlist)
         <div class="col-sm-2">
@@ -19,7 +20,7 @@
                 @if($userlist->image)
                     <img class="card-img-top"  src="{{ $userlist->image }}">
                 @else 
-                    <img class="card-img-top" src="http://placehold.it/300x200">
+                    <img class="card-img-top" src="{{ asset('img\userlists-pictures\userlist-placeholder.jpg') }}">
                 @endif
                 
                 <div class="card-body">
@@ -41,7 +42,17 @@
             <div>{{ $userLists->links() }}</div>
     </div>
 </div>
-@auth
-      
-@endauth
+
+@else 
+<header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+              <div class="col-lg-8 align-self-baseline">
+                    <p class="text-white-75 font-weight-light mb-5">{!! Auth::check() ? 'There are currently no public lists, <a href="#" data-toggle="modal" data-target="#newListModal">be the first one</a>!' : 'There are currently no public lists'!!}</p>
+              </div>
+            </div>
+        </div>
+</header>
+@endif
+
 @endsection

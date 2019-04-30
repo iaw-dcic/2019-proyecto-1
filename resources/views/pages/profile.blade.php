@@ -5,8 +5,8 @@
     
     <div class="col-sm-2 pr-0 plcol">
         <div class="circular">
-            @if($user->image)
-                <img id="profileImage"  src="{{ $user->image }}">
+            @if($user->profile_image)
+                <img id="profileImage"  src="{{ $user->profile_image }}">
             @else 
                 <img id="profileImage" src="{{ asset('/img/profile-pictures/profile-placeholder.png') }}">
             @endif
@@ -55,12 +55,12 @@
     @foreach ($userlistsToShow as $userlist)
         <div class="col-sm-2">
             <div class="card mb-4">
-                @if($userlist->image)
-                    <img class="card-img-top"  src="{{ $userlist->image }}">
+                @if($userlist->profile_image)
+                    <img class="card-img-top"  src="{{ $userlist->profile_image }}">
                 @else 
-                    <img class="card-img-top" src="http://placehold.it/300x200">
+                    <img class="card-img-top" src="{{ asset('img\userlists-pictures\userlist-placeholder.jpg') }}">
                 @endif
-
+            
                 <div class="card-body">
                     <h5 class="card-title">{{ $userlist->title }}</h5>
                     <p class="card-text p">{{ $userlist->description }}</p>

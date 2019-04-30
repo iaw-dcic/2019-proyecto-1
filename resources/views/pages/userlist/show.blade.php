@@ -14,7 +14,7 @@
           @if($userlist->image)
               <img id="profileImage"  src="{{ $userlist->image }}">
           @else 
-              <img id="profileImage" src="http://placehold.it/300x200">
+              <img id="profileImage" src="{{ asset('img\userlists-pictures\userlist-placeholder.jpg') }}">
           @endif
       </div>
   </div>

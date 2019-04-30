@@ -37,11 +37,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getImageAttribute()
-    {
-        return $this->profile_image;
-    }
-
     public function lists() {
         return $this->hasMany(UserList::class);
     }

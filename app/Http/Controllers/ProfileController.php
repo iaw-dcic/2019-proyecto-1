@@ -26,8 +26,7 @@ class ProfileController extends Controller
 
     private function uploadProfileImage(User $user) {
         $filepath = $this->uploadImage(request()->file('profile_picture'),'profile'.$user->id,'profile-pictures');
-        $user->profile_image = $filepath;
-        $user->save();
+        $user->update(['profile_image' => $filepath]);
         return back();
     }
 }
