@@ -24,7 +24,10 @@
 
     <div class="d-flex flex-column">
         <h3> Comentarios y/o aclaraciones </h3>
-         
+            <ul>
+                <li> Al modificar los datos de una lista, es necesario ingresar tanto un nombre nuevo como una descripcion nueva </li>
+                <li> Al modificar los datos de un juego, es necesario que todos los campos tengan datos para que el mecanismo funcione </li>
+            </ul>
     </div>
 </div>
 @endsection

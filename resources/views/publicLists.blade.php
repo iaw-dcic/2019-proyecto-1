@@ -10,14 +10,14 @@
 @endsection
 
 @section('content')
-    <div class="d-flex text-center">
     @if(!$InfoListas->isEmpty())
-    <div class="list-group">
-        @foreach($InfoListas as $elem)
-            <a href="/lists/{{$elem->id}}" class="list-group-item list-group-item-action ">
-            {{$elem->name}}</a> creada por <a href="profiles/{{$autores[$elem->name]}}"> {{$autores[$elem->name]}} </a> 
-        @endforeach
-    </div>
+    <div class=" d-flex text-center">
+        <div class="list-group">
+            @foreach($InfoListas as $elem)
+                <a href="/lists/{{$elem->id}}" class="list-group-item list-group-item-action ">
+                {{$elem->name}}</a> creada por <a href="profiles/{{$autores[$elem->name]}}"> {{$autores[$elem->name]}} </a> 
+            @endforeach
+        </div>
     </div>
 
     @else  
