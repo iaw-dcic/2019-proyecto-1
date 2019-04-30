@@ -47,7 +47,7 @@ return [
     'facebook' => [
         'client_id' => '373398019936382',
         'client_secret' => '89f2b756c186f0dd7d875b2bef2b6ab7',
-        'redirect' => 'http://localhost:8000/login/facebook/callback',
+        'redirect' => 'https://http://proyecto1-iaw.herokuapp.com/login/facebook/callback',
     ],
 
 ];
