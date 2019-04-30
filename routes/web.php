@@ -11,6 +11,23 @@
 |
 */
 
+/*
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
+*/
+route::get('/', "HomeController@index")->name ('Home');
+route::get('/home', "HomeController@index")->name ('Home');
+
+route::get('/home/buscar', "HomeController@buscar");
+
+Route::get('/perfil', 'UserController@profile')->name ('Profile');
+Route::post('/perfil', 'UserController@update_profile');
+
+Route::get('/postear' ,'PosteoController@postear')->name('postear');
+Route::post('/postear','PosteoController@crear_post');
+
+
+Auth::routes();
+
+
