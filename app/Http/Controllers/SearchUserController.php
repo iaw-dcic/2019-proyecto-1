@@ -13,22 +13,61 @@ class SearchUserController extends Controller
 
     public function searchUser(Request $request)
     {
-        $search = $request->get('searchTerm');
+        /* $search = $request->get('searchTerm'); 
+        if ($search != null) {
 
-        $userSearch = User::where('name', 'LIKE', '%' . $search . '%')->get();
-        
-        return view('pages.search')-> with('users',$userSearch);
+            $users = User::where('name', 'LIKE', '%' . $search . '%')
+                ->orWhere('username', 'LIKE', '%' . $search . '%')
+                ->get();
+
+            $listings = Listing::where('title', 'LIKE', '%' . $search . '%')
+                ->where('visibility', '=', 'publica')
+                ->get();
+            if (count($users) == 0 && count($listings == 0)) {
+                alert()->info('Atencion!', 'No encontramos ningún usuario o lista con ese nombre');
+            }
+            return view('pages.search', compact('users', 'listings'));
+        } else {
+            alert()->info('Atencion!', 'Ingresa el nombre del usuario o de una lista!');
+            return redirect('searchlisting');
+        }*/
+
+        $search = $request->get('searchTerm');
+        if ($search != null) {
+
+
+            $listings = Listing::where('title', 'LIKE', '%' . $search . '%')
+                ->where('visibility', '=', 'publica')
+                ->first();
+            
+            $algo = $listings->user();
+            dd($algo);
+            exit;
+            
+            $users = User::where('name', 'LIKE', '%' . $search . '%')
+                ->orWhere('username', 'LIKE', '%' . $search . '%')
+                ->get();
+
+
+            if (count($users) == 0 && count($listings == 0)) {
+                alert()->info('Atencion!', 'No encontramos ningún usuario o lista con ese nombre');
+            }
+            return view('pages.search', compact('users', 'listings'));
+        } else {
+            alert()->info('Atencion!', 'Ingresa el nombre del usuario o de una lista!');
+            return redirect('searchlisting');
+        }
     }
 
     public function getUserListings($userId)
     {
-        
+
         $user = User::where('id', $userId)->first();
-       
+
         //$userListings = Listing::where('user_id', $userId)->get();
-        $userListings = Listing::where('user_id',$userId)
-                 ->where('visibility', 'Publica')
-                 ->get();
+        $userListings = Listing::where('user_id', $userId)
+            ->where('visibility', 'Publica')
+            ->get();
 
         $data = [
             'listings'  => $userListings,

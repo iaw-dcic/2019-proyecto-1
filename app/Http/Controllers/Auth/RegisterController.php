@@ -65,9 +65,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        //$fileNameToStore = $this->handleFileUpload($data);
-
         alert()->success('Bievenido!', 'Te registraste correctamente!.');
 
         return User::create([
@@ -80,40 +77,4 @@ class RegisterController extends Controller
 
     }
 
-    /*private function handleFileUpload(array $data)
-    {
-
-
-        
-        // Handle File Upload
-        if ($request->hasFile('cover_image')) {
-
-            // Get filename with the extension 
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-            // Get just extension
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-
-            // Filename to store
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-
-            // Upload Image
-            $request->file('cover_image')->storeAs('public/cover_images/thumbnail', $fileNameToStore);
-
-            //Resize image here
-            $thumbnailpath = public_path('storage/cover_images/thumbnail/' . $fileNameToStore);
-            $img = Image::make($thumbnailpath)->resize(220, 220, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $img->save($thumbnailpath);
-        } else {
-            $fileNameToStore = 'default.jpg';
-        }
-        return $fileNameToStore;
-    }*/
-
-   
 }

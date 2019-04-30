@@ -27,10 +27,9 @@ class UserController extends Controller
         $userListings = Listing::where('user_id', $user->id)->get();
         $fileNameToStore = $this->handleFileUpload($request);
 
-
         if ($request->hasFile('avatar')) {
             if ($user->avatar != 'default.jpg') {
-                Storage::delete('public/avatar_images/thumbnail/' . $user->avatar);
+                Storage::delete('public/img/avatars/' . $user->avatar);
             }
             $user->avatar = $fileNameToStore;
         }
@@ -41,7 +40,21 @@ class UserController extends Controller
 
     private function handleFileUpload(Request $request)
     {
+
+
+        $fileNameToStore = 'default.jpg';
         if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+    
+            $fileNameToStore = time() . '.' . $avatar->getClientOriginalExtension();
+    
+            Image::make($avatar)->resize(220, 220)->save( public_path('/img/avatars/' . $fileNameToStore) );
+        } 
+       
+        return $fileNameToStore;
+
+       /* $avatarImage = request()->file('avatar');
+        if ($avatarImage != null) {
 
             // Get filename with the extension 
             $filenameWithExt = $request->file('avatar')->getClientOriginalName();
@@ -56,10 +69,13 @@ class UserController extends Controller
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
 
             // Upload Image
+            $destinationPath = public_path('/img/avatar');
+            $avatarImage->move($destinationPath, $fileNameToStore);
+        
             $request->file('avatar')->storeAs('public/avatar_images/thumbnail', $fileNameToStore);
 
             //Resize image here
-            $thumbnailpath = public_path('storage/avatar_images/thumbnail/' . $fileNameToStore);
+            $thumbnailpath = public_path('img/avatar' . $fileNameToStore);
             $img = Image::make($thumbnailpath)->resize(220, 220, function ($constraint) {
                 $constraint->aspectRatio();
             });
@@ -67,6 +83,6 @@ class UserController extends Controller
         } else {
             $fileNameToStore = 'default.jpg';
         }
-        return $fileNameToStore;
+        return $fileNameToStore;*/
     }
 }

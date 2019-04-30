@@ -786,10 +786,10 @@ ol {
 }
 
 .search-widget button {
-	position: absolute;
+	position: inherit;
 	right: 0;
 	top: 0;
-	color: #b01ba5;
+	color: wheat;
 	font-weight: 700;
 	font-size: 14px;
 	font-style: italic;

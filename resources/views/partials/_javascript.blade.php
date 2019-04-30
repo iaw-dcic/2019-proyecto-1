@@ -8,13 +8,7 @@
 <script src="{{ URL::asset('js/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ URL::asset('js/main.js') }}"></script>
 
-<!-- Video js -->
-<script src="{{ URL::asset('js/jquery.vide.min.js') }}"></script>
-<!-- //Video js -->
-
-<!--Form validation -->
-<!--<script src="{{ URL::asset('js/form-custom-validation.js')}}"></script> -->
-
+<!-- Upload images -->
 <script src="{{ URL::asset('js/image-upload-file.js')}}"></script>
 
 <!-- Search table (Select2 for Forms)-->
