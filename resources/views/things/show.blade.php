@@ -1,19 +1,22 @@
 @extends('index.layout')
 @section('content')
 
-	<div> 
-    <h1 class = "title"> Mis Viajes </h1>
+    <div class="sticky-top">
+    <h1 class = "title"> <p class="font-weight-bolder">Mis Viajes </p></h1>
     </div>
 
     @if($misListas->count())
-    <div>
-        
+    <div class ="container">
+        <ul class="list-group">
+               
         @foreach($misListas as $thing)
-        <a href="/things/{{$thing ->id}}/addItems" class="btn btn-light">
-             <h2>{{$thing -> title}} </h2>
-            </a> 
-       @endforeach
+            <li class="list-group-item"> 
+                    <a href="/things/{{$thing ->id}}/addItems" ><h6>{{$thing -> title}} </h6>
+                    </a>
+            </li> 
+         @endforeach
        
+        </ul>
     </div>
     @endif
 
@@ -22,9 +25,7 @@
 		{{csrf_field()}}
 		
         <div class= "container">
-            <div class="container">
-                <label for="example-text-input" class="col-2 col-form-label">¿Qué país vas a visitar?</label>
-            </div>
+            <label for="example-text-input" class="col-2 col-form-label">¿Qué país vas a visitar?</label>
             <div class="col-10">
                 <input class="form-control" type="text" id="example-text-input" name = "title">
             </div>

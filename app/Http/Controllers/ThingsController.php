@@ -8,6 +8,10 @@ use App\User;
 
 class ThingsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -76,7 +80,7 @@ class ThingsController extends Controller
      */
     public function edit(Thing $thing)
     {
-      return view('things.edit',compact('thing'));
+        return view('things.edit',compact('thing'));
     }
 
     /**
@@ -88,7 +92,9 @@ class ThingsController extends Controller
      */
     public function update(Thing $thing)
     {
-        
+        request()->validate([
+            'title' => ['required', 'min:2', 'max:155']
+        ]);
         $thing -> update(request(['title']));
     
         return redirect('/things'); 

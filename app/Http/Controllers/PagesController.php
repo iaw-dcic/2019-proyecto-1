@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Thing;
 use App\User;
-
+use App\Item;
 class PagesController extends Controller
 {
 
@@ -13,8 +13,6 @@ class PagesController extends Controller
         
         $misListas = User::All();
         return view('index.index',compact('misListas'));
-    
-    
     }
 
 	public function readme(){
@@ -29,4 +27,24 @@ class PagesController extends Controller
      
         return view('index.show',compact('user'),compact('misListas'));
     }
+
+    public function showItem($usuario, $thing){
+
+     
+        
+        $items = Item::where('thing_id', $thing)-> get();
+        $lista = Thing::where('id',$thing)->get()->first();
+  
+        return view('index.showItem', compact('items'), compact('lista'));
+    }
+
+    public function showUser($usuario){
+        
+        $users = User::where('usuario', $usuario)-> get();
+        $user = $users-> first();
+   
+        return view('index.showUser', compact('user'));
+    }
+
+
 }

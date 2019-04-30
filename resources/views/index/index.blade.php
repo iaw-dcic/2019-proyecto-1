@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1> Otro tambien viajan como vos!  </h1>
+<h1> <p class="font-weight-bolder"> Otro tambien viajan como vos! </p> </h1> 
 
 
 

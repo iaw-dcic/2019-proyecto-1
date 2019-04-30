@@ -2,21 +2,24 @@
 
 
 @section('content')
-
-<h1> {{$user-> usuario}}  </h1>
-
-
-
+<form>
+ <a href="/show/{{$user-> usuario}}/showUser" class="btn btn-light" > 
+  <h1> <p class="font-weight-bolder"> {{$user-> usuario}}  </p></h1> 
+<a>
+</form>
+<form>
 @if($misListas->count())
-    <div>
-        
-        @foreach($misListas as $thing)
-        
+  <div class ="container">
+      <ul class="list-group">
+      @foreach($misListas as $thing)
+        <a href="/show/{{$user-> usuario}}/{{$thing -> id}}"  >
              <h4>{{$thing -> title}} </h4>
-            
+           </a> 
        @endforeach
-       
-    </div>
+    </ul>     
+  </div>
     @endif
 
 @endsection
+
+</form>

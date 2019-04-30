@@ -3,7 +3,7 @@
 @section('content')
 
 	 <a href="/things/{{$thing ->id}}/addItems" class="btn btn-default">
-	 <h1 class = "title"> {{$thing -> title}} 
+	 <h1 class = "title"> <p class="font-weight-bolder"> {{$thing -> title}} </p>
 	 </h1>
 	 <a href="/things/{{$thing ->id}}/edit" class="btn btn-default">edit</a>  
 
@@ -81,7 +81,7 @@
 		<button type="submit" class="btn btn-primary">Agregar</button>
 		</div>
         
-        <div>
+    <div>
 			<ul>
 				@foreach($errors->all() as $error)
 					<br>
