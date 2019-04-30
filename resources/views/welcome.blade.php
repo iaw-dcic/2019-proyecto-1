@@ -19,7 +19,6 @@
                     <table class="table table-hover task-table">
                     <thead>
                         <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">Code</th>
                         <th scope="col">Title</th>
                         <th scope="col">Author</th>
@@ -31,7 +30,6 @@
                     <tbody>
                     @foreach($tasks as $task)
                         <tr>
-                            <td>{{$task->id}}</td>
                             <td>{{$task->cod}}</td>
                             <td>{{$task->title}}</td>
                             <td>{{$task->author}}</td>
