@@ -8,22 +8,24 @@
                 <div class="card-header">Listas</div>
 
                 <div class="card-body">
-                    <table class="table">
-                        <tr>
-                            <th>ID Lista</th>
-                            <th>Nombre</th>
-                            <th></th>
-                        </tr>
-                        @foreach($lists as $list)
-                        <tr>
-                            <td>{{ $list->id }}</td>
-                            <td>{{ $list->name }}</td>
-                            <td><a class="btn btn-primary btn-sm" href="{{url('list/'.$list->id)}}">Ver</a></td>
-                        </tr>
-                        @endforeach
-                        
+                    <div class="table-responsive-md">
+                        <table class="table">
+                            <tr>
+                                <th>ID Lista</th>
+                                <th>Nombre</th>
+                                <th></th>
+                            </tr>
+                            @foreach($lists as $list)
+                            <tr>
+                                <td>{{ $list->id }}</td>
+                                <td>{{ $list->name }}</td>
+                                <td><a class="btn btn-primary btn-sm" href="{{url('list/'.$list->id)}}">Ver</a></td>
+                            </tr>
+                            @endforeach
+                            
 
-                    </table>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

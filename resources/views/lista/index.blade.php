@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    <table class="table">
+                    <div class="table-responsive-md">
+                        <table class="table">
                         <tr>
                             <th>ID Lista</th>
                             <th>Nombre</th>

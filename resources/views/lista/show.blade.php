@@ -13,25 +13,24 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <table class="table">
-                        <tr>
-                            <th>ID Libro</th>
-                            <th>Nombre</th>
-                            <th>Autor</th>
-                            <th>ISBN</th>
-                        </tr>
-                        @foreach($books as $book)
-                        <tr>
-                            <td>{{ $book->id }}</td>
-                            <td>{{ $book->name }}</td>
-                            <td>{{ $book->author }}</td>
-                            <td>{{ $book->isbn }}</td>
-                        </tr>
-                        @endforeach
-                        
-
-                    </table>
+                    <div class="table-responsive-md">
+                        <table class="table">
+                            <tr>
+                                <th>ID Libro</th>
+                                <th>Nombre</th>
+                                <th>Autor</th>
+                                <th>ISBN</th>
+                            </tr>
+                            @foreach($books as $book)
+                            <tr>
+                                <td>{{ $book->id }}</td>
+                                <td>{{ $book->name }}</td>
+                                <td>{{ $book->author }}</td>
+                                <td>{{ $book->isbn }}</td>
+                            </tr>
+                            @endforeach
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

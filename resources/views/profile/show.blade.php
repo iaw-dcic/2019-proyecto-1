@@ -14,24 +14,23 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <table class="table">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Teléfono</th>
-                            <th>Dirección</th>
-                        </tr>
-                        <tr>
-                            <td>{{ $userData->name }}</td>
-                            <td>{{ $userData->surname }}</td>
-                            <td>{{ $userData->telephone}}</td>
-                            <td>{{ $userData->address}}</td>
-                        </tr>                        
-
-                    </table>
-                </div>
-            </form>
+                    <div class="table-responsive-md">
+                        <table class="table">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Teléfono</th>
+                                <th>Dirección</th>
+                            </tr>
+                            <tr>
+                                <td>{{ $userData->name }}</td>
+                                <td>{{ $userData->surname }}</td>
+                                <td>{{ $userData->telephone}}</td>
+                                <td>{{ $userData->address}}</td>
+                            </tr>                        
+                        </table>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

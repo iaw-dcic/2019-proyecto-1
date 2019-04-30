@@ -13,29 +13,30 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="table-responsive-md">
+                        <table class="table">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Autor</th>
+                                <th>ISBN</th>
+                                <th>Usuario ID</th>
+                                <th>Fecha de creación</th>
+                            </tr>
+                            @foreach($books as $book)
+                            <tr>
+                                <td>{{ $book->id }}</td>
+                                <td>{{ $book->name }}</td>
+                                <td>{{ $book->author }}</td>
+                                <td>{{ $book->isbn }}</td>
+                                <td>{{ $book->user_id }}</td>
+                                <td>{{ $book->created_at}}</td>
+                            </tr>
+                            @endforeach
+                            
 
-                    <table class="table">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Autor</th>
-                            <th>ISBN</th>
-                            <th>Usuario ID</th>
-                            <th>Fecha de creación</th>
-                        </tr>
-                        @foreach($books as $book)
-                        <tr>
-                            <td>{{ $book->id }}</td>
-                            <td>{{ $book->name }}</td>
-                            <td>{{ $book->author }}</td>
-                            <td>{{ $book->isbn }}</td>
-                            <td>{{ $book->user_id }}</td>
-                            <td>{{ $book->created_at}}</td>
-                        </tr>
-                        @endforeach
-                        
-
-                    </table>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
