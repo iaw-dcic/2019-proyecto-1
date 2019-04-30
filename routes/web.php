@@ -12,6 +12,7 @@
 */
 
 
+Route::get('/readme','PagesController@readme');
 
 Route::get('/editUser','EditController@edit')->middleware('auth');
 Route::patch('/editUser/{user}','EditController@update')->middleware('auth');
@@ -28,7 +29,7 @@ Route::patch('/items/{item}/edit','ItemsController@edit')->middleware('auth');
 Route::get('/','PagesController@index');
 Route::get('/home','PagesController@index');
 Route::get('/','PagesController@index');
-Route::get('/readme','PagesController@readme');
+
 Route::get('/show/{usuario}','PagesController@show');
 Route::get('/show/{usuario}/showUser','PagesController@showUser');
 Route::get('/show/{usuario}/{thing}','PagesController@showItem');
