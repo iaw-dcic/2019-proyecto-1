@@ -31,13 +31,13 @@
                             <div class="col-xl-6 col-lg-5 col-md-4">
                                     <h3 style="color:bisque">Información del usuario</h3>
 
-                                <div class="top-meta">Nombre: {{$user->name}}</div>
-                                <div class="top-meta">Nombre usuario: {{$user->username}}</div>
-                                <div class="top-meta">Listas:
+                                <div class="top-meta" style="color:wheat">Nombre: <span style="color: azure">{{$user->name}}</span></div>
+                                <div class="top-meta" style="color:wheat">Nombre usuario: <span style="color: azure">{{$user->username}}</span></div>
+                                <div class="top-meta" style="color:wheat">Listas:
                                     @if (count($userListings)>0) 
                                         @foreach($userListings as $listing) 
                                             @if ($listing->visibility == 'Publica')
-                                                <a href="{{route('listings.show',$listing->id)}}"> {{$listing->title}} </a>
+                                                <a href="{{route('listings.show',$listing->id)}}" > <span style="color: azure">{{$listing->title}} </span></a>
                                             @endif 
                                         @endforeach
                                     @else 
@@ -91,8 +91,8 @@
                             <h4 class="widget-title">Secciones</h4>
                             <ul>
                                 <li><a href="/">Inicio</a></li>
+                                <li><a href="{{ route('listings.index')}}">Listas de juegos</a></li>
                                 @auth
-                                    <li><a href="{{ route('listings.index')}}">Mis listas</a></li>
                                     <li><a href="{{ route('games.create')}}">Agregar juego</a></li>
                                     <li><a href="{{url('searchlisting')}}">Buscar listas</a></li>
                                 @endauth

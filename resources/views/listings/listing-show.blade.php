@@ -17,7 +17,7 @@
 
 <!-- Games section -->
 <section class="games-section">
-    <div class="container">
+    <div class="container" style="margin-bottom:100px">
 
 
 

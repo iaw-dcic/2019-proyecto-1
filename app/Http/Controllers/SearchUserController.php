@@ -34,27 +34,19 @@ class SearchUserController extends Controller
 
         $search = $request->get('searchTerm');
         if ($search != null) {
-
-
-            $listings = Listing::where('title', 'LIKE', '%' . $search . '%')
-                ->where('visibility', '=', 'publica')
-                ->first();
-            
-            $algo = $listings->user();
-            dd($algo);
-            exit;
             
             $users = User::where('name', 'LIKE', '%' . $search . '%')
                 ->orWhere('username', 'LIKE', '%' . $search . '%')
                 ->get();
 
-
-            if (count($users) == 0 && count($listings == 0)) {
-                alert()->info('Atencion!', 'No encontramos ningún usuario o lista con ese nombre');
+            if (count($users) == 0) {
+                alert()->info('Atencion!', 'No encontramos ningún usuario con ese nombre');
+                return redirect('searchlisting');
             }
-            return view('pages.search', compact('users', 'listings'));
+
+            return view('pages.search')->withUsers($users);
         } else {
-            alert()->info('Atencion!', 'Ingresa el nombre del usuario o de una lista!');
+            alert()->info('Atencion!', 'Ingresa el nombre del usuario');
             return redirect('searchlisting');
         }
     }
@@ -63,8 +55,6 @@ class SearchUserController extends Controller
     {
 
         $user = User::where('id', $userId)->first();
-
-        //$userListings = Listing::where('user_id', $userId)->get();
         $userListings = Listing::where('user_id', $userId)
             ->where('visibility', 'Publica')
             ->get();

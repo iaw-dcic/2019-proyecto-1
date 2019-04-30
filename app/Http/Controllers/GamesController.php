@@ -38,9 +38,15 @@ class GamesController extends Controller
     {
         if (Auth::user()) {
             $userListings = auth()->user()->listings()->select('title', 'id')->get();
-            return view('games.create')->withListings($userListings);
+            if (count($userListings)>0) {
+                return view('games.create')->withListings($userListings);
+            }
+            else {
+                alert()->info('Atención!', 'Para crear un juego necesitas primero crear una lista!');
+                return redirect()->route('listings.create');
+            }
         } else {
-            alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
+            alert()->info('Atención!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
             return redirect()->guest('/login');
         }
     }
@@ -159,7 +165,7 @@ class GamesController extends Controller
         $game->mode = $request->mode;
         $game->genre = $request->genre;
 
-        
+
         if ($request->hasFile('cover_image')) {
             if ($game->cover_image != 'default.jpg') {
                 Storage::delete('/img/covers' . $game->cover_image);
@@ -195,9 +201,6 @@ class GamesController extends Controller
         return redirect('games');
     }
 
-    public function removeListing(Game $game)
-    { }
-
     private function handleFileUpload(Request $request)
     {
 
@@ -211,37 +214,8 @@ class GamesController extends Controller
            
             Image::make($cover)->save(public_path('/img/covers/' . $fileNameToStore) );
         } 
-
     
         return $fileNameToStore;
 
-
-
-
-
-        // Handle File Upload
-      /*  if ($request->hasFile('cover_image')) {
-
-            // Get filename with the extension 
-            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-
-            // Get just extension
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-
-            // Filename to store
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-
-            // Upload Image
-            //$request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-            $request->file('cover_image')->storeAs('public/covers/thumbnail', $fileNameToStore);
-
-           
-        } else {
-            $fileNameToStore = 'noimage.jpg';
-        }
-        return $fileNameToStore;*/
     }
 }

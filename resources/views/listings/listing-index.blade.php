@@ -41,14 +41,18 @@
                         <div class="cell">
                             Cantidad de juegos
                         </div>
+                       
+                        <div class="cell">
+                            Lista
+                        </div>       
                         @auth
                         <div class="cell">
                             Visibilidad
                         </div>
-                        @endauth
                         <div class="cell">
-                            Lista
+                            Eliminar
                         </div>
+                        @endauth
                         @guest
                         <div class="cell">
                             Perfil del usuario
@@ -64,19 +68,29 @@
                         <div class="cell" data-title="Cantidad de juegos">
                             {{$listing->games()->count()}}
                         </div>
-                        @auth
-                        <div class="cell" data-title="Visibilidad">
-                                {{$listing->visibility}}
-                        </div>
-                        @endauth
-
                         <div class="cell" data-title="Link a la lista">
                             <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
                         </div>
+                        @auth
+                            <div class="cell" data-title="Visibilidad">
+                                    {{$listing->visibility}}
+                            </div>
+                            <div class="cell" data-title="Eliminar lista">
+                                
+                                <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post">
+                                    {{ method_field("DELETE") }} @csrf
+                                    <!-- {{ csrf_field() }} -->
+                                        <button type="submit" class="btn btn-danger">
+                                           X
+                                        </button>
+                                    <br /><br /><br />
+                                </form>
+                            </div>
+                        @endauth
                         @guest
-                        <div class="cell" data-title="Link al perfil">
-                            <a href="">Link al perfil</a>
-                        </div>
+                            <div class="cell" data-title="Link al perfil">
+                                <a href="{{route('user_profile',$data['listOwnerName'])}}">Link al perfil</a>
+                            </div>
                         @endguest
                     </div>
 
