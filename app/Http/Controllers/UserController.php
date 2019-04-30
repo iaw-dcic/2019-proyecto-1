@@ -11,8 +11,7 @@ class UserController extends Controller
         if ($user->email == $request->email)
         {
             $this -> validate(request(), [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'name' => ['required', 'string', 'max:255']
             ]);
             $user->name=$request -> name;
             $user->save();
