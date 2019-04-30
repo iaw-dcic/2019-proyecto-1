@@ -110,11 +110,11 @@ public function agregarIngrediente( Request $request, $nombreReceta){
 public function agregarLista(Request $request, $id){
     $nombre= $request->nombre;
     $privacidad= $request->privacidad;
-  
+     
    Lista::create([
         'nombre' => $nombre,
         'usuario'=>$id,
-        'public'=>$privacidad
+        'privacidad'=>$privacidad
     ]);
     return back();
 }

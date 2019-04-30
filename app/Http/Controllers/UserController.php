@@ -47,7 +47,7 @@ use Illuminate\Support\Facades\Hash;
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->email = $request->email;
-        $user->descripcion = $request->descr;
+        $user->descr = $request->descr;
     
         if($request->filename !=null){
         $originalImage= $request->file('filename');

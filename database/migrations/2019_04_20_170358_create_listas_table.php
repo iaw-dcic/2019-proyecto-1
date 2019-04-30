@@ -18,7 +18,7 @@ class CreateListasTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->unsignedBigInteger('usuario');
-            $table->integer('public');
+            $table->integer('privacidad');
             $table->foreign('usuario')->references('id')->on('users')->onDelete('cascade');
         });
     }
