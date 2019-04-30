@@ -27,7 +27,7 @@
 
   
      @yield('scripts')
-    <script src="{{ asset('/js/editarPerfil.js') }}"></script>
+    <script src="{{ secure_asset('/js/editarPerfil.js') }}"></script>
     <!-- scripts para el carousel  -->
     <script defer  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"   crossorigin="anonymous"></script>
     <link defer rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"   crossorigin="anonymous">

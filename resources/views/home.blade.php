@@ -21,21 +21,21 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="{{asset('img/cupcakes.jpg')}}" alt="First slide">
+      <img class="d-block w-100" src="{{secure_asset('img/cupcakes.jpg')}}" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
       <h5>Cupcakes</h5>
       <p>Facilisimos cupcakes,para acompañar tus tardes<p>
   </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="{{asset('img/spaghetti.jpg')}}" alt="Second slide">
+      <img class="d-block w-100" src="{{secure_asset('img/spaghetti.jpg')}}" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
          <h5>Spaghetti</h5>
          <p> Unos riquisimos tallarines con tuco</p>
     </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="{{asset('img/tiramisu.jpg')}}" alt="Third slide">
+      <img class="d-block w-100" src="{{secure_asset('img/tiramisu.jpg')}}" alt="Third slide">
       <div class="carousel-caption d-none d-md-block">
     <h5>Tiramisu<h5>
     <p>La verdadera receta del clásico italiano</p>
@@ -80,10 +80,10 @@
     <div class="col-lg-4">
     
            @if($usuario->avatar != null)
-                <img  alt="{{$usuario->nombre}}"  src="{{asset($usuario->avatar)}}" class="rounded-circle">
+                <img  alt="{{$usuario->nombre}}"  src="{{secure_asset($usuario->avatar)}}" class="rounded-circle">
           @endif
           @if($usuario->avatar ==null)
-                <img   alt="{{$usuario->nombre}}"  src="{{asset('img/usuario.png')}}" class="imgusuario rounded-circle">
+                <img   alt="{{$usuario->nombre}}"  src="{{secure_asset('img/usuario.png')}}" class="imgusuario rounded-circle">
                 @endif
           
                 <h2 class="usuarioNombre">{{$usuario->nombre}}
@@ -120,9 +120,9 @@
             @if($receta->categoria ==0)
 						<div class="col-md-4">
               @if($receta->imagen != null )
-              <img alt="foto {{$receta->nombre}}"class="rounded-circle"  src= "{{asset( $receta->imagen)}}" width=140px heigh=120px />
+              <img alt="foto {{$receta->nombre}}"class="rounded-circle"  src= "{{secure_asset( $receta->imagen)}}" width=140px heigh=120px />
               @else
-              <img alt="foto {{$receta->nombre}}" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
+              <img alt="foto {{$receta->nombre}}" src= "{{secure_asset('img/plato.png')}}" width=140px heigh=140px />
               @endif
 						</div>
 						<div class="col-md-8">
@@ -143,9 +143,9 @@
             @if($receta->categoria ==1)
 						<div class="col-md-4">
             @if($receta->imagen != null )
-              <img class="rounded-circle" alt="foto {{$receta->nombre}}"src= "{{asset( $receta->imagen)}}" width=140px heigh=120px />
+              <img class="rounded-circle" alt="foto {{$receta->nombre}}"src= "{{secure_asset( $receta->imagen)}}" width=140px heigh=120px />
               @else
-              <img alt="foto {{$receta->nombre}}" src= "{{asset('img/plato.png')}}" width=140px heigh=140px />
+              <img alt="foto {{$receta->nombre}}" src= "{{secure_asset('img/plato.png')}}" width=140px heigh=140px />
               @endif
 						</div>
 						<div class="col-md-8">

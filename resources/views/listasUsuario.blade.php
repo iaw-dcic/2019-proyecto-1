@@ -14,6 +14,7 @@
     </div>
 @endif
       @foreach($listas as $lista)
+      <?php $lista_id= $lista->id ?>
       {{session(['lista' => $lista])}}
          <div class="list-group">
            <?php  $count=0 ?>
@@ -98,7 +99,7 @@
             <!-- Modal Body -->
             <div class="modal-body" id="formulario">
                 <p class="statusMsg"></p>
-                <form id="formulario" role="form" method="post" action="{{route('cambiarPrivacidad',['id' =>Session::get('lista')->id ])}}">
+                <form id="formulario" role="form" method="post" action="{{route('cambiarPrivacidad',['id' => $lista_id ])}}">
                 {{ csrf_field() }}
                      
                     <div class="form-group">
