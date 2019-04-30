@@ -20,6 +20,7 @@
     </div>
 
     <hr />
-    @endguest
+    @endguest         
+
 </div>
 @endsection

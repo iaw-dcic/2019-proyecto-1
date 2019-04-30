@@ -17,11 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/','WelcomeController@get');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/profile','ProfileController@showProfile')->name('profile');
-
-Route::get('/profile/{id}/edit','ProfileController@editProfile')->name('editProfile');
 
 Route::post('/home','HomeController@addItem')->name('addItem');
 
@@ -29,10 +28,17 @@ Route::get('/home','HomeController@getTable')->name('getTable');
 
 Route::delete('/home/{task}','HomeController@destroy')->name('destroy');
 
-Route::get('/profile/{user}','ProfileController@showPublicProfile')->name('showPublicProfile');
+Route::post('/home/{task}','HomeController@changeVisibility')->name('changeVisibility');
 
-Route::get('/','WelcomeController@get');
+
+Route::get('/profile','ProfileController@showProfile')->name('profile');
+
+Route::get('/profile/{id}/edit','ProfileController@editProfile')->name('editProfile');
+
+Route::get('/profile/{user}','ProfileController@showPublicProfile')->name('showPublicProfile');
 
 Route::post('/profile/{user}/edit','editController@edit')->name('edit');
 
-Route::post('/home/{task}','HomeController@changeVisibility')->name('changeVisibility');
+
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');

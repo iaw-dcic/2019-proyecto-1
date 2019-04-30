@@ -35,14 +35,10 @@ class HomeController extends Controller{
         //dd($data); //esto me muestra los datos ingresados
 
         $validatedData = $request->validate([
-            'cod' => 'required|unique:tasks|max:255',
-            'title' => 'required',
+            'cod' => 'required|max:255',
+            'title' => 'required|max:255',
             'author' => 'required|max:255',
-            //defino regla para los dos campos posibles de privacidad.
-            //'privacy' => [
-              //  'required',
-                //Rule::in(['Public', 'Private']),
-            //],
+            'privacy' => ['required','string','max:255', new validarPrivacidad()],
         ]);
 
       //ACA TENGO QUE DEVOLVER LA VISTA CON LOS DATOS 
@@ -83,7 +79,6 @@ class HomeController extends Controller{
 
         $task = Task::where('id',$id)->get(['id','cod','title','author','editorial','privacy','owner_id']);
 
-
         if($task){
 
             switch($task->all()[0]->privacy){
@@ -95,8 +90,7 @@ class HomeController extends Controller{
                   break;
           }
         }
-
-        
+  
 
         $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
         

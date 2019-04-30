@@ -17,9 +17,9 @@ class editController extends Controller
 
         //validar información
         $validatedData = $request->validate([
-            'nick' => 'max:10',
-            'name' => 'max:20',
-            //'password' => 'max:255| min:8',
+            'nick' => ['string','max:10'],
+            'name' => ['string','max:40'],
+            'password' => ['string', 'min:8','max:255'],
         ]);
 
         //dd($request->all());

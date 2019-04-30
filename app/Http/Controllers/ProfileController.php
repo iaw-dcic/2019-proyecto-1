@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+use App\Task;
+
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller{
@@ -21,9 +23,9 @@ class ProfileController extends Controller{
         }
     }
 
-    protected function editProfile($id){ //faltan cosas acá
+    protected function editProfile($id){
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         return view('edit',compact('user'));
     }
