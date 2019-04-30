@@ -18,12 +18,13 @@
             {{$elem->name}}</a> creada por <a href="profiles/{{$autores[$elem->name]}}"> {{$autores[$elem->name]}} </a> 
         @endforeach
     </div>
-        
+    </div>
+
     @else  
         <div class="alert alert-primary divAlerta" role="alert">
             <h4 class="alert-heading">Nada que ver por aquí</h4>
-               <p class="mb-0"> No hay Listas públicas para ver, vuelve más tarde! <p>
+               <p class="mb-0 text-center" > No hay Listas públicas para ver, vuelve más tarde! <p>
         </div>
     @endif
-    </div>
+    
 @endsection

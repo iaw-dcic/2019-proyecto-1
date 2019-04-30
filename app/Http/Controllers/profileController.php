@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -22,11 +23,13 @@ class profileController extends Controller
         $name = Auth::user()->name;
         if( ($nameac[0]->name) == $name){ //el usuario que entró es el creador de su cuenta
             $name= Auth::user()->name;
-            return view('profiles.show')->with('name',$name);
+            $surname = User::findOrFail(Auth::user()->id)->surname;
+            return view('profiles.show')->with('name',$name)->with('surname',$surname);
         }
         else{
             $name = $nameac[0]->id; 
             $nameac = $nameac[0]->name;
+            dd($name, $nameac);
             return view('profiles.show')->with('name',$nameac)->with('idActual',$name); //es un usuario externo
         }
        
@@ -53,8 +56,24 @@ class profileController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->update(request('name','email','password'));
-        return redirect("/");        
+        $user = User::findOrFail(Auth::user()->id);
+        if(Input::get('name') == "")
+            $user->name = Auth::user()->name;
+        else
+            $user->name = Input::get('name');
+        
+        if(Input::get('email') == "")
+            $user->email = Auth::user()->email;
+        else
+            $user->email = Input::get('email');
+        
+        if(Input::get('surname') == "")
+            $user->surname = $user->surname;
+        else
+            $user->surname = Input::get('surname');
+
+        $user->save();
+        return view('welcome');        
     }
 
     /**

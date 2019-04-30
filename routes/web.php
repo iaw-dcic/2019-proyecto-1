@@ -29,10 +29,12 @@ Route::post('/lists','listsController@store');
 Route::patch('/lists/{list}/edit', 'listsController@update');
 
 Route::resource('profiles','profileController')->only('show','edit','update','destroy');
+Route::delete('/profiles/{profile}', 'profileController@destroy')->name('DeleteUser');
 
 Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
 
 Route::post('/lists/{list}', 'ListGamesController@store');
+
 
 Route::get('/listaAjena/{profile}','listsController@accederListasAjenas')->name("ListaAjena");
 Route::get('/listaAjena/{profile}/{list}','listsController@accederDatosListaAjena')->name("VerListaAjena");

@@ -12,7 +12,7 @@
 
 @section('content')
 <div class="page-header text-center tituloJuego">
-  <h1>{{$datosJuego[0]->name}} <small>datos</small></h1>
+  <h1>Datos de {{$datosJuego[0]->name}}</h1>
 </div>
 
 <div class="panel panel-primary datos">
