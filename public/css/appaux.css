@@ -40,6 +40,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  padding-top: 70px; 
 }
 .content {
   flex: 1 0 auto;
@@ -55,6 +56,17 @@ body {
   border:none;
 
 }
+
+.user{
+  margin-top:1%;
+  margin-bottom: 5%;
+
+}
+
+
+
+
+
 
 .avatar-upload {
   position: relative;

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Haiku\User;
 use Auth;
 use Illuminate\Support\Facades\Input;
+use Validator;
+use Redirect;
 
 
 
@@ -49,8 +51,19 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //faltan agregar las reglas de validación del lado cliente...!!
+        $rules = array(
+            'name'       => 'required',
+            'band'      => 'required',
+        );
 
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) 
+            return Redirect::back()->withInput(Input::all())->withErrors($validator);;
+
+        
+        
         //dd($request);
         $user  = Auth::user();
         $album = new Album;
@@ -92,6 +105,7 @@ class AlbumController extends Controller
     public function edit($id)
     {
         //
+        
         $album = Album::find($id);
         return View('album.edit',['album'=>$album]);
         
@@ -104,15 +118,32 @@ class AlbumController extends Controller
      * @param  \Haiku\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-      $album =Album::find($id);
+        
+        $rules = array(
+            'name'       => 'required',
+            'band'      => 'required',
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) 
+            return Redirect::back()->withInput(Input::all())->withErrors($validator);;
+
+        
+
+     
+      $album =Album::find(Input::get('id'));
       $album->name = Input::get('name');
       $album->bandName = Input::get('band');
       $album->public = Input::get('visibility');
       $album->description = Input::get('coment');  
       $album->link = Input::get('youtubeLink');
       $album->save();
+      
+      //$album->update(request(['name','band','visibility','coment','youtubeLink']));
       return redirect()->action(
         'ApiController@profile'
     );

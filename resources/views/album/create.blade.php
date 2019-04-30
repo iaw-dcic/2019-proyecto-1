@@ -7,17 +7,20 @@
   <form method="POST" action="/createAlbum">
   {{ csrf_field()}}
   <div class="container">
+  @if ($errors->any())
+        {{ implode('', $errors->all(':message')) }}
+@endif
   <div class="form-group row">
             <label for="album" class="col-sm-3 col-form-label">Album</label>
             <div class="col-sm-9">
-                <input name="name" type="text" class="form-control" id="albumid" placeholder="Nombre del album">
+                <input name="name" type="text" class="form-control" id="albumid" placeholder="Nombre del album" required>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="band" class="col-sm-3 col-form-label">Artista</label>
             <div class="col-sm-9">
-                <input name="band" type="text" class="form-control" id="albumid" placeholder="Nombre de banda o artista">
+                <input name="band" type="text" class="form-control" id="albumid" placeholder="Nombre de banda o artista" required>
             </div>
         </div>
        

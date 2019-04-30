@@ -1,22 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
+<h1>{{$user->name}}</h1>
+
+
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-
-        <form enctype="multipart/form-data" action="/profile" method="POST">
-            <img src="/uploads/avatars/{{$user->avatar}}" id="img-cir">
-            <h2>{{$user->name}}</h2>
-            <label>Update Profile Image</label>
-            <br>
-            <input type="file" name="avatar">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="submit" class="float-right btn btn-sm btn-primary">
-        </form>
-        </div>
-    </div>
-
-    <table id="albums">
+        <div class="col-8">
+        <table id="albums">
     <thead>
         <tr>
             <th>ID</th>
@@ -49,8 +39,28 @@
 
     </table>
 
-    <a href="{{ route('createAlbum') }}" class="btn btn-outline-success" role="button" aria-pressed="true">Agregar Nuevo Album</a>
 
+
+        </div>
+        <div class="col-4">
+        <div class="card float-right" style="width: 18rem;">
+        <img class="card-img-top" src="/uploads/avatars/{{$user->avatar}}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{$user->name}}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      
+        <div class="card-body">
+            <a href="{{ route('createAlbum') }}" class="card-link">Crear Album</a>
+            <a href="#" class="card-link">Editar Perfil</a>
+        </div>
+    </div>
+        </div>
+    </div>
+    
+    
+
+    
 
 </div>    
 @endsection

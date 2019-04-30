@@ -96,19 +96,22 @@
 <footer class="footer">
     
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+  <div class="footer-copyright text-center py-3">© 2019 :
+    <a href="https://cs.uns.edu.ar">UNS IAW</a>
   </div>
   <!-- Copyright -->
 
 
 </footer>
 <!-- Footer -->
-<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/app.js')}}" ></script>
 <script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/dataTables.js')}}"></script>
-<script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
+<script src="{{asset('js/dataTables.bootstrap4.js')}}" ></script>
 <script src="{{asset('js/avatar.js')}}"></script>
+<script src="{{asset('js/parallax.js')}}"></script>
+
+
 
 
 

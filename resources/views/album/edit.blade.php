@@ -4,6 +4,9 @@
 <div class="container">
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
+      @if ($errors->any())
+        {{ implode('', $errors->all(':message')) }}
+@endif
   <form method="POST" action="{{ route('update', $album->id) }}">
   {{ csrf_field()}}
   <input type="hidden" value="{{$album->id}}" name="id">
@@ -13,14 +16,14 @@
   <div class="form-group row">
             <label for="album" class="col-sm-3 col-form-label">Album</label>
             <div class="col-sm-9">
-                <input value={{$album->name}} name="name" type="text" class="form-control" id="albumid" placeholder="Nombre del album">
+                <input value={{$album->name}} name="name" type="text" class="form-control" id="albumid" placeholder="Nombre del album" required>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="band" class="col-sm-3 col-form-label">Artista</label>
             <div class="col-sm-9">
-                <input value={{$album->bandName}} name="band" type="text" class="form-control" id="albumid" placeholder="Nombre de banda o artista">
+                <input value={{$album->bandName}} name="band" type="text" class="form-control" id="albumid" placeholder="Nombre de banda o artista" required>
             </div>
         </div>
        
