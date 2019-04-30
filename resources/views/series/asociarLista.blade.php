@@ -1,4 +1,4 @@
-extends('generales.layout')
+@extends('generales.layout')
 
 @section('pageTitle', 'Agregar Serie a lista')
 
