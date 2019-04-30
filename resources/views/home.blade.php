@@ -9,12 +9,30 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
-                    Estás logueado home!
+                    @foreach ($paquetes as $paquete)
+                    <!-- Cada paquete es un [user,listas]-->
+
+                    <div class="card-header" style="padding: 3px; background-color: rgba(92, 112, 57, 0.912)">
+                        <a href="otherProfile/{{$paquete[0]->id}}" style="color: white"> {{ $paquete[0]->name}} </a> 
+                    </div>
+                    @if ($paquete[1]->first() == null)
+                    <p></p>
+                    &nbsp&nbsp&nbsp&nbsp<i> No posee listas públicas.</i>
+                    <p></p>
+                    @else
+                    <div class="card-body">
+                        @foreach ($paquete[1] as $lista)
+                        <p><a href="otherList/{{$lista->id}}"> {{ $lista->name }} </a></p>
+                        @endforeach
+                    </div>
+                    @endif
+                    @endforeach
+
                 </div>
             </div>
         </div>

@@ -8,10 +8,9 @@
 <body>
 
 	<ul id='left-panel'>
-		<li><a class="active">Mi Perfil</a></li>
-		<li><a href="/myLists">Mis Listas</a></li>
-		<li><a href="/createList">Crear Lista</a></li>
-		<li><a href="/settings">Configuración</a></li>
+		<li></li>
+		<li><a href="/"> << Regresar </a></li> 
+		<li></li>
 	</ul>
 
 
@@ -21,7 +20,7 @@
 			<div class="col-md-8">
 				<div class="card">
 					<div class="card-header">
-						<h1>{{Auth::user()->name }}</h1>
+						<h1>{{$user->name }}</h1>
 						<div class="card-body">
 							@if (session('status'))
 							<div class="alert alert-success" role="alert">
@@ -37,10 +36,10 @@
 								<tr>
 									<th> <img src="{{ $user->avatar }}" alt="Avatar" class="avatar"> </th>
 									@if($user->description != null)
-										<th> <textarea readonly disabled>{{ $user->description }}</textarea></th>
+									<th> <textarea readonly disabled>{{ $user->description }}</textarea></th>
 									@else
-										<th> <textarea style="color: rgba(255, 255, 255, 0.5); font-style: italic;" readonly disabled> Sin descripción... </textarea></th>
-									@endif 
+									<th> <textarea style="color: rgba(255, 255, 255, 0.5); font-style: italic;" readonly disabled> Sin descripción... </textarea></th>
+									@endif
 								</tr>
 							</table>
 						</div>
@@ -48,6 +47,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	@endsection
 
-		@endsection
 </body>

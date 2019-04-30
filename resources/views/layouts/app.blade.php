@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<link rel="shortcut icon" type="image/png" href="{{ asset('images/logo 150.png')}}" sizes="64x64">
+<title> Best Goals! </title>
 
 <head>
     <meta charset="utf-8">
@@ -27,7 +29,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" id='barra_ppal'>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Best Goals!
+                    Best Goals! &nbsp  <img src="{{ asset('images/logo 150.png')}}" height="30" width="25">                
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

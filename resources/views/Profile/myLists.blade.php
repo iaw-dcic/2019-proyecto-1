@@ -2,6 +2,7 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/profile.css">
+	<link rel="shortcut icon" type="image/png" href="\images\logo 150.png" sizes="64x64">
 </head>
 
 <body>

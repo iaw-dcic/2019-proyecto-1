@@ -20,18 +20,25 @@ class goalsController extends Controller
         return view('myList\goals',compact('goals'));
     }*/
 
-    public function storeGoal($id){
+    public function storeGoal(Lista $lista){
 
         $user = Auth::user();
-        $lista = lista::findOrFail($id);
-
+        
         $goal = new Goal();
 
-        $goal->autor = request('autorGoal');
-        $goal->equipo = request('equipoGoal');
-        $goal->equipo_rival = request('equipo_rivalGoal');
-        $goal->anio = request('anioGoal');
+        request()->validate([
+            'autor' => ['required','min:3','max:25'],
+            'equipo' => ['required','min:3','max:25'], 
+            'equipo_rival' => ['required','min:3','max:25'], 
+            'año' => ['required','min:1901','max:2019','numeric']  
+        ]);
+
+        $goal->autor = request('autor');
+        $goal->equipo = request('equipo');
+        $goal->equipo_rival = request('equipo_rival');
+        $goal->anio = request('año');
         $goal->lista_id = $lista->id;
+        
         $goal->save();
 
         $goals = goal::where('lista_id',$lista->id)->get();
@@ -39,10 +46,9 @@ class goalsController extends Controller
         return view('myList.edit',compact('lista','goals'));
     }
 
-    public function destroyGoal($lista_id,$goal_id){
+    public function destroyGoal(Lista $lista,$goal_id){
 
         $goal = goal::findOrFail($goal_id);
-        $lista = Lista::findOrFail($lista_id);
         $goal->delete();
         $goals = goal::where('lista_id',$lista->id)->get();
 

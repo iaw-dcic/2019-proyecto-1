@@ -10,77 +10,77 @@ use App\goal;
 
 class listsController extends Controller
 {
-    public function getMyLists(){
-    
+    public function getMyLists()
+    {
         $user = Auth::user();
-        $listas = lista::where('user_id',$user->id)->get();
-        return view('Profile\myLists',compact('listas'));
+        $listas = lista::where('user_id', $user->id)->get();
+        return view('Profile\myLists', compact('listas'));
     }
 
-    public function createList(){
-    
+    public function createList()
+    {
         return view('Profile\createList');
     }
 
 
 
-    public function storeList(){
-
+    public function storeList()
+    {
         $user = Auth::user();
 
         $lista = new Lista();
 
-        $lista->name = request('nameList');
+        request()->validate([
+            'name' => ['required','min:3','max:25']
+        ]);
+
+        $lista->name = request('name');
         $lista->user_id = $user->id;
-        if(request('public')!=''){
+        if (request('public') != '') {
             $lista->public = 1;
-        }
-        else {
+        } else {
             $lista->public = 0;
         }
-        
+
         $lista->save();
 
         return redirect('myLists');
     }
 
-    public function showList($id){
-
-        $lista = lista::findOrFail($id);
-        $goals = goal::where('lista_id',$lista->id)->get();
-        return view('myList.show',compact('lista','goals'));
+    public function showList(Lista $lista)
+    {
+        $goals = goal::where('lista_id', $lista->id)->get();
+        return view('myList.show', compact('lista', 'goals'));
     }
 
-    public function editList($id){
-
-        $lista = lista::findOrFail($id);
-        $goals = goal::where('lista_id',$lista->id)->get();
-        return view('myList.edit',compact('lista','goals'));
+    public function editList(Lista $lista)
+    {
+        $goals = goal::where('lista_id', $lista->id)->get();
+        return view('myList.edit', compact('lista', 'goals'));
     }
 
-    public function updateList($id){
-
-        $lista = lista::findOrFail($id);
-
-        $lista->name = request('nameList');
-        if(request('public')!=''){
+    public function updateList(Lista $lista)
+    {
+        request()->validate([
+            'name' => ['required','min:3','max:25']
+        ]);
+        if (request('name') != null)
+            $lista->name = request('name');
+        if (request('public') != '') {
             $lista->public = 1;
-        }
-        else {
+        } else {
             $lista->public = 0;
         }
-        
+
         $lista->save();
 
         return redirect('/myLists');
-
     }
 
-    public function destroyList($id){
-
-        $lista = Lista::findOrFail($id);
-        $goals = goal::where('lista_id',$lista->id)->get();
-        foreach($goals as $goal)
+    public function destroyList(Lista $lista)
+    {
+        $goals = goal::where('lista_id', $lista->id)->get();
+        foreach ($goals as $goal)
             $goal->delete();
         $lista->delete();
 

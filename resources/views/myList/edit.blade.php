@@ -2,6 +2,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="/css/profile.css">
+    <link rel="shortcut icon" type="image/png" href="\images\logo 150.png" sizes="64x64">
 </head>
 
 <body>
@@ -29,7 +30,6 @@
                         @endif
 
                         <form method="POST" action="/myList/{{$lista->id}}">
-                            <!-- debe ir al show() -->
                             @method('PATCH')
                             @csrf
 
@@ -41,7 +41,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td> <input type='text' name='nameList' placeholder="{{ $lista->name }}"> </td>
+                                    <td> <input type='text' name='name' value="{{ $lista->name }}"> </td>
                                     <td> <label class="switch">
                                             @if($lista->public)
                                             <input type="checkbox" name='public' checked value=1;>
@@ -69,10 +69,10 @@
                                     <th></th>
                                 </tr>
                                 <tr>
-                                    <td><input type='text' name='autorGoal' size="10px" placeholder=" Autor"></td>
-                                    <td><input type='text' name='equipoGoal' size="8px" placeholder=" Equipo"></td>
-                                    <td><input type='text' name='equipo_rivalGoal' size="10px" placeholder=" Equipo rival"></td>
-                                    <td><input type='int' name='anioGoal' size="5px" placeholder=" Año"></td>
+                                    <td><input type='text' name='autor' size="10px" placeholder=" Autor" required value="{{old('autor')}}"></td>
+                                    <td><input type='text' name='equipo' size="8px" placeholder=" Equipo" required value="{{old('equipo')}}"></td>
+                                    <td><input type='text' name='equipo_rival' size="10px" placeholder=" Equipo rival" required value="{{old('equipo_rival')}}"></td>
+                                    <td><input type='int' name='año' size="5px" placeholder=" Año" required value="{{old('año')}}"></td>
                                     <td><button class='btn-primary' type='submit'> Agregar </button></td>
                                 </tr>
                         </form>
@@ -93,6 +93,16 @@
                         </tr>
                         @endforeach
                         </table>
+                        @if ($errors->any())
+                        <p></p>
+                        <div class="alert  alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li> {{$error}} </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

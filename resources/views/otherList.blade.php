@@ -8,10 +8,9 @@
 <body>
 
     <ul id='left-panel'>
-        <li><a href="/profile">Mi Perfil</a></li>
-        <li><a class="active" href='/myLists'>Mis Listas</a></li>
-        <li><a href="/createList">Crear Lista</a></li>
-        <li><a href="/settings">Configuración</a></li>
+        <li></li>
+        <li><a href="/"><< Regresar </a> </li> 
+        <li></li>
     </ul>
 
 
@@ -20,15 +19,13 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><b>Lista: </b> {{ $lista->name }}</div>
-
+                    <div class="card-header">Lista</div>
                     <div class="card-body">
                         @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                         @endif
-
 
                         <h2><b>{{ $lista->name }}</b></h2>
                         <table>
@@ -54,6 +51,6 @@
             </div>
         </div>
     </div>
-
     @endsection
+
 </body>

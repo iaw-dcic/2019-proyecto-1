@@ -2,6 +2,7 @@
 
 <head>
 	<link rel="stylesheet" type="text/css" href="/css/profile.css">
+	<link rel="shortcut icon" type="image/png" href="\images\logo 150.png" sizes="64x64">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
 						@endif
 
 						<form method="POST" action="/myLists">
-						@csrf
+							@csrf
 							<table>
 								<tr>
 									<th>Nombre de la nueva lista</th>
@@ -38,7 +39,7 @@
 								</tr>
 
 								<tr>
-									<td> <input type='text' name='nameList'> </td>
+									<td> <input type='text' name='name' placeholder="Nombre de nueva lista..." required> </td>
 									<td> <label class="switch">
 											<input type="checkbox" name='public' checked value=1>
 											<span class="slider round"></span>
@@ -47,6 +48,16 @@
 									<td> <button class='btn-primary' type='submit'> Crear </button>
 								</tr>
 							</table>
+							@if ($errors->any())
+							<p></p>
+							<div class="alert  alert-danger">
+								<ul>
+									@foreach ($errors->all() as $error)
+									<li> {{$error}} </li>
+									@endforeach
+								</ul>
+							</div>
+							@endif
 						</form>
 					</div>
 				</div>
