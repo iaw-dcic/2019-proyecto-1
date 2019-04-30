@@ -165,8 +165,8 @@ public function compartir(Request $request,$id){
 public function editar($nombre){
     $receta= Receta::where('nombre', $nombre)->get();
     $ingreceta= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
-    $ingredientes= Ingrediente::all();
-    $medidas=Medida::all();
+    $ingredientes= Ingrediente::orderBy('nombre', 'ASC')->get(); 
+    $medidas=Medida::orderBy('nombre', 'ASC')->get(); 
     return  view('editarReceta',[
         'receta' => $receta[0],
         'ingreceta' => $ingreceta,

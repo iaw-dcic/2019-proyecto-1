@@ -4,7 +4,7 @@
 <div class="container-fluid">
    <!-- datos receta -->
 <div class="row">
-<div class="col-4">
+<div class="col-lg-4">
 <form   role="form" enctype="multipart/form-data" method="post"  action="{{route('actualizar',['nombre' => $receta->nombre ])}}">
                 {{ csrf_field() }}
                      <div class="form-group">
@@ -46,8 +46,8 @@
                    <hr>
                     
 </div>
- <!-- ingredientes -->
-    <div class="col-8">
+ <!-- ingredientes --> 
+    <div class="col-lg-8 col-md-4 col-sm-6 col-xs-12″" >
      <h3> Ingredientes </h3>
         @for ($i =0; $i < 10 ; $i++) 
          @if($i < $ingreceta->count())
@@ -57,7 +57,7 @@
          @endif
                         
         <div class="row">
-                    <div class="col-4">
+                    <div class="col-lg-4">
                     <div class="form-group">
                         <label for="inputMessage">Ingrediente:</label>
                         <select   name={{"ingrediente".$i}} class="form-control" >
