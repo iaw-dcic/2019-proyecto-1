@@ -40,4 +40,9 @@ class User extends Authenticatable
     public function inventories(){
         return $this->hasMany(Inventory::class);
     }
+
+    public function identities() {
+        return $this->hasMany('App\SocialIdentity');
+     }
+
 }

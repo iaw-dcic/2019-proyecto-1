@@ -12,7 +12,7 @@
                 @guest
                 <a class="btn btn-small btn-info" href="/users/{{{$inventory->user_id}}}">See Owner's Profile</a>
                 @elseif($inventory->user_id==Auth::user()->id)
-                <a class="btn btn-small btn-success" href="{{$inventory->id}}/create">Add a Car</a>
+                <a class="btn btn-small btn-success" href="/{{$inventory->id}}/create">Add a Car</a>
                 @endif
                 </h2>
             </div>
