@@ -8,7 +8,7 @@ class UserList extends Model{
 	protected $fillable = ['list_name', 'user_id', 'public', 'likes'];
 
 	public function items(){
-		return $this->hasMany(listItem::class);
+		return $this->hasMany(ListItem::class);
 	}
 
 	public function likes(){
