@@ -22,7 +22,8 @@
     <!-- content -->
     <div class="sub-main-w3">
         <form method="POST" action="{{ route('register') }}">
-            @csrf
+            @csrf {{ csrf_field() }}
+
 
             <!-- Name -->
             <div class="form-style-agile">
@@ -47,14 +48,11 @@
 
             <!--Email -->
             <div class="form-style-agile">
-                <label> <i class="fa fa-envelope" aria-hidden="true"></i> Email *</label>
-
-                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
-                    required> @if ($errors->has('email'))
-                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span> @endif
+                <label> <i class="fa fa-envelope" aria-hidden="true"></i>Email</label>
+                <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
+                    required>
             </div>
+
 
             <!-- Password -->
             <div class="form-style-agile">
@@ -76,8 +74,14 @@
 
             <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
 
+            <div class="form-style-agile" style="margin-top:10px;text-align:center">
+                <button type="submit" class="btn btn-primary">
+                       Registrarse
+                </button>
+            </div>
+
             <!--Submit -->
-            <input type="submit" value="Confirmar registro">
+            <!--<input type="submit" value="Confirmar registro">-->
 
             <!--Social networks -->
             <div class="footer-social">

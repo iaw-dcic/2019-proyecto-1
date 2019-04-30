@@ -21,19 +21,17 @@
 
     <div class="sub-main-w3">
         <form method="post" action="{{route('login')}}">
-            @csrf
+            @csrf {{ csrf_field() }}
 
             <!--Email -->
             <div class="form-style-agile">
                 <label> <i class="fa fa-envelope" aria-hidden="true"></i>Email</label>
                 <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
-                    required autofocus> @if ($errors->has('email'))
+                    required> @if ($errors->has('email'))
                 <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span> @endif
             </div>
-
-
 
             <!-- Password -->
             <div class="form-style-agile">
@@ -54,6 +52,14 @@
                                 Recordarme
                             </label>
                 </div>
+            </div>
+
+                    <!-- Submit -->
+            <!--<input type="submit" value="Ingresar"> -->
+            <div class="form-style-agile" style="margin-top:10px;text-align:center">
+                <button type="submit" class="btn btn-primary">
+                        Iniciar sesión
+                </button>
             </div>
 
               <!-- Login with social networks -->
@@ -83,8 +89,7 @@
                  </div>
                  <!-- Not user end -->
 
-            <!-- Submit -->
-            <input type="submit" value="Ingresar">
+    
 
 
         </form>
