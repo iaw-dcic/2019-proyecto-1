@@ -30,7 +30,7 @@ class CancionesController extends Controller
     {
         //busco el usuario y si no existe ninguno no me muestra nada (cuestion seguridad)
         if (Auth::user() == null)
-            redirect('/login');
+            return redirect('/login');
 
 
         $lista= Lista::findOrFail($id);
@@ -119,7 +119,7 @@ class CancionesController extends Controller
     public function update(Request $request, $id)
     {
         $cancion= Cancion::findOrFail($id);
-
+        //dd($request);
         $cancion->update(request()->validate([
                            'nombre'=> ['required','min:3'],
                            'duracion'=> ['required'],
