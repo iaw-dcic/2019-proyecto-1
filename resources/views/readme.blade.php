@@ -47,12 +47,6 @@
                         
                         </tbody>
                     </table>
-            </div>
-
-                <div class="card-body">
-                   Author: Agustin Emanuel Garcia
-
-                   
                 </div>
             </div>
         </div>
