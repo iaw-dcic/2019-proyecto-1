@@ -16,7 +16,7 @@ class PagesController extends Controller
     }
 
 	public function info(){
-        return 1;
+      
         return view('index.readme');
     }
 
