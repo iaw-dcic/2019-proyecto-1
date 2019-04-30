@@ -30,7 +30,7 @@
 
 						<div class="game-item">
 						<a href="/games/{{$data['game']->id}}"> <img class="img-thumbnail img-fluid"
-							src="{{asset('storage/cover_images/thumbnail').'/'.$data['game']->cover_image}}" alt="Cover"></a>
+							src="{{asset('/img/covers').'/'.$data['game']->cover_image}}" alt="Cover"></a>
 						</div>
 					</div>
 						 

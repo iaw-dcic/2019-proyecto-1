@@ -101,17 +101,6 @@
             @endif
          
         </div>
-        <!-- <div class="my-row">
-                                <div class="col-xl-12 col-lg-12 col-md-12">
-                                    <div class="text-white">
-                                        <h3>Todavía no tenes ninguna lista!</h3>
-                                        <br><br>
-                                    </div>
-                                    <a href="{{route('listings.create') }}" class="site-btn">Crear una lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
-                                </div>
-                        </div> -->
-
-
 
     </div>
 </div>

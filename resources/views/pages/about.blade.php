@@ -17,7 +17,7 @@
 
 <!-- Contact page -->
 <section class="contact-page">
-    <div class="container">
+    <div class="container" style="margin-bottom: 60px">
         <div class="panel-group" id="accordion">
             <div class="faqHeader"><i class="fa fa-question-circle-o" aria-hidden="true"></i> General </div>
             <div class="panel panel-default">

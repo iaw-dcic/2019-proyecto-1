@@ -71,20 +71,9 @@
                                         <input class="btn btn-primary" type="submit" value="OK">
                                     </form>
             
-            
                                     @endauth
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-                        
-                     
 
                     </div>
                     <div class="blog-thumb">
@@ -101,12 +90,13 @@
                         <div class="categories-widget">
                             <h4 class="widget-title">Secciones</h4>
                             <ul>
-                                <li><a href="">Inicio</a></li>
-                                <li><a href="">Mis juegos</a></li>
-                                <li><a href="">Agregar juego</a></li>
-                                <li><a href="">Preguntas frecuentes</a></li>
-                                <li><a href="">Community</a></li>
-                                <li><a href="">Uncategorized</a></li>
+                                <li><a href="/">Inicio</a></li>
+                                @auth
+                                    <li><a href="{{ route('listings.index')}}">Mis listas</a></li>
+                                    <li><a href="{{ route('games.create')}}">Agregar juego</a></li>
+                                    <li><a href="{{url('searchlisting')}}">Buscar listas</a></li>
+                                @endauth
+                                <li><a href="{{url('about')}}">Preguntas frecuentes</a></li>
                             </ul>
                         </div>
                     </div>

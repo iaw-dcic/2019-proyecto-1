@@ -95,7 +95,7 @@
                     </li>
                     <li>
                         <a href="login/github" class="fa fa-github"></a>
-                        <li>
+                    <li>
 
 
                 </ul>

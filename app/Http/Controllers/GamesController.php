@@ -27,31 +27,7 @@ class GamesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-      /*  if (Auth::user()) {
-            $user_id = auth()->user()->id;
-
-            $listings = Listing::where('user_id', '=', $user_id)->get();
-            dd($listings);
-            exit;
-
-
-            $games= [];
-            foreach($listings as $listing) {
-                array_push($games,$listing->games);
-            }
-
-            //Formas de mandar los games:
-            //$posts = Post::orderBy('title','desc')->get();
-            //$posts = Post::orderBy('created_at','desc')->paginate(10);
-
-          
-            return view('pages.games')->with('games', $games);
-        } else {
-           alert()->info('Atencion!', 'Tenes que iniciar sesión o registrarte para ver tus juegos.');
-            return view('pages.games'); }*/
-    }
+    public function index(){}
 
     /**
      * Show the form for creating a new resource.
@@ -153,10 +129,7 @@ class GamesController extends Controller
             alert()->info('Atención!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
             return redirect()->guest('/login');
         }
-        //Check for correct user
-        /*if (auth()->user()->id !== $game->user_id) {
-            return redirect('/games')->with('error', 'Pagina no autorizada'); //TODO: Ver esto porque no anda, hacer l mismo para eliminar y ver
-        }*/
+
     }
 
     /**
@@ -185,8 +158,12 @@ class GamesController extends Controller
         $game->console = $request->console;
         $game->mode = $request->mode;
         $game->genre = $request->genre;
+
+        
         if ($request->hasFile('cover_image')) {
-            Storage::delete('public/cover_images/thumbnail/' . $game->cover_image);
+            if ($game->cover_image != 'default.jpg') {
+                Storage::delete('/img/covers' . $game->cover_image);
+            }
             $game->cover_image = $fileNameToStore;
         }
         $game->save();
@@ -206,16 +183,10 @@ class GamesController extends Controller
      */
     public function destroy($id)
     {
-
         $game = Game::find($id);
 
-        // Check for correct user
-        /* if (auth()->user()->id !== $game->user_id) {
-            return redirect('/posts')->with('error', 'Unauthorized Page');
-        }*/
-
         if ($game->cover_image != 'noimage.jpg') {
-            Storage::delete('public/cover_images/thumbnail/' . $game->cover_image);
+            Storage::delete('/img/covers/' . $game->cover_image);
         }
         $game->listings()->detach();
         $game->delete();
@@ -229,8 +200,27 @@ class GamesController extends Controller
 
     private function handleFileUpload(Request $request)
     {
-        // Handle File Upload
+
+        $fileNameToStore = 'default.jpg';
         if ($request->hasFile('cover_image')) {
+            $cover = $request->file('cover_image');
+            $fileNameWithExt = time() . '.' . $cover->getClientOriginalName();
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME); 
+            $extension = $cover->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+           
+            Image::make($cover)->save(public_path('/img/covers/' . $fileNameToStore) );
+        } 
+
+    
+        return $fileNameToStore;
+
+
+
+
+
+        // Handle File Upload
+      /*  if ($request->hasFile('cover_image')) {
 
             // Get filename with the extension 
             $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
@@ -246,12 +236,12 @@ class GamesController extends Controller
 
             // Upload Image
             //$request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-            $request->file('cover_image')->storeAs('public/cover_images/thumbnail', $fileNameToStore);
+            $request->file('cover_image')->storeAs('public/covers/thumbnail', $fileNameToStore);
 
            
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
-        return $fileNameToStore;
+        return $fileNameToStore;*/
     }
 }

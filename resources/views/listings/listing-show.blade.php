@@ -32,7 +32,7 @@
                             <a href="/games/{{$game->id}}">
                                 <img class="img-thumbnail img-fluid" src="{{
                                     asset(
-                                        "storage/cover_images/thumbnail/$game->cover_image"
+                                        "/img/covers/$game->cover_image"
                                     )
                                 }}" alt="Cover image"></a
                             >
@@ -47,7 +47,7 @@
                                     </h5>
                             </div>
                             <div class="game-info">
-                                <a href="{{route('games.show', $game->id)}}" class="read-more">info del juego
+                                <a href="{{route('games.show', $game->id)}}" class="read-more" style="color:wheat">info del juego
                                         <img
                                             src="{{
                                                 asset('img/icons/double-arrow.png')
@@ -57,7 +57,7 @@
                             
                         
 
-                            <!-- <a href="/games/{{$game->id}}" class="read-more">info del juego <img src="{{asset('img/icons/double-arrow.png')}}"></a>                            -->
+                                                  
                             
                             <br/>
                             @auth

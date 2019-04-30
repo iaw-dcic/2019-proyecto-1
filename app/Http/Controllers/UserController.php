@@ -29,7 +29,7 @@ class UserController extends Controller
 
         if ($request->hasFile('avatar')) {
             if ($user->avatar != 'default.jpg') {
-                Storage::delete('public/img/avatars/' . $user->avatar);
+                Storage::delete('/img/avatars/' . $user->avatar);
             }
             $user->avatar = $fileNameToStore;
         }
