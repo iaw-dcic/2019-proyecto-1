@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql_production'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -44,11 +44,19 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            //LOCAL
+            //'host' => env('DB_HOST', '127.0.0.1'),
+            //'database' => env('DB_DATABASE', 'forge'),
+            //'username' => env('DB_USERNAME', 'forge'),
+            //'password' => env('DB_PASSWORD', ''),
+
+            //HEROKU
+            'host' => env('DB_HOST', 'us-cdbr-gcp-east-01.cleardb.net'),
+            'database' => env('DB_DATABASE', 'gcp_33720d3cdcd5b2a6c71e'),
+            'username' => env('DB_USERNAME', 'b494b1ff841b9d'),
+            'password' => env('DB_PASSWORD', '652bb5ab'),
+
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
