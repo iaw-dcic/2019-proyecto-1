@@ -4,30 +4,43 @@
 @section('content')
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Libros</h1>
-    <p class="lead">Coleccion de libros.com</p>
+    <h1 class="display-4">{{$collec->title}}</h1>
+    <p class="lead">IAW - 2019</p>
   </div>
 </div>
 
-<div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        @foreach ($books as $bk)
-        <div class="col-md-4">
-          <div class="col mb-4">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{$bk->title}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{$bk->author}}</h6>
-                
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
+<div class="album py-5">
+  <div class="container">
+    
+      <h4>Categoria: {{$collec->category}}</h4>
+
+      <h5>Descripcion: {{$collec->description}}</h5>
+
+      <table class="table">
+        <thead class="thead">
+          <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Editorial</th>
+            <th scope="col">Cantidad de paginas</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          @foreach ($books as $bk)
+          <tr>
+            <th scope="row">{{$bk->title}}</th>
+            <td>{{$bk->author}}</td>
+            <td>{{$bk->editorial}}</td>
+            <td>{{$bk->pag}}</td>
+          </tr>
+          @endforeach
+
+        </tbody>
+      </table>
+
+      <a href="/welcome"> Volver</a>
     </div>
-  </div>  
- 
+  </div>
+
   @endsection

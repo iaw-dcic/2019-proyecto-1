@@ -5,7 +5,7 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">Mis colecciones de libros</h1>
-        <p class="lead">Coleccion de libros.com</p>
+        <p class="lead">IAW - 2019</p>
     </div>
 </div>
 
@@ -17,10 +17,12 @@
                 <div class="col mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{$colec->id}}</h5>
-                            <h5 class="card-title">{{$colec->title}}</h5>
+                            <h4>Titulo: </h4>
+                            <h6 class="card-title">{{$colec->title}}</h6>
+                            <h4>Categoria: </h4>
                             <h6 class="card-title">{{$colec->category}}</h6>
-                            <p class="card-text">{{$colec->description}}</p>
+                            <h4>Descripcion: </h4>
+                            <h6 class="card-text">{{$colec->description}}</h6>
 
                             <a href="/home/cargarlibros/{{$colec->id}}" class="card-link"> Ver</a>
                             <a href="/home/editCollection/edit/{{$colec->id}}" class="card-link"> Editar</a>
@@ -74,7 +76,8 @@
                                 <h5 class="card-title"><input type="text" class="form-control" name="title" placeholder="Titulo" required></h5>
                                 <h5 class="card-title"><input type="text" class="form-control" name="category" placeholder="Categoria" required></h5>
                                 <p class="card-text"><textarea class="form-control" name="description" rows="3" required></textarea></p>
-<!--
+
+
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" name="pp" value="publica" id="pp1" class="custom-control-input">
                                     <label class="custom-control-label" for="pp1">Publica</label>
@@ -83,8 +86,7 @@
                                     <input type="radio" name="pp" id="pp2" value="privada" class="custom-control-input">
                                     <label class="custom-control-label" for="pp2">Privada</label>
                                 </div>
--->
-
+                                <!--
                                 <div>
                                     <input type="radio" name="pp" value="publica" id="pp1">
                                     <label for="pp1">Publica</label>
@@ -93,8 +95,10 @@
                                     <input type="radio" name="pp" id="pp2" value="privada" >
                                     <label for="pp2">Privada</label>
                                 </div>
-  
-                                  <button type="submit" class="btn btn-link"> Cargar</button>
+-->
+                                <div>
+                                    <button type="submit" class="btn btn-link"> Cargar</button>
+                                </div>
                             </div>
                         </div>
                     </div>

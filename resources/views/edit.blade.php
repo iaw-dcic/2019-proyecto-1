@@ -26,20 +26,20 @@
             <label for="text" class="col-form-label">Descripcion</label>
             <textarea class="form-control" id="text" name="descrip" placeholder="{{$collec->description}}"></textarea>
         </div>
-
-        <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" name="pp" value="publica" id="pp1" class="custom-control-input">
-            <label class="custom-control-label" for="pp1">Publica</label>
+        <div class="form-group">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" name="pp" value="publica" id="pp1" class="custom-control-input">
+                <label class="custom-control-label" for="pp1">Publica</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" name="pp" id="pp2" value="privada" class="custom-control-input">
+                <label class="custom-control-label" for="pp2">Privada</label>
+            </div>
         </div>
-        <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" name="pp" id="pp2" value="privada" class="custom-control-input">
-            <label class="custom-control-label" for="pp2">Privada</label>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Aceptar</button>
         </div>
-
-
-
-    <button type="submit" class="btn btn-primary" >Aceptar</button>
-
-</form>
+    </form>
 </div>
 @endsection
