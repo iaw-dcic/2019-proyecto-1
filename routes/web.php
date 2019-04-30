@@ -34,3 +34,5 @@ Route::delete('/myList/{lista}/{goles}', 'goalsController@destroyGoal')->name('d
 Route::get('/profile', 'profileController@getProfile')->name('profile');
 Route::get('/settings', 'profileController@getSettings')->name('settings');
 Route::patch('/settings', 'profileController@updateUser')->name('update');
+Route::post('/settings', 'profileController@update_avatar')->name('update_avatar');
+

@@ -86,10 +86,6 @@ textarea {
     background-color: transparent;
 }
 
-#botones-cambiar-editar {
-    text-align: center;
-}
-
 #editname {
     color: black;
     background-color: #c8eecb;
@@ -127,9 +123,13 @@ textarea {
     color: rgba(255, 255, 255, 0.5);
 }
 
+#areaDescription:focus {
+    border: solid;
+    border-color: rgb(91, 163, 192);
+}
+
 #btn-select-file {
     background-color: transparent;
-    width: 153px;
     line-height: 15px;
 }
 

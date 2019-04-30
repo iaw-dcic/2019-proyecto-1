@@ -34,7 +34,7 @@
 									<th></th>
 								</tr>
 								<tr>
-									<th> <img src="{{ $user->avatar }}" alt="Avatar" class="avatar"> </th>
+									<th> <img src="/images/Users/{{ $user->avatar }}" alt="Avatar" class="avatar"> </th>
 									@if($user->description != null)
 									<th> <textarea readonly disabled>{{ $user->description }}</textarea></th>
 									@else
