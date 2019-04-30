@@ -10,7 +10,7 @@
 			<div class="row">
 				<div class="profile-header-container">
 					<div class="profile-header-img">
-						<img class="img-circle" src="{{asset('storage/images/'.$user->image)}}" />
+						<img alt="profile picture" class="img-circle" src="{{asset('storage/images/'.$user->image)}}" />
 						<!-- badge -->
 						<div class="rank-label-container">
 							<span class="label label-default rank-label">{{$user->username}}</span>

@@ -20,7 +20,7 @@
 					<form method="POST" action="/search" class="navbar-form" role="search">
 						@csrf
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search lists" name="search">
+							<input type="text" aria-label="search text input" class="form-control" placeholder="Search lists" name="search">
 							<div class="input-group-btn">
 								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 							</div>
