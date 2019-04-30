@@ -71,10 +71,16 @@
 
                       </div>
                     </div>
+                    <hr>
                     <div class="row">
                       <div class="col">
-                        No llegue a hacer el resto de las funcionalidades del abm de elemento.
-                        No llegue a mostrar las listas publicas o todas segun si el usuario esta logueado.
+                        <ul>
+
+                          <li>No llegue a hacer el resto de las funcionalidades del abm de pelicula.</li>
+                          <li>No llegue a mostrar las listas publicas o todas, segun si el usuario esta logueado.</li>
+                          <li>El login con facebook me funciona en localhost pero no lo pude configurar para que ande en heroku.</li>
+                        </ul>
+
                       </div>
                     </div>
 
