@@ -113,12 +113,12 @@
               </div>
               <div>
                   <h5>Title</h5>
-                  <input type="text" name="title" value="{{ $userlist->title }}" required>
+                  <input type="text" name="title" value="{{ $userlist->title }}" required maxlength="30">
               </div>
               <hr>
               <div>
                   <h5>Description</h5>
-                  <textarea name="description" rows="5" required> {{ $userlist->description }}</textarea>
+                  <textarea name="description" rows="5" required maxlength="200"> {{ $userlist->description }}</textarea>
               </div>
           </div>
           <div class="modal-footer">
@@ -175,12 +175,12 @@
                                   <div class="modal-body">
                                       <div>
                                           <h5>Name</h5>
-                                          <input type="text" name="name" value="{{ $element->name }}" required>
+                                          <input type="text" name="name" value="{{ $element->name }}" maxlength="30" required>
                                       </div>
                                       <hr>
                                       <div>
                                           <h5>Description</h5>
-                                          <textarea name="description" rows="5" required>{{ $element->description }}</textarea>
+                                          <textarea name="description" rows="5" required maxlength="200">{{ $element->description }}</textarea>
                                       </div>
                                   </div>
                                   <div class="modal-footer">
@@ -232,12 +232,12 @@
                 <div class="modal-body">
                     <div>
                         <h5>Name</h5>
-                        <input type="text" name="name" placeholder="Name of the new entry" required>
+                        <input type="text" name="name" placeholder="Name of the new entry" maxlength="30" required>
                     </div>
                     <hr>
                     <div>
                         <h5>Description</h5>
-                        <textarea name="description" rows="5" placeholder="Description of the new entry" required></textarea>
+                        <textarea name="description" rows="5" placeholder="Description of the new entry" maxlength="200" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

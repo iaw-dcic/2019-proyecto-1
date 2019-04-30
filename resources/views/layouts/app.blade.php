@@ -86,12 +86,12 @@
                             <div class="modal-body">
                                 <div>
                                     <h5>Title</h5>
-                                    <input type="text" name="title" placeholder="Title of the new list" required>
+                                    <input type="text" name="title" placeholder="Title of the new list" maxlength="30" required>
                                 </div>
                                 <hr>
                                 <div>
                                     <h5>Description</h5>
-                                    <textarea name="description" rows="5" placeholder="Description of the new list" required></textarea>
+                                    <textarea name="description" rows="5" placeholder="Description of the new list" maxlength="200" required></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
