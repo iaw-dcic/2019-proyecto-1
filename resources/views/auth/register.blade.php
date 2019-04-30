@@ -19,13 +19,6 @@
 	<div class="wrapper {{ $fadeInDown }}">
 		<div id="formContent">
 
-			<!-- Social media icons -->
-			<div class="{{$fadeIn}} {{$first}}">
-				<a href="/auth/facebook" class="fa fa-facebook"></a>
-				<a href="#" class="fa fa-twitter"></a>
-				<a href="#" class="fa fa-google"></a>
-			</div>
-
 			<!-- Sign Up Form -->
 			<form method="POST" action="{{ route('register') }}">
 				@csrf

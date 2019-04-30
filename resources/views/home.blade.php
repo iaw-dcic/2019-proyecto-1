@@ -16,7 +16,7 @@
 					</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li class="nav-item active" id="top-voted">
+					<li class="nav-item" id="top-voted">
 						<a>Top voted</a>
 					</li>
 					<li class="nav-item" id="new-lists">
