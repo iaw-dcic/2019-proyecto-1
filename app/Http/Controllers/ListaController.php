@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\Book;
+use App\Http\Requests\BookRequest;
 
 class ListaController extends Controller
 {
