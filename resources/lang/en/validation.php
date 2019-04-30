@@ -128,8 +128,17 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => 'El :attribute debe ser una direccion de email válida.',
+        'regex' => 'El formato de :attribute es inválido.',
+        'url' => 'El formato de :attribute es inválido.',
+        'unique' => 'El :attribute ya ha sido usado.',
+        'string' => ':attribute debe ser una cadena de caracteres.',
+        'required' => 'El campo :attribute es requerido.',
+        'min' => [
+            'string' => ':attribute debe contener al menos :min caracteres.',
+        ],
+        'max' => [
+            'string' => ':attribute debe contener a lo sumo :max caracteres.',
         ],
     ],
 

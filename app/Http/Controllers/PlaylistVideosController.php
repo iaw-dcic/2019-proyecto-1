@@ -19,9 +19,14 @@ class PlaylistVideosController extends Controller
      */
     public function store(User $user,Playlist $playlist, Request $request)
     {
+        /*
+        expresion regular para url de youtube o vimeo:
+        /^https:\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|\/)?([a-z0-9_\-]+)/i'
+        */
+
         //Valido la entrada
         $datos = $request->validate([
-            'url' => 'required|string|',
+            'url' => ['required','url','regex:/^https:\/\/(?:www\.)?youtu(?:\.be|be\.com)\/(?:watch\?v=|\/)?([a-z0-9_\-]+)/i'],
             'title' => 'nullable|string',
             'category' => 'nullable|string'
         ]);
