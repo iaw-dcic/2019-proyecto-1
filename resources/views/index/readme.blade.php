@@ -13,29 +13,28 @@
 			</thead>
 			
 			<tbody>
-			<tr>
-				<td>/home</td>
-				<td>98</td>
-				<td>80</td>
-			</tr>
-            <tr>
-				<td>/things</td>
-				<td>99</td>
-				<td>85</td>
-			</tr>
-            <tr>
-				<td>/show/user/list</td>
-				<td>98</td>
-				<td>80</td>
-			</tr>
+				<tr>
+					<td>/home</td>
+					<td>98</td>
+					<td>80</td>
+				</tr>
+				<tr>
+					<td>/things</td>
+					<td>99</td>
+					<td>85</td>
+				</tr>
+				<tr>
+					<td>/show/user/list</td>
+					<td>98</td>
+					<td>80</td>
+				</tr>
 			</tbody>
 		</table>
-	</div>
+</div>
 
 
 <p class="font-weight-light">Layout Bootstrap 4.3.</p> 
 <p class="font-weight-light">Los usuarios no se pueden eliminar.</p> 
-
 <p class="font-weight-light">Desarollado por Gino Liberati</p>
 
 @endsection
