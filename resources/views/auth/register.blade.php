@@ -10,8 +10,8 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-                        <div class="form-group">
-                           <label for="name" class="col-md-4 control-label">Register With</label>
+                        <div class="form-group row">
+                           <label for="name" class="col-md-4 col-form-label text-md-right">Register With</label>
                            <div class="col-md-6">
                                <a href="{{ url('login/facebook') }}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
                                <a href="{{ url('login/twitter') }}" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
@@ -22,8 +22,8 @@
                            </div>
                        </div>
                         
-                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                           <label for="name" class="col-md-4 control-label">Name</label>
+                         <div class="form-group row">
+                           <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                            <div class="col-md-6">
                            @if(!empty($name))
                                <input id="name" type="text" class="form-control" name="name" value="{{$name}}" required autofocus>
@@ -37,8 +37,8 @@
                                @endif
                            </div>
                        </div>
-                       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                           <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                       <div class="form-group row">
+                           <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                            <div class="col-md-6">
                                @if(!empty($email))
                                <input id="email" type="email" class="form-control" name="email" value="{{$email}}" required>
