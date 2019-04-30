@@ -19,7 +19,7 @@ class PagesController extends Controller
     public function getHome()
     {
         $users = user::all();
-        $paquetes = [];
+        $paquetes = [['hola'],[]];
         $user_auth = Auth::user();
         $id_reg = null;
         if($user_auth != null)
