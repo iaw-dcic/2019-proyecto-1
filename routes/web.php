@@ -11,6 +11,10 @@
 |
 */
 
+if (env('APP_ENV') === 'production') {
+    URL::forceSchema('https');
+}
+
 Auth::routes();
 
 Route::get('/', 'HomeController@home')->name('welcome');
