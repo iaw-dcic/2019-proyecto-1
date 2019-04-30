@@ -18,7 +18,7 @@ return [
     'facebook' => [
         'client_id' => '418383158951994',
         'client_secret' => 'aa0ee574a390d0d44770f0284701fb33',
-        'redirect' => 'http://localhost:8000/auth/facebook/callback'
+        'redirect' => 'https://iaw-lucasmzn-2019.herokuapp.com/auth/facebook/callback'
     ],
 
     'mailgun' => [
