@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/readme', function () {
     return view('readme');
 });
@@ -24,8 +25,16 @@ Route::get('/create_list','ListaController@index');
 
 
 Route::resource('list','ListaController');
+Route::post('edit_list','ListaController@edit_list');
+Route::post('remove_list','ListaController@remove_list');
+Route::post('view_list','ListaController@view_list');
+
+Route::post('add_movie','PeliculaController@add');
+
+
 
 Route::resource('profile','PerfilController');
+
 
 Auth::routes();
 

@@ -65,11 +65,28 @@
                                       </div>
                                     </div>
                                     <div class="row">
-                                      <div class="col">
-                                        <a title="Edit list" class="btn btn-secondary material-dark" href="#"><i class="far fa-edit"></i></a>
-                                        <a title="Remove list" class="btn btn-secondary material-dark" href="#"><i class="far fa-trash-alt"></i></a>
+                                      <div class="col-sm-2">
+                                        <form class="" action="{{url('edit_list')}}" method="post">
+                                          @csrf
+                                          <input type="hidden" name="id_lista" value="{{$lista->id_lista}}">
+                                          <button type="submit"  title="Edit list" class="btn btn-secondary material-dark"><i class="far fa-edit"></i></button>
+                                        </form>
                                       </div>
-
+                                        <div class="col-sm-2">
+                                          <form class="" action="{{url('remove_list')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id_lista" value="{{$lista->id_lista}}">
+                                            <button type="submit"  title="Remove list" class="btn btn-secondary material-dark"><i class="far fa-trash-alt"></i></button>
+                                          </form>
+                                        </div>
+                                        <div class="col-sm-2">
+                                          <form class="" action="{{url('view_list')}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id_lista" value="{{$lista->id_lista}}">
+                                            <button type="submit"  title="View list" class="btn btn-secondary material-dark"><i class="far fa-eye"></i></button>
+                                          </form>
+                                        </div>
+                                        
                                     </div>
 
                                   </div>

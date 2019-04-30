@@ -40,9 +40,11 @@
                   <div class="card-header material-dark">
                       @auth
                         Listas
-                      @else
-                        Listas publicas
                       @endauth
+                      @guest
+                        Listas publicas
+                      @endguest
+
                   </div>
 
                   <div class="card-body material-regular">
