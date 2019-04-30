@@ -9,7 +9,7 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
    
-    <link defer href="{{ asset('css/estilo.css') }}" rel="stylesheet">    
+    <link   href="{{ secure_asset('css/estilo.css') }}" rel="stylesheet">    
     
     <!-- Bootstrap core CSS -->
      @yield('head')
