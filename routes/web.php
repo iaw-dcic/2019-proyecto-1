@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'listacontroller@listaspublicas');
+Route::get('/readme', function(){return view('readme');});
 
 Route::get('/perfil/{id}', 'usercontroller@mostrarperfil');
 Route::get('/miperfil/', 'usercontroller@mostrarmiperfil')->name('miperfil');
