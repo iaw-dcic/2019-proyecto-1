@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts/app');
-});
+Route::get('/', 'HomeController@index');
+   
 
 Auth::routes();
 
@@ -35,6 +34,10 @@ Route::prefix('profile')->name('profile.')->group(function () {
 
 
 Route::get('profile/{userid}/show', 'ProfileController@show');
+
+Route::get('/readme', function () {
+    return view('readme');
+});
 
 
 Route::get('/template', function () {

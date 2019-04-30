@@ -35,7 +35,13 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Público') }}</label>
                             <div class="col-md-6">
-                                <input id="public_list" type="text" class="form-control{{ $errors->has('public_list') ? ' is-invalid' : '' }}" name="public_list" value="{{ $list->public_list }}" required autofocus>
+
+                                <select id="public_list" class="form-control{{ $errors->has('public_list') ? ' is-invalid' : '' }}" name="public_list" required>
+                                        <option {{ ($list->public_list == 0 ? 'selected' : '') }} value="0">No</option>
+
+                                        <option {{ ($list->public_list == 1 ? 'selected' : '') }} value="1">Si</option>
+                                </select>
+
 
                                 @if ($errors->has('public_list'))
                                     <span class="invalid-feedback" role="alert">

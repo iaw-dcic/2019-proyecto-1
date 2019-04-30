@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('') }}">Listas Públicas</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/readme') }}">Readme</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

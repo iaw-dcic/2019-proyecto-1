@@ -36,7 +36,6 @@ class ListaController extends Controller
 
      public function publicLists($userid)
     {
-
         try {
 
             $lists = User::findOrFail($userid)->list()->where('public_list', 1)->get();
