@@ -3,7 +3,7 @@
 @section('pageTitle', 'Editar Lista')
 
 @section('estilos')
-    <link rel='stylesheet' href='/css/createLista.css'>
+    <link rel='stylesheet' href='/css/listas/createLista.css'>
 @stop
 
 @section('body')
@@ -23,22 +23,15 @@
                     <div class="form-group col-md-12">
                         <label for="publica">¿Desea que sea Publica?</label>
                         <br>
-                        <input type="radio" name="publica"value="Si">Si
-                        <br>
-                        <input type="radio" name="publica" value="No">No
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="publica">¿Que serie desea agregar a su lista?</label>
-                         @foreach($serie as $series)
-                            <form method="POST" action="/actualizarIdLista/{{$series->id}}/{{$lista->id}}" >
-                                {{csrf_field()}}
-                                @method('PUT')
-                                <div class="form-group col-md-6 " >
-                                    <input type="checkbox" name="seriesSeleccionadas" value="id">{{$series->nombre}}
-                                </div>
-                            </form>
-                            @endforeach
+                        @if ($lista->publica=="Si")
+                            <input type="radio" name="publica"value="Si" checked>Si
+                            <br>
+                            <input type="radio" name="publica" value="No">No
+                        @else
+                            <input type="radio" name="publica"value="Si">Si
+                            <br>
+                            <input type="radio" name="publica" value="No"checked>No
+                        @endif
                     </div>
                     
                 </div>

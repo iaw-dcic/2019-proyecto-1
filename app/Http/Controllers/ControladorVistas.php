@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Series;
 use App\User;
 use App\ListaUsuarios;
@@ -27,8 +28,18 @@ class ControladorVistas extends Controller
 		return view('perfil.editarPerfil');
 	}
 
-	public function perfilPublico()
+	public function perfilPublico(Request $request)
 	{
-		return view('perfil.perfilPublico');
+		$user=User::find($request -> id);
+		$lista = $user->listas;
+		return view('perfil.perfilPublico', ['lista'=> $lista]);
+	}
+
+	public function agregarSeries(Request $request)
+	{
+		$lista=ListaUsuarios::find($request->id);
+		$user=User::find($lista->idUsuario);
+		$serie=$user->series;
+		return view ('listas.agregarSeries',['serie'=> $serie],['lista'=> $lista]);
 	}
 }

@@ -15,7 +15,7 @@
 
         <!-- Cargo links externos -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link rel='stylesheet' href='/css/primera.css'>
+        <link rel='stylesheet' href='/css/generales/primera.css'>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
         @section('estilos')
         @show

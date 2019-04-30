@@ -1,12 +1,10 @@
 @extends('generales.layout')
 
-@section('pageTitle', 'Mi Perfil')
+@section('pageTitle', 'Perfil Usuario')
 
 @section('estilos')
-    <link rel='stylesheet' href='/css/miPerfil.css'>
-@stop
-
-@section('javascripts')
+    <link rel='stylesheet' href='/css/perfil/miPerfil.css'>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 @stop
 
 @section('body')
@@ -16,19 +14,16 @@
         </h1>
 
         <h2 id="informacionUsuario">
-            Nombre Usuario: {{ Auth::user()->name }}
+            Nombre Usuario: {{$lista->usuario->name}}
         </h2>
 
         <h3 id="informacionUsuario">
-            E-mail: {{ Auth::user()->email }}
+            E-mail: {{$lista->usuario->email}}
         </h3>
-
-        <a class="btn-sm btn-info botoninput" href="/editarPerfil"><i class="fas fa-user-edit"></i></a>
-
     </div>
   
     <div class="panelInformacion">
-         <h1 id="listas">
+         <h1 id="informacionUsuario">
             Listas Compartidas
         </h1>
         <div class="container">
@@ -42,16 +37,17 @@
             <tbody>
                  @foreach($lista as $listas)
                 <tr>
-                    <td>{{ $listas->nombre_lista}}</td>
-                    @foreach($serie as $series)
-                        @if($listas->id == $series->id_lista)
-                            <td>{{ $series->nombre}}</td>
-                        @endif
-                    @endforeach
+                    @if ($listas->publica== "Si")
+                        <td>{{ $listas->nombre_lista}}</td>
+                        @foreach($listas->seriesAsociadas as $series)    
+                                <td>{{ $series->nombre}}</td>
+                        @endforeach
+                    @endif
                 @endforeach
                 </tr>
             </tbody>
         </table>
 
+        <a href="/"><button class="botonGuardar" type="button">Volver</button></a>
     </div>
 @stop

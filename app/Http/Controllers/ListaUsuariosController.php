@@ -111,6 +111,11 @@ class ListaUsuariosController extends Controller
     public function destroy($id)
     {
         $lista = ListaUsuarios::find($id);
+        foreach ($lista->seriesAsociadas as $series)
+        {
+            $series->id_lista=NULL;
+            $series->save();
+        }
         $lista->delete();
         $redireccion='/miPerfil/'.$lista->idUsuario;
         return redirect($redireccion);

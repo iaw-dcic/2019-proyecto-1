@@ -3,7 +3,7 @@
 @section('pageTitle', 'Series')
 
 @section('estilos')
-    <link rel='stylesheet' href='css/index.css'>
+    <link rel='stylesheet' href='css/generales/index.css'>
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 @stop
 
@@ -37,7 +37,7 @@
             <img src="/imgs/blackmirror.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/twd.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/twd.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -59,6 +59,7 @@
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Usuario</th>
+                    <th scope="col">Ver Perfil</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,6 +67,7 @@
                 <tr>
                     <td>{{ $listas->nombre_lista}}</td>
                     <td>{{ $listas->usuario->name}}</td>
+                    <td><a class="btn-sm btn-info botoninput" href="/perfilPublico/{{ $listas->usuario->id}}"> Ver Perfil</a></td>
                 @endforeach
                 </tr>
             </tbody>

@@ -3,7 +3,7 @@
 @section('pageTitle', 'Mi Perfil')
 
 @section('estilos')
-    <link rel='stylesheet' href='/css/miPerfil.css'>
+    <link rel='stylesheet' href='/css/perfil/miPerfil.css'>
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 @stop
@@ -106,12 +106,12 @@
                             @method('DELETE')      
                             <button type="submit" id="botonEliminar" class="btn-sm btn-danger mt-3"  onclick="return confirm('¿Quiere borrar la lista?')"><i class="far fa-trash-alt"></i></button>
                         </form>
+                        <a class="btn-sm btn-info botoninput" href="/agregarSeries/{{$listas->id}}"><i class="fas fa-plus"></i></a>
                     </td>
                 @endforeach
                 </tr>
             </tbody>
         </table>
         <a class="botonagregar" type="button" href="{{route('listas.create')}}">Crear Lista</a>
-        <input type="hidden" name="id_usuario" value="{{ Auth::user()->id }}">
     </div>
 @stop

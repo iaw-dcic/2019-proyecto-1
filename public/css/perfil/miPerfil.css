@@ -18,6 +18,7 @@ body
 	padding: 4px 6px 5px;
     border-width: 2px;
     border-style: outset;
+    margin-top: 10px;
 }
 
 #panelAgregar

@@ -3,7 +3,7 @@
 @section('pageTitle', 'Agregar Serie')
 
 @section('estilos')
-    <link rel='stylesheet' href='/css/create.css'>
+    <link rel='stylesheet' href='/css/series/create.css'>
 @stop
 
 @section('body')
