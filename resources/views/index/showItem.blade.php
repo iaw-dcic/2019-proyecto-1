@@ -8,9 +8,7 @@
 
   
     @if($items->count())
-    
-			
-	<div class = "container">
+    <div class = "container">
 		<table class="table">	
 			<thead class="thead-dark">
 				<tr>
@@ -28,10 +26,10 @@
 				<td>{{$item->cantDias}}</td>
 			</tr>
 			@endforeach
-			@else 
+		@else 
 				<h4> Todavia no ha decidido que ciudad visitar </h4>
 
-			@endif
+		@endif
 			</tbody>
 		</table>
 	</div>

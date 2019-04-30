@@ -8,17 +8,20 @@
 <a>
 </form>
 <form>
-@if($misListas->count())
-  <div class ="container">
-      <ul class="list-group">
+  @if($misListas->count())
+    <div class ="container">
+        <ul class="list-group">
       @foreach($misListas as $thing)
         <a href="/show/{{$user-> usuario}}/{{$thing -> id}}"  >
              <h4>{{$thing -> title}} </h4>
            </a> 
        @endforeach
-    </ul>     
-  </div>
-    @endif
+          </ul>     
+    </div>
     </form>
+  @else 
+    <h4> Todavia no ha decidido que paises visitar </h4>
+  @endif
+  
 @endsection
 
