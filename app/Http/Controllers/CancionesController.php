@@ -78,7 +78,9 @@ class CancionesController extends Controller
         $cancion->lista_id= $lista_id;    
         $cancion->save();
 
-   return redirect('listas/'.$lista_id)->with('success','Cancion \''.$cancion->nombre.'\' ha sido creada con exito!');
+        Flash::success("Cancion ".$cancion->nombre." ha sido creada con exito! ");
+
+   return redirect('listas/'.$lista_id);
     }
 
     /**
@@ -124,8 +126,10 @@ class CancionesController extends Controller
                            'autor'=> 'required',
                       ],Cancion::messages()));
                
+        Flash::success("Cancion ".$cancion->nombre." ha sido editada con exito! ");
+
          //Vuelvo al listado usando un get y muestro un mensaje flash
-         return redirect('listas/'.$cancion->lista_id)->with('info','Cancion \''.$cancion->nombre.'\' ha sido editada con exito!');
+         return redirect('listas/'.$cancion->lista_id);
     }
 
     /**
@@ -139,7 +143,9 @@ class CancionesController extends Controller
     {
         $cancion= Cancion::findOrFail($id);
         $cancion->delete();
-           //Vuelvo al listado usando un get y muestro un mensaje flash
-        return redirect('listas/'.$cancion->lista_id)->with('warning','La cancion \''.$cancion->name.'\' ha sido eliminada!');
+
+        Flash::success("Cancion ".$cancion->nombre." ha sido borrada con exito! ");
+           //Vuelvo al listado usando un get 
+        return redirect('listas/'.$cancion->lista_id);
     }
 }

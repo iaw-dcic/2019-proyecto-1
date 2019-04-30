@@ -4,13 +4,18 @@
 
 @section('content')
 
+
+    
+
+
+
     <br>
     <div>
-    <!-- boton agregar lista -->
-    <a href="{{ action('ListasController@create') }}" class="btn btn-primary">Agregar Lista</a>
+        <!-- boton agregar lista -->
+        <a href="{{ action('ListasController@create') }}" class="btn btn-primary">Agregar Lista</a>
 
-      <!-- boton para ver listas  publicas-->
-      <a href="{{ action('ListasController@indexPriv') }}" class="btn btn-primary">Ver Listas Privadas</a>
+        <!-- boton para ver listas  privadas-->
+        <a href="{{ action('ListasController@indexPriv') }}" class="btn btn-primary  ml-5">Ver Listas Privadas</a>
 
     </div>
 
@@ -47,8 +52,7 @@
 
 
                     <!-- muestro el nombre del propietario de la lista   --> 
-
-                    @if($lista->user_id != Auth::user()->id)
+                    @if( Auth::user()== null) 
                         <!-- si es otro user el dueño de la lista, muestro el nombre -->
                         <td>  <a href="{{route('users.index')}}"> {{ \App\User::find($lista->user_id)->name  }} </a></td>
                         
@@ -57,14 +61,21 @@
                                 <img src="https://img.icons8.com/material/16/000000/visible.png">
                             </a>
                         </td>
-                    @else    
+                    @elseif( $lista->user_id != Auth::user()->id)
+                        <!-- si es otro user el dueño de la lista, muestro el nombre -->
+                        <td>  <a href="{{route('users.index')}}"> {{ \App\User::find($lista->user_id)->name  }} </a></td>
+                        
+                        <td>
+                            <a class="btn btn-success">
+                                <img src="https://img.icons8.com/material/16/000000/visible.png">
+                            </a>
+                        </td>
+                    @else
                         <!-- si soy yo, muestro 'yo' y tengo permisos de edicion y borrado -->
-                    <td>  <a href="{{route('users.index')}}"> Yo </a> 
-                    </td>
-                     <!--  BOTONES -->
+                        <td>  <a href="{{route('users.index')}}"> Yo </a> 
+                        </td>
 
-
-                     
+                        <!--  BOTONES -->
 
                     <td>
                     

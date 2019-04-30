@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\resources\views;
 use App\Lista;
 use Auth;
+use Laracasts\Flash\Flash;
 
 class ListasController extends Controller
 {
@@ -50,6 +51,18 @@ class ListasController extends Controller
 
 
 
+    //search para buscar listas publicas
+    public function search(Request $request)
+    {
+        $search= $request->get('search');
+        //obtengo todas las listas publicas de mi app
+        $listas= Lista::where('nombre','like','%'.$search.'%')->where('visible',2);
+        $listas=  $listas->paginate(5);
+
+        //retorno la vista y le paso las listas
+        return view ('listas.index',compact('listas'));
+    }
+    
 
 
     /**
@@ -85,12 +98,14 @@ class ListasController extends Controller
         $lista->user_id= $user_id;    
         $lista->save();
 
+        Flash::success("Lista ".$lista->nombre." ha sido creada con exito! ");
+
         //si es publica
         if ($request->visible !=0)             
-            return redirect('listas/public')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!');
+            return redirect('listas/public');
         else
             //si es privada (=0)
-            return redirect('listas/private')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!'); 
+            return redirect('listas/private'); 
     }
 
     
@@ -129,10 +144,13 @@ class ListasController extends Controller
                       ],Lista::messages()));
         
       
+
+        Flash::success("Lista ".$lista->nombre." ha sido editada con exito! ");
+
          if ($request->visible !=0)             
-            return redirect('listas/public')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!');
+            return redirect('listas/public');
         else
-            return redirect('listas/private')->with('info','Lista \''.$lista->nombre.'\' ha sido editada con exito!');          
+            return redirect('listas/private');          
     }
 
 
@@ -147,7 +165,13 @@ class ListasController extends Controller
     {
         $lista= Lista::findOrFail($id);
         $lista->delete();
-           //Vuelvo al listado usando un get y muestro un mensaje flash
-        return redirect('listas/public')->with('warning','La lista \''.$lista->name.'\' ha sido eliminada!');
+
+        Flash::success("Lista ".$lista->nombre." ha sido eliminada con exito! ");
+
+           //Vuelvo al listado usando un get
+           if ($lista->visible !=0)             
+           return redirect('listas/public');
+       else
+           return redirect('listas/private');         
     }
 }

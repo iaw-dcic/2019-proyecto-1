@@ -29,6 +29,7 @@
     Route::delete('/listas/{id}','ListasController@destroy')->name('listas.destroy');
     Route::get('/listas/private','ListasController@indexPriv')->name('listas.indexPriv');
 
+    Route::get('/search','ListasController@search');
 
 
     //creamos las rutas de las canciones
@@ -54,3 +55,9 @@
     DELETE /admin/users/1  (destroy)
     */
     Route::resource('users','UsuariosController');
+
+    //evitar error al recibir por url /listas/canciones/1 por ejemplo
+    Route::any('{query}',function(){
+        return redirect('/');
+    
+    })->where('query','.*');

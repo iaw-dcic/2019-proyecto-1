@@ -12,7 +12,7 @@
 
        
         <!-- boton para ver listas  publicas-->
-        <a href="{{ action('ListasController@index') }}" class="btn btn-primary">Ver Listas Públicas</a>
+        <a href="{{ action('ListasController@index') }}" class="btn btn-primary ml-5">Ver Listas Públicas</a>
     </div>
 
     <br> <br>

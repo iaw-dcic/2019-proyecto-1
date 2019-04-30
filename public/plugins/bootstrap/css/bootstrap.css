@@ -57,23 +57,14 @@ body{
   margin: 0;   /* NUEVO */
 }
 
-footer {
-  min-height: 10px;
-  background-image: -moz-linear-gradient(top, #dae0e5, #dae0e5);
-  background-image: -o-linear-gradient(top, #dae0e5, #dae0e5);
-
-  background-image: -webkit-linear-gradient(#dae0e5, #dae0e5);
-  background-image: linear-gradient(top, #dae0e5, #dae0e5);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#191919', endColorStr='#000000');
-  border-top: 1px solid rgba(50, 50, 50, 0.3);
-  width: 100%;
-  /*position: relative;
-  clear: both;             
-  margin-top: 0px;            ELIMINADO
-  padding-top: 0px;
-  overflow: visible;*/
-  position: fixed;
-  bottom: 0;              /* NUEVO */
+footer {  position:relative;
+  left:0px;
+  bottom:0px;
+  margin-top: -100px;
+  height:30px;
+  width:100%;
+  background:#999;
+  clear:both;
 }
 
 

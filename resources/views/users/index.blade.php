@@ -31,8 +31,13 @@
                         <td>{{ $user->ciudad }}</td>
                     @endif
                     
-                    
+                  
+
                     <!-- BOTONES  -->
+                    <!-- muestro botones editar borrar solo para mi usuario -->
+
+                    @if(Auth::user()!=null && $user->id == Auth::user()->id)
+
                     <td>
                         <!--  boton de editar -->
                         <a href="/users/{{$user->id}}/edit" class="btn btn-warning">
@@ -55,6 +60,15 @@
                             </button>
                         </form>
                     </td>
+                    @else 
+                    <td>
+                            <a class="btn btn-success">
+                                <img src="https://img.icons8.com/material/16/000000/visible.png">
+                            </a>
+                        </td>
+
+                    @endif
+
                 </tr>
 
             @endforeach
