@@ -45,19 +45,19 @@ return [
     ],
 	
     'facebook' => [
-        'client_id' => '1220386388128376',
-        'client_secret' => 'af66c005ead09b30b1b8ab839ab04afe',
-        'redirect' => 'http://localhost/pr1/auth/facebook/callback'
+        'client_id' => '1073800346341089',
+        'client_secret' => 'fd33d7ec2c14faf23d5c969503b82477',
+        'redirect' => ' https://recetario-iaw.herokuapp.com/auth/facebook/callback'
     ],
     'google' => [
         'client_id' => '604013360933-pl4tbrflsantk3aba276pgpk18d2livv.apps.googleusercontent.com',
         'client_secret' => '725fctrZcMiTosiwyvJHFAcn',
-        'redirect' => 'http://localhost/pr1/auth/google/callback',
+        'redirect' => 'https://recetario-iaw.herokuapp.com/auth/google/callback',
     ],
     
       'twitter' => [
         'client_id' => 'Z52bMJVzE0WxUEzayzZFz8VY9',
         'client_secret' => 'qn5FOzzPLGPgIlfwW2qHKPSF5tfbvefbIJ85Ytl5U6l9iXVGMc',
-        'redirect' => 'http://localhost/pr1/auth/twitter/callback',
+        'redirect' => 'https://recetario-iaw.herokuapp.com/auth/twitter/callback',
       ]
     ];
