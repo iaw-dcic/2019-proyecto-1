@@ -1,0 +1,27 @@
+.fondo{
+background-image: url(viper6.jpg);
+background-repeat: no-repeat;
+ width:auto;
+ height:auto;
+
+
+  
+}
+.titulo{
+	text-align: center;
+	
+	font-style: oblique;
+	font-weight: normal;
+	font-variant: small-caps;
+	
+  	
+	font-family: "Arial", Times, serif;
+}
+
+.boton{
+
+  position: relative;
+  
+  top: 150px;
+
+}

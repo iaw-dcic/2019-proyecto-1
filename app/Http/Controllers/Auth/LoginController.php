@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Socialite;//esti
+use App\User;
 class LoginController extends Controller
 {
     /*
@@ -19,6 +20,41 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
+    /** clase usada por socialite
+     * redirect (): se encarga de enviar al usuario al proveedor de OAuth
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    /**
+     * 
+     * user () : leerá la solicitud entrante y recuperará la información del usuario del proveedor.
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('github')->user();
+        
+       $createUser = User::FirstOrCreate(
+        [
+            'Email' => $user->getEmail()
+        ],
+        [
+            'name' => $user->getName()
+        ]);
+            
+        auth()->login($createUser);
+          return redirect('/home');
+        
+       
+
+        // $user->token;
+    }
 
     /**
      * Where to redirect users after login.
