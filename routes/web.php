@@ -49,13 +49,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/search', 'searchController@onSearch');
+Route::get('/search', 'SearchController@onSearch');
 
-Route::get('/search/{user}', 'searchController@seeUserProfile');
+Route::get('/search/{user}', 'SearchController@seeUserProfile');
 
-Route::get('/search/{user}/{list}', 'searchController@seeUserList');
+Route::get('/search/{user}/{list}', 'SearchController@seeUserList');
 
-Route::get('/search/{user}/{list}/{song}', 'searchController@seeUserSong');
+Route::get('/search/{user}/{list}/{song}', 'SearchController@seeUserSong');
 
 Route::get('/edit_profile', 'ProfileController@edit');
 
