@@ -38,7 +38,7 @@
             <td>Privada</td>
             @endif
 
-            <td><a href="/home/cargarlibros/{{$colec->id}}"> Ver</a></td>
+            <td><a href="/home/loadBooks/{{$colec->id}}"> Ver</a></td>
           </tr>
           @endforeach
 

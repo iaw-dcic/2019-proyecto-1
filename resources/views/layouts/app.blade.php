@@ -50,7 +50,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/home/editCollection">Editar</a>
+                            <a class="nav-link" href="/home/storeCollection">Editar</a>
                         </li>
 
                         <li class="nav-item">

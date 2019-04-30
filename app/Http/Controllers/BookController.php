@@ -11,7 +11,7 @@ class BookController extends Controller
     public function index($id)
     {
         $books = Book::where('collection_id', $id)->get();
-        return view('/Book/cargarlibros', compact('books', 'id'));
+        return view('/Book/loadBooks', compact('books', 'id'));
     }
 
 
@@ -34,15 +34,24 @@ class BookController extends Controller
 
         $books = Book::where('collection_id', $id)->get();
 
-        return view('/Book/cargarlibros', compact('books', 'id'));
+        return view('/Book/loadBooks', compact('books', 'id'));
+    }
+
+    public function load2($id)
+    {
+        $book = Book::find($id);
+        return view('/Book/deleteBook', compact('book','id'));
     }
 
     public function delete($id)
     {
-        // $books = Book::where('collection_id',  Book::find($id)->collection_id)->get();
+        $bk = Book::find($id);
+        $id = $bk->collection_id;
 
-        Book::find($id)->delete();
-        return back();
+        $bk->delete();
+
+        $books = Book::where('collection_id', $id)->get();
+        return view('/Book/loadBooks', compact('books', 'id'));
     }
 
     public function update(Request $request, $id)
@@ -68,6 +77,12 @@ class BookController extends Controller
         $id = $book->collection_id;
         $books = Book::where('collection_id', $id)->get();
 
-        return view('/Book/cargarlibros', compact('books', 'id'));
+        return view('/Book/loadBooks', compact('books', 'id'));
+    }
+
+    public function load($id)
+    {
+        $book = Book::find($id);
+        return view('/Book/editBook', compact('book','id'));
     }
 }

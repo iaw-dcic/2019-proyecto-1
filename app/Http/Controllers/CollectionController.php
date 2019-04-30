@@ -18,32 +18,6 @@ class CollectionController extends Controller
 
     public function store()
     {
-        // $validatedData = $request->validate([
-        //     'title' => 'required',
-        //     'cateogry' => 'required',
-        //     'description' => 'required',
-        // ]);
-
-        // $colecc = new Collection();
-        // $colecc->title = $request->input('title');
-        // $colecc->category = $request->input('category');
-        // $colecc->description = $request->input('description');
-        // $colecc->user_id = auth()->user()->id;
-        // $colecc->pp=0;  //coleccion privada
-
-        // if($request->input('pp')=='publica')
-        //     $colecc->pp=1;  //coleccion publica
-
-        // $colecc->save();
-
-        //--------------------------------------------
-
-        //     $this->validate(request(), [
-        //         'titulo' => 'required|max:255',
-        //       'categoria' => 'required',
-        //       'descrip' => 'required',
-        //   ]);
-
         $colecc = new Collection();
         $colecc->title = request('title');
         $colecc->category = request('category');
@@ -59,7 +33,7 @@ class CollectionController extends Controller
         $id = auth()->user()->id;
         $collec = Collection::where('user_id', $id)->get();
 
-        return view('/Collection/editCollection', compact('collec'));
+        return view('/Collection/storeCollection', compact('collec'));
     }
 
     public function load()
@@ -67,20 +41,25 @@ class CollectionController extends Controller
         $id = auth()->user()->id;
         $collec = Collection::where('user_id', $id)->get();
 
-        return view('/Collection/editCollection', compact('collec'));
+        return view('/Collection/storeCollection', compact('collec'));
     }
 
     public function delete($id)
     {
-        $coleccion = Collection::where('id', '=', $id);
+        $coleccion = Collection::find($id);
         $coleccion->delete();
 
         $id = auth()->user()->id;
         $collec = Collection::where('user_id', $id)->get();
 
-        return view('/Collection/editCollection', compact('collec'));
+        return view('/Collection/storeCollection', compact('collec'));
     }
 
+    public function load2($id){
+        $collec = Collection::find($id);
+        return view('/Collection/deleteCollection', compact('collec','id'));
+    }
+    
     public function update(Request $request, $id)
     {
         $coleccion = Collection::find($id);
@@ -106,13 +85,13 @@ class CollectionController extends Controller
 
         $collec = Collection::find($id);
 
-        return view('/Collection/edit', compact('collec', 'id'));
+        return view('/Collection/editCollection', compact('collec', 'id'));
     }
 
     public function loadcollection($id)
     {
         $collec = Collection::find($id);
 
-        return view('/Collection/edit', compact('collec', 'id'));
+        return view('/Collection/editCollection', compact('collec', 'id'));
     }
 }
