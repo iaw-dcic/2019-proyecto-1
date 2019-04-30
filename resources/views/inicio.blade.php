@@ -13,7 +13,6 @@
                         <th>Lugar</th>
                         <th>Categoria</th>
                         <th>Privacidad</th>
-                        <th>Creador</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +23,6 @@
                         <td>{{$partido->place}}</td>
                         <td>{{$partido->category}}</td>
                         <td>{{$partido->public}}</td>
-                        <td>{{$partido->user_id}}</td>
                     </tr>
                     @endforeach
                 </tbody>
