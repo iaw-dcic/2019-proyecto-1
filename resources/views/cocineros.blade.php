@@ -8,7 +8,7 @@
             @foreach($cocineros as $cocinero)
                 <li>
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-3">
                         @if($cocinero->avatar == null)
                         <img src="{{asset('img/usuario.png')}}"  alt= "{{$cocinero->nombre}}" height=100 width=100> 
                         @else

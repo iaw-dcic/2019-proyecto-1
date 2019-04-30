@@ -8,7 +8,7 @@
             @foreach($recetas as $receta)
                 <li>
                     <div class="row">
-                        <div class="col-1">
+                        <div class="col-3">
                         @if($receta->imagen == null)
                         <a  href="{{route('receta',['nombre'=>$receta->nombre])}}">
                         <img src="{{asset('img/plato.png')}}"  alt= "{{$receta->nombre}}"  height=100 width=100> 
