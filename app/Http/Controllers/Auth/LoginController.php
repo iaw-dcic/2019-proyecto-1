@@ -32,24 +32,29 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-   public function redirectToProvider($provider)
+   public function redirectToProvider()
    {
-       
-       return Socialite::driver($provider)->redirect();
+        return Socialite::driver('github')->redirect();
    }
 
    public function handleProviderCallback($provider)
    {
-       try {
-           $user = Socialite::driver($provider)->user();
-       } catch (Exception $e) {
-           return redirect('/login');
-       }
+        $auth_user = Socialite::driver('facebook')->user();
+        $user = User::where('email', $auth_user->email)
+                        ->first();
+        if ($user==null) {
+            $user = new User();
+            $user->nick_name = $auth_user->name;
+            $user->email = $auth_user->email;
+            $user->token = $auth_user->token;
+            $user->save();
+        } else
+            $user->token = $auth_user->token;
 
-       $authUser = $this->findOrCreateUser($user, $provider);
-       Auth::login($authUser, true);
-       return redirect($this->redirectTo);
-   }
+        Auth::login($user, true);        
+        return redirect('/users');
+    }
+
 
 
    public function findOrCreateUser($providerUser, $provider)
@@ -78,4 +83,20 @@ class LoginController extends Controller
            return $user;
        }
    }
+
+   public function redirectToFacebookProvider()
+{
+    return Socialite::driver('facebook')->redirect();
+}
+
+/**
+ * Obtiene la información de Facebook
+ *
+ * @return \Illuminate\Http\RedirectResponse
+ */
+public function handleProviderFacebookCallback()
+{
+    $auth_user = Socialite::driver('facebook')->user(); 
+    dd($auth_user);
+}
 }

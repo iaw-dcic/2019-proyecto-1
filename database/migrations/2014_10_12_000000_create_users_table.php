@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.  
      *
      * @return void
      */
@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
+            $table->string('token')->nullable(); // Oauth token
             $table->timestamps();
         });
     }

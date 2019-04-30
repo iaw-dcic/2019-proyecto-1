@@ -29,7 +29,12 @@ Route::post('articles/{inventory}','ArticlesController@store')->middleware('auth
 
 Route::resource('users','UsersController');
 
-Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 
-Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+Route::get('login/github/callback','Auth\LoginController@handleProviderCallback');
+
+Route::get('/login/facebook', 'Auth\LoginController@redirectToFacebookProvider');
+
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderFacebookCallback');
+
 
