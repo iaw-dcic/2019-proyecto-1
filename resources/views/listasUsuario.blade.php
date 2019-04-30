@@ -119,7 +119,7 @@
 
                     <button id="botonAgregar" class="btn btn-primary float-right"   >Cambiar</button></div>
                 </form>
-                @endfor
+                @endif
             </div>
             
            
