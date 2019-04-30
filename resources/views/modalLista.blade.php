@@ -24,7 +24,7 @@
                     <div class="form-group">
                     <label for="inputMessage">Privacidad de la lista:</label>
                         <select name="privacidad" class="form-control">
-                            <option selected="true" value="0">Privada </option>
+                            <option value="0">Privada </option>
                             <option value="1">Publica </option>
                         </select>
                     </div>
