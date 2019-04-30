@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/searchbox.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -30,12 +31,14 @@
                     {{ config('app.name') }}
                 </a>
                 <div class="btn-toolbar justify-content-around" role="toolbar" aria-label="User search and user managing options">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">@</div>
+                <form method="GET" action="{{ route('search') }}">
+                        <div class="input-group">
+                            <div class="searchbar">
+                                <input class="search_input" type="text" name="username" placeholder="Search...">
+                                <input class="search_icon" type="image" src="/images/searchico.png">
+                            </div>
                         </div>
-                        <input type="text" class="form-control" placeholder="user" aria-label="Input group example" aria-describedby="Type the user's name you want to search">
-                    </div>
+                    </form>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('User managing options') }}">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -60,13 +63,11 @@
                             @else
                                 <li class="nav-item dropdown">
                                     <a id="userManagingDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        @if(Auth::user()->avatar)
-                                            <img src="{{ Auth::user()->avatar }}" alt="avatar" width="32" height="32" style="margin-right: 8px;">
-                                        @endif
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userManagingDropdown">
                                         <a class="dropdown-item" href="/user/{{ Auth::user()->id }}">Profile</a>
+                                        <a class="dropdown-item" href="/about">About</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">

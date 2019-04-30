@@ -5,7 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <img src="/images/profile.jpg" class="card-img-top" alt="Card image cap">
+                    @if(Auth::user()->avatar)
+                        <img src="{{ Auth::user()->avatar }}" class="card-img-top" alt="avatar">
+                    @endif
                     <div class="card-header"><h3>{{$user->name}}</h3></div>
                     <div class="card-body">
                         <p class="card-text">{{$user->description}}</p>

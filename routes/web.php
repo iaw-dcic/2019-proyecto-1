@@ -15,13 +15,18 @@ Auth::routes();
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('/home', 'PagesController@index')->name('home');
+Route::get('/search', 'PagesController@search')->name('search');
+Route::get('/about', 'PagesController@about')->name('about');
 
-Route::get('/user/{username}', 'UsersController@show')->name('user.show');
-Route::get('/user/{username}/edit', 'UsersController@edit')->name('user.edit');
-Route::patch('/user/{username}', 'UsersController@update')->name('user.update');
+Route::get('/user/{user_id}', 'UsersController@show')->name('user.show');
+Route::get('/user/{user_id}/edit', 'UsersController@edit')->name('user.edit');
+Route::patch('/user/{user_id}', 'UsersController@update')->name('user.update');
 
 Route::resource('items', 'ItemsController');
+Route::get('items/{item}/delete', 'ItemsController@confirmDelete');
+
 Route::resource('collections', 'CollectionsController');
+Route::get('collections/{collection}/delete', 'CollectionsController@confirmDelete');
 
 Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')
     ->name('login.provider')

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\User;
 use App\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use displayable_stuff;
+
 
 class PagesController extends Controller
 {
@@ -43,6 +46,11 @@ class PagesController extends Controller
             $displayable_items = Item::whereIn('collection_id', $ids)->get();
             return view('welcome')->withItems($displayable_items)->withCollections($displayable_collections);
         }
-        return view('welcome')->withItems($public_collections->get());
+        return view('welcome')->withCollections($public_collections->get());
+    }
+    
+    public function search(Request $request){
+        $users = User::where('name', 'LIKE', '%'.$request->username.'%')->get();
+        return view('search')->withUsers($users);
     }
 }

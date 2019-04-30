@@ -103,6 +103,17 @@ class CollectionsController extends Controller
      */
     public function destroy(Collection $collection)
     {
-        //
+        if (Auth::user()->id==$collection->user_id){
+            $collection->delete();
+        }
+        $data = [
+            "operation" => "Delete Collection",
+            "description" => "Your collection was deleted successfully.",
+        ];
+        return view('success')->withData($data);
+    }
+
+    public function confirmDelete(Collection $collection){
+        return view('collections.delete')->withCollection($collection);
     }
 }

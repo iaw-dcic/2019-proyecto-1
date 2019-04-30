@@ -102,6 +102,15 @@ class ItemsController extends Controller
      */
     public function destroy(Item $item)
     {
-        
+        $item->delete();
+        $data = [
+            "operation" => "Delete Item",
+            "description" => "Your item was deleted successfully.",
+        ];
+        return view('success')->withData($data);
+    }
+
+    public function confirmDelete(Item $item){
+        return view('items.delete')->withItem($item);
     }
 }
