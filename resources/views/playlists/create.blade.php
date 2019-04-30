@@ -4,6 +4,7 @@
         <h2>Nueva playlist de {{auth()->user()->name}}</h2>
     </div>
     <div class="container">
+        {{--formulario para creacion--}}
         <form method="POST" action="{{ url(auth()->user()->id,'playlists') }}">
             @csrf
             <div class="form-group row">
@@ -38,15 +39,7 @@
             </div>
 
         </form>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-        </div>
-        @endif
+        @include('errors')
     </div>
     <div class="container">
         <a class="btn btn-lg btn-secondary" href="{{ route('home') }}" a>Volver</a>

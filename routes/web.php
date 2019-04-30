@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PageController@index');
+Route::get('/', 'PageController@index')->name('welcome');
 
 Route::get('/users', 'PageController@users');
 
@@ -25,27 +25,39 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/* Rutas para playlists */
+/* RUTAS PARA PLAYLISTS */
 
-//GET PLAYLISTS DE USER @index
+//VER TODAS LAS PLAYLISTS (PUBLICAS) DE USER @index
 Route::get('{user}/playlists', 'PlaylistsController@index')->name('playlists');
 
-//POST PLAYLIST NUEVA DE USER @store
+//GUARDAR PLAYLIST NUEVA DE USER @store
 Route::post('{user}/playlists', 'PlaylistsController@store');
 
-//CREAR NUEVA PLAYLIST DE USER @create
+//OBTENER PAGINA PARA CREAR NUEVA PLAYLIST DE USER @create
 Route::get('{user}/create', 'PlaylistsController@create')->name('create_playlist');
 
-//VER PLAYLIST DE USER @show
+//VER UNA PLAYLIST DE USER @show
 Route::get('{user}/{playlist}', 'PlaylistsController@show')->name('show_playlist');
 
-//BORRAR PLAYLIST @destroy
+//BORRAR PLAYLIST DE USER@destroy
 Route::delete('/playlists/{playlist}', 'PlaylistsController@destroy');
 
-//EDITAR PLAYLIST DE USER @edit
+//OBTENER PAGINA PARA EDITAR PLAYLIST DE USER @edit
 Route::get('{user}/{playlist}/edit', 'PlaylistsController@edit')->name('edit_playlist');;
 
 //GUARDAR EDICION PLAYLIST DE USER @update
 Route::patch('{user}/{playlist}', 'PlaylistsController@update');
 
+//PUBLICAR UNA PLAYLIST DE USER @publish
+Route::patch('{user}/{playlist}/publish', 'PlaylistsController@publish');
 
+//OCULTAR UNA PLAYLIST DE USER @hide
+Route::patch('{user}/{playlist}/hide', 'PlaylistsController@hide');
+
+
+/* RUTAS PARA VIDEOS DE PLAYLISTS */
+
+//GUARDAR VIDEO EN PLAYLIST DE USER @store
+Route::post('{user}/{playlist}/videos', 'PlaylistVideosController@store');
+
+Route::delete('{user}/{playlist}/{video}', 'PlaylistVideosController@destroy');

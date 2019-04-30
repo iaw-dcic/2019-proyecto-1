@@ -1,15 +1,17 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
-        {{-- Para esta vista me pasan como parametro todas las playlists publicas--}}
+    {{-- Para esta vista me pasan como parametro todas las playlists publicas--}}
+    @if ($playlists->count())
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
-            <h1>Playlists by {{$user->name}}</h1>
+            <h3>Playlists by {{$user->name}}</h3>
         </div>
     </div>
     <div class="row">
             <div class="card-deck">
-                    @foreach ($user->playlists as $playlist)
+                    @foreach ($playlists as $playlist)
+                        @if ($playlist->public)
                         <div class="card">
                             <div class="card-body bg-secondary rounded-big">
                                 <h3>
@@ -34,9 +36,22 @@
                                     @endforeach
                                 </ol>
                             </div>
-                    </div>
+                        </div>
+                        @endif
                     @endforeach
                 </div><!-- card deck-->
     </div><!-- row-->
+    @else
+    <div class="row justify-content-center">
+        <div class="jumbotron bg-info">
+            <h4 class="display-4">Whoops!</h4>
+            <p class="lead">Parece que {{$user->name}} no tiene playlists públicas.</p>
+            <hr class="my-4">
+            <p class="lead">
+                    <a class="btn btn-light btn-md" href="{{route('welcome')}}" role="button">Volver</a>
+            </p>
+        </div>
+    </div>
+    @endif
 </div><!--container-->
 @endsection

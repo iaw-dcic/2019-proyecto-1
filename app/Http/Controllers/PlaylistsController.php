@@ -20,11 +20,12 @@ class PlaylistsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(User $user,Request $request)
     {
-        //obtengo el user y sus playlists
-        $user = User::find($request->user);
-        $playlists = Playlist::all()->where('user_id',$user->id);
+        //obtengo las playlists del user
+        $playlists = Playlist::all()
+            ->where('user_id',$user->id)
+            ->where('public',true);
 
         //las paso a la vista user y playlists
         return view('playlists.index',compact('user','playlists'));
@@ -123,6 +124,57 @@ class PlaylistsController extends Controller
         //Asigno las modificaciones
         $playlist->name = $datos['name'];
         $playlist->description = $datos['description'];
+
+        //Actualizo con ediciones
+        $playlist->update();
+
+        //Preparo variables para la redireccion
+        $parametros=[
+            'playlist' => $playlist->id,
+            'user' => $user->id
+        ];
+        return redirect()->route('show_playlist',$parametros);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function publish(User $user,Playlist $playlist, Request $request)
+    {
+        //Chequeo que el usuario este autorizado para publicar
+        $this->authorize('update',$playlist);
+
+        //Asigno que la playlists ahora es publica
+        $playlist->public = true;
+
+        //Actualizo con ediciones
+        $playlist->update();
+
+        //Preparo variables para la redireccion
+        $parametros=[
+            'playlist' => $playlist->id,
+            'user' => $user->id
+        ];
+        return redirect()->route('show_playlist',$parametros);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function hide(User $user,Playlist $playlist, Request $request)
+    {
+        //Chequeo que el usuario este autorizado para ocultar
+        $this->authorize('update',$playlist);
+
+        //Asigno que la playlists ahora es publica
+        $playlist->public = false;
 
         //Actualizo con ediciones
         $playlist->update();

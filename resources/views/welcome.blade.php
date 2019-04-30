@@ -19,9 +19,11 @@
                                 {{$playlist->name}}
                             </a>
                         </h3>
+                        @if ($playlist->videos->count())
                         <div class="embed-responsive embed-responsive-4by3">
                             {!!$playlist->videos->first()->getVideoHtmlAttribute()!!}
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

@@ -4,21 +4,82 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h3>{{$playlist->name}}</h3>
-                <p>{{$playlist->description}}</p>
+                {{--boton para publicar playlist--}}
+                @if (!$playlist->public)
+                    <form method="POST"
+                    action="{{action('PlaylistsController@publish',['user'=>$user,'playlist'=>$playlist]) }}">
+                        @method('PATCH')
+                        @csrf
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-light">
+                                    {{ __('Publicar') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                @endif
                 <a class="btn btn-primary btn-sm"
                 href="{{action('PlaylistsController@edit',['user'=>$user,'playlist'=>$playlist]) }}" >
                     Editar
                 </a>
+                <p>{{$playlist->description}}</p>
+
+
+                {{-- formulario para agregar videos --}}
+                <form method="POST"
+                action="{{action('PlaylistVideosController@store',['user'=>$user,'playlist'=>$playlist]) }}">
+                        @csrf
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input placeholder="URL" id="url" type="text" class="form-control{{ $errors->has('url') ? 'is-invalid' : '' }}"
+                                name="url" value="{{ old('ulr') }}" required autofocus>
+                                @if ($errors->has('url'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('url') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input placeholder="Titulo" id="title" type="text" class="form-control{{ $errors->has('title') ? 'is-invalid' : '' }}"
+                                name="title" value="{{ old('title') }}" autofocus>
+                                @if ($errors->has('title'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                                <div class="col-md-6">
+                                    <input placeholder="Canal" id="channel" type="text" class="form-control{{ $errors->has('channel') ? 'is-invalid' : '' }}"
+                                    name="channel" value="{{ old('channel') }}" autofocus>
+                                    @if ($errors->has('channel'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('channel') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Agregar') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    @include('errors')
+
                 <ol>
                 @foreach ($playlist->videos as $video)
                     <li>
-                        <a href="{{$video->url}}">
-                                @if ( empty($video->title) )
-                                    {{$video->url}}
-                                @else
-                                    {{$video->title}}
-                                @endif
-                        </a>
+                        <a href="{{$video->url}}">@if ( empty($video->title) ){{$video->url}}@else{{$video->title}}@endif</a>
+                        <form method="POST" action="{{action('PlaylistVideosController@destroy',['user'=>$user,'playlist'=>$playlist,'video'=>$video]) }}">
+                            @method('DELETE')@csrf<button type="submit" class="btn btn-danger btn-xs">Eliminar</button>
+                        </form>
                     </li>
                 @endforeach
                 </ol>
