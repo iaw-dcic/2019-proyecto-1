@@ -75,9 +75,11 @@ class AlbumController extends Controller
      * @param  \Haiku\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function show(Album $album)
+    public function show($id)
     {
         //
+        $album = Album::find($id);
+        return View('album.showAlbum',['album'=>$album]);
         
     }
 

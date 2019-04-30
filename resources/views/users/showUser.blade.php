@@ -9,6 +9,7 @@
             <th>Album</th>
             <th>Artista</th>
             <th>Link</th>
+            <th></th>
         </tr>
      </thead>
 
@@ -19,7 +20,7 @@
             <td>{{$album->name}}</td>
             <td>{{$album->bandName}}</td>
             <td>{{$album->link}}</td>
-            </tr>
+            <td><a href="{{ route('showAlbum',['id' => $album->id]) }}" class="btn btn-primary">Ver Album</a></td>
             @endforeach
 
 

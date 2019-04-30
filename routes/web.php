@@ -21,7 +21,10 @@ Route::get('/','ApiController@index');
 Route::get('/albums','AlbumController@index')->name('albums');
 Route::get('/albums/Createalbum','AlbumController@create')->name('createAlbum');
 
+
 Route::post('/update/{id}','AlbumController@update')->name('update');
+Route::get('/showAlbum/{id}','AlbumController@show')->name('showAlbum');
+
 
 Route::get('/profile', 'ApiController@profile')->name('profile');
 Route::post('profile','ApiController@updateAvatar')->name('avatar');
