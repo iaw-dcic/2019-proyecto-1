@@ -26,19 +26,19 @@
                         <th scope="col">Editorial</th>
                         <th scope="col">OWNER</th>
                         </tr>
-                        @foreach($tasks as $task)
-                            <tr>
-                                <td>{{$task->id}}</td>
-                                <td>{{$task->cod}}</td>
-                                <td>{{$task->title}}</td>
-                                <td>{{$task->author}}</td>
-                                <td>{{$task->editorial}}</td>
-                                <td>{{$task->owner_name}}</td>
-                            </tr>
-                        @endforeach
+                       
                     </thead>
                     <tbody>
-                  
+                    @foreach($tasks as $task)
+                        <tr>
+                            <td>{{$task->id}}</td>
+                            <td>{{$task->cod}}</td>
+                            <td>{{$task->title}}</td>
+                            <td>{{$task->author}}</td>
+                            <td>{{$task->editorial}}</td>
+                            <td><a href="/profile/{{$task->owner_id}}">{{$task->owner_name}}<a></td>
+                        </tr>
+                    @endforeach
                     </tbody>
                     </table>
                 </div>

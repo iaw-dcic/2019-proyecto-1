@@ -44,44 +44,40 @@
                     <table class="table table-hover task-table">
                     <thead>
                         <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Code</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">Editorial</th>
-                        <th scope="col">Privacy</th>
-                        <th scope="col">Public/Private</th>
-                        <th scope="col">Delete</th>
-                        
+                            <th scope="col">ID</th>
+                            <th scope="col">Code</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Editorial</th>
+                            <th scope="col">Privacy</th>
+                            <th scope="col">Public/Private</th>
+                            <th scope="col">Delete</th>
                         </tr>
-                        @foreach($tasks as $task)
-                            <tr>
-                            <td>{{$task->id}}</td>
-                            <td>{{$task->cod}}</td>
-                            <td>{{$task->title}}</td>
-                            <td>{{$task->author}}</td>
-                            <td>{{$task->editorial}}</td>
-                            <td>{{$task->privacy}}</td>
-                            <td>
-                                <form method= "POST" action="{{route('changeVisibility',$task->id)}}">
-                                    @csrf
-                                    <button class="btn btn-outline-dark" >Change Privacy</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form  method="POST" action ="/home/{{$task->id}}" >
-                                    @method('DELETE')
-                                    @csrf
-                                    <button class="btn btn-outline-dark" >X</button>
-                                </form>
-                            </td>
-                            
-                            </tr>
-
-                        @endforeach
                     </thead>
                     <tbody>
-                  
+                        @foreach($tasks as $task)
+                            <tr>
+                                <td>{{$task->id}}</td>
+                                <td>{{$task->cod}}</td>
+                                <td>{{$task->title}}</td>
+                                <td>{{$task->author}}</td>
+                                <td>{{$task->editorial}}</td>
+                                <td>{{$task->privacy}}</td>
+                                <td>
+                                    <form method= "POST" action="{{route('changeVisibility',$task->id)}}">
+                                        @csrf
+                                        <button class="btn btn-outline-dark" >Change Privacy</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form  method="POST" action ="/home/{{$task->id}}" >
+                                        @method('DELETE')
+                                        @csrf
+                                        <button class="btn btn-outline-dark" >X</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                     </table>
                 </div>

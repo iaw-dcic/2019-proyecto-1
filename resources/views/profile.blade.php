@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     @guest
-     HOLA, ESTE ES EL PERFIL DE : {{$user->name}}
-
+     <h1>{{$user->name}}'s profile</h1>
+     <hr>
     @else   
     <div class="jumbotron">
-        <h1 class="display-5">Hello, {{$user->name}}</h1>
+        <h1 class="display-5">{{$user->name}}</h1>
         <p class="lead">e-mail: {{$user->email}}</p>
         <p class="lead">nick: {{$user->nick}}</p>
         <hr class="my-5">
@@ -18,9 +18,31 @@
         </a>
         @endif
     </div>
-
-    <hr />
-    @endguest         
+    <hr>
+    @endguest  
+    <h3>Saved books:</h3>
+    <div class="container">
+        <table class="table table-hover task-table">
+            <thead>
+                <tr>
+                <th scope="col">Code</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Editorial</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($tasks as $task)
+                    <tr>
+                        <td>{{$task->cod}}</td>
+                        <td>{{$task->title}}</td>
+                        <td>{{$task->author}}</td>
+                        <td>{{$task->editorial}}</td>
+                    </tr>
+                @endforeach     
+            </tbody>
+        </table>
+    </div>
 
 </div>
 @endsection

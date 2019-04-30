@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\User;
-
 use App\Task;
-
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller{
@@ -16,7 +13,10 @@ class ProfileController extends Controller{
 
         if(Auth::check()){
             $user = User::where('id',auth()->id())->get()[0];
-            return view('/profile',compact('user'));
+
+            $tasks = Task::where('owner_id',auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id','owner_name']);
+            
+            return view('/profile',compact('user','tasks'));
         }
         else{
             return redirect('/');
@@ -34,8 +34,13 @@ class ProfileController extends Controller{
 
         $user = user::findOrFail($id);
 
+        $tasks = Task::where('owner_id',$id)->where('privacy','Public')->get(['id','cod','title','author','editorial','privacy','owner_id','owner_name']);
         
-        return view('profile',compact('user'));
+        if($id == auth()->id()){
+            $tasks = Task::where('owner_id',$id)->get(['cod','title','author','editorial']);
+        }
+        
+        return view('profile',compact('user','tasks'));
     
     }
 }
