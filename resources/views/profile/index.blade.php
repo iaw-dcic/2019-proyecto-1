@@ -13,26 +13,31 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <table class="table">
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Usuario</th>
-                            <th>E-mail</th>
-                            <th>Teléfono</th>
-                            <th>Dirección</th>
-                        </tr>
-                        <tr>
-                            <td>{{ $userData->name }}</td>
-                            <td>{{ $userData->surname }}</td>
-                            <td>{{ $userData->username }}</td>
-                            <td>{{ $userData->email }}</td>
-                            <td>{{ $userData->telephone}}</td>
-                            <td>{{ $userData->address}}</td>
-                        </tr>                        
-                    </table>
-                    <td><center><a class="btn btn-primary btn-md" href="{{ route('profile.edit') }}">Editar</a></center>
+                    <div class="table-responsive-md">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Usuario</th>
+                                    <th>E-mail</th>
+                                    <th>Teléfono</th>
+                                    <th>Dirección</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ $userData->name }}</td>
+                                    <td>{{ $userData->surname }}</td>
+                                    <td>{{ $userData->username }}</td>
+                                    <td>{{ $userData->email }}</td>
+                                    <td>{{ $userData->telephone}}</td>
+                                    <td>{{ $userData->address}}</td>
+                                </tr>
+                            </tbody>                     
+                        </table>
+                        <center><a class="btn btn-primary btn-md" href="{{ route('profile.edit') }}">Editar</a></center>
+                    </div>
                 </div>
             </div>
         </div>

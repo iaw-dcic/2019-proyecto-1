@@ -92,12 +92,20 @@ class BookController extends Controller
      */
     public function edit($libro)
     {
-        $book = Book::find($libro);
+
+        $book = Book::where([
+            ['id', $libro],
+            ['user_id', Auth::user()->id],
+        ]);
+
+        if($book->count() == 0) {
+            return redirect()->route('book.index')->with('status', 'Este libro no pertenece');
+        }
 
         $lists = Auth::user()->list()->get();
 
         $data['lists'] = $lists;
-        $data['book'] = $book;
+        $data['book'] = $book->first();
 
         return view('book.edit', $data);
         //return $lists;
@@ -110,18 +118,18 @@ class BookController extends Controller
      * @param  \App\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $book)
     {
-        $book = Book::find($book)->first();
+        $book_ = Book::find($book);
 
-        $book->name=$request->name;
-        $book->author=$request->author;
-        $book->isbn=$request->isbn;
-        $book->list_id=$request->list_id;
+        $book_->name=$request->name;
+        $book_->author=$request->author;
+        $book_->isbn=$request->isbn;
+        $book_->list_id=$request->list_id;
 
-        if ($book->save()) {
+        if ($book_->save()) {
            // return redirect()->route('book.update')->with('status', 'Éxito');
-            return redirect()->route('book.edit', ['id' => $book->id])->with('status', 'Éxito');
+            return redirect()->route('book.edit', ['id' => $book_->id])->with('status', 'Éxito');
         }
     }
 

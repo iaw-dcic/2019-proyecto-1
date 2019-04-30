@@ -37,12 +37,15 @@
 
                         </tr>
                         @endforeach
-                        
-
                     </table>
                 </div>
             </div>
         </div>
     </div>
+        <div class="col-md-12">
+            <div class="card-body">
+                <center><a class="btn btn-primary btn-md" href="{{ route('list.create') }}">Agregar Lista</a></center>
+            </div>
+        </div>
 </div>
 @endsection

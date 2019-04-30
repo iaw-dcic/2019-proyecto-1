@@ -16,7 +16,7 @@ class ListaController extends Controller
         $this->middleware('auth')->except('publicLists', 'show');
 
         //$this->middleware('book.privacy')->only('show');
-        $this->middleware('book.privacy', ['only' => ['show']]);
+        $this->middleware('book.privacy', ['only' => ['show','edit']]);
     }
 
     /**
@@ -37,11 +37,20 @@ class ListaController extends Controller
      public function publicLists($userid)
     {
 
-        $lists = User::find($userid)->list()->where('public_list', 1)->get();
+        try {
 
-        $data['lists'] = $lists;
+            $lists = User::findOrFail($userid)->list()->where('public_list', 1)->get();
 
-        return view('lista.publicLists', $data);
+            $data['lists'] = $lists;
+
+            return view('lista.publicLists', $data);
+
+        } catch(\Exception $e) {
+
+            return redirect('/home');
+
+        }
+        
        
     }
 

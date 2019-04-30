@@ -63,9 +63,9 @@
                        <div class="form-group row">
                             <label for="list_id" class="col-md-4 col-form-label text-md-right">{{ __('Lista') }}</label>
                             <div class="col-md-6">
-                                <select id="list_id" class="form-control{{ $errors->has('list_id') ? ' is-invalid' : '' }}" name="list_id" value="{{ old('list_id') }}" required>
+                                <select id="list_id" class="form-control{{ $errors->has('list_id') ? ' is-invalid' : '' }}" name="list_id" required>
                                     @foreach($lists as $key => $list)
-                                        <option value="{{ $list->id }}">{{ $list->name }}</option>
+                                        <option {{ ($list->id == $book->list_id ? 'selected' : '') }} value="{{ $list->id }}">{{ $list->name }}</option>
                                     @endforeach
 
                                 </select>

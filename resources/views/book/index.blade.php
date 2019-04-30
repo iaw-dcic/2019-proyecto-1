@@ -41,15 +41,17 @@
                             <td>
                                 <a class="btn btn-primary btn-sm" href="{{ route('book.edit',$book->id) }}">Editar</a>
                             </td>
-
                         </tr>
                         @endforeach
-                        
-
                     </table>
                 </div>
             </div>
         </div>
     </div>
+        <div class="col-md-12">
+            <div class="card-body">
+                <center><a class="btn btn-primary btn-md" href="{{ route('book.create') }}">Agregar Libro</a></center>
+            </div>
+        </div>
 </div>
 @endsection

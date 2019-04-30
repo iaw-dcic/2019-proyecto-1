@@ -5,17 +5,23 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Panel de Control</div>
+                    <div class="card-body">
+                            <center><a class="btn btn-primary btn-lg" href="{{route('book.index') }}">Mis Libros</a></center>
+                    </div>
+                    
+                    <div class="card-body">
+                            <center><a class="btn btn-primary btn-lg" href="{{route('list.index') }}">Mis Listas</a></center>
+                    </div>
+            
+                            
+                                
+                        
+                    
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    Has ingresado correctamente!
-                </div>
+
+                
             </div>
         </div>
     </div>

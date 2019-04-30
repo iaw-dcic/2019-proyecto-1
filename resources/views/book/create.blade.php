@@ -64,7 +64,7 @@
                             <div class="col-md-6">
                                 <select id="list_id" class="form-control{{ $errors->has('list_id') ? ' is-invalid' : '' }}" name="list_id" value="{{ old('list_id') }}" required>
                                     @foreach($lists as $key => $list)
-                                        <option value="{{ $key }}">{{ $list->name }}</option>
+                                        <option value="{{ $list->id }}">{{ $list->name }}</option>
                                     @endforeach
 
                                 </select>
