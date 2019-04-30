@@ -47,7 +47,7 @@ return [
     'facebook' => [
         'client_id' => '326470428034749',
         'client_secret' => 'd0e0b57b59d317f7b2a9569413f957e8',
-        'redirect' => 'http://localhost:8000/auth/facebook/callback'
+        'redirect' => 'https://iaw-escudero.herokuapp.com/auth/facebook/callback'
     ],
 
 ];
