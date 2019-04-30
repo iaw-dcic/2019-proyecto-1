@@ -47,13 +47,13 @@ return [
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID','676b4acf49427c26070b'),
         'client_secret' => env('GITHUB_CLIENT_SECRET','425cd90ad16ae53ca20f84deecc5714d'), 
-        'redirect' => env('FACEBOOK_REDIRECT','http://agussgarciaa-iaw-proyecto-1.herokuapp.com/login/github/callback'),
+        'redirect' => env('FACEBOOK_REDIRECT','https://agussgarciaa-iaw-proyecto-1.herokuapp.com/login/github/callback'),
     ],
 
     'facebook'=> [
 		'client_id' => env('FACEBOOK_CLIENT_ID', '2358907187722248'),
 		'client_secret' => env('FACEBOOK_CLIENT_SECRET', '533d1c34e3821f965897xc595c3eee22'),
-		'redirect' => env('FACEBOOK_REDIRECT', 'http://agussgarciaa-iaw-proyecto-1.herokuapp.com/login/facebook/callback')
+		'redirect' => env('FACEBOOK_REDIRECT', 'https://agussgarciaa-iaw-proyecto-1.herokuapp.com/login/facebook/callback')
 	],
     
 
