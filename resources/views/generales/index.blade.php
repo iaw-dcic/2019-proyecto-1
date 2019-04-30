@@ -13,28 +13,28 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" id="panelCarrusel">
             <div class="carousel-item active">
-            <img src="/imgs/breakingbad.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/breakingbad.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/hannibal.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/hannibal.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/got.jpeg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/got.jpeg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/strangers.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/strangers.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/greys.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/greys.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/orphan.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/orphan.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/vikingos.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/vikingos.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
-            <img src="/imgs/blackmirror.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
+            <img src="imgs/blackmirror.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
             </div>
             <div class="carousel-item">
             <img src="imgs/twd.jpg" class="d-block w-100" id="imagenCarrusel" alt="...">
