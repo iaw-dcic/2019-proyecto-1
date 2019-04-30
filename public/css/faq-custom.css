@@ -1,0 +1,57 @@
+.faqHeader {
+    font-size: 27px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: wheat;
+}
+
+.panel-heading {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.panel-heading [data-toggle="collapse"]:after {
+    font-family: "fontawesome";
+    content: "\f054"; /* "play" icon */
+    float: right;
+    color: wheat;
+    font-size: 18px;
+    line-height: 22px;
+    /* rotate "play" icon from > (right arrow) to down arrow */
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.panel-heading [data-toggle="collapse"].collapsed:after {
+    /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    color: wheat;
+}
+
+.panel-title a
+{
+  padding:10px; 
+  display:block;
+}
+
+.panel-title a[aria-expanded='true']
+{
+  background-color:#081624;
+  color:#fff;
+}
+.panel-title a[aria-expanded='true']::after
+{
+  color:wheat;
+}
+
+.panel-body {
+    color:wheat;
+    font-size: 22px;
+}
