@@ -11,7 +11,7 @@
     
 	<div>
 	<div class = "container">
-<table class="table">	
+	<table class="table">	
  	 <thead class="thead-dark">
     <tr>
       <th scope="col">Ciudad</th>
@@ -33,4 +33,6 @@
         <h4> Todavia no ha decidido que ciudad visitar </h4>
 
     @endif
+
+
 @endsection

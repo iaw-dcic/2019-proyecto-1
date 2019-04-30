@@ -10,7 +10,5 @@
      <h4>Apellido: {{$user -> apellido}} </h4>
        
     </div>
-  
-
 @endsection
 

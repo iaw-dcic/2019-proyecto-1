@@ -27,6 +27,7 @@ Route::patch('/items/{item}/edit','ItemsController@edit')->middleware('auth');
 
 Route::get('/','PagesController@index');
 Route::get('/home','PagesController@index');
+Route::get('/','PagesController@index');
 Route::get('/readme','PagesController@readme');
 Route::get('/show/{usuario}','PagesController@show');
 Route::get('/show/{usuario}/showUser','PagesController@showUser');

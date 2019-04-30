@@ -19,7 +19,6 @@
     </ul>     
   </div>
     @endif
-
+    </form>
 @endsection
 
-</form>
