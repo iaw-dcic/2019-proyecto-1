@@ -52,7 +52,7 @@ return [
 
     'facebook'=> [
 		'client_id' => env('FACEBOOK_CLIENT_ID', '2358907187722248'),
-		'client_secret' => env('FACEBOOK_CLIENT_SECRET', '533d1c34e3821f965897xc595c3eee22'),
+		'client_secret' => env('FACEBOOK_CLIENT_SECRET', '425cd90ad16ae53ca20f84deecc5714d'),
 		'redirect' => env('FACEBOOK_REDIRECT', 'https://agussgarciaa-iaw-proyecto-1.herokuapp.com/login/facebook/callback')
 	],
     
