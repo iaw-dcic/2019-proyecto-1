@@ -23,8 +23,12 @@ Route::resource('articles','ArticlesController');
 
 Route::resource('inventories','InventoriesController');
 
-Route::get('/inventories/{inventory}/create','ArticlesController@create');
+Route::get('/inventories/{inventory}/create','ArticlesController@create')->middleware('auth');
 
-Route::post('articles/{inventory}','ArticlesController@store');
+Route::post('articles/{inventory}','ArticlesController@store')->middleware('auth');
 
 Route::resource('users','UsersController');
+
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');

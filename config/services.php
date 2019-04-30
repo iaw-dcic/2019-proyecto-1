@@ -44,10 +44,11 @@ return [
         ],
     ],
 
-    'facebook' => [
-        'client_id' => '434319704061320',
-        'client_secret' => 'eb0436404974a56fb21c99169edbfed8',
-        'redirect' => 'http://localhost:8000/callback',
+    'github' => [
+        'client_id' => env('676b4acf49427c26070b'),
+        'client_secret' => env('70f7592c926079ee1ad364d1cf48a204de223da1'), 
+        'redirect' => env('http://agussgarciaa-iaw-proyecto-1.herokuapp.com/login/github/callback'),
     ],
+    
 
 ];
