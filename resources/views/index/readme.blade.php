@@ -13,7 +13,6 @@
 			</thead>
 			
 			<tbody>
-			
 			<tr>
 				<td>/home</td>
 				<td>98</td>
@@ -29,16 +28,14 @@
 				<td>98</td>
 				<td>80</td>
 			</tr>
-		
-		@endif
 			</tbody>
 		</table>
 	</div>
 
-<li>
+
 <p class="font-weight-light">Layout Bootstrap 4.3.</p> 
 <p class="font-weight-light">Los usuarios no se pueden eliminar.</p> 
-</li>
+
 <p class="font-weight-light">Desarollado por Gino Liberati</p>
 
 @endsection
