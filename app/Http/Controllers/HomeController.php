@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
-
+use App\Rules\validarPrivacidad;
 use App\User;
 
 class HomeController extends Controller{
