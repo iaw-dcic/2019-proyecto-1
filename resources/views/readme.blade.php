@@ -11,7 +11,7 @@
 		<p class="lead">Integrante</p>
 		<p>Franco Schroeder</p>
 		<br/>
-		<p>Esta página se hizo utilizando Laravel como framework para servidor y
+		<p>Esta página se hizo utilizando Laravel como framework para servidor, Socialite para el login con redes sociales y
 			Bootstrap como framework para estilo CSS</p>
 	</div>
 @endsection
