@@ -25,11 +25,10 @@ Route::post('/items/{thing}/store','ItemsController@store')->middleware('auth');
 Route::delete('/items/{item}/destroy','ItemsController@destroy')->middleware('auth');
 Route::patch('/items/{item}/edit','ItemsController@edit')->middleware('auth');
 
+Route::get('/readme','PagesController@readme');
 Route::get('/','PagesController@index');
 Route::get('/home','PagesController@index');
-Route::get('/','PagesController@index');
-Route::get('/readme','PagesController@readme');
-Route::get('/show/{usuario}','PagesController@show');
+
 Route::get('/show/{usuario}/showUser','PagesController@showUser');
 Route::get('/show/{usuario}/{thing}','PagesController@showItem');
 
