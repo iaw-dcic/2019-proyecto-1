@@ -22,6 +22,8 @@ class EditController extends Controller
     
     protected function update(User $user){
         
+        
+        
         request()-> validate([
           
             'apellido' => ['required', 'string', 'max:255'],

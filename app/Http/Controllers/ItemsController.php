@@ -37,7 +37,7 @@ class ItemsController extends Controller
         return redirect('/things'); 
     }
     public function edit(){
-        return 1;
+       return 1;
         $item->delete();
         return redirect('/things'); 
     }

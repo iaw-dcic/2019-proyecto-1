@@ -9,7 +9,7 @@
   
     @if($items->count())
     
-	<div>
+	
 	<div class = "container">
 	<table class="table">	
  	 <thead class="thead-dark">

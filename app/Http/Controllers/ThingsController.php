@@ -80,6 +80,7 @@ class ThingsController extends Controller
      */
     public function edit(Thing $thing)
     {
+        abort_if($thing -> user_id != auth()->id(),403, "No posees acceso a esta pagina");
         return view('things.edit',compact('thing'));
     }
 
@@ -92,6 +93,7 @@ class ThingsController extends Controller
      */
     public function update(Thing $thing)
     {
+        
         request()->validate([
             'title' => ['required', 'min:2', 'max:155']
         ]);
