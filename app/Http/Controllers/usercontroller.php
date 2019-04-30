@@ -16,13 +16,16 @@ class usercontroller extends Controller
         return view('perfil',compact('user','listas')); 
     }
     public function mostrarmiperfil(){
-    	$usuario = Auth::user()->id;
+    	
     	$user = Auth::user();
- 		if($usuario!=null){
+ 		if($user!=null){
+ 			$usuario = Auth::user()->id;
  			$listas = \App\lista::where(['userid' => $usuario, 'visible' => true])->get();
  			return view('miperfil',compact('user','listas')); 
- 		}else
- 			return "ERROR: Primero necesitas logearte";
+ 		}else{
+ 			$msg="You need to log in first!!!";
+ 			return view('error',compact('msg'));;
+ 		}
         
         
         
@@ -32,8 +35,10 @@ class usercontroller extends Controller
 
     	if($usuario!=null)
     		return view('editarmiperfil',compact('usuario'));
-    	else
-    		return "ERROR: no se puede editar un usuario sin autenticarse";
+    	else{
+ 			$msg="You need to login first";
+ 			return view('error',compact('msg'));;
+ 		}
     }
     public function modificarperfil(){
     	

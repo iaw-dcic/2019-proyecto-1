@@ -26,19 +26,29 @@ class peliculacontroller extends Controller
     		$listaid=$datos['listaid'];
         	return redirect()->route('modificarlista',[$listaid]);
     	}else
-    		return "ERROR: no se puede crear lista sin autenticarse";
-
-    	return "PIMPIM";
+    		{
+ 			$msg="You need to log in first";
+ 			return view('error',compact('msg'));;
+ 		}
     
     }
     public function eliminarpelicula($id){
-    	$usuario = Auth::user()->id;
-    	$pelicula =\App\pelicula::find($id); 
-    	$lista = \App\lista::find($pelicula->listaid);
-    	if($lista->userid==$usuario){
-    		$pelicula->delete();
-    		return redirect()->route('modificarlista',[$lista->id]);
-    	}else
-    		return "ERROR: no se puede eliminar una pelicula que no te pertenece";
-    }
+    	$user=Auth::user();
+    	if($user!=null){
+	    	$usuario = Auth::user()->id;
+	    	$pelicula =\App\pelicula::find($id); 
+	    	$lista = \App\lista::find($pelicula->listaid);
+	    	if($lista->userid==$usuario){
+	    		$pelicula->delete();
+	    		return redirect()->route('modificarlista',[$lista->id]);
+	    	}else
+	    		{
+	 			$msg="You can not delete a movie that does not belongs to you";
+	 			return view('error',compact('msg'));;
+	 		}
+	 	}else{
+ 			$msg="You need to log in first";
+ 			return view('error',compact('msg'));;
+ 		}   
+ 	}
 }

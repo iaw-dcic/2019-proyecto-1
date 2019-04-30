@@ -30,19 +30,28 @@ class listacontroller extends Controller
     		return "ERROR ESTA TRATANDO DE ACCEDER A UNA LISTA PRIVADA";
     }
     public function eliminarlista($id){
-    	$usuario = Auth::user()->id;
-    	$lista = \App\lista::find($id);
-    	$peliculas = \App\pelicula::where(['listaid'=>$id])->get();
-    	if($lista->userid==$usuario){
-    		
-    		foreach ($peliculas as $peli) {
-    			$peli->delete();
-    		}
-    		$lista->delete();
-    		return redirect()->route('miperfil');
-    	}
-    	else
-    		return "ERROR: no se puede eliminar una lista que no te pertenece";
+    	$user=Auth::user();
+
+    	if($user!=null){
+	    	$usuario = Auth::user()->id;
+	    	$lista = \App\lista::find($id);
+	    	$peliculas = \App\pelicula::where(['listaid'=>$id])->get();
+	    	if($lista->userid==$usuario){
+	    		
+	    		foreach ($peliculas as $peli) {
+	    			$peli->delete();
+	    		}
+	    		$lista->delete();
+	    		return redirect()->route('miperfil');
+	    	}
+	    	else{
+	 			$msg="You can not delete a list that does not belongs to you";
+	 			return view('error',compact('msg'));;
+	 		}
+	 	}else{
+ 			$msg="You need to log in first";
+ 			return view('error',compact('msg'));;
+ 		}
 
     }
     public function modificarlista($id){
@@ -51,9 +60,11 @@ class listacontroller extends Controller
     	$peliculas=\App\pelicula::where(['listaid'=>$id])->get();
     	if($lista->userid==$usuario)
     		return view('modificarlista',compact('lista','peliculas'));
-    	else
-    		return "ERROR: no se puede eliminar una lista que no te pertenece";
-
+    	else{
+ 			$msg="You can not delete a list that does not belongs to you";
+ 			return view('error',compact('msg'));;
+ 		}
+        
     }
     public function crearlista(){
     	$usuario = Auth::user();
@@ -70,8 +81,11 @@ class listacontroller extends Controller
 	 		
     		$listaid=$lista->id;
         	return redirect()->route('modificarlista',[$listaid]);
-    	}else
-    		return "ERROR: no se puede crear lista sin autenticarse";
+    	}else{
+ 			$msg="You need to log in first!!!";
+ 			return view('error',compact('msg'));;
+ 		}
+        
 
     	return "PIMPIM";
     }
@@ -80,8 +94,11 @@ class listacontroller extends Controller
   
     	if($usuario!=null)
     		return view('crearlista');
-    	else
-    		return "ERROR: no se puede crear lista sin autenticarse";
+    	else{
+ 			$msg="You need to log in first!!!";
+ 			return view('error',compact('msg'));;
+ 		}
+        
     }
 
 }
