@@ -4,7 +4,7 @@
         <div class="col-md-8">
 
             <div class="card">
-                <div class="card-header"><h2>All Public Inventories</h2></div>
+                <div class="card-header"><h2>All Possible Inventories To See </h2></div>
             <div class="card-body">
             <table class="table table-striped table-bordered">
                 <thead>
