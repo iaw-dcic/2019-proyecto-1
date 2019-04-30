@@ -18,9 +18,6 @@
                         Nickname: {{$user->nickname}}
                     </p>
                     <p class="lead">
-                        Edad:{{$user->edad}}
-                    </p>
-                    <p class="lead">
                         Email: {{$user->email}}
                     </p>
                     <hr class="my-4">
@@ -29,10 +26,7 @@
             </div>
         </div>
     </div>
-
-    <hr>
-    
-    
+    <hr> 
     <div class="container">
         <h2>Listado de Partidos Creados</h2>
         <p>El siguiente listado corresponde con aquellos partidos que creo de forma pública.</p>
