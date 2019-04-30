@@ -98,11 +98,17 @@ class listsController extends Controller
      */
     public function show(int $id)
     {
-     
+        
         $lista = DB::table('listas')->where('id',$id)->get();
         $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
         $idUsuario = Auth::user()->id;
-        return view('lists.show',compact('lista','juegos','idUsuario'));
+        $idUsuarioAccediendo = DB::table('users')->where('id',$lista[0]->user_id)->get();
+        $idUsuarioAccediendo = $idUsuarioAccediendo[0]->id;
+        if($idUsuario == $idUsuarioAccediendo)
+            return view('lists.show',compact('lista','juegos','idUsuario'));
+        else
+            $idUsuario = $idUsuarioAccediendo;
+            return view('lists.show',compact('lista','juegos','idUsuario'));
 
     }
 
@@ -112,25 +118,34 @@ class listsController extends Controller
      * @param  \App\Lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lista $lista)
+    public function edit(int $listaId)
     {
+   
+        $lista= DB::table('listas')->where('id',$listaId)->get();
         $this->middleware('auth');
-        return redirect('lists.edit',compact('lista'));
+        return view('lists.edit')->with('listaId',$listaId)->with('list',$lista[0]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lista $lista)
+    public function update()
     {
         $this->middleware('auth');
+        $public = 0;
+        if(Input::get('public') == 'on')
+            $public = 1;
 
-        $lista->update( request('titulo','listaDescripcion','public','userID')); 
-        return redirect('profiles/{ {{Auth::user()->id}} }');
+        $userName= Auth::user()->name;
+        
+        $lista = Lista::findOrFail(request('listId'));
+        $lista->name=Input::get('titulo');
+        $lista->description=Input::get('listaDescripcion');
+        $lista->public=$public;
+        $lista->save();
+        return view('profiles.show')->with('name',$userName);
     
     }
 
@@ -140,14 +155,13 @@ class listsController extends Controller
      * @param  \App\Lista  $lista
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lista $lista)
+    public function destroy(int $ListaId)
     {
         $this->middleware('auth');
+        $lista = Lista::findOrFail(request('listaId'));
+        $juegos = DB::table('juegos')->where('list_id',$lista->id)->get();
         $lista->delete();
         return redirect('lists');
     }
 
-   
-
-    //return request()->all(); //devuelve todos los datos a la pagina (token incluido)
 }

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 
 @section('titulo')
@@ -6,8 +6,6 @@
 @endsection
 
 @section('content')
-    <h1> Crea una nueva lista aquí! </h1>
-
 
     <div class="container">
     <div class="row justify-content-center">
@@ -19,12 +17,13 @@
                     <form method="POST" action="/lists/{$list->id}">
                         @method('PATCH')
                         @csrf
+                        <input type="hidden" name="listId" value="{{$list->id}}">
                         <div>
-                            <span class="input-group-addon" id="basic-addon1">{{list->name)}}</span>
+                            <span class="input-group-addon" id="basic-addon1">Nombre actual de la lista: {{$list->name}}</span>
                             <input type="text" class="form-control" placeholder="Nombre Lista" aria-describedby="basic-addon1" name="titulo" required>
                         </div>
                         <div>
-                            <span class="input-group-addon" id="basic-addon2">{{list->description}}</span>
+                            <span class="input-group-addon" id="basic-addon2">descripcion actual de la lista: {{$list->description}}</span>
                             <input type="text" class="form-control" placeholder="Descripción Lista" aria-describedby="basic-addon2" name="listaDescripcion" required>
                         </div>
                         <div class="row">
@@ -32,21 +31,26 @@
                             <div class="input-group">
                             <span class="input-group-addon">
                                 <input type="checkbox" aria-label="..." name="public">
-                            <span class="input-group-addon" id="basic-addon3">{{list->public}}</span>
+                            <span class="input-group-addon" id="basic-addon3">deseas que la lista sea publica? </span>
                         </div><!-- /.col-lg-6 -->
                         <div>
                            <input type="hidden" name="userID" value="{{Auth::user()->id}}">
                         </div>
                         <div class="btn-group" role="group" aria-label="form buttons">
-                           
-                           
-                        <form method="POST" action="/lists/{{$list->id}}">
+                          
+                        <div>
+                            <button type="submit" class="btn btn-primary" >Guardar cambios </button>
+                        </div>
+                    </form>
+
+                        <form method="POST" action="/lists/{{$listaId}}">
                             @method('DELETE')
                             @csrf
+                            <input type="hidden" name="listId" value="{{$list->id}}">
                             <button type="submit" class="btn btn-danger" >Borrar Lista </button>
                         </form>
 
-                        </div>
+                </div>
 
                     @if($errors->any())
                         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">

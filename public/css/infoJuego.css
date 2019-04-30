@@ -9,3 +9,9 @@
     font-weight: 450;
     font-family: 'Poppins', sans-serif;
 }
+
+.action_buttons{
+    position:center;
+    justify-content: center;
+    display: flex;
+}

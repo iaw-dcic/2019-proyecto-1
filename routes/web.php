@@ -26,6 +26,7 @@ Route::resources([
 ]);
 
 Route::post('/lists','listsController@store');
+Route::patch('/lists/{list}/edit', 'listsController@update');
 
 Route::resource('profiles','profileController')->only('show','edit','update','destroy');
 
@@ -37,6 +38,9 @@ Route::get('/listaAjena/{profile}','listsController@accederListasAjenas')->name(
 Route::get('/listaAjena/{profile}/{list}','listsController@accederDatosListaAjena')->name("VerListaAjena");
 
 Route::get('/lists/{list}/games/{game}', 'ListGamesController@show')->name("gameInfo");
+Route::get('/lists/{list}/games/{game}/edit', 'ListGamesController@edit')->name("gameEdit");
+Route::delete('/lists/{list}/games/{game}', 'ListGamesController@destroy')->name('gameDelete');
+Route::patch('/lists/{list}/games/{game}','ListGamesController@update')->name('gamePatch');
 
 Auth::routes();
 

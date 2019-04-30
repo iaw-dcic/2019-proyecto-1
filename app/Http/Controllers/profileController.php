@@ -9,36 +9,6 @@ use Illuminate\Http\Request;
 
 class profileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-    }
 
     /**
      * Display the specified resource.
@@ -50,7 +20,6 @@ class profileController extends Controller
     {
         $nameac = DB::table('users')->where('name',$nameUs)->get();
         $name = Auth::user()->name;
-        //dd($nameac, $nameUs, $name, $nameac[0]->name, ($nameac[0]->name) == $name);
         if( ($nameac[0]->name) == $name){ //el usuario que entró es el creador de su cuenta
             $name= Auth::user()->name;
             return view('profiles.show')->with('name',$name);
@@ -69,8 +38,9 @@ class profileController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(String $userName)
     {
+        $user = Auth::user();
         return view('profiles.edit');
     }
 
@@ -83,7 +53,8 @@ class profileController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        
+        $user->update(request('name','email','password'));
+        return redirect("/");        
     }
 
     /**
@@ -92,8 +63,9 @@ class profileController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy()
     {
+        $user = Auth::user();
         $user->delete();
         return redirect('/');
     }

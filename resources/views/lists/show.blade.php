@@ -21,18 +21,25 @@
         @foreach($juegos as $elem)
             <a href="/lists/{{$lista[0]->id}}/games/{{$elem->id}}" class="list-group-item list-group-item-action">{{$elem->name}}</a> 
         @endforeach
-    @else  
-        <div class="alert alert-primary divAlerta text-center" role="alert">
-            <h4 class="alert-heading">Nada que ver por aquí</h4>
-               <p class="mb-0 paragraph"> No hay juegos para ver, porque no creas uno? <p>
-        </div>
+    @else
+        @if(Auth::user()->id == $idUsuario)  
+            <div class="alert alert-primary divAlerta text-center" role="alert">
+                <h4 class="alert-heading">Nada que ver por aquí</h4>
+                <p class="mb-0 paragraph"> No hay juegos para ver, porque no creas uno? <p>
+            </div>
+        @else
+            <div class="alert alert-primary divAlerta text-center" role="alert">
+                <h4 class="alert-heading">Nada que ver por aquí</h4>
+                <p class="mb-0 paragraph"> El Usuario no ha creado juegos para esta lista todavia <p>
+            </div>
+        @endif
     @endif
     </ul>
   </div>
 </ul>
 
 @if(Auth::user()->id == $idUsuario)
-    <a href="/lists/{{$lista[0]->id}}/editar" class="btn btn-outline-info btn-block editBlock">Editar datos Lista</a>
+    <a href="{{route('lists.edit', [$lista[0]->id] )}}" class="btn btn-outline-info btn-block editBlock">Editar datos Lista</a>
 
 
     <div class="container">
