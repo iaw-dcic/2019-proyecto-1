@@ -24,10 +24,21 @@ Route::get('usuarios/nuevo', 'UserController@create')->name('users.create');
 Route::post('usuarios/crear','UserController@store');
 /** */
 
-/**Ruta hacia la configuracion del usuario para configurar sus vistas
+Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
+
+/**GET/usuarios/{id} pagina detalles.
+ * PUT/usuarios/{id} accion para actualizar.
+ */
+Route::put('/usuarios/{user}', 'UserController@update');
+
+
+
+/**Ruta hacia los detalles del usuario para configurar sus vistas
  * Para eso la enlazo con el controlador User Controller y la funcion es show
 */
-Route::get('/usuarios/{id}', 'UserController@show')->name('users.show');
+Route::get('/usuarios/{user}', 'UserController@show')->name('users.show');
+
+Route::delete('/usuarios/{user}', 'UserController@destroy')->name('users.destroy');
 
 
 
