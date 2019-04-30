@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\lista;
-use App\user;
+use App\User;
 use App\goal;
 
 class PagesController extends Controller
@@ -18,7 +18,7 @@ class PagesController extends Controller
      */
     public function getHome()
     {
-        $users = user::all();
+        $users = User::all();
         $paquetes = []; 
         $user_auth = Auth::user();
         $id_reg = null;
