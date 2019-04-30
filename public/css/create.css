@@ -2,10 +2,10 @@ h1, form {
     margin-left:12%;
 }
 
-.field {
-    margin-top:1%;
+.field, .form-group {
+    margin-top:2%;
 }
 
 #selectBox {
-    margin-right:90%;
+    margin-right:84.5%;
 }

@@ -1,7 +1,18 @@
-h1, ul, #emptyMessage, .field {
+h1, ul, .field {
     margin-left:12%;
 }
 
 .field {
     margin-top:1%;
+}
+
+#mainList {
+    margin-left:12%;
+    margin-right:12%;
+}
+
+#buttons {
+    margin-top:1%;
+    margin-left:12%;
+    margin-bottom:1%;
 }

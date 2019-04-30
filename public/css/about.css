@@ -2,6 +2,6 @@
     text-align:center;
 }
 
-.goBackButton {
-    margin-top:1%;
+.goBackButton, #firstTable, #secondTable {
+    margin-top:2%;
 }

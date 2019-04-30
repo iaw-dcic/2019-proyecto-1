@@ -14,13 +14,13 @@
 
         {{ csrf_field() }}
 
-        <div class="field">
+        <div class="form-group">
             <label class="label" for="list_name">List Title</label>
             <div class="control">
                 <input type="text" class="input {{ $errors->has('list_name') ? 'is-danger' : '' }}" name="list_name" required value="{{ old('list_name') }}">
             </div>
         </div>
-        <div id="selectBox" class="field">
+        <div id="selectBox" class="form-group">
             <label class="label" for="public">List Privacy</label>
             <select class="form-control" name="public">
                 <option value=1>Public</option>
@@ -28,14 +28,14 @@
             </select>
         </div>
 
-        <div class="field">
+        <div class="form-group">
             <div class="control">
-                <button type="submit" class="button is-link">Create List</button>
+                <button class="btn btn-outline-secondary"  type="submit" class="button is-link">Create List</button>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <button type="button" onclick="location.href='{{ url()->previous() }}'">Go Back</button>
+                <button class="btn btn-outline-secondary" type="button" onclick="location.href='/home'">Go Back</button>
             </div>
         </div>
     

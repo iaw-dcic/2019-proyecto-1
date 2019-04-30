@@ -52,7 +52,7 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button is-link">Modify User</button>
+                <button class="btn btn-outline-secondary" type="submit" class="button is-link">Modify User</button>
             </div>
         </div>
     </form>
@@ -65,14 +65,14 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button">Delete User</button>
+                <button class="btn btn-outline-secondary" type="submit" class="button">Delete User</button>
             </div>
         </div>
     </form>
 
     <div id="backButton" class="field">
         <div class="control">
-            <button type="button" id="goBackButton" onclick="location.href='{{ url()->previous() }}'">Return</button>
+            <button class="btn btn-outline-secondary" type="button" id="goBackButton" onclick="location.href='{{ url()->previous() }}'">Return</button>
         </div>
     </div>
 

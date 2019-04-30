@@ -10,21 +10,19 @@
 
     <h1 class="title">All Public Lists</h1>
 
+    <div id="buttons" class="btn-group" role="group">
+        
+        <button class="btn btn-outline-secondary" type="button" onclick="location.href='/'">Go Back</button>
+        
+    </div>
+
     @if($album->count())
 
-        <ul>
+        <ul id="mainList" class="list-group">
 
             @foreach ($album as $elem)
 
-                <li>
-
-                    <a href="/albums/{{ $elem->list_id }}">
-
-                        {{ $elem->list_name }}
-
-                    </a>
-
-                </li>
+                <li class="list-group-item"><button class="btn btn-link"  onclick="location.href='/albums/{{ $elem->list_id }}'">{{ $elem->list_name }}</button></li>
 
             @endforeach
 
@@ -35,11 +33,5 @@
         <p id="emptyMessage">There are no lists created or made public.</p>
 
     @endif
-
-    <div class="field">
-        <div class="control">
-            <button type="button" onclick="location.href='{{ url()->previous() }}'">Go Back</button>
-        </div>
-    </div>
 
 @endsection

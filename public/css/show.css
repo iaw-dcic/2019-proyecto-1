@@ -1,5 +1,14 @@
-h1, ul, #albumInfo, #editButton, #createButton {
+h1, #albumInfoOwner, #albumInfoStatus, #createButton {
     margin-left:12%;
+}
+
+#mainList {
+    margin-left:12%;
+    margin-right:12%;
+}
+
+#albumInfoStatus, .btn-group {
+    margin-bottom:1%;
 }
 
 #goBackButton {
@@ -11,6 +20,10 @@ h1, ul, #albumInfo, #editButton, #createButton {
     margin-left:48%;
 }
 
-#editListButton {
+#editListButton, .btn-group {
     margin-left:12%;
+}
+
+#otherListsButton {
+    margin-left:44%;
 }

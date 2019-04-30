@@ -16,7 +16,7 @@ class AlbumsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index () {
-        $album = Album::select('*')->where('owner',Auth::user()->name)->get();
+        $album = Album::select('*')->where('owner', Auth::user()->name)->get();
 
         return view('albums.indexAlbum', compact('album'));
     }
@@ -27,6 +27,8 @@ class AlbumsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create () {
+        $this->middleware('auth');
+
         return view('albums.createAlbum');
     }
 
@@ -37,6 +39,8 @@ class AlbumsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store () {
+        $this->middleware('auth');
+
         $attributes = array(
             'list_name' => 'required',
             'public' => 'required'
@@ -72,6 +76,8 @@ class AlbumsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit (Album $album) {
+        $this->middleware('auth');
+
         return view('albums.editAlbum', compact('album'));
     }
 
@@ -82,6 +88,8 @@ class AlbumsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update (Request $request, Album $album) {
+        $this->middleware('auth');
+
         $album->update(request(['list_name', 'public']));
 
         return redirect('/albums');
@@ -93,6 +101,8 @@ class AlbumsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy (Album $album) {
+        $this->middleware('auth');
+
         $album->delete();
 
         return redirect('/albums');

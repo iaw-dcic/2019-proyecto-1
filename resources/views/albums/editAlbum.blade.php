@@ -32,7 +32,7 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button is-link">Modify List</button>
+                <button class="btn btn-outline-secondary" type="submit" class="button is-link">Modify List</button>
             </div>
         </div>
     </form>
@@ -45,14 +45,14 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button">Delete List</button>
+                <button class="btn btn-outline-secondary" type="submit" class="button">Delete List</button>
             </div>
         </div>
     </form>
 
     <div id="backButton" class="field">
         <div class="control">
-            <button type="button" onclick="location.href='/albums/{{ $album->list_id }}'">Go Back</button>
+            <button class="btn btn-outline-secondary" type="button" onclick="location.href='/albums/{{ $album->list_id }}'">Go Back</button>
         </div>
     </div>
 

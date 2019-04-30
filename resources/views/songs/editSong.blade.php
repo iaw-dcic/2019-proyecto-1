@@ -8,9 +8,11 @@
 
 @section('content')
     
-    <h1 class="title">Edit List</h1>
+    <h1 class="title">Edit Song</h1>
 
-    <form method="POST" action="/albums/{{ $album->list_id }}/songs">
+    <form method="POST" action="/albums/{{ $album->list_id }}/songs/{{ $song->song_id }}">
+
+        {{ method_field('PATCH') }}
 
         {{ csrf_field() }}
 
@@ -41,19 +43,19 @@
         <div class="field">
             <label class="label" for="notes">Notes</label>
             <div class="control">
-                <textarea name="notes" class="textarea" value="{{ $song->notes }}"></textarea>
+                <textarea name="notes" class="textarea">{{ $song->notes }}</textarea>
             </div>
         
         </div>
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button is-link">Edit List</button>
+                <button class="btn btn-outline-secondary" type="submit" class="button is-link">Edit List</button>
             </div>
         </div>
     </form>
 
-    <form method="POST" action="/albums/{{ $album->list_id }}/songs">
+    <form method="POST" action="/albums/{{ $album->list_id }}/songs/{{ $song->song_id }}">
 
         {{ method_field('DELETE') }}
 
@@ -61,14 +63,14 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button">Delete Song</button>
+                <button class="btn btn-outline-secondary" type="submit" class="button">Delete Song</button>
             </div>
         </div>
     </form>
 
     <div id="backButton" class="field">
         <div class="control">
-            <button type="button" onclick="location.href='/albums/{{ $album->list_id }}'">Go Back</button>
+            <button class="btn btn-outline-secondary" type="button" onclick="location.href='/albums/{{ $album->list_id }}'">Go Back</button>
         </div>
     </div>
 

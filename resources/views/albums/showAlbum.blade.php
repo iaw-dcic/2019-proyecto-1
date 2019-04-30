@@ -10,33 +10,58 @@
 
     <h1 class="title">{{ $album->list_name }}</h1>
 
-    <div id="albumInfo" class="content"><b>Owner:</b> <a href="/profiles/{{ $album->owner }}">{{ $album->owner }}</a></div>
+    <div id="albumInfoOwner" class="content"><b>Owner: </b><a href="/profiles/{{ $album->owner }}">{{ $album->owner }}</a></div>
 
-    <div id="albumInfo" class="content"><b>Status:</b> 
+    <div id="albumInfoStatus" class="content"><b>Status: </b> 
         @if($album->public == 1) Public
         @else Private
         @endif
     </div>
 
+    @if((Auth::check()) && (Auth::user()->name) == ($album->owner))
+
+        <div class="btn-group" role="group">
+
+            <button class="btn btn-outline-secondary" onclick="location.href='/albums/{{ $album->list_id }}/edit'">Edit List</button>
+
+            <button class="btn btn-outline-secondary" onclick="location.href='/albums/{{ $album->list_id }}/songs/create'">Add Song</button>
+
+            <button class="btn btn-outline-secondary" onclick="location.href='/albums/'">Go Back</button>
+
+        </div>
+
+    @else
+
+        <p><button class="btn btn-outline-secondary" id="createButton" onclick="location.href='/browse/'">Go Back</button></p>
+
+    @endif
+
     @if($album->songs->count())
 
-        <ul>
+        <ul id="mainList" class="list-group">
 
             @foreach($album->songs as $song)
 
-                <li>
+                <li class="list-group-item"><b>Song Name: </b>{{ $song->song_name }}
 
-                    <p><b>Song Name: </b>{{ $song->song_name }} 
+                    <ul class="list-group">
 
-                    <b>Artist: </b>{{ $song->artist }} 
 
-                    <b>Album: </b>{{ $song->album }} 
+                        <li class="list-group-item"><b>Artist: </b>{{ $song->artist }}</li>
 
-                    <b>Release Year: </b>{{ $song->release_year }} 
+                        <li class="list-group-item"><b>Album: </b>{{ $song->album }}</li>
 
-                    <b>Notes: </b>{{ $song->notes }}</p>
+                        <li class="list-group-item"><b>Release Year: </b>{{ $song->release_year }}</li>
 
-                    <p><a href="/albums/{{ $album->list_id }}/songs/{{ $song->song_id }}/edit">Edit</a></p>
+                        <li class="list-group-item"><b>Notes: </b>{{ $song->notes }}</li>
+
+                        @if((Auth::check()) && ((Auth::user()->name) == ($album->owner)))
+
+                            <li class="list-group-item"><button class="btn btn-link" onclick="location.href='/albums/{{ $album->list_id }}/songs/{{ $song->song_id }}/edit'">Edit</button></li>
+
+                        @endif
+
+                    </ul>
 
                 </li>
 
@@ -45,23 +70,5 @@
         </ul>
 
     @endif
-
-    <p>
-
-        <a id="editListButton" href="/albums/{{ $album->list_id }}/edit">Edit List</a>
-
-    </p>
-
-    <p>
-
-        <a id="createButton" href="/albums/{{ $album->list_id }}/songs/create">Add Song</a>
-
-    </p>
-
-    <p>
-
-        <a id="createButton" href="/albums/">Go Back</a>
-
-    </p>
 
 @endsection

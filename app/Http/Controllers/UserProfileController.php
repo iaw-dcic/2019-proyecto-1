@@ -6,11 +6,6 @@ use App\User;
 use Illuminate\Http\Request;
 
 class UserProfileController extends Controller {
-
-    public function index () {}
-    public function create () {}
-    public function store (Request $request) {}
-
     /**
      * Display the specified resource.
      *

@@ -13,11 +13,11 @@
 
 Route::get('/', 'PagesController@home');
 
-Route::resource('albums/{album}/songs', 'SongsController')->middleware('auth');
+Route::resource('albums/{album}/songs', 'SongsController')->middleware('auth')->only(['create','store','edit','update','destroy']);
 
-Route::resource('albums', 'AlbumsController')->middleware('auth');
+Route::resource('albums', 'AlbumsController');
 
-Route::resource('profiles', 'UserProfileController');
+Route::resource('profiles', 'UserProfileController')->only(['show','edit','update','destroy']);
 
 Route::get('/about', 'PagesController@about')->name('about');
 
@@ -26,6 +26,17 @@ Route::get('/browse', 'PagesController@browse')->name('browse');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Dudas
+//ES necesario ponerle el link del bootstrap? porque en el registrar parece que ya lo usaba por defecto
+//Poner el bootstrap como async mejora la performance. esta bien?
+//al editar en el songcontroller llamo al show de albumcontroller, esta bien?
+//view o redirect en el songcontroller
+//se tiene que acceder a las listas de un usuario especifico?
+//el bootstrap?
+//la forma de poner los ccc?
+//lista propia, editar elem, aceptar, ir a perfil propio a traves de la lista, apretar return tira error de get
 
 
 

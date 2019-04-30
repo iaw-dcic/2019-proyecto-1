@@ -12,17 +12,6 @@ use Redirect;
 
 class SongsController extends Controller {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index () {
-        $song = Song::all();
-
-        return view('songs.indexSong',compact('song'));
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -61,17 +50,8 @@ class SongsController extends Controller {
             $song->list_id = $album->list_id;
             $song->save();
 
-            return back();
+            return view('albums.showAlbum', compact('album'));
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show (Song $song) {
-        return view('songs.showSong', compact('song'));
     }
 
     /**
@@ -89,10 +69,10 @@ class SongsController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update (Request $request, Song $song) {
+    public function update (Request $request, Album $album, Song $song) {
         $song->update(request(['song_name', 'artist', 'album', 'release_year', 'notes']));
 
-        return redirect('/songs');
+        return view('albums.showAlbum', compact('album'));
     }
 
     /**
@@ -100,9 +80,9 @@ class SongsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy (Song $song) {
+    public function destroy (Album $album, Song $song) {
         $song->delete();
 
-        return redirect('/songs');
+        return view('albums.showAlbum', compact('album'));
     }
 }
