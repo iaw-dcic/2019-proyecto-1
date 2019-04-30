@@ -72,6 +72,8 @@ class InventoriesController extends Controller
      */
     public function show(Inventory $inventory)
     {
+        abort_if($inventory->user_id != auth()->id() & $inventory->public_status != 1,403, "You don't have access to this page");
+
         return view('inventories.show',compact('inventory'));
 
     }
@@ -84,8 +86,9 @@ class InventoriesController extends Controller
      */
     public function edit(Inventory $inventory)
     {
-        return view('inventories.edit',compact('inventory'));
+        abort_if($inventory->user_id != auth()->id(),403, "You don't have access to this page");
 
+        return view('inventories.edit',compact('inventory'));
     }
 
     /**

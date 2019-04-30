@@ -42,7 +42,8 @@ class ArticlesController extends Controller
     }
 
     public function show(Article $article)
-    {     
+    {             
+
         return view('articles.show',compact('article'));
     }
 
@@ -54,6 +55,8 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
+        abort_if($article->inventory_id->user_id != auth()->id() ,403, "You don't have access to this page");
+
         return view('articles.edit',compact('article'));
     }
 
