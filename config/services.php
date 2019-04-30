@@ -44,8 +44,8 @@ return [
         ],
     ],
     'facebook' => [
-        'client_id'     => env('FACEBOOK_CLIENT_ID'),
-        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect'      => env('FACEBOOK_URL'),
+        'client_id'     => '622418638225625',
+        'client_secret' => 'aa8e3fc97b8fff538f70d2edf03b25a2'),
+        'redirect'      => 'agustinoq-iaw2019.herokuapp.com/login/facebook/callback',
     ],
 ];

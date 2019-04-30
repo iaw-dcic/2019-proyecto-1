@@ -71,6 +71,13 @@
 
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col">
+                        No llegue a hacer el resto de las funcionalidades del abm de elemento.
+                        No llegue a mostrar las listas publicas o todas segun si el usuario esta logueado.
+                      </div>
+                    </div>
+
                 </div>
             </div>
         </div>
