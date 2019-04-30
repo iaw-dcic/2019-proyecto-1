@@ -29,7 +29,7 @@
 
             <h3 style="color:bisque; text-align:center"> Listas de {{$data['listOwnerName']}} </h3>
 
-            <div class="my-table">
+            <div class="my-table" style="margin-bottom:30px">
                 <br>
                 <div class="my-row header no-hover">
                     <div class="cell">
@@ -82,6 +82,8 @@
 
 
             </div>
+            <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+
         </div>
         <!-- <div class="my-row">
                                 <div class="col-xl-12 col-lg-12 col-md-12">
