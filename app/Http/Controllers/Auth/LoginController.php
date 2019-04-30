@@ -60,7 +60,8 @@ class LoginController extends Controller
         $user = User::firstOrCreate([
             'email' => $githubUser->getEmail()
         ], [
-            'username' => $githubUser->getNickname()
+            'username' => $githubUser->getNickname(),
+            'password' => str_random(25),
         ]);
         auth()->login($user);
 
