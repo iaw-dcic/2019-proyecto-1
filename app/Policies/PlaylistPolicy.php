@@ -17,10 +17,10 @@ class PlaylistPolicy
      * @param  \App\Playlist  $playlist
      * @return mixed
      */
-    public function view(User $user, Playlist $playlist)
+    public function view(?User $user, Playlist $playlist)
     {
         //ver solo si es publica o es el owner
-        return (($playlist->user_id == $user->id)||($playlist->public));
+        return (($playlist->public)||($playlist->user_id == $user->id));
     }
 
 

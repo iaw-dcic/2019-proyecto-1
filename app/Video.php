@@ -12,7 +12,7 @@ class Video extends Model
         return $this->belongsTo('App\Playlist');
     }
 
-    public function getVideoHtmlAttribute()
+    public function getEmbed()
     {
         $embed = Embed::make($this->url)->parseUrl();
 

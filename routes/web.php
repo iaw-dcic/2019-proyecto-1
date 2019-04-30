@@ -13,13 +13,13 @@
 
 Route::get('/', 'PageController@index')->name('welcome');
 
-Route::get('/users', 'PageController@users');
+Route::get('/users', 'PageController@users')->name('users');
 
-Route::get('/about', 'PageController@about');
+Route::get('/readme', 'PageController@readme')->name('readme');
 
-Route::get('/contact', 'PageController@contact');
+Route::get('/settings', 'PageController@settings')->name('settings');
 
-Route::get('/settings', 'PageController@settings');
+Route::get('{user}/profile', 'PageController@profile')->name('profile');
 
 Auth::routes();
 

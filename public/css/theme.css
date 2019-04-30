@@ -59,7 +59,6 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
-  padding-top: 60px;
   margin: 0;
   font-family: Yantramanav;
   font-size: 1.1rem;
@@ -5588,10 +5587,6 @@ button.bg-dark:focus {
 .rounded-lg {
   border-radius: 0.3rem !important;
 }
-
-.rounded-big {
-    border-radius: 1.0rem !important;
-  }
 
 .rounded-circle {
   border-radius: 50% !important;

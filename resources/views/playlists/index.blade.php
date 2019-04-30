@@ -1,4 +1,9 @@
 @extends('layouts.master')
+
+@section('title')
+Playlists by {{$user->name}}
+@endsection
+
 @section('content')
 <div class="container">
     {{-- Para esta vista me pasan como parametro todas las playlists publicas--}}

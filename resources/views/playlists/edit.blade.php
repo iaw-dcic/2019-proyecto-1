@@ -1,4 +1,9 @@
 @extends('layouts.master')
+
+@section('title')
+Editar playlist {{$playlist->name}}
+@endsection
+
 @section('content')
     <div class="container">
         <h2>Editar {{$playlist->name}}</h2>

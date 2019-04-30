@@ -23,7 +23,7 @@ class PlaylistVideosController extends Controller
         $datos = $request->validate([
             'url' => 'required|string|',
             'title' => 'nullable|string',
-            'channel' => 'nullable|string'
+            'category' => 'nullable|string'
         ]);
 
 
@@ -34,7 +34,7 @@ class PlaylistVideosController extends Controller
         $nuevoVideo = new Video;
         $nuevoVideo->url = $datos['url'];
         $nuevoVideo->title = $datos['title'];
-        $nuevoVideo->channel = $datos['channel'];
+        $nuevoVideo->category = $datos['category'];
         $nuevoVideo->playlist_id = $playlist->id;
 
         //Si el user puede modificar la playlist entonces puede agregar videos

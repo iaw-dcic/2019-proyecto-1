@@ -10,7 +10,7 @@ class PlaylistsController extends Controller
 {
     public function __construct(){
 
-        $this->middleware('auth');//->except([]);
+        $this->middleware('auth')->except(['show']);
 
     }
 
@@ -52,7 +52,7 @@ class PlaylistsController extends Controller
         //Valido la entrada
         $datos = $request->validate([
             'name' => 'required|string|unique:users|min:3|max:255',
-            'description' => 'string',
+            'description' => 'nullable|string',
         ]);
 
         //Obtengo el usuario logueado

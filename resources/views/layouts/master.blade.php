@@ -17,6 +17,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 
     <title>@yield('title','Mi web')</title>

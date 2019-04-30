@@ -15,13 +15,14 @@
                 <div class="card text-center">
                     <div class="card-body bg-secondary rounded-big">
                         <h3>
-                            <a class="card-link" href="{{ url('playlists/1')}}">
+                            <a class="card-link" href="{{ route('show_playlist',
+                            ['user'=>$playlist->user_id,'playlist'=>$playlist->id])}}">
                                 {{$playlist->name}}
                             </a>
                         </h3>
                         @if ($playlist->videos->count())
                         <div class="embed-responsive embed-responsive-4by3">
-                            {!!$playlist->videos->first()->getVideoHtmlAttribute()!!}
+                            {!!$playlist->videos->first()->getEmbed()!!}
                         </div>
                         @endif
                     </div>

@@ -15,12 +15,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/home') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/about') }}">Acerca de</a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/contact') }}">Contacto</a>
-                    </li>
                 </ul>
 
 
@@ -57,14 +51,18 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('/settings')}}">Settings</a>
 
-                                {{--divisor de menu--}}<div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{route('profile',['user'=>auth()->user()->id])}}">{{auth()->user()->name}}</a>
+
+                                <a class="dropdown-item" href="{{route('create_playlist',['user'=>auth()->user()->id])}}">Nueva playlist</a>
+
+                                <a class="dropdown-item" href="{{route('settings')}}">Configuracion</a>
+
+                                {{--divisor de menu--}}
+                                <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
