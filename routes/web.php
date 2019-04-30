@@ -27,7 +27,7 @@ Route::patch('/profile/{user}','ProfileController@update');
 Route::get('/profile/{user}/edit','ProfileController@edit');
 
 Auth::routes();
-Route::get('login/github', 'Auth\LoginController@redirectToProvider');
-Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/github', 'Auth\LoginController@redirectToGitHubProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderGitHubCallback');
 
 

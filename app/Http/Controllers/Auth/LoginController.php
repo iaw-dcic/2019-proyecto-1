@@ -43,7 +43,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToGitHubProvider()
     {
         return Socialite::driver('github')->redirect();
     }
@@ -53,10 +53,16 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderGitHubCallback()
     {
-        $user = Socialite::driver('github')->user();
+        $githubUser = Socialite::driver('github')->user();
+        $user = User::firstOrCreate([
+            'email' => $githubUser->getEmail()
+        ], [
+            'username' => $githubUser->getNickname()
+        ]);
+        auth()->login($user);
 
-        // $user->token;
+        return redirect('/');
     }
 }
