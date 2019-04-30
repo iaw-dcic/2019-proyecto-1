@@ -26,7 +26,6 @@ class CreateUsersTable extends Migration
             $table->boolean('last_name_public')->default(1);
             $table->rememberToken();
             $table->timestamps();
-            $table->engine = 'InnoDB';
         });
     }
 

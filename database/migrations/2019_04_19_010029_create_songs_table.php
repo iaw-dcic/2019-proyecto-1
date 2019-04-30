@@ -21,7 +21,6 @@ class CreateSongsTable extends Migration {
             $table->string('notes')->nullable();
             $table->integer('list_id',false,true);
             $table->timestamps();
-            $table->engine = 'InnoDB';
         });
 
         Schema::table('songs', function($table) {

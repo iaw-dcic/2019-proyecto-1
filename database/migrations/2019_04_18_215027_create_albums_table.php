@@ -18,7 +18,6 @@ class CreateAlbumsTable extends Migration {
             $table->string('owner');
             $table->boolean('public')->default(1);
             $table->timestamps();
-            $table->engine = 'InnoDB';
         });
 
         Schema::table('albums', function($table) {

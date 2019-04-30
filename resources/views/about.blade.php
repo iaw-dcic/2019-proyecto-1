@@ -37,6 +37,19 @@
         </div>
     </div>
 
+    <div id="secondTable" class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Observations</div>
+                    <div class="card-body">
+                        <p><b>Ver listas de otro usuario: </b>No fue posible hacer que un usuario/guest pueda ver las listas publicas de otro usuario desde el perfil. Es posible ver TODAS las listas publicas en "browse", y tambien ver las listas que yo mismo cree; pero no hay forma de ver las listas publicas de un usuario ajeno.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="aboutFormat goBackButton">
         <button class="btn btn-outline-secondary" type="button" onclick="location.href='/'">Go Back</button>
     </div>

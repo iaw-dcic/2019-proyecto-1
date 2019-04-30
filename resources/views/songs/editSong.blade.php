@@ -50,7 +50,7 @@
 
         <div class="field">
             <div class="control">
-                <button class="btn btn-outline-secondary" type="submit" class="button is-link">Edit List</button>
+                <button class="btn btn-outline-secondary" type="submit" class="button is-link">Edit Song</button>
             </div>
         </div>
     </form>
