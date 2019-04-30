@@ -7,12 +7,6 @@
 <header class="header-section">
     <div class="header-warp">
 
-        <div class="header-social d-flex justify-content-end">
-            <p>Escribinos!:</p>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <!--<a href="#"><i class="logo email"></i></a>-->
-        </div>
-
         <div class="header-bar-warp d-flex">
             <!-- site logo -->
             <a href="home.html" class="site-logo">
