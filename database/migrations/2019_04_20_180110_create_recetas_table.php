@@ -20,6 +20,7 @@ class CreateRecetasTable extends Migration
             $table->string('pasos');
             $table->unsignedBigInteger('id_autor');
             $table->unsignedBigInteger('lista_id');
+            $table->integer('categoria');
             $table->string('imagen',400)->nullable();
             $table->foreign('id_autor')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('lista_id')->references('id')->on('listas')->onDelete('cascade')->onUpdate('cascade') ;
