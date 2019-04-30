@@ -101,7 +101,7 @@
 <footer class="page-footer font-small blue pt-4">
   <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/"> Liberati miniCompany</a>
+      <a href="https://www.linkedin.com/in/ginoliberati/"> Liberati miniCompany</a>
     </div>
     <!-- Copyright -->
 
