@@ -30,7 +30,7 @@ Route::get('/','PagesController@index');
 Route::get('/home','PagesController@index');
 Route::get('/','PagesController@index');
 
-Route::get('/show/readme','PagesController@readme');
+Route::get('/show/info','PagesController@info');
 Route::get('/show/{usuario}','PagesController@show');
 Route::get('/show/{usuario}/showUser','PagesController@showUser');
 Route::get('/show/{usuario}/{thing}','PagesController@showItem');

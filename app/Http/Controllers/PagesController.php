@@ -15,8 +15,8 @@ class PagesController extends Controller
         return view('index.index',compact('misListas'));
     }
 
-	public function readme(){
-    
+	public function info(){
+        return 1;
         return view('index.readme');
     }
 
