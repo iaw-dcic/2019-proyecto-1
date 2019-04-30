@@ -67,13 +67,10 @@
                     <label for="email"> <h2>O ingresar con:</h2> </label>
                      <ul>
                          <li>
-                             <a href="#" class="fa fa-facebook"></a>
-                         </li>
-                         <li>
                              <a href="login/twitter" class="fa fa-twitter"></a>
                          </li>
                          <li>
-                             <a href="#" class="fa fa-google"></a>
+                             <a href="login/google" class="fa fa-google"></a>
                          </li>
                          <li>
                              <a href="login/github" class="fa fa-github"></a>
