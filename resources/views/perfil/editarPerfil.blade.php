@@ -10,7 +10,7 @@
                 <div class="card-header">{{ __('Editar Perfil') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('editarPerfil')}}">
+                    <form method="POST" action="/editarPerfil">
                         @csrf
 
                         <div class="form-group row">
@@ -49,7 +49,7 @@
                                     {{ __('Guardar') }}
                                 </button>
 
-                                <a href="{{ url('/') }}/miPerfil/{{ Auth::user()->id}}"><button class="btn btn-primary" type="button">Volver</button></a>
+                                <a href="{{ route('miPerfil/{{ Auth::user()->id)'}}"><button class="btn btn-primary" type="button">Volver</button></a>
                             </div>
                         </div>
                     </form>
