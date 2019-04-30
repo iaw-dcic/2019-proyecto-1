@@ -25,7 +25,7 @@ Route::post('/items/{thing}/store','ItemsController@store')->middleware('auth');
 Route::delete('/items/{item}/destroy','ItemsController@destroy')->middleware('auth');
 Route::patch('/items/{item}/edit','ItemsController@edit')->middleware('auth');
 
-Route::get('/readme','PagesController@readme');
+Route::get('/home/readme','PagesController@readme');
 Route::get('/','PagesController@index');
 Route::get('/home','PagesController@index');
 
