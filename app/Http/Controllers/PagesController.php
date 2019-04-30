@@ -19,7 +19,7 @@ class PagesController extends Controller
     public function getHome()
     {
         $users = user::all();
-        $paquetes = [['hola'],[]];
+        $paquetes = []; 
         $user_auth = Auth::user();
         $id_reg = null;
         if($user_auth != null)
@@ -36,7 +36,7 @@ class PagesController extends Controller
             }
         }
 
-        return view('home', compact('paquetes'));
+        return view('home', ['paquetes' => $paquetes]);
     }
 
 
