@@ -58,7 +58,9 @@ class UsersController extends Controller
     {
         $user = User::where('id', $id)->first();
         $user->name = $request->name;
-        $user->description = $request->description;
+        if($request->description)
+            $user->description = $request->description;
+        else $user->description = '';
         if ($request->avatar){
             $imageTempName = $request->file('avatar')->getPathname();
             $imageName = $request->file('avatar')->getClientOriginalName();
