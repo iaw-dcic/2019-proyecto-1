@@ -4,7 +4,7 @@
 <div class="container-fluid">
    <!-- datos receta -->
 <div class="row">
-<div class="col-lg-4">
+<div class="col-lg-4 col-sm-12 col-xs-12">
 <form   role="form" enctype="multipart/form-data" method="post"  action="{{route('actualizar',['nombre' => $receta->nombre ])}}">
                 {{ csrf_field() }}
                      <div class="form-group">
@@ -47,7 +47,7 @@
                     
 </div>
  <!-- ingredientes --> 
-    <div class="col-lg-8 col-md-4 col-sm-6 col-xs-12″" >
+    <div class="col-lg-8 col-sm-12 col-xs-12″" >
      <h3> Ingredientes </h3>
         @for ($i =0; $i < 10 ; $i++) 
          @if($i < $ingreceta->count())
@@ -57,7 +57,7 @@
          @endif
                         
         <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 col-sm-4 col-xs-4">
                     <div class="form-group">
                         <label for="inputMessage">Ingrediente:</label>
                         <select   name={{"ingrediente".$i}} class="form-control" >
@@ -72,7 +72,7 @@
                     </div>
                     
                     </div>
-                    <div class="col-3">
+                    <div class="col-lg-3 col-sm-3 col-xs-3">
                     <div class="form-group">
                         <label for="inputMessage">Medida:</label>
                         <select   name={{"medida".$i}} class="form-control" >
@@ -88,7 +88,7 @@
                              
                     </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-lg-3 col-sm-3 col-xs-3">
                     <div class="form-group">
                         <label for="inputMessage">Cantidad:</label>
                         @if($i < $ingreceta->count())
@@ -99,7 +99,7 @@
                         @endif
                     </div>
                     </div>
-                    <div class="col-2 text-center" id="botonEliminar">
+                    <div class="col-lg-2 col-sm-2 col-xs-2 text-center" id="botonEliminar">
                       
                     @if($i < $ingreceta->count())
                     <a aria-label="borrar{{$ingreceta[$i]->ingredienteId->nombre}}"   href="{{route('borrarIng',['id'=>$ingreceta[$i]->id])}}"
