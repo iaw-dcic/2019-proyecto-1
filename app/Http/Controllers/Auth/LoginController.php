@@ -73,8 +73,6 @@ class LoginController extends Controller
 
             $newUser->email = $social_user->email;
 
-            $newUser->password = Hash::make(12345678);
-
             $newUser->save();
 
             Auth::login($newUser);
