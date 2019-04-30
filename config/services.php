@@ -46,7 +46,7 @@ return [
 
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID','676b4acf49427c26070b'),
-        'client_secret' => env('GITHUB_CLIENT_SECRET','425cd90ad16ae53ca20f84deecc5714d'), 
+        'client_secret' => env('GITHUB_CLIENT_SECRET','70f7592c926079ee1ad364d1cf48a204de223da1'), 
         'redirect' => env('FACEBOOK_REDIRECT','https://agussgarciaa-iaw-proyecto-1.herokuapp.com/login/github/callback'),
     ],
 
