@@ -3,7 +3,7 @@
 
 @section('content')
 @if( Session::has('errorReceta') )
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div id="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Error</strong> No hay recetas con ese nombre !! 
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
