@@ -7,17 +7,6 @@
     <br>
     <h1>Editar Usuario</h1>
 
-   
-     <!-- Mensaje flash  --> 
-     @if ($errors->any())
-     <div class="alert  alert-danger" role="alert">
-             <ul>
-                     @foreach($errors->all() as $error)
-                             <li>{{ $error }}</li>
-                     @endforeach
-             </ul>
-     </div>
-     @endif
     <!-- usa metodo             POST                    y on submit redirige a /admin/users  -->
     <!-- al completar el formulario voy a users.update y le paso el id de user  -->
 
@@ -37,6 +26,14 @@
                 <div class="control">
                     <input type="text" class="input" name="email" value={{$user->email}}>
                 </div>
+        </div>
+
+        <br>
+        <div class="field">
+            <label class="label" for="ciudad">Ciudad</label>
+            <div class="control">
+                <input type="text" class="input" name="ciudad" value='{{$user->ciudad}}'>
+            </div>
         </div>
 
 

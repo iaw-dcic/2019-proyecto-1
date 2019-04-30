@@ -61,14 +61,12 @@ class CancionesController extends Controller
     //recibo la nueva cancion y el id de la lista a la q pertenecera dicha cancion
     public function store(Request $request,$id)
     {
-
         $cancion= new Cancion(
             request()->validate([
                    'nombre'=> ['required','min:3'],
                    'duracion'=> 'required',
                    'album'=> 'required','min:2',
                    'autor'=> 'required',
-                   //'fecha_lanzamiento'=>'required',
                ],Cancion::messages())
            );
         $lista_id= Lista::findOrfail($id)->id; 
@@ -119,12 +117,13 @@ class CancionesController extends Controller
     public function update(Request $request, $id)
     {
         $cancion= Cancion::findOrFail($id);
-        //dd($request);
+      
         $cancion->update(request()->validate([
                            'nombre'=> ['required','min:3'],
                            'duracion'=> ['required'],
                            'album'=> ['required','min:2'],
                            'autor'=> 'required',
+                           'fecha_lanzamiento' => 'min:1',
                       ],Cancion::messages()));
                
         Flash::success("Cancion ".$cancion->nombre." ha sido editada con exito! ");

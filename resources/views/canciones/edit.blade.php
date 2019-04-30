@@ -6,18 +6,6 @@
         <br>
         <h1>Editar Canción</h1>
 
-     <!-- Mensaje flash  --> 
-     @if ($errors->any())
-     <div class="alert  alert-danger" role="alert">
-             <ul>
-                     @foreach($errors->all() as $error)
-                             <li>{{ $error }}</li>
-                     @endforeach
-             </ul>
-     </div>
-     @endif
-
-
     <!-- usa metodo             POST                    y on submit redirige a /listas  -->                       
                                 <!-- cancion es el nuevo request, id es la cancion a modificar -->
     <form method="POST" action="{{ action('CancionesController@update',$cancion,$id) }}">
@@ -25,7 +13,7 @@
             {{  method_field('PATCH') }}
            
         <div class="field">
-            <label class="label" for="nombre">Nombre Canción</label>
+            <label class="label" for="nombre">Nombre Canción *</label>
             <div class="control">
                 <input type="text" class="input" name="nombre" value='{{$cancion->nombre}}'>
             </div>
@@ -33,7 +21,7 @@
 
         <br>
         <div class="field">
-                <label class="label" for="duracion">Duración</label>
+                <label class="label" for="duracion">Duración (hh:mm:ss) *</label>
                 <div class="control">
                     <input type="time" class="input" name="duracion" value='{{$cancion->duracion}}'>
                 </div>
@@ -41,7 +29,7 @@
 
         <br>
         <div class="field">
-                <label class="label" for="album">Album</label>
+                <label class="label" for="album">Album *</label>
                 <div class="control">
                     <input type="text" class="input" name="album" value='{{$cancion->album}}'>
                 </div>
@@ -49,7 +37,7 @@
 
         <br>
         <div class="field">
-                <label class="label" for="autor">Autor</label>
+                <label class="label" for="autor">Autor *</label>
                 <div class="control">
                     <input type="text" class="input" name="autor" value='{{$cancion->autor}}'>
                 </div>
@@ -69,4 +57,6 @@
                 <button class="btn btn-success my-2 my-sm-0" type="submit">Aplicar cambios</button>
         </div>
     </form>
+
+    <br><br><br>
 @endsection

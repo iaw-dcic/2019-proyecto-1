@@ -25,8 +25,8 @@
                     
                     <td>{{ $user->email }}</td>
                     
-                    @if($user->ciudad == 'vacio')
-                        <td>Sin Especificar</td>
+                    @if($user->ciudad == 'Sin especificar' | $user->ciudad == null)
+                        <td>-</td>
                     @else
                         <td>{{ $user->ciudad }}</td>
                     @endif

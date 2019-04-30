@@ -6,18 +6,6 @@
 <br>
     <h1>Editar Lista</h1>
 
-
-     <!-- Mensaje flash  --> 
-     @if ($errors->any())
-     <div class="alert  alert-danger" role="alert">
-             <ul>
-                     @foreach($errors->all() as $error)
-                             <li>{{ $error }}</li>
-                     @endforeach
-             </ul>
-     </div>
-     @endif
-
     <!-- usa metodo             POST                    y on submit redirige a /listas  -->
     <!-- al completar el formulario voy a listas.update y le paso el id de lista  -->
     <form method="POST" action="{{ action('ListasController@update',$lista->id) }}">

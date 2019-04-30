@@ -141,6 +141,7 @@ class ListasController extends Controller
         $lista->update(request()->validate([
                            'nombre'=> ['required','min:3'],
                            'descripcion'=> 'required',
+                           'visible' => 'min:1',
                       ],Lista::messages()));
         
       

@@ -6,25 +6,13 @@
     <br>
     <h1>Crear Lista</h1>
 
-     <!-- Mensaje flash  --> 
-    @if ($errors->any())
-    <div class="alert  alert-danger" role="alert">
-            <ul>
-                    @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                    @endforeach
-            </ul>
-    </div>
-    @endif
-
-
 
    <!-- Formulario de creacion de lista  --> 
     <!--                 uso la ruta store para hacer el post del formulario -->
     <form method="POST" action="{{ action('ListasController@store') }}">
                 {{ csrf_field() }}
             <div class="field">
-                <label class="label" for="nombre">Nombre</label>
+                <label class="label" for="nombre">Nombre *</label>
                 <div class="control">
                     <input type="text" class="input {{ $errors->has('nombre') ? 'is-danger' :'' }}" name="nombre" placeholder="Nombre Lista">
                 </div>
@@ -32,7 +20,7 @@
     
             <br>
             <div class="field">
-                    <label class="label" for="descripcion">Descripción</label>
+                    <label class="label" for="descripcion">Descripción *</label>
                     <div class="control">
                         <input type="text" class="input {{ $errors->has('descripcion') ? 'is-danger' :''}}" name="descripcion" placeholder="Descripción" >
                     </div>
@@ -40,7 +28,7 @@
             
             <br>
             <div class="field">
-                <label class="label" for="nombre">Visibilidad</label>
+                <label class="label" for="nombre">Visibilidad *</label>
                 <div class="control">
                         <input type="radio" class="input" name="visible" value="2" checked> Pública 
                         <input type="radio" class="input" name="visible" value="0"> Privada<br>

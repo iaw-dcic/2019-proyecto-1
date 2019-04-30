@@ -110,6 +110,7 @@ class UsuariosController extends Controller
         $user->update(request()->validate([
                             'name'=> ['required','min:3'],
                             'email'=> 'required',
+                            'ciudad' => 'min:0',
                         ],User::messages())
                     );
         

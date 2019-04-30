@@ -28,15 +28,10 @@ class Cancion extends Model
            'nombre.required' => 'Debe ingresar un nombre para la cancion',
            'nombre.min' =>'El nombre de la cancion debe ser de 3 caracteres o mas',
            'duracion.required' => 'Debe ingresar la duracion de la cancion ( mm:ss )',
-           'abum.required' => 'Debe ingresar el album al que pertenece la cancion',
-           'abum.min' =>'El nombre del album debe ser de 2 caracteres o mas',
+           'album.required' => 'Debe ingresar el album al que pertenece la cancion',
+           'album.min' =>'El nombre del album debe ser de 2 caracteres o mas',
            'autor.required' => 'Debe ingresar un autor para la cancion',
            //la fecha de lanzamiento de la cancion es opcional
-
-
-
-             // 'fecha_lanzamiento.required'=> 'Igrese fecha lanz de cancion',
-
        ];
     }
 
