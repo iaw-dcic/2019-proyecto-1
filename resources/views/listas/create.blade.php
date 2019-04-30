@@ -34,7 +34,7 @@
 
                 <div id= "panelBoton">
                     <button type="submit" class="botonGuardar">Guardar</button>
-                    <a href="{{ url('/') }}/miPerfil/{{ Auth::user()->id}}"><button class="botonGuardar" type="button">Volver</button></a>
+                    <a href="/miPerfil/{{ Auth::user()->id}}"><button class="botonGuardar" type="button">Volver</button></a>
                 </div>
             </form>
         </div>

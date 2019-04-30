@@ -30,13 +30,39 @@
                     <div class="form-group col-md-6">
                         <label for="puntuacion">Puntuacion</label>
                         <br>
-                        <input type="radio" name="puntuacion" value="Malo">Malo
-                        <br>
-                        <input type="radio" name="puntuacion" value="Bueno" checked>Bueno
-                        <br>
-                        <input type="radio" name="puntuacion" value="Muy Bueno">Muy Bueno
-                        <br>
-                        <input type="radio" name="puntuacion" value="Excelente">Excelente
+                        @if ($serie->puntuacion=="Malo")
+                            <input type="radio" name="puntuacion" value="Malo" checked>Malo
+                            <br>
+                            <input type="radio" name="puntuacion" value="Bueno">Bueno
+                            <br>
+                            <input type="radio" name="puntuacion" value="Muy Bueno">Muy Bueno
+                            <br>
+                            <input type="radio" name="puntuacion" value="Excelente">Excelente
+                        @elseif ($serie->puntuacion=="Bueno")
+                            <input type="radio" name="puntuacion" value="Malo">Malo
+                            <br>
+                            <input type="radio" name="puntuacion" value="Bueno" checked>Bueno
+                            <br>
+                            <input type="radio" name="puntuacion" value="Muy Bueno">Muy Bueno
+                            <br>
+                            <input type="radio" name="puntuacion" value="Excelente">Excelente
+                        @elseif ($serie->puntuacion=="Muy Bueno")
+                            <input type="radio" name="puntuacion" value="Malo">Malo
+                            <br>
+                            <input type="radio" name="puntuacion" value="Bueno">Bueno
+                            <br>
+                            <input type="radio" name="puntuacion" value="Muy Bueno" checked>Muy Bueno
+                            <br>
+                            <input type="radio" name="puntuacion" value="Excelente">Excelente
+                        @elseif($serie->puntuacion=="Excelente")
+                            <input type="radio" name="puntuacion" value="Malo">Malo
+                            <br>
+                            <input type="radio" name="puntuacion" value="Bueno">Bueno
+                            <br>
+                            <input type="radio" name="puntuacion" value="Muy Bueno">Muy Bueno
+                            <br>
+                            <input type="radio" name="puntuacion" value="Excelente" checked>Excelente
+                        @endif
                     </div>
                 </div>
             

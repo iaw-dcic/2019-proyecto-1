@@ -50,7 +50,7 @@
                 
                 <div id= "panelBoton">
                     <button type="submit" class="botonAgregar">Guardar</button>
-                    <a href="{{ url('/') }}/miPerfil/{{ Auth::user()->id}}"><button class="botonAgregar" type="button">Volver</button></a>
+                    <a href="/miPerfil/{{ Auth::user()->id}}"><button class="botonAgregar" type="button">Volver</button></a>
                 </div>
             </form>
         </div>
