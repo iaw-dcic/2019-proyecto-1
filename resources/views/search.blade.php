@@ -7,7 +7,9 @@
                 <div class="card w-75">
                         <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="..." class="card-img" alt="...">
+                            @if($user->avatar)
+                                <img src="{{ $user->avatar }}" alt="avatar" width="100" height="100" style="margin-right: 8px;">
+                            @endif
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
