@@ -7,6 +7,9 @@
 		<li>El nombre del usuario es único</li>
 		<li>Para añadir elementos a una lista se debe seleccionar a la misma desde la solapa 'My lists', luego apretando el link 'add song'</li>
 		<li>Para publicar una lista se debe seleccionar a la misma y luego ur a la sección 'edit'</li>
+		<li>Las cuentas de usuario no pueden ser eliminadas</li>
+		<li>Un usuario que inicia sesión con facebook solo podra iniciar sesión con facebook, y nunca a través de su mail</li>
+		<li>Se hizo empleo del framework BOOTSTRAP para el diseño de la página</li>
 
 		<div class="container my-5">
 		  <h2>Resultados de la auditoría</h2>         
