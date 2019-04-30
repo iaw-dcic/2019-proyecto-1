@@ -4,6 +4,7 @@ namespace Listbook\Http\Controllers\Auth;
 
 use Listbook\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Listbook\User;
 use Socialite;
 
 class LoginController extends Controller
