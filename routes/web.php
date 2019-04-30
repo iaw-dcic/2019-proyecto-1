@@ -12,26 +12,33 @@ use GuzzleHttp\Middleware;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Guest
+Route::get('/', 'GuestController@welcome')->name('welcome');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/usuario/perfil', 'ProfileController@index')->name('perfil');
 
 //Listas de bienes
 Route::get('/usuario/mis-listas', 'ListController@showAll')->middleware('auth')->name('mis-listas');
+Route::get('/usuario/mis-listas/{id}', 'ListController@show')->middleware('auth')->name('show-lista');
 
-Route::get('/usuario/mis-listas/crear-lista', function(){
-    return view('/listas/crear');
+Route::get('/usuario/crear-lista', function(){
+    return view('listas.crear');
 })->middleware('auth')->name('crear-lista');
 
-Route::post('/usuario/mis-listas/crear-lista', 'ListController@create')->middleware('auth')->name('crear-lista');
+Route::post('/usuario/crear-lista', 'ListController@create')->middleware('auth')->name('crear-lista');
 
-Route::post('/usuario/mis-listas/eliminar-lista/{id}', 'ListController@eliminar')->middleware('auth')->name('eliminar-lista');
+Route::post('/usuario/eliminar-lista/{id}', 'ListController@eliminar')->middleware('auth')->name('eliminar-lista');
+
+// libro
+Route::get('/usuario/mis-listas/{id}/crear-libro', function($id){
+    return view('libros.crear', ['id' => $id]);
+})->middleware('auth')->name('crear-libro');
+
+Route::post('/usuario/mis-listas/{id}/crear-libro', 'BookController@create')->middleware('auth')->name('crear-libro');
+
+Route::get('/usuario/mis-listas/{id}/eliminar-libro/{book}', 'BookController@destroy')->middleware('auth')->name('eliminar-libro');
 
 
 Route::get('/prueba', function (){
