@@ -8,11 +8,7 @@
                 <div class="card-header">Best Goals!</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
+                    
 
                     @foreach ($paquetes as $paquete)
                     <!-- Cada paquete es un [user,listas]-->
