@@ -13,16 +13,12 @@ class editController extends Controller
 
         $id = Auth::user()->id;
 
-        
-
         //validar información
         $validatedData = $request->validate([
-            'nick' => ['string','max:10'],
-            'name' => ['string','max:40'],
-            'password' => ['string', 'min:8','max:255'],
+            'nick' => ['nullable','string','max:10'],
+            'name' => ['nullable','string','max:40'],
+            'password' => ['nullable','string', 'min:8','max:255'],
         ]);
-
-        //dd($request->all());
 
         //buscar en la base de datos para modificar
         if($request->nick != null)
