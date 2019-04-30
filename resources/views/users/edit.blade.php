@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">{{ __('Update your user') }}</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.update', $data['id']) }}">
+                        <form method="POST" action="{{ route('user.update', $data['id']) }}" enctype="multipart/form-data">
                             @csrf
                             {{ method_field('patch') }}
                             <div class="form-group row">
@@ -35,6 +35,13 @@
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar image') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="avatar" type="file" name="avatar" value="avatar" accept="image/x-png,image/gif,image/jpeg">
                                 </div>
                             </div>
                             <div class="form-group row">

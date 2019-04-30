@@ -8,7 +8,11 @@
                         <div class="row no-gutters">
                         <div class="col-md-4">
                             @if($user->avatar)
-                                <img src="{{ $user->avatar }}" alt="avatar" width="100" height="100" style="margin-right: 8px;">
+                                @if ($user->provider_name)
+                                    <img src="{{ $user->avatar }}" class="card-img-top" alt="avatar">
+                                @else
+                                    <img src="/images/{{ $user->avatar }}" class="card-img-top" alt="avatar">
+                                @endif
                             @endif
                         </div>
                         <div class="col-md-8">

@@ -59,8 +59,20 @@ class UsersController extends Controller
         $user = User::where('id', $id)->first();
         $user->name = $request->name;
         $user->description = $request->description;
+        if ($request->avatar){
+            $imageTempName = $request->file('avatar')->getPathname();
+            $imageName = $request->file('avatar')->getClientOriginalName();
+            $path = base_path() . '/public/images/';
+            $request->file('avatar')->move($path , $imageName);
+            $data=array('media'=>$imageName);
+            $user->avatar = $request->file('avatar')->getClientOriginalName();
+        }
         $user->save();
-        return view('users.user')->withUser($user);
+        $data = [
+            "operation" => "Update User",
+            "description" => "Your profile was updated successfully.",
+        ];
+        return view('success')->withData($data);
     }
 
     /**

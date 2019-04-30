@@ -7,7 +7,6 @@ use App\User;
 use App\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use displayable_stuff;
 
 
 class PagesController extends Controller
@@ -29,7 +28,7 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home.welcome_guest');
     }
 
     public function about()
@@ -38,15 +37,17 @@ class PagesController extends Controller
     }
 
     public function welcome()
-    {
-        $public_collections = Collection::where('public_status', '1');
-        if(Auth::check()){
-            $displayable_collections = Collection::where('user_id', Auth::user()->id)->union($public_collections)->get()->sortByDesc('updated_at');
+    {   
+        if (Auth::guest())
+        {
+            return view('home.welcome_guest');
+        }else
+        {
+            $displayable_collections = Collection::where('user_id', Auth::user()->id)->get()->sortByDesc('updated_at');
             $ids = $displayable_collections->pluck('id');
             $displayable_items = Item::whereIn('collection_id', $ids)->get();
-            return view('welcome')->withItems($displayable_items)->withCollections($displayable_collections);
+            return view('home.welcome_user')->withItems($displayable_items)->withCollections($displayable_collections);
         }
-        return view('welcome')->withCollections($public_collections->get());
     }
     
     public function search(Request $request){
