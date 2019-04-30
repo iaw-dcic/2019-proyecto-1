@@ -1,7 +1,7 @@
 <!--  NAVBAR -->
   
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
-         <a class="navbar-brand" href="{{route('home')}}"><img src="{{ asset('img/recetario.png') }}" alt="logo" width=60 heigh=30 ></a>
+         <a class="navbar-brand" href="{{route('home')}}"><img src="{{secure_asset('img/recetario.png') }}" alt="logo" width=60 heigh=30 ></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
             </button>
