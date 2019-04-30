@@ -31,11 +31,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Dudas
 //ES necesario ponerle el link del bootstrap? porque en el registrar parece que ya lo usaba por defecto
 //Poner el bootstrap como async mejora la performance. esta bien?
+//Procfile?? en la carpeta public?
+//Que se hace despues de modificar el appserviceprovider?
 //al editar en el songcontroller llamo al show de albumcontroller, esta bien?
 //view o redirect en el songcontroller
 //se tiene que acceder a las listas de un usuario especifico?
-//el bootstrap?
-//la forma de poner los ccc?
+//la forma de poner los css?
 //lista propia, editar elem, aceptar, ir a perfil propio a traves de la lista, apretar return tira error de get
 
 
