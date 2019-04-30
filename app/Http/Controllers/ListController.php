@@ -4,16 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ListModel;
+use App\Book;
 use Illuminate\Support\Facades\Auth;
 
 class ListController extends Controller{
+
+
+    public function show($id){
+        $list = ListModel::where('id',$id)->first();
+
+        if($list && $list['user_id'] == Auth::user()->id){
+            $books = Book::where('list_id', $id)
+                            ->orderBy('id', 'desc')
+                            ->get();
+            return view('listas.show', ['list_name' => $list['name'], 'list_id' => $id])->with('books', $books);
+        }
+        else{
+            abort(404);
+        }
+    }
 
     public function showAll(){
 
 
         // $list = new ListModel();
         $lists = ListModel::where('user_id',Auth::user()->id)
-                                ->orderBy('id', 'asc')
+                                ->orderBy('id', 'desc')
                                 ->get();
 
         return view('listas.mis-listas')->with('lists', $lists);
@@ -34,7 +50,6 @@ class ListController extends Controller{
         $list->user_id = Auth::user()->id;
 
         $list->save();
-
         return redirect()->action('ListController@showAll');
     }
 

@@ -31,7 +31,7 @@
                     </td>
 
                     <td>
-                        <a href="#" >
+                    <a href="{{ route('show-lista', $list['id']) }}" >
                             {{ $list['name'] }}
                         </a>
                     </td>
