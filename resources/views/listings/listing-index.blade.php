@@ -82,7 +82,9 @@
 
 
             </div>
+            @auth
             <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+            @endauth
 
         </div>
         <!-- <div class="my-row">
