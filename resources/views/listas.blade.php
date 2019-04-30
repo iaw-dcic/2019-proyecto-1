@@ -5,7 +5,7 @@
     <div class="wrap">
             <ul class="lista" id="lista">
             @foreach($listas as $lista)
-             @if($lista->public)
+             @if($lista->privacidad)
                 <li>
                   
                     <div class="row">
