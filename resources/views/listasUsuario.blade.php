@@ -52,7 +52,7 @@
              <br>
              <div class="row">
                          
-          <a class="float-right btn " type="button" href="{{route('borrarLista',['id'=>$lista->id])}}"
+          <a class="float-right btn " id="eliminarLista" type="button" href="{{route('borrarLista',['id'=>$lista->id])}}"
           onclick="return confirm('¿Seguro que deseas eliminar {{$lista->nombre}}?')">
            Eliminar lista
           </a>  

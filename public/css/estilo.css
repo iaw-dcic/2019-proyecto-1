@@ -337,3 +337,10 @@ hr{
 #autor{
   color:black;
 }
+#button{
+  background-color:#a72828;
+  border-color:#a72828;
+}
+#eliminarLista{
+  color:red;
+}
