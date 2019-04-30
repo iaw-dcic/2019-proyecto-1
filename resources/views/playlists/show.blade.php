@@ -43,6 +43,7 @@
 
                 @if(auth()->user()->id == $user->id)
                 {{-- formulario para agregar videos --}}
+                Nuevo video:
                 <form method="POST"
                 action="{{action('PlaylistVideosController@store',['user'=>$user,'playlist'=>$playlist]) }}">
                         @csrf
