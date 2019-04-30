@@ -66,7 +66,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        $fileNameToStore = $this->handleFileUpload($data);
+        //$fileNameToStore = $this->handleFileUpload($data);
 
         alert()->success('Bievenido!', 'Te registraste correctamente!.');
 
@@ -75,13 +75,12 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar_image' => $fileNameToStore
-
+            'avatar_image' => 'default.jpg',
         ]);
 
     }
 
-    private function handleFileUpload(array $data)
+    /*private function handleFileUpload(array $data)
     {
 
 
@@ -111,10 +110,10 @@ class RegisterController extends Controller
             });
             $img->save($thumbnailpath);
         } else {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'default.jpg';
         }
         return $fileNameToStore;
-    }
+    }*/
 
    
 }

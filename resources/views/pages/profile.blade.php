@@ -33,9 +33,22 @@
 
                                 <div class="top-meta">Nombre: {{$user->name}}</div>
                                 <div class="top-meta">Nombre usuario: {{$user->username}}</div>
-                                <div class="top-meta">Listas: @foreach($userListings as $listing) @if ($listing->visibility == 'Publica')
-                                    <a href="{{route('listings.show',$listing->id)}}"> {{$listing->title}} </a> @endif @endforeach
-
+                                <div class="top-meta">Listas:
+                                    @if (count($userListings)>0) 
+                                        @foreach($userListings as $listing) 
+                                            @if ($listing->visibility == 'Publica')
+                                                <a href="{{route('listings.show',$listing->id)}}"> {{$listing->title}} </a>
+                                            @endif 
+                                        @endforeach
+                                    @else 
+                                        @auth
+                                            Todavía no tenes ninguna lista
+                                        @endauth
+                                        @guest
+                                            El usuario todavía no creo ninguna lista
+                                      @endguest
+                                    @endif
+                                  
                                 </div>
                             </div>
 

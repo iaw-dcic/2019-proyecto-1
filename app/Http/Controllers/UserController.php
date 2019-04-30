@@ -26,8 +26,12 @@ class UserController extends Controller
         $user = Auth::user();
         $userListings = Listing::where('user_id', $user->id)->get();
         $fileNameToStore = $this->handleFileUpload($request);
+
+
         if ($request->hasFile('avatar')) {
-            Storage::delete('public/avatar_images/thumbnail/' . $user->avatar);
+            if ($user->avatar != 'default.jpg') {
+                Storage::delete('public/avatar_images/thumbnail/' . $user->avatar);
+            }
             $user->avatar = $fileNameToStore;
         }
         $user->save();

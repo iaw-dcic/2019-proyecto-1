@@ -149,7 +149,7 @@
             </div>
 
             <!--Avatar -->
-             <label><i class="fas fa-picture-o" aria-hidden="true"></i>Avatar</label>
+           <!--  <label><i class="fas fa-picture-o" aria-hidden="true"></i>Avatar</label>
              <div class="input-group">
                  <label class="input-group-btn">
                          <span class="btn btn-primary">
@@ -158,7 +158,7 @@
                      </label>
                  <input type="text" class="form-control" readonly>
                  <br><br>
-             </div>
+             </div> -->
 
             <!--Submit -->
             <input type="submit" value="Confirmar registro">

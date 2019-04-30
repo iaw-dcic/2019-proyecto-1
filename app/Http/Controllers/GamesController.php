@@ -215,7 +215,6 @@ class GamesController extends Controller
         }*/
 
         if ($game->cover_image != 'noimage.jpg') {
-            // Delete Image
             Storage::delete('public/cover_images/thumbnail/' . $game->cover_image);
         }
         $game->listings()->detach();

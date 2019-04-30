@@ -19,13 +19,13 @@
                 <img src="{{asset('/img/logo.png')}}">
             </a>
 
+            <!--Menu derecha -->
             <nav class="top-nav-area w-100">
                 <div class="user-panel">
                     @guest
                     <a href="{{ url('login') }}">Ingresar</a> /
                     <a href="{{ url('register') }}">Registrarse</a> @endguest 
                     @auth
-
 
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="position: relative; padding-left:50px;">
                             <img src="{{asset('storage/avatar_images/thumbnail').'/'.auth()->user()->avatar}}" style="width:32px; height:32px; position:absolute; top:0px;left:10px; border-radius:50%">
@@ -51,25 +51,10 @@
                     </li>
 
 
-
-
-
-                    <!--<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
-                    <a href="./logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                Salir
-                            </a> / -->
-                    <!--<a href="./register">Registrarse</a>-->
-                    <!-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form> -->
-
                     @endauth
                 </div>
 
-                <!-- Menu -->
+                <!-- Menu principal -->
                 <ul class="main-menu primary-menu">
                     <li><a href="/">Inicio</a></li>
                     @auth
@@ -88,6 +73,7 @@
                     @endauth
                     @guest
                     <li><a href="{{route('listings.index')}}">Listas</a> </li>
+                    <li><a href="{{url('searchlisting')}}">Búsqueda</a> </li>
                     @endguest
 
                     @auth

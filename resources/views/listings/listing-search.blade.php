@@ -33,7 +33,7 @@
                                     <div class="widget-item">
                                         <form class="search-widget" action="{{url('searchUser') }}" method="get">
                                             @csrf
-                                            <input name="searchTerm" type="text" placeholder="Ingresar nombre de usuario o juego...">
+                                            <input name="searchTerm" type="text" placeholder="Ingresar nombre de usuario...">
                                             <button><i class="fa fa-search" aria-hidden="true"></i>  Buscar</button>
                                         </form>
                                     </div>
