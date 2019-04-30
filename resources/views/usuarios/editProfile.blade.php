@@ -25,6 +25,16 @@
 			</div>
 
 			<div class="form-group">
+				<label>Preference</label>
+			 	<select name="preference">
+				 	<option value="none">None</option>
+				  	<option value="rock">Rock</option>
+				  	<option value="pop">Pop</option>
+				  	<option value="jazz">Jazz</option>
+				</select> 
+			</div>
+
+			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Edit</button>
 			</div>
 		</form>

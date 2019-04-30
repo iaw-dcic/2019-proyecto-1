@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -55,8 +58,28 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('facebook')->user();
+        $social_user = Socialite::driver('facebook')->user();
 
-        return $user->name;
+        $user = User::where('email', $social_user->email)->first();
+
+        if ($user != null){
+            Auth::login($user);
+            
+            return redirect('/home');
+        } else {
+            $newUser = new User;
+
+            $newUser->name = $social_user->name;
+
+            $newUser->email = $social_user->email;
+
+            $newUser->password = Hash::make(12345678);
+
+            $newUser->save();
+
+            Auth::login($newUser);
+
+            return redirect('/home');
+        }
     }
 }

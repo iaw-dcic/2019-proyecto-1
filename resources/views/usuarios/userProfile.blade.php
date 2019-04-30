@@ -3,8 +3,9 @@
 @section('content')
 	<div class="container pt-2">
 		<p class="h3">{{$user->name}}</p>
-		<p class="h5" style="color: grey;">{{$user->email}}</p>
-		<p class="h6" style="color: grey;">{{$user->description}}</p>
+		<p class="h4" style="color: grey;">{{$user->email}}</p>
+		<p class="h5" style="color: grey;">{{$user->description}}</p>
+		<p class="h6" style="color: grey;">Preference: {{$user->preference}}</p>
 	</div>
 
 

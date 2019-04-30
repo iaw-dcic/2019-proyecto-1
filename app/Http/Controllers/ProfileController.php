@@ -19,17 +19,9 @@ class ProfileController extends Controller
     }
 
     public function update(){
-    	$users = User::all();
-
-        $names = [];
-        foreach ($users as $user) {
-        	if ($user->id != auth()->id()){
-            	$names[] = $user->name;
-        	}
-        }
 
     	request()->validate([
-            'name' => ['required', 'string', 'max:255', Rule::notIn($names)]
+            'name' => ['required', 'string', 'max:255']
         ]);
 
         $user = User::where('id', auth()->id())->get()[0];
@@ -41,6 +33,8 @@ class ProfileController extends Controller
         else
         	$user->description = "";
         
+        $user->preference = request('preference');
+
         $user->save();
         return redirect("/home");
     }

@@ -21,22 +21,8 @@ class ListController extends Controller
     }
 
     public function store(){
-
-        $myLists = Lista::where('user_id', auth()->id())->get();
-
-        $titulos = $myLists->map(function ($list) {
-            return collect($list->toArray())
-                ->only(['title'])
-                ->all();
-        });
-
-        $array = [];
-        foreach ($titulos as $titulo) {
-            $array[] = $titulo['title'];
-        }
-
         request()->validate([
-            'title' => ['required', Rule::notIn($array), 'min:3', 'max:255']
+            'title' => ['required', 'unique:listas', 'min:3', 'max:255']
         ]);
 
     	$lista = new Lista;
