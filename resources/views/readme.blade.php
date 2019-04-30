@@ -10,8 +10,8 @@
 
         <body>
            Se utilizó todo lo provisto por Laravel. <br>
-           Bootstrap material design para css   <br>
-           Laracasts/flash para los mensajes flash  <br>
+           Bootstrap material design para css.   <br>
+           Laracasts/flash para los mensajes flash.  <br>
             <br>
            @autor: Miguel, Tomas.
         </body>
