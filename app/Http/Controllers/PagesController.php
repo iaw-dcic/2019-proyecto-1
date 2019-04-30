@@ -16,6 +16,7 @@ class PagesController extends Controller
     }
 
 	public function readme(){
+        return 1;
         return view('index.readme');
     }
 
@@ -29,8 +30,6 @@ class PagesController extends Controller
     }
 
     public function showItem($usuario, $thing){
-
-     
         
         $items = Item::where('thing_id', $thing)-> get();
         $lista = Thing::where('id',$thing)->get()->first();
