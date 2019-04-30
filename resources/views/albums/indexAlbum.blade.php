@@ -14,7 +14,7 @@
 
         <button class="btn btn-outline-secondary" type="button" onclick="location.href='/albums/create'">Add New List</button>
         
-        <button class="btn btn-outline-secondary" type="button" onclick="location.href='{{ url()->previous() }}'">Go Back</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="location.href='/home'">Go Back</button>
          
     </div>
 

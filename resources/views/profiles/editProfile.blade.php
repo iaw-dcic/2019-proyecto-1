@@ -72,7 +72,7 @@
 
     <div id="backButton" class="field">
         <div class="control">
-            <button class="btn btn-outline-secondary" type="button" id="goBackButton" onclick="location.href='{{ url()->previous() }}'">Return</button>
+            <button class="btn btn-outline-secondary" type="button" id="goBackButton" onclick="location.href='/profiles/{{ Auth::user()->name }}'">Return</button>
         </div>
     </div>
 
