@@ -14,14 +14,14 @@ class profileController extends Controller
         
         $user = Auth::user();
 
-        return view('Profile\profile',compact('user'));
+        return view('Profile/profile',compact('user'));
     }
 
     public function getSettings(){
         
         $user = Auth::user();
 
-        return view('Profile\settings',compact('user'));
+        return view('Profile/settings',compact('user'));
     }
 
     public function updateUser(){
@@ -40,7 +40,7 @@ class profileController extends Controller
           
         $user->save();
 
-        return view('Profile\settings',compact('user'));
+        return view('Profile/settings',compact('user'));
     }
 
     public function update_avatar(Request $request){ 
@@ -55,6 +55,6 @@ class profileController extends Controller
             $user->save();
         }
 
-        return view('Profile\settings',compact('user'));
+        return view('Profile/settings',compact('user'));
     }
 }

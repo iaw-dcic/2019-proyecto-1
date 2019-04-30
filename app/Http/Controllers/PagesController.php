@@ -55,7 +55,7 @@ class PagesController extends Controller
 
     public function getSettings()
     {
-        return view('Profile\settings');
+        return view('Profile/settings');
     }
 
     public function getReadme() {

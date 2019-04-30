@@ -14,12 +14,12 @@ class listsController extends Controller
     {
         $user = Auth::user();
         $listas = lista::where('user_id', $user->id)->get();
-        return view('Profile\myLists', compact('listas'));
+        return view('Profile/myLists', compact('listas'));
     }
 
     public function createList()
     {
-        return view('Profile\createList');
+        return view('Profile/createList');
     }
 
 
