@@ -3,7 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Partido;
+use App\partido;
 
 class validarPartidosUnicosUsuario implements Rule
 {
@@ -27,7 +27,7 @@ class validarPartidosUnicosUsuario implements Rule
      */
     public function passes($attribute, $value)
     {
-        $partido = Partido::where('user_id',$this->user_id)->where('name',$value)->first();
+        $partido = partido::where('user_id',$this->user_id)->where('name',$value)->first();
 
         return $partido==null;
     }
