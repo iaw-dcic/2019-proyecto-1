@@ -68,6 +68,12 @@ class ListController extends Controller
             'list_id' => $input['list_id'],
         ]);
 
+        DB::beginTransaction();
+        $lista = Lista::where('id', $input['list_id'])->first();
+        $lista->likes = $lista->likes + 1;
+        $lista->save();
+        DB::commit();
+
         return redirect('/lists/' . $input['list_id']);
     }
 
@@ -83,6 +89,9 @@ class ListController extends Controller
 
         try {
             DB::beginTransaction();
+            $lista = Lista::where('id', $input['list_id'])->first();
+            $lista->likes = $lista->likes - 1;
+            $lista->save();
             DB::delete('delete from likes where list_id = ? and user_id = ?', [$input['list_id'], $user->id]);
             DB::commit();
             return redirect('/lists/' . $input['list_id']);
