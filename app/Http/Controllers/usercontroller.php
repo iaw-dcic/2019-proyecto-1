@@ -27,4 +27,34 @@ class usercontroller extends Controller
         
         
     }
+    public function editarperfil(){
+    	$usuario = Auth::user();
+
+    	if($usuario!=null)
+    		return view('editarmiperfil',compact('usuario'));
+    	else
+    		return "ERROR: no se puede editar un usuario sin autenticarse";
+    }
+    public function modificarperfil(){
+    	
+    	$usuario = Auth::user();
+  		
+    	if($usuario!=null){
+
+	        $datos = request()->all();
+	       	$usuario->name=$datos['name'];
+	       	$usuario->email=$datos['email'];
+	       	$usuario->biografia=$datos['biografia'];
+
+	     	$usuario->save();
+        	return redirect()->route('miperfil');
+    	}else
+    		return "ERROR: no se puede editar un usuario sin autenticarse";
+
+    
+    
+    
+        
+        
+    }
 }

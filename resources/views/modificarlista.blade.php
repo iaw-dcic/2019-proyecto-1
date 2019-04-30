@@ -14,10 +14,10 @@
                         <form method="POST" action="{{url('lista/modificar')}}">
                           {{csrf_field()}}
                           <input type="hidden" name="listaid" value="{{$lista->id}}">
-                          <p><label for='nombre'>Name: </label> <input type="text" name="nombre"></p>
-                          <p><label for='visible'>Description: </label> <input type="text" name="descripcion"></p>
-                          <p><label for='visible'>Genre: </label> <input type="text" name="genero"></p>
-                          <button type="submit">Add Movie</button>
+                          <p><label for='nombre'>Name: </label> <input type="text" name="nombre" class="form-control" ></p>
+                          <p><label for='visible'>Description: </label> <input type="text" name="descripcion" class="form-control"></p>
+                          <p><label for='visible'>Genre: </label> <input type="text" name="genero" class="form-control" ></p>
+                          <button type="submit" class="btn btn-primary">Add New Movie</button>
                        </form>
                         <table class="table">
                       <thead>

@@ -62,7 +62,7 @@ class listacontroller extends Controller
 
 	        $datos = request()->all();
 	       	$listapublica=0;
-	        if($datos['visible']=='on')
+	        if(array_key_exists('visible',$datos))
 	        	$listapublica=1;
 	        $lista=lista::create([ 'userid' => $usuario -> id,
 	        'nombre' => $datos['nombre'],

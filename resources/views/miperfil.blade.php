@@ -7,22 +7,25 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Perfil de  {{$user->name}}</div>
+                <div class="card-header">{{$user->name}}'s Profile <a type="button" class="btn btn-primary" href="/miperfil/editar">Edit Profile <i class="fas fa-edit"></i></a></div>
 
                 <div class="card-body">                    
                      <p style="text-align: center;"><i class="fas fa-envelope"></i>{{$user->email}}</p>
                       <p style="text-align: center;"><i class="fas fa-atlas"></i>{{$user->biografia}}</p>
-                    
-
-                    
+                              
+                        
+                         <div class="col-md-12 text-right"> 
+                            <a type="button" class="btn btn-primary" href="/lista/crear/" >Add new Movie List <i class="fas fa-plus-circle"></i></a>
+                          </div>
                         <table class="table">
                       <thead>
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Name</th>
                           <th scope="col">Go..</th>
-                          <th scope="col">Remove</th>
-                        </tr>
+                          <th scope="col">Remove </th>
+
+                        </tr> 
                       </thead>
                       <tbody>
                          @foreach ($listas as $lista)
