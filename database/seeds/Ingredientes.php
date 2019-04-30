@@ -92,5 +92,17 @@ class Ingredientes extends Seeder
         DB::table('ingredientes')->insert([
             'nombre' => 'Dulce de leche',
         ]);
+        DB::table('medidas')->insert([
+            'nombre' => 'gr',
+        ]);
+        DB::table('medidas')->insert([
+            'nombre' => 'ml',
+        ]);
+        DB::table('medidas')->insert([
+            'nombre' => 'cucharita',
+        ]);
+        DB::table('medidas')->insert([
+            'nombre' => 'taza',
+        ]);
     }
 }

@@ -3,10 +3,12 @@
 
 @section('content')
 @if( Session::has('errorReceta') )
-
-<script type="text/javascript">
- $('#errorReceta').modal('show')
-</script>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Error</strong> No hay recetas con ese nombre !! 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 @endif
 
 
@@ -21,22 +23,22 @@
     <div class="carousel-item active">
       <img class="d-block w-100" src="{{asset('img/cupcakes.jpg')}}" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
-      <h5>...</h5>
-      <p>...</p>
+      <h5>Cupcakes</h5>
+      <p>Facilisimos cupcakes,para acompañar tus tardes<p>
   </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="{{asset('img/spaghetti.jpg')}}" alt="Second slide">
       <div class="carousel-caption d-none d-md-block">
-         <h5>...</h5>
-         <p>...</p>
+         <h5>Spaghetti</h5>
+         <p> Unos riquisimos tallarines con tuco</p>
     </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="{{asset('img/tiramisu.jpg')}}" alt="Third slide">
       <div class="carousel-caption d-none d-md-block">
-    <h5>...</h5>
-    <p>...</p>
+    <h5>Tiramisu<h5>
+    <p>La verdadera receta del clásico italiano</p>
   </div>
     </div>
   </div>
@@ -64,7 +66,7 @@
 </form>
 
 </section>
-
+ 
 <!--  LOS TRES ICONOS CON LOS USUARIOS MAS CONOCIDOS
   =====ESTA PUESTO EN UNA SECCION APARTE -->
   <section class="iconos">
@@ -166,30 +168,5 @@
     <!-- /END THE FEATURETTES -->
     </div>
 
-
- <div class="modal fade" id="errorReceta" role="dialog">
-    <div class="modal-dialog modal-lg alert alert-danger" >
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Error en receta</h4>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">Cerrar</span>
-                </button>
-              
-            </div>
-            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <p class="statusMsg"> {{Session::get('errorReceta')}}</p>
-                
-            </div>
-            
-           
-        </div>
-    </div>
-</div>
-   
 @endsection
   

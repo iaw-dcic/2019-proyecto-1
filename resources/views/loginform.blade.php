@@ -66,29 +66,35 @@
                         <form accept-charset="UTF-8" role="form" method="POST" enctype="multipart/form-data"  action="{{URL::to('/store')}}">
                           {{ csrf_field() }}
                           <div class="form-group">
-                                <label class="sr-only"> Nombre </label>
+                                <label  > Nombre 
 								<input name='nombre'class="form-control input-lg" placeholder="Nombre" type="text">
-</div>
+                                </label>
+
+                            </div>
                             <div class="form-group">
-                                <label class="sr-only"> Apellido </label>
+                                <label  > Apellido 
 								<input name='apellido'class="form-control input-lg" placeholder="Apellido" type="text">
-							</div>
+                                </label>
+                            </div>
                             <div class="form-group">
-                                <label class="sr-only"> email </label>
-								<i class="glyphicon glyphicon-envelope"></i>
+                                <label  > email 
+							 
 								<input name='email'class="form-control input-lg" placeholder="Email" type="email">
-							</div>
+                                </label>
+                            </div>
 					 
 						 
                             <div class="form-group">
-                                <i class="glyphicon glyphicon-lock"></i>
-                                <label class="sr-only"> password </label>
+                               
+                                <label  > password 
 								<input name='password'class="form-control input-lg" placeholder="Password" type="password">
-							</div>
+                                </label>
+                            </div>
                             <div class="form-group">
-                             <label for="inputMessage">Imagen:</label>
+                             <label for="inputMessage">Imagen:
                              <input type="file" name="filename" class="form-control">
-                              </div>
+                             </label>  
+                            </div>
                     
 					</fieldset>
 					<br><div class=" text-center">

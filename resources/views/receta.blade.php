@@ -10,7 +10,7 @@
                     {{$receta[0]->nombre}} 
                    <br>
                  </h1>
-                <h5>   <small> por: <a href="{{route('verPerfil',['id'=>$receta[0]->autorId])}}"> {{$receta[0]->autorId->nombre}} </a> </small> </h5>
+                <h5>  <small> por: <a id="autor" href="{{route('verPerfil',['id'=>$receta[0]->autorId])}}"> {{$receta[0]->autorId->nombre}} </a> </small> </h5>
                 @if(Auth::user()==$receta[0]->autorId)
                 <div class="float-right">
                   <a href="{{route('editarReceta',['nombre'=>$receta[0]->nombre])}}"> Editar </a>
@@ -20,15 +20,16 @@
       	</div>
 			<div class="row">
 				<div class="col-md-4" id="divIngredientes">
-					<ul>
-                        <h3> Ingredientes: </h3>
+        <h3> Ingredientes: </h3>
                         <hr>
+        <ul>
+                       
                         @foreach($ingredientes as $ingrediente)
                          @if($ingrediente->receta_nombre == $receta[0]->nombre)
 						    <li class="list-item">
-                              <p>  {{$ingrediente->ingredienteId->nombre}}
+                               {{$ingrediente->ingredienteId->nombre}}
                                   {{$ingrediente->cantidad}}
-                                {{$ingrediente->medidaId->nombre}} </p>
+                                {{$ingrediente->medidaId->nombre}} 
 						    </li>
                         @endif
                         @endforeach
