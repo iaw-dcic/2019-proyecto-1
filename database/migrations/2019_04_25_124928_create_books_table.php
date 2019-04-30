@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('author');
-            $table->string('edition');
+            $table->string('year');
             // $table->boolean('visible');
             $table->string('list_id'); //Foreign
             $table->foreign('list_id')->references('id')->on('lists')
