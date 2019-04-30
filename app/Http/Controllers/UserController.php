@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index(){
 
         //usoEloquentModel para obtener la tabla de usuarios
-        $users = User::all();
+        $users = User::orderBy('name','desc')->get();
 
         //A la vista le paso un arreglo asociativo, donde cada fila va a ser (llave,valor)
         return view('users.index', [
