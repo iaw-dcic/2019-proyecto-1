@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lista extends Model
 {
     protected $fillable = [
-        'nombre', 'usuario','public'
+        'nombre', 'usuario','privacidad'
     ];
     public function autorId()
     {
