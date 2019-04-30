@@ -11,6 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//ute::get('/', function () {
+//    return view('welcome');
+//});
+
+
+Route::resource('things','ThingsController')->middleware('auth');
+Route::get('/things/{thing}/addItems','ThingsController@addItem')->middleware('auth');
+
+Route::get('/items/{thing}','ItemsController@show')->middleware('auth');
+Route::post('/items/{thing}/store','ItemsController@store')->middleware('auth');
+Route::delete('/items/{item}/destroy','ItemsController@destroy')->middleware('auth');
+Route::patch('/items/{item}/edit','ItemsController@edit')->middleware('auth');
+
+Route::get('/','PagesController@index');
+Route::get('/readme','PagesController@readme');
+Route::get('/show/{usuario}','PagesController@show');
+
+Auth::routes();
+
+
