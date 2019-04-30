@@ -98,6 +98,7 @@
             <!-- Modal Body -->
             <div class="modal-body" id="formulario">
                 <p class="statusMsg"></p>
+                @if(Session::get('lista')!=null)
                 <form id="formulario" role="form" method="post" action="{{route('cambiarPrivacidad',['id' => Session::get('lista')->id ])}}">
                 {{ csrf_field() }}
                      
@@ -118,6 +119,7 @@
 
                     <button id="botonAgregar" class="btn btn-primary float-right"   >Cambiar</button></div>
                 </form>
+                @endfor
             </div>
             
            
