@@ -11,6 +11,6 @@ class ListElementsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\ListElement', 40)->create();
+        factory('Listbook\ListElement', 200)->create();
     }
 }

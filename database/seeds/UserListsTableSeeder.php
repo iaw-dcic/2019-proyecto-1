@@ -11,6 +11,6 @@ class UserListsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('App\UserList', 10)->create();
+        factory('Listbook\UserList', 30)->create();
     }
 }

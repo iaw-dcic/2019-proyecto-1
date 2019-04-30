@@ -19,8 +19,10 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'username' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'biography' => $faker->sentence($nbWords = 20, $variableNbWords = true),
+        'country' => $faker->country,
         'email_verified_at' => now(),
-        'password' => 'admin123', // password
+        'password' => 'admin123',
         'remember_token' => Str::random(10),
     ];
 });

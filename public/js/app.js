@@ -36826,12 +36826,23 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //truncate cards' descriptions
+
+
+$(function () {
+  $(".card-text.p").each(function (i) {
+    len = $(this).text().length;
+
+    if (len > 80) {
+      $(this).text($(this).text().substr(0, 80) + '…');
+    }
+  });
+}); //show file name on file input
+
+$(".custom-file-input").on("change", function () {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
 
 /***/ }),
 

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'username', 'email', 'password', 'biography', 'country', 'profile_image'
     ];
 
     /**
@@ -37,8 +37,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getImageAttribute()
+    {
+        return $this->profile_image;
+    }
+
     public function lists() {
         return $this->hasMany(UserList::class);
+    }
+
+    public function publicLists() {
+        return UserList::where('user_id',$this->id)->where('public', 1)->get();
     }
 
     public function addList($UserList) {

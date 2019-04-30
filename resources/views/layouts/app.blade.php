@@ -52,12 +52,17 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/profile/{{ Auth::user()->id }}">
-                                        Profile
+                                        My profile
+                                    </a>
+
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#newListModal">
+                                        Add new list
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -70,10 +75,38 @@
             </div>
         </nav>
 
-
-
-
-
+        @auth
+        <div class="modal fade" id="newListModal" tabindex="-1" role="dialog" aria-labelledby="newListModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newListModalLongTitle">Add a new list</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <form method="POST" action="/users/{{ Auth::user()->id }}/userlists">
+                            @csrf
+                            <div class="modal-body">
+                                <div>
+                                    <h5>Title</h5>
+                                    <input type="text" name="title" placeholder="Title of the new list" required>
+                                </div>
+                                <hr>
+                                <div>
+                                    <h5>Description</h5>
+                                    <textarea name="description" rows="5" placeholder="Description of the new list" required></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Create new list</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+        @endauth
 
 
         <main class="py-4">
@@ -84,7 +117,7 @@
     <!-- Scripts -->
     <script src="{{asset('js/jquery-3.4.0.min.js') }}"></script>
     <script src="{{asset('js/app.js') }}"></script>
-
+    
 </body>
 
 </html>

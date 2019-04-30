@@ -6,8 +6,17 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-
                 <div class="card-body">
+                    <hr class="hr-text" data-content="Login with...">
+
+                    <div class="text-center">
+                        <a href="/login/github">
+                            <img src = "{{ asset('/img/GitHub-Mark-64px.png') }}" />
+                        </a>
+                    </div>
+                    
+                    <hr class="hr-text" data-content="or">
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -66,6 +75,7 @@
                         </div>
                     </form>
                 </div>
+                
             </div>
         </div>
     </div>

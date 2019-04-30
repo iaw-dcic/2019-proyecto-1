@@ -4,10 +4,13 @@ namespace Listbook\Http\Controllers;
 
 use Listbook\UserList;
 use Listbook\User;
+use Listbook\Traits\UploadTrait;
+use File;
 use Illuminate\Http\Request;
 
 class UserListsController extends Controller
 {
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,7 @@ class UserListsController extends Controller
      */
     public function index()
     {
-        $userLists = UserList::where('public', 1)->paginate(8);
+        $userLists = UserList::where('public', 1)->paginate(12);
         return view('pages.userlist.index', compact('userLists'));
     }
 
@@ -74,11 +77,26 @@ class UserListsController extends Controller
      * @param  \Listbook\UserList  $userList
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserList $userlist)
+    public function update(UserList $userlist)
     {
         $this->authorize('modify', $userlist);
-        $userlist->update($this->validateRequest());
-        return view('pages.userlist.show', compact('userlist'));
+        if (request()->has('public')) {
+            $userlist->update(['public' => request('public')]);
+        }
+        else {
+            if (request()->has('userlist_picture')) {
+                $this->uploadListImage($userlist);
+            }
+            $userlist->update($this->validateRequest());
+        }
+        return back();
+    }
+
+    private function uploadListImage(UserList $userlist) {
+        $filepath = $this->uploadImage(request()->file('userlist_picture'),'userlist'.$userlist->id,'userlists-pictures');
+        $userlist->image = $filepath;
+        $userlist->save();
+        return back();
     }
 
     /**
@@ -90,6 +108,9 @@ class UserListsController extends Controller
     public function destroy(UserList $userlist)
     {   
         $this->authorize('modify', $userlist);
+        if($userlist->image) {
+            File::delete(public_path().$userlist->image);
+        }
         $userlist->delete();
         return redirect('/userlists');
     }

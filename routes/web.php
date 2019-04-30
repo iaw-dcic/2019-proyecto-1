@@ -17,18 +17,17 @@ Route::post('/users/{user}/userlists','UserListsController@store');
 Route::get('/userlists/{userlist}','UserListsController@show');
 Route::patch('/userlists/{userlist}','UserListsController@update');
 Route::delete('/userlists/{userlist}','UserListsController@destroy');
-Route::get('/userlists/{userlist}/edit','UserListsController@edit');
 
 Route::post('/userlists/{userlist}/listelements', 'ListElementsController@store');
 Route::patch('/listelements/{listelement}', 'ListElementsController@update');
 Route::delete('/listelements/{listelement}', 'ListElementsController@destroy');
-Route::get('/listelements/{listelement}/edit', 'ListElementsController@edit');
 
 Route::get('/profile/{user}','ProfileController@show');
 Route::patch('/profile/{user}','ProfileController@update');
 Route::get('/profile/{user}/edit','ProfileController@edit');
 
 Auth::routes();
-
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
 

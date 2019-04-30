@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserList extends Model
 {
     protected $fillable = [
-        'title','description','public','user_id'
+        'title','description','public','user_id','image'
     ];
 
     public function elements() {
@@ -20,13 +20,5 @@ class UserList extends Model
 
     public function addElement($ListElement) {
         $this->elements()->create($ListElement);
-    }
-
-    public function makePublic() {
-        $this->update(['public' => true]);
-    }
-
-    public function makePrivate() {
-        $this->update(['public' => false]);
     }
 }

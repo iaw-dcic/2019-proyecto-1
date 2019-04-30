@@ -27,7 +27,7 @@ class ListElementsController extends Controller
     {
         $this->authorize('modify', $listelement);
         $listelement->update($this->validateRequest());
-        return redirect('/userlists');
+        return back();
     }
 
     public function destroy(ListElement $listelement)
@@ -35,11 +35,6 @@ class ListElementsController extends Controller
         $this->authorize('modify', $listelement);
         $listelement->delete();
         return back();
-    }
-
-    public function edit(ListElement $listelement)
-    {
-        return view('pages.userlist.editelement', compact('listelement'));
     }
 
 }
