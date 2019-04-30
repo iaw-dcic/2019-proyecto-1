@@ -63,6 +63,9 @@
                                 <a class="dropdown-item" href="{{ route('profile') }}" onclick="window.location.href='/profile';">
                                     {{ __('Mi perfil') }}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('readme') }}" onclick="window.location.href='/readme';">
+                                    {{ __('Readme') }}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Cerrar sesión') }}

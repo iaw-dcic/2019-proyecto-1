@@ -19,7 +19,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Lista</div>
+                    <div class="card-header">Lista del usuario: <b><a href="/otherProfile/{{$user->id }}" style="color:white">{{$user->name}}</a></b> </div>
                     <div class="card-body">
                         @if (session('status'))
                         <div class="alert alert-success" role="alert">

@@ -18,6 +18,7 @@ Route::get('/home', 'PagesController@getHome')->name('home');
 Route::get('/otherProfile/{user}', 'PagesController@getOtherProfile')->name('otherProfile');
 Route::get('/otherList/{lista}', 'PagesController@getOtherList')->name('otherList');
 Route::get('/settings', 'PagesController@getSettings')->name('settings');
+Route::get('/readme', 'PagesController@getReadme')->name('readme');
 
 Route::get('/myLists', 'listsController@getMyLists')->name('index');
 Route::get('/createList', 'listsController@createList')->name('create');
@@ -35,4 +36,7 @@ Route::get('/profile', 'profileController@getProfile')->name('profile');
 Route::get('/settings', 'profileController@getSettings')->name('settings');
 Route::patch('/settings', 'profileController@updateUser')->name('update');
 Route::post('/settings', 'profileController@update_avatar')->name('update_avatar');
+
+Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
+Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 

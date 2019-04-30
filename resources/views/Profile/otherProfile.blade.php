@@ -9,8 +9,9 @@
 
 	<ul id='left-panel'>
 		<li></li>
-		<li><a href="/"> << Regresar </a></li> 
-		<li></li>
+		<li><a href="/">
+				<< Regresar </a> </li> <li>
+		</li>
 	</ul>
 
 
@@ -34,7 +35,11 @@
 									<th></th>
 								</tr>
 								<tr>
+									@if(substr_compare($user->avatar,'https://',0,8 )==0)
+									<th> <img src="{{ $user->avatar }}" alt="Avatar" class="avatar"> </th>
+									@else
 									<th> <img src="/images/Users/{{ $user->avatar }}" alt="Avatar" class="avatar"> </th>
+									@endif
 									@if($user->description != null)
 									<th> <textarea readonly disabled>{{ $user->description }}</textarea></th>
 									@else

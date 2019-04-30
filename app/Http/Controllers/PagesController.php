@@ -46,28 +46,18 @@ class PagesController extends Controller
 
     public function getOtherList(Lista $lista)
     {
+        $user = User::findOrFail($lista->user_id);
         $goals = goal::where('lista_id', $lista->id)->get();
 
-        return view('otherList', compact('lista', 'goals'));
-    }
-
-    public function getWelcome()
-    {
-        return view('welcome');
-    }
-
-    public function getGuest()
-    {
-        return view('guest');
-    }
-
-    public function getSignIn()
-    {
-        return view('signin');
+        return view('otherList', compact('lista', 'goals','user'));
     }
 
     public function getSettings()
     {
         return view('Profile\settings');
+    }
+
+    public function getReadme() {
+        return view('readme');
     }
 }

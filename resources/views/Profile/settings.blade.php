@@ -44,7 +44,11 @@
 							@endif
 
 							<div>
-								<img src="/images/Users/{{ $user->avatar }}" alt="Avatar" class="avatar">
+								@if(substr_compare($user->avatar,'https://',0,8 )==0)
+								<img src="{{ $user->avatar }}" alt="Avatar" class="avatar"> </th>
+								@else
+								<img src="/images/Users/{{ $user->avatar }}" alt="Avatar" class="avatar"> </th>
+								@endif
 								<form enctype="multipart/form-data" action="/settings" method="POST">
 									@method('POST')
 									@csrf
