@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Receta;
-use App\Ingrediente_de_receta;
+use App\ingrediente_de_receta;
 use App\User;
 use App\Lista;
 use Auth;
@@ -12,7 +12,7 @@ use Session;
 use App\Http\Requests\RecetaRequest;
 use App\ImageModel;
 use Image;
-use App\Ingrediente;
+use App\ingrediente;
 use App\Medida;
   class RecetasController extends Controller
 {
@@ -38,7 +38,7 @@ use App\Medida;
     $recetas = Receta::all();
     return view('recetas', [
         'recetas'=> $recetas,
-         'ingredientes' => Ingrediente_de_receta::all()
+         'ingredientes' => ingrediente_de_receta::all()
         
         ]);
 }
@@ -46,7 +46,7 @@ public function recetasCategoria($categoria){
     $recetas = Receta::where('categoria',$categoria)->get();
     return view('recetas', [
         'recetas'=> $recetas,
-         'ingredientes' => Ingrediente_de_receta::all()
+         'ingredientes' => ingrediente_de_receta::all()
         
         ]);
 }
@@ -157,7 +157,7 @@ public function listas(){
 
 public function compartir(Request $request,$id){
     $lista= Lista::find($id);
-    $lista->public= $request->privacidad;
+    $lista->privacidad= $request->privacidad;
     $lista->nombre= $request->nombre;
     $lista->save();
     return redirect()->back();
@@ -165,7 +165,7 @@ public function compartir(Request $request,$id){
 public function editar($nombre){
     $receta= Receta::where('nombre', $nombre)->get();
     $ingreceta= ingrediente_de_receta::where('receta_nombre',$nombre)->get();
-    $ingredientes= Ingrediente::all();
+    $ingredientes= ingrediente::all();
     $medidas=Medida::all();
     return  view('editarReceta',[
         'receta' => $receta[0],
