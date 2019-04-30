@@ -45,7 +45,7 @@
                         <input type="hidden" name="privacy" value="{{$data->publica}}" id="privacy">
                       </div>
                     </div>
-
+                    
                     <input type="hidden" name="id_lista" value="{{$data->id_lista}}">
                     <br>
                     <div class="col-sm-4">

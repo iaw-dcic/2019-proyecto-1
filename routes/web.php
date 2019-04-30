@@ -24,15 +24,14 @@ Route::get('/edit_profile','PerfilController@index');
 Route::get('/create_list','ListaController@index');
 
 
-Route::resource('list','ListaController');
 Route::post('edit_list','ListaController@edit_list');
 Route::post('remove_list','ListaController@remove_list');
 Route::post('view_list','ListaController@view_list');
 
 Route::post('add_movie','PeliculaController@add');
 
-
-
+Route::resource('movie','PeliculaController');
+Route::resource('list','ListaController');
 Route::resource('profile','PerfilController');
 
 

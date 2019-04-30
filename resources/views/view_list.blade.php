@@ -26,6 +26,11 @@
                   </div>
                   <hr>
                   <div class="row justify-content-between">
+                  @if (count($peliculas) == 0)
+                  <div class="col">
+                    <h3>The list is empty, add some movies</h3>
+                  </div>                    
+                  @endif
                   @foreach($peliculas as $pelicula)
                   <div class="col-sm-6">
                     <div class="card material-primary">

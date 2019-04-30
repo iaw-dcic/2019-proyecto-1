@@ -53,6 +53,24 @@
                         <a href="https://stackoverflow.com/questions/34099777/laravel-5-1-validation-rule-alpha-cannot-take-whitespace">Validacion letras y espacios</a>
                       </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col">
+                        <h3>Problemas no resueltos</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        No pude hacer andar la creacion de una pelicula luego de intentar de varias maneras el framework siempre genera una excepcion "Method is not suported for this route".
+
+                        <ul>
+                          <li>Defini Route::resource al controlador de pelicula action "route('pelicula.create')" con @ method('GET') y "route('pelicula.store')" con @ method('POST')</li>
+                          <li>Defini una ruta Route::post al metodo de crear_pelicula del controlador con url('/crear_pelicula') y con @ method(post)</li>
+                          <li>use action('PeliculaController@crear_pelicula')</li>
+                        </ul>
+
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
