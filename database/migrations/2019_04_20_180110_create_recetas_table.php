@@ -17,7 +17,7 @@ class CreateRecetasTable extends Migration
            
             $table->string('nombre');
             $table->string('descripcion');
-            $table->string('pasos');
+            $table->string('pasos',500);
             $table->unsignedBigInteger('id_autor');
             $table->unsignedBigInteger('lista_id');
             $table->integer('categoria');
