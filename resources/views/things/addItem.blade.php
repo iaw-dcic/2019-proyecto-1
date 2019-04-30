@@ -21,7 +21,7 @@
 	  <th scope="col"></th>
     </tr>
  	 </thead>
- 	 <tbody>
+ 	<tbody>
 	
 	@foreach($thing-> items as $item)
 			<tr>

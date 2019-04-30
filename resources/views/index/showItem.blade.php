@@ -5,9 +5,7 @@
 	
 <h1 class = "title"> <p class="font-weight-bolder"> {{$lista -> title}} </p></h1> 
 	
-
-  
-    @if($items->count())
+	@if($items->count())
     <div class = "container">
 		<table class="table">	
 			<thead class="thead-dark">
