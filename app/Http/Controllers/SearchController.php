@@ -15,7 +15,7 @@ class SearchController extends Controller
 
 		$usuarios = User::where([
 			['name', 'like', request('user').'%'],
-			['id', '<>', auth()->id()] // you cannot find yourself when you're looking for people
+			['id', '<>', auth()->id()] // you cannot find yourself when you're looking for users
 		])->get();
 
 		return view('usuarios.search', compact('usuarios'));

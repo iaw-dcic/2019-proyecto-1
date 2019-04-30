@@ -5,6 +5,7 @@
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
+    <title>Proyecto 1</title>
 	<nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: #e3f2fd;">
 		<div class="container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
