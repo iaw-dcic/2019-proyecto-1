@@ -14,11 +14,11 @@
         </h1>
 
         <h2 id="informacionUsuario">
-            Nombre Usuario: {{$lista->usuario->name}}
+            Nombre Usuario: {{$usuario->name}}
         </h2>
 
         <h3 id="informacionUsuario">
-            E-mail: {{$lista->usuario->email}}
+            E-mail: {{$usuario->email}}
         </h3>
     </div>
   

@@ -32,7 +32,7 @@ class ControladorVistas extends Controller
 	{
 		$user=User::find($request -> id);
 		$lista = $user->listas;
-		return view('perfil.perfilPublico', ['lista'=> $lista]);
+		return view('perfil.perfilPublico', ['lista'=> $lista],['usuario'=> $user]);
 	}
 
 	public function agregarSeries(Request $request)
