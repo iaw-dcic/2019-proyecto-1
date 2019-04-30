@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
-use App\Lista;
+use App\lista;
 use App\Song;
 
 class SearchController extends Controller

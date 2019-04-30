@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Song;
 
-use App\Lista;
+use App\lista;
 
 class SongController extends Controller
 {   
