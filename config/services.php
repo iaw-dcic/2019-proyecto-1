@@ -56,6 +56,13 @@ return [
         'redirect' => env('TWITTER_CALLBACK'),
     ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_CALLBACK'),
+    ],
+
+
     'facebook' => [
         'client_id'     => env('287439295494841'),
         'client_secret' => env('38653055cfe6a31e923f423f6d6d6d04'),
