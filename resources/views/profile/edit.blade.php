@@ -18,6 +18,7 @@
 				</div>
 				<br>
 			@endif
+			<!--
 			<div id="file-input">
 				<span id="image-label">Profile picture:</span>
 				<span>
@@ -29,7 +30,7 @@
 					<br>
 				@endif
 				</span>
-			</div>
+			</div>-->
 			<input type="text" class="text-input" name="nickname" value="{{$user->nickname}}" placeholder="nickname">
 			<input type="text" class="text-input" name="bio" value="{{$user->bio}}" placeholder="bio">
 			<input type="submit" class="submit-input" value="Save changes">

@@ -33,6 +33,11 @@
 			<label>La descripción de los items de las listas por una cuestión de espacio dentro del post
 				se ve a través de un tooltip (aparece el texto cuando se lleva el mouse sobre el item).
 			</label>
+			<label>La edición de las imágenes era posible en la versión local, pero por cuestiones de
+				permisos del servidor de heroku, no se pueden almacenar nuevas imágenes, por lo cual
+				se quitó la funcionalidad de cambiar la foto de perfil, y todos los usuarios tienen
+				la imagen por defecto.
+			</label>
 		</div>
 	</div>
 @endsection
