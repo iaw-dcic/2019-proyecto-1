@@ -61,10 +61,12 @@ class CancionesController extends Controller
     //recibo la nueva cancion y el id de la lista a la q pertenecera dicha cancion
     public function store(Request $request,$id)
     {
+
+      //  dd($request);
         $cancion= new Cancion(
             request()->validate([
                    'nombre'=> ['required','min:3'],
-                   'duracion'=> 'required',
+                   'duracion'=> 'different:00:00:00',
                    'album'=> 'required','min:2',
                    'autor'=> 'required',
                ],Cancion::messages())

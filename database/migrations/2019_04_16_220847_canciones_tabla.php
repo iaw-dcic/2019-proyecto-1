@@ -17,7 +17,7 @@ class CancionesTabla extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('lista_id') -> unsigned();
             $table->string('nombre');
-            $table->time('duracion')->default('00:00:00');
+            $table->time('duracion');
             $table->string('album');
             $table->string('autor');
             $table->date('fecha_lanzamiento')->default('1111-11-11'); //aaaa-mm-dd

@@ -27,7 +27,7 @@ class Cancion extends Model
        return [
            'nombre.required' => 'Debe ingresar un nombre para la cancion',
            'nombre.min' =>'El nombre de la cancion debe ser de 3 caracteres o mas',
-           'duracion.required' => 'Debe ingresar la duracion de la cancion ( mm:ss )',
+           'duracion.different' => 'La duracion de la cancion debe ser mayor a 00:00:00',
            'album.required' => 'Debe ingresar el album al que pertenece la cancion',
            'album.min' =>'El nombre del album debe ser de 2 caracteres o mas',
            'autor.required' => 'Debe ingresar un autor para la cancion',

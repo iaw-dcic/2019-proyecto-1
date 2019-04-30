@@ -21,7 +21,7 @@
             <div class="field">
                     <label class="label" for="duracion">Duración (hh:mm:ss) *</label>
                     <div class="control">
-                        <input type="time" class="input" name="duracion" value=00:00:00>
+                        <input type="time" class="input" name="duracion" value="00:00:00">
                     </div>
             </div>
         
