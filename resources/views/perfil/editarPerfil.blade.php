@@ -10,7 +10,7 @@
                 <div class="card-header">{{ __('Editar Perfil') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="/editarPerfil">
+                    <form method="POST" action="{{ route('editarPerfil')}}">
                         @csrf
 
                         <div class="form-group row">
