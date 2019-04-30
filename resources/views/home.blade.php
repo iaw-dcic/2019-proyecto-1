@@ -20,6 +20,7 @@
             <th scope="col">Titulo</th>
             <th scope="col">Categoria</th>
             <th scope="col">Descripcion</th>
+            <th scope="col">Publica/Privada</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -30,6 +31,13 @@
             <th scope="row">{{$colec->title}}</th>
             <td>{{$colec->category}}</td>
             <td>{{$colec->description}}</td>
+
+            @if ($colec->pp === 1)
+            <td>Publica</td>
+            @else
+            <td>Privada</td>
+            @endif
+
             <td><a href="/home/cargarlibros/{{$colec->id}}"> Ver</a></td>
           </tr>
           @endforeach
@@ -40,5 +48,5 @@
     </div>
   </div>
 </div>
-  
-  @endsection
+
+@endsection

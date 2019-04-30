@@ -22,14 +22,14 @@
                             <h4>Categoria: </h4>
                             <h6 class="card-title">{{$colec->category}}</h6>
                             <h4>Descripcion: </h4>
-                            <h6 class="card-text">{{$colec->description}}</h6>
+                            <h6 class="card-title">{{$colec->description}}</h6>
 
                             <a href="/home/cargarlibros/{{$colec->id}}" class="card-link"> Ver</a>
                             <a href="/home/editCollection/edit/{{$colec->id}}" class="card-link"> Editar</a>
 
-                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModalE">Eliminar</button>
+                            <button type="button" class="btn btn-link" data-id="{{$colec->id}}" data-toggle="modal" data-target="#eliminarLista">Eliminar</button>
                             <!-- Modal -->
-                            <div class="modal fade" id="myModalE" role="dialog">
+                            <div class="modal fade" id="eliminarLista" role="dialog">
                                 <div class="modal-dialog">
 
                                     <!-- Modal content-->
@@ -107,7 +107,5 @@
             </div>
         </div>
     </div>
-
-
 
     @endsection

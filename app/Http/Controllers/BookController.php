@@ -11,45 +11,63 @@ class BookController extends Controller
     public function index($id)
     {
         $books = Book::where('collection_id', $id)->get();
-        return view('cargarlibros', compact('books', 'id'));
+        return view('/Book/cargarlibros', compact('books', 'id'));
     }
 
 
-    public function store($id)
+    public function store(Request $request, $id)
     {
-        $book = new Book();
-        $book->title = request('title');
-        $book->author = request('author');
-        $book->editorial = request('editorial');
-        $book->pag = request('pag');
-        $book->collection_id = $id;
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'editorial' => 'required',
+            'pag' => 'required'
+        ]);
 
+        $book = new Book();
+        $book->title = $request->input('title');
+        $book->author = $request->input('author');
+        $book->editorial = $request->input('editorial');
+        $book->pag = $request->input('pag');
+        $book->collection_id = $id;
         $book->save();
 
         $books = Book::where('collection_id', $id)->get();
 
-        return view('cargarlibros', compact('books', 'id'));
+        return view('/Book/cargarlibros', compact('books', 'id'));
     }
 
     public function delete($id)
     {
-        $book = Book::find($id);
-        $id2 = $book->collection_id;
+        // $books = Book::where('collection_id',  Book::find($id)->collection_id)->get();
 
-        //$books = Book::where('id', '=', $id2)->first();
-        $book->delete();
-
-       
-        $books = Book::where('collection_id', $id2)->get();
-
-       return view('cargarlibros', compact('books', 'id2'));
-
+        Book::find($id)->delete();
+        return back();
     }
 
-    public function destroy(Request $request)
+    public function update(Request $request, $id)
     {
-        $libro = Book::findOrFail($request->id);
-        $libro -> delete();
-        return back();
+        $book = Book::find($id);
+
+        if ($request->input('title') == '') { } else {
+            $book->title = $request->input('title');
+        }
+        if ($request->input('author') == '') { } else {
+            $book->author = $request->input('author');
+        }
+        if ($request->input('editorial') == '') { } else {
+            $book->editorial = $request->input('editorial');
+        }
+        if ($request->input('pag') == '') { } else {
+            $book->pag = $request->input('pag');
+        }
+
+        $book->save();
+
+        $bk = Book::where('id', $id)->get();
+        $id = $book->collection_id;
+        $books = Book::where('collection_id', $id)->get();
+
+        return view('/Book/cargarlibros', compact('books', 'id'));
     }
 }

@@ -56,12 +56,13 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Entrar') }}
                                 </button>
-
+<!--
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link btn-link-font" href="{{ route('password.request') }}">
                                         {{ __('Olvido la contraseña?') }}
                                     </a>
                                 @endif
+-->
                             </div>
                         </div>
                     </form>
