@@ -208,5 +208,17 @@ class PagesController extends Controller
         return redirect()->route('userlists', [$userid]);
 
     }
+
+    public function readme(){
+
+        $filename = "/README.md";
+        $path = base_path($filename);
+        $contentType = mime_content_type($path);
+        return \Response::make(file_get_contents($path), 200, [
+            'Content-Type' => $contentType,
+             'Content-Disposition' => 'inline; filename="'.$filename.'"'
+         ]);
+
+    }
     
 }

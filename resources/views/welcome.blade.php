@@ -67,7 +67,10 @@
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
+                    <a href="{{ route('readme') }}">README</a>
+                    <a href="{{ route('publiclists') }}">Listas públicas</a>
                     @auth
+                        <a href="{{ route('createlist') }}">Crear lista</a>
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>

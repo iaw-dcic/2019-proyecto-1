@@ -44,7 +44,7 @@
                         @guest
 
                         <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('publiclists') }}">Ver listas<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ route('publiclists') }}">Listas públicas<span class="sr-only">(current)</span></a>
                             </li>
 
                             <li class="nav-item">

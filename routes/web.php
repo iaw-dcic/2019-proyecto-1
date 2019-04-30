@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile/{id}', 'PagesController@profile')->name('profile')->where('id', '[0-9]+');
 
-Route::get('/list/create', 'PagesController@createlist');
+Route::get('/list/create', 'PagesController@createlist')->name('createlist');
 
 Route::post('/list/create', 'PagesController@store')->name('listcreate');
 
@@ -46,3 +46,5 @@ Route::patch('/profile/{id}', 'PagesController@editprofile');
 Route::get('/profile/{id}/lists', 'PagesController@userlists')->name('userlists');
 
 Route::delete('/list/{id}', 'PagesController@deletelist');
+
+Route::get('/readme', 'PagesController@readme')->name('readme');
