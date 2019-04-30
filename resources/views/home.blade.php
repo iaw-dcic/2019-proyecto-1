@@ -21,6 +21,7 @@
             <th scope="col">Categoria</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Publica/Privada</th>
+            <th scope="col">Cant de libros</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -37,8 +38,10 @@
             @else
             <td>Privada</td>
             @endif
-
+            <td>{{$colec->count()}}</td>
             <td><a href="/home/loadBooks/{{$colec->id}}"> Ver</a></td>
+
+           
           </tr>
           @endforeach
 
