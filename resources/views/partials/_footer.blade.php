@@ -12,19 +12,16 @@
             <img src="{{asset('/img/logo.png')}}">
         </a>
         <ul class="main-menu footer-menu">
-            <li><a href="">Home</a></li>
-            <li><a href="">Games</a></li>
-            <li><a href="">Reviews</a></li>
-            <li><a href="">News</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="{{route('listings.index')}}">Listas</a></li>
+            @guest
+                <li><a href="{{ url('login') }}">Ingresar</a> </li>
+                <li><a href="{{ url('register') }}">Registrarse</a> </li>
+            @endguest 
+            <li><a href="{{url('about') }}">Preguntas frecuentes</a></li>
         </ul>
-        <div class="footer-social d-flex justify-content-center">
-            <a href="#"><i class="fa fa-pinterest"></i></a>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-            <a href="#"><i class="fa fa-behance"></i></a>
-        </div>
+        
+       
     </div>
 </footer>
 <!-- Footer section end -->

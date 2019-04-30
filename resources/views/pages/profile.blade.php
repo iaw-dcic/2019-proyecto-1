@@ -44,8 +44,7 @@
                                     alt="">
 
                                     @auth
-                                    <!--<a href="#" class="read-more">Editar avatar <img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>-->
-                                    <form enctype="multipart/form-data" method="post" action="{{ route('user_profile', Auth::user()->name) }}}">
+                                    <form enctype="multipart/form-data" method="post" action="{{route('update_avatar', Auth::user()->name) }}}">
                                         @csrf
                                         <div class="input-group" style="width:50%">
                                             <label class="input-group-btn">

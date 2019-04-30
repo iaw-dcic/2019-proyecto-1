@@ -61,7 +61,7 @@
                             
                             <br/>
                             @auth
-                                <a class="btn btn-danger" href="#" role="button">Eliminar de la lista</a>
+                        <a class="btn btn-danger" href="{{route('delete_game_from_listing',array('game'=>$game->id,'listing'=> $listing->id))}}" role="button">Eliminar de la lista</a>
                             @endauth
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                         <a href="{{ route('listings.edit', $listing->id)}}" class="site-btn">Editar lista</a>
                         <br /><br /><br />
 
-                        <form class="read-more" action="{{ route('listings.destroy', $listing->id) }}" method="post">
+                        <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post">
                             {{ method_field("DELETE") }} @csrf
                             <!-- {{ csrf_field() }} -->
                             <button type="submit" class="site-btn">
@@ -94,7 +94,7 @@
         
         @auth
 
-            <div class="row">
+            <div class="row" style="margin-bottom:80px">
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="text-white">
                         <h3>Todavía no tenes juegos en tu lista!</h3>
@@ -107,7 +107,8 @@
                 </div>
             </div>
 
-         @endauth @guest
+         @endauth 
+            @guest
         <div class="text-white">
             <h3>Esta lista todavía no tiene juegos!</h3>
         </div>

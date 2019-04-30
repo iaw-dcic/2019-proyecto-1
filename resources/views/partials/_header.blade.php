@@ -37,7 +37,7 @@
                         <!--<a class="dropdown-item" href="{{ url('profile') }}">
                             <p style="color:black;"> Mi perfil </p>
                         </a> -->
-                        <a class="dropdown-item" href="{{ route('user_profile',auth()->user())}}"> <p style="color:black;"> Mi perfil </p></a>
+                        <a class="dropdown-item" href="{{ route('user_profile',Auth::user()->name)}}"> <p style="color:black;"> Mi perfil </p></a>
                         <a class="dropdown-item" href="{{ route('listings.index')}}"> <p style="color:black;"> Mis listas </p></a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
@@ -87,8 +87,7 @@
                     </li>
                     @endauth
                     @guest
-                    <li><a href="{{route('listings.index')}}">Listas</a>      
-                    </li>
+                    <li><a href="{{route('listings.index')}}">Listas</a> </li>
                     @endguest
 
                     @auth

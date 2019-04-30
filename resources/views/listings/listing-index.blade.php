@@ -27,65 +27,79 @@
 
         <div class="wrap-table100">
 
-            <h3 style="color:bisque; text-align:center"> Listas de {{$data['listOwnerName']}} </h3>
+            @if (count($data['listings']) >0) 
 
-            <div class="my-table" style="margin-bottom:30px">
-                <br>
-                <div class="my-row header no-hover">
-                    <div class="cell">
-                        Nombre de la lista
+                <!--Show lists -->
+                <h3 style="color:bisque; text-align:center"> Listas de {{$data['listOwnerName']}} </h3>
+
+                <div class="my-table" style="margin-bottom:30px">
+                    <br>
+                    <div class="my-row header no-hover">
+                        <div class="cell">
+                            Nombre de la lista
+                        </div>
+                        <div class="cell">
+                            Cantidad de juegos
+                        </div>
+                        @auth
+                        <div class="cell">
+                            Visibilidad
+                        </div>
+                        @endauth
+                        <div class="cell">
+                            Lista
+                        </div>
+                        @guest
+                        <div class="cell">
+                            Perfil del usuario
+                        </div>
+                        @endguest
                     </div>
-                    <div class="cell">
-                        Cantidad de juegos
+                    @foreach($data['listings'] as $listing)
+                    <div class="my-row">
+                        <div class="cell" data-title="Titulo de la lista">
+                            {{$listing->title}}
+                        </div>
+
+                        <div class="cell" data-title="Cantidad de juegos">
+                            {{$listing->games()->count()}}
+                        </div>
+                        @auth
+                        <div class="cell" data-title="Visibilidad">
+                                {{$listing->visibility}}
+                        </div>
+                        @endauth
+
+                        <div class="cell" data-title="Link a la lista">
+                            <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
+                        </div>
+                        @guest
+                        <div class="cell" data-title="Link al perfil">
+                            <a href="">Link al perfil</a>
+                        </div>
+                        @endguest
                     </div>
-                    @auth
-                    <div class="cell">
-                        Visibilidad
-                    </div>
-                    @endauth
-                    <div class="cell">
-                        Lista
-                    </div>
-                    @guest
-                    <div class="cell">
-                        Perfil del usuario
-                    </div>
-                    @endguest
+
+                    @endforeach
+
+
+
                 </div>
-                @foreach($data['listings'] as $listing)
-                <div class="my-row">
-                    <div class="cell" data-title="Titulo de la lista">
-                        {{$listing->title}}
-                    </div>
+                @auth
+                <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+                @endauth
+    
+            @else 
+                @guest
+                    <h2 style="color:white; margin-bottom:20px;" > {{$data['listOwnerName']}} todavía no tiene ninguna lista!</h2>
+                @endguest
+                @auth
+                    <h2 style="color:white; margin-bottom:20px;" > Todavía no tenes ninguna lista!</h2>
+                    <a href="{{route('listings.create') }}" class="site-btn">Crear lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+                @endauth
 
-                    <div class="cell" data-title="Cantidad de juegos">
-                        {{$listing->games()->count()}}
-                    </div>
-                    @auth
-                    <div class="cell" data-title="Visibilidad">
-                            {{$listing->visibility}}
-                    </div>
-                    @endauth
-
-                    <div class="cell" data-title="Link a la lista">
-                        <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
-                    </div>
-                    @guest
-                    <div class="cell" data-title="Link al perfil">
-                        <a href="">Link al perfil</a>
-                    </div>
-                    @endguest
-                </div>
-
-                @endforeach
-
-
-
-            </div>
-            @auth
-            <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
-            @endauth
-
+            @endif
+         
         </div>
         <!-- <div class="my-row">
                                 <div class="col-xl-12 col-lg-12 col-md-12">

@@ -9,15 +9,19 @@
         <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="img/slider-bg-1.jpg">
             <div class="container">
                 <h2>GoodGame!</h2>
-                <p>Todos tus juegos en un solo lugar!</p>
+                <p style="color:wheat">Todos tus juegos en un solo lugar!</p>
                 <a href="{{url('about')}}" class="site-btn">Leer más<img src="img/icons/double-arrow.png" alt="#" /></a>
             </div>
         </div>
         <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="img/slider-bg-2.jpg">
             <div class="container">
-                <h2>texto</h2>
-                <p>otro texto</p>
-                <a href="{{url('about')}}" class="site-btn">Leer más<img src="img/icons/double-arrow.png" alt="#" /></a>
+                <h3 style="color:wheat;margin-bottom:20px;">Crea listas, agrega todos tus juegos y compartilos!</h3>
+                @auth
+                    <a href="{{route('listings.create')}}" class="site-btn">Crear lista<img src="img/icons/double-arrow.png" alt="#" /></a>
+                @endauth
+                @guest
+                    <a href="{{url('register')}}" class="site-btn">Registrarme<img src="img/icons/double-arrow.png" alt="#" /></a>
+                @endguest
             </div>
         </div>
     </div>
@@ -26,8 +30,8 @@
 
 <!-- Newsletter section -->
 <section class="newsletter-section">
-    <div class="container">
-        <h2>Algun texto o funcionalidad</h2>
+    <div class="container text-white">
+        <h3>Crea tu primera lista <a href="/" style="color:wheat">acá</a></h3>
     </div>
 </section>
 <!-- Newsletter section end -->
