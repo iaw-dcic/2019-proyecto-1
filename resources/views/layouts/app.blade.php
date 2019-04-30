@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>@yield('title')</title>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -33,7 +35,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                    
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -56,7 +58,7 @@
                         @else
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('publiclists') }}">Ver listas<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ route('publiclists') }}">Listas públicas<span class="sr-only">(current)</span></a>
                             </li>
 
                             <li class="nav-item active">
@@ -71,6 +73,10 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('profile', Auth::user()->id) }}">
                                         {{ __('Perfil') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('userlists', Auth::user()->id) }}">
+                                        {{ __('Mis listas') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -89,7 +95,6 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

@@ -15,12 +15,12 @@ class PagesController extends Controller
             $dato->user_id = $id;
             $dato->save(); 
 
-        return view('profile', compact('user', 'dato'));
+        return view('profile.profile', compact('user', 'dato'));
     }
 
     public function createlist(){
         if(\Auth::check())
-            return view('createlist');
+            return view('lists.createlist');
         else
             return redirect('/login');
     }
@@ -48,16 +48,16 @@ class PagesController extends Controller
         
         if(\Auth::check()){
             if(\Auth::id()==$lista->user_id)
-                return view('list', compact('lista'));
+                return view('lists.list', compact('lista'));
             else
                 if($lista->share==1)
-                    return view('list', compact('lista'));
+                    return view('lists.list', compact('lista'));
                 else
                     return redirect('/home');
             }
         else{
             if($lista->share==1)
-                return view('list', compact('lista'));
+                return view('lists.list', compact('lista'));
             else
                 return redirect('/home');
         }
@@ -75,7 +75,7 @@ class PagesController extends Controller
             $lista->share=false;
         $lista->save();
 
-        return view('list', compact('lista'));
+        return view('lists.list', compact('lista'));
     }
 
     public function createcar($id){
@@ -83,7 +83,7 @@ class PagesController extends Controller
         $lista = \App\Lista::findorfail($id);
         if(\Auth::check())
             if(\Auth::id()==$lista->user_id)
-                return view('createcar', compact('id'));
+                return view('cars.createcar', compact('id'));
             else
                 return redirect('/home');
         else
@@ -113,7 +113,7 @@ class PagesController extends Controller
         $car = \App\Car::findorfail($carid);
         if(\Auth::check())
             if(\Auth::id()==$lista->user_id)
-                return view('editcar', compact('car'));
+                return view('cars.editcar', compact('car'));
             else
                 return redirect('/home');
         else
@@ -148,7 +148,7 @@ class PagesController extends Controller
 
         $lists = \App\Lista::all();
 
-        return view('publiclists', compact('lists'));
+        return view('lists.publiclists', compact('lists'));
         
     }
 
@@ -195,7 +195,7 @@ class PagesController extends Controller
         $user = \App\User::findorfail($id);
         $lists = $user->lists;
 
-        return view('userlists', compact('lists', 'user'));
+        return view('profile.userlists', compact('lists', 'user'));
         
     }
 

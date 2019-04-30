@@ -3,11 +3,18 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+@section('title')
+  {{$lista->name}}
+@endsection
+
 @section('content')
 
 <div class="container">
 <div class="row justify-content-center">
-<div class="col-sm-6">
+<div class="col-sm-7">
+<div class="card">
+<div class="card-header">{{$lista->name}}</div>
+<div class="card-body">
 @auth
 @if (Auth::user()->id==$lista->user_id)
 <form method="POST" action="/list/{{$lista->id}}">
@@ -37,12 +44,8 @@
     <form method="GET" action="/list/{{$lista->id}}/car/create">
     <button type="submit" class="btn btn-primary">Agregar auto</button>
     </form>
-  @else
-    <h2>{{$lista->name}}</h2>
   @endif
-  @else
-    <h2>{{$lista->name}}</h2>
-    @endauth
+  @endauth
 <div class="card">
 <table class="table table-striped">
   <thead>
@@ -82,6 +85,8 @@
     @endforeach
   </tbody>
 </table>
+</div>
+</div>
 </div>
 </div>
 </div>
