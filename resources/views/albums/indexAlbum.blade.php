@@ -10,7 +10,7 @@
 
     <h1 class="title">Created Lists</h1>
 
-    <div id="buttons" class="btn-group" role="group">
+    <div class="btn-group" role="group">
 
         <button class="btn btn-outline-secondary" type="button" onclick="location.href='/albums/create'">Add New List</button>
         
@@ -20,7 +20,7 @@
 
     @if($album->count())
 
-        <ul id="mainList" class="list-group">
+        <ul class="list-group">
 
             @foreach ($album as $elem)
 

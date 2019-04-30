@@ -16,7 +16,7 @@
 
         {{ csrf_field() }}
 
-        <div id="selectBox" class="field">
+        <div id="selectBox1" class="field">
             <label class="label" for="email_public">Email Privacy</label>
             <select class="form-control" name="email_public">
                 <option value=1>Public</option>
@@ -29,7 +29,7 @@
                 <input type="text" class="input" name="first_name" value="{{ Auth::user()->first_name }}">
             </div>
         </div>
-        <div id="selectBox" class="field">
+        <div id="selectBox2" class="field">
             <label class="label" for="first_name_public">First Name Privacy</label>
             <select class="form-control" name="first_name_public">
                 <option value="1" {{ (Auth::user()->first_name_public) == 1 ? 'selected="selected"' : '' }}>Public</option>
@@ -42,7 +42,7 @@
                 <input type="text" class="input" name="last_name" value="{{ Auth::user()->last_name }}">
             </div>
         </div>
-        <div id="selectBox" class="field">
+        <div id="selectBox3" class="field">
             <label class="label" for="last_name_public">Last Name Privacy</label>
             <select class="form-control" name="last_name_public">
                 <option value="1" {{ (Auth::user()->last_name_public) == 1 ? 'selected="selected"' : '' }}>Public</option>

@@ -38,14 +38,13 @@
 
     @if($album->songs->count())
 
-        <ul id="mainList" class="list-group">
+        <ul id="albumShowList" class="list-group">
 
             @foreach($album->songs as $song)
 
                 <li class="list-group-item"><b>Song Name: </b>{{ $song->song_name }}
 
                     <ul class="list-group">
-
 
                         <li class="list-group-item"><b>Artist: </b>{{ $song->artist }}</li>
 

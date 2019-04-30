@@ -33,12 +33,12 @@
     </div>
 
     @if((Auth::check() && Auth::user()->name) == ($user->name))
-        </div>
-            <button class="btn btn-outline-secondary" type="button" id="editButton" onclick="location.href='/profiles/{{ Auth::user()->name }}/edit'">Edit</button>
+        <div id="editButton">
+            <button class="btn btn-outline-secondary" type="button" onclick="location.href='/profiles/{{ Auth::user()->name }}/edit'">Edit</button>
         </div>
     @endif
-    </div>
-        <button class="btn btn-outline-secondary" type="button" id="goBackButton" onclick="location.href='{{ url()->previous() }}'">Return</button>
-    </div>
+        <div id="goBackButton">
+            <button class="btn btn-outline-secondary" type="button" onclick="location.href='/home'">Return To Home</button>
+        </div>
 
 @endsection

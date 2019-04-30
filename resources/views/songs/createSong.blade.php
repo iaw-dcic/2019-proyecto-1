@@ -47,12 +47,12 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button is-link">Add Song To Current List</button>
+                <button class="btn btn-outline-secondary" type="submit" class="button is-link">Add Song To Current List</button>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <button type="button" onclick="location.href='/albums/{{ $album->list_id }}'">Go Back</button>
+                <button class="btn btn-outline-secondary" type="button" onclick="location.href='/albums/{{ $album->list_id }}'">Go Back</button>
             </div>
         </div>
     

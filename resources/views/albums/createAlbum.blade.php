@@ -35,7 +35,7 @@
         </div>
         <div class="field">
             <div class="control">
-                <button class="btn btn-outline-secondary" type="button" onclick="location.href='/home'">Go Back</button>
+                <button class="btn btn-outline-secondary" type="button" onclick="location.href='/home'">Return To Home</button>
             </div>
         </div>
     

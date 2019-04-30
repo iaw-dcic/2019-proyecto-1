@@ -37,6 +37,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //view o redirect en el songcontroller
 //se tiene que acceder a las listas de un usuario especifico?
 //la forma de poner los css?
+//informar los audits?
 //lista propia, editar elem, aceptar, ir a perfil propio a traves de la lista, apretar return tira error de get
 
 

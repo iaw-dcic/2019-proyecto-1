@@ -22,7 +22,7 @@
                 <input type="text" class="input {{ $errors->has('list_name') ? 'is-danger' : '' }}" name="list_name" required value="{{ $album->list_name }}">
             </div>
         </div>
-        <div id="selectBox" class="field">
+        <div id="selectBox1" class="field">
             <label class="label" for="public">List Privacy</label>
             <select class="form-control" name="public">
                 <option value=1 {{ ($album->public) == 1 ? 'selected="selected"' : '' }}>Public</option>
