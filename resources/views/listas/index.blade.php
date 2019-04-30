@@ -89,7 +89,7 @@
 
 
                             <button class="btn btn-danger" onclick="return confirm('¿Seguro que quieres eliminarla?')">
-                                <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                <span aria-hidden="true" class="glyphicon glyphicon-trash">
                                 <img src="https://img.icons8.com/material/16/000000/trash.png">
                             </button>
                         </form>

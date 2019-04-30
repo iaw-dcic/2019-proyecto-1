@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cancion;
 use App\Lista;
 use Auth;
+use Laracasts\Flash\Flash;
 
 class CancionesController extends Controller
 {

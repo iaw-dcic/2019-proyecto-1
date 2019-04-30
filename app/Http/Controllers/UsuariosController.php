@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\resources\views;
 use App\User;
 use Auth;
-
+use Laracasts\Flash\Flash;
 
 class UsuariosController extends Controller
 {
@@ -65,7 +65,9 @@ class UsuariosController extends Controller
         //con los atributos ya validados, creo el usuario
         $user = User::create($atributos);
 
-        return redirect()->route('users.index')->with('success','Usuario \''.$user->name.'\' ha sido creado con exito!');
+        Flash::success("Usuario ".$user->name." ha sido creado con exito! ");
+
+        return redirect()->route('users.index');
     }
 
 
@@ -108,10 +110,13 @@ class UsuariosController extends Controller
         $user->update(request()->validate([
                             'name'=> ['required','min:3'],
                             'email'=> 'required',
-                        ],User::messages()));
+                        ],User::messages())
+                    );
         
-         //Vuelvo al listado usando un get y muestro un mensaje flash
-         return redirect()->route('users.index')->with('info','Usuario \''.$user->name.'\' ha sido editado con exito!');
+        Flash::success("Usuario ".$user->name." ha sido editado con exito! ");
+
+         //Vuelvo al listado usando un get 
+         return redirect()->route('users.index');
     }
 
     /**
@@ -125,7 +130,9 @@ class UsuariosController extends Controller
         //$user= User::findOrFail($id);  no necesario si recibo el user en lugar de: recibir id y luego buscar ese user
 
         $user->delete();
-         //Vuelvo al listado usando un get y muestro un mensaje flash
-         return redirect()->route('users.index')->with('warning','Usuario \''.$user->name.'\' ha sido eliminado!');
+
+        Flash::success("Usuario ".$user->name." ha sido eliminado con exito! ");
+         //Vuelvo al listado usando un get 
+         return redirect()->route('users.index');
     }
 }
