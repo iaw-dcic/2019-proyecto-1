@@ -6,6 +6,8 @@ use Haiku\Album;
 use Illuminate\Http\Request;
 use Haiku\User;
 use Auth;
+use Illuminate\Support\Facades\Input;
+
 
 
 
@@ -76,6 +78,7 @@ class AlbumController extends Controller
     public function show(Album $album)
     {
         //
+        
     }
 
     /**
@@ -84,9 +87,12 @@ class AlbumController extends Controller
      * @param  \Haiku\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function edit(Album $album)
+    public function edit($id)
     {
         //
+        $album = Album::find($id);
+        return View('album.edit',['album'=>$album]);
+        
     }
 
     /**
@@ -96,9 +102,20 @@ class AlbumController extends Controller
      * @param  \Haiku\Album  $album
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Album $album)
+    public function update($id)
     {
-        //
+      $album =Album::find($id);
+      $album->name = Input::get('name');
+      $album->bandName = Input::get('band');
+      $album->public = Input::get('visibility');
+      $album->description = Input::get('coment');  
+      $album->link = Input::get('youtubeLink');
+      $album->save();
+      return redirect()->action(
+        'ApiController@profile'
+    );
+
+ 
     }
 
    /**

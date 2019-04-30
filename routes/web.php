@@ -21,6 +21,8 @@ Route::get('/','ApiController@index');
 Route::get('/albums','AlbumController@index')->name('albums');
 Route::get('/albums/Createalbum','AlbumController@create')->name('createAlbum');
 
+Route::post('/update/{id}','AlbumController@update')->name('update');
+
 Route::get('/profile', 'ApiController@profile')->name('profile');
 Route::post('profile','ApiController@updateAvatar')->name('avatar');
 
@@ -52,6 +54,8 @@ Route::get('/showUser/{id}','ApiController@showUser')->name('showUser');
 
 Auth::routes();
 Route::get('/album/{id}','AlbumController@destroy')->name('eliminarAlbum');
+Route::get('/edit/{id}','AlbumController@edit')->name('editAlbum');
+
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

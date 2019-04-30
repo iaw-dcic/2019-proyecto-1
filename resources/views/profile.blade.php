@@ -24,6 +24,7 @@
             <th>Artista</th>
             <th>Link</th>
             <th></th>
+            <th></th>
         </tr>
      </thead>
 
@@ -36,6 +37,9 @@
             <td>{{$album->link}}</td>
             <td>
             <a href="{{ route('eliminarAlbum', $album->id) }}" class="btn btn-outline-success" role="button" aria-pressed="true">Eliminar</a>
+            </td>
+            <td>
+            <a href="{{ route('editAlbum', $album->id) }}" class="btn btn-outline-success" role="button" aria-pressed="true">Editar</a>
             </td>
             </tr>
             @endforeach
