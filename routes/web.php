@@ -27,6 +27,7 @@ Route::resource('/list', 'ListaController');
 
 
 Route::prefix('profile')->name('profile.')->group(function () {
+	Route::get('/', 'ProfileController@index')->name('index');
    	Route::get('edit', 'ProfileController@edit')->name('edit');
 	Route::get('{id}', 'ProfileController@show')->name('show');
 	Route::post('store', 'ProfileController@store')->name('store');

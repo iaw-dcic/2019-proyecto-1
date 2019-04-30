@@ -20,7 +20,6 @@
                             <th>Apellido</th>
                             <th>Usuario</th>
                             <th>E-mail</th>
-                            <th>Password</th>
                             <th>Teléfono</th>
                             <th>Dirección</th>
                         </tr>
@@ -29,12 +28,11 @@
                             <td>{{ $userData->surname }}</td>
                             <td>{{ $userData->username }}</td>
                             <td>{{ $userData->email }}</td>
-                            <td>{{ $userData->name }}</td>
                             <td>{{ $userData->telephone}}</td>
                             <td>{{ $userData->address}}</td>
                         </tr>                        
-
                     </table>
+                    <td><center><a class="btn btn-primary btn-md" href="{{ route('profile.edit') }}">Editar</a></center>
                 </div>
             </div>
         </div>

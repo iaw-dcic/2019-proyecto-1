@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Lista de Libros</div>
+                <div class="card-header">Mis Libros</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -31,6 +31,17 @@
                             <td>{{ $book->isbn }}</td>
                             <td>{{ $book->list_id }}</td>
                             <td>{{ $book->created_at}}</td>
+                            <td>
+                                <form action="{{ route('book.destroy',$book->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{{ route('book.edit',$book->id) }}">Editar</a>
+                            </td>
+
                         </tr>
                         @endforeach
                         

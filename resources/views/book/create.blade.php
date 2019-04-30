@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="author" class="col-md-4 col-form-label text-md-right">{{ __('Author') }}</label>
+                            <label for="author" class="col-md-4 col-form-label text-md-right">{{ __('Autor') }}</label>
 
                             <div class="col-md-6">
                                 <input id="author" type="text" class="form-control{{ $errors->has('author') ? ' is-invalid' : '' }}" name="author" value="{{ old('author') }}" required>
