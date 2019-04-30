@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Mis Libros</div>
 
@@ -20,6 +20,11 @@
                                 <th>Nombre</th>
                                 <th>Autor</th>
                                 <th>ISBN</th>
+                                <th>Número de Páginas</th>
+                                <th>Idioma</th>
+                                <th>Año</th>
+                                <th>Editorial</th>
+
                                 <th>Lista ID</th>
                                 <th>Fecha de creación</th>
                             </tr>
@@ -29,6 +34,10 @@
                                 <td>{{ $book->name }}</td>
                                 <td>{{ $book->author }}</td>
                                 <td>{{ $book->isbn }}</td>
+                                <td>{{ $book->page_number }}</td>
+                                <td>{{ $book->language }}</td>
+                                <td>{{ $book->year }}</td>
+                                <td>{{ $book->editor }}</td>
                                 <td>{{ $book->list_id }}</td>
                                 <td>{{ $book->created_at}}</td>
                                 <td>

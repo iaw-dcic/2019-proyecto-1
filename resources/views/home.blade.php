@@ -12,7 +12,7 @@
                             <tr>
                                 <th>ID Lista</th>
                                 <th>Nombre</th>
-                                <th>User id</th>
+                                <th>ID Usuario</th>
                                 <th></th>
                             </tr>
                             @foreach($lists as $list)

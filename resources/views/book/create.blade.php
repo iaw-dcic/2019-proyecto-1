@@ -60,6 +60,62 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="page_number" class="col-md-4 col-form-label text-md-right">{{ __('Número de páginas') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="page_number" type="text" class="form-control{{ $errors->has('page_number') ? ' is-invalid' : '' }}" name="page_number" value="{{ old('page_number') }}" required>
+
+                                @if ($errors->has('page_number'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('page_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="language" class="col-md-4 col-form-label text-md-right">{{ __('Idioma') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="language" type="text" class="form-control{{ $errors->has('language') ? ' is-invalid' : '' }}" name="language" value="{{ old('language') }}" required>
+
+                                @if ($errors->has('language'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('language') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="year" class="col-md-4 col-form-label text-md-right">{{ __('Año') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="year" type="text" class="form-control{{ $errors->has('year') ? ' is-invalid' : '' }}" name="year" value="{{ old('year') }}" required>
+
+                                @if ($errors->has('year'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('year') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="editor" class="col-md-4 col-form-label text-md-right">{{ __('Editorial') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="editor" type="text" class="form-control{{ $errors->has('editor') ? ' is-invalid' : '' }}" name="editor" value="{{ old('editor') }}" required>
+
+                                @if ($errors->has('editor'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('editor') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="list_id" class="col-md-4 col-form-label text-md-right">{{ __('Lista') }}</label>
                             <div class="col-md-6">
                                 <select id="list_id" class="form-control{{ $errors->has('list_id') ? ' is-invalid' : '' }}" name="list_id" value="{{ old('list_id') }}" required>
