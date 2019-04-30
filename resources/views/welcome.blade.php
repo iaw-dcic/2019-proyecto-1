@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
-<link type="text/css" href="{{ asset('css/login-register.css') }}" rel="stylesheet">
-
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
+    <div id="content-principal" class="container">
+        <div id="content-lists" class="row justify-content-center">
             @if(count($lists) >= 1)
             <div class="col-md-12">
                 <div class="accordion" id="accordionExample">
@@ -12,7 +10,7 @@
                     <div class="card">
                         <div data-toggle="collapse" data-target="#list{{ $list->id }}-card" class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button type="button" class="btn btn-link"><img class='avatarUser' src="../{{ $list->user_avatar }}" alt="avatar" width="18" height="18"> {{ $list->user_name }} has posted: <strong> {{ $list->name }} </strong></button>									
+                                <button type="button" class="btn btn-link"><img class='miniAvatar' src="../{{ $list->user_avatar }}" alt="avatar" width="18" height="18"> {{ $list->user_name }} has posted: <strong> {{ $list->name }} </strong></button>									
                             </h2>
                         </div>
                         <div id="list{{ $list->id }}-card" class="collapse" data-parent="#accordionExample">

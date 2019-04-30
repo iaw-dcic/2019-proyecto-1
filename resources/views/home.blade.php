@@ -1,18 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div id="content-principal" class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div id='banner-content' class="card">
                 <div class="card-body">
                     <div id='banner'>
+                        @if(auth()->user() && Route::current()->getName() == "home")
                         <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
                             @if(auth()->user()->avatar)
                                 <img class='avatarUser' src="../{{ auth()->user()->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
                             @endif
                         </a>
                         <h2 id='nameUser'>{{ auth()->user()->name }}</h2>
+                        @else
+                        <a href="#aboutModal" data-toggle="modal" data-target="#myModal">
+                            <img class='avatarUser' src="../../{{ $user->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
+                        </a>
+                        <h2 id='nameUser'>{{ $user->name }}</h2>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -31,6 +38,7 @@
                         </h2>
                     </div>
                     <div id="list{{ $list->id }}-card" class="collapse" data-parent="#accordionExample">
+                        @if(auth()->user() && Route::current()->getName() == "home")
                         <div class="modal-header">
                             <button onClick="addItem({{ $list->id }});" data-toggle="modal" data-target="#itemModal" type="button" class="btn btn-success">NEW ITEM</button>
 
@@ -41,6 +49,7 @@
                                 <button type="submit" class="btn btn-danger">DELETE LIST</button>
                             </form>
                         </div>
+                        @endif
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="list{{ $list->id }}" class="table table-list table-striped table-bordered" style="width:100%">
@@ -52,8 +61,10 @@
                                             <th>Publication Date</th>
                                             <th>Country</th>
                                             <th>Synopsis</th>
+                                            @if(auth()->user() && Route::current()->getName() == "home")
                                             <th class="content-options"></th>
                                             <th class="content-options"></th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,8 +76,10 @@
                                                 <td>{{ $item->publication_date }}</td>
                                                 <td>{{ $item->country_id }}</td>
                                                 <td>{{ $item->synopsis }}</td>
+                                                @if(auth()->user() && Route::current()->getName() == "home")
                                                 <td><button onClick="editItem({{ $item->id }});" data-toggle="modal" data-target="#itemEdit" class="editRow content-options btn btn-primary">EDIT</button></td>
                                                 <td><button class="deleteRow content-options btn btn-danger">DELETE</button></td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -87,15 +100,14 @@
         </div>
     </div>
             
-
+    @if(Route::current()->getName() == "home")
     <div id="content-more">
         <button data-toggle="modal" data-target="#listModal" id="btn-more" class="btn">
             <span>+</span>
         </button>
     </div>
+    @endif
 </div>
-
-
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -108,6 +120,7 @@
                 @csrf
                 <div class="modal-body">
                     <div id='profileInfo'>
+                    @if(Route::current()->getName() == "home")
                         @if(auth()->user()->avatar)
                             <a id="refImage">
                                 <img id='avatarEdit' class='avatarEdit' src="../{{ auth()->user()->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
@@ -115,22 +128,38 @@
                             </a>
                         @endif
                         <input class="my-form-control backlines" id="name" name='name' value='{{ auth()->user()->name }}' disabled>
+                    @elseif(Route::current()->getName() == "profile")
+                        <a id="refImage">
+                            <img id='avatarEdit' class='avatarEdit' src="../../{{ $user->avatar }}" alt="avatar" name="aboutme" width="140" height="140" class="img-circle">
+                        </a>
+                        <input class="my-form-control backlines" id="name" name='name' value='{{$user->name }}' disabled>
+                    @endif
+
                     </div>
                     <hr>
                     <div class="form-group row">
                         <label for="birthdate" class="col-sm-3 col-form-label title">BIRTHDATE:</label>
                         <div class="col">
+                        @if(Route::current()->getName() == "home")
                             @if(auth()->user()->birthdate == null)
                                 <input class="my-form-control backlines" id="birthdate" name='birthdate' value='undefined' disabled>
                             @else
                                 <input class="my-form-control backlines" id="birthdate" name='birthdate' value='{{ auth()->user()->birthdate }}' disabled>
                             @endif
+                        @elseif(Route::current()->getName() == "profile")
+                            @if($user->birthdate == null)
+                                <input class="my-form-control backlines" id="birthdate" name='birthdate' value='undefined' disabled>
+                            @else
+                                <input class="my-form-control backlines" id="birthdate" name='birthdate' value='{{ $user->birthdate }}' disabled>
+                            @endif
+                        @endif
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="country" class="col-sm-3 col-form-label title">COUNTRY:</label>
                         <div class="col">
                             <select name='country_id' id="country" class="my-form-control backlines editSelects" disabled>
+                            @if(Route::current()->getName() == "home")
                                 @if(auth()->user()->country_id == null)
                                     <option>undefined</option>
                                 @endif
@@ -141,6 +170,18 @@
                                     @endif
                                     <option value="{{$country->country_id}}">{{$country->country_name}}</option>
                                 @endforeach
+                            @elseif(Route::current()->getName() == "profile")
+                                @if($user->country_id == null)
+                                    <option>undefined</option>
+                                @endif
+                                @foreach($countries as $country)
+                                    @if($country->country_id == $user->country_id)
+                                        <option value="{{$country->country_id}}" selected>{{$country->country_name}}</option>
+                                        @continue
+                                    @endif
+                                    <option value="{{$country->country_id}}">{{$country->country_name}}</option>
+                                @endforeach
+                            @endif
                             </select>
                         </div>
                     </div>
@@ -148,6 +189,7 @@
                         <label for="genre" class="col-sm-3 col-form-label title">GENRE:</label>
                         <div class="col">
                             <select id="genre" name='genre_id' class="my-form-control backlines editSelects" disabled>
+                            @if(Route::current()->getName() == "home")
                                 @if(auth()->user()->genre_id == null)
                                     <option>undefined</option>
                                 @endif
@@ -158,6 +200,18 @@
                                     @endif
                                     <option value="{{$genre->id}}">{{$genre->name}}</option>
                                 @endforeach
+                            @elseif(Route::current()->getName() == "profile")
+                                @if($user->genre_id == null)
+                                    <option>undefined</option>
+                                @endif
+                                @foreach($genres as $genre)
+                                    @if($genre->id == $user->genre_id)
+                                        <option value="{{$genre->id}}" selected>{{$genre->name}}</option>
+                                        @continue
+                                    @endif
+                                    <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                @endforeach
+                            @endif
                             </select>
                         </div>
                     </div>
@@ -165,6 +219,7 @@
                         <label for="situation" class="col-sm-3 col-form-label title">EMOTIONAL SITUATION:</label>
                         <div class="col">
                             <select id="situation" name='situation_id' class="my-form-control backlines editSelects" disabled>
+                            @if(Route::current()->getName() == "home")
                                 @if(auth()->user()->situation_id == null)
                                     <option>undefined</option>
                                 @endif
@@ -175,12 +230,24 @@
                                     @endif
                                     <option value="{{$situation->id}}">{{$situation->name}}</option>
                                 @endforeach
+                            @elseif(Route::current()->getName() == "profile")
+                                @if($user->situation_id == null)
+                                    <option>undefined</option>
+                                @endif
+                                @foreach($situations as $situation)
+                                    @if($situation->id == $user->situation_id)
+                                        <option value="{{$situation->id}}" selected>{{$situation->name}}</option>
+                                        @continue
+                                    @endif
+                                    <option value="{{$situation->id}}">{{$situation->name}}</option>
+                                @endforeach
+                            @endif
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    @if(auth()->user())
+                    @if(auth()->user() && Route::current()->getName() == "home")
                         <button type="button" id="editButton" class="btn btn-primary" value="edit">Edit</button>
                     @endif
                     <button type="button" id='closeButton' class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -203,6 +270,7 @@
   </div>
 </div>
 
+@if(auth()->user())
 <div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -244,7 +312,9 @@
         </div>
     </div>
 </div>
+@endif
 
+@if(auth()->user())
 <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -305,7 +375,9 @@
         </div>
     </div>
 </div>
+@endif
 
+@if(auth()->user())
 <div class="modal fade" id="itemEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -366,7 +438,9 @@
         </div>
     </div>
 </div>
+@endif
 
+@if(auth()->user())
 <div class="modal fade" id="listEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -411,4 +485,5 @@
         </div>
     </div>
 </div>
+@endif
 @endsection

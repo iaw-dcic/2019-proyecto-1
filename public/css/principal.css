@@ -18,3 +18,8 @@
     text-align: center;
     width: 100px;
 }
+
+.miniAvatar{
+    margin-right: 8px;
+    border-radius: 50%;
+}

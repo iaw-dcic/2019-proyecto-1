@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,16 @@ Route::post('create', 'Auth\RegisterController@create')->name('create');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/profiles', function(){
+    return view("profiles");
+})->name('profiles');
+
+Route::get('/about', function(){
+    return view("about");
+})->name('about');
+
+Route::get('/profile/{user_id}', 'DashboardController@getProfile')->name('profile');
+
 Route::prefix('login')->group(function () {
     Route::get('/{provider}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
     Route::get('/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.provider.callback');
@@ -32,5 +44,7 @@ Route::post('deletelist/{list_id}', 'HomeController@deleteList')->name('deleteli
 Route::post('createitem', 'HomeController@createItem')->name('createitem');
 Route::post('edititem', 'HomeController@editItem')->name('edititem');
 Route::post('deleteitem', 'HomeController@deleteItem')->name('deleteitem');
+
+Route::get('findusers', 'DashboardController@findUsers')->name('findusers');
 
 Route::get('getcountries', 'HomeController@getCountries');
