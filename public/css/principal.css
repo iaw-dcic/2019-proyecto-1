@@ -1,0 +1,25 @@
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 22px;
+    height: 22px;
+    padding-top: 0;
+}
+
+#search{
+    height: 28px;
+    margin: -8px;
+}
+
+.navbar-collapse{
+    text-align: center;
+}
+
+.content-options{
+    text-align: center;
+    width: 100px;
+}
+
+.miniAvatar{
+    margin-right: 8px;
+    border-radius: 50%;
+}

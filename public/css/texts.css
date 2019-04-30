@@ -1,0 +1,11 @@
+#appName{
+    font-weight: bold;
+    font-size: x-large;
+    /* font-style: italic; */
+    font-variant: small-caps;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 110%;
+}
