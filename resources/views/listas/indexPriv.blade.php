@@ -8,11 +8,11 @@
     <div>
         
         <!-- boton agregar lista -->
-        <a href="{{ action('ListasController@create') }}" class="btn btn-primary">Agregar Lista</a>
+        <a href="{{ action('ListasController@create') }}" class="btn btn-primary col-12 col-md-4">Agregar Lista</a>
 
        
         <!-- boton para ver listas  publicas-->
-        <a href="{{ action('ListasController@index') }}" class="btn btn-primary ml-5">Ver Listas Públicas</a>
+        <a href="{{ action('ListasController@index') }}" class="btn btn-primary col-12 col-md-4 ml-0 ml-md-5">Ver Listas Públicas</a>
     </div>
 
     <br> <br>

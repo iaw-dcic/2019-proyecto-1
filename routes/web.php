@@ -56,6 +56,11 @@
     */
     Route::resource('users','UsuariosController');
 
+
+    //route readme
+    Route::get('/readme','HomeController@readme');
+
+
     //evitar error al recibir por url /listas/canciones/1 por ejemplo
     Route::any('{query}',function(){
         return redirect('/');

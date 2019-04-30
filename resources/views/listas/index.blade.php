@@ -3,19 +3,13 @@
 @section('title','MyMusic: Listas canciones')
 
 @section('content')
-
-
-    
-
-
-
     <br>
     <div>
         <!-- boton agregar lista -->
-        <a href="{{ action('ListasController@create') }}" class="btn btn-primary">Agregar Lista</a>
+        <a href="{{ action('ListasController@create') }}" class="btn btn-primary col-12 col-md-4">Agregar Lista</a>
 
         <!-- boton para ver listas  privadas-->
-        <a href="{{ action('ListasController@indexPriv') }}" class="btn btn-primary  ml-5">Ver Listas Privadas</a>
+        <a href="{{ action('ListasController@indexPriv') }}" class="btn btn-primary col-12 col-md-4 ml-0 ml-md-5">Ver Listas Privadas</a>
 
     </div>
 
