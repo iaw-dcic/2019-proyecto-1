@@ -49,7 +49,7 @@
                                     {{ __('Guardar') }}
                                 </button>
 
-                                <a href="{{ route('miPerfil/{{ Auth::user()->id)'}}"><button class="btn btn-primary" type="button">Volver</button></a>
+                                <a href="{{ url('/') }}/miPerfil/{{ Auth::user()->id}}"><button class="btn btn-primary" type="button">Volver</button></a>
                             </div>
                         </div>
                     </form>
