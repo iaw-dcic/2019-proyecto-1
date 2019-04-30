@@ -3,7 +3,7 @@
 @section('pageTitle', 'Perfil Usuario')
 
 @section('estilos')
-    <link rel='stylesheet' href='/css/perfil/miPerfil.css'>
+    <link rel='stylesheet' href='/css/perfil/perfilPublico.css'>
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 @stop
 

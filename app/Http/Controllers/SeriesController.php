@@ -120,10 +120,10 @@ class SeriesController extends Controller
         return redirect($redireccion);
     }
 
-    public function actualizarIdLista(Request $request, $id)
+    public function actualizarIdLista(Request $request)
     {
-        $serie = Series::find($id);
-        $serie->id_lista=$request->id;
+        $serie = Series::find($request->id_serie);
+        $serie->id_lista=$request->idLista;
         $serie->save();
         $redireccion='/miPerfil/'.$serie->id_usuario;
         return redirect($redireccion);

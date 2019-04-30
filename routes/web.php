@@ -23,9 +23,9 @@ Route::post('/editarPerfil', 'UserController@editarPerfil')-> middleware('auth')
 
 Route::get('/perfilPublico/{id}', 'ControladorVistas@perfilPublico');
 
-Route::get('/agregarSeries/{id}', 'ControladorVistas@agregarSeries')->middleware('auth');
+Route::get('/asociarLista/{id}', 'ControladorVistas@asociarLista')->middleware('auth');
 
-Route::post('/actualizarIdLista/{id}', 'SeriesController@actualizarIdLista')-> middleware('auth');
+Route::post('/actualizarIdLista', 'SeriesController@actualizarIdLista')-> middleware('auth');
 
 /**Route correspondiente al inicio de sesion y registro */
 Auth::routes();

@@ -35,11 +35,11 @@ class ControladorVistas extends Controller
 		return view('perfil.perfilPublico', ['lista'=> $lista],['usuario'=> $user]);
 	}
 
-	public function agregarSeries(Request $request)
+	public function asociarLista(Request $request)
 	{
-		$lista=ListaUsuarios::find($request->id);
-		$user=User::find($lista->idUsuario);
-		$serie=$user->series;
-		return view ('listas.agregarSeries',['serie'=> $serie],['lista'=> $lista]);
+		$serie=Series::find($request->id);
+		$user=User::find($serie->id_usuario);
+		$lista=$user->listas;
+		return view ('series.asociarLista',['serie'=> $serie],['lista'=> $lista]);
 	}
 }
