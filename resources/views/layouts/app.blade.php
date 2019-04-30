@@ -28,7 +28,7 @@
 <body>
 
     <div  class="content">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar  fixed-top navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Haiku') }}

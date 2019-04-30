@@ -2,7 +2,15 @@
 
 @section('content')
 
+<div class="parallax"></div>
+
+
     <div class="container">
+
+
+
+    <
+
      
       @if (! empty($users))
 
