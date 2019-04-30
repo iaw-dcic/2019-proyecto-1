@@ -4,13 +4,16 @@
    
    <div class="col-md-8" style="background:lightblue">
    @if ($errors->any())
-    <div class="alert alert-danger">
+    <div class="alert alert-warning alert-dismissible fade show">
     <h4> Corrige los errores: </h4>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+         </button>
     </div>
 @endif
       @foreach($listas as $lista)

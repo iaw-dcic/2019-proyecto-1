@@ -26,7 +26,7 @@ class RecetaRequest extends FormRequest
         return [
         'nombre' => 'required|max:255',
         'categoria' => 'required',
-        'descr' => 'required',
+        'descr' => 'required|max:191',
         'pasos' => 'required|max:500',
         'lista' => 'required'
         ];
@@ -39,6 +39,7 @@ class RecetaRequest extends FormRequest
             'descr.required' => 'Descripcion es un campo obligatorio.',
             'pasos.required' => 'Pasos es un campo obligatorio.',
             'pasos.max' => 'No se puede mas de 500 caracteres.',
+            'descr.max' => 'No se puede mas de 191 caracteres.',
             'lista.required' => 'Lista es un campo obligatorio.'
         ];
     }
