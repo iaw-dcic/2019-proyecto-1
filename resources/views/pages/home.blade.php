@@ -31,7 +31,12 @@
 <!-- Newsletter section -->
 <section class="newsletter-section">
     <div class="container text-white">
-        <h3>Crea tu primera lista <a href="/" style="color:wheat">acá</a></h3>
+        @auth
+            <h3>Crea una lista acá <a href="/" style="color:wheat">acá</a></h3>
+        @endauth
+        @guest
+            <h3><a href="{{url('register')}}" style="color:wheat">Registrate</a> y comenzá a crear tus listas!</h3>
+        @endguest
     </div>
 </section>
 <!-- Newsletter section end -->
