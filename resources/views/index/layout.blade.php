@@ -42,7 +42,7 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="/readme">Readme</a>
+              <a class="nav-link" href="/show/readme">Readme</a>
             </li>
             <!-- Authentication Links -->
             @guest
