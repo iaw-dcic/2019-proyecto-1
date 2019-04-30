@@ -47,7 +47,7 @@ return [
     'facebook' => [
         'client_id' => '1073800346341089',
         'client_secret' => 'fd33d7ec2c14faf23d5c969503b82477',
-        'redirect' => ' https://recetario-iaw.herokuapp.com/auth/facebook/callback'
+        'redirect' => 'https://recetario-iaw.herokuapp.com/auth/facebook/callback'
     ],
     'google' => [
         'client_id' => '604013360933-pl4tbrflsantk3aba276pgpk18d2livv.apps.googleusercontent.com',
