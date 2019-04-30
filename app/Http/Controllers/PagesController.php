@@ -19,6 +19,7 @@ class PagesController extends Controller
     public function getHome()
     {
         $users = user::all();
+        $paquetes = [];
         $user_auth = Auth::user();
         $id_reg = null;
         if($user_auth != null)
