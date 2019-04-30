@@ -12,9 +12,10 @@
                     <div class="card-header">{{ __('cambia los datos de tu juego aquí!') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{route('gamePatch', [$juegoInfo[0]->list_id , $juegoInfo[0]->id])}}">
+                        <form method="POST" action="/lists/{{$juegoInfo[0]->list_id}}/games/{{$juegoInfo[0]->id}}">
                             @csrf
                             @method('PATCH')
+                            <input type="hidden" name="gameId" value="{{$juegoInfo[0]->id}}">
                             <div class="form-group">
                                 <label for="game_title">Titulo del Juego</label>
                                 <input type="text" class="form-control" id="game_title" aria-describedby="listHelp" placeholder="Ingresa el nombre del juego" name="title" required value="{{$juegoInfo[0]->name}}">
@@ -35,6 +36,7 @@
                                 <button type="submit" class="btn btn-primary" >Guardar Datos Juego </button>
                             </div>
 
+                            
 
                         @if($errors->any())
                             <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -53,6 +55,12 @@
                             </div>
                         @endif
                         </form>
+                        <form method="POST" action="/lists/{{$juegoInfo[0]->list_id}}/games/{{$juegoInfo[0]->id}}">
+                            @method('DELETE')
+                            @csrf
+                            <input type="hidden" name="gameId" value="{{$juegoInfo[0]->id}}">
+                            <button type="submit" class="btn btn-danger" >Borrar Juego </button>
+                            </form>
                     </div>
                 </div>
             </div>

@@ -97,8 +97,7 @@ class listsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(int $id)
-    {
-        
+    {   
         $lista = DB::table('listas')->where('id',$id)->get();
         $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
         $idUsuario = Auth::user()->id;
@@ -145,7 +144,7 @@ class listsController extends Controller
         $lista->description=Input::get('listaDescripcion');
         $lista->public=$public;
         $lista->save();
-        return view('profiles.show')->with('name',$userName);
+        return redirect('/lists');
     
     }
 
@@ -158,10 +157,10 @@ class listsController extends Controller
     public function destroy(int $ListaId)
     {
         $this->middleware('auth');
-        $lista = Lista::findOrFail(request('listaId'));
-        $juegos = DB::table('juegos')->where('list_id',$lista->id)->get();
+        
+        $lista = Lista::findOrFail(request('listId'));
         $lista->delete();
-        return redirect('lists');
+        return redirect('/lists');
     }
 
 }

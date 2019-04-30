@@ -29,7 +29,7 @@
       <div class="btn-toolbar action_buttons text-center" role="toolbar" aria-label="game Toolbar" >
         <div class="btn-group mr-2 action_buttons text-center" role="group" aria-label="game Actions">
           <a href="/lists/{{$idLista}}" class="btn btn-info btn-lg">Volver a la lista</a>
-          <a href="{{route('gameEdit',[ $datosJuego[0]->name, $idLista  ])}}" class="btn btn-info btn-lg"> editar Datos de {{$datosJuego[0]->name}}</a>
+          <a href="{{route('gameEdit',[ $datosJuego[0]->id, $idLista  ])}}" class="btn btn-info btn-lg"> editar Datos de {{$datosJuego[0]->name}}</a>
         </div>
       </div>
     </div>

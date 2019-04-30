@@ -21,7 +21,6 @@ class ListGamesController extends Controller
         $juego->release_date=Input::get('release_date');
         
         $juego->save();
-        //$lista->addGame(request('name','genre','company','release_date'));
         return back();
     }
 
@@ -31,10 +30,9 @@ class ListGamesController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(String $nombreJuego)
+    public function edit(int $nombreJuego)
     {
-
-        $juegoInfo = DB::table('juegos')->where('name',$nombreJuego)->get();
+        $juegoInfo = DB::table('juegos')->where('id',$nombreJuego)->get();
         return view('lists.games.edit', compact('juegoInfo'));
     }
 
@@ -45,16 +43,14 @@ class ListGamesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(){
-
         $juego = Juego::findOrFail(request('gameId'));
-        $juego->name =Input::get(request('title'));
-        $juego->genre =Input::get(request('genre'));
-        $juego->company =Input::get(request('company'));
-        $juego->release_date =Input::get(request('release_date'));
+        $juego->name = request('title');
+        $juego->genre =request('genre');
+        $juego->company =request('company');
+        $juego->release_date =request('release_date');
         $juego->save();
         $juegoId = $juego->list_id;
-        dd('estoy en el update');
-        return view('lists.games.show')->with('name',$userName);
+        return redirect('/lists');
     }
 
     public function show(int $idLista, int $idJuego)
@@ -71,12 +67,13 @@ class ListGamesController extends Controller
       /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Juego  $juego
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Juego $juego)
+    public function destroy(int $juegoId)
     {
-
-        return redirect('lists.index');
+        $this->middleware('auth');
+        $juego = Juego::findOrFail(request('gameId'));
+        $juego->delete();
+        return redirect('/lists');
     }
 }

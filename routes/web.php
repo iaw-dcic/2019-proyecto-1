@@ -27,9 +27,11 @@ Route::resources([
 
 Route::post('/lists','listsController@store');
 Route::patch('/lists/{list}/edit', 'listsController@update');
+Route::delete('/lists/{list}', 'listsController@destroy')->name('DeleteList');
 
 Route::resource('profiles','profileController')->only('show','edit','update','destroy');
 Route::delete('/profiles/{profile}', 'profileController@destroy')->name('DeleteUser');
+
 
 Route::get('/publicLists', 'publicListsController@index')->name('public_Lists');
 

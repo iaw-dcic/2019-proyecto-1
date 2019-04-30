@@ -12,7 +12,6 @@
 <div class="jumbotron jumbotron-fluid welcome_info">
   <div class="container">
   @if(Auth::user()->name == $name)
-
     <h1 class="display-4">Bienvenido {{$name}} {{$surname}}</h1>
     <p class="lead">Bienvenido a tu página de usuario, desde aquí podrás consultar tus listas y juegos</p>
     <p> tu e-mail es: {{Auth::user()->email}}</p>
