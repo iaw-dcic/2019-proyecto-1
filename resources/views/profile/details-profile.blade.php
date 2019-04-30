@@ -29,9 +29,9 @@
                     @foreach ($listas->libros as $libro)
                         <tr>
                         <th scope="row border"> </th>
-                        <td>{{$libro->Titulo}}</td>
-                        <td>{{$libro->Genero}}</td>
+                        <td>{{$libro->Titulo}}</td>                        
                         <td>{{$libro->Autor}}</td>
+                        <td>{{$libro->Genero}}</td>
                         </tr>          
                     @endforeach 
                 </tbody>
