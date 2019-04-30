@@ -106,7 +106,7 @@
                             @method('DELETE')      
                             <button type="submit" id="botonEliminar" class="btn-sm btn-danger mt-3"  onclick="return confirm('¿Quiere borrar la lista?')"><i class="far fa-trash-alt"></i></button>
                         </form>
-                        <a class="btn-sm btn-info botoninput" href="/agregarSeries/{{$listas->id}}"><i class="fas fa-plus"></i></a>
+                        <a class="btn-sm btn-info botoninput" href="{{ url('/') }}/agregarSeries/{{$listas->id}}"><i class="fas fa-plus"></i></a>
                     </td>
                 @endforeach
                 </tr>

@@ -67,7 +67,7 @@
                 <tr>
                     <td>{{ $listas->nombre_lista}}</td>
                     <td>{{ $listas->usuario->name}}</td>
-                    <td><a class="btn-sm btn-info botoninput" href="/perfilPublico/{{ $listas->usuario->id}}"> Ver Perfil</a></td>
+                    <td><a class="btn-sm btn-info botoninput" href="{{ url('/') }}/perfilPublico/{{ $listas->usuario->id}}"> Ver Perfil</a></td>
                 @endforeach
                 </tr>
             </tbody>

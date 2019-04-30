@@ -48,6 +48,6 @@
             </tbody>
         </table>
 
-        <a href="/"><button class="botonGuardar" type="button">Volver</button></a>
+        <a href="{{ url('/') }}"><button class="botonGuardar" type="button">Volver</button></a>
     </div>
 @stop
