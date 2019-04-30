@@ -30,8 +30,8 @@ class PartidoController extends Controller
      */
     public function index()
         {
-            $estados = State::get('visibilidad');
-            $categorias = Category::get('category');
+            $estados = state::get('visibilidad');
+            $categorias = category::get('category');
             return view('partido',['categories' => $categorias],['estados'=>$estados]);
         }
 
@@ -50,7 +50,7 @@ class PartidoController extends Controller
             ]);
     
             //Crear Partido
-            $partido = new Partido;
+            $partido = new partido;
             $partido->name = $data['name'];
             $partido->place= $data['place'];
             $partido->category=$data['category'];

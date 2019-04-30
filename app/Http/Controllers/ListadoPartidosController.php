@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Partido;
-use App\Player;
-use App\Category;
-use App\State;
+use App\partido;
+use App\player;
+use App\category;
+use App\state;
 use Auth;
 use App\Rules\validarVisibilidad;
 
@@ -31,7 +31,7 @@ class ListadoPartidosController extends Controller
      */
     public function index()
     {
-        $partidos = Partido::where('user_id', Auth::user()->id)->get();
+        $partidos = partido::where('user_id', Auth::user()->id)->get();
         
         return view('listadoPartidos', ['partidos' => $partidos]);
     }
@@ -39,12 +39,12 @@ class ListadoPartidosController extends Controller
     public function borrarPartido($id)
     {
 
-        $partido = Partido::where('id', $id)->get()->first();
+        $partido = partido::where('id', $id)->get()->first();
         if (Auth::user()->id != $partido->user_id) {
             abort(403, 'No está autorizado para realizar la acción');
         }
 
-        $jugadores = Player::where('id_partido', $partido->id)->get();
+        $jugadores = player::where('id_partido', $partido->id)->get();
         foreach ($jugadores as $jugador) {
             $jugador->delete();
         }
@@ -56,9 +56,9 @@ class ListadoPartidosController extends Controller
 
     public function editarPartido($id)
     {
-        $estados = State::get('visibilidad');
-        $partido = Partido::findOrFail($id);
-        $categorias = Category::get('category');
+        $estados = state::get('visibilidad');
+        $partido = partido::findOrFail($id);
+        $categorias = category::get('category');
         $jugadores = player::where('id_partido', $id)->get();
 
         return view('/edit', ['categories' => $categorias, 'estados' => $estados, 'partido' => $partido, 'jugadores' => $jugadores]);
@@ -68,7 +68,7 @@ class ListadoPartidosController extends Controller
     {
 
         $user = Auth::user();
-        $partido = Partido::where('id', $id)->get()->first();
+        $partido = partido::where('id', $id)->get()->first();
         if ($user->id != $partido->user_id) {
             abort(403, 'No está autorizado para realizar la acción');
         }
@@ -114,15 +114,15 @@ return redirect('/listadoPartidos');
 
 public function borrarJugador($id)
 {
-    $jugador = Player::where('id', $id)->get()->first();
-    $idpartido = (Player::where('id', $id)->get()->first())->id_partido;
+    $jugador = player::where('id', $id)->get()->first();
+    $idpartido = (player::where('id', $id)->get()->first())->id_partido;
     if ($jugador != null)
         $jugador->delete();
 
 
-    $estados = State::get('visibilidad');
-    $partido = Partido::findOrFail($idpartido);
-    $categorias = Category::get('category');
+    $estados = state::get('visibilidad');
+    $partido = partido::findOrFail($idpartido);
+    $categorias = category::get('category');
     $jugadores = player::where('id_partido', $idpartido)->get();
 
     return view('/edit', ['categories' => $categorias, 'estados' => $estados, 'partido' => $partido, 'jugadores' => $jugadores]);
