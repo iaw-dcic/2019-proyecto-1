@@ -17,7 +17,7 @@ class CreateListItemsTable extends Migration
 			$table->bigIncrements('id');
 			$table->unsignedInteger('user_list_id');
 			$table->string('name');
-			$table->text('description');
+			$table->string('description')->default('');
 			$table->enum('priority', ['low', 'medium', 'high']);
             $table->timestamps();
         });

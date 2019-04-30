@@ -11,8 +11,16 @@ class UserList extends Model{
 		return $this->hasMany(listItem::class);
 	}
 
+	public function likes(){
+		return $this->hasMany(Like::class);
+	}
+
 	public function addItem($attributes){
 		$this->items()->create($attributes);
+	}
+
+	public function addLike($attributes){
+		$this->likes()->create($attributes);
 	}
 
     public function user(){

@@ -6,7 +6,7 @@
 @endsection
 
 @section('body')
-	<div id="homepagebody">
+	<div class="homepagebody">
 
 		<nav class="navbar navbar-default fadeInDown navbar-fixed-top" >
 			<div class="container-fluid">
@@ -19,9 +19,6 @@
 					<li class="nav-item active" id="top-voted">
 						<a>Top voted</a>
 					</li>
-					<li class="nav-item" id="most-viewed">
-						<a>Most viewed</a>
-					</li>
 					<li class="nav-item" id="new-lists">
 						<a>New lists</a>
 					</li>
@@ -30,13 +27,14 @@
 				<!-- Right Side Of Navbar -->
 				<ul class="nav navbar-nav navbar-right ml-auto">
 					<li>
-						<form class="navbar-form" role="search">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search" name="q">
-							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						<form method="POST" action="/search" class="navbar-form" role="search">
+							@csrf
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search" name="q">
+								<div class="input-group-btn">
+									<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+								</div>
 							</div>
-						</div>
 						</form>
 					</li>
 					<!-- Authentication Links -->

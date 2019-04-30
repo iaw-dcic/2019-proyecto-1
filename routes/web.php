@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/readme', 'HomeController@readme');
+
+Route::post('/search', 'SearchController@search');
+
 Route::get('auth/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
@@ -19,6 +23,7 @@ Route::get('/profile/{user}/edit', 'UserController@edit');
 
 Route::resource('/{user}/myLists', 'UserListsController');
 
+Route::get('/{user}/myLists/{myList}/items/create', 'ListItemsController@create');
 Route::post('/{user}/myLists/{myList}/items', 'ListItemsController@store');
 Route::delete('/{user}/myLists/{myList}/items/{item}', 'ListItemsController@destroy');
 Route::get('/{user}/myLists/{myList}/items/{item}/edit', 'ListItemsController@edit');
@@ -30,5 +35,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@redHome')->name('home');
 
 Route::get('/topVoted', 'HomeController@topVoted');
-Route::get('/mostViewed', 'HomeController@mostViewed');
 Route::get('/newLists', 'HomeController@newLists');
+
+Route::get('/like/{list}', 'LikesController@like');

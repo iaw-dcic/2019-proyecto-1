@@ -12,8 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
         //$this->middleware('auth');
     }
 
@@ -22,6 +21,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+	public function readme(){
+		return view('readme');
+	}
+
     public function index()
     {
         return view('home');
@@ -32,13 +37,13 @@ class HomeController extends Controller
 	}
 
 	public function topVoted(){
-		return response()->json(['content'=> view('home.homeposts', ['lists' => []])->render()]);
-	}
-	public function mostViewed(){
-		return response()->json(['content'=> view('home.homeposts', ['lists' => []])->render()]);
-	}
-	public function newLists(){
-		$lists = UserList::orderBy('created_at', 'desc')->where('public', true)->take(10)->get();
+		$lists = UserList::withCount('likes')->orderBy('likes_count', 'desc')
+			->where('public', true)->take(15)->get();
 		return response()->json(['content'=> view('home.homeposts', compact('lists'))->render()]);
 	}
+	public function newLists(){
+		$lists = UserList::orderBy('created_at', 'desc')->where('public', true)->take(15)->get();
+		return response()->json(['content'=> view('home.homeposts', compact('lists'))->render()]);
+	}
+
 }

@@ -21,22 +21,6 @@ $("#top-voted").click(function(e){
 	});
 });
 
-$("#most-viewed").click(function(e){
-
-	e.preventDefault();
-
-	$.ajax({
-		type:'GET',
-		url:'/mostViewed',
-		success:function(data){
-			$("#top-voted").removeClass("active");
-			$("#new-lists").removeClass("active");
-			$("#most-viewed").addClass("active");
-			$("#content").html(data.content);
-		}
-	});
-});
-
 $("#new-lists").click(function(e){
 
 	e.preventDefault();

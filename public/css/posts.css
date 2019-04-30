@@ -11,6 +11,32 @@ ul{
 	text-align: center;
 }
 
+#editlink{
+	text-align: right;
+	align-content: right;
+	float:right;
+	cursor: pointer;
+}
+
+.text-muted{
+	margin-left: 5px;
+	font-style: italic;
+}
+
+#list-info{
+	margin-top: 5px;
+	margin-left: 50px;
+	text-align: left;
+}
+
+.list-title{
+	font-size: 20px;
+}
+
+#likes{
+	margin-top: 5px;
+}
+
 /**
  * Profile image component
  */

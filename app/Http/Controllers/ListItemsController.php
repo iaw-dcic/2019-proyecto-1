@@ -14,17 +14,30 @@ class ListItemsController extends Controller{
         $this->middleware('auth');
 	}
 
+	public function create($username, $listid){
+		$useraux = User::where('username', $username)->get();
+		$user = $useraux->first();
+		$list = UserList::findOrFail($listid);
+		if($user != null) {
+			if(Auth::user()->id == $user->id)
+				return view('listitems.create', compact('user', 'list'));
+			else abort('403', 'Unauthorized access');
+		} else abort('404');
+	}
+
 	public function edit($username, $listid, $itemid){
 		$useraux = User::where('username', $username)->get();
 		$user = $useraux->first();
-		if($user->id == Auth::user()->id){
-			$list = UserList::findOrFail($listid);
-			$item = ListItem::findOrFail($itemid);
-			return view('listitems.edit', compact('user', 'list', 'item'));
-		}
-		else{
-			abort('403', 'Unauthorized access');
-		}
+		if($user != null){
+			if($user->id == Auth::user()->id){
+				$list = UserList::findOrFail($listid);
+				$item = ListItem::findOrFail($itemid);
+				return view('listitems.edit', compact('user', 'list', 'item'));
+			}
+			else{
+				abort('403', 'Unauthorized access');
+			}
+		} else abort('404');
 	}
 
 	public function update($username, $listid, $itemid){
@@ -33,21 +46,20 @@ class ListItemsController extends Controller{
 			'priority' => 'required',
 			'description' => '']);
 		$item->update($attributes);
-		return redirect('/'.$username.'/myLists/'.$listid);
+		return redirect('/'.$username.'/myLists');
 	}
 
-    public function store($userid, $id){
+    public function store($username, $id){
 		$userList = UserList::findOrFail($id);
 		$attributes = request()->validate(['name' => 'required',
 			'priority' => 'required',
 			'description' => '']);
-
 		$userList->addItem($attributes);
-		return back();
+		return redirect('/'.$username.'/myLists');
 	}
 
-	public function destroy($userid, $listid, $id){
+	public function destroy($username, $listid, $id){
 		ListItem::findOrFail($id)->delete();
-		return back();
+		return redirect('/'.$username.'/myLists');
 	}
 }

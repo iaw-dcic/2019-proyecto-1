@@ -13,13 +13,23 @@ class UserListsController extends Controller {
     public function index($username){
 		$useraux = User::where('username', $username)->get();
 		$user = $useraux->first();
-        return view('userlists.index', compact('user'));
+		if($user!=null)
+			return view('userlists.index', compact('user'));
+		else {
+			abort('404');
+		}
 	}
 
     public function create($username){
 		$useraux = User::where('username', $username)->get();
 		$user = $useraux->first();
-        return view('userlists.create', compact('user'));
+		if($user!=null){
+			if(Auth::user()->id == $user->id)
+				return view('userlists.create', compact('user'));
+			else {
+				abort('403', 'Unauthorized access');
+			}
+		} else abort('404');
     }
 
     public function store($username){
@@ -42,7 +52,10 @@ class UserListsController extends Controller {
 	}
 
     public function update($username, $id){
-        $list = UserList::findOrFail($id);
+		$list = UserList::findOrFail($id);
+		request()->validate([
+			'list_name' => ['required', 'min:3'],
+		]);
 		$list->list_name = request('list_name');
 		request('public') == "on" ? 1 : 0;
 		$list->public = request('public') == "on" ? 1 : 0;
@@ -58,12 +71,18 @@ class UserListsController extends Controller {
     public function edit($username, $id){
 		$useraux = User::where('username', $username)->get();
 		$user = $useraux->first();
-		if($user->id == Auth::user()->id){
-			$list = UserList::findOrFail($id);
-			return view ('userlists.edit', compact('user', 'list'));
-		}
-		else{
-			abort('403', 'Unauthorized access');
-		}
-    }
+		$list = UserList::findOrFail($id);
+		if($user!= null){
+			if($user->id ==
+				$list->user->id){
+				return view ('userlists.edit', compact('user', 'list'));
+			}
+			else{
+				abort('403', 'Unauthorized access');
+			}
+		}else
+			abort('404', 'The user in the url is invalid');
+	}
+
+
 }
