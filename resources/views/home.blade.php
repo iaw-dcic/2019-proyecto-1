@@ -63,7 +63,7 @@
                             <td>{{$task->editorial}}</td>
                             <td>{{$task->privacy}}</td>
                             <td>
-                                <form  >
+                                <form method= "POST" action="{{route('changeVisibility',$task->id)}}">
                                     @csrf
                                     <button class="btn btn-outline-dark" >Change Privacy</button>
                                 </form>

@@ -48,6 +48,7 @@ class HomeController extends Controller{
       //ACA TENGO QUE DEVOLVER LA VISTA CON LOS DATOS 
         $user = User::where('id',auth()->id())->get()[0];
         $task = new Task;
+        //$task->id = $request->id;
         $task->cod = $request->cod;
         $task->title = $request->title;
         $task->author = $request->author;
@@ -66,7 +67,6 @@ class HomeController extends Controller{
     protected function getTable(){
 
         $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
-
         return view('home', ['tasks' => $tasks]);
     }
 
@@ -81,25 +81,26 @@ class HomeController extends Controller{
 
     protected function changeVisibility($id){
 
-       // dd($id);
+        $task = Task::where('id',$id)->get(['id','cod','title','author','editorial','privacy','owner_id']);
 
-        $tasks = Task::where('id',$id)->get(['privacy']);
 
-        if($tasks){
+        if($task){
 
-            switch($tasks->privacy){
+            switch($task->all()[0]->privacy){
               case 'Public':
-                  $tasks->update(['privacy'=> 'Private']);      
+                  Task::where('id',$id)->update(['privacy'=> 'Private']);      
                   break;
               case 'Private':
-                  $tasks->update(['privacy'=> 'Public']);          
+                  Task::where('id',$id)->update(['privacy'=> 'Public']);          
                   break;
           }
         }
 
+        
+
         $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
         
-        return view('home', compact('task'));
+        return view('home', compact('tasks'));
 
         
     }

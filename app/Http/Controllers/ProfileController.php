@@ -17,7 +17,7 @@ class ProfileController extends Controller{
             return view('/profile',compact('user'));
         }
         else{
-            return view('/profile');
+            return redirect('/');
         }
     }
 
@@ -31,6 +31,8 @@ class ProfileController extends Controller{
     protected function showPublicProfile($id){
 
         $user = user::findOrFail($id);
+
+        
         return view('profile',compact('user'));
     
     }

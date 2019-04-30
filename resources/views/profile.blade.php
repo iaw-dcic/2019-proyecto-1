@@ -11,10 +11,12 @@
         <p class="lead">e-mail: {{$user->email}}</p>
         <p class="lead">nick: {{$user->nick}}</p>
         <hr class="my-5">
+        @if($user->id == auth()->id())
         <p>Puede editar su perfil haciendo click en el siguiente enlace</p>
         <a class="btn btn-outline-dark btn-lg" href="#" role="button" onclick="location.href='/profile/{{$user->id}}/edit';">
             {{ __('Edit profile') }}
         </a>
+        @endif
     </div>
 
     <hr />
