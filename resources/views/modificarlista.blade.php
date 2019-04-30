@@ -34,7 +34,7 @@
                                 <th scope="row">{{ $pelicula->nombre}}</th>
                                 <td>{{ $pelicula->descripcion}}</td>
                                 <td>{{ $pelicula->genero}}</td>
-                                <td><a type="button" class="btn btn-primary" href="/lista/get/{{$lista->id}}"><i class="fas fa-trash"></i></a></td>
+                                <td><a type="button" class="btn btn-primary" href="/pelicula/remove/{{$pelicula->id}}"><i class="fas fa-trash"></i></a></td>
                             </tr>
                         @endforeach
                         

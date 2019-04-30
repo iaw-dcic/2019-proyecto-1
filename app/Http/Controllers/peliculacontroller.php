@@ -31,4 +31,14 @@ class peliculacontroller extends Controller
     	return "PIMPIM";
     
     }
+    public function eliminarpelicula($id){
+    	$usuario = Auth::user()->id;
+    	$pelicula =\App\pelicula::find($id); 
+    	$lista = \App\lista::find($pelicula->listaid);
+    	if($lista->userid==$usuario){
+    		$pelicula->delete();
+    		return redirect()->route('modificarlista',[$lista->id]);
+    	}else
+    		return "ERROR: no se puede eliminar una pelicula que no te pertenece";
+    }
 }

@@ -32,8 +32,15 @@ class listacontroller extends Controller
     public function eliminarlista($id){
     	$usuario = Auth::user()->id;
     	$lista = \App\lista::find($id);
-    	if($lista->userid==$usuario)
-    		return "ELIMINE LA LISTA";
+    	$peliculas = \App\pelicula::where(['listaid'=>$id])->get();
+    	if($lista->userid==$usuario){
+    		
+    		foreach ($peliculas as $peli) {
+    			$peli->delete();
+    		}
+    		$lista->delete();
+    		return redirect()->route('miperfil');
+    	}
     	else
     		return "ERROR: no se puede eliminar una lista que no te pertenece";
 
