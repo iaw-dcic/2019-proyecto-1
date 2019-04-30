@@ -16,7 +16,7 @@
         @foreach ($collec as $colec)
         <div class="col-md-4">
           <div class="col mb-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
               <div class="card-body">
                 <h5 class="card-title">{{$colec->title}}</h5>
                 <a href="/welcome/profile/{{$colec->user->id}}"> {{$colec->user->name}}</a>

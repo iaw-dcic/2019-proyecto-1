@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Collection;
-use App\Book;
+
 
 class CollectionController extends Controller
 {
@@ -18,6 +18,13 @@ class CollectionController extends Controller
 
     public function store()
     {
+     
+    //     $this->validate(request(), [
+    //         'titulo' => 'required|max:255',
+    //       'categoria' => 'required',
+    //       'descrip' => 'required',
+    //   ]);
+
         $colecc = new Collection();
         $colecc->title = request('title');
         $colecc->category = request('category');
@@ -55,43 +62,58 @@ class CollectionController extends Controller
         return view('editCollection', compact('collec'));
     }
 
-    // public function update($id){
-    //     $coleccion = Collection::where('id', '=', $id)->first();
+    public function update($id){
+        $coleccion = Collection::find($id);
   
-    //     if (request('name') == '')
-    //   {
-    //       $coleccion->name = auth()->user()->name;
-    //   }
-    //   else
-    //   {
-    //       $coleccion->name = request('name');
-    //   }
-  
-    //   if (request('city') == '')
-    //   {
-    //       $coleccion->ciudad = auth()->user()->ciudad;
-    //   }
-    //   else
-    //   {
-    //       $coleccion->ciudad = request('city');
-    //   }
-  
-    //   if (request('bio') == '')
-    //   {
-    //       $coleccion->bio = auth()->user()->bio;
-    //   }
-    //   else
-    //   {
-    //       $coleccion->bio = request('bio');
-    //   }
-  
-    //       $coleccion->save();
+        if (request('titulo') == '')
+      {
+       
+      }
+      else
+      {
+          $coleccion->title = request('titulo');
+      }
+      if (request('categoria') == '')
+      {
+         
+      }
+      else
+      {
+          $coleccion->category = request('categoria');
+      }
 
-    //       $id=auth()->user()->id;
-    //       $collec = Collection::where('user_id', $id)->get();
+      if (request('descrip') == '')
+      {
+         
+      }
+      else
+      {
+          $coleccion->description = request('descrip');
+      }
+
+    
+      if (request('pp') == 'publica')
+      {
+        $coleccion->pp=1;
+      }
+      else
+      {
+        $coleccion->pp=0;
+      }
+
+      
+          $coleccion->save();
+
+          $collec = Collection::find($id);
   
-    //       return view('editCollection', compact('collec'));
-    //   }
+          return view('edit', compact('collec','id'));
+      }
+
+      public function loadcollection($id){
+        $collec = Collection::find($id);
+  
+        return view('edit', compact('collec','id'));
+      }
   
     
 }

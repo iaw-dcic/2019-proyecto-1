@@ -15,71 +15,19 @@
             @foreach ($collec as $colec)
             <div class="col-md-4">
                 <div class="col mb-4">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card">
                         <div class="card-body">
+                            <h5 class="card-title">{{$colec->id}}</h5>
                             <h5 class="card-title">{{$colec->title}}</h5>
                             <h6 class="card-title">{{$colec->category}}</h6>
                             <p class="card-text">{{$colec->description}}</p>
 
                             <a href="/home/cargarlibros/{{$colec->id}}" class="card-link"> Ver</a>
-                        
-                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Editar</button>
+                            <a href="/home/editCollection/edit/{{$colec->id}}" class="card-link"> Editar</a>
 
+                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModalE">Eliminar</button>
                             <!-- Modal -->
-                            <div class="modal fade" id="myModal" role="dialog">
-                                <div class="modal-dialog">
-
-                                    <!-- Modal content-->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">{{$colec->title}}</h5>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <div class="modal-body">
-                                            <h4>Editar</h4>
-                                            <form method="POST" action="/home/editCollection/{{$colec->id}}"> {{csrf_field()}}
-                                                <div class="form-group">
-                                                    <label for="name" name="titulo" class="col-form-label">Titulo</label>
-                                                    <input type="text" class="form-control" id="name" name="titulo">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="category" name="categoria" class="col-form-label">Categoria</label>
-                                                    <input type="text" class="form-control" id="category" name="categoria">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="text" class="col-form-label">Descripcion</label>
-                                                    <textarea class="form-control" id="text" name="descrip"></textarea>
-                                                </div>
-
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadioInline1" name="pp" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadioInline1">Publica</label>
-                                                </div>
-                                                <div class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" id="customRadioInline2" name="pp" class="custom-control-input">
-                                                    <label class="custom-control-label" for="customRadioInline2">Privada</label>
-                                                </div>
-
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Aceptar</button>
-
-                                        </div>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-
-
-                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Eliminar</button>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal fade" id="myModalE" role="dialog">
                                 <div class="modal-dialog">
 
                                     <!-- Modal content-->
@@ -102,7 +50,6 @@
                                 </div>
                             </div>
 
-
                         </div>
                     </div>
                 </div>
@@ -121,23 +68,33 @@
 
                 <div class="col-md-4">
                     <div class="col mb-4">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card">
                             <div class="card-body">
                                 <h4>Cargar nueva lista</h4>
-                                <h5 class="card-title"><input type="text" class="form-control" name="title" placeholder="Titulo"></h5>
-                                <h5 class="card-title"><input type="text" class="form-control" name="category" placeholder="Categoria"></h5>
-                                <p class="card-text"><textarea class="form-control" name="description" rows="3"></textarea></p>
-
+                                <h5 class="card-title"><input type="text" class="form-control" name="title" placeholder="Titulo" required></h5>
+                                <h5 class="card-title"><input type="text" class="form-control" name="category" placeholder="Categoria" required></h5>
+                                <p class="card-text"><textarea class="form-control" name="description" rows="3" required></textarea></p>
+<!--
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="pp" value="publica"> Publica<br>
+                                    <input type="radio" name="pp" value="publica" id="pp1" class="custom-control-input">
+                                    <label class="custom-control-label" for="pp1">Publica</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="pp" value="privada"> Privada<br>
+                                    <input type="radio" name="pp" id="pp2" value="privada" class="custom-control-input">
+                                    <label class="custom-control-label" for="pp2">Privada</label>
                                 </div>
+-->
 
-
-                                <button type="submit" class="btn btn-link"> Cargar</button>
-
+                                <div>
+                                    <input type="radio" name="pp" value="publica" id="pp1">
+                                    <label for="pp1">Publica</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="pp" id="pp2" value="privada" >
+                                    <label for="pp2">Privada</label>
+                                </div>
+  
+                                  <button type="submit" class="btn btn-link"> Cargar</button>
                             </div>
                         </div>
                     </div>

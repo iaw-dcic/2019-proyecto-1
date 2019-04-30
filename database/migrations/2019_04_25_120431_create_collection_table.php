@@ -19,7 +19,7 @@ class CreateCollectionTable extends Migration
             $table->text('category');
             $table->text('description');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('pp');
             $table->timestamps();
         });
