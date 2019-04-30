@@ -11,25 +11,20 @@
 |
 */
 
-//Home
+//Inicio
 Route::get('/', 'ControladorVistas@index');
 
-//Agregar
-Route::get('/agregar', 'ControladorVistas@agregar') -> middleware('auth');
-Route::post('agregar', 'SeriesController@store')-> middleware('auth');
-
-//Editar
-Route::get('/editar/{id}', 'ControladorVistas@editar')-> middleware('auth');
-Route::post('editar', 'SeriesController@update')-> middleware('auth');
 
 //Eliminar
-Route::get('/miPerfil', 'ControladorVistas@miPerfil')-> middleware('auth');
+Route::get('/miPerfil/{id}', 'ControladorVistas@miPerfil')-> middleware('auth');
+
+Route::get('/editarPerfil', 'ControladorVistas@editarPerfil')-> middleware('auth');
+Route::post('/editarPerfil', 'UserController@editarPerfil')-> middleware('auth');
+
+Route::post('/actualizarIdLista', 'SeriesController@actualizarIdLista')-> middleware('auth');
 
 //Iniciar Sesion
-Route::get('/login', 'Auth\LoginController@showLoginForm') -> name('login');
-Route::post('/login', 'Auth\LoginController@login');
-Route::post('/logout', 'Auth\LoginController@logout') -> name('logout');
-
 Auth::routes();
 
 Route::resource('serie','SeriesController');
+Route::resource('listas','ListaUsuariosController');

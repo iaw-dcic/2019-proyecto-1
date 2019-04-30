@@ -3,6 +3,7 @@
     width: 400px;
     height: auto;
     margin: 50px auto;
+    
 }
 
 body
@@ -15,11 +16,12 @@ body
     margin: 20px auto;
     text-align: center; 
 }
-.botonAgregar
+
+.botonGuardar
 {
+    width: 150px;
+    height: 40px;
     text-decoration: none;
-    padding: 10px;
-    font-weight: 500;
     font-size: 20px;
     color: #ffffff;
     background-color: #657e8f;
@@ -28,7 +30,7 @@ body
     margin-top: 20px;
     text-align: center;
 }
-.botonAgregar:hover{
+.botonGuardar:hover{
     color: #1883ba;
     background-color: #ffffff;
 }

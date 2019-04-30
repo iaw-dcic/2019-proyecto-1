@@ -48,14 +48,15 @@ input[type="radio"]:checked ~ label {
 
 #panelBoton
 {
-    margin-left: 40%;
-    margin-right: 50%;  
+    margin: 20px auto;
+    text-align: center; 
 }
-.botonAgregar
+
+.botonEditar
 {
+    width: 150px;
+    height: 40px;
     text-decoration: none;
-    padding: 10px;
-    font-weight: 500;
     font-size: 20px;
     color: #ffffff;
     background-color: #657e8f;
@@ -64,7 +65,7 @@ input[type="radio"]:checked ~ label {
     margin-top: 20px;
     text-align: center;
 }
-.botonAgregar:hover{
+.botonEditar:hover{
     color: #1883ba;
     background-color: #ffffff;
 }

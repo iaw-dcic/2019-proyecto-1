@@ -2,29 +2,33 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Series;
+use App\User;
+use App\ListaUsuarios;
 
 class ControladorVistas extends Controller
 {
 	public function index()
 	{
-		return view('index');
-    }
-	public function agregar()
-	{
-		return view('create');
-	}
-		
-	public function editar(Series $series)
-	{
-		return view('editar');
+		$lista = ListaUsuarios::where('publica','Si')->get();
+		return view('generales.index', ['lista'=> $lista]);
 	}
 
-	public function miPerfil()
+	public function miPerfil(Request $request)
 	{
-		/*Las series se listaran de acuerdo al orden de agregado, es decir, 
-		en primer lugar se encontraran las recientemente agregadas
-		*/
-		$serie = Series::orderBy('id', 'DESC')->paginate(5);
-		return view('miPerfil',compact('serie'));
-  }
+		$user=User::find($request -> id);
+		$serie=$user->series;
+		//$serie = orderBy('id', 'DESC')->paginate(3);
+		$lista = $user->listas;
+		return view('perfil.miPerfil', ['serie'=> $serie], ['lista'=> $lista]);
+    }
+
+  public function editarPerfil()
+	{
+		return view('perfil.editarPerfil');
+	}
+
+	public function perfilPublico()
+	{
+		return view('perfil.perfilPublico');
+	}
 }

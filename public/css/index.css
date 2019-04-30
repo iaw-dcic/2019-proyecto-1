@@ -63,3 +63,11 @@ body
   margin-top: 20px;
   size: 50%;
 }
+
+#listasCompartidas
+{
+  margin: 10px auto;
+  height: auto;
+  text-align: center;
+  font-family: 'Dosis', sans-serif;
+}

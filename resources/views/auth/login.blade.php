@@ -44,6 +44,8 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Iniciar Sesión') }}
                                 </button>
+
+                                <a href="/"><button class="btn btn-primary" type="button">Volver</button></a>
                             </div>
                         </div>
                     </form>

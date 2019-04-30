@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Series;
 use Illuminate\Http\Request;
-use Session;
 
 class SeriesController extends Controller
 {
@@ -25,7 +24,7 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('series.create');
     }
 
     /**
@@ -39,7 +38,7 @@ class SeriesController extends Controller
        $this -> validate(request(), [
             'nombre'=> 'required',
             'temporadas'=> 'required',
-            //puntuacion falta
+            'puntuacion'=> 'required',
             'comentarios'=> 'required'
         ]);
 
@@ -47,15 +46,13 @@ class SeriesController extends Controller
 
         $serie->nombre = $request->nombre;
         $serie->temporadas = $request->temporadas;
-        $serie->puntuacion= 5;
+        $serie->puntuacion= $request->puntuacion;
         $serie->comentarios = $request->comentarios;
-
-        $series = Series::all();
+        $serie->id_usuario = $request->id_usuario;
 
         $serie->save();
-        
-        Session::flash('message', 'La serie fue creada exitosamente');
-        return redirect('/miPerfil');
+        $redireccion='/miPerfil/'.$request->id_usuario;
+        return redirect($redireccion);
     }
 
     /**
@@ -75,29 +72,38 @@ class SeriesController extends Controller
      * @param  \App\Series  $series
      * @return \Illuminate\Http\Response
      */
-    public function edit(Series $series)
+    public function edit(Series $serie)
     {
-        return view('editar',compact('series'));
+        return view('series.editar', compact('serie'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Series  $series
+     * @param  \App\Series  $serie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Series $series)
+    public function update(Request $request, $id)
     {
         $this -> validate(request(), [
             'nombre'=> 'required',
             'temporadas'=> 'required',
-            //puntuacion falta
+            'puntuacion'=> 'required',
             'comentarios'=> 'required'
         ]);
-        $serie->update($request->all());
-        Session::flash('message', 'La serie fue editada exitosamente');
-        return redirect('miPerfil');
+
+        $serie = Series::find($id);
+        $serie ->nombre = $request->nombre;
+        $serie ->temporadas = $request->temporadas;
+        $serie ->comentarios = $request->comentarios;
+        $serie ->puntuacion = $request->puntuacion;
+        $serie->id_usuario = $request->id_usuario;
+        
+        $serie->save();
+
+       $redireccion='/miPerfil/'.$serie->id_usuario;
+       return redirect($redireccion);
     }
 
     /**
@@ -106,8 +112,17 @@ class SeriesController extends Controller
      * @param  \App\Series  $series
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Series $series)
+    public function destroy($id)
     {
-       // 
+        $serie = Series::find($id);
+        $serie->delete();
+        $redireccion='/miPerfil/'.$serie->id_usuario;
+        return redirect($redireccion);
     }
+
+    public function actualizarIdLista($id)
+    {
+      //  $serie = Series::find($id);
+    }
+
 }

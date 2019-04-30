@@ -1,14 +1,15 @@
-@extends('layout')
+@extends('generales.layout')
 
 @section('pageTitle', 'Series')
 
 @section('estilos')
-    <link rel='stylesheet' href='css/estilosIndex.css'>
+    <link rel='stylesheet' href='css/index.css'>
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 @stop
 
 @section('body')
 
-    <!-- aca metes todo lo que quieras de la pagina inicio -->
+    <!-- Pagina inicio -->
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner" id="panelCarrusel">
             <div class="carousel-item active">
@@ -48,12 +49,26 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    
-    <!--PANEL DE LAS SERIES COMPARTIDAS POR LOS USUARIOS-->
-    <div id= "panelCompartido">
-        <div>
-            <h1 id="tituloPrincipal">Series Compartidas</h1>
-        </div>
+    <div class="panelInformacion">
+         <h1 id="listasCompartidas">
+            Listas Compartidas
+        </h1>
+        <div class="container">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                 @foreach($lista as $listas)
+                <tr>
+                    <td>{{ $listas->nombre_lista}}</td>
+                    <td>{{ $listas->usuario->name}}</td>
+                @endforeach
+                </tr>
+            </tbody>
+        </table>
     </div>
-    
 @stop

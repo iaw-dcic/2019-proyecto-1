@@ -2,28 +2,63 @@ body
 {
     background-color: whitesmoke ;
 }
-.panelInformacion
+.panelSeries
 {
-    margin-top: 20px;
     margin: 10px auto;
     height: auto;
+    text-align: center;
 }
 
-.panelSerie
-{
-    margin-top: 20px;
-    margin: 10px auto;
-    height: auto;
-}
 #seriesGuardadas
 {
-    text-size-adjust: 10px;
+    text-size-adjust: 10px;    
 }
 
-#panelDescripcion
+.botoninput{
+	padding: 4px 6px 5px;
+    border-width: 2px;
+    border-style: outset;
+}
+
+#panelAgregar
 {
-    width: 900px;
+    width: 500px;
     height: auto;
     text-align: center;
     margin: 50px auto;
+
+}
+.botonagregar
+{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #657e8f;
+    border-radius: 6px;
+    border: 2px solid #777ca7;
+}
+.botonagregar:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+}
+
+#botonCompartir
+{
+    margin-top: 10px;
+    width: 30px;
+}
+
+#informacionUsuario
+{
+    font-family: 'Dosis', sans-serif;
+}
+
+.panelInformacion
+{
+    margin: 10px auto;
+    width: 50%;
+    height: auto;
+    text-align: center;
 }
