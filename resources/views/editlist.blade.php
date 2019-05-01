@@ -11,11 +11,11 @@
 	<div class="d-flex justify-content-center">
 		<div class="card">
 			<div class="card-header">
-                <h3>Editar lista: {{ $list->name}}</h3>
+                <h3>{{ $list->name}}</h3>
                 <h4>Agrega películas a tu lista ! </h4>
 			</div>
 			<div class="card-body">
-                        <form method="POST" action="{{url('createmovie')}}">
+                        <form method="POST" action="{{url('editlist/'.$list->id)}}">
                             @csrf
                             <input type="hidden" name="id_list" value="{{$list->id}}">
                             <div class="input-group form-group">

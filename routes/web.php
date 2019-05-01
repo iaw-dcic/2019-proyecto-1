@@ -18,7 +18,7 @@ Route::get('/{user}','UserController@show')
 
 Route::get('/list/{id}',"ListController@show")->name('showlist');
 
-//Seccion crerar lista
+//Seccion crear lista
 
 Route::get('/create_list',"ListController@create")->name('create_list');
 
@@ -26,9 +26,9 @@ Route::post('/create_list',"ListController@store");
 
 //Seccion agregar pelis y editar pelis 
 
-Route::get('/editlist/{id}','ListController@editmovieslist')->name('editlist');
+Route::get('/editlist/{id}','MovieController@create')->name('editlist');
 
-Route::post('/editlist', 'MovieController@create')->name('createmovie');
+Route::post('/editlist/{id}',"MovieController@store");
 
 //Editar - eliminar peliculas
 
@@ -42,12 +42,13 @@ Route::get('/edit','UserController@edit')->name('edituser');
 
 Route::post('/edit','UserController@update');
 
+//Seccion mis listas
+
 Route::get('/lists','UserController@mylists')->name('lists');
 
 Route::delete('/lists','ListController@destroy')->name('delete_list');
 
 Route::post('/lists', 'ListController@edit')->name('edit_list');
-
 
 //Routes for lists of elements
 

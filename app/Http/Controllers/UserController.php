@@ -23,7 +23,6 @@ class UserController extends Controller
         $lists= MovieList::where(['user_id' => $id])->get();
 
         return view('showuser',['user' => $user],['lists' => $lists]);
-        //return view ('showuser',compact('user'));
     }
 
     public function login()
