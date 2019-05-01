@@ -76,7 +76,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="{{ url()->previous() }}" class="btn btn-md btn-secondary my-3 my-sm-3 text-center">
+        <a href="{{ route('mis-listas') }}" class="btn btn-md btn-secondary my-3 my-sm-3 text-center">
             <span class="fas fa-arrow-left mr-1"></span>
             Volver
         </a>
