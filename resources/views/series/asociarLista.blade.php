@@ -8,7 +8,7 @@
 
 @section('body')
 
-<div id= "panelfondo">
+<div id="panelfondo">
     <div class="card-header">Agregar Serie a lista</div>
          <form method="POST" action="/actualizarIdLista">
             {{csrf_field()}}
@@ -27,8 +27,8 @@
             <input type="hidden" name="id_serie" value="{{ $serie->id }}">
     
             <div id= "panelBoton">
-                <button type="submit" class="botonGuardar">Guardar</button>
-                <a href="/miPerfil/{{ Auth::user()->id}}"><button class="botonGuardar" type="button">Volver</button></a>
+                <button type="submit" class="botonAgregar">Guardar</button>
+                <a href="/miPerfil/{{ Auth::user()->id}}"><button class="botonAgregar" type="button">Volver</button></a>
             </div>
         </form>
     </div>   

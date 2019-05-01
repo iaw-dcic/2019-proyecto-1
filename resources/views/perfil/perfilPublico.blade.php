@@ -6,8 +6,8 @@
     <link rel='stylesheet' href='/css/perfil/perfilPublico.css'>
     <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 @stop
+
 @section('body')
-{{$lista}}
     <div class="panelInformacion">
         <h1 id="informacionUsuario">
             Cuenta
@@ -36,7 +36,13 @@
                                 <th scope="col">{{ $listas->nombre_lista}}</th>
                             </tr>
                         </thead>
-                       
+                        @foreach($listas->seriesAsociadas as $series)   
+                        <tbody>
+                            <tr>
+                                <td>{{ $series->nombre}}</td>
+                            </tr>
+                        </tbody>
+                        @endforeach
                     </table>
                 </div>
             </div>
