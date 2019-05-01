@@ -82,36 +82,36 @@
          <h1 id="informacionUsuario">
             Listas Creadas
         </h1>
-        <div class="container">
-        <table class="table table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Series agregadas</th>
-                    <th scope="col">¿Es publica?</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                 @foreach($lista as $listas)
-                <tr>
-                    <td>{{ $listas->nombre_lista}}</td>
-                    @foreach($listas->seriesAsociadas as $series)               
-                            <td>{{ $series->nombre}}</td>
-                    @endforeach
-                    <td>{{ $listas->publica}}</td>
-                    <td>
-                        <a class="btn-sm btn-info botoninput" href="{{route('listas.edit', $listas->id) }}"><i class="far fa-edit"></i></a>
-                        <form method="POST" action="{{route('listas.destroy',$listas->id)}}">
-                            {{csrf_field()}}
-                            @method('DELETE')      
-                            <button type="submit" id="botonEliminar" class="btn-sm btn-danger mt-3"  onclick="return confirm('¿Quiere borrar la lista?')"><i class="far fa-trash-alt"></i></button>
-                        </form>
-                    </td>
-                @endforeach
-                </tr>
-            </tbody>
-        </table>
-        <a class="botonagregar" type="button" href="{{route('listas.create')}}">Crear Lista</a>
+        @foreach($lista as $listas)
+            <div class="panelTablaYBotones">
+                <div class="panelTabla">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">{{ $listas->nombre_lista}}</th>
+                            </tr>
+                        </thead>
+                        @foreach($listas->seriesAsociadas as $series)   
+                        <tbody>
+                            <tr>
+                                <td>{{ $series->nombre}}</td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
+                <div class="panelBotones">
+                    <h2>¿Es publica? </h2>
+                    <h3>{{ $listas->publica}}</h3>
+                    <a class="btn-sm btn-info botoninput" href="{{route('listas.edit', $listas->id) }}"><i class="far fa-edit"></i></a>
+                    <form method="POST" action="{{route('listas.destroy',$listas->id)}}">
+                        {{csrf_field()}}
+                        @method('DELETE')      
+                        <button type="submit" id="botonEliminar" class="btn-sm btn-danger mt-3"  onclick="return confirm('¿Quiere borrar la lista?')"><i class="far fa-trash-alt"></i></button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+            <a class="botonagregar" type="button" href="{{route('listas.create')}}">Crear Lista</a>
     </div>
 @stop
