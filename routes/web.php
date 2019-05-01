@@ -11,6 +11,7 @@
 |
 */
 Route::get('/', 'PagesController@index');
+Route::get('/readme', 'PagesController@about');
 
 Route::get('/userlists','UserListsController@index');
 Route::post('/users/{user}/userlists','UserListsController@store');
