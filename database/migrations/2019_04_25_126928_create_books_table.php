@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->string('year');
             // $table->boolean('visible');
-            $table->string('list_id'); //Foreign
+            $table->bigInteger('list_id'); //Foreign
             $table->foreign('list_id')->references('id')->on('lists')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');

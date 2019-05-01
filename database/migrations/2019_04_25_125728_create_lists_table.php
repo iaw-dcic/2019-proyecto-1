@@ -17,7 +17,7 @@ class CreateListsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('status');
-            $table->string('user_id'); //Foreign
+            $table->bigInteger('user_id'); //Foreign
             $table->foreign('user_id')->references('id')->on('users')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
