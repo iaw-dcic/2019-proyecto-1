@@ -78,7 +78,7 @@
         <a class="botonagregar" type="button" href="{{route('serie.create')}}">Agregar serie</a>
     </div>
 
-    <div class="panelSeries">
+    <div class="container panelSeries">
         <h1 id="informacionUsuario">
             Listas Creadas
         </h1>
