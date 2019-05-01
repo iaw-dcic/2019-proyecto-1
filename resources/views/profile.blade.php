@@ -24,10 +24,10 @@
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Editar usuario</h3>
+				<h3>Perfil usuario</h3>
 			</div>
 			<div class="card-body">
-			<form method="POST" action="{{url('edit/{$user->id}')}}">
+			<form method="POST" action="{{url('edit/{$user -> id}')}}">
 						{{method_field('PUT')}}
                         @csrf
 
@@ -35,41 +35,37 @@
 						    <div class="input-group-prepend">
 							    <span class="input-group-text"><i class="fas fa-user"></i></span>
 						    </div>
-						    <input id="name" type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="nombre" value="{{old('name', $user->name)}}" required autofocus>
+						    <input id="name" type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{old('name', $user->name)}}" required autofocus>
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
                         </div>
-
-                        <div class="input-group form-group">
+						<div class="input-group form-group">
 						    <div class="input-group-prepend">
 							    <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
 						    </div>
-						    <input id="email" type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="email" value="{{old('email', $user->email)}}" required>
+						    <input id="email" type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{old('email', $user->email)}}" required autofocus>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                         </div>
-
-
                         <div class="input-group form-group">
 						    <div class="input-group-prepend">
-							    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+							    <span class="input-group-text"><i class="fas fa-key"></i></span>
 						    </div>
-						    <input id="password" type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="contraseña" required>
+						    <input id="password" type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{old('password', $user->password)}}" required>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                         </div>
-
                         <div class="form-group">
-						    <input type="submit" value="Registrarme" class="btn btn-primary btn-lg btn-block login-button">
+						    <input type="submit" value="Editar" class="btn btn-primary btn-lg btn-block login-button">
 					    </div>
                         </form>
             </div>

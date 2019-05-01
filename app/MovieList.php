@@ -17,7 +17,7 @@ class MovieList extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'is_public',
+        'visible',
     ];
 
     public function user(){

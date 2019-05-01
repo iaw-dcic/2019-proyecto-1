@@ -20,7 +20,10 @@ class UserController extends Controller
     {
         $user=User::find($id);
 
-        return view ('showuser',compact('user'));
+        $lists= MovieList::where(['user_id' => $id])->get();
+
+        return view('showuser',['user' => $user],['lists' => $lists]);
+        //return view ('showuser',compact('user'));
     }
 
     public function login()
@@ -46,28 +49,19 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
     
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
-        
-        return view('edit',['user' => $user]);
+        return view('profile',['user' => $user]);
     }
 
-    public function update($id)
+    public function update(User $user)
     {
-        $user=User::find($id);
+        $user->name=request('name');
+        $user->email=request('email');
+        $user->password=bcrypt(request('password'));
+        $user->save();
 
-        $data=request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        $data['password'] = bcrypt($data['password']);
-
-        $user->update($data);
-
-        return redirect('/edit/{$user->id}');
+        return back();
     }
 
     public function mylists()

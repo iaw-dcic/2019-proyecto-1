@@ -19,7 +19,7 @@ class CreateMoviesListsTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->boolean('is_public');
+            $table->boolean('visible')->default(true);
         });
     }
 

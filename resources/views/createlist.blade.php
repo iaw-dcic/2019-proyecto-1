@@ -11,7 +11,7 @@
 		<div class="card h-50">
 			<div class="card-header">
 				<h3>Nueva lista</h3>
-				<div class="d-flex justify-content-end social_icon">
+				<div class="d-flex justify-content-end table_icon">
                     <span><i class="fas fa-list-ul"></i></span>
 				</div>
 			</div>
@@ -24,12 +24,13 @@
 						    </div>
 						    <input id="name" type="text" class="form-control" name="name" placeholder="Nombre lista" required autofocus>
                         </div>
-                        <div class="row align-items-center remember">
-						    <input type="checkbox" name="public" id="public">Lista pública
+                        <div class="row align-items-center check">
+						    <input type="checkbox" name="visible" value="1">
+							Lista pública
 					    </div>
 
                         <div class="form-group">
-						    <input type="submit" value="Crear" class="btn float-right login_btn">
+						    <input type="submit" value="Crear" class="btn float-right create_btn">
 					    </div>
 				</form>
             </div>

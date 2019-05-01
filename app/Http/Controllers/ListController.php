@@ -19,20 +19,29 @@ class ListController extends Controller
         return view('createlist');
     }
 
+    public function show($id)
+    {
+        $list = MovieList::find($id);
+
+        $movies=Movie::where(['list_id'=>$id])->get();
+
+        return view('showlist',['list' => $list],['movies'=>$movies]);
+    }
+
     public function store()
     {
         $user = Auth::user();
 
         $data=request()->all();
 
-        $is_public=0;
-        if($data['public']=='on')
-                $is_public=1;
+        $public=0;
+        if(request('visible')==='1')
+            $public=1;
                 
         $list=MovieList::create([
             'user_id'=>$user->id,
             'name'=> $data['name'],
-            'is_public' => $is_public,
+            'visible' => $public,
         ]);
 
         $id_list=$list->id;
@@ -40,18 +49,43 @@ class ListController extends Controller
         return redirect()->route('editlist',[$id_list]);
     }
 
-    public function drop(){
-        //
+    public function editmovieslist($id){
+
+            $list = MovieList::find($id);
+    
+            $movies=Movie::where(['list_id'=>$id])->get();
+    
+            return view('editlist',['list' => $list],['movies'=>$movies]);
     }
 
-    public function edit($id)
+    public function destroy()
     {
-         $list=MovieList::find($id);
+       $data=request()->all();
+       $id=$data['id_list'];
+    
+       $list = MovieList::findOrFail($id);
+       foreach ($list->movies as $movie) 
+        {
+            $movie -> delete();
+        }
+        $list -> delete();
 
-        $movies=Movie::where(['list_id' => $id])->get();
-
-        return view('editlist',compact('list','movies'));
+        return back();
     }
 
+    public function edit()
+    {
+        $allData=request()->all();
+        $id=$allData['id_list'];
+
+        $data=request()->validate([
+            'name' => 'required',
+        ]);
+        $list = MovieList::findOrFail($id);
+        $list -> name = $data['name'];
+        $list -> save();
+
+        return back();
+    }
 
 }

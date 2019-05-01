@@ -19,12 +19,18 @@
             <div class="card-body">
                 <table class="table">
                     <thead>
-                            <th>Sus listas públicas</th>
+                            <th>Nombre lista pública</th>
+                            <th>Ver lista</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            
-                        </tr>
+                        @foreach($lists as $list)
+                        @if($list->visible=='1')
+                            <tr>
+                                <td>{{ $list->name}}</td>
+                                <td><a href="{{ url('/list/'.$list->id) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a></td>
+                            </tr>
+                        @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>

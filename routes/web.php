@@ -15,27 +15,30 @@ Route::get('/{user}','UserController@show')
         ->where('user','[0-9]+')
         ->name('users.show');
 
-Route::get('/edit/{user}','UserController@edit')->name('edit');
+Route::get('/edit','UserController@edit')->name('edituser');
 
-Route::put('/edit/{user}','UserController@update');
+Route::post('/edit','UserController@update');
 
 Route::get('/lists','UserController@mylists')->name('lists');
 
+Route::delete('/lists','ListController@destroy')->name('delete_list');
+
+Route::post('/lists', 'ListController@edit')->name('edit_list');
+
+Route::get('/editlist/{id}','ListController@editmovieslist')->name('editlist');
+
 //Routes for lists of elements
 
-Route::get('/home','MovieController@index')->name('home');
+Route::get('/home','UserController@index')->name('home');
 
 Route::get('/create_list',"ListController@create")->name('create_list');
+
+Route::get('/list/{id}',"ListController@show")->name('showlist');
 
 Route::post('/create_list',"ListController@store");
 
 Route::post('/editlist', 'MovieController@create');
 
-Route::get('/editlist/{id}', 'ListController@edit')->name('editlist');
+Route::delete('/editlist','MovieController@destroy')->name('delete_movie');
 
-
-
-
-//Socialite
-Route::get('login/{provider}','Auth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+Route::post('/editlist', 'MovieController@edit')->name('edit_movie');

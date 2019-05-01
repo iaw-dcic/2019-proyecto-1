@@ -26,9 +26,6 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav animate side-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{{route('home')}}" title="Búsqueda"><i class="fas fa-search"></i> Búsqueda <i class="fas fa-search shortmenu animate"></i></a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="{{route('users.index')}}" title="Usuarios"><i class="fas fa-users"></i> Usuarios<i class="fas fa-users shortmenu animate"></i></a>
           </li>
           @if (Auth::check())
@@ -55,7 +52,7 @@
                 <label class="nav-link" title="Username"> Bienvenido/a {{Auth::user()->name}} ! </label>
             </li>
             <li>
-                <a class="nav-link" href="" title="Editar perfil"><i class="fas fa-user"></i>Editar perfil</a>
+                <a class="nav-link" href="{{ route('edituser') }}" title="Editar perfil"><i class="fas fa-user"></i>Editar perfil</a>
             </li>
             <li>
                 <a class="nav-link" href="{{route('logout')}}" title="Salir"

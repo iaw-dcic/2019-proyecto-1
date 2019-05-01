@@ -48,6 +48,10 @@ color: rgb(3, 54, 121);
     color: black;
     font-size:1.50rem;
 }
+.card-header h4{
+    color: black;
+    font-size:0.80rem;
+}
 
 .card-footer{
     font-size: 0.9rem;

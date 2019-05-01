@@ -32,4 +32,32 @@ class MovieController extends Controller
         return redirect()->route('editlist',[$list_id]);
     }
 
+    public function edit()
+    {
+        $allData=request()->all();
+        $id=$allData['id_movie'];
+
+        $data=request()->validate([
+            'genre' => 'required',
+            'name' => 'required',
+            'director' => 'required',
+        ]);
+        $movie = Movie::findOrFail($id);
+        $movie -> name = $data['name'];
+        $movie -> director = $data['director'];
+        $movie -> genre = $data['genre'];
+        $movie -> save();
+
+        return back();
+    }
+
+    public function destroy()
+    {
+            $data=request()->all();
+            $movie=Movie::findOrFail($data['id_movie']);
+            $movie->delete();
+
+            return back();
+    }
+
 }

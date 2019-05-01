@@ -25,9 +25,7 @@
 			<div class="card-header">
 				<h3>Login</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<a href="{{asset('/login/facebook')}}"><span><i class="fab fa-facebook-square"></i></span></a>
-					<a href="{{asset('/login/google')}}"><span><i class="fab fa-google-plus-square"></i></span></a>
-					<a href="{{asset('/login/twitter')}}"><span><i class="fab fa-twitter-square"></i></span></a>
+					<span><i class="fas fa-user"></i></span>
 				</div>
 			</div>
 			<div class="card-body">

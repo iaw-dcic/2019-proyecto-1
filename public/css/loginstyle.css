@@ -30,7 +30,6 @@ color: rgb(3, 54, 121);
 }
 .social_icon span:hover{
     color: rgb(8, 85, 185);
-    cursor: pointer;
     }
     
     .card-header h3{
