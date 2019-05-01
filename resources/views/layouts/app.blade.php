@@ -11,22 +11,26 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
+   
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
-    <link rel="stylesheet" href="{{assert('css/miestilo.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/miestilo.css') }}">
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-inverse">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand titulo" href="{{ url('/') }}">
                     ComicColect
                 </a>
 <!--
@@ -56,13 +60,13 @@
                         @else
                             
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle titulo" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                
                                   <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item">Editar Perfil</a></li>
+                                    <li><a class="dropdown-item" href="/{{ Auth::user()->id }}/editarPerfil">Editar Perfil</a></li>
                                     <li class="divider"></li>
                                     <li><a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -80,12 +84,15 @@
                        
                     </ul>
                     <ul class="nav navbar-nav navbar-left">
-                      <li class="active"><a href="/home">Inicio</a></li>
-                      <li><a href="#">Cargar colección</a></li>
+                      <li class="active opciones"><a href="/home">Inicio</a></li>
+                      <li class="opciones"><a href="/{{ Auth::user()->id }}/crearColeccion">Cargar colección</a></li>
                     </ul>
+
+                    
                     @endguest
                 </div>
             </div>
+            
         </nav>
 
         <main class="py-4">

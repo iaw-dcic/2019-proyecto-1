@@ -6,7 +6,7 @@
       <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="panel panel-primary">
-                <div class="panel-heading text-center"> <h3>Iniciar Sesión</h3> </div><br>
+                <div class="panel-heading text-center titulo"> <h3>Iniciar Sesión</h3> </div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">

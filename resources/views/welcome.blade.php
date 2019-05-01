@@ -14,7 +14,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
-        <link href="{{ assert('css/miestilo.css')}} " rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
+        <link rel="stylesheet" href="{{ asset('css/miestilo.css') }}">
 
     </head>
     <body>
@@ -22,9 +23,9 @@
     <nav class="navbar navbar-inverse">
       <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">ComicColect</a>
+            <a class="navbar-brand titulo" href="/">ComicColect</a>
         </div>
-
+<!--
         <form class="navbar-form navbar-left" action="/action_page.php">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Buscar" name="search">
@@ -35,7 +36,7 @@
                         </div>
                     </div>
         </form>
-
+-->
         <div class="nav navbar-nav navbar-right">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -54,7 +55,22 @@
       </div>
     </nav>
             <div class="content container">
-                <p class="parrafo">Aca van las listas de comics publicas.</p>
+            <div class="text-center titulo tituloBlanco well"><h2>Colecciones Públicas</h2></div><br>
+                   <div class="flex-container">
+                     @foreach ($colecciones as $colecion)
+                        <div class="gallery">
+                            <a href="/{{$colecion->id}}/showItems" target="_self">
+                                <img src="#" alt="{{ $colecion->name }}" width="400" height="250">
+                            </a>
+                            <div class="desc">
+                                <h6 class="tituloCard">{{ $colecion->name }}</h6>
+                                <p>{{ $colecion->description }}</p></div>
+                        </div>
+                       @endforeach 
+                     
+                   </div>
+               
+                </div>
             </div>
         </div>
     </body>
