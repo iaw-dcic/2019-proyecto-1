@@ -21,27 +21,27 @@
                         <tbody>
                                 <tr>
                                     <td>Welcome</td>
-                                    <td>99</td>
+                                    <td>100</td>
                                     <td>71</td>
                                 </tr>
                                 <tr>
                                     <td>Explore</td>
-                                    <td>85</td>
+                                    <td>91</td>
                                     <td>85</td>
                                 </tr>
                                 <tr>
                                     <td>Readme</td>
-                                    <td>85</td>
-                                    <td>84</td>
+                                    <td>87</td>
+                                    <td>94</td>
                                 </tr>
                                 <tr>
                                     <td>Login</td>
-                                    <td>80</td>
+                                    <td>88</td>
                                     <td>87</td>
                                 </tr>
                                 <tr>
                                     <td>Register</td>
-                                    <td>87</td>
+                                    <td>91</td>
                                     <td>85</td>
                                 </tr>
                         

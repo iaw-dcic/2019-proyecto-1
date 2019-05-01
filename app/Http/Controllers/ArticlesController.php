@@ -17,7 +17,7 @@ class ArticlesController extends Controller
     public function index()
     {
         //$inventories = Inventory::all();
-        dd('este es el index de articles');
+        //dd('este es el index de articles');
         //return view('inventories.index',compact('inventories'));
     }
 
@@ -29,16 +29,29 @@ class ArticlesController extends Controller
     
     public function store(Inventory $inventory)
     {
+        $rules = array(
+            'title'      => 'required','unique:inventories',
+            'fabricationYear' => 'required','integer','max:2019',
+       );
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('/Readme')
+                ->withErrors($validator);
+        } else {
+            $article = new Article;
+            $article->title       = Input::get('title');
+            $article->user_id     = Auth::user()->id;
+            $article->fabricationYear = Input::get('fabricationYear');
+            $article->estado        = request('estado');
+            $article->inventory_id  = $inventory->id;
+            $article->save();
+
         
-        Article::create([
-            'user_id' =>Auth::user()->id,
-            'estado' => request('estado'),
-            'title' => request('title'),
-            'fabricationYear' => request('fabricationYear'),
-            'inventory_id'=> $inventory->id,
-            ]
-        );
-        return view('inventories.show',compact('inventory'));
+            Session::flash('message', 'Successfully created inventory!');
+            
+            return view('inventories.show',compact('inventory'));
+        }
     }
 
     public function show(Article $article)
