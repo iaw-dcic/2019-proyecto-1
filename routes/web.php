@@ -49,3 +49,4 @@ Route::post('/buscarUsuario','BusquedaController@buscarUsuario')->name('buscarUs
 //Iniciar Sesion con Red Social
 Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
+

@@ -84,7 +84,7 @@
             <ul class="navbar-nav mr-auto">
                 <form class="form-inline my-2 my-lg-0" action="/buscarUsuario" method=POST>
                     @csrf
-                    <input class="form-control mr-sm-2" type="search" name='searchNickName' placeholder="Ingrese nickname de usuario" aria-label="Search">
+                    <input class="form-control mr-sm-2" type="search" name='searchnickname' placeholder="Ingrese nickname de usuario" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar perfil</button>
                 </form>
             </ul>
