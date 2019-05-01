@@ -1,7 +1,7 @@
 .Autoria{
     text-align: center;
-    font-size: 80px;
-    padding-top: 10%;
+    font-size: 65px;
+    padding-top: 5%;
 }
 
 .titulo{
@@ -22,4 +22,9 @@
 
 .general{
     box-sizing: border-box;
+}
+
+.li{
+    font-size: 35px;
+    font-weight: bold;
 }
