@@ -59,6 +59,10 @@ body
     text-align: center;
 }
 
+.panelTablaYBotones
+{
+    min-height: 400px;
+}
 .panelTabla
 {
     float: left;
