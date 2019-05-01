@@ -14,19 +14,18 @@
   <link href="img/favicon.ico" rel="shortcut icon" />
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet" difer>
 
 
   <!-- Stylesheets -->
 
-  <link rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}">
+  <link difer rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/owl.carousel.min.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('/css/magnific-popup.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">
 
 
-   
+
   <!-- Form -->
   <link rel="stylesheet" href="{{ URL::asset('/css/style-form-game.css') }}">
 
@@ -44,8 +43,6 @@
 
   <!-- Search table -->
   <link rel="stylesheet" href="{{ URL::asset('/css/search-table-util.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('/vendor/perfect-scrollbar/perfect-scrollbar.css')}}">
-  <link rel="stylesheet" href="{{ URL::asset('/vendor/select2/select2.css') }}">
   @yield('search-specific-style')
 
   <!--Multiple select forms Bootstrap-->

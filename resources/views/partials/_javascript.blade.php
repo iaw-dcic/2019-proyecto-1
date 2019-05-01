@@ -12,7 +12,6 @@
 <script src="{{ URL::asset('js/image-upload-file.js')}}"></script>
 
 <!-- Search table (Select2 for Forms)-->
-<script src="{{ URL::asset('vendor/select2/select2.min.js')}}"></script>
 <script src="{{ URL::asset('js/search-table-main.js')}}"></script>
 
 <!--Multiple select forms Bootstrap-->
