@@ -19,16 +19,17 @@
                 </div>
             @endforeach
          </div>
-         <div class="text-center pt-3">
-            <a href="{{ route('login') }}">
-                Inicia sesión
-            </a>
-            o
-            <a href="{{ route('register') }}">
-                regístrate
-            </a>
-            para crear tus propias listas de libros
-
-         </div>
+         @guest
+            <div class="text-center pt-3">
+                <a href="{{ route('login') }}">
+                    Inicia sesión
+                </a>
+                o
+                <a href="{{ route('register') }}">
+                    regístrate
+                </a>
+                para crear tus propias listas de libros
+            </div>
+        @endguest
 @endsection
 
