@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+
+<title>Home | Tus vehiculos</title>
+
 @section('content')
 
  <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">

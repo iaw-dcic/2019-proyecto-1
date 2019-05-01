@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 
-
+<title>Coleccion</title>
 @section('content')
  
 <table class="table table-striped">

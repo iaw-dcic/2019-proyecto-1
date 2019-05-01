@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>Login</title>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -45,7 +45,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Recuerdame') }}
                                     </label>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                     </a>
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('Olvido su contraseña?') }}
                                     </a>
                                    
                                     
