@@ -6,6 +6,10 @@ use App\Article;
 use App\Inventory;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;    
+use Illuminate\Support\Facades\Session;
 
 class ArticlesController extends Controller
 {
