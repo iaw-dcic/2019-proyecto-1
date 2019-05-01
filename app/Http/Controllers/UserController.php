@@ -38,7 +38,7 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-            'username' => ['nullable', 'string', 'max:14', 'alpha_num' ,'unique:users'],
+            'username' => ['nullable', 'string', 'max:50', 'alpha_num' ,'unique:users'],
             'avatar' => ['nullable', 'image', 'mimes:jpg,png,jpeg,gif,svg', 'max:2048'],
             'descripcion' => ['nullable', 'string', 'max:755'],
         ]);
