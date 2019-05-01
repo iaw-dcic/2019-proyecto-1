@@ -19,6 +19,7 @@ class profileController extends Controller
      */
     public function show(String $nameUs)
     {
+        dd($nameUs);
         $nameac = DB::table('users')->where('name',$nameUs)->get();
         $name = Auth::user()->name;
         if( ($nameac[0]->name) == $name){ //el usuario que entró es el creador de su cuenta
