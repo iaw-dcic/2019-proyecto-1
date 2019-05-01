@@ -19,29 +19,23 @@ class profileController extends Controller
      */
     public function show(String $nameUs)
     {
-        dd($nameUs);
+       
         $nameac = DB::table('users')->where('name',$nameUs)->get();
-        $name = Auth::user()->name;
+        if(Auth::check())
+            $name = Auth::user()->name;
+        else
+            $name = 'guest';
         if( ($nameac[0]->name) == $name){ //el usuario que entró es el creador de su cuenta
             $name= Auth::user()->name;
             $surname = User::findOrFail(Auth::user()->id)->surname;
             return view('profiles.show')->with('name',$name)->with('surname',$surname);
         }
         else{
-            if(($nameac[0]->name) != $name){
-                $name = $nameac[0]->id; 
-                $nameac = $nameac[0]->name;
-                return view('profiles.show')->with('name',$nameac)->with('idActual',$name); //es un usuario externo LOGUEADO
-            }
-            else{
-                $name = $nameac[0]->id; 
-                $nameac = $nameac[0]->name;
-                return view('profiles.show')->with('name',$nameac)->with('idActual',$name); //es un GUEST
-            }
+            $name = $nameac[0]->id; 
+            $nameac = $nameac[0]->name;
+            return view('profiles.show')->with('name',$nameac)->with('idActual',$name); //es un usuario externo LOGUEADO
         }
-      
-
-       
+    
     }
 
     /**
