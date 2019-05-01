@@ -29,8 +29,9 @@ class SocialAuthController extends Controller
             // En caso de que no exista creamos un nuevo usuario con sus datos.
             DB::beginTransaction();
             $nextId = DB::table('users')->max('id') + 1;
+            $username = str_replace(' ','',$social_user->name).$nextId;
             $user = User::create([
-                'username' => 'user'.$nextId,
+                'username' => $username,
                 'email' => $social_user->email,
                 'description' => "",
             ]);
