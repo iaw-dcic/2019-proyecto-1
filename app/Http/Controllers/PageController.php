@@ -21,20 +21,8 @@ class PageController extends Controller
         return view('users',compact('users'));
     }
 
-    public function profile(User $user)
-    {
-
-
-        return view('user.user',compact('user'));
-    }
-
     public function readme()
     {
         return view('readme');
-    }
-
-    public function settings()
-    {
-        return view('user.settings');
     }
 }

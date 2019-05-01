@@ -13,17 +13,26 @@
 
 Route::get('/', 'PageController@index')->name('welcome');
 
-Route::get('/users', 'PageController@users')->name('users');
+//Route::get('/users', 'PageController@users')->name('users');
 
 Route::get('/readme', 'PageController@readme')->name('readme');
 
-Route::get('/settings', 'PageController@settings')->name('settings');
 
-Route::get('{user}/profile', 'PageController@profile')->name('profile');
+
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/* RUTAS PARA USER */
+
+Route::get('/home', 'UserController@index')->name('home');
+
+Route::get('{user}/profile', 'UserController@profile')->name('profile');
+
+Route::get('/settings', 'UserController@edit')->name('settings');
+
+Route::patch('{user}/profile', 'UserController@update');
+
 
 /* RUTAS PARA PLAYLISTS */
 

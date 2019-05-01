@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title','Usuarios')
+
 @section('content')
 <div class="container">
     <h2>Usuarios</h2>
@@ -9,9 +11,7 @@
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{$user->name}}</h5>
         </div>
-        <p class="mb-1">{{$user->email}}</p>
-        <p class="mb-2">Id: {{$user->id}}</p>
-        </a>
+    </a>
     @endforeach
     </div>
 </div>

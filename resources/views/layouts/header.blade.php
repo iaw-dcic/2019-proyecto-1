@@ -52,7 +52,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                <a class="dropdown-item" href="{{route('profile',['user'=>auth()->user()->id])}}">{{auth()->user()->name}}</a>
+                                <a class="dropdown-item" href="{{route('profile',['user'=>auth()->user()->id])}}">Perfil</a>
 
                                 <a class="dropdown-item" href="{{route('create_playlist',['user'=>auth()->user()->id])}}">Nueva playlist</a>
 

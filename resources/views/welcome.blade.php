@@ -1,12 +1,14 @@
 @extends('layouts.master')
 
+@section('title','miplaylist')
+
 @section('content')
 <div class="container">
         {{-- Para esta vista me pasan como parametro todas las playlists publicas--}}
+    @if($playlists->count())
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
-                <h1>Playlists mas populares</h1>
-                <p>Ultimas playlists ordenadas por popularidad en base a los usuarios</p>
+                <h1>Playlists públicas</h1>
             </div>
         </div>
         <div class="row">
@@ -30,5 +32,19 @@
             </div>
         @endforeach
     </div>
+    @else
+    <div class="row justify-content-center">
+        <div class="jumbotron bg-info">
+            <h4 class="display-3 text-center">:(</h4>
+            <hr class="my-1">
+            <p class="lead">Parece que aún no hay playlists públicas.</p>
+            @auth
+            <p class="lead">
+                <a class="btn btn-light btn-md" href="{{route('crear_playlist')}}" role="button">Crear playlist!</a>
+            </p>
+            @endauth
+        </div>
+    </div>
+    @endif
 </div>
 @endsection
