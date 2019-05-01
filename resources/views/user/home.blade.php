@@ -18,7 +18,7 @@
     </div><!-- row -->
     <div class="row">
         <div class="col-sm-10">
-            <h3>Tus playlists<h1>
+            <h4>Tus playlists</h4>
         </div>
         <div class="col-sm-2 justify-content-right">
             <div class="well well-lg">

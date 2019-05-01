@@ -53,6 +53,11 @@ body{
     text-decoration: none;
 }
 
+.eliminar-link:hover {
+    color: #c41549; /* danger */
+    text-decoration: none;
+}
+
 .titulo{
     font-family: Galada;
 }
