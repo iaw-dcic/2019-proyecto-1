@@ -34,7 +34,6 @@ class DashboardController extends Controller
                 if($list->user_id == $user->id){
                     $list->user_name = $user->name;
                     $list->user_avatar = $user->avatar;
-                    dd(Storage::url($user->avatar));
                     break;
                 }
             }
