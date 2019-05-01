@@ -18,12 +18,12 @@
         </h1>
         <div>
             <h2 id="informacionUsuario">
-                Nombre Usuario: {{ Auth::user()->name }}
+                <b>Nombre Usuario:</b> {{ Auth::user()->name }}
             </h2>
         </div>
         <div>
             <h2 id="informacionUsuario">
-                E-mail: {{ Auth::user()->email }}
+                <b>E-mail:</b> {{ Auth::user()->email }}
             </h2>
         </div>
         <a class="btn-sm btn-info botoninput" href="/editarPerfil"><i class="fas fa-user-edit"> Editar Perfil</i></a>
