@@ -18,7 +18,6 @@ class ControladorVistas extends Controller
 	{
 		$user=User::find($request -> id);
 		$serie=$user->series;
-		//$serie = orderBy('id', 'DESC')->paginate(3);
 		$lista = $user->listas;
 		return view('perfil.miPerfil', ['serie'=> $serie], ['lista'=> $lista]);
     }
@@ -31,7 +30,10 @@ class ControladorVistas extends Controller
 	public function perfilPublico(Request $request)
 	{
 		$user=User::find($request -> id);
-		$lista = $user->listas;
+		$lista = DB::table('lista_usuarios')
+			->where('idUsuario',$user->id)
+			->where('publica', 'Si')
+			->get();
 		return view('perfil.perfilPublico', ['lista'=> $lista],['usuario'=> $user]);
 	}
 
