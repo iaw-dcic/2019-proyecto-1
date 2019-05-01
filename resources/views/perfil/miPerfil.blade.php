@@ -64,7 +64,7 @@
                         <form method="POST" action="{{route('serie.destroy',$series->id)}}">
                             {{csrf_field()}}
                             @method('DELETE')      
-                            <button type="submit" id="botonEliminar" class="btn-sm btn-danger mt-3"  onclick="return confirm('¿Quiere borrar la serie?')"><i class="far fa-trash-alt"></i></button>
+                            <button type="submit" id="botonEliminar" class="btn-sm btn-danger mt-3 botoninput"  onclick="return confirm('¿Quiere borrar la serie?')"><i class="far fa-trash-alt"></i></button>
                         </form>
                         <a class="btn-sm btn-info botoninput" href="/asociarLista/{{$series->id}}"><i class="fas fa-plus"></i></a>
                     </td>
