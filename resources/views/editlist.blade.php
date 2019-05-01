@@ -15,7 +15,7 @@
                 <h4>Agrega películas a tu lista ! </h4>
 			</div>
 			<div class="card-body">
-                        <form method="POST" action="{{url('editlist')}}">
+                        <form method="POST" action="{{url('createmovie')}}">
                             @csrf
                             <input type="hidden" name="id_list" value="{{$list->id}}">
                             <div class="input-group form-group">

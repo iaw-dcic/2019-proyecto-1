@@ -28,14 +28,15 @@ class MovieController extends Controller
         ]);
 
         $list_id=$data['list_id'];
-
-        return redirect()->route('editlist',[$list_id]);
+        
+        return back();
+        //return redirect()->route('createmovie',[$list_id]);
     }
 
     public function edit()
     {
         $allData=request()->all();
-        $id=$allData['id_movie'];
+        $id=$allData['id_list'];
 
         $data=request()->validate([
             'genre' => 'required',
