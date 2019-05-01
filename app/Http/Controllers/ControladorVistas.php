@@ -30,10 +30,7 @@ class ControladorVistas extends Controller
 	public function perfilPublico(Request $request)
 	{
 		$user=User::find($request -> id);
-		$lista = DB::table('lista_usuarios')
-			->where('idUsuario',$user->id)
-			->where('publica', 'Si')
-			->get();
+		$lista=$user->listas;
 		return view('perfil.perfilPublico', ['lista'=> $lista],['usuario'=> $user]);
 	}
 

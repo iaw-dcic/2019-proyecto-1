@@ -28,25 +28,27 @@
         </h1>
         <hr>
         @foreach($lista as $listas)
-            <div class="panelTablaYBotones">
-                <div class="panelTabla">
-                    <table class="table table-hover">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">{{ $listas->nombre_lista}}</th>
-                            </tr>
-                        </thead>
-                        @foreach($listas->seriesAsociadas as $series)   
-                        <tbody>
-                            <tr>
-                                <td>{{ $series->nombre}}</td>
-                            </tr>
-                        </tbody>
-                        @endforeach
-                    </table>
+            @if($listas->publica == "Si")
+                <div class="panelTablaYBotones">
+                    <div class="panelTabla">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">{{ $listas->nombre_lista}}</th>
+                                </tr>
+                            </thead>
+                            @foreach($listas->seriesAsociadas as $series)   
+                            <tbody>
+                                <tr>
+                                    <td>{{ $series->nombre}}</td>
+                                </tr>
+                            </tbody>
+                            @endforeach
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <hr>
+                <hr>
+            @endif
         @endforeach
     </div>
     <div class="panelBoton">
