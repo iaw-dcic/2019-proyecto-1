@@ -1,41 +1,65 @@
 @extends('layout')
 
-@section('title', "Perfil {$user->id}")
+@section('stylesheets')
+<link rel="stylesheet" href="{{ asset('css/card.css') }}" >
+@endsection
+
+@section('title', "Perfil de usuario: {$user->name}")
 
 @section('content')
-     <h3>Perfil del usuario: #{{$user->name}}
-	 
+   
+	  <h1>Perfil de <i><b>{{$user->name}} </i></b>
+	
 	 @if(Auth::id()==$user->id)
-	<small>
-	<a href="{{ route('users.edit', $user) }}">Editar</a>
-
-	
-
-	<form action="{{ route('users.delete', $user)}}" method="POST">
-			{{ csrf_field() }}
-			{{ method_field('DELETE') }}
-			<button type="submit" onclick="return confirm('Está seguro que quiere eliminar su cuenta?');" >Eliminar</button>
-	</form>
+		<form action="{{ route('users.delete', $user)}}" method="POST">
+				{{ csrf_field() }}
+				{{ method_field('DELETE') }}
+		<button type="submit" class="btn btn-link" onclick="return confirm('Está seguro que quiere eliminar su cuenta?');" >Eliminar</button>
 		
-	</small>
+	<!--	<a href="{{ route('users.edit', $user) }}">Editar</a> -->
+		
 	
-	
+		</form>
 	@endif
-	
-	</h3>
-	
+	</h1>
+
     <p>Correo electrónico: {{ $user->email }}</p>	
 	
-    <p>Listas: </p>
-	  @forelse ($pelis as $usermovie)
-	  
-             <li>{{$usermovie->id}}- {{ $usermovie->nombre }}
-			 <a href="{{ route('lists.show', $usermovie->id) }}">Ver</a>
-			 </li>
-		@empty
-        
-			<li>No hay usuarios registrados.</li>
-        @endforelse
+	 <h3> Listas </h3>
+	 
 	
+		<div class="containerm">
+		<div class="card">
+		<p>
+				@guest
+				<div class="card-body">
+					 
+						  @forelse ($pelis as $usermovie)
+							@if($usermovie->public==true)
+								 <li> <a href="{{ route('lists.show', $usermovie->id) }}">{{ $usermovie->nombre }}</a></li>
+							@endif
+							@empty
+							
+								<li>No hay listas registrados.</li>
+							@endforelse
+					</div>
+				@else
+					<div class="card-body">
+					
+				  @forelse ($pelis as $usermovie)
+				  
+						 <li> <a href="{{ route('lists.show', $usermovie->id) }}">{{ $usermovie->nombre }} </a></li>
+						
+						
+					@empty
+					
+						<li>No hay listas registradas.</li>
+					@endforelse
+						</div>
+				@endguest
+		   
+		</p>
+		</div>	
+		</div>	
 	
 @endsection

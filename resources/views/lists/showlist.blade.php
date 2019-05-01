@@ -1,46 +1,58 @@
 @extends('layout')
 
 @section('title', "Lista {$usermovie->id}")
+ 
+@section('stylesheets')
+<link rel="stylesheet" href="{{ asset('css/index.css') }}" >
+@endsection
 
 @section('content')
 
 <div id="main">
-	<h3> Lista #{{ $usermovie->nombre }}<small class="text-muted"> creada por{{$usermovie->creador_id}}</small> 
+	<h1> <b>{{ $usermovie->nombre }}</b><small class="text-muted"> creada por <a href="{{ route('users.show',  ['user'=> $user->id]) }}"><i>{{$user->name}}</i></a> </small> </h1>
+	
 	@if ( Auth::id()==$usermovie->creador_id)
-	  <a href="{{ route('lists.edit',  ['usermovie'=> $usermovie->id]) }}">Editar nombre</a>
-	  <a align="right" href="{{ url("/listas/{$usermovie->id}/addmovie") }}"  class="btn icon-btn btn-success">+ Pelicula</a>
-	
-		<form action="{{ route('lists.delete', ['usermovie'=> $usermovie->id])}}" method="POST">
+	<form action="{{ route('lists.delete', ['usermovie'=> $usermovie->id])}}" method="POST">
 			{{ csrf_field() }}
-			{{ method_field('DELETE') }}
-			
-			<button type="submit" onclick="return confirm('Desea eliminar esta lista?');">Eliminar</button>
-		</form>
+			{{ method_field('DELETE') }}			
+	 <button type="submit" class="btn btn-link" onclick="return confirm('Desea eliminar esta lista?');">Eliminar</button>
 	
+	  <a href="{{ route('lists.edit',  ['usermovie'=> $usermovie->id]) }}">Editar</a>
+	 
+	<center>
+	  <a href="{{ url("/listas/{$usermovie->id}/addmovie") }}"  class="btn icon-btn btn-success">+ Pelicula</a>
+	</center>
+	
+	
+	</form>
 	@endif 
-	
-	
-	</h3>
+
 </div>
 
+  <ul>
+    
+    </ul>
+	
+	<div id="table-wrapper">
+	<div id="table-scroll">
 	<table class="table">
-  <thead class="thead-dark">
+  <thead class="thead-light">
     <tr>
-      <th scope="col">#</th>
-	   <th scope="col"></th>
+      <th scope="col"></th>
       <th scope="col">Nombre</th>
       <th scope="col">Director</th>
-	   <th scope="col"></th>
-	   <th scope="col">#</th>
+	  <th scope="col">Año</th>
+	  <th scope="col"></th>
+	  <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-   @forelse ($pelis as $movie)
+     @forelse ($pelis as $movie)
     <tr>
       <th scope="row"></th>
-	  <td> <li>{{ $movie->id }}</li> </td>
-      <td> <li>{{ $movie->titulo }}</li> </td>
-      <td><li>{{ $movie->director }}</li></td>
+      <td> <a>{{ $movie->titulo }}</a> </td>
+      <td><a>{{ $movie->director }}</a></td>
+	  <td><a>{{ $movie->año }}</a></td>
 	  @if ( Auth::id()==$usermovie->creador_id)
 	  <td>
 		<form action="{{ route('movies.delete', ['usermovie'=> $usermovie->id, 
@@ -48,11 +60,11 @@
 			{{ csrf_field() }}
 			{{ method_field('DELETE') }}
 			
-			<button type="submit" onclick="return confirm('Desea eliminar esta pelicula?');">Eliminar</button>
+			<button type="submit"  class="btn btn-danger" onclick="return confirm('Desea eliminar esta pelicula?');">Eliminar</button>
 		</form>
 	  </td>
 	   <td>
-	  	<a href="{{ route('movies.edit',  ['usermovie'=> $usermovie->id, 
+	  	<a class="btn btn-info" href="{{ route('movies.edit',  ['usermovie'=> $usermovie->id, 
 												'movie'=> $movie->id]) }}">Editar</a>
 		</td>
 		@endif 
@@ -62,9 +74,11 @@
   
   @empty
         
-			<li>No hay pelis registradas.</li>
+		
   
   @endforelse
 </table>
+</div>
+</div>
 
 @endsection

@@ -45,6 +45,7 @@ class MovieItemController extends Controller
 		Movie::create([
            	'titulo' => request('titulo'),
 			'director' =>  request('director'),
+			'año' =>  request('año'),
 			'lista' => $usermovie->id
         ]);
 		
@@ -74,6 +75,7 @@ class MovieItemController extends Controller
 
 		$movie->titulo = request('titulo');
         $movie->director = request('director');
+		$movie->año = request('año');
 		$movie->lista = $usermovie->id;
 		
         $movie->save();
@@ -82,5 +84,4 @@ class MovieItemController extends Controller
 												'movie'=> $movie]);
 	}
 	
-
 }

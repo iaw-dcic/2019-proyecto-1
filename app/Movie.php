@@ -8,7 +8,7 @@ class Movie extends Model{
 	protected $guarded = [];
     
     protected $fillable = [
-        'titulo', 'director', 'lista'
+        'titulo', 'director', 'lista', 'año'
     ];
 	
 	 public function list(){

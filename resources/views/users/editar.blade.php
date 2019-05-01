@@ -1,12 +1,12 @@
 @extends('layout')
 
-@section('title', "Editar usuario")
+@section('title', "Editar perfil")
 
 @section('content')
    
 	  <div class="card">
 	
-	  <h4 class="card-header">Editar usuario</h4>
+	  <h4 class="card-header">Editar perfil</h4>
         <div class="card-body">
 	
 	 <form method="POST" action="{{ url("usuarios/{$user->id}") }}">
@@ -40,8 +40,7 @@
 	  <button class="btn btn-primary" type="submit">Actualizar</button>
 	  </center>
 	  
-	  <a href="{{ route('users.index') }}">Regresar al listado de usuarios</a>
-     
+	 
    </form>
 	</div>
  

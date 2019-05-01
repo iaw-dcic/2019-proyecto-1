@@ -10,6 +10,7 @@ class Usermovie extends Model{
     protected $fillable = [
         'nombre',
 		'creador_id',
+		'public'
     ];
 		
 	public function movies(){

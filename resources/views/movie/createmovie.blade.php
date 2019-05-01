@@ -30,6 +30,9 @@
 						<th class="text-center">
 							Director
 						</th>
+						<th class="text-center">
+							Año
+						</th>
 						
 					</tr>
 					
@@ -45,6 +48,9 @@
 						</td>
 						<td>
 						<input type="text" name='director' placeholder='Director' class="form-control"/>
+						</td>
+						<td>
+						<input type="text" name='año' placeholder='Año' class="form-control"/>
 						</td>
 						
 					</tr>

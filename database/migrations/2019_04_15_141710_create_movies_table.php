@@ -18,6 +18,7 @@ class CreateMoviesTable extends Migration
 			
 			$table->string('titulo', 100);
 			$table->string('director', 100);
+			$table->integer('año');
 			
 			$table->unsignedBigInteger('lista'); 
 			

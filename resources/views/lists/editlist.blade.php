@@ -21,17 +21,11 @@
 		</div>
 	</div>
 	
-	<div class="form-check-inline">
-	<label class="labeltext">Lista pública?  </label><br>
-		<label class="customradio"><span class="radiotextsty">Si</span>
-		  <input type="radio" checked="checked" name="radio">
-		  <span class="checkmark"></span>
-		</label>        
-		<label class="customradio"><span class="radiotextsty">No</span>
-		  <input type="radio" name="radio">
-		  <span class="checkmark"></span>
-	</label>
-	</div>				
+	<label>Lista pública</label>
+	<label class="switch">
+					<input name="public" type="checkbox">
+					<span class="slider round"></span>
+	</label>				
 	
 	
 	

@@ -32,6 +32,9 @@
 						<th class="text-center">
 							Director
 						</th>
+						<th class="text-center">
+							año
+						</th>
 					</tr>
 					
 
@@ -46,6 +49,9 @@
 						</td>
 						<td>
 						<input type="text" name='director' placeholder='Director' class="form-control" value="{{ old('director', $movie->director) }}"/>
+						</td>
+						<td>
+						<input type="text" name='año' placeholder='Año' class="form-control" value="{{ old('año', $movie->año) }}"/>
 						</td>
 						
 					</tr>

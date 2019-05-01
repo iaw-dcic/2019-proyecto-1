@@ -35,7 +35,8 @@ class MovieController extends Controller
 		
 		$pelis=Movie::where('lista',$usermovie->id)->get();
 
-		return view('lists.showlist',['pelis'=> $pelis, 'usermovie'=> $usermovie]);
+		$user=User::where('id', $usermovie->creador_id)->first();
+		return view('lists.showlist',['pelis'=> $pelis, 'usermovie'=> $usermovie, 'user'=> $user]);
 	}
 	
 	public function create(){
@@ -47,12 +48,15 @@ class MovieController extends Controller
 		
 		request()->validate([
 			'nombre' => ['required', 'min:3'],
+			
 		]);
+		
+		$public = request('public') == "on" ? 1 : 0;
 		
 	   Usermovie::create([
            	'nombre' => request('nombre'),
 			'creador_id' => auth()->id(),
-			
+			'public' => $public
         ]);
 	/*	
 		Movie::create([
@@ -81,7 +85,8 @@ class MovieController extends Controller
 	
 	public function update(Usermovie $usermovie){
 		$usermovie->nombre = request('nombre');
-		
+		request('public') == "on" ? 1 : 0;
+		$usermovie->public = request('public') == "on" ? 1 : 0;
         $usermovie->save();
 		
 		return redirect()->route('lists.show', ['usermovie'=> $usermovie]);

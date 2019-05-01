@@ -24,7 +24,7 @@ class UserController extends Controller
      //   }
 		
 	return view('users.index', ['users'=> $users, 
-						  'title'=> 'Listado de usuarios']); 
+						  'title'=> 'Comunidad']); 
 	}
 
 	public function show($id){
@@ -68,6 +68,7 @@ class UserController extends Controller
 		
 		return redirect()->route('users.show', ['user'=> $user]);
 	}
+
 	
 	function destroy(User $user) {
 		

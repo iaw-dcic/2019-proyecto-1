@@ -16,11 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('users.create');
+
 Route::get('/listas/nuevo', 'MovieController@create');
 
 Route::post('/home', 'MovieController@store')->name('movie.store');
 
 Route::get('/usuarios', 'UserController@index')->name('users.index');
+Route::post('/buscar', 'SearchController@search')->name('search-profile');
 
 Route::delete('/usuarios/{user}', 'UserController@destroy')->name('users.delete');
 Route::delete('/listas/{usermovie}', 'MovieController@destroy')->name('lists.delete');
@@ -40,7 +42,6 @@ Auth::routes();
 
 Auth::routes(['register' => false]);
 
-
 Route::put('/usuarios/{user}', 'UserController@update');
 
 Route::put('/listas/{usermovie}', 'MovieController@update');
@@ -55,10 +56,13 @@ Route::get('/listas/{usermovie}/addmovie', 'MovieItemController@create')
 Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 Route::get('/usuarios/{usermovie}/{movie}/editar', 'MovieItemController@edit')->name('movies.edit');
 
-
 Route::get('/listas/{usermovie}/editar', 'MovieController@edit')->name('lists.edit');
 
 Route::post('/listas/{usermovie}', 'MovieItemController@store');	
-	
-// Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+//redireccionar invalidos 
+Route::any('{query}', 
+  function() { return redirect('/'); })
+  ->where('query', '.*');
