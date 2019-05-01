@@ -8,33 +8,33 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <script type="text/javascript" src="{{ asset('jquery-ui/jquery-1.12.4.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('jquery-ui/jquery-ui.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('jquery/jquery-3.4.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('jquery/jquery.validate.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('datepicker/bootstrap-datepicker.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/others.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('datatables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('datatables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('jquery-ui/jquery-1.12.4.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('jquery-ui/jquery-ui.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('jquery/jquery-3.4.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ secure_asset('jquery/jquery.validate.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('js/bootstrap.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('datepicker/bootstrap-datepicker.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('js/others.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('datatables/datatables.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('datatables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ secure_asset('datatables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js') }}" defer></script>
 
     <!-- Fonts -->
-    <link type="text/css" href="{{ asset('css/all.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ secure_asset('css/all.css') }}" rel="stylesheet">
 
     <!-- Styles -->
-    <link type="text/css" href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('css/texts.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('datepicker/bootstrap-datepicker.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('css/principal.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ secure_asset('css/texts.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ secure_asset('datepicker/bootstrap-datepicker.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ secure_asset('css/principal.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ secure_asset('datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
-    <link type="text/css" href="{{ asset('jquery-ui/jquery-ui.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ secure_asset('jquery-ui/jquery-ui.css') }}" rel="stylesheet">
     @if(Route::current()->getName() == "login" || Route::current()->getName() == "register" || Route::current()->getName() == "password.request" || Route::current()->getName() == "dashboard")
-        <link type="text/css" href="{{ asset('css/login-register.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{ secure_asset('css/login-register.css') }}" rel="stylesheet">
     @endif
-    <script type="text/javascript" src="{{ asset('js/profile.js') }}" defer></script>
-    <link type="text/css" href="{{ asset('css/profile.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ secure_asset('js/profile.js') }}" defer></script>
+    <link type="text/css" href="{{ secure_asset('css/profile.css') }}" rel="stylesheet">
     
 </head>
 <body>
