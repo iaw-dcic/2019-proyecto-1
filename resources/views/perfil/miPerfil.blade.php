@@ -13,25 +13,20 @@
 
 @section('body')
     <div class="panelInformacion">
-            <h1 id="informacionUsuario">
-                Cuenta
-            </h1>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-              <h2 id="informacionUsuario">
-                 Nombre Usuario: {{ Auth::user()->name }}
-              </h2>
-            </div>
-            <div class="form-group col-md-6">
-                 <a class="btn-sm btn-info botoninput" href="/editarPerfil"><i class="fas fa-user-edit"></i></a>
-            </div>
+        <h1 id="informacionUsuario">
+            Cuenta
+        </h1>
+        <div>
+            <h2 id="informacionUsuario">
+                Nombre Usuario: {{ Auth::user()->name }}
+            </h2>
         </div>
-
-        <div class="form-group col-md-6">
+        <div>
             <h3 id="informacionUsuario">
                 E-mail: {{ Auth::user()->email }}
             </h3>
         </div>
+        <a class="btn-sm btn-info botoninput" href="/editarPerfil"><i class="fas fa-user-edit">Editar Perfil</i></a>
     </div>
 
     <div class="panelSeries">
@@ -66,7 +61,7 @@
                             @method('DELETE')      
                             <button type="submit" id="botonEliminar" class="btn-sm btn-danger mt-3 botoninput"  onclick="return confirm('¿Quiere borrar la serie?')"><i class="far fa-trash-alt"></i></button>
                         </form>
-                        
+
                         <a class="btn-sm btn-info botoninput" href="/asociarLista/{{$series->id}}"><i class="fas fa-plus"></i></a>
                     </td>
                 </tr>
