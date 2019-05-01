@@ -26,11 +26,3 @@ Route::get('/browse', 'PagesController@browse')->name('browse');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-//Dudas
-//--informar los audits? si quiero
-
-//BORRAR TODO ESTO
-//PASAR EL LINK DEL HEROKU EN EL PULLREQUEST
-//PONERLE COSAS A LA BASE EN EL HEROKU DESPUES DE HACERLO ANDAR. ABRO LA PAGINA DESDE EL HEROKU Y LE METO COSAS
