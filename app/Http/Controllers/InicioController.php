@@ -12,4 +12,8 @@ class InicioController extends Controller
 
         return view('/inicio', ['partidos' => $partidospublicos]);
     }
+
+    public function readme(){
+        return view('readme');
+    }
 }

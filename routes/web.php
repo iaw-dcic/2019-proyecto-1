@@ -20,6 +20,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/readme', 'InicioController@readme')->name('readme');
+
 // FORMULARIO PARA CREAR UN PARTIDO
 Route::get('/partido','PartidoController@index')->name('partido');
 //Agregar un participante a un partido

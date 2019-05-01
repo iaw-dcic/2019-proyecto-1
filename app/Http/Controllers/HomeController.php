@@ -27,6 +27,5 @@ class HomeController extends Controller
         $userActual= Auth::user();
         return view('home',['user'=>$userActual]);
     }
-
    
 }
