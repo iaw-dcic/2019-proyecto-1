@@ -18,7 +18,7 @@
             <th>Nombre Canción</th>
             <th>Album</th>
             <th>Autor</th>
-            <th>Duración</th>
+            <!--<th>Duración</th> -->
             <th>Fecha Lanzamiento</th>
             <th>Permisos</th>
         </head>
@@ -29,7 +29,7 @@
                     <td> {{ $cancion->nombre }}</td>
                     <td>{{ $cancion->album }}</td>
                     <td>{{ $cancion->autor }}</td>
-                    <td>{{ $cancion->duracion }}</td>
+                   <!-- <td>{{ $cancion->duracion }}</td> -->
                     
                     @if( $cancion->fecha_lanzamiento === "1111-11-11")
                         <td>Sin especificar</td>

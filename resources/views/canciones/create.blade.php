@@ -18,13 +18,14 @@
                 </div>
             </div>
     
-            <div class="field">
+           <!-- <div class="field">
                     <label class="label" for="duracion">Duración (hh:mm:ss) *</label>
                     <div class="control">
-                        <input type="time" class="input" name="duracion" value="00:00:00">
+                        <input type="time" class="input" name="duracion" >
                     </div>
             </div>
-        
+        -->
+
             <div class="field">
                     <label class="label" for="album">Album *</label>
                     <div class="control">

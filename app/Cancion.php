@@ -9,7 +9,9 @@ class Cancion extends Model
     protected $table = "canciones";
 
     //el 'id' me lo agrega por defecto
-    protected $fillable = ['lista_id','nombre','duracion','album','autor','fecha_lanzamiento'];
+    
+                                        //falta duracion
+    protected $fillable = ['lista_id','nombre','album','autor','fecha_lanzamiento'];
 
     //ver   si     hay que agregar el    timestamp  --------^
 
@@ -27,7 +29,7 @@ class Cancion extends Model
        return [
            'nombre.required' => 'Debe ingresar un nombre para la cancion',
            'nombre.min' =>'El nombre de la cancion debe ser de 3 caracteres o mas',
-           'duracion.different' => 'La duracion de la cancion debe ser mayor a 00:00:00',
+          // 'duracion.required' => 'Debe ingresar una duracion de la cancion',
            'album.required' => 'Debe ingresar el album al que pertenece la cancion',
            'album.min' =>'El nombre del album debe ser de 2 caracteres o mas',
            'autor.required' => 'Debe ingresar un autor para la cancion',

@@ -62,16 +62,19 @@ class CancionesController extends Controller
     public function store(Request $request,$id)
     {
 
-      //  dd($request);
+       //dd($request->duracion);
         $cancion= new Cancion(
             request()->validate([
                    'nombre'=> ['required','min:3'],
-                   'duracion'=> 'different:00:00:00',
+                  // 'duracion'=> 'required',
                    'album'=> 'required','min:2',
                    'autor'=> 'required',
                ],Cancion::messages())
            );
         $lista_id= Lista::findOrfail($id)->id; 
+
+        //if ($request->duracion != "00:00:00" && $request->duracion !=null)
+         //   $lista->duracion= $request->duracion;
    
         if($request->fecha_lanzamiento !=null)
             $cancion->fecha_lanzamiento= $request->fecha_lanzamiento;
