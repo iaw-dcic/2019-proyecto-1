@@ -20,7 +20,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/book', 'BookController');
 
-
 Route::get('user/{userid}/publicList', 'ListaController@publicLists');
 Route::resource('/list', 'ListaController');
 
@@ -32,9 +31,9 @@ Route::prefix('profile')->name('profile.')->group(function () {
 	Route::post('store', 'ProfileController@store')->name('store');
 });
 
-
 Route::get('profile/{userid}/show', 'ProfileController@show');
 
 Route::get('/readme', function () {
     return view('readme');
 });
+
