@@ -102,8 +102,7 @@
                     </table>
                 </div>
                 <div class="panelBotones">
-                    <h2>¿Es publica? </h2>
-                    <h3>{{ $listas->publica}}</h3>
+                    <h2>¿Es publica? {{ $listas->publica}}</h2>
                     <a class="btn-sm btn-info botoninput" href="{{route('listas.edit', $listas->id) }}"><i class="far fa-edit"></i></a>
                     <form method="POST" action="{{route('listas.destroy',$listas->id)}}">
                         {{csrf_field()}}

@@ -62,13 +62,16 @@ body
 .panelTablaYBotones
 {
     min-height: 200px;
+    text-align: center;
 }
 .panelTabla
 {
     float: left;
+    text-align: center;
 }
 
 .panelBotones
 {
     float: right;
+    text-align: center;
 }
