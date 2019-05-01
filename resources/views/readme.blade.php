@@ -21,13 +21,17 @@
         
         </div>
     </div>
-
-    <div class="d-flex flex-column">
-        <h3> Comentarios y/o aclaraciones </h3>
-            <ul>
-                <li> Al modificar los datos de una lista, es necesario ingresar tanto un nombre nuevo como una descripcion nueva </li>
-                <li> Al modificar los datos de un juego, es necesario que todos los campos tengan datos para que el mecanismo funcione </li>
-            </ul>
-    </div>
 </div>
+
+<div class="d-flex flex-column">
+    <h3> Comentarios y/o aclaraciones </h3>
+        <ul>
+            <li>para los estilos y la presentación se usó el framework de estilos Bootstrap: https://getbootstrap.com/ </li>
+            <li> con lo que respecta al ingreso de fechas para los juegos,
+                    no existe un chequeo de si la fecha ingresada corresponde a una fecha que NO sea posterior a la fecha actual </li>
+            <li> Al modificar los datos de una lista, es necesario ingresar tanto un nombre como una descripcion </li>
+            <li> Al modificar los datos de un juego, es necesario que todos los campos tengan datos para que el mecanismo funcione </li>
+        </ul>
+</div>
+
 @endsection

@@ -52,19 +52,19 @@
                         <form method="POST" action="/lists/{{$lista[0]->id}}">
                             @csrf
                             <div class="form-group">
-                                <label for="game_title">Titulo del Juego</label>
+                                <label for="game_title">Título del Juego</label>
                                 <input type="text" class="form-control" id="game_title" aria-describedby="listHelp" placeholder="Ingresa el nombre del juego" name="title" required value="{{old('title')}}">
                             </div>
                             <div class="form-group">
-                                <label for="game_genre">Descripcion</label>
+                                <label for="game_genre">Género del juego</label>
                                 <input type="text" class="form-control" id="game_genre" aria-describedby="game_genre" placeholder="Ingresa el genero del juego" name="genre" required value="{{old('genre')}}">
                             </div>
                             <div class="form-group">
-                                <label for="game_company">compañia</label>
+                                <label for="game_company">Compañia</label>
                                 <input type="text" class="form-control" id="game_company" aria-describedby="game_company" placeholder="Ingresa la compañia que creó el juego" name="company" required value="{{old('company')}}">
                             </div>
                             <div class="form-group">
-                                <label for="release_date">fecha de salida</label>
+                                <label for="release_date">Fecha de salida</label>
                                 <input type="date" class="form-control" id="release_date" aria-describedby="release_date" placeholder="Ingresa la fecha de salida del juego" name="release_date" required >
                             </div>
                             <div>

@@ -19,7 +19,7 @@
     <p class="text-center"> genero: {{$datosJuego[0]->genre}} </p>
     <p class="text-center">  compañia: {{$datosJuego[0]->company}} </p>
     <p class="text-center"> fecha de salida: {{$datosJuego[0]->release_date}} </p>
-    <p class="text-center"> Creador del juego: {{$nombreUs}} </p>
+    <p class="text-center">  Subido por: {{$nombreUs}} </p>
 </div>
 
 
