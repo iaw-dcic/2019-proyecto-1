@@ -22,7 +22,7 @@
             <a href="/lists/{{$lista[0]->id}}/games/{{$elem->id}}" class="list-group-item list-group-item-action">{{$elem->name}}</a> 
         @endforeach
     @else
-        @if(Auth::user()->id == $idUsuario)  
+        @if(Auth::check() && Auth::user()->id == $idUsuario)  
             <div class="alert alert-primary divAlerta text-center" role="alert">
                 <h4 class="alert-heading">Nada que ver por aquí</h4>
                 <p class="mb-0 paragraph"> No hay juegos para ver, porque no creas uno? <p>
@@ -38,7 +38,7 @@
   </div>
 </ul>
 
-@if(Auth::user()->id == $idUsuario)
+@if(Auth::check() && Auth::user()->id == $idUsuario)
     <a href="{{route('lists.edit', [$lista[0]->id] )}}" class="btn btn-outline-info btn-block editBlock">Editar datos Lista</a>
 
 
@@ -97,7 +97,11 @@
 <a href="/profiles/{{Auth::user()->id}}" class="btn btn-primary btn-lg btn-block profBut" role="button" aria-pressed="true">Volver al Perfil</a>
 
 @else
-    <a href="/profiles/{{Auth::user()->name}}" class="btn btn-primary btn-lg btn-block profBut" role="button" aria-pressed="true">Volver a tu Perfil</a>
+    @if(Auth::check())
+        <a href="/profiles/{{Auth::user()->name}}" class="btn btn-primary btn-lg btn-block profBut" role="button" aria-pressed="true">Volver a tu Perfil</a>
+    @else
+        <a href="/profiles/{{$name}}" class="btn btn-primary btn-lg btn-block profBut" role="button" aria-pressed="true">Volver al perfil de {{$name}}</a>
+    @endif
 @endif
 
 

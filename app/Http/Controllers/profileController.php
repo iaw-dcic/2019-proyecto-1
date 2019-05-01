@@ -25,15 +25,15 @@ class profileController extends Controller
             $name = Auth::user()->name;
         else
             $name = 'guest';
-        if( ($nameac[0]->name) == $name){ //el usuario que entró es el creador de su cuenta
+        if( $nameUs == $name){ //el usuario que entró es el creador de su cuenta
             $name= Auth::user()->name;
             $surname = User::findOrFail(Auth::user()->id)->surname;
             return view('profiles.show')->with('name',$name)->with('surname',$surname);
         }
         else{
             $name = $nameac[0]->id; 
-            $nameac = $nameac[0]->name;
-            return view('profiles.show')->with('name',$nameac)->with('idActual',$name); //es un usuario externo LOGUEADO
+            $entrada = "guest";
+            return view('profiles.show')->with('name',$nameUs)->with('idActual',$name)->with('loggedIn',$entrada); //es un usuario externo
         }
     
     }

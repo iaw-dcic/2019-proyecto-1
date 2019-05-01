@@ -44,7 +44,8 @@ class listsController extends Controller
         $idUsuario = $idUsuario[0]->id;
         $lista = DB::table('listas')->where([ ['id', "=", $idLista], ['user_id', "=", $idUsuario] ])->get();
         $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
-        return view('lists.show',compact('lista','juegos','idUsuario'));
+        $name = User::find($idUsuario)->name;
+        return view('lists.show',compact('lista','juegos','idUsuario','name'));
     }
 
     /**
@@ -98,16 +99,25 @@ class listsController extends Controller
      */
     public function show(int $id)
     {   
+    
         $lista = DB::table('listas')->where('id',$id)->get();
         $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
-        $idUsuario = Auth::user()->id;
+        if(Auth::check())
+            $idUsuario = Auth::user()->id;
+        else
+            $idUsuario = "guest";
+
         $idUsuarioAccediendo = DB::table('users')->where('id',$lista[0]->user_id)->get();
         $idUsuarioAccediendo = $idUsuarioAccediendo[0]->id;
-        if($idUsuario == $idUsuarioAccediendo)
-            return view('lists.show',compact('lista','juegos','idUsuario'));
-        else
+        if($idUsuario == $idUsuarioAccediendo){
+            $name = User::find($idUsuario)->name; 
+            return view('lists.show',compact('lista','juegos','idUsuario','name'));
+        }
+        else{
             $idUsuario = $idUsuarioAccediendo;
-            return view('lists.show',compact('lista','juegos','idUsuario'));
+            $name = User::find($idUsuario)->name; 
+            return view('lists.show',compact('lista','juegos','idUsuario','name'));
+        }
 
     }
 

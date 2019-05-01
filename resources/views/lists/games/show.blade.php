@@ -23,7 +23,7 @@
 </div>
 
 
-@if(Auth::user()->id == $idUsuario)
+@if(Auth::check())
   <div class="row">
     <div class="col-md-12 text-center action_buttons">
       <div class="btn-toolbar action_buttons text-center" role="toolbar" aria-label="game Toolbar" >
@@ -36,7 +36,7 @@
   </div>
 @else
 <div>
-  <a href="/listaAjena/{{$nombreUs}}/{{$idLista}} text-center" class="btn btn-info btn-lg btn-block">Volver a la lista ajena</a>
+  <a href="/listaAjena/{{$nombreUs}}/{{$idLista}}" class="btn btn-info btn-lg btn-block">Volver a la lista ajena</a>
 </div>
 @endif
 
