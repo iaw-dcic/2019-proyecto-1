@@ -33,6 +33,9 @@
 
                                 <div class="top-meta" style="color:wheat">Nombre: <span style="color: azure">{{$user->name}}</span></div>
                                 <div class="top-meta" style="color:wheat">Nombre usuario: <span style="color: azure">{{$user->username}}</span></div>
+                                @auth
+                                    <div class="top-meta" style="color:wheat">Email registrado: <span style="color: azure">{{$user->email}}</span></div>
+                                @endauth
                                 <div class="top-meta" style="color:wheat">Listas:
                                     @if (count($userListings)>0) 
                                         @foreach($userListings as $listing) 
@@ -44,7 +47,7 @@
                                             @endguest
 
                                             @auth
-                                                <a href="{{route('listings.show',$listing->id)}}" > <span style="color: azure">{{$listing->title}} </span></a>
+                                                <a href="{{route('listings.show',$listing->id)}}" > <span style="color:deepskyblue">{{$listing->title}} / </span></a>
                                             @endauth
 
                                         @endforeach
