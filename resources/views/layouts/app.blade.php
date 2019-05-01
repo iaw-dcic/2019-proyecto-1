@@ -12,14 +12,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu" rel="stylesheet"> --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/my.css') }}" rel="stylesheet">
-    {{-- <link href="/css/app.css" rel="stylesheet"> --}}
-    {{-- <link href="/css/my.css" rel="stylesheet"> --}}
-    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> --}}
         <!-- Icons -->
     {{-- <link rel="stylesheet" href="{{ asset('css/all-fontawesome.css')}}"> --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -48,11 +44,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item active">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Regístrarse') }}</a>
                                 </li>
                             @endif
                         @else
@@ -60,12 +56,12 @@
                                 <a class="nav-link" href="{{ route('mis-listas') }}">{{ __('Mis listas') }}</a>
                             </li>
                             <li class="nav-item pl-1 active" >
-                                <a class="nav-link" href="{{ route('editar-perfil') }}">{{ __('Perfil') }}</a>
+                                <a class="nav-link" href="{{ route('editar-perfil') }}">{{ __('Mi perfil') }}</a>
                             </li>
                             <li class="nav-item pl-1 active">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Salir') }}
                                 </a>
                             </li>
 
@@ -73,29 +69,6 @@
                                 @csrf
                             </form>
 
-                            {{-- <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('mis-listas') }}">
-                                        {{ __('Mis listas') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('perfil') }}">
-                                        {{ __('Perfil') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li> --}}
                         @endguest
                     </ul>
                 </div>
@@ -110,9 +83,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/my.js') }}"></script>
-    {{-- <script src="/js/app.js"></script> --}}
-    {{-- <script src="/js/my.js"></script> --}}
-    {{-- <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.js" type="text/javascript"></script> --}}
     @yield('scripts')
 </body>
 </html>

@@ -19,5 +19,16 @@
                 </div>
             @endforeach
          </div>
+         <div class="text-center pt-4">
+            <a href="{{ route('login') }}">
+                Inicia sesión
+            </a>
+            o
+            <a href="{{ route('register') }}">
+                registrate
+            </a>
+            para crear tus propias listas de libros
+
+         </div>
 @endsection
 
