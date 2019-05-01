@@ -36,9 +36,17 @@
                                 <div class="top-meta" style="color:wheat">Listas:
                                     @if (count($userListings)>0) 
                                         @foreach($userListings as $listing) 
-                                            @if ($listing->visibility == 'Publica')
+
+                                            @guest
+                                                @if ($listing->visibility == 'Publica')
+                                                    <a href="{{route('listings.show',$listing->id)}}" ><span style="color:deepskyblue">{{$listing->title}} / </span> </a> 
+                                                @endif
+                                            @endguest
+
+                                            @auth
                                                 <a href="{{route('listings.show',$listing->id)}}" > <span style="color: azure">{{$listing->title}} </span></a>
-                                            @endif 
+                                            @endauth
+
                                         @endforeach
                                     @else 
                                         @auth
