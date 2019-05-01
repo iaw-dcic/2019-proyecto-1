@@ -19,7 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel='stylesheet' href='/css/primera.css'>
+    <link rel='stylesheet' href='/css/generales/primera.css'>
 </head>
 <body>
     <div id="app">
@@ -41,10 +41,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
-
-                        
-                        @else
+                        @auth
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown fuenteTitulo" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -62,7 +59,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endauth
                     </ul>
                 </div>
             </div>

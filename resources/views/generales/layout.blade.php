@@ -30,8 +30,6 @@
 
     </head>
     <body>
-        <!-- Codigo de la barra -->
-        
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel bg-custom">
             <div class="container">
                 <a class="navbar-brand fuenteTitulo" href="{{ url('/') }}">
