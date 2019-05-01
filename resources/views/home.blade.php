@@ -69,7 +69,7 @@
   </div>
   @endforeach
 
-<!--AGREGA UNA CATEGORIA
+
 <form class="form-inline" method="POST" action="Coleccion">
    @csrf
   <div class="form-group mb-2">
@@ -80,7 +80,7 @@
     <input type="text" class="form-control" name="name">
   </div>
   <button type="submit" class="btn btn-primary mb-2">Añadir</button>
-</form>-->
+</form>
 
   
 @endsection

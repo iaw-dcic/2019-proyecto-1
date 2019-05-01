@@ -34,5 +34,5 @@ Route::get('/Persona','PersonalController@index');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 //PARA AGREGAR UNA CATEGORIA:
-//Route::post('/Coleccion', 'ColeccionController@store')->name('Coleccion');
-//Route::post('/Coleccion/{nom}', 'ColeccionController@destroy')->name('Coleccion');
+Route::post('/Coleccion', 'ColeccionController@store')->name('Coleccion');
+Route::post('/Coleccion/{nom}', 'ColeccionController@destroy')->name('Coleccion');
