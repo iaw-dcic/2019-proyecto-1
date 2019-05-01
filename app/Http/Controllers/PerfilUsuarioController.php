@@ -23,8 +23,8 @@ class PerfilUsuarioController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'nickname' => ['required', 'string', 'max:255', new validarNickname],
-            'email' => ['required', 'max:255', new validarEmail()],
+            'nickname' => ['required', 'string', 'max:255', new validarNickname($userAmodificar->id)],
+            'email' => ['required', 'max:255', new validarEmail($userAmodificar->id)],
         ]);
 
         /**Si el nombre cambio */

@@ -7,14 +7,15 @@ use App\User;
 
 class validarEmail implements Rule
 {
+    public $user_id;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user_id)
     {
-        //
+        $this->user_id = $user_id;
     }
 
     /**
@@ -26,7 +27,7 @@ class validarEmail implements Rule
      */
     public function passes($attribute, $value)
     {
-        $existe=User::where('email',$value)->get()->first();
+        $existe=User::where('user_id','<>',$this->user_id)->where('email',$value)->get()->first();
         return $existe==null;
     }
 
