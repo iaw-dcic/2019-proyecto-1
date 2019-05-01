@@ -22,7 +22,7 @@
         </h3>
     </div>
 
-     <div class="container panelInformacion">
+    <div class="container panelInformacion">
         <h1 id="informacionUsuario">
             Listas Creadas
         </h1>
@@ -49,6 +49,7 @@
             <hr>
         @endforeach
     </div>
+    <div class="panelBoton">
         <a href="{{ url('/') }}"><button class="botonVolver" type="button">Volver</button></a>
     </div>
 @stop

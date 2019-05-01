@@ -16,7 +16,11 @@ body
     height: auto;
     text-align: center;
 }
-
+.panelBoton
+{
+    margin: 10px auto;
+    text-align: center;
+}
 .botonVolver
 {
     width: 150px;
