@@ -1,0 +1,163 @@
+/*--------------------Actividad pública-------------------------------------*/
+
+section.actividad {
+    width: 100%;
+}
+
+div.barra-actividad div.col{
+    background-color: white;
+    border-bottom: 2px solid #F3F5F6;
+    margin: 0;
+    padding: 12pt 8%;
+}
+
+div.barra-actividad div.col a {
+    color: black;
+}
+
+div.barra-actividad div.col span{
+    font-weight: 500;
+    margin-right: 10px;
+    padding: 12pt 6pt;
+}
+
+div.barra-actividad div.col span.active{
+    border-bottom: 2px solid $primary-color;
+}
+
+section.actividad div.contenido-actividad {
+    margin: 20pt 8% 48pt 8%;
+    padding: 0;
+}
+
+/*------------------Grid y Figures------------------------------*/
+
+/*--------------------------------------------------------------*/
+
+
+.grid-figures figure {
+	position: relative;
+	z-index: 1;
+    overflow: hidden;
+    margin: 20px 4px;
+	text-align: center;
+    cursor: pointer;
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.grid-figures figure img {
+	position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.grid-figures figure figcaption {
+	text-transform: uppercase;
+    position: absolute;
+    top: auto;
+    bottom: 0;
+	left: 0;
+	width: 100%;
+    height: 16pt;
+
+    padding: 8pt 16pt 24pt 16pt;
+    background: $primary-color;
+    color: white;
+    font-size: 16pt;
+
+    opacity: 0;
+
+	transition: transform 0.35s;
+    transform: translate3d(0,100%,0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.grid-figures figure h2 {
+	word-spacing: -2pt;
+    font-weight: 800;
+    margin: 0;
+    font-size: 12pt;
+    transition: transform 0.35s;
+    transform: translate3d(0,100%,0);
+    float: left;
+}
+
+.grid-figures figure i {
+    float: right;
+    color: #f9f9f9;
+    margin: 0 5pt;
+}
+
+.grid-figures figure i:hover {
+    color: white;
+}
+
+.grid-figures figure p {
+	letter-spacing: 1pt;
+    margin: 0;
+    padding: 24pt;
+    position: absolute;
+    bottom: 50%;
+	color: #fff;
+	text-transform: none;
+	font-size: 10pt;
+	opacity: 0;
+    transition: opacity 0.35s;
+}
+
+.grid-figures figure img {
+    object-fit: cover;
+}
+
+.grid-figures figure:hover p {
+	opacity: 1;
+}
+
+.grid-figures figure:hover figcaption,
+.grid-figures figure:hover h2 {
+    transform: translate3d(0,0,0);
+    opacity: 1;
+}
+
+.grid-figures figure:hover h2 {
+	transition-delay: 0.05s;
+}
+
+/*Modifico los tamaños del figure y los textos para cada tamaño*/
+@media screen and (min-width: 992px){
+    .grid-figures article {
+        min-width: 30%;
+        min-height: 30%;
+    }
+
+    .grid-figures article figure p {
+        font-size: 12px;
+    }
+
+    .grid-figures article figure h2 {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 991px) and (min-width:768px) {
+    .grid-figures article {
+        min-width: 45%;
+        min-height: 45%
+    }
+}
+
+@media screen and (max-width:767px) and (min-width:576px) {
+    .grid-figures article {
+        min-width: 100%;
+        min-height: 100%
+    }
+
+    .grid-figures article figure p {
+        font-size: 16px;
+    }
+}

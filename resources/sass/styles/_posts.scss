@@ -1,0 +1,141 @@
+/*------------------------------------------*/
+/*Estilos para las visualizaciones de los posts
+/*------------------------------------------*/
+
+//HEADER
+div#modal-post div.modal-header{
+    width: 100%;
+
+    div.modal-title{
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    img{
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        object-fit: cover;
+        padding: 2px;
+        border: 2px solid $primary-color;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    p {
+        margin: auto 0;
+        color: #262626;
+        &.username {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        &.username:before{
+            content: '@';
+        }
+        &.name {
+            font-size: 12px;
+            font-weight: 100;
+        }
+    }
+
+    div.dropdown {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+//BODY
+div#modal-post div.modal-body{
+    padding: 0;
+
+    img {
+        object-fit: cover;
+    }
+}
+
+//FOOTER
+div#modal-post div.modal-footer{
+    padding: 0;
+
+    div.botones-post {
+        margin: 5px 15px 0 15px;
+
+        p.fecha {
+            margin: auto 0;
+        }
+
+        button{
+            color: black;
+            font-size: 18px;
+            margin-right: 10px;
+            background: transparent;
+            border: none;
+            margin-right: 10px;
+            padding: 0;
+        }
+
+        button:active, button:focus {
+            outline: none;
+        }
+
+        button:active{
+            color: $primary-color;
+        }
+    }
+
+    div.descripcion{
+        margin: 0 15px;
+        height: fit-content;
+
+        p{
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    div.comentarios {
+        margin: 0 15px;
+        p.comentario{
+            margin: 0;
+            padding: 0;
+            a {
+                color: black;
+                font-weight: bold;
+                margin-right: 3px;
+
+                &:before{
+                    content: '@';
+                }
+            }
+        }
+    }
+
+    div.agregar-comentario {
+        margin: 0;
+        margin-top: 5px;
+        width: 100%;
+
+        form, .input-group {
+            width: 100%;
+
+            input:focus {
+                box-shadow: none;
+            }
+
+            button {
+                border: none;
+                background-color: $primary-color;
+            }
+
+            button:hover{
+                background-color: $secondary-color;
+            }
+        }
+    }
+}
+
+.modal-backdrop{
+    opacity: .75 !important;
+}

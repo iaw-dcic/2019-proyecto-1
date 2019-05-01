@@ -1,0 +1,91 @@
+div.imagen-fondo:before {
+    content: '';
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,.4);
+    z-index: 1;
+}
+
+div.imagen-fondo {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+div.imagen-fondo div#carousel{
+    width: 100%;
+    height: 100vh;
+}
+
+div.imagen-fondo div.carousel-item {
+    width: 100%;
+    height: 100vh;
+}
+
+div.imagen-fondo div.carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.carousel-control-prev, .carousel-control-next, .carousel-indicators{
+    z-index: 1;
+}
+
+/*----------------------SLOGANS--------------------------------------*/
+
+div.div-slogans {
+    height: 90%;
+}
+
+div.slogans {
+    color: white;
+    width: 80%;
+    overflow-wrap: break-word;
+    z-index:5;
+}
+
+div.slogans h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20pt;
+    font-weight: 800;
+    text-align: center;
+}
+
+div.slogans h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 40pt;
+    font-weight: bolder;
+    text-align: center;
+}
+
+div.slogans h3 {
+    font-family: 'Monserrat', sans-serif;
+    font-size: 14pt;
+    font-weight: 200;
+    text-align: center;
+    margin: 0 20%;
+}
+
+@media screen and (max-width:768px) {
+    div.slogans h2 {
+        font-size: 16pt;
+    }
+
+    div.slogans h1 {
+        font-size: 28pt;
+    }
+
+    div.slogans h3 {
+        font-size: 12pt;
+    }
+}

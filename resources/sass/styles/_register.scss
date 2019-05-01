@@ -1,0 +1,124 @@
+/*--------------------LOGIN y SIGNUP------------------------------*/
+/*--------------------------------------------------------------*/
+
+.fondo-login, .fondo-signup{
+    background-size: cover;
+    height: 100%;
+    margin-top: 0;
+}
+
+.fondo-login{
+    background-image: url('../../../public/storage/images/background-login.jpg');
+}
+
+.fondo-signup{
+    background-image: url('../../../public/storage/images/background-register.jpg');
+}
+
+/*
+.fondo-login{
+    background-image: url('../storage/uploads/images/background-login.jpg');
+}
+
+.fondo-signup{
+    background-image: url('../storage/uploads/images/background-register.jpg');
+}
+*/
+
+@media screen and (min-width: 425px) and (max-width: 767px){
+    div.signup form,
+    div.login form {
+        max-width: 50%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px){
+    div.signup form,
+    div.login form {
+        max-width: 40%;
+    }
+}
+
+@media screen and (min-width: 993px){
+    div.signup form,
+    div.login form {
+        max-width: 30%;
+    }
+}
+
+div.signup, div.login{
+    width: 100%;
+
+    form {
+        width: 90%;
+        margin: 50px 0 100px 0;
+        padding: 20px 20px 0 20px;
+        background-color: rgba(0,0,0,.70);
+        border-radius: 10px;
+
+        div.foto-camara {
+            i.fa-camera-retro {
+                margin-top: -50px;
+                margin-bottom: 15px;
+                font-size: 42px;
+                color: white;
+                background-color: $primary-color;
+                border-radius: 100%;
+                padding: 20px;
+                transition: .1.5s;
+            }
+
+            i.fa-camera-retro:hover {
+                background-color: $secondary-color;
+            }
+        }
+
+        input {
+            margin: 10px 0;
+        }
+
+        button {
+            width: 100%;
+            margin: 10px auto 15px auto;
+            background-color: $secondary-color;
+            color: white;
+            font-size: 16px;
+            padding: 7px 16px;
+            border-radius: 5px;
+            border-bottom: 4px solid $primary-color;
+            transition: .3s;
+        }
+
+        button.btn:active,
+        button.btn:hover {
+            background-color: $primary-color;
+            border-bottom: 4px solid $primary-color;
+        }
+
+        a.btn {
+            color: white;
+            margin-bottom: 15px;
+            padding: 5px;
+
+            &.btn-google {
+                background-color: black;
+                i {
+                    color: white;
+                }
+            }
+
+            color: white;
+        }
+
+        .forgot, .forgot a{
+            color: grey;
+            font-size: 14px;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .forgot a:hover {
+            color: rgb(167, 167, 167);
+            text-decoration: none;
+        }
+    }
+}
