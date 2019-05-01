@@ -15,8 +15,10 @@
     {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu" rel="stylesheet"> --}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/my.css') }}" rel="stylesheet">
+    {{-- <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet"> --}}
+    {{-- <link href="{{ secure_asset('css/my.css') }}" rel="stylesheet"> --}}
+    <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/my.css" rel="stylesheet">
     {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> --}}
         <!-- Icons -->
     {{-- <link rel="stylesheet" href="{{ asset('css/all-fontawesome.css')}}"> --}}
@@ -106,8 +108,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/my.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/my.js') }}"></script> --}}
+    <script src="js/app.js"></script>
+    <script src="js/my.js"></script>
     {{-- <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.js" type="text/javascript"></script> --}}
     @yield('scripts')
 </body>
