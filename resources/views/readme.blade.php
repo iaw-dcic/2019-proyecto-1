@@ -14,6 +14,11 @@
                 <div class="about-info text-justify">
                 Nota: Al momento de editar una playlist solo es posible agregar o eliminar videos, la edicion de videos de una playlist se para una proxima implementación.<br>
                 </div>
+                <div class="about-info text-justify">
+                Resultados Audit:<br>
+                Performance: 58<br>
+                Accesibilidad: 92<br>
+                </div>
                 <hr class="my-4">
                 <div class="about-info text-justify">
                     Usa las siguientes tecnologías:<br>
