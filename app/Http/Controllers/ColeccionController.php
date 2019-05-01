@@ -10,7 +10,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-use App\Categoria;
+use App\categoria;
 
 class ColeccionController extends Controller
 {
@@ -47,7 +47,7 @@ class ColeccionController extends Controller
     {
         if(!empty($request->input('name')))
         {
-            $categoria=new Categoria();//nuestro modelo
+            $categoria=new categoria();//nuestro modelo
             $categoria->categoria=$request->input('name');
             $categoria->save();
         }
