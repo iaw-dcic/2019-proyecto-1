@@ -79,9 +79,10 @@
     </div>
 
     <div class="panelSeries">
-         <h1 id="informacionUsuario">
+        <h1 id="informacionUsuario">
             Listas Creadas
         </h1>
+        <hr>
         @foreach($lista as $listas)
             <div class="panelTablaYBotones">
                 <div class="panelTabla">
