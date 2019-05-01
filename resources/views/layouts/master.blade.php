@@ -23,13 +23,13 @@
     <title>@yield('title','Mi web')</title>
   </head>
   <body>
-
+    <div id="wrap">
     @include('layouts.header')
 
     <main role="main">
         @yield('content')
     </main>
-
+    </div>
     @include('layouts.footer')
 
     {{--
