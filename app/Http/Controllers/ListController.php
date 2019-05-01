@@ -15,7 +15,7 @@ class ListController extends Controller{
     public function show(ListModel $list){
         if($list['user_id'] == Auth::user()->id){
             $books = Book::where('list_id', $list['id'])
-                            ->orderBy('id', 'desc')
+                            ->orderBy('name', 'asc')
                             ->get();
             return view('listas.show', ['list_name' => $list['name'], 'list_id' => $list['id']])->with('books', $books);
         }
@@ -27,7 +27,7 @@ class ListController extends Controller{
     public function showAll(){
         // $list = new ListModel();
         $lists = ListModel::where('user_id',Auth::user()->id)
-                                ->orderBy('id', 'desc')
+                                ->orderBy('name', 'asc')
                                 ->get();
         return view('listas.mis-listas')->with('lists', $lists);
     }

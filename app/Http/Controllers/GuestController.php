@@ -30,7 +30,7 @@ class GuestController extends Controller
 
     public function showList(ListModel $list){
         $books = Book::where('list_id', $list['id'])
-                        ->orderBy('id', 'desc')
+                        ->orderBy('name', 'asc')
                         ->get();
         return view('show-lista', ['list_name' => $list['name'], 'list_id' => $list['id']])->with('books', $books);
     }

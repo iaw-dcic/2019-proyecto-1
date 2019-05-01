@@ -54,20 +54,41 @@
                             <span class="fas fa-edit mr-1"></span>
                             <span class="d-none d-lg-inline">Editar</span>
                         </a>
-
-                        <form action="{{ route('eliminar-lista', $list['id'] ) }}" method="POST" style="display: inline">
-                            @csrf
-                            <button type="submit" class="btn btn-sm btn-danger my-1 my-sm-0">
-                                <span class="fas fa-trash mr-1"></span>
-                                <span class="d-none d-lg-inline">Eliminar</span>
-                            </button>
-                        </form>
+                        <!-- Button trigger modal -->
+                        <button onclick="setId({{$list['id']}});" type="button" data-toggle="modal" data-target="#confirmModal" class="btn btn-sm btn-danger my-1 my-sm-0">
+                            <span class="fas fa-trash mr-1"></span>
+                            <span class="d-none d-lg-inline">Eliminar</span>
+                        </button>
                     </td>
                 </tr>
                 @endforeach
 
                 </tbody>
             </table>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Estas seguro?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    Por favor confirme que quiere eliminar.
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form action="/usuario/eliminar-lista" method="POST" id="eliminarForm">
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                </form>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 

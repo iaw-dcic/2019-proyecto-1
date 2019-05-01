@@ -52,7 +52,7 @@ Route::post('/usuario/mis-listas/{id}/crear-libro', 'BookController@create')->mi
 Route::get('/usuario/mis-listas/{list}/editar-libro/{book}', 'BookController@edit')->middleware('auth')->name('editar-libro');
 Route::post('/usuario/mis-listas/{list}/actualizar-libro/{book}', 'BookController@update')->middleware('auth')->name('actualizar-libro');
 
-Route::get('/usuario/mis-listas/{id}/eliminar-libro/{book}', 'BookController@destroy')->middleware('auth')->name('eliminar-libro');
+Route::post('/usuario/mis-listas/{id}/eliminar-libro/{book}', 'BookController@destroy')->middleware('auth')->name('eliminar-libro');
 
 
 Route::get('/prueba', function (){

@@ -12,3 +12,8 @@ function ajustarAncho(){
 function navigateTo(url){
     window.location.assign(url);
 }
+
+function setId(id){
+    eliminarForm = document.getElementById('eliminarForm');
+    eliminarForm.action = eliminarForm.action + "/" +id;
+}
