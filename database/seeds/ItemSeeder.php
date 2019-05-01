@@ -15,11 +15,12 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
+
         Item::Create([
-            'nombre_beer' => 'IPA',
-            'color' => 'palida',
-            'gradoAlcohol' => 6.7,
-            'gradoAmargor' => 15,
+            'nombre_club' => 'Boca Juniors',
+            'nombre_estadio' => 'La Bombonera',
+            'capacidad_estadio' => 49000,
+            'pais' => 'Argentina',
         ]);
         // DB::table('items')->insert([
         //     'nombre_beer' => 'IPA',
@@ -28,16 +29,16 @@ class ItemSeeder extends Seeder
         //     'gradoAmargor' => 15,
         // ]);
         Item::Create([
-            'nombre_beer' => 'SCOTCH',
-            'color' => 'roja',
-            'gradoAlcohol' => 6,
-            'gradoAmargor' => 12,
+            'nombre_club' => 'River Plate',
+            'nombre_estadio' => 'El monumental',
+            'capacidad_estadio' => 66226,
+            'pais' => 'Argentina',
         ]);
         Item::Create([
-            'nombre_beer' => 'HONEY',
-            'color' => 'rubia',
-            'gradoAlcohol' => 5.5,
-            'gradoAmargor' => 10,
+            'nombre_club' => 'San Lorenzo',
+            'nombre_estadio' => 'Nuevo Gasometro',
+            'capacidad_estadio' => 47964,
+            'pais' => 'Argentina',
         ]);
     }
 }

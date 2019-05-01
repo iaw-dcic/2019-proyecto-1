@@ -17,7 +17,7 @@
 </head>
 <body>
 
-        {{--  <nav class="navbar navbar-dark bg-primary">
+        <nav class="navbar navbar-dark bg-primary">
                 <a class="navbar-brand" href="#">Listas de Usuarios</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -27,40 +27,18 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="{{ route('welcome') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
+
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="{{ route('login') }}" tabindex="-1" aria-disabled="true">Ingresar</a>
-                    </li>
-                    <div class = "invisible"></div>
-                    <li class="nav-item" >
                             <a class="nav-link" href="{{ route('users.create') }}">Crear Lista</a>
-                    </li>
-                    </div>
+                          </li>
                   </ul>
 
                 </div>
-        </nav>  --}}
+        </nav>
 
-        <div class="flex-center position-ref full-height">
-                @if (Route::has('login'))
-                    <div class="top-right links">
-                        @auth
-                            <a href="{{ url('/home') }}">Home</a>
-                        @else
-                            <a href="{{ route('login') }}">Login</a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
-
-        </div>
 
 
     @if($users->isNotEmpty())

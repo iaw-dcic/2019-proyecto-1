@@ -15,7 +15,7 @@ class CreateListsTable extends Migration
     public function up()
     {
         Schema::create('lists', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('list_id');
             $table->string('name');
 
             $table->UnsignedInteger('user_id')->nullable();
@@ -25,6 +25,10 @@ class CreateListsTable extends Migration
             $table->foreign('item_id')->references('item_id')->on('items');
 
             $table->boolean('isPublic')->default(false);
+
+
+
+
 
 
 

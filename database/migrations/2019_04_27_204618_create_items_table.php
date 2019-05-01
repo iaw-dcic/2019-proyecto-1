@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use \App\User;
+use \App\Lista;
 
 class CreateItemsTable extends Migration
 {
@@ -21,10 +22,13 @@ class CreateItemsTable extends Migration
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->string('nombre_beer')->unique();
-            $table->string('color');
-            $table->float('gradoAlcohol');
-            $table->float('gradoAmargor');
+
+            $table->string('nombre_club');
+            $table->string('nombre_estadio');
+            $table->integer('capacidad_estadio');
+            $table->string('pais');
+            $table->integer('list_id')->unsigned()->nullable();
+
 
 
             $table->timestamps();

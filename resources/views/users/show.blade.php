@@ -42,7 +42,7 @@
         <!-- Aca deberia tener todas las listas donde puede modificar, borrar, agregar, etc-->
 
         <p>
-            <a href="{{ route('users.index') }}">Regresar al listado de usuarios</a>
+            <a href="{{ URL::previous() }}">Regresar al listado de usuarios</a>
         </p>
 
         <!--Boostrap core JavaScript

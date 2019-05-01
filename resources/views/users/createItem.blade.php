@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
+
     {{--  boostrap y datatable con el stylo de boostrap  --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-
-
 
     <!--Boostrap core CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -44,7 +44,7 @@
         </nav>
 
     <div class="card">
-        <h4 class="card-header"> Crear Lista </h4>
+        <h4 class="card-header"> Ingresar Equipo </h4>
         <div class="card-body">
                         <!--Laravel pasa automaticamente la variable errors a la vista-->
                 @if ($errors->any())
@@ -60,28 +60,46 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ url('usuarios/crear') }}">
+            <form method="POST" action="{{ url('usuarios/crearItem') }}">
                 {!! csrf_field() !!} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
 
                 <!--Uso Boostrap-->
                 <div class="form-group">
                         <!-- Label usa el id del input --> <!-- el campo name es el que usa el metodo post en el controlador para crear el usuario -->
-                        <label for="name">Nombre de la lista a crear:</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Juan Perez" value="{{ old('name') }}">
+                        <label for="nombre_club">Nombre del Club:</label>
+                        <input type="text" name="nombre_club"  class="form-control" id="nombre_club" placeholder="Juan Perez" value="{{ old('name') }}">
                 </div>
-
+                <div>
+                        <label for="nombre_estadio">Estadio:</label>
+                        <input type="text" name="nombre_estadio"  class="form-control" id="nombre_estadio" placeholder="juanperez@example.com" value="{{ old('email') }}">
+                </div>
+                <div>
+                        <label for="capacidad_estadio">Capacidad:</label>
+                        <input type="number" class="form-control" name="capacidad_estadio" id="capacidad_estadio" placeholder="Mayor a 6 caracteres" ><br>
+                </div>
                 <div>
 
-                </div>
-                        <button type="submit" class = "btn btn-primary">Crear Lista</button>
+
+                        <label for="pais">Pais:</label>
+                        <input type="text" class="form-control" name="pais" id="pais" placeholder="Mayor a 6 caracteres" >
+                        @foreach ($lists as $list)
+                           {{  $list_id = $list->id}}
+
+                        @endforeach
+
+                        <label for="list_id"></label>
+                        <input type="hidden" class="form-control" name="list_id" id="list_id" placeholder="Mayor a 6 caracteres" value="list_id"><br>
+                </div class="form-control">
+                        <button type="submit" class = "btn btn-primary">Guardar Equipo</button>
+                        <a  class = "btn btn-primary" href="{route(users.index)}">Finalizar Lista</a>
 
                 </div>
+
             </form>
                     </div>
               </div>
 
-
-<!--Boostrap core JavaScript
+              <!--Boostrap core JavaScript
         =============================================================-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -96,6 +114,9 @@
                   $('#listas').DataTable();
                 } );
             </script>
+
+
+
 
 </body>
 </html>

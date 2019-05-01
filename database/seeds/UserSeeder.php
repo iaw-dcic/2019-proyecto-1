@@ -33,31 +33,12 @@ class UserSeeder extends Seeder
         // ]);
 
 
-        User::create([
-            'name' => 'Bronx',
-            'email' => 'bronx@gmail.com',
-            'password' => bcrypt('bronx'),
-        ]);
-        User::create([
-            'name' => 'Columbus',
-            'email' => 'columbus@gmail.com',
-            'password' => bcrypt('columbus'),
-        ]);
-       User::create([
-            'name' => 'Mulaika',
-            'email' => 'mulaika@gmail.com',
-            'password' => bcrypt('mulaika'),
-        ]);
-       User::create([
-            'name' => 'Wirkonnen',
-            'email' => 'wirkonnen@gmail.com',
-            'password' => bcrypt('wirkonnen'),
-        ]);
 
-        /**Genero datos de prueba
+
+            /**Genero datos de prueba
          * Laravel va a generar Listas de prueba de usuarios que le indique ahi
         */
-        factory(User::class)->create();
+        factory(\App\Lista::class)->create();
 
     }
 }

@@ -5,6 +5,8 @@ use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Item;
+use App\Lista;
 
 class UserController extends Controller
 {
@@ -34,29 +36,40 @@ class UserController extends Controller
     }
 
     public function create(){
-        return view('users.create');
+         if(auth()->user()!=null)
+            return view('users.create');
+         else
+            return back();
+    }
+    public function createItem(){
+        $lists = request()->all();
+        return view('users.createItem', [
+            'lists' => $lists,
+        ]);
+    }
+public function storeItem(){
+        $data = request()->all();
+        Item::create([
+            'nombre_club' => $data['nombre_club'],
+            'nombre_estadio' => $data['nombre_estadio'],
+            'capacidad_estadio' =>$data['capacidad_estadio'],
+            'pais' =>$data['pais'],
+            'list_id' => $data['list_id'],
+        ]);
+        return redirect()->route('users.createItem');
     }
 
     public function store(){
         /**Recibimos los datos del formulario */
-        $data = request()->validate([ //LLAVE=nombre del campo esperado => VALOR = cadena con las reglas de validacion
-            'name' => 'required', //El campo nombre es requerido.
-            'email'=> ['required', 'email', 'unique:users,email'], //El campo email es obligatorio, tiene que ser valido y tiene que ser unico.
-            //unique:tablaAsociada,columna
-            'password' => 'required',
+        $data = request()->all();
 
-        ],[
-            'name.required' => 'El campo nombre es obligatorio'
-        ]);
-
-        User::create([
+        Lista::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' =>$data['password'],
+            'isPublic' => true,
         ]);
 
         /**Redirecciono al usuario a detalles */
-        return redirect()->route('users.index');
+        return redirect()->route('users.createItem');
     }
 
     public function edit(User $user){

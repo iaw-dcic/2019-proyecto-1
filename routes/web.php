@@ -11,17 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 /**Ruta hacia la página principal de la aplicación */
 Route::get('/usuarios', 'UserController@index')->name('users.index');
 
 /** Ruta para registrarse */
 Route::get('usuarios/nuevo', 'UserController@create')->name('users.create');
-
 Route::post('usuarios/crear','UserController@store');
+Route::get('usuarios/nuevoItem','UserController@createItem')->name('users.createItem');
+Route::post('usuarios/crearItem','UserController@storeItem');
 /** */
 
 Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
