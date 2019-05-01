@@ -52,7 +52,7 @@
       
         <div class="card-body">
             <a href="{{ route('createAlbum') }}" class="card-link">Crear Album</a>
-            <a href="#" class="card-link">Editar Perfil</a>
+            <a href="{{route ('updateUser')}}" class="card-link">Editar Perfil</a>
         </div>
     </div>
         </div>

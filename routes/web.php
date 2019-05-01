@@ -21,8 +21,13 @@ Route::get('/','ApiController@index');
 Route::get('/albums','AlbumController@index')->name('albums');
 Route::get('/albums/Createalbum','AlbumController@create')->name('createAlbum');
 
+Route::get('/updateUser','ApiController@updateUser')->name('updateUser');
+Route::get('/about','ApiController@about')->name('about');
 
-Route::post('/update/{id}','AlbumController@update')->name('update');
+Route::post('/updateUser','ApiController@updatePost')->name('updatePost');
+
+
+Route::post('/update','AlbumController@update')->name('update');
 Route::get('/showAlbum/{id}','AlbumController@show')->name('showAlbum');
 
 

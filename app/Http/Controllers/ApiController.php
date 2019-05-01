@@ -52,6 +52,46 @@ class ApiController extends Controller
 
         }
 
+      
+
+
+    }
+
+    public function updateUser(){
+        $user = Auth::user();
+        return view('users/editUser',['user'=>$user]);
+
+
+
+    }
+
+    public function updatePost(Request $request){
+        $user = Auth::user();
+
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $fileName = time() . '.' . $avatar->getClientOriginalExtension();
+            $path = public_path('upload/avatars/' . $fileName);
+            Image::make($avatar)->resize(300,300)->save(public_path().'/uploads/avatars/'.$fileName);
+            $user->avatar = $fileName; 
+
+        }
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+
+        $user->save();
+        $albums= User::find($user->id)->albums;
+        return view('profile',['user'=>$user,'albums'=>$albums]);
+
+    }
+
+    public function about(){
+        return view('about');
 
     }
 }
