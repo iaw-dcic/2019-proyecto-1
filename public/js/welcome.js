@@ -1,6 +1,6 @@
 
  
-const title = document.querySelector('.error_title')
+/*const title = document.querySelector('.error_title')
 
 
 //////// Light //////////
@@ -26,4 +26,4 @@ title.onmousemove = function(e) {
   title.style.setProperty('--x-shadow', - x_shadow + 'px')
   title.style.setProperty('--y-shadow', - y_shadow + 'px')
 
-}
+}*/
