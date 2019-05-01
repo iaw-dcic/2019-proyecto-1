@@ -6,7 +6,7 @@
 
 <div class = "container">
 
-	<form method = "POST" action="/items/{$item -> id}/update">
+	<form method = "POST" action="/items/{{$item -> id}}/update">
         @method('PATCH')
 		@csrf
 		<div class = "container">
