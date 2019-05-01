@@ -28,8 +28,10 @@
         </div>
         <a class="btn-sm btn-info botoninput" href="/editarPerfil"><i class="fas fa-user-edit"> Editar Perfil</i></a>
     </div>
-
-    <hr>
+    
+    <div class="container">
+        <hr>
+    </div>
 
     <div class="panelSeries">
         <h1 id="informacionUsuario">
