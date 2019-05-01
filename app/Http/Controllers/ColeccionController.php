@@ -9,8 +9,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Request\CategoriaFormRequest;
 
-use App\categoria;
+use App\Categoria;
 
 class ColeccionController extends Controller
 {
@@ -47,7 +48,7 @@ class ColeccionController extends Controller
     {
         if(!empty($request->input('name')))
         {
-            $categoria=new categoria();//nuestro modelo
+            $categoria=new Categoria();//nuestro modelo
             $categoria->categoria=$request->input('name');
             $categoria->save();
         }
