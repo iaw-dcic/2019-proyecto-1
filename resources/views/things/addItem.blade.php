@@ -34,12 +34,9 @@
 				{{csrf_field()}}   
 			<button type="delete" class="btn btn-outline-danger">Eliminar</button>
 			</form>
-			<form method = "POST" action = "/items/{{$item -> id}}/edit">
-				{{method_field('PATCH')}}
-				{{csrf_field()}}   
-				<button type="delete" class="btn btn-outline-dark">Edit</button>
-			</form>
-			
+			<a href="/items/{{$item -> id}}/edit" class="btn btn-outline-dark" > 
+  			Edit  
+			<a>
 			</td>
 			
 			</tr>
