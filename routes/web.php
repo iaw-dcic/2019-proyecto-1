@@ -24,7 +24,8 @@ Route::get('/things/{thing}/addItems','ThingsController@addItem')->middleware('a
 Route::get('/items/{thing}','ItemsController@show')->middleware('auth');
 Route::post('/items/{thing}/store','ItemsController@store')->middleware('auth');
 Route::delete('/items/{item}/destroy','ItemsController@destroy')->middleware('auth');
-Route::patch('/items/{item}/edit','ItemsController@edit')->middleware('auth');
+Route::patch('/items/{item}/update','ItemsController@update')->middleware('auth');
+Route::get('/items/{item}/edit','ItemsController@edit')->middleware('auth');
 
 Route::get('/','PagesController@index');
 Route::get('/home','PagesController@index');

@@ -36,9 +36,17 @@ class ItemsController extends Controller
         $item->delete();
         return redirect('/things'); 
     }
-    public function edit(){
-       return 1;
-        $item->delete();
+    public function edit(Item $item){
+    
+        return redirect('item.edix',compact('item')); 
+    }
+
+    public function update(Item $item){
+        $item->title = request('title');
+        $item->cantDias = request('cantDias');
+        $item->fecha = request('fecha');
+        $item->save();
         return redirect('/things'); 
+
     }
 }
