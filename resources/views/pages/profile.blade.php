@@ -39,7 +39,7 @@
 
                                             @guest
                                                 @if ($listing->visibility == 'Publica')
-                                                    <a href="{{route('listings.show',$listing->id)}}" ><span style="color:deepskyblue">{{$listing->title}} / </span> </a> 
+                                                    <a href="{{route('listings.show',$listing->id)}}" ><span style="color:deepskyblue">{{$listing->title}} / </span></a> 
                                                 @endif
                                             @endguest
 
