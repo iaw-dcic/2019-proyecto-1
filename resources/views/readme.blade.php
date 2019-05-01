@@ -11,6 +11,9 @@
                 <div class="about-info text-justify">
                 Proyecto de cursada para la materia Ingeniería de Aplicaciones Web 2019 de la Universidad Nacional del Sur.<br>
                 </div>
+                <div class="about-info text-justify">
+                Nota: Al momento de editar una playlist solo es posible agregar o eliminar videos, la edicion de videos de una playlist se para una proxima implementación.<br>
+                </div>
                 <hr class="my-4">
                 <div class="about-info text-justify">
                     Usa las siguientes tecnologías:<br>
