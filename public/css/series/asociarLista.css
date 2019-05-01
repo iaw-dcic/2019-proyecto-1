@@ -26,3 +26,9 @@ body
     color: #1883ba;
     background-color: #ffffff;
 }
+
+.panelBoton
+{
+    margin: 20px auto;
+    text-align: center; 
+}
