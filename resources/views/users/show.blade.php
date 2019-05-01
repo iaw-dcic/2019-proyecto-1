@@ -48,9 +48,14 @@
 					
 				  @forelse ($pelis as $usermovie)
 				  
-						 <li> <a href="{{ route('lists.show', $usermovie->id) }}">{{ $usermovie->nombre }} </a></li>
-						
-						
+						 <li> <a href="{{ route('lists.show', $usermovie->id) }}">{{ $usermovie->nombre }} - </a>
+						@if ($usermovie->public==1)
+								<i>publica	</i>
+						@endif
+						@if ($usermovie->public==0)
+								<i>privada	</i>
+						@endif
+						</li>
 					@empty
 					
 						<li>No hay listas registradas.</li>
