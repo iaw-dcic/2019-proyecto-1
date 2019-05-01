@@ -14,18 +14,16 @@
   <link href="img/favicon.ico" rel="shortcut icon" />
 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet" difer>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
 
   <!-- Stylesheets -->
 
-  <link difer rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/owl.carousel.min.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">
-
-
-
+   
   <!-- Form -->
   <link rel="stylesheet" href="{{ URL::asset('/css/style-form-game.css') }}">
 
