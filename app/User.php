@@ -36,4 +36,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*Retorna todas aquellas listas que fueron creadas por el usuario*/
+    public function listas()
+    {
+        return $this->hasMany('App\ListaUsuarios','idUsuario');
+    } 
+
+    /*Retorna todas aquellas series que fueron creadas por el usuario*/
+    public function series()
+    {
+        return $this->hasMany('App\Series','id_usuario');
+    } 
 }

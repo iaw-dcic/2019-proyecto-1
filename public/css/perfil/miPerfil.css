@@ -1,0 +1,87 @@
+body
+{
+    background-color: whitesmoke ;
+}
+.panelSeries
+{
+    margin: 10px auto;
+    height: auto;
+    text-align: center;
+}
+
+#seriesGuardadas
+{
+    text-size-adjust: 10px;    
+}
+
+#botonEliminar
+{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+#panelInfo
+{
+    margin-bottom: 20px;
+}
+
+.botoninput{
+	padding: 4px 6px 5px;
+    border-width: 2px;
+    border-style: outset;
+    margin-top: 20px;
+    margin: center;
+    font-size: 15px;
+}
+
+#panelAgregar
+{
+    width: 500px;
+    height: auto;
+    text-align: center;
+    margin: 50px auto;
+
+}
+.botonagregar
+{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #657e8f;
+    border-radius: 6px;
+    border: 2px solid #777ca7;
+}
+.botonagregar:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+}
+
+#informacionUsuario
+{
+    font-family: 'Dosis', sans-serif;
+}
+
+.panelInformacion
+{
+    margin: 10px auto;
+    width: 50%;
+    height: auto;
+    text-align: center;
+}
+
+.panelTablaYBotones
+{
+    min-height: 200px;
+    text-align: center;
+}
+.panelTabla
+{
+    float: left;
+}
+
+.panelBotones
+{
+    float: right;
+}
