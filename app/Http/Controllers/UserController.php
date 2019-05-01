@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Usermovie;
 use App\Movie;
+use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -52,6 +54,7 @@ class UserController extends Controller
             'password' => bcrypt($data['clave'])
         ]);
 		
+	
 		return redirect()->route('users.index');
 	}
 	
@@ -68,7 +71,17 @@ class UserController extends Controller
 		
 		return redirect()->route('users.show', ['user'=> $user]);
 	}
-
+	
+	  public function search()
+    {
+        $nombre = Input::get('nombre');
+		
+        $user = User::where('name','like','%nombre%')->get();
+		
+		//$pelis=Usermovie::where('creador_id',$user->id)->get();
+		
+		return  redirect()-> route('users.show', ['user'=> $user]);
+    }
 	
 	function destroy(User $user) {
 		

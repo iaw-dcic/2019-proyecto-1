@@ -41,9 +41,5 @@ class User extends Authenticatable
 		return $this->hasMany(Usermovies::class);
 	}
 	
-	public function addMovie($attributes){
-		$this->movies()->create($attributes);
-	}
-	
 
 }

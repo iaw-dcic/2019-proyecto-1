@@ -31,8 +31,7 @@
 	  <button class="btn btn-primary" type="submit">Iniciar sesión</button>
 	  </center>
 	  
-	  <a href="{{ route('users.index') }}">Regresar al listado de usuarios</a>
-     
+	
    </form>
 	</div>
  
