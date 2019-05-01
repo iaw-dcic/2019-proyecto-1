@@ -125,7 +125,7 @@ class CancionesController extends Controller
       
         $cancion->update(request()->validate([
                            'nombre'=> ['required','min:3'],
-                           'duracion'=> ['required'],
+                           //'duracion'=> ['required'],
                            'album'=> ['required','min:2'],
                            'autor'=> 'required',
                            'fecha_lanzamiento' => 'min:1',
