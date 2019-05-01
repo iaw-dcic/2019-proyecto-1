@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    @if((Auth::check() && Auth::user()->name) == ($user->name))
+    @if((Auth::check()) && ((Auth::user()->name) == ($user->name)))
         <div id="editButton">
             <button class="btn btn-outline-secondary" type="button" onclick="location.href='/profiles/{{ Auth::user()->name }}/edit'">Edit</button>
         </div>
