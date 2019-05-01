@@ -27,8 +27,7 @@
 
             <!-- Title -->
             <div class="form-style-agile">
-                <label>
-                    <i class="fas fa-edit"></i>Nombre del juego</label>
+                <label><i class="fas fa-edit"></i>Nombre del juego</label>
                 <input name="title" value="{{ $game->title }}" type="text" required="">
                 <div class="invalid-feedback">
                     El nombre es obligatorio
@@ -37,12 +36,12 @@
 
              <!-- Listings -->
              <div class="form-style-agile">
-                    <label><i class="fas fa-list-ul" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
-                        <select class="selectpicker" name="listings[]" title="Seleccionar una o más listas" multiple data-live-search="true" data-style="btn-primary" data-width="100%" required>
-                                @foreach($listings as $listing)
-                                   <option value="{{ $listing->id}}"> {{ $listing->title}} </option>
-                                @endforeach
-                        </select> 
+                <label><i class="fas fa-list-ul" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
+                <select class="selectpicker" name="listings[]" title="Seleccionar una o más listas" multiple data-live-search="true" data-style="btn-primary" data-width="100%" required>
+                    @foreach($listings as $listing)
+                        <option value="{{ $listing->id}}"> {{ $listing->title}} </option>
+                    @endforeach
+                </select> 
             </div>
          
 
@@ -74,45 +73,45 @@
 
              <!--Genre -->
              <div class="form-style-agile">
-                    <label><i class="fas fa-bomb" aria-hidden="true"></i> ¿A qué género pertence el juego?*</label>
-                    <select type="text" class="custom-dropdown" name="genre" required>
-                              <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
-                              <option {{ $game->genre == 'Accion' ? 'selected' : '' }}>Accion</option>
-                              <option {{ $game->genre == 'Disparos' ? 'selected' : '' }}>Disparos</option>
-                              <option {{ $game->genre == 'Deportes' ? 'selected' : '' }}>Deportes</option>
-                              <option {{ $game->genre == 'Aventura' ? 'selected' : '' }}>Aventura</option>
-                              <option {{ $game->genre == 'Estrategia' ? 'selected' : '' }}>Estrategia</option>
-                              <option {{ $game->genre == 'Otro' ? 'selected' : '' }}>Otro</option>
-                    </select>
+                <label><i class="fas fa-bomb" aria-hidden="true"></i> ¿A qué género pertence el juego?*</label>
+                <select type="text" class="custom-dropdown" name="genre" required>
+                    <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
+                    <option {{ $game->genre == 'Accion' ? 'selected' : '' }}>Accion</option>
+                    <option {{ $game->genre == 'Disparos' ? 'selected' : '' }}>Disparos</option>
+                    <option {{ $game->genre == 'Deportes' ? 'selected' : '' }}>Deportes</option>
+                    <option {{ $game->genre == 'Aventura' ? 'selected' : '' }}>Aventura</option>
+                    <option {{ $game->genre == 'Estrategia' ? 'selected' : '' }}>Estrategia</option>
+                    <option {{ $game->genre == 'Otro' ? 'selected' : '' }}>Otro</option>
+                </select>
             </div>    
 
             <!--Mode -->
             <div class="form-style-agile">
-                    <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
-                    <select type="text" class="custom-dropdown" name="mode" required>
-                              <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
-                              <option {{ $game->mode == 'Solitario' ? 'selected' : '' }}>Solitario</option>
-                              <option {{ $game->mode == 'Multijugador' ? 'selected' : '' }}>Multijugador</option>
-                              <option {{ $game->mode == 'Solitario/Multijugador' ? 'selected' : '' }}>Solitario/Multijugador</option>
-                    </select>
+                <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
+                <select type="text" class="custom-dropdown" name="mode" required>
+                    <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
+                    <option {{ $game->mode == 'Solitario' ? 'selected' : '' }}>Solitario</option>
+                    <option {{ $game->mode == 'Multijugador' ? 'selected' : '' }}>Multijugador</option>
+                    <option {{ $game->mode == 'Solitario/Multijugador' ? 'selected' : '' }}>Solitario/Multijugador</option>
+                </select>
             </div>    
 
             <!-- Cover image -->
             <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
-            <div class="input-group">
+            <div class="input-group" style="margin-bottom:10px;">
                 <label class="input-group-btn">
-                           <span class="btn btn-primary">
-                               Seleccionar&hellip; <input type="file" name="cover_image" style="display: none;">
-                           </span>
-                       </label>
+                        <span class="btn btn-primary">
+                            Seleccionar&hellip; <input type="file" name="cover_image" style="display: none;">
+                        </span>
+                </label>
                 <input type="text" class="form-control" value="{{$game->cover_image}}" readonly>
-                <br><br>
             </div>
 
             <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
 
-
+            <!-- Submit -->
             <input type="submit" value="Finalizar edición">
+            
         </form>
     </div>
 </section>

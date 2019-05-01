@@ -13,25 +13,6 @@ class SearchUserController extends Controller
 
     public function searchUser(Request $request)
     {
-        /* $search = $request->get('searchTerm'); 
-        if ($search != null) {
-
-            $users = User::where('name', 'LIKE', '%' . $search . '%')
-                ->orWhere('username', 'LIKE', '%' . $search . '%')
-                ->get();
-
-            $listings = Listing::where('title', 'LIKE', '%' . $search . '%')
-                ->where('visibility', '=', 'publica')
-                ->get();
-            if (count($users) == 0 && count($listings == 0)) {
-                alert()->info('Atencion!', 'No encontramos ningún usuario o lista con ese nombre');
-            }
-            return view('pages.search', compact('users', 'listings'));
-        } else {
-            alert()->info('Atencion!', 'Ingresa el nombre del usuario o de una lista!');
-            return redirect('searchlisting');
-        }*/
-
         $search = $request->get('searchTerm');
         if ($search != null) {
             

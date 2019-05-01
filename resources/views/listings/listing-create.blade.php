@@ -37,14 +37,15 @@
             <div class="form-style-agile">
                 <label><i class="fa fa-eye" aria-hidden="true"></i>¿Cómo queres que sea la lista? *</label>
                 <select type="text" class="custom-dropdown" name="visibility" required>
-                              <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
-                              <option>Publica</option>
-                              <option>Privada</option>                          
+                        <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
+                        <option>Publica</option>
+                        <option>Privada</option>                          
                 </select>
             </div>
            
-             <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
+            <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
 
+            <!-- Submit -->
             <input type="submit" value="Listo">
 
         </form>

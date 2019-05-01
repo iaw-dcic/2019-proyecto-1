@@ -51,29 +51,28 @@
                 <ul class="main-menu primary-menu">
                     <li><a href="/">Inicio</a></li>
                     @auth
-
-                    <li><a href="{{route('listings.index')}}">Listas</a>
-                       
-                        <ul class="sub-menu">
-                            @auth
-                            <li><a href="{{route('listings.index')}}"> Mis listas </a></li>
-                            <li><a href="{{route('listings.create')}}"> Nueva lista </a></li>
-                            @endauth
-                            <li><a href="{{url('searchlisting')}}"> Buscar listas de usuarios </a></li>
-                        </ul>
-                  
-                    </li>
+                        <li><a href="{{route('listings.index')}}">Listas</a>
+                        
+                            <ul class="sub-menu">
+                                @auth
+                                <li><a href="{{route('listings.index')}}"> Mis listas </a></li>
+                                <li><a href="{{route('listings.create')}}"> Nueva lista </a></li>
+                                @endauth
+                                <li><a href="{{url('searchlisting')}}"> Buscar listas de usuarios </a></li>
+                            </ul>
+                        </li>
                     @endauth
                     @guest
-                    <li><a href="{{route('listings.index')}}">Listas</a> </li>
-                    <li><a href="{{url('searchlisting')}}">Búsqueda</a> </li>
+                        <li><a href="{{route('listings.index')}}">Listas</a> </li>
+                        <li><a href="{{url('searchlisting')}}">Búsqueda</a> </li>
                     @endguest
 
                     @auth
-                    <li><a href="{{route('games.create')}}">Agregar juego</a></li>
-            
-                    <li><a href="{{ route('user_profile', Auth::user()->name) }}">Perfil</a></li>
+                        <li><a href="{{route('games.create')}}">Agregar juego</a></li>
+                
+                        <li><a href="{{ route('user_profile', Auth::user()->name) }}">Perfil</a></li>
                     @endauth
+
                     <li><a href="{{url('about') }}">Preguntas frecuentes</a></li>
                 </ul>
             </nav>

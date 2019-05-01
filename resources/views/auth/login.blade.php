@@ -27,20 +27,24 @@
             <div class="form-style-agile">
                 <label> <i class="fa fa-envelope" aria-hidden="true"></i>Email</label>
                 <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
-                    required> @if ($errors->has('email'))
-                <span class="invalid-feedback" role="alert">
+                    required> 
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('email') }}</strong>
-                            </span> @endif
+                        </span> 
+                    @endif
             </div>
 
             <!-- Password -->
             <div class="form-style-agile">
                 <label> <i class="fa fa-unlock-alt" aria-hidden="true"></i>Contraseña</label>
                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
-                    required> @if ($errors->has('password'))
-                <span class="invalid-feedback" role="alert">
+                    required> 
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('password') }}</strong>
-                            </span> @endif
+                        </span> 
+                    @endif
             </div>
 
             <!-- Remember me -->
@@ -50,11 +54,11 @@
 
                     <label class="form-check-label" for="remember">
                                 Recordarme
-                            </label>
+                    </label>
                 </div>
             </div>
 
-                    <!-- Submit -->
+            <!-- Submit -->
             <!--<input type="submit" value="Ingresar"> -->
             <div class="form-style-agile" style="margin-top:10px;text-align:center">
                 <button type="submit" class="btn btn-primary">
@@ -62,36 +66,31 @@
                 </button>
             </div>
 
-              <!-- Login with social networks -->
-              <div class="footer-social">
-                    <label for="email"> <h2>O ingresar con:</h2> </label>
-                     <ul>
-                         <li>
-                             <a href="login/twitter" class="fa fa-twitter"></a>
-                         </li>
-                         <li>
-                             <a href="login/google" class="fa fa-google"></a>
-                         </li>
-                         <li>
-                             <a href="login/github" class="fa fa-github"></a>
-                         <li>
-                           
-                     </ul>
-                 </div>
-                 <!--Social networks end-->
-     
-                 <!-- Not user -->
-                 <div class="not-user">
-                        <label><h5 style="color:white"> Todavía no tenes cuenta? <a href="register">Registrate!</a></h5></label>
-                 </div>
-                 <!-- Not user end -->
+            <!-- Login with social networks -->
+            <div class="footer-social">
+                <label for="email"> <h2>O ingresar con:</h2> </label>
+                <ul>
+                    <li>
+                        <a href="login/twitter" class="fa fa-twitter"></a>
+                    </li>
+                    <li>
+                        <a href="login/google" class="fa fa-google"></a>
+                    </li>
+                    <li>
+                        <a href="login/github" class="fa fa-github"></a>
+                    <li>
+                </ul>
+            </div>
+            <!--Social networks end-->
 
-    
+            <!-- Not user -->
+            <div class="not-user">
+                <label><h5 style="color:white"> Todavía no tenes cuenta? <a href="register">Registrate!</a></h5></label>
+            </div>
+            <!-- Not user end -->
 
 
         </form>
-
-
     </div>
 </section>
 @endsection

@@ -16,7 +16,6 @@
 
 <section class="custom-form">
 
-    <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
     <h3 style="color:bisque; text-align:center;margin-bottom:20px"> Registrarse </h3>
 
     <!-- content -->
@@ -24,26 +23,28 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf {{ csrf_field() }}
 
-
             <!-- Name -->
             <div class="form-style-agile">
                 <label> <i class="fas fa-edit" aria-hidden="true"></i> Nombre *</label>
                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"
-                    required autofocus> @if ($errors->has('name'))
-                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span> @endif
+                    required autofocus> 
+                    @if ($errors->has('name'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span> 
+                    @endif
             </div>
 
             <!-- Username -->
             <div class="form-style-agile">
                 <label> <i class="fas fa-user" aria-hidden="true"></i> Nombre de usuario *</label>
-
                 <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username"
-                    value="{{ old('username') }}" required> @if ($errors->has('username'))
-                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span> @endif
+                    value="{{ old('username') }}" required> 
+                    @if ($errors->has('username'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('username') }}</strong>
+                        </span> 
+                    @endif
             </div>
 
             <!--Email -->
@@ -51,6 +52,11 @@
                 <label> <i class="fa fa-envelope" aria-hidden="true"></i>Email</label>
                 <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"
                     required>
+                    @if ($errors->has('email'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span> 
+                    @endif
             </div>
 
 
@@ -58,11 +64,12 @@
             <div class="form-style-agile">
                 <label> <i class="fa fa-unlock-alt" aria-hidden="true"></i> Contraseña *</label>
                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
-                    required> @if ($errors->has('password'))
-
-                <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('password') }}</strong>
-                                            </span> @endif
+                    required> 
+                    @if ($errors->has('password'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span> 
+                    @endif
             </div>
 
 
@@ -74,14 +81,12 @@
 
             <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
 
+            <!--Submit -->
             <div class="form-style-agile" style="margin-top:10px;text-align:center">
                 <button type="submit" class="btn btn-primary">
                        Registrarse
                 </button>
             </div>
-
-            <!--Submit -->
-            <!--<input type="submit" value="Confirmar registro">-->
 
             <!--Social networks -->
             <div class="footer-social">
@@ -96,8 +101,6 @@
                     <li>
                         <a href="login/github" class="fa fa-github"></a>
                     <li>
-
-
                 </ul>
             </div>
             <!--Social networks end-->
@@ -107,9 +110,6 @@
                 <label><h5 style="color:white"> Ya tenes cuenta? <a href="login">Logueate!</a></h5></label>
             </div>
             <!-- Already user end-->
-
-
-
 
         </form>
 

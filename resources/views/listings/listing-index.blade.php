@@ -32,8 +32,7 @@
                 <!--Show lists -->
                 <h3 style="color:bisque; text-align:center"> Listas de {{$data['listOwnerName']}} </h3>
 
-                <div class="my-table" style="margin-bottom:30px">
-                    <br>
+                <div class="my-table" style="margin-bottom:30px;margin-top:30px;">
                     <div class="my-row header no-hover">
                         <div class="cell">
                             Nombre de la lista
@@ -44,20 +43,23 @@
                        
                         <div class="cell">
                             Lista
-                        </div>       
+                        </div>  
+
                         @auth
-                        <div class="cell">
-                            Visibilidad
-                        </div>
-                        <div class="cell">
-                            Eliminar
-                        </div>
+                            <div class="cell">
+                                Visibilidad
+                            </div>
+                            <div class="cell">
+                                Eliminar
+                            </div>
                         @endauth
+
                         @guest
-                        <div class="cell">
-                            Perfil del usuario
-                        </div>
+                            <div class="cell">
+                                Perfil del usuario
+                            </div>
                         @endguest
+
                     </div>
                     @foreach($data['listings'] as $listing)
                     <div class="my-row">
@@ -76,14 +78,12 @@
                                     {{$listing->visibility}}
                             </div>
                             <div class="cell" data-title="Eliminar lista">
-                                
                                 <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post">
                                     {{ method_field("DELETE") }} @csrf
                                     <!-- {{ csrf_field() }} -->
                                         <button type="submit" class="btn btn-danger">
                                            X
                                         </button>
-                                    <br /><br /><br />
                                 </form>
                             </div>
                         @endauth
@@ -96,14 +96,15 @@
 
                     @endforeach
 
-
-
                 </div>
+                
+                <!--Create list -->
                 @auth
                 <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                 @endauth
     
             @else 
+                <!--Messages depending if is the owner or a guest -->
                 @guest
                     <h2 style="color:white; margin-bottom:20px;" > {{$data['listOwnerName']}} todavía no tiene ninguna lista!</h2>
                 @endguest
@@ -112,17 +113,9 @@
                     <a href="{{route('listings.create') }}" class="site-btn">Crear lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                 @endauth
 
-            @endif
-         
+            @endif      
         </div>
-
     </div>
 </div>
-
-
-
 </section>
-
-
-
 @endsection

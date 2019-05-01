@@ -13,10 +13,7 @@ class PagesController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-       
-    }
+    public function __construct(){}
 
     public function home()
     {
@@ -28,10 +25,10 @@ class PagesController extends Controller
         return view('pages.about');
     }
 
-    public function games()
+   /* public function games()
     {
         return view('pages.games');
-    }
+    }*/
 
     public function searchlisting() 
     {

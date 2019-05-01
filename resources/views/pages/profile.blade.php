@@ -42,11 +42,11 @@
                                         @endforeach
                                     @else 
                                         @auth
-                                            Todavía no tenes ninguna lista
+                                            <span style="color: azure">Todavía no tenes ninguna lista</span>
                                         @endauth
                                         @guest
                                             El usuario todavía no creo ninguna lista
-                                      @endguest
+                                        @endguest
                                     @endif
                                   
                                 </div>

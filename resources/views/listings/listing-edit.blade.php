@@ -39,14 +39,15 @@
             <div class="form-style-agile">
                 <label><i class="fa fa-eye" aria-hidden="true"></i>¿Cómo queres que sea la lista? *</label>
                 <select type="text" class="custom-dropdown" name="visibility" required>
-                              <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
-                              <option {{ $listing->visibility == 'Publica' ? 'selected' : '' }}>Publica</option>
-                              <option {{ $listing->visibility == 'Privada' ? 'selected' : '' }}>Privada</option>                          
+                        <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
+                        <option {{ $listing->visibility == 'Publica' ? 'selected' : '' }}>Publica</option>
+                        <option {{ $listing->visibility == 'Privada' ? 'selected' : '' }}>Privada</option>                          
                 </select>
             </div>
            
              <label style="color:burlywood">Los campos marcados con un * son requeridos</label>
 
+            <!--Submit -->
             <input type="submit" value="Listo">
 
         </form>

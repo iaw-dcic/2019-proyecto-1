@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Game;
-use App\User;
 use Intervention\Image\Facades\Image;
 use Auth;
-use App\Listing;
 
 class GamesController extends Controller
 {
@@ -19,7 +17,7 @@ class GamesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'create','show']]);
+        $this->middleware('auth', ['except' => ['index', 'create', 'show']]);
     }
 
     /**
@@ -27,7 +25,8 @@ class GamesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){}
+    public function index()
+    { }
 
     /**
      * Show the form for creating a new resource.
@@ -38,10 +37,9 @@ class GamesController extends Controller
     {
         if (Auth::user()) {
             $userListings = auth()->user()->listings()->select('title', 'id')->get();
-            if (count($userListings)>0) {
+            if (count($userListings) > 0) {
                 return view('games.create')->withListings($userListings);
-            }
-            else {
+            } else {
                 alert()->info('Atención!', 'Para crear un juego necesitas primero crear una lista!');
                 return redirect()->route('listings.create');
             }
@@ -86,7 +84,7 @@ class GamesController extends Controller
         foreach ($listings as $listing) {
             if (!$game->listings->contains($listing)) {
                 $game->listings()->attach($listing);
-            }    
+            }
         }
 
         alert()->success('Listo!', 'El juego fue guardado en tu lista.');
@@ -135,7 +133,6 @@ class GamesController extends Controller
             alert()->info('Atención!', 'Tenes que iniciar sesión o registrarte para agregar un juego.');
             return redirect()->guest('/login');
         }
-
     }
 
     /**
@@ -165,7 +162,6 @@ class GamesController extends Controller
         $game->mode = $request->mode;
         $game->genre = $request->genre;
 
-
         if ($request->hasFile('cover_image')) {
             if ($game->cover_image != 'default.jpg') {
                 Storage::delete('/img/covers' . $game->cover_image);
@@ -190,7 +186,7 @@ class GamesController extends Controller
     public function destroy($id)
     {
         $game = Game::find($id);
-
+        
         if ($game->cover_image != 'noimage.jpg') {
             Storage::delete('/img/covers/' . $game->cover_image);
         }
@@ -203,19 +199,18 @@ class GamesController extends Controller
 
     private function handleFileUpload(Request $request)
     {
-
         $fileNameToStore = 'default.jpg';
         if ($request->hasFile('cover_image')) {
             $cover = $request->file('cover_image');
             $fileNameWithExt = time() . '.' . $cover->getClientOriginalName();
-            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME); 
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             $extension = $cover->getClientOriginalExtension();
             $fileNameToStore = $filename . '_' . time() . '.' . $extension;
-           
-            Image::make($cover)->save(public_path('/img/covers/' . $fileNameToStore) );
-        } 
-    
+            $img= Image::make($cover)->resize(220,220, function($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save(public_path('/img/covers/' . $fileNameToStore));
+        }
         return $fileNameToStore;
-
     }
 }
