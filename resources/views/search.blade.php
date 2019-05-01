@@ -6,7 +6,9 @@
 
 
 @section('content')
-<h3> Resultados de perfiles de usuario </h3>
+<h1> Resultados de perfiles de usuario </h1>
+
+
 <div class="containerm">
 		<div class="card">
 		<p>
