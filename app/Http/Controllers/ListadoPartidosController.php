@@ -32,7 +32,7 @@ class ListadoPartidosController extends Controller
     public function index()
     {
         $partidos = partido::where('user_id', Auth::user()->id)->get();
-        
+
         return view('listadoPartidos', ['partidos' => $partidos]);
     }
 
@@ -98,8 +98,8 @@ class ListadoPartidosController extends Controller
         if (strcmp($data['public'], $partido->public) != 0)
             $partido->update(['public' => $data['public']]);
         //Si se agrego Jugadores
-        if(!empty($data['jugadores'])){
-        foreach ($data['jugadores'] as $nuevoNombre) {
+        if (!empty($data['jugadores'])) {
+            foreach ($data['jugadores'] as $nuevoNombre) {
                 $nuevo = new player;
                 $nuevo->name = $nuevoNombre;
                 $nuevo->id_partido = $partido->id;
@@ -107,24 +107,23 @@ class ListadoPartidosController extends Controller
             }
         }
 
-//$partido->update(['name'=>$data['name']], ['place'=>$data['place']],['category'=>$data['category']],['public'=>$data['public']]);
 
-return redirect('/listadoPartidos');
-}
+        return redirect('/listadoPartidos');
+    }
 
-public function borrarJugador($id)
-{
-    $jugador = player::where('id', $id)->get()->first();
-    $idpartido = (player::where('id', $id)->get()->first())->id_partido;
-    if ($jugador != null)
-        $jugador->delete();
+    public function borrarJugador($id)
+    {
+        $jugador = player::where('id', $id)->get()->first();
+        $idpartido = (player::where('id', $id)->get()->first())->id_partido;
+        if ($jugador != null)
+            $jugador->delete();
 
 
-    $estados = state::get('visibilidad');
-    $partido = partido::findOrFail($idpartido);
-    $categorias = category::get('category');
-    $jugadores = player::where('id_partido', $idpartido)->get();
+        $estados = state::get('visibilidad');
+        $partido = partido::findOrFail($idpartido);
+        $categorias = category::get('category');
+        $jugadores = player::where('id_partido', $idpartido)->get();
 
-    return view('/edit', ['categories' => $categorias, 'estados' => $estados, 'partido' => $partido, 'jugadores' => $jugadores]);
-}
+        return view('/edit', ['categories' => $categorias, 'estados' => $estados, 'partido' => $partido, 'jugadores' => $jugadores]);
+    }
 }

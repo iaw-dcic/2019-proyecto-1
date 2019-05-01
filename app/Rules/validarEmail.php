@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use App\User;
-use Auth;
+
 class validarEmail implements Rule
 {
     /**
@@ -26,9 +26,8 @@ class validarEmail implements Rule
      */
     public function passes($attribute, $value)
     {
-        $emailUserActual = Auth::user()->email;
         $existe=User::where('email',$value)->get()->first();
-        return $existe!=null;
+        return $existe==null;
     }
 
     /**

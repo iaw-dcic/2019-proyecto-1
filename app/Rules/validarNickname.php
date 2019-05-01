@@ -4,19 +4,18 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use App\User;
-use Auth;
+
 
 class validarNickname implements Rule
 {
-    public $nickNameActual;
+ 
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct($nickNameActual)
+    public function __construct()
     {
-        $this->nickNameActual = $nickNameActual;
     }
 
     /**
@@ -28,10 +27,10 @@ class validarNickname implements Rule
      */
     public function passes($attribute, $value)
     {
-        $idUserActual = Auth::user()->id;
+      
         $existe = User::where('nickname', $value)->get()->first();
 
-        return ($existe->id == $idUserActual);
+        return $existe==null;
     }
 
     /**

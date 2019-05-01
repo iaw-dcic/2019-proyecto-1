@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
-use App\Rules\validarNickname;
 use App\Rules\validarEmail;
+use App\Rules\validarNickname;
 
 class PerfilUsuarioController extends Controller
 {
@@ -23,7 +23,7 @@ class PerfilUsuarioController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'nickname' => ['required', 'string', 'max:255', new validarNickName($data['nickname'])],
+            'nickname' => ['required', 'string', 'max:255', new validarNickname],
             'email' => ['required', 'max:255', new validarEmail()],
         ]);
 
