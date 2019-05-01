@@ -65,7 +65,7 @@
 						<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
 							{{ method_field('DELETE') }} @csrf
 							<!-- {{ csrf_field() }} -->
-							<button type="submit" class="site-btn">Eliminar juego</button>
+							<button type="submit" class="site-btn" style="margin-top:30px;">Eliminar juego</button>
 						</form>
 					</div>
 				@endauth
