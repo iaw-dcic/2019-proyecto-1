@@ -111,6 +111,7 @@
                     </form>
                 </div>
             </div>
+            <hr>
         @endforeach
             <a class="botonagregar" type="button" href="{{route('listas.create')}}">Crear Lista</a>
     </div>
