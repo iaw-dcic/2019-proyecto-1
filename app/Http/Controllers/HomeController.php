@@ -8,6 +8,8 @@ use App\Genre;
 use App\SentimentalSituation;
 use App\Table;
 use App\Item;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -71,12 +73,11 @@ class HomeController extends Controller
 
         if($request->file('avatar') != null){
             $extencion = '.' . $request->file('avatar')->getClientOriginalExtension();
-
-            $path = 'storage/app/' . $request->file('avatar')->storeAs(
-                'uploads/user-'.$user->id.'', 'avatar-' . $user->id . $extencion . ''
-            );
-
-            $user->avatar = $path;
+            // $path = 'public/' . $request->file('avatar')->storeAs(
+            //     'user-'.$user->id.'', 'avatar-' . $user->id . $extencion . ''
+            // );
+            Storage::putFileAs("public/user-" . $user->id, $request->file('avatar'), 'avatar-'.$user->id.$extencion);
+            $user->avatar = "storage/user-" . $user->id . '/avatar-'.$user->id.$extencion;
         }
         
         $user->save();

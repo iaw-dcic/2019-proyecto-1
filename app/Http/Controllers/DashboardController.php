@@ -9,6 +9,7 @@ use App\Country;
 use App\User;
 use App\Genre;
 use App\SentimentalSituation;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
@@ -33,6 +34,7 @@ class DashboardController extends Controller
                 if($list->user_id == $user->id){
                     $list->user_name = $user->name;
                     $list->user_avatar = $user->avatar;
+                    dd(Storage::url($user->avatar));
                     break;
                 }
             }

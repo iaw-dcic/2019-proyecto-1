@@ -36,9 +36,9 @@ $(document).ready(function(){
         }
     });
 
-    $("#fileAvatar").change(function(){
-        readURL(this);
-    });
+    // $("#fileAvatar").change(function(){
+    //     readURL(this);
+    // });
 
     $(".collapse.show").each(function(){
         $(this).prev(".card-header").find(".fa").addClass("fa-minus").removeClass("fa-plus");
@@ -152,15 +152,15 @@ function setForm(action){
     }
 }
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#avatarEdit').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+//         reader.onload = function(e) {
+//             $('#avatarEdit').attr('src', e.target.result);
+//         }
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
 
 function addItem(list_id){
     $("#table_id").val(list_id);
