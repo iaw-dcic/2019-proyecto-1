@@ -28,7 +28,7 @@ class validarEmail implements Rule
     {
         $emailUserActual = Auth::user()->email;
         $existe=User::where('email',$value)->get()->first();
-        return $existe==null;
+        return $existe!=null;
     }
 
     /**
