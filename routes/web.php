@@ -46,9 +46,7 @@ Route::post('/edit','UserController@update');
 
 Route::get('/lists','UserController@mylists')->name('lists');
 
-//Route::delete('/lists','ListController@destroy')->name('delete_list');
-
-Route::post('/lists/delete','ListController@destroy')->name('delete_list');
+Route::delete('/lists','ListController@destroy')->name('delete_list');
 
 Route::post('/lists', 'ListController@edit')->name('edit_list');
 
