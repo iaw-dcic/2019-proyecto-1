@@ -21,10 +21,3 @@
          </div>
 @endsection
 
-@section('scripts')
-    <script>
-        function navigateTo(url){
-            window.location.assign(url);
-        }
-    </script>
-@endsection

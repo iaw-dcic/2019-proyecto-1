@@ -23,3 +23,17 @@ TODO
 ## Herramienta Audit de Chrome
 
 TODO
+
+## Resultados de performance con audit:
+    "/":
+        Performance: 72
+        Accessibility: 90
+    "usuario/mis-listas":
+        Performance: 66
+        Accessibility: 60
+    "/register":
+        Performance: 72
+        Accessibility: 91
+
+# Autor:
+Salazar Gabriel

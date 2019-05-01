@@ -75,17 +75,6 @@
 
 @section('scripts')
     <script type="text/javascript">
-        function ajustarAncho(){
-            maxAncho = document.getElementById("table_resp").clientWidth;
-            anchoEstado = document.getElementById("col_estado").clientWidth;
-            anchoAcciones = document.getElementById("col_acciones").clientWidth;
-            listas = document.getElementById("col_lista");
-
-            listas.style.width = (maxAncho - anchoEstado - anchoAcciones) +"px";
-
-            document.getElementById("container").classList.remove("invisible");
-        }
         window.onload = ajustarAncho;
-
     </script>
 @endsection
