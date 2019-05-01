@@ -89,34 +89,6 @@
                        </div>
 
                        <div class="form-group row">
-                            <label for="year" class="col-md-4 col-form-label text-md-right">{{ __('Año') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="year" type="text" class="form-control{{ $errors->has('year') ? ' is-invalid' : '' }}" name="year" value="{{ $book->year }}" required autofocus>
-
-                                @if ($errors->has('year'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('year') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                       </div>
-
-                       <div class="form-group row">
-                            <label for="editor" class="col-md-4 col-form-label text-md-right">{{ __('Editorial') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="editor" type="text" class="form-control{{ $errors->has('editor') ? ' is-invalid' : '' }}" name="isbeditorn" value="{{ $book->editor }}" required autofocus>
-
-                                @if ($errors->has('editor'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('editor') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                       </div>
-
-                       <div class="form-group row">
                             <label for="list_id" class="col-md-4 col-form-label text-md-right">{{ __('Lista') }}</label>
                             <div class="col-md-6">
                                 <select id="list_id" class="form-control{{ $errors->has('list_id') ? ' is-invalid' : '' }}" name="list_id" required>

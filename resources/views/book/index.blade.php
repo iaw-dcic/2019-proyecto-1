@@ -22,7 +22,6 @@
                                 <th>ISBN</th>
                                 <th>Número de Páginas</th>
                                 <th>Idioma</th>
-                                <th>Año</th>
                                 <th>Editorial</th>
 
                                 <th>Lista ID</th>
@@ -36,7 +35,6 @@
                                 <td>{{ $book->isbn }}</td>
                                 <td>{{ $book->page_number }}</td>
                                 <td>{{ $book->language }}</td>
-                                <td>{{ $book->year }}</td>
                                 <td>{{ $book->editor }}</td>
                                 <td>{{ $book->list_id }}</td>
                                 <td>{{ $book->created_at}}</td>

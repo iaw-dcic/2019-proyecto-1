@@ -20,8 +20,6 @@ class CreateBooksTable extends Migration
             $table->string('isbn');
             $table->bigInteger('page_number');
             $table->string('language');
-            $table->bigInteger('year');
-            $table->string('editor');
             $table->bigInteger('user_id');
             $table->bigInteger('list_id')->nullable();
             $table->timestamps();

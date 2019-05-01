@@ -67,8 +67,6 @@ class BookController extends Controller
         $book->isbn=$request->isbn;
         $book->page_number=$request->page_number;
         $book->language=$request->language;
-        $book->year=$request->year;
-        $book->editor=$request->editor;
         $book->user_id = Auth::user()->id;
         $book->list_id=$request->list_id;
 
@@ -129,10 +127,8 @@ class BookController extends Controller
         $book_->name=$request->name;
         $book_->author=$request->author;
         $book_->isbn=$request->isbn;
-        $book->page_number=$request->page_number;
-        $book->language=$request->language;
-        $book->year=$request->year;
-        $book->editor=$request->editor;
+        $book_->page_number=$request->page_number;
+        $book_->language=$request->language;
         $book_->list_id=$request->list_id;
 
         if ($book_->save()) {

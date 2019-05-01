@@ -27,6 +27,8 @@ class BookRequest extends FormRequest
             'name' => 'required|min:3|max:255',
             'author' => 'required|min:3|max:255',
             'isbn' => 'required|min:10|max:13',
+            'page_number' => 'required|numeric|min:1|max:10000',
+            'language' => 'required|min:3|max:255',
             'list_id' => 'required|numeric'
         ];
     }
