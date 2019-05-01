@@ -37,7 +37,7 @@ class ItemsController extends Controller
         return redirect('/things'); 
     }
     public function edit(Item $item){
-        return view('item.edit',compact('item')); 
+        return view('items.edit',compact('item')); 
     }
 
     public function update(Item $item){
