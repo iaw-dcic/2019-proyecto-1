@@ -20,6 +20,8 @@ body
     border-style: outset;
     margin-top: 10px;
     margin: center;
+    width: 10px;
+    height: 10px;
 }
 
 #panelAgregar

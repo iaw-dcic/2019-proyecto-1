@@ -3,6 +3,13 @@ body
     background-color: whitesmoke ;
 }
 
+#panelFondo
+{
+    width: 600px;
+    height: auto;
+    margin: 50px auto;
+}
+
 .botonAgregar
 {
     text-decoration: none;
