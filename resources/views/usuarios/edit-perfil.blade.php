@@ -56,7 +56,7 @@
                         <div class="form-group row">
                             <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Cancelar">
+                                <input type="reset" class="btn btn-secondary" value="Restaurar">
                                 <input type="submit" class="btn btn-primary" value="Guardar cambios">
                             </div>
                         </div>

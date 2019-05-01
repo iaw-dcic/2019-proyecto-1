@@ -51,7 +51,8 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     {{-- <input type="reset" class="btn btn-secondary" value="Cancelar"> --}}
-                                    <a href="{{ route('mis-listas') }}" class="btn btn-secondary">Cancelar</a>
+                                    {{-- <a href="{{ route('mis-listas') }}" class="btn btn-secondary">Cancelar</a> --}}
+                                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancelar</a>
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Actualizar lista') }}
                                     </button>

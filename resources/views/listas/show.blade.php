@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="max-width: 850px" id="container">
+    <div class="container" id="container">
         @if (session()->has('success'))
             <div class="alert alert-success">
                 {{ session()->get('success') }}
@@ -23,10 +23,15 @@
         </div>
         @endif
 
-        <h2 class="text-center">{{ $list_name }}</h2>
+        <h2 class="text-center">Lista: {{ $list_name }}</h2>
         <a href="{{ route('crear-libro', ['id' => $list_id]) }}" class="btn btn-md btn-success my-3 my-sm-3">
             <span class="fas fa-plus mr-1"></span>
             Nuevo libro
+        </a>
+        <a href="{{ route('editar-lista', $list_id) }}" class="btn btn-md btn-primary my-3 my-sm-3 ">
+            <span class="fas fa-edit mr-1"></span>
+            {{-- <span class="d-none d-lg-inline">Editar lista</span> --}}
+            Editar lista
         </a>
         <div class="table-responsive" id="table_resp">
             <table class="table" id="table_id" >

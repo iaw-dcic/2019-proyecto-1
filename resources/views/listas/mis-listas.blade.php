@@ -44,13 +44,13 @@
                     </td>
 
                     <td>
-                    <a href="{{ route('show-lista', $list['id']) }}" >
+                    <a href="{{ route('editar-lista', $list['id']) }}" >
                             {{ $list['name'] }}
                         </a>
                     </td>
 
                     <td>
-                        <a href="{{ route('editar-lista', $list['id']) }}" class="btn btn-sm btn-primary my-1 my-sm-0">
+                        <a href="{{ route('show-lista', $list['id']) }}" class="btn btn-sm btn-primary my-1 my-sm-0">
                             <span class="fas fa-edit mr-1"></span>
                             <span class="d-none d-lg-inline">Editar</span>
                         </a>

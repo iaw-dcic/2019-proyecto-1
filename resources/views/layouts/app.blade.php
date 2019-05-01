@@ -17,7 +17,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/my.css') }}" rel="stylesheet">
         <!-- Icons -->
-    {{-- <link rel="stylesheet" href="{{ asset('css/all-fontawesome.css')}}"> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/fontawesome-5.8.1/css/all.min.css')}}"> --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
