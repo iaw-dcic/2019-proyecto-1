@@ -17,9 +17,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/appaux.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/dataTables.css') }}" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/appaux.css" rel="stylesheet">
+    <link href="css/dataTables.css" rel="stylesheet">
 
 
 
@@ -104,12 +104,12 @@
 
 </footer>
 <!-- Footer -->
-<script src="{{asset('js/app.js')}}" ></script>
-<script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/dataTables.js')}}"></script>
-<script src="{{asset('js/dataTables.bootstrap4.js')}}" ></script>
-<script src="{{asset('js/avatar.js')}}"></script>
-<script src="{{asset('js/parallax.js')}}"></script>
+<script src="js/app.js" ></script>
+<script src="js/jquery.js"></script>
+<script src="js/dataTables.js"></script>
+<script src="js/dataTables.bootstrap4.js" ></script>
+<script src="js/avatar.js"></script>
+<script src="js/parallax.js"></script>
 
 
 
