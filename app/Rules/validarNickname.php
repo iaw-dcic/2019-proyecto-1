@@ -30,7 +30,7 @@ class validarNickname implements Rule
     public function passes($attribute, $value)
     {
       
-        $existe = User::where('user_id','<>',$this->user_id)->where('nickname', $value)->get()->first();
+        $existe = User::where('id','<>',$this->user_id)->where('nickname', $value)->get()->first();
 
         return $existe==null;
     }
