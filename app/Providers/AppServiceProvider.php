@@ -27,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191); //NEW: Increase StringLength
+        if (app()->environment('remote')) {
+            URL::forceScheme('https');
+        }
     }
 }
