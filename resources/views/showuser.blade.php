@@ -8,7 +8,7 @@
 @section('content')
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
-        <div class="card text-center" style="width: 30rem; height:30rem">
+        <div class="card text-center" style="width: 50rem; height:30rem">
             <div class="card-header">
                 <h3>Usuario: {{$user->name}}</h3>
                 <h4>Correo electrónico: {{ $user->email}}</h4>
