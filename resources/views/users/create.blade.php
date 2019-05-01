@@ -37,7 +37,8 @@
 	  <button class="btn btn-primary" type="submit">Registrarse</button>
 	  </center>
 	  
-	  
+	  <a href="{{ route('users.index') }}">Regresar al listado de usuarios</a>
+     
    </form>
 	</div>
  
