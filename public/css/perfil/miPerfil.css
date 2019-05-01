@@ -20,6 +20,11 @@ body
     margin-top: 10px;
 }
 
+#panelInfo
+{
+    margin-bottom: 20px;
+}
+
 .botoninput{
 	padding: 4px 6px 5px;
     border-width: 2px;

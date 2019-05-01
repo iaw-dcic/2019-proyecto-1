@@ -21,7 +21,7 @@
                 <b>Nombre Usuario:</b> {{ Auth::user()->name }}
             </h2>
         </div>
-        <div>
+        <div id="panelInfo">
             <h2 id="informacionUsuario">
                 <b>E-mail:</b> {{ Auth::user()->email }}
             </h2>
@@ -29,7 +29,7 @@
         <a class="btn-sm btn-info botoninput" href="/editarPerfil"><i class="fas fa-user-edit"> Editar Perfil</i></a>
     </div>
 
-    <br>
+    <hr>
 
     <div class="panelSeries">
         <h1 id="informacionUsuario">
