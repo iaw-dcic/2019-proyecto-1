@@ -2,8 +2,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container invisible" style="max-width: 800px" id="container">
-        <a href="{{ route('crear-lista') }}" class="btn btn-md btn-success my-3 my-sm-3">
+    <div class="container invisible" id="container">
+
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+        @if (session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+        @endif
+
+        <h2 class="text-center">Mis Listas</h2>
+        <a href="{{ route('crear-lista') }}" class="btn btn-md btn-success mb-3 mb-sm-3">
             <span class="fas fa-plus mr-1"></span>
             Crear nueva lista
         </a>
@@ -24,7 +37,7 @@
                 <tr>
                     {{-- <th scope="row">{{ $list['id'] }}</th> --}}
                     <td>
-                        <a href="#" class="btn btn-sm btn-{{ $list['status']=='Publica' ? 'success' : 'secondary' }} my-1 my-sm-0">
+                        <a href="{{ route('actualizar-estado-lista', $list['id']) }}" class="btn btn-sm btn-{{ $list['status']=='Publica' ? 'success' : 'secondary' }} my-1 my-sm-0">
                             <span class="fas fa-{{ $list['status']=='Publica' ? 'unlock' : 'lock' }} mr-1"></span>
                             <span class="d-none d-lg-inline">{{ $list['status'] }}</span>
                         </a>
@@ -37,10 +50,10 @@
                     </td>
 
                     <td>
-                        <button href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
+                        <a href="{{ route('editar-lista', $list['id']) }}" class="btn btn-sm btn-primary my-1 my-sm-0">
                             <span class="fas fa-edit mr-1"></span>
                             <span class="d-none d-lg-inline">Editar</span>
-                        </button>
+                        </a>
 
                         <form action="{{ route('eliminar-lista', $list['id'] ) }}" method="POST" style="display: inline">
                             @csrf

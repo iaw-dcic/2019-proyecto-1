@@ -2,6 +2,27 @@
 
 @section('content')
     <div class="container" style="max-width: 850px" id="container">
+        @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session()->get('success') }}
+            </div>
+        @endif
+        @if (session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session()->get('error') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
         <h2 class="text-center">{{ $list_name }}</h2>
         <a href="{{ route('crear-libro', ['id' => $list_id]) }}" class="btn btn-md btn-success my-3 my-sm-3">
             <span class="fas fa-plus mr-1"></span>
@@ -34,10 +55,10 @@
                     </td>
 
                     <td>
-                        <button href="#" class="btn btn-sm btn-primary my-1 my-sm-0">
+                        <a href="{{ route('editar-libro', [$list_id, $book['id']]) }}" class="btn btn-sm btn-primary my-1 my-sm-0">
                             <span class="fas fa-edit mr-1"></span>
                             <span class="d-none d-lg-inline">Editar</span>
-                        </button>
+                        </a>
 
                         <form action="{{ route('eliminar-libro', [$list_id, $book['id']]) }}" method="GET" style="display: inline">
                             @csrf

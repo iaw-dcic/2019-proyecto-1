@@ -2,3 +2,17 @@
     vertical-align: middle;
 }
 
+.pointer{
+    cursor: pointer;
+
+}
+
+.container{
+    max-width: 1000px;
+}
+
+/* .card-body.pointer:hover{
+    background-color: lightgray;
+} */
+
+

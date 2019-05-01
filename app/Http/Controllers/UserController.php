@@ -3,49 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
+      /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show(User $user){
         //
+
+        return view('usuarios.show-perfil')->with('user', $user);
     }
 
     /**
@@ -54,9 +28,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         //
+        return view('usuarios.edit-perfil');
     }
 
     /**
@@ -66,9 +41,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request){
+        $validateData = $request->validate([
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'email' => 'required|max:255',
+        ]);
+
+
+        DB::table('users')
+            ->where('id', Auth::user()->id)
+            ->update([
+            'name' => $request->input('name'),
+            'surname' => $request->input('surname'),
+            'email' => $request->input('email')
+        ]);
+
+        $request->session()->flash('success', 'Usuario actualizado!');
+        return redirect()->back();
     }
 
     /**

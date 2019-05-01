@@ -1,26 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="max-width: 850px">
-        <h1 class="text-center pb-4">Ultimas listas publicadas</h1>
-        <div class="card-deck">
-        @foreach ($lists as $list)
-            {{-- <h4>{{ $list['name'] }}</h4> --}}
-                <div class="card border-dark mb-3 text-center" style="max-width: 15rem;">
-                    <div class="card-body text-dark d-flex flex-column pointer">
-                        <h5 class="card-title">Todas las novelas de Sherlock Holmesasdadaasdadsad</h5>
-                        {{-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> --}}
-                        {{-- <a href="#" class="btn btn-primary">Ver</a> --}}
-                        <a href="#" class="mt-auto ml-auto">by gabi</a>
+        <div class="container">
+            <h1 class="text-center pb-4">Ultimas listas publicadas</h1>
+                {{-- <div class="card-deck mx-auto"> --}}
+            <div class="row">
+            @foreach ($lists as $list)
+                <div class="col-lg-4 col-sm-6 col-12 pb-4">
+                    <div class="card border-dark text-left h-100">
+                    {{-- <div class="card border-dark mb-3 text-left" style="max-width: 100%; min-width: 15rem;"> --}}
+                        <div  class="card-body text-dark d-flex flex-column pointer" onclick="navigateTo('{{ route('ver-lista', $list->id) }}')">
+                            <h4 class="card-title">{{ $list->name }}</h4>
+                            <div class="mt-auto mr-auto font-italic ">
+                                by <a href="{{ route('ver-perfil', $list->user_id) }}">{{ $list->user_name }}</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                @endforeach
-            </div>
-    </div>
+            @endforeach
+         </div>
 @endsection
 
-{{-- <div class="card bg-light mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Light card title</h5>
-        </div>
-    </div> --}}
+@section('scripts')
+    <script>
+        function navigateTo(url){
+            window.location.assign(url);
+        }
+    </script>
+@endsection
