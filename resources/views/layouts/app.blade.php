@@ -9,16 +9,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <script type="text/javascript" src="{{ asset('jquery-ui/jquery-1.12.4.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('jquery-ui/jquery-ui.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('jquery-ui/jquery-1.12.4.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('jquery-ui/jquery-ui.js') }}"></script>
     <script type="text/javascript" src="{{ asset('jquery/jquery-3.4.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('jquery/jquery.validate.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('datepicker/bootstrap-datepicker.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/others.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('datatables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('datatables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('jquery/jquery.validate.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('datepicker/bootstrap-datepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/others.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('datatables/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('datatables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Fonts -->
     <link type="text/css" href="{{ asset('css/all.css') }}" rel="stylesheet">
@@ -34,7 +34,7 @@
     @if(Route::current()->getName() == "login" || Route::current()->getName() == "register" || Route::current()->getName() == "password.request" || Route::current()->getName() == "dashboard")
         <link type="text/css" href="{{ asset('css/login-register.css') }}" rel="stylesheet">
     @endif
-    <script type="text/javascript" src="{{ asset('js/profile.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset('js/profile.js') }}"></script>
     <link type="text/css" href="{{ asset('css/profile.css') }}" rel="stylesheet">
     
 </head>
