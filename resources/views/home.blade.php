@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Listas</div>
+                <div class="card-header">Listas Públicas de Todos los Usuarios en el Sistema</div>
                 <div class="card-body">
                     <div class="table-responsive-md">
                         <table class="table">
