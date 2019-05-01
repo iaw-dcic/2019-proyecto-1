@@ -17,6 +17,8 @@ Route::get('/', 'HomeController@home')->name('welcome');
 Route::get('/home', 'HomeController@home')->name('home');
 Route::post('/home','HomeController@filter')->name('home-filter');
 
+Route::get('/readme', 'HomeController@readme')->name('readme');
+
 Route::get('/create-list', 'Lists\ListCreatorController@index')->name('create-list');
 Route::post('/create-list',['as' => 'form_url', 'uses' => 'Lists\ListCreatorController@store'])->name('create-list');
 

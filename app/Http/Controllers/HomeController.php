@@ -33,6 +33,10 @@ class HomeController extends Controller
         return view('home', ['generos' => $generos, 'listas' => $listas]);
     }
 
+    public function readme(){
+        return view('readme');
+    }
+
     public function filter(Request $request){
         
         $request->validate([

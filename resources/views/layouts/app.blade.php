@@ -61,11 +61,14 @@
                 </nav>
             </div>
 
-            <div class="col-xs-2 col-md-6 col-lg-4">
+            <div class="col-xs-2 col-sm-8 col-md-6 col-lg-5">
                 <nav id="nav-menu-container">
                     <ul class="nav-menu mr-auto">
                         <li>
                             <a href="{{ route('home') }}">{{ __('Inicio') }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('readme') }}">{{ __('Readme') }}</a>
                         </li>
                         @guest
                         <li>
