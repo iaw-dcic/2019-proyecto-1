@@ -8,13 +8,13 @@
 
 @section('body')
 
-<div id="panelfondo">
-    <h2>
+<div id="panelFondo">
+    <div class="card-header">
         Agregar Serie a lista
-    </h2>
+    </div>
     <form method="POST" action="/actualizarIdLista">
         {{csrf_field()}}
-        <div>
+        <div class="card-body">
             @foreach($lista as $listas)
                 @if ($serie->id_lista == $listas->id)
                     <input type="radio" name="idLista" value="{{$listas->id}}" checked>{{$listas->nombre_lista}}
