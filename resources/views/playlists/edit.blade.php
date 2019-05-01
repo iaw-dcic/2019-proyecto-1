@@ -10,20 +10,26 @@ Editar playlist {{$playlist->name}}
     </div>
     <div class="container">
         {{-- boton para ocultar--}}
+        <div class="btn-group" role="group">
         @if ($playlist->public)
+
             <form method="POST"
             action="{{action('PlaylistsController@hide',['user'=>$user,'playlist'=>$playlist]) }}">
                 @method('PATCH')
                 @csrf
-                <div class="form-group row">
-                    <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-light">
                             {{ __('Ocultar') }}
                         </button>
-                    </div>
-                </div>
             </form>
         @endif
+        <form method="POST" action="{{url('playlists',$playlist->id)}}">
+                @method("DELETE")
+                @csrf
+                        <button type="submit" class="btn btn-danger">
+                                {{ __('Eliminar') }}
+                        </button>
+            </form>
+        </div>
         {{--formulario para edicion--}}
         <form method="POST" action="{{ url($user->id,$playlist->id) }}">
             @method("PATCH")
@@ -61,20 +67,7 @@ Editar playlist {{$playlist->name}}
             </div>
         </form><!-- form para editar-->
         {{-- boton para eliminar--}}
-        <form method="POST" action="{{url('playlists',$playlist->id)}}">
-            @method("DELETE")
-            @csrf
-            <div class="form-group row mb-0">
-                <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-danger">
-                            {{ __('Eliminar') }}
-                    </button>
-                </div>
-            </div>
-        </form>
+
         @include('errors')
-    </div>
-    <div class="container">
-        <a class="btn btn-lg btn-secondary" href="{{ route('home') }}" a>Volver</a>
     </div>
 @endsection

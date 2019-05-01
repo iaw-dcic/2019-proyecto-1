@@ -77,14 +77,17 @@
                             </button>
                         </form>
                     @endif
-                <button class="btn btn-primary btn-sm"
+                <a class="btn btn-primary btn-sm"
                 href="{{action('PlaylistsController@edit',['user'=>$user,'playlist'=>$playlist]) }}" >
-                Editar
-                </button>
+                    Editar
+                </a>
                 </div>
                 {{-- formulario para agregar videos --}}
                 <div class="jumbotron">
                         <div class="card">
+                                <div class="card-header">
+                                    <p class="lead text-center">Agregar video</p>
+                                </div>
                                 <div class="card-body">
                 <form method="POST"
                 action="{{action('PlaylistVideosController@store',['user'=>$user,'playlist'=>$playlist]) }}">
