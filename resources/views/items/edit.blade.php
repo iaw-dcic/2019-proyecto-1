@@ -1,6 +1,6 @@
 <div class = "container">
 					<form method = "POST" action="/items/{$item -> id}/update">
-						
+                    {{method_field('PATCH')}}
 								@csrf
 								<div class = "container">
 										<div class="form-group row">
