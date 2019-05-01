@@ -14,7 +14,7 @@
 @section('body')
     <div class="panelInformacion">
         <h1 id="informacionUsuario">
-            Cuenta
+            <b>Cuenta</b>
         </h1>
         <div>
             <h2 id="informacionUsuario">
@@ -22,16 +22,18 @@
             </h2>
         </div>
         <div>
-            <h3 id="informacionUsuario">
+            <h2 id="informacionUsuario">
                 E-mail: {{ Auth::user()->email }}
-            </h3>
+            </h2>
         </div>
-        <a class="btn-sm btn-info botoninput" href="/editarPerfil"><i class="fas fa-user-edit">Editar Perfil</i></a>
+        <a class="btn-sm btn-info botoninput" href="/editarPerfil"><i class="fas fa-user-edit"> Editar Perfil</i></a>
     </div>
+
+    <br>
 
     <div class="panelSeries">
         <h1 id="informacionUsuario">
-            Series guardadas
+            <b>Series guardadas</b>
         </h1>
     </div>
 
