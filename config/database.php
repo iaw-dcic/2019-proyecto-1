@@ -4,6 +4,21 @@ use Illuminate\Support\Str;
 
 return [
 
+    'mysql' => [
+        'driver' => 'mysql',
+        'host' => env('DB_HOST', 'db4free.net'),
+        'port' => env('DB_PORT', '3306'),
+        'database' => env('DB_DATABASE', 'proyecto_1'),
+        'username' => env('DB_USERNAME', 'manuelafernandez'),
+        'password' => env('DB_PASSWORD', 'manuelafernandez102457'),
+        'unix_socket' => env('DB_SOCKET', ''),
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'prefix' => '',
+        'strict' => true,
+        'engine' => null,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
