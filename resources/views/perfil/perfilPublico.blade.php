@@ -21,33 +21,34 @@
             E-mail: {{$usuario->email}}
         </h3>
     </div>
-  
-    <div class="panelInformacion">
-         <h1 id="informacionUsuario">
-            Listas Compartidas
-        </h1>
-        <div class="container">
-        <table class="table table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Series agregadas</th>
-                </tr>
-            </thead>
-            <tbody>
-                 @foreach($lista as $listas)
-                <tr>
-                    @if ($listas->publica== "Si")
-                        <td>{{ $listas->nombre_lista}}</td>
-                        @foreach($listas->seriesAsociadas as $series)    
-                                <td>{{ $series->nombre}}</td>
-                        @endforeach
-                    @endif
-                @endforeach
-                </tr>
-            </tbody>
-        </table>
 
+     <div class="container panelInformacion">
+        <h1 id="informacionUsuario">
+            Listas Creadas
+        </h1>
+        <hr>
+        @foreach($lista as $listas)
+            <div class="panelTablaYBotones">
+                <div class="panelTabla">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">{{ $listas->nombre_lista}}</th>
+                            </tr>
+                        </thead>
+                        @foreach($listas->seriesAsociadas as $series)   
+                        <tbody>
+                            <tr>
+                                <td>{{ $series->nombre}}</td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+            <hr>
+        @endforeach
+    </div>
         <a href="{{ url('/') }}"><button class="botonGuardar" type="button">Volver</button></a>
     </div>
 @stop

@@ -1,4 +1,23 @@
-.botonGuardar
+body
+{
+    background-color: whitesmoke ;
+}
+
+
+#informacionUsuario
+{
+    font-family: 'Dosis', sans-serif;
+}
+
+.panelInformacion
+{
+    margin: 10px auto;
+    width: 50%;
+    height: auto;
+    text-align: center;
+}
+
+.botonVolver
 {
     width: 150px;
     height: 40px;
@@ -11,7 +30,7 @@
     margin-top: 20px;
     text-align: center;
 }
-.botonGuardar:hover{
+.botonVolver:hover{
     color: #1883ba;
     background-color: #ffffff;
 }
