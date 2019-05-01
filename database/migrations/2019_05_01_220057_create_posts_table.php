@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPostIdToItems extends Migration
+class CreatePostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddPostIdToItems extends Migration
      */
     public function up()
     {
-        Schema::table('items', function (Blueprint $table) {
-                $table ->integer('post_id');
+        Schema::create('posts', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
+            $table->string('body');
+            $table->string('title');
+            $table ->integer('user_id');
         });
     }
 
@@ -25,8 +29,6 @@ class AddPostIdToItems extends Migration
      */
     public function down()
     {
-        Schema::table('items', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('posts');
     }
 }
