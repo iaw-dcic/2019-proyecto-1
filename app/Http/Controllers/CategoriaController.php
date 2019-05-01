@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Auto;
+use App\auto;
 use App\Http\Request\CategoriaFormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +39,7 @@ class CategoriaController extends Controller
     {
 
 
-        $Auto=new Auto();//nuestro modelo
+        $Auto=new auto();//nuestro modelo
         $Auto->id=Auth::id();
         if(!empty($request->input('name')) and !empty($request->input('cv')))
         {
