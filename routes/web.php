@@ -38,8 +38,3 @@ Route::get('profile/{userid}/show', 'ProfileController@show');
 Route::get('/readme', function () {
     return view('readme');
 });
-
-
-Route::get('/template', function () {
-    return view('template');
-});
