@@ -30,9 +30,9 @@
       		<td>{{$item->cantDias}}</td>
 			<td>
 			<form method = "POST" action = "/items/{{$item -> id}}/destroy">
-				{{method_field('DELETE')}}
-				{{csrf_field()}}   
-			<button type="delete" class="btn btn-outline-danger">Eliminar</button>
+					{{method_field('DELETE')}}
+					{{csrf_field()}}   
+				<button type="delete" class="btn btn-outline-danger">Eliminar</button>
 			</form>
 			<a href="/items/{{$item -> id}}/edit" class="btn btn-outline-dark" > 
   			Edit  
