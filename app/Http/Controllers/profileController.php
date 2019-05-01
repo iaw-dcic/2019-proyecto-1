@@ -29,7 +29,6 @@ class profileController extends Controller
         else{
             $name = $nameac[0]->id; 
             $nameac = $nameac[0]->name;
-            dd($name, $nameac);
             return view('profiles.show')->with('name',$nameac)->with('idActual',$name); //es un usuario externo
         }
        
@@ -38,8 +37,6 @@ class profileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
      */
     public function edit(String $userName)
     {
@@ -79,8 +76,6 @@ class profileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
      */
     public function destroy()
     {

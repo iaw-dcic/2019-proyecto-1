@@ -39,7 +39,6 @@ class ListGamesController extends Controller
      /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Juego  $juego
      * @return \Illuminate\Http\Response
      */
     public function update(){
