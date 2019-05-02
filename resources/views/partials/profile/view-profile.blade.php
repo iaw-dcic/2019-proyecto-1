@@ -31,7 +31,7 @@
 
     <div class="row no-gutters barra-actividad" id="actividad-publica">
         <div class="col">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs d-flex justify-content-center justify-content-md-start ml-0 ml-md-4" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="fotos-publicas-tab" data-toggle="tab" href="#fotos-publicas" role="tab" aria-controls="fotos-publicas" aria-selected="true">Fotos públicas</a>
                 </li>

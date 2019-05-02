@@ -15,7 +15,7 @@
 
    <!--Barra actividad-->
    <div class="row no-gutters barra-actividad" id="actividad-publica">
-        <div class="col">
+        <div class="col d-flex justify-content-center justify-content-md-start ml-0 ml-md-5">
             <a href="#"><span class="active">Actividad pública</span></a>
         </div>
     </div>

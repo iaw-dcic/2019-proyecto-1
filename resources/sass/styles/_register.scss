@@ -1,124 +1,93 @@
-/*--------------------LOGIN y SIGNUP------------------------------*/
-/*--------------------------------------------------------------*/
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .5rem;
+}
 
-.fondo-login, .fondo-signup{
+.container-register{
+    margin-top: -25px;
+    margin-bottom: 25px;
+}
+
+.card-signin {
+    border: 0;
+    border: none !important;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-signin .card-title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+  .card-signin .card-img-left {
+    width: 45%;
     background-size: cover;
-    height: 100%;
-    margin-top: 0;
-}
+  }
 
-.fondo-login{
+  .card-img-left-login{
     background-image: url('../../../public/storage/images/background-login.jpg');
-}
+  }
 
-.fondo-signup{
+  .card-img-left-register{
     background-image: url('../../../public/storage/images/background-register.jpg');
-}
+  }
 
-/*
-.fondo-login{
-    background-image: url('../storage/uploads/images/background-login.jpg');
-}
+  .card-signin .card-body {
+    padding: 2rem;
+  }
 
-.fondo-signup{
-    background-image: url('../storage/uploads/images/background-register.jpg');
-}
-*/
-
-@media screen and (min-width: 425px) and (max-width: 767px){
-    div.signup form,
-    div.login form {
-        max-width: 50%;
-    }
-}
-@media screen and (min-width: 768px) and (max-width: 992px){
-    div.signup form,
-    div.login form {
-        max-width: 40%;
-    }
-}
-
-@media screen and (min-width: 993px){
-    div.signup form,
-    div.login form {
-        max-width: 30%;
-    }
-}
-
-div.signup, div.login{
+  .form-signin {
     width: 100%;
+  }
 
-    form {
-        width: 90%;
-        margin: 50px 0 100px 0;
-        padding: 20px 20px 0 20px;
-        background-color: rgba(0,0,0,.70);
-        border-radius: 10px;
+  .form-signin .btn {
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+  }
 
-        div.foto-camara {
-            i.fa-camera-retro {
-                margin-top: -50px;
-                margin-bottom: 15px;
-                font-size: 42px;
-                color: white;
-                background-color: $primary-color;
-                border-radius: 100%;
-                padding: 20px;
-                transition: .1.5s;
-            }
+  .form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+  }
 
-            i.fa-camera-retro:hover {
-                background-color: $secondary-color;
-            }
-        }
+  .form-label-group input {
+    height: auto;
+    border-radius: 2rem;
+  }
 
-        input {
-            margin: 10px 0;
-        }
+  .form-label-group>input,
+  .form-label-group>label {
+    padding: var(--input-padding-y) var(--input-padding-x);
+  }
 
-        button {
-            width: 100%;
-            margin: 10px auto 15px auto;
-            background-color: $secondary-color;
-            color: white;
-            font-size: 16px;
-            padding: 7px 16px;
-            border-radius: 5px;
-            border-bottom: 4px solid $primary-color;
-            transition: .3s;
-        }
+  .form-label-group>label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+  }
 
-        button.btn:active,
-        button.btn:hover {
-            background-color: $primary-color;
-            border-bottom: 4px solid $primary-color;
-        }
+  .btn-google {
+    color: white;
+    background-color: #ea4335;
+  }
 
-        a.btn {
-            color: white;
-            margin-bottom: 15px;
-            padding: 5px;
-
-            &.btn-google {
-                background-color: black;
-                i {
-                    color: white;
-                }
-            }
-
-            color: white;
-        }
-
-        .forgot, .forgot a{
-            color: grey;
-            font-size: 14px;
-            margin-top: 0;
-            margin-bottom: 12px;
-        }
-
-        .forgot a:hover {
-            color: rgb(167, 167, 167);
-            text-decoration: none;
-        }
-    }
-}
+  .btn-facebook {
+    color: white;
+    background-color: #3b5998;
+  }

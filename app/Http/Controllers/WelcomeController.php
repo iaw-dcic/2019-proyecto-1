@@ -12,7 +12,7 @@ class WelcomeController extends Controller{
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        $posts = Post::where('public', true)->take(30)->orderBy('created_at')->get();
-        return view('welcome')->with(['posts' => $posts]);
+        $posteos = Post::where('public', true)->orderBy('created_at', 'desc')->get();
+        return view('welcome')->with(['posteos' => $posteos]);
     }
 }

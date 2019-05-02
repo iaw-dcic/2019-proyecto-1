@@ -50,8 +50,9 @@ $('#form_editar_perfil').on('submit', function(event) {
     let method = 'POST';
 
     ajaxEditarPerfil(method, url, parametros, (request) => {
+        $('#btn-cerrar-editar-perfil').click();
         $('.info-perfil p.name').text(request.name);
-        $('.info-perfil p.username').text(request.username);
+        $('.info-perfil p.username').text('@'+request.username);
         $('.info-perfil p.biography').text(request.biography);
     });
 });

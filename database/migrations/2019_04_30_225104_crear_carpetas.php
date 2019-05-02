@@ -12,14 +12,10 @@ class CrearCarpetas extends Migration
      * @return void
      */
     public function up(){
-        Storage::deleteDirectory('storage/users');
-        Storage::deleteDirectory('storage/photos');
-        Storage::deleteDirectory('storage/images');
-        Storage::deleteDirectory('storage');
-        Storage::makeDirectory('storage');
-        Storage::makeDirectory('storage/users');
-        Storage::makeDirectory('storage/photos');
-        Storage::makeDirectory('storage/images');
+
+        Storage::makeDirectory('users');
+        Storage::makeDirectory('photos');
+        Storage::makeDirectory('images');
 
         $fondo_1 = file('http://www.lorempixel.com/1366/768/food/');
         $fondo_2 = file('http://www.lorempixel.com/1366/768/nature/');

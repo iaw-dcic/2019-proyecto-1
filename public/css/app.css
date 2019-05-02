@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);@import url(https://use.fontawesome.com/releases/v5.8.1/css/all.css);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i);@import url(https://use.fontawesome.com/releases/v5.8.1/css/all.css);@charset "UTF-8";
 
 /*--------------CONFIGURACIONES GENERALES---------------------------*/
 
@@ -8,7 +8,7 @@
 
 body {
   position: relative;
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Nunito", Arial, sans-serif !important;
   background-color: white;
   min-height: 100vh;
 }
@@ -23,7 +23,6 @@ div.contenedor-principal {
   position: relative;
   min-height: 100vh;
   height: 100%;
-  background-color: white;
 }
 
 div.imagen-fondo:before {
@@ -516,10 +515,9 @@ section.actividad {
 }
 
 div.barra-actividad div.col {
-  background-color: white;
   border-bottom: 2px solid #F3F5F6;
   margin: 0;
-  padding: 12pt 8%;
+  padding: 12pt 0;
 }
 
 div.barra-actividad div.col a {
@@ -678,145 +676,99 @@ section.actividad div.contenido-actividad {
   }
 }
 
-/*--------------------LOGIN y SIGNUP------------------------------*/
-
-/*--------------------------------------------------------------*/
-
-.fondo-login,
-.fondo-signup {
-  background-size: cover;
-  height: 100%;
-  margin-top: 0;
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .5rem;
 }
 
-.fondo-login {
+.container-register {
+  margin-top: -25px;
+  margin-bottom: 25px;
+}
+
+.card-signin {
+  border: 0;
+  border: none !important;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.card-signin .card-img-left {
+  width: 45%;
+  /* Link to your background image using in the property below! */
+  background-size: cover;
+}
+
+.card-img-left-login {
   background-image: url(/images/background-login.jpg?ef941bd67eec4893e303e2fc29ad484e);
 }
 
-.fondo-signup {
-  background-image: url(/images/background-register.jpg?89842e9527e216d28c36e46a31a9b904);
+.card-img-left-register {
+  background-image: url(/images/background-register.jpg?f57926b8b534021faa48640703558855);
 }
 
-/*
-.fondo-login{
-    background-image: url('../storage/uploads/images/background-login.jpg');
+.card-signin .card-body {
+  padding: 2rem;
 }
 
-.fondo-signup{
-    background-image: url('../storage/uploads/images/background-register.jpg');
-}
-*/
-
-@media screen and (min-width: 425px) and (max-width: 767px) {
-  div.signup form,
-  div.login form {
-    max-width: 50%;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 992px) {
-  div.signup form,
-  div.login form {
-    max-width: 40%;
-  }
-}
-
-@media screen and (min-width: 993px) {
-  div.signup form,
-  div.login form {
-    max-width: 30%;
-  }
-}
-
-div.signup,
-div.login {
+.form-signin {
   width: 100%;
 }
 
-div.signup form,
-div.login form {
-  width: 90%;
-  margin: 50px 0 100px 0;
-  padding: 20px 20px 0 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
 }
 
-div.signup form div.foto-camara i.fa-camera-retro,
-div.login form div.foto-camara i.fa-camera-retro {
-  margin-top: -50px;
-  margin-bottom: 15px;
-  font-size: 42px;
-  color: white;
-  background-color: #05a081;
-  border-radius: 100%;
-  padding: 20px;
-  transition: 0.1 0.5s;
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
 }
 
-div.signup form div.foto-camara i.fa-camera-retro:hover,
-div.login form div.foto-camara i.fa-camera-retro:hover {
-  background-color: #06B995;
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
 }
 
-div.signup form input,
-div.login form input {
-  margin: 10px 0;
+.form-label-group > input,
+.form-label-group > label {
+  padding: var(--input-padding-y) var(--input-padding-x);
 }
 
-div.signup form button,
-div.login form button {
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
   width: 100%;
-  margin: 10px auto 15px auto;
-  background-color: #06B995;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.btn-google {
   color: white;
-  font-size: 16px;
-  padding: 7px 16px;
-  border-radius: 5px;
-  border-bottom: 4px solid #05a081;
-  transition: 0.3s;
+  background-color: #ea4335;
 }
 
-div.signup form button.btn:active,
-div.signup form button.btn:hover,
-div.login form button.btn:active,
-div.login form button.btn:hover {
-  background-color: #05a081;
-  border-bottom: 4px solid #05a081;
-}
-
-div.signup form a.btn,
-div.login form a.btn {
+.btn-facebook {
   color: white;
-  margin-bottom: 15px;
-  padding: 5px;
-  color: white;
-}
-
-div.signup form a.btn.btn-google,
-div.login form a.btn.btn-google {
-  background-color: black;
-}
-
-div.signup form a.btn.btn-google i,
-div.login form a.btn.btn-google i {
-  color: white;
-}
-
-div.signup form .forgot,
-div.signup form .forgot a,
-div.login form .forgot,
-div.login form .forgot a {
-  color: grey;
-  font-size: 14px;
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-
-div.signup form .forgot a:hover,
-div.login form .forgot a:hover {
-  color: #a7a7a7;
-  text-decoration: none;
+  background-color: #3b5998;
 }
 
 /*----------------------------------------*/
@@ -829,7 +781,6 @@ div.container-profile {
   margin: 0;
   padding-top: 15px;
   width: 100%;
-  background-color: white;
 }
 
 div.container-profile .row-perfil {

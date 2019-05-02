@@ -43,7 +43,7 @@ class PhotosController extends Controller
 
     protected function random_string(){
         $key = '';
-        $keys = array_merge(range('a', 'z', range(0,9));
+        $keys = array_merge(range('a', 'z', range(0,9)));
         for($i=0; $i<10; $i++)
             $key .= $key[array_rand($keys)];
         return $key;

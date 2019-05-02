@@ -1,38 +1,44 @@
-<div class="signup d-flex justify-content-center">
-    <form method="POST" action="{{ route('register') }}" class="container-fluid">
-        @csrf
-        <div class="row no-gutters">
-            <div class="col-12 foto-camara d-flex justify-content-center">
-                <i class="fas fa-camera-retro"></i>
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control" id="validationServerUsername" placeholder="Nombre de usuario" name="username" required>
-                <div class="valid-feedback">Usuario disponible.</div>
+<div class="container container-register">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left card-img-left-register d-none d-md-flex">
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title text-center">Registro</h5>
+            <form method="POST" action="{{ route('register') }}" class="form-signin">
+            @csrf
+              <div class="form-label-group">
+                <input type="text" id="validationServerUsername" class="form-control" placeholder="Nombre de usuario" name="username" required autofocus>
                 <div class="invalid-feedback">Usuario inválido</div>
-            </div>
-            <div class="col-12">
+              </div>
+
+              <div class="form-label-group">
                 <input type="text" class="form-control" id="validationFirstName" placeholder="Nombre" name="name" required>
-            </div>
-            <div class="col-12">
-                <input type="text" class="form-control" id="validationServerEmail" placeholder="E-mail" name="email" required>
-                <div class="valid-feedback">E-mail disponible.</div>
+                <div class="invalid-feedback">Inserte su nombre</div>
+              </div>
+
+              <div class="form-label-group">
+                <input type="email" id="validationServerEmail" class="form-control" placeholder="E-mail" name="email" required>
                 <div class="invalid-feedback">E-mail inválido.</div>
-            </div>
-            <div class="col-12">
-                <input type="password" class="form-control" placeholder="Contraseña" id="validationPassword" name="password" required>
-                <div class="valid-feedback">Contraseña válida.</div>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="validationPassword" class="form-control" placeholder="Password" name="password" required>
                 <div class="invalid-feedback">Contraseña inválida, debe tener entre 6 y 24 caracteres.</div>
-            </div>
-            <div class="col-12">
-                <button class="btn btn-primary" type="submit" id="btn_signup">
-                    <i class="fas fa-sign-in-alt"></i> Registrarse
-                </button>
-            </div>
-            <div class="col-12">
-                <a href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-github btn-lg btn-block">
-                    Google <i class="fab fa-google"></i>
-                </a>
-            </div>
+              </div>
+
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn_signup" type="submit">Registrarse</button>
+            <a class="d-block text-center mt-2 small" href="{{route('login')}}">Ingresasr</a>
+
+            <hr class="my-4">
+            <button href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Ingresa con Google</button>
+            <button href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-lg btn-facebook btn-block text-uppercase"><i class="fab fa-facebook-f mr-2"></i> Ingresa con Facebook</button>
+
+            </form>
+          </div>
         </div>
-    </form>
-</div>
+      </div>
+    </div>
+  </div>

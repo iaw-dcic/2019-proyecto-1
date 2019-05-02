@@ -29,6 +29,6 @@ class DatabaseSeeder extends Seeder{
             $photo->photo_url = $post->id . $photo->id . '.jpg';
             $photo->save();
         });;
-        factory(\App\Comment::class, 100)->create();
+        factory(\App\Comment::class, 20)->create();
     }
 }

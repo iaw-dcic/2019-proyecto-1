@@ -1237,8 +1237,9 @@ $('#form_editar_perfil').on('submit', function (event) {
   var url = $(event.target).data('url');
   var method = 'POST';
   ajaxEditarPerfil(method, url, parametros, function (request) {
+    $('#btn-cerrar-editar-perfil').click();
     $('.info-perfil p.name').text(request.name);
-    $('.info-perfil p.username').text(request.username);
+    $('.info-perfil p.username').text('@' + request.username);
     $('.info-perfil p.biography').text(request.biography);
   });
 });
@@ -1546,6 +1547,3 @@ module.exports = __webpack_require__(/*! D:\Proyectos\www\proyecto-1\resources\s
 /***/ })
 
 /******/ });
-
-
-
