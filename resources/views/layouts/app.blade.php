@@ -106,12 +106,12 @@
 
 </footer>
 <!-- Footer -->
-<script src="{{secure_asset('js/app.js')" ></script>
-<script src="{{secure_asset('js/jquery.js')"></script>
-<script src="{{secure_asset('js/dataTables.js')"></script>
-<script src="{{secure_asset('js/dataTables.bootstrap4.js')" ></script>
-<script src="{{secure_asset('js/avatar.js')"></script>
-<script src="{{secure_asset('js/parallax.js')"></script>
+<script src="{{secure_asset('js/app.js')}}" ></script>
+<script src="{{secure_asset('js/jquery.js')}}"></script>
+<script src="{{secure_asset('js/dataTables.js')}}"></script>
+<script src="{{secure_asset('js/dataTables.bootstrap4.js')}}" ></script>
+<script src="{{secure_asset('js/avatar.js')}}"></script>
+<script src="{{secure_asset('js/parallax.js')}}"></script>
 
 
 
