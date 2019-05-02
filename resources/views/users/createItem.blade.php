@@ -26,7 +26,7 @@
     <title>Crear Usuario</title>
 </head>
 <body>
-{{--
+
         <nav class="navbar navbar-dark bg-primary">
                 <a class="navbar-brand" href="#">Listas de Usuarios</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
@@ -48,7 +48,7 @@
                   </ul>
 
                 </div>
-        </nav>  --}}
+        </nav>
 
 
         <div class="container">
@@ -133,72 +133,6 @@
             });
         </script>
 
-
-
-
-
-
-
-
-
-
-
-
-{{--
-    <div class="card">
-        <h4 class="card-header"> Ingresar Equipo </h4>
-        <div class="card-body">
-                        <!--Laravel pasa automaticamente la variable errors a la vista-->
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                        <h6>Por favor corrige los siguientes errores debajo:</h6>
-                        <ul>
-                            @foreach($errors->all() as $error)
-                            <li>
-                                {{ $error}}
-                            </li>
-                            @endforeach
-                        </ul>
-                </div>
-            @endif
-
-            <form method="POST" action="{{ url('usuarios/crearItem') }}">
-                {!! csrf_field() !!} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
-
-                <!--Uso Boostrap-->
-                <div class="form-group">
-                        <!-- Label usa el id del input --> <!-- el campo name es el que usa el metodo post en el controlador para crear el usuario -->
-                        <label for="nombre_club">Nombre del Club:</label>
-                        <input type="text" name="nombre_club"  class="form-control" id="nombre_club" placeholder="Juan Perez" value="{{ old('name') }}">
-                </div>
-                <div>
-                        <label for="nombre_estadio">Estadio:</label>
-                        <input type="text" name="nombre_estadio"  class="form-control" id="nombre_estadio" placeholder="juanperez@example.com" value="{{ old('email') }}">
-                </div>
-                <div>
-                        <label for="capacidad_estadio">Capacidad:</label>
-                        <input type="number" class="form-control" name="capacidad_estadio" id="capacidad_estadio" placeholder="Mayor a 6 caracteres" ><br>
-                </div>
-                <div>
-
-
-                        <label for="pais">Pais:</label>
-                        <input type="text" class="form-control" name="pais" id="pais" placeholder="Mayor a 6 caracteres" >
-
-                        <label for="list_id"></label>
-                        @if (isset($lista))
-                        <input type="hidden" class="form-control" name="list_id" id="list_id" placeholder="Mayor a 6 caracteres" value="{{ $lista->list_id }}"><br>
-                        @endif
-                </div class="form-control">
-                        <button type="submit" class = "btn btn-primary">Guardar Equipo</button>
-                        <a  class = "btn btn-primary" href="{route(users.index)}">Finalizar Lista</a>
-
-
-                </div>
-
-            </form>
-                    </div>
-              </div>  --}}
 
               <!--Boostrap core JavaScript
         =============================================================-->

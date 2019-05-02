@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use \App\User;
 use \App\Lista;
+use \App\Item;
 
 class CreateItemsTable extends Migration
 {
@@ -16,7 +17,7 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->increments('item_id');
+            $table->increments('item_id')->unsigned();
 
 
             $table->integer('user_id')->unsigned()->nullable();
@@ -27,7 +28,7 @@ class CreateItemsTable extends Migration
             $table->string('nombre_estadio');
             $table->integer('capacidad_estadio');
             $table->string('pais');
-            $table->integer('list_id')->unsigned()->nullable();
+
 
 
 

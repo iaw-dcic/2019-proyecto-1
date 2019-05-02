@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css" integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
 
-    <title>Cervezas Artesanales</title>
+    <title>Futboleros</title>
 </head>
 <body>
 
@@ -41,14 +41,14 @@
 
 
 
-    @if($users->isNotEmpty())
+    @if($lists->isNotEmpty())
 
         <table id="listas" class="float-center">
                 <thead class="thead-dark">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Correo electrónico</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombre de la lista</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
@@ -57,21 +57,21 @@
                             Code to be executed;
                          }-->
 
-                  @foreach ($users as $user)
+                  @foreach ($lists as $list)
                     <tr>
-                        <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
+                        <th scope="row"></th>
+                        <td>{{ $list->user_id }}</td>
+                        <td>{{ $list->name }}</td>
                         <td>
 
-                            <form action="{{ route('users.destroy',$user) }}" method="POST">
+                            <form action="{{ route('users.destroy',$list) }}" method="POST">
 
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <!--En cada ciclo se va a crear un enlace a cada usuario en cuestion.-->
                                 <!--Utilizo nombramiento de rutas, como primer argumento pasa el nombre de la ruta-->
-                                <a href="{{ route('users.show', $user)}}" class = "btn btn-link"><span class="oi oi-eye"></span> </a>
-                                <a href="{{ route('users.edit', $user)}}" class = "btn btn-link"><span class="oi oi-pencil"></span></a>
+                                <a href="{{ route('users.show', $list)}}" class = "btn btn-link"><span class="oi oi-eye"></span> </a>
+                                <a href="{{ route('users.edit', $list)}}" class = "btn btn-link"><span class="oi oi-pencil"></span></a>
                                 <button type="submit" class="btn btn-link"class = "btn btn-link"> <span class="oi oi-trash"></span></button>
                             </form>
                                 </td>

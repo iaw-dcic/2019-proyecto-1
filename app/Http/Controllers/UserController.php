@@ -14,11 +14,11 @@ class UserController extends Controller
     public function index(){
 
         //usoEloquentModel para obtener la tabla de usuarios
-        $users = User::orderBy('name','desc')->get();
+        $lists = Lista::orderBy('created_at','desc')->get();
 
         //A la vista le paso un arreglo asociativo, donde cada fila va a ser (llave,valor)
         return view('users.index', [
-            'users' => $users,
+            'lists' => $lists,
         ]);
     }
 
@@ -49,7 +49,7 @@ class UserController extends Controller
 
 
         $data = request()->all();
-        // $ultimoId = Lista::create($data)->id;
+        $lista= Lista::orderby('list_id','desc')->first();
         if(count($request->nombre_club) > 0){
             foreach($request->nombre_club as $item=>$v){
                 $data2=array(
@@ -58,21 +58,15 @@ class UserController extends Controller
                     'nombre_estadio' => $request->nombre_estadio[$item],
                     'capacidad_estadio' => $request->capacidad_estadio[$item],
                     'pais' => $request->pais[$item],
-                    'list_id' => 99,
+                    'list_id' => $lista->list_id,
 
                 );
                 Item::create($data2);
             }
         }
-        return view('users.createItem');
+        return redirect()->route('users.index');
     }
-        // Item::create([
-        //     'nombre_club' => $data['nombre_club'],
-        //     'nombre_estadio' => $data['nombre_estadio'],
-        //     'capacidad_estadio' =>$data['capacidad_estadio'],
-        //     'pais' =>$data['pais'],
-        //     'list_id' => $data['list_id'],
-        // ]);
+
 
 
 
