@@ -12,14 +12,19 @@ class UserController extends Controller
 {
     /**Index se va a referir a nuestro modulo de usuario, cuya logica va a estar encapsulada en UserController  */
     public function index(){
+        if(auth()->user()!=null){
 
-        //usoEloquentModel para obtener la tabla de usuarios
-        $lists = Lista::orderBy('created_at','desc')->get();
+            //usoEloquentModel para obtener la tabla de usuarios
+            $lists = Lista::orderBy('created_at','desc')->get();
 
-        //A la vista le paso un arreglo asociativo, donde cada fila va a ser (llave,valor)
-        return view('users.index', [
-            'lists' => $lists,
-        ]);
+            //A la vista le paso un arreglo asociativo, donde cada fila va a ser (llave,valor)
+            return view('users.index', [
+                'lists' => $lists,
+                'user' => auth()->user(),
+            ]);
+        }else {
+            return back();
+        }
     }
 
     /**Muestra el detalle del usuario. */
@@ -42,7 +47,11 @@ class UserController extends Controller
             return back();
     }
     public function createItem(){
-        return view('users.createItem');
+        if(auth()->user()!=null)
+            return view('users.createItem');
+        else {
+            return back();
+        }
     }
 
     public function storeItem(Request $request){
@@ -73,10 +82,12 @@ class UserController extends Controller
     public function store(){
         /**Recibimos los datos del formulario */
         $data = request()->all();
+        $user = auth()->user();
 
         $list = Lista::create([
             'name' => $data['name'],
             'isPublic' => true,
+            'user_id' => $user->id,
         ]);
 
         $lista= Lista::where('name','=',$list->name)->first();

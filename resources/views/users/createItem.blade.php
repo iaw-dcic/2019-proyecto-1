@@ -36,15 +36,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{ route('users.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{{ route('users.create') }}">Registrarse</a>
+                      <a class="nav-link" href="{{ route('users.create') }}">Crear Lista</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Ingresar</a>
-                    </li>
+
                   </ul>
 
                 </div>
@@ -56,20 +54,7 @@
                 {{  csrf_field() }} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
 
                 <section>
-                    <div class="panel panel-header">
-                        <div class="row">
-                            <div class="col-md-6">
-                             <div class="form-group">
-                                <input type="text" name="nombre_club" class="form-control" placeholder="Boca Juniors">
-                            </div>
-                            </div>
-                            <div class="col-md-6">
-                             <div class="form-group">
-                                <input type="text" name="nombre_estadio" class="form-control" placeholder="La Bombonera">
-                            </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="panel panel-footer">
                         <table class= "table table-bordered">
@@ -140,15 +125,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-        <script src=" https://code.jquery.com/jquery-3.3.1.js"></script>
-        <script src=" https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-        <script src=" https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
-        <script>
-                $(document).ready(function() {
-                  $('#listas').DataTable();
-                } );
-            </script>
 
 
 

@@ -22,7 +22,7 @@ class Lista extends Model
       /**Arreglo asociativo cuyo valor va a ser un array con los atributos que nosotros
        * queremos permitir que sean cargados de forma masiva.
        */
-      protected $fillable = ['name','isPublic','list_id'];
+      protected $fillable = ['name','isPublic','user_id'];
 
       /**Laravel por defecto va a crear una columna de Type tinyint. Pero yo quiero que sea boolean */
       protected $casts = [
