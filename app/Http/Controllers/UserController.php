@@ -42,13 +42,12 @@ class UserController extends Controller
             return back();
     }
     public function createItem(){
-        $lists = request()->all();
-        return view('users.createItem', [
-            'lists' => $lists,
-        ]);
+        return view('users.createItem');
     }
-public function storeItem(){
+
+    public function storeItem(){
         $data = request()->all();
+
         Item::create([
             'nombre_club' => $data['nombre_club'],
             'nombre_estadio' => $data['nombre_estadio'],
@@ -56,20 +55,25 @@ public function storeItem(){
             'pais' =>$data['pais'],
             'list_id' => $data['list_id'],
         ]);
-        return redirect()->route('users.createItem');
+        return view('users.createItem');
     }
 
     public function store(){
         /**Recibimos los datos del formulario */
         $data = request()->all();
 
-        Lista::create([
+        $list = Lista::create([
             'name' => $data['name'],
             'isPublic' => true,
         ]);
 
+        $lista= Lista::where('name','=',$list->name)->first();
+
         /**Redirecciono al usuario a detalles */
-        return redirect()->route('users.createItem');
+        return view('users.createItem',[
+            'lista' => $lista,
+        ]);
+
     }
 
     public function edit(User $user){

@@ -82,13 +82,11 @@
 
                         <label for="pais">Pais:</label>
                         <input type="text" class="form-control" name="pais" id="pais" placeholder="Mayor a 6 caracteres" >
-                        @foreach ($lists as $list)
-                           {{  $list_id = $list->id}}
-
-                        @endforeach
 
                         <label for="list_id"></label>
-                        <input type="hidden" class="form-control" name="list_id" id="list_id" placeholder="Mayor a 6 caracteres" value="list_id"><br>
+                        @if (isset($lista))
+                        <input type="hidden" class="form-control" name="list_id" id="list_id" placeholder="Mayor a 6 caracteres" value="{{ $lista->list_id }}"><br>
+                        @endif
                 </div class="form-control">
                         <button type="submit" class = "btn btn-primary">Guardar Equipo</button>
                         <a  class = "btn btn-primary" href="{route(users.index)}">Finalizar Lista</a>
