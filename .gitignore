@@ -2,9 +2,7 @@
 /public/hot
 /public/storage
 /storage/*.key
-!vendor/
-vendor/*
-!vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php
+/vendor
 .env
 .phpunit.result.cache
 Homestead.json

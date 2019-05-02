@@ -7,6 +7,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use App\Country;
+use App\Genre;
+use App\SentimentalSituation;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -41,6 +48,19 @@ class RegisterController extends Controller
     }
 
     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $countries = Country::all();
+        $genres = Genre::all();
+        $situations = SentimentalSituation::all();
+        return view('auth.register', compact('countries', 'genres', 'situations'));
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -53,6 +73,33 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        if($request->file('avatar') != null){
+            $extencion = '.' . $request->file('avatar')->getClientOriginalExtension();
+            Storage::putFileAs("public/user-" . $user->id, $request->file('avatar'), 'avatar-'.$user->id.$extencion);
+            $user->avatar = "storage/user-" . $user->id . '/avatar-'.$user->id.$extencion;
+        }else{
+            $user->avatar = "images/default.png";
+        }
+        $user->save();
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 
     /**
