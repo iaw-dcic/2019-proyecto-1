@@ -12,18 +12,16 @@
             <div class="card-header">
                 <h3>Mis listas</h3>
                 <h4>Tipo lista 1: pública / 0: privada</h4>
-                <table class="table" style="margin-bottom:-14px;">
-                <thead>
+            </div>
+            <div class="card-body text-center" style="overflow-y:scroll" >
+                <table class="table"style="margin-top:-20px;">
+                    <thead>
                         <th>Tipo lista</th>
                         <th>Nombre lista</th>
                         <th>Editar</th>
                         <th>Películas</th>
                         <th>Eliminar</th>  
-                </thead>
-                </table>
-            </div>
-            <div class="card-body text-center" style="overflow-y:scroll" >
-                <table class="table"style="margin-top:-20px;">
+                    </thead>
                     <tbody>
                         @foreach($lists as $list)
                             <tr>
