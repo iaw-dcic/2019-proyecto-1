@@ -158,9 +158,16 @@ public function listas(){
 public function compartir(Request $request){
     $id= $request->idlista;
     $lista= Lista::find($id);
-    $lista->privacidad= $request->privacidad;
-    $lista->nombre= $request->nombre;
-    $lista->save();
+    $privacidad= $request->privacidad;
+    $nombre= $request->nombre;
+ 
+      if($lista != null)   {     
+                $lista->update([
+                'nombre' =>$nombre,
+                 'privacidad'=>  $privacidad
+               ]);
+             }
+     
     return redirect()->back();
 }
 public function editar($nombre){
