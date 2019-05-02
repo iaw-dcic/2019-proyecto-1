@@ -45,18 +45,36 @@ class UserController extends Controller
         return view('users.createItem');
     }
 
-    public function storeItem(){
-        $data = request()->all();
+    public function storeItem(Request $request){
 
-        Item::create([
-            'nombre_club' => $data['nombre_club'],
-            'nombre_estadio' => $data['nombre_estadio'],
-            'capacidad_estadio' =>$data['capacidad_estadio'],
-            'pais' =>$data['pais'],
-            'list_id' => $data['list_id'],
-        ]);
+
+        $data = request()->all();
+        // $ultimoId = Lista::create($data)->id;
+        if(count($request->nombre_club) > 0){
+            foreach($request->nombre_club as $item=>$v){
+                $data2=array(
+                    // 'nombre_club'
+                    'nombre_club' => $request->nombre_club[$item],
+                    'nombre_estadio' => $request->nombre_estadio[$item],
+                    'capacidad_estadio' => $request->capacidad_estadio[$item],
+                    'pais' => $request->pais[$item],
+                    'list_id' => 99,
+
+                );
+                Item::create($data2);
+            }
+        }
         return view('users.createItem');
     }
+        // Item::create([
+        //     'nombre_club' => $data['nombre_club'],
+        //     'nombre_estadio' => $data['nombre_estadio'],
+        //     'capacidad_estadio' =>$data['capacidad_estadio'],
+        //     'pais' =>$data['pais'],
+        //     'list_id' => $data['list_id'],
+        // ]);
+
+
 
     public function store(){
         /**Recibimos los datos del formulario */
