@@ -20,7 +20,7 @@
       {{Session::put('lista', $lista)}}
          <div class="list-group">
            <?php  $count=0 ?>
-              <a href="#" class="list-group-item list-group-item-action active" data-toggle="modal" data-target="#cambiarPrivacidad"   > {{$lista->nombre}}</a>
+              <a href="#" class="list-group-item list-group-item-action active" data-toggle="modal" data-target="#cambiarPrivacidad"  onClick="editarPrivacidad({{$lista}})"> {{$lista->nombre}}</a>
                   <div class="list-group-item">
                       @foreach($recetas as $receta)
                          @if($receta->listaId->nombre == $lista->nombre)
@@ -102,12 +102,16 @@
             <div class="modal-body" id="formulario">
                 <p class="statusMsg"></p>
                 @if(Session::get('lista')!=null)
-                <form id="formulario" role="form" method="post" action="{{route('cambiarPrivacidad',['id' => Session::get('lista')->id ])}}">
+                <form id="formulario" role="form" method="post" action="{{route('cambiarPrivacidad')}}">
                 {{ csrf_field() }}
                      
+                <div class="form-group">
+                        <label id="idlista" for="inputName">Id</label>
+                         
+                 </div>
                     <div class="form-group">
-                        <label for="inputName">Nombre</label>
-                        <input name="nombre" type="text" class="form-control" placeholder="Nombre de la lista" value=" {{Session::get('lista') ->nombre }} " />
+                        <label for="inputName" id="nombreLis">Nombre</label>
+                       
                     </div>
                     <div class="form-group">
                     <label for="inputMessage">Privacidad de la lista:</label>

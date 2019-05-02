@@ -50,6 +50,19 @@ function cargarModal(lista) {
 
 }
 
+function editarPrivacidad(lista) {
+    var nombre = lista.nombre;
+    var id = lista.id;
+    document.getElementById('idlista').innerHTML = ' <label  id="idlista" >Lista ID:</label>'
+
+        + '<select class="form-control" name="idlista">'
+        + '<option selected="true" value="' + id + '" >' + id + ' </option></select>';
+
+    document.getElementById('nombreLis').innerHTML = ' <label  id="nombreLis" >Nombre:</label>'
+        + '<input name="nombre" type="text" class="form-control" placeholder="Nombre de la lista" value="' + nombre + ' " />';
+
+}
+
 
 
 

@@ -155,7 +155,8 @@ public function listas(){
     ]);
 }
 
-public function compartir(Request $request,$id){
+public function compartir(Request $request){
+    $id= $request->idlista;
     $lista= Lista::find($id);
     $lista->privacidad= $request->privacidad;
     $lista->nombre= $request->nombre;

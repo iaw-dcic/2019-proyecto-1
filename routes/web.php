@@ -39,6 +39,6 @@ Route::post('agregarReceta/{id_autor}','RecetasController@agregarReceta')->name(
 Route::post('agregarLista/{id_autor}','RecetasController@agregarLista')->name('agregarLista');
 Route::post('agregarIngrediente/{nombreReceta}','RecetasController@agregarIngrediente')->name('agregarIngrediente');
 Route::get('listas','RecetasController@listas')->name('listas');
-Route::post('cambiarPrivacidad/{id}','RecetasController@compartir')->name('cambiarPrivacidad');
+Route::post('cambiarPrivacidad','RecetasController@compartir')->name('cambiarPrivacidad');
 Route::get('editarReceta/{nombre}','RecetasController@editar')->name('editarReceta');
 Route::post('actualizarReceta/{nombre}','RecetasController@actualizar')->name('actualizar');
