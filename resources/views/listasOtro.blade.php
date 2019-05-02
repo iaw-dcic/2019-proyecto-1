@@ -3,7 +3,7 @@
                <!-- Lado derecho, las listas del usuario -->  
                   <div class="col-md-8" style="background:lightblue">
                   @foreach($listas as $lista)
-                   @if($lista->public)
+                   @if($lista->privacidad)
                       <div class="list-group">
                         
                            <?php  $count=0 ?>
