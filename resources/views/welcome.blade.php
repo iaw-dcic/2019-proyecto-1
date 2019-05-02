@@ -40,7 +40,7 @@
             <p class="lead">Parece que aún no hay playlists públicas.</p>
             @auth
             <p class="lead">
-                <a class="btn btn-light btn-md" href="{{route('crear_playlist')}}" role="button">Crear playlist!</a>
+                <a class="btn btn-light btn-md" href="{{route('create_playlist',['user'=>auth()->user()->id])}}" role="button">Crear playlist!</a>
             </p>
             @endauth
         </div>

@@ -11,7 +11,7 @@
                 @auth
                 {{--titulo de playlist--}}
                 <h3>{{$playlist->name}}</h3>
-                @if(!auth()->user()->id == $user->id)
+                @if(auth()->user()->id !== $user->id)
                 {{--usuario logeado pero no es el dueño de la playlist--}}
                 {{--muestro autor de playlist--}}
                 <h5>by <a class="card-link" href="{{route('profile',['user'=>$user->id])}}">{{$user->name}}</a></h5>
@@ -23,9 +23,9 @@
                     <li>
                         {{--videos de playlist--}}
                         <a href="{{$video->url}}">@if ( empty($video->title) ){{$video->url}}@else{{$video->title}}@endif</a>
+                        @if(auth()->user()->id == $user->id)
                         <a class="eliminar-link" href="{{action('PlaylistVideosController@destroy',['user'=>$user,'playlist'=>$playlist,'video'=>$video]) }}"
                         onclick="event.preventDefault();document.getElementById('eliminar-video-{{$video->id}}').submit();">Eliminar</a>
-                        @if(auth()->user()->id == $user->id)
                         <form id="eliminar-video-{{$video->id}}" method="POST" style="display: none;"
                         action="{{action('PlaylistVideosController@destroy',['user'=>$user,'playlist'=>$playlist,'video'=>$video]) }}">
                                 @method('DELETE')@csrf
