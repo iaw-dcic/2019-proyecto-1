@@ -20,7 +20,7 @@ class ListItemsController extends Controller{
 		$list = UserList::findOrFail($listid);
 		if($user != null) {
 			if(Auth::user()->id == $user->id)
-				return view('listitems.create', compact('user', 'list'));
+				return view('listItems.create', compact('user', 'list'));
 			else abort('403', 'Unauthorized access');
 		} else abort('404');
 	}
@@ -32,7 +32,7 @@ class ListItemsController extends Controller{
 			if($user->id == Auth::user()->id){
 				$list = UserList::findOrFail($listid);
 				$item = ListItem::findOrFail($itemid);
-				return view('listitems.edit', compact('user', 'list', 'item'));
+				return view('listItems.edit', compact('user', 'list', 'item'));
 			}
 			else{
 				abort('403', 'Unauthorized access');
