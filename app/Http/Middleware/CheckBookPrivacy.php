@@ -22,7 +22,7 @@ class CheckBookPrivacy
        $lista = Lista::find($id);
 
        if($lista->public_list==0) {
-          if(Auth::user()->id !== $lista->user_id){
+          if((Auth::user()->id !== $lista->user_id) & (Auth::user())){
 
             return redirect()->route('home');
          }
