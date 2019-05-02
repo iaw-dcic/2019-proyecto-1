@@ -12,6 +12,7 @@
                     <div class="opciones pad">{{ $datos[2]->email }}</div>
                 </div>
             </div>
+            
 </div>           
         <div class="col-sm-1"></div>
         <div class="col-sm-8 well">
@@ -23,8 +24,11 @@
                                 <img src="#" alt="{{ $item->name }}" width="400" height="250">
                             </a>
                             <div class="desc">
-                                <h6 class="tituloCard">{{ $item->name }}</h6>
-                                <p>{{ $item->description }}</p></div>
+                                <h4 class="tituloCard">{{ $item->name }}</h4>
+                                <p>{{ $item->description }}</p>
+                                <p><span class="negrita">Año de edición:</span> {{ $item->edicion }}</p>
+                                <p><span class="negrita">Nro de Páginas:</span> {{ $item->nroPaginas }}</p>
+                                </div>
                         </div>
                        @endforeach 
                      

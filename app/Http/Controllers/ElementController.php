@@ -30,7 +30,9 @@ class ElementController extends Controller
         Element::create([
             'name'=>request('nameItem'),
             'description'=>request('desItem'),
-            'colection_id'=>$idColeccion
+            'colection_id'=>$idColeccion,
+            'nroPaginas'=>request('nroPag'),
+            'edicion'=>request('edicion')
         ]);
 
         return redirect('home');
@@ -44,5 +46,12 @@ class ElementController extends Controller
 
         return redirect('home');
 
+    }
+
+    public function destroy($idUsuario, $idColeccion){
+
+        Colection::find($idColeccion)->delete();
+
+        return redirect('home');
     }
 }

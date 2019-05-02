@@ -108,7 +108,7 @@ div.gallery {
 
   .tituloCard{
     font-family: 'Bangers';
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .wellItem{
@@ -127,4 +127,8 @@ div.gallery {
 
 .pad{
     padding: 8px;
+}
+
+.negrita{
+    font-weight: bold;
 }

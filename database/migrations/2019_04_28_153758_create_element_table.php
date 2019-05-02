@@ -19,6 +19,8 @@ class CreateElementTable extends Migration
             $table->unsignedBigInteger('colection_id');
             $table->foreign('colection_id')->references('id')->on('colections')->onDelete('cascade');
             $table->string('description');
+            $table->integer('nroPaginas')->nullable();
+            $table->year('edicion');
             $table->timestamps();
 
 

@@ -19,7 +19,10 @@
                             </a>
                             <div class="desc">
                                 <h6 class="tituloCard">{{ $item->name }}</h6>
-                                <p>{{ $item->description }}</p></div>
+                                <p>{{ $item->description }}</p>
+                                <p><span class="negrita">Año de edición:</span> {{ $item->edicion }}</p>
+                                <p><span class="negrita">Nro de Páginas:</span> {{ $item->nroPaginas }}</p>
+                            </div>
                         </div>
                        @endforeach 
                      
@@ -31,9 +34,9 @@
                     <form class="form-horizontal colorFondo" action="/{{ Auth::user()->id }}/{{ $datos[0]->id }}/insertarItem" method="POST">
                       @csrf
                       
-                      <div class="text-center titulo tituloBlanco wellItem margen"><h2>Añadire nuevo Item</h2></div><br>
+                      <div class="text-center titulo tituloBlanco wellItem margen"><h2>Añadir nuevo Item</h2></div><br>
                       <div class="form-group row">
-                            <label for="nameItem" class="col-md-3 col-form-label text-md-right control-label"> Nombre del Item: </label>
+                            <label for="nameItem" class="col-md-3 col-form-label text-md-right control-label"> Título del Comic: </label>
 
                             <div class="col-md-6">
                                 <input id="nameItem" type="text" class="form-control-custom" name="nameItem" value="{{ old('nameItem') }}" required autofocus>
@@ -44,8 +47,26 @@
                         <label for="desItem" class="col-md-3 col-form-label text-md-right control-label"> Descripción: </label>
 
                         <div class="col-md-6">
-                            <textarea id="desItem" class="form-control-custom" rows="3" name="desItem"></textarea>
+                            <textarea id="desItem" class="form-control-custom" rows="3" name="desItem" required></textarea>
                         </div>
+                      </div>
+
+                      <div class="form-group row">
+                            <label for="nroPag" class="col-md-3 col-form-label text-md-right control-label"> Número de Páginas: </label>
+
+                            <div class="col-md-6">
+                                <input id="nroPag" type="text" class="form-control-custom" name="nroPag" value="{{ old('nameItem') }}" required>
+                            </div>
+
+                      </div>
+
+                      <div class="form-group row">
+                            <label for="edicion" class="col-md-3 col-form-label text-md-right control-label"> Año de Edición: </label>
+
+                            <div class="col-md-6">
+                                <input id="edicion" type="text" class="form-control-custom" name="edicion" value="{{ old('nameItem') }}" required>
+                            </div>
+
                       </div>
 
                       <div class="form-group row">
@@ -74,6 +95,20 @@
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-danger btn-block">
                                         Compartir Colección
+                                    </button>
+                                </div>
+                            </div>
+
+                    </form>
+
+                    <form class="colorFondo" action="/{{ Auth::user()->id }}/{{ $datos[0]->id }}/insertarItem" method="post">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                        <div class="form-group row mb-0">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-danger btn-block">
+                                        Eliminar Colección
                                     </button>
                                 </div>
                             </div>

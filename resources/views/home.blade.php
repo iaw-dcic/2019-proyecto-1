@@ -15,10 +15,10 @@
              <div class="panel-body">
                 <form>
                     <div class="checkbox">
-                        <label class="opciones"><input type="checkbox" value="">Públicas</label>
+                        <label class="opciones"><input type="checkbox" value="" checked>Públicas</label>
                     </div>
                     <div class="checkbox">
-                        <label class="opciones"><input type="checkbox" value="">Privadas</label>
+                        <label class="opciones"><input type="checkbox" value="" checked>Privadas</label>
                     </div>
                 </form>
             </div>
@@ -36,7 +36,15 @@
                             </a>
                             <div class="desc">
                                 <h6 class="tituloCard">{{ $colecion->name }}</h6>
-                                <p>{{ $colecion->description }}</p></div>
+                                <p>{{ $colecion->description }}</p>
+                                <p><span class="negrita">Estado: </span>
+                                    @if (($colecion->estado) === 0)
+                                        Privada
+                                    @else
+                                        Pública
+                                    @endif
+                                </p>
+                            </div>
                         </div>
                        @endforeach 
                      
@@ -46,9 +54,7 @@
                  
         </div>
     </div>
-    <footer class="well">
-
-</footer>
+    
 </div>
 
 

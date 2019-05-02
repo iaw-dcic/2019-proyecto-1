@@ -23,7 +23,7 @@
                         <label for="desColec" class="col-md-3 col-form-label text-md-right control-label"> Descripción: </label>
 
                         <div class="col-md-6">
-                            <textarea id="desColec" class="form-control-custom" rows="3" name="desColec"></textarea>
+                            <textarea id="desColec" class="form-control-custom" rows="3" name="desColec" required></textarea>
                         </div>
                       </div>
 
