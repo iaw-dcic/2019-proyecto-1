@@ -20,7 +20,7 @@
       {{Session::put('lista', $lista)}}
          <div class="list-group">
            <?php  $count=0 ?>
-              <a href="#" class="list-group-item list-group-item-action active" data-toggle="modal" data-target="#cambiarPrivacidad"  onClick="editarPrivacidad({{$lista}})"> {{$lista->nombre}}</a>
+              <a href="#" class="list-group-item list-group-item-action active" data-toggle="modal" data-target="#cambiarPrivacidad"  onClick="editarprivacidad({{$lista}})> {{$lista->nombre}}</a>
                   <div class="list-group-item">
                       @foreach($recetas as $receta)
                          @if($receta->listaId->nombre == $lista->nombre)

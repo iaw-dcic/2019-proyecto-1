@@ -50,7 +50,7 @@ function cargarModal(lista) {
 
 }
 
-function editarPrivacidad(lista) {
+function editarprivacidad(lista) {
     var nombre = lista.nombre;
     var id = lista.id;
     document.getElementById('idlista').innerHTML = ' <label  id="idlista" >Lista ID:</label>'
