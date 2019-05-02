@@ -19,13 +19,13 @@
             <!--Nombre del Partido-->
             <div class="form-group">
                 <label for="inputAddress">Nombre</label>
-                <input type="text" name="name" class="form-control" id="inputAddress">
+                <input type="text" name="name" class="form-control" value="{{old('name')}}" id="inputAddress">
             </div>
             <div class="form-row">
                 <!--Lugar del Partido-->
                 <div class="form-group col-md-6">
                     <label for="inputCity">Lugar</label>
-                    <input type="text" name="place" class="form-control" id="inputCity">
+                    <input type="text" name="place" value="{{old('place')}}"class="form-control" id="inputCity">
                 </div>
                 <!--Categoria-->
                 <div class="form-group col-md-4">
