@@ -13,12 +13,12 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="{{secure_asset('https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link src="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{secure_asset('css/app.css')" rel="stylesheet">
-    <link href="{{secure_asset('css/appaux.css')" rel="stylesheet">
-    <link href="{{secure_asset('css/dataTables.css')" rel="stylesheet">
+    <link href="{{secure_asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/appaux.css')}}" rel="stylesheet">
+    <link href="{{secure_asset('css/dataTables.css')}}" rel="stylesheet">
 
 
 
