@@ -6,11 +6,11 @@ return [
 
     'mysql' => [
         'driver' => 'mysql',
-        'host' => env('DB_HOST', 'db4free.net'),
+        'host' => env('DB_HOST', 'us-cdbr-gcp-east-01.cleardb.net'),
         'port' => env('DB_PORT', '3306'),
-        'database' => env('DB_DATABASE', 'proyecto1iaw'),
-        'username' => env('DB_USERNAME', 'mfernandez'),
-        'password' => env('DB_PASSWORD', 'manuelafernandez102457'),
+        'database' => env('DB_DATABASE', 'gcp_3f647be54b1106e5244e'),
+        'username' => env('DB_USERNAME', 'b9f04ec0e3ebe9'),
+        'password' => env('DB_PASSWORD', '0061f085'),
         'unix_socket' => env('DB_SOCKET', ''),
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
