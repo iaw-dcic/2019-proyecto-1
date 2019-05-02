@@ -13,12 +13,12 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="{{secure_asset('https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="css/app.css" rel="stylesheet">
-    <link href="css/appaux.css" rel="stylesheet">
-    <link href="css/dataTables.css" rel="stylesheet">
+    <link href="{{secure_asset('css/app.css')" rel="stylesheet">
+    <link href="{{secure_asset('css/appaux.css')" rel="stylesheet">
+    <link href="{{secure_asset('css/dataTables.css')" rel="stylesheet">
 
 
 
@@ -106,12 +106,12 @@
 
 </footer>
 <!-- Footer -->
-<script src="js/app.js" ></script>
-<script src="js/jquery.js"></script>
-<script src="js/dataTables.js"></script>
-<script src="js/dataTables.bootstrap4.js" ></script>
-<script src="js/avatar.js"></script>
-<script src="js/parallax.js"></script>
+<script src="{{secure_asset('js/app.js')" ></script>
+<script src="{{secure_asset('js/jquery.js')"></script>
+<script src="{{secure_asset('js/dataTables.js')"></script>
+<script src="{{secure_asset('js/dataTables.bootstrap4.js')" ></script>
+<script src="{{secure_asset('js/avatar.js')"></script>
+<script src="{{secure_asset('js/parallax.js')"></script>
 
 
 
