@@ -14,13 +14,16 @@ class UserController extends Controller
     public function index(){
         if(auth()->user()!=null){
 
-            //usoEloquentModel para obtener la tabla de usuarios
+            //usoEloquentModel para obtener la tabla de listas
             $lists = Lista::orderBy('created_at','desc')->get();
+
+            $items = Item::all();
 
             //A la vista le paso un arreglo asociativo, donde cada fila va a ser (llave,valor)
             return view('users.index', [
                 'lists' => $lists,
                 'user' => auth()->user(),
+                'items' => $items,
             ]);
         }else {
             return back();
