@@ -69,7 +69,7 @@
             <div class="content">
 
                 <div class="title m-b-md">
-                    Igenieria de Aplicaciones Web, Proyecto 1
+                    Ingenieria de Aplicaciones Web, Proyecto 1
                 </div>
 
                 @if (Route::has('login'))

@@ -29,7 +29,13 @@ class AlbumsController extends Controller {
     public function create () {
         $this->middleware('auth');
 
-        return view('albums.createAlbum');
+        if (Auth::user()) {
+            return view('albums.createAlbum');
+        }
+
+        else {
+            return Redirect::to('/login');
+        }
     }
 
     /**
@@ -78,7 +84,19 @@ class AlbumsController extends Controller {
     public function edit (Album $album) {
         $this->middleware('auth');
 
-        return view('albums.editAlbum', compact('album'));
+        if (Auth::user()) {
+            if ((Auth::user()->name) == ($album->owner)) {
+                return view('albums.editAlbum', compact('album'));
+            }
+
+            else {
+                abort(403, 'Unauthorized Action');
+            }
+        }
+
+        else {
+            return Redirect::to('/login');
+        }
     }
 
     /**

@@ -17,7 +17,19 @@ class SongsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create (Album $album) {
-        return view('songs.createSong', ['album'=>$album]);
+        if (Auth::user()) {
+            if ((Auth::user()->name) == ($album->owner)) {
+                return view('songs.createSong', ['album'=>$album]);
+            }
+
+            else {
+                abort(403, 'Unauthorized Action');
+            }
+        }
+
+        else {
+            return Redirect::to('/login');
+        }
     }
 
     /**
@@ -60,7 +72,19 @@ class SongsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit (Album $album, Song $song) {
-        return view('songs.editSong', compact('album', 'song'));
+        if (Auth::user()) {
+            if ((Auth::user()->name) == ($album->owner)) {
+                return view('songs.editSong', compact('album', 'song'));
+            }
+
+            else {
+                abort(403, 'Unauthorized Action');
+            }
+        }
+
+        else {
+            return Redirect::to('/login');
+        }
     }
 
     /**

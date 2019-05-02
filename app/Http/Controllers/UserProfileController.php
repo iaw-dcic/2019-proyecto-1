@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Auth;
+use Redirect;
 
 class UserProfileController extends Controller {
     /**
@@ -27,7 +29,19 @@ class UserProfileController extends Controller {
     public function edit (String $name) {
         $user = User::where('name', $name)->first();
 
-        return view('profiles.editProfile', compact('user'));
+        if (Auth::user()) {
+            if ((Auth::user()->name) == ($name)) {
+                return view('profiles.editProfile', compact('user'));
+            }
+
+            else {
+                abort(403, 'Unauthorized Action');
+            }
+        }
+
+        else {
+            return Redirect::to('/login');
+        }
     }
 
     /**
