@@ -20,7 +20,7 @@ Route::get('/list/{id}',"ListController@show")->name('showlist');
 
 //Seccion crear lista
 
-Route::get('/create_list',"ListController@create")->name('create_list');
+Route::get('/create_list',"ListController@create")->name('create_list')->middleware('auth'); ;
 
 Route::post('/create_list',"ListController@store");
 
