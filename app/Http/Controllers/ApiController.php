@@ -67,6 +67,7 @@ class ApiController extends Controller
 
     public function updatePost(Request $request){
         $user = Auth::user();
+        //dd($request);
 
         $data = $this->validate($request, [
             'name' => 'required',
