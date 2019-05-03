@@ -4,12 +4,12 @@ Repositorio de base para el Proyecto 1 - 2019 - Laravel
 
 ## Reportes de Lighthouse
 
-** Auditoría de la home page **
-[Ver](lighthouse-audits/audit-homepage.png)
-** Auditoría de la profile page **
-[Ver](lighthouse-audits/audit-profilepage.png)
-** Auditoría de la userlists page **
-[Ver](lighthouse-audits/audit-userlistspage.png)
+**Auditoría de la home page** ![Ver](lighthouse-audits/audit-homepage.png)
+
+**Auditoría de la profile page** ![Ver](lighthouse-audits/audit-profilepage.png)
+
+**Auditoría de la userlists page** ![Ver](lighthouse-audits/audit-userlistspage.png)
+
 
 ## Creación del Fork
 
