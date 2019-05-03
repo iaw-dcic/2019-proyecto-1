@@ -9,13 +9,14 @@
    
 </head>
 <body>
-
-        @include('layouts.app')
+    <!-- NavBar  -->
+    @include('layouts.app')
 
     <div class="container">
+        <!-- mensajes de exito al crear, editar o eliminar -->
         @include('flash::message')
 
-         <!-- Mensaje flash  --> 
+         <!-- Mensaje flash de error para formularios  --> 
         @if ($errors->any())
         <div class="alert  alert-danger" role="alert">
                 <ul>

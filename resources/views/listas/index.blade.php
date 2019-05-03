@@ -51,50 +51,45 @@
                         <td>  <a href="{{route('users.index')}}"> {{ \App\User::find($lista->user_id)->name  }} </a></td>
                         
                         <td>
-                            <a class="btn btn-success">
-                                <img src="https://img.icons8.com/material/16/000000/visible.png">
-                            </a>
+                            <img src="https://img.icons8.com/material/16/000000/visible.png">
                         </td>
                     @elseif( $lista->user_id != Auth::user()->id)
                         <!-- si es otro user el dueño de la lista, muestro el nombre -->
                         <td>  <a href="{{route('users.index')}}"> {{ \App\User::find($lista->user_id)->name  }} </a></td>
                         
-                        <td>
-                            <a class="btn btn-success">
-                                <img src="https://img.icons8.com/material/16/000000/visible.png">
-                            </a>
+                        <td left="80px">
+                            <img   left="80px" src="https://img.icons8.com/material/16/000000/visible.png">
                         </td>
                     @else
                         <!-- si soy yo, muestro 'yo' y tengo permisos de edicion y borrado -->
-                        <td>  <a href="{{route('users.index')}}"> Yo </a> 
+                        <td>  
+                            <a href="{{route('users.index')}}"> Yo </a> 
                         </td>
 
                         <!--  BOTONES -->
 
-                    <td>
-                    
-                        <!--  boton de editar -->
-                        <a class="btn btn-warning"   href="/listas/{{$lista->id}}/edit">
-                            <img src="https://img.icons8.com/material/16/000000/edit.png">
-                        </a>
-                        
-                        <!-- boton de borrar  
-                        Para borrar no puedo crear una vista porque en la url se veria el id y la ruta que desde otra pagina
-                        se puede falsificar (problema de seguridad), por lo tanto uso un formulario con un boton que me 
-                        llame al metodo destroy del controlador
-                        -->
-                        <form method="POST" action="/listas/{{$lista->id}}">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
+                        <td>
+                            <!--  boton de editar -->
+                            <a class="btn btn-warning"   href="/listas/{{$lista->id}}/edit">
+                                <img src="https://img.icons8.com/material/16/000000/edit.png">
+                            </a>
+                            
+                            <!-- boton de borrar  
+                            Para borrar no puedo crear una vista porque en la url se veria el id y la ruta que desde otra pagina
+                            se puede falsificar (problema de seguridad), por lo tanto uso un formulario con un boton que me 
+                            llame al metodo destroy del controlador
+                            -->
+                            <form style="display: inline" method="POST" action="/listas/{{$lista->id}}">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
 
 
-                            <button class="btn btn-danger" onclick="return confirm('¿Seguro que quieres eliminarla?')">
-                                <span aria-hidden="true" class="glyphicon glyphicon-trash">
-                                <img src="https://img.icons8.com/material/16/000000/trash.png">
-                            </button>
-                        </form>
-                   
-                    </td>
+                                <button  class="btn btn-danger" onclick="return confirm('¿Seguro que quieres eliminarla?')">
+                                    <span  aria-hidden="true" class="glyphicon glyphicon-trash">
+                                    <img src="https://img.icons8.com/material/16/000000/trash.png">
+                                </button>
+                            </form>
+                        </td>
                     @endif
                 </tr>
 

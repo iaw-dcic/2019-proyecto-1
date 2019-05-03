@@ -66,7 +66,7 @@
                                     se puede falsificar (problema de seguridad), por lo tanto uso un formulario con un boton que me 
                                     llame al metodo destroy del controlador
                                     -->
-                                    <form method="POST" action="/listas/{{$lista->id}}">
+                                    <form style="display: inline" method="POST" action="/listas/{{$lista->id}}">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
 

@@ -49,7 +49,7 @@
                         se puede falsificar (problema de seguridad), por lo tanto uso un formulario con un boton que me 
                         llame al metodo destroy del controlador
                         -->
-                    <form method="POST" action="/users/{{$user->id}}">
+                    <form style="display: inline" method="POST" action="/users/{{$user->id}}">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
 
@@ -62,10 +62,8 @@
                     </td>
                     @else 
                     <td>
-                            <a class="btn btn-success">
-                                <img src="https://img.icons8.com/material/16/000000/visible.png">
-                            </a>
-                        </td>
+                        <img src="https://img.icons8.com/material/16/000000/visible.png">
+                    </td>
 
                     @endif
 

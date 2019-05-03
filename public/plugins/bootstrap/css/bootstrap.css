@@ -41,6 +41,7 @@
   box-sizing: border-box;
 }
 
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -213,7 +214,7 @@ figure {
 }
 
 img {
-  vertical-align: middle;
+  position: absolute;
   border-style: none;
 }
 

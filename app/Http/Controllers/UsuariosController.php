@@ -93,6 +93,14 @@ class UsuariosController extends Controller
     public function edit(User $user)
     {
         //recibo ese objeto
+        //CHEQUEO que el usuario a modificar sea el usuario actual (el que esta logueado y no otro)
+        if (Auth::user()->id  != $user->id){
+            Flash::error("URL inválida! ");
+            return redirect('/'); 
+        }
+
+
+
         //y se lo paso a la vista
         return view('users/edit',compact('user'));
     }

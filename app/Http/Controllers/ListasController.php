@@ -116,10 +116,19 @@ class ListasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //recibo id de la lista a modificar
     public function edit($id)
     {
         //recibo ese objeto
         $lista= Lista::findOrFail($id);
+
+        //CHEQUEO que la lista a modificar sea del usuario actual (el que esta logueado y no otro)
+        if (Auth::user()->id  != $lista->user_id){
+            Flash::error("URL inválida! ");
+            return redirect('/'); 
+        }
+
+        //si es valido el id de la lista -> muestro la vista de editar
         //y se lo paso a la vista
         return view('listas/edit',compact('lista','id'));
     }
