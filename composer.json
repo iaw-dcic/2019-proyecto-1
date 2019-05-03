@@ -16,7 +16,8 @@
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
         "realrashid/sweet-alert": "^1.1",
-        "ext-gd":" *"
+        "ext-gd":" *",
+        "renatomarinho/laravel-page-speed": "^1.8"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
