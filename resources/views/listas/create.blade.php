@@ -1,0 +1,43 @@
+@extends('main')
+
+@section('title','Crear Lista')
+
+@section('content')
+    <br>
+    <h1>Crear Lista</h1>
+
+
+   <!-- Formulario de creacion de lista  --> 
+    <!--                 uso la ruta store para hacer el post del formulario -->
+    <form method="POST" action="{{ action('ListasController@store') }}">
+                {{ csrf_field() }}
+            <div class="field">
+                <label class="label" for="nombre">Nombre *</label>
+                <div class="control">
+                    <input type="text" class="input {{ $errors->has('nombre') ? 'is-danger' :'' }}" name="nombre" placeholder="Nombre Lista">
+                </div>
+            </div>
+    
+            <br>
+            <div class="field">
+                    <label class="label" for="descripcion">Descripción *</label>
+                    <div class="control">
+                        <input type="text" class="input {{ $errors->has('descripcion') ? 'is-danger' :''}}" name="descripcion" placeholder="Descripción" >
+                    </div>
+            </div>
+            
+            <br>
+            <div class="field">
+                <label class="label" for="nombre">Visibilidad *</label>
+                <div class="control">
+                        <input type="radio" class="input" name="visible" value="2" checked> Pública 
+                        <input type="radio" class="input" name="visible" value="0"> Privada<br>
+                </div>
+            </div>
+
+            <br>
+            <div>
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Agregar Lista</button>
+            </div>
+        </form>
+@endsection

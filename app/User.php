@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','ciudad', 
     ];
 
     /**
@@ -36,4 +36,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    //Relaciones        1 usuario -> muchas listas
+    public function listas(){
+        return $this->hasMany('App\Lista'); 
+    }
+
+
+    //mensajes de error
+    public static function messages($id = '') {
+        return [
+            'name.required' => 'Debe ingresar un nombre de usuario',
+            'email.required' => 'Debe ingresar un email',
+            'email.uniqued' => 'Ya existe un usuario con ese email',
+            'password.required' => 'Debe ingresar una password'
+        ];
+    }
+
 }
