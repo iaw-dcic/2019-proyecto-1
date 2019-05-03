@@ -47,7 +47,7 @@
 
                                         <!-- Delete from list -->
                                         @auth
-                                            <a class="btn btn-danger" href="{{route('delete_game_from_listing',array('game'=>$game->id,'listing'=> $listing->id))}}" role="button">Eliminar de la lista</a>
+                                            <a class="btn btn-danger" id="removeList" href="{{route('delete_game_from_listing',array('game'=>$game->id,'listing'=> $listing->id))}}" role="button">Eliminar de la lista</a> 
                                         @endauth
                                 </div>
                             </div>

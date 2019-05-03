@@ -78,13 +78,14 @@
                                     {{$listing->visibility}}
                             </div>
                             <div class="cell" data-title="Eliminar lista">
-                                <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post">
-                                    {{ method_field("DELETE") }} @csrf
-                                    <!-- {{ csrf_field() }} -->
-                                        <button type="submit" class="btn btn-danger">
-                                           X
-                                        </button>
-                                </form>
+
+
+                                    <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post"> 
+                                            {{ method_field("DELETE") }} @csrf
+                                                {{ csrf_field() }}
+                                                <button type="submit" id="deleteButton" data-name="{{ $listing->title }}" class="btn btn-xs btn-danger">X</button>         
+                                    </form>
+
                             </div>
                         @endauth
                         @guest
