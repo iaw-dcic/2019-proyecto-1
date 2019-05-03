@@ -29,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         //For heroku uncomment this line or set it in Heroku website, Config vars
         //URL::forceScheme('https');
+        
     }
 }
