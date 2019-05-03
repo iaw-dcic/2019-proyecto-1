@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        URL::forceScheme('https');
+        //For heroku uncomment this line or set it in Heroku website, Config vars
+        //URL::forceScheme('https');
     }
 }
