@@ -61,16 +61,19 @@ class ListController extends Controller
     public function destroy()
     {
        $data=request()->all();
-       $id=$data['id_list'];
-    
-       $list = MovieList::findOrFail($id);
-       foreach ($list->movies as $movie) 
-        {
-            $movie -> delete();
-        }
-        $list -> delete();
 
-        return back();
+       $id=$data['id_list'];
+       $list=MovieList::find($id);
+    
+       $movies=Movie::where(['list_id'=>$id])->get();
+       
+       foreach($movies as $movie)
+       {
+           $movie->delete();
+       }
+       $list->delete();
+
+       return back();
     }
 
     public function edit()
