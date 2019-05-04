@@ -5,7 +5,7 @@ use Image;
 use Illuminate\Http\Request;
 use Auth;
 use App\Articulo;
-use App\Categoria;
+use App\Lista;
 use DB;
 class PosteoController extends Controller
 {
@@ -47,11 +47,17 @@ class PosteoController extends Controller
         $descripcion = $request->input('descripcion');     
         $articulo->descripcion=$descripcion;
 
+        $visibilidad = $request->input('visibilidad');     
+        $articulo->visibilidad=$visibilidad;
 
+        $puntaje = $request->input('puntaje');     
+        $articulo->puntaje=$puntaje;
+
+ /*
         if(!is_null($user)){
             $articulo->user_id= $user->id;
         }
-
+       
         $name=$request->input('categoria');
         $categoria=DB::table('categorias')->where('name','=',$name)->orderBy('created_at','desc')->first();
         if(!$categoria){
@@ -61,6 +67,17 @@ class PosteoController extends Controller
         }
 
         $articulo->categoria_id= $categoria->id;
+        */
+        $lista=DB::table('lista')->where('user_id','=',$user->id)->first();
+        
+        if(!$lista){
+            $lista=new Lista();
+            $lista->name='Documentales';
+            $lista->user_id= $user->id;
+            $lista->save();
+        } 
+        $articulo->lista_id= $lista->id;
+
         $articulo->save();        
         $articulos=DB::table('articulos')->orderBy('created_at','desc')->get();
         $data = array('user' => Auth::user(),

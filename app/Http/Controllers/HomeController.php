@@ -41,11 +41,11 @@ class HomeController extends Controller
 
     public function buscar(Request $request){
 
-         $id_c= $request->categoria;
-             $categoria=DB::table('categorias')->where('name','=',$id_c)->orderBy('created_at','desc')->first(); 
+         $id_l= $request->lista;
+             $lista=DB::table('lista')->where('name','=',$id_l)->orderBy('created_at','desc')->first(); 
          //dd($categoria);    
-        if($categoria){
-        $articulos=DB::table('articulos')->where('categoria_id', '=',$categoria->id) ->orderBy('created_at','desc')->get();
+        if($lista){
+        $articulos=DB::table('articulos')->where('lista_id', '=',$lista->id) ->orderBy('created_at','desc')->get();
           return view('main')->with('articulos', $articulos);
         }
         else

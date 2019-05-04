@@ -21,7 +21,21 @@
                                     <span id="alertCategory" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
                                         <input type="text" class="form-control" name="categoria" id="txtCategoria" placeholder="Introduzca su categoria" required data-validation-required-message="Por favor introduzca su categoria.">
                                     </span>
-                                    <p class="help-block"></p>
+                                    <br>
+                                    <label>Visibilidad</label>
+                                    <select name="visibilidad">
+                                      <option name="privada" value="privada">Privada</option> 
+                                      <option name="publica" value="publica" selected>Publica</option>      
+                                    </select>
+
+                                    <label>Puntaje</label>
+                                    <select name="puntaje">
+                                      <option name="1" value="1">1</option> 
+                                      <option name="2" value="2" selected>2</option>      
+                                    </select>
+
+
+
                                 </div>
                             </div>
 

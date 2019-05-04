@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('avatar')->default('default.jpg');
+            $table->integer('edad')->default('18');
+            //$table->string('username')->default('nombreUsuario');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

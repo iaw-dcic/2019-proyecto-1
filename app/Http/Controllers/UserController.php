@@ -26,10 +26,10 @@ class UserController extends Controller
     		$user->avatar=$filename;
     		
     	}
-        
+        $user->edad=$request->input('edad');
         
          $name = $request->input('name');
-       
+         
        
         if(!is_null($name)){
             $user->name=$name;

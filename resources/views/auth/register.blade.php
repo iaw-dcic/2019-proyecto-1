@@ -25,6 +25,17 @@
                             </div>
                         </div>
 
+
+                         <div class="form-group row">
+                            <label for="edad" class="col-md-4 col-form-label text-md-right">edad </label>
+
+                            <div class="col-md-6">
+                                <input id="edad" type="edad" class="form-control" name="edad" value="18" required>
+
+                            </div>
+                        </div>                      
+
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
