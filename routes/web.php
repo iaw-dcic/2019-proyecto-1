@@ -40,16 +40,17 @@ Route::get('/login/{driver}/callback', 'Auth\LoginController@handleProviderCallb
 Route::get('/profile', 'UsersController@viewProfile')->name('profile')->middleware('auth');;
 Route::get('/user/search', 'UsersController@searchUsernames');
 Route::post('/user/{username}', 'UsersController@update');
+
 Route::resource('user', 'UsersController')->only([
     'store', 'show', 'destroy'
 ]);
 
 //Posts
 Route::resource('posts', 'PostsController')->only([
-    'store', 'show', 'edit', 'update', 'destroy'
+    'store', 'show', 'update', 'destroy'
 ]);
 
 Route::get('/posts/{post_id}/comments', 'CommentsController@index');
 Route::post('/posts/{post_id}/comments', 'CommentsController@store');
-Route::put('/posts/{post_id}/comments/{id}', 'CommentsController@edit');
+Route::put('/posts/{post_id}/comments/{id}', 'CommentsController@update');
 Route::delete('/posts/{post_id}/comments/{id}', 'CommentsController@destroy');

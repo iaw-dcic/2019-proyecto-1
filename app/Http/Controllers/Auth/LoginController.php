@@ -11,36 +11,20 @@ use Laravel\Socialite\Facades\Socialite;
 use App\User;
 
 class LoginController extends Controller{
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
-     *
      * @var string
      */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct(){
         $this->middleware('guest')->except('logout');
     }
 
-    public function getViewLogin(Request $request){
+    //Obtener la vista de login
+    public function getViewLogin(){
         return view('auth.login');
     }
 
@@ -52,56 +36,57 @@ class LoginController extends Controller{
             $password = $request->input('password');
             $password = Hash::make($password);
             $user = User::where(['email' => $email, 'password' => $password])->get()->first();
-            if($user != null)
-                return response()->json([
-                    'exists' => true
-                ]);
-            else
-                return response()->json([
-                    'exists' => false
-                ]);
-        }else{
-            return reponse()->json([
-                'exists' => false
+            return response()->json([
+                'exists' => ($user != null)
             ]);
         }
+        return reponse()->json([
+            'exists' => false
+        ]);
     }
 
-    //Redirect to provider
+    //Conexión con las redes sociales
     public function redirectToProvider($driver){
-        return Socialite::driver($driver)
-        ->with(
-            ['client_id' => env('GOOGLE_CLIENT_ID')],
-            ['client_secret' => env('GOOGLE_CLIENT_SECRET')],
-            ['redirect' => 'http://protolog.herokuapp.com/login/google/callback'])
-        ->redirect();
+        return Socialite::driver($driver)->redirect();
     }
 
-    //Callback
+    //Callback para las redes sociales
     public function handleProviderCallback($driver){
-        try {
+        try{
             $user = Socialite::driver($driver)->user();
-        } catch (\Exception $e) {
+            $existingUser = User::where('email', $user->getEmail())->first();
+
+            if ($existingUser)
+                auth()->login($existingUser, true);
+            else {
+                $newUser = $this->crearUsuario($user, $driver);
+                auth()->login($newUser, true);
+            }
+
+        }catch(\Exception $e){
             return redirect()->route('login');
         }
-        $existingUser = User::where('email', $user->getEmail())->first();
-
-        if ($existingUser) {
-            auth()->login($existingUser, true);
-        } else {
-            $newUser = new User();
-            $newUser->provider_name = $driver;
-            $newUser->provider_id = $user->getId();
-            $newUser->name = $user->getName();
-            $newUser->username = strtolower(trim($user->getName(), " "));
-            $newUser->email = $user->getEmail();
-            $newUser->email_verified_at = now();
-            $file = file($user->getAvatar());
-            file_put_contents(public_path('storage\\users\\').$user->getId().$driver.'.jpg', $file);
-            $newUser->photo = $user->getId().$driver.'.jpg';
-            $newUser->save();
-            auth()->login($newUser, true);
-        }
         return redirect($this->redirectPath());
+    }
+
+    private function crearUsuario($user, $driver){
+        $newUser = new User();
+        $newUser->provider_name = $driver;
+        $newUser->provider_id = $user->getId();
+        $newUser->name = $user->getName();
+        $username = str_replace(' ', '', $user->getName());
+        $newUser->username = strtolower($username);
+        $newUser->email = $user->getEmail();
+        $newUser->email_verified_at = now();
+        $newUser->photo = $this->crearFotoPerfil($user, $driver);
+        $newUser->save();
+        return $newUser;
+    }
+
+    //Retorna string con la dirección de la foto
+    private function crearFotoPerfil($user, $driver){
+        $file = file($user->getAvatar());
+        file_put_contents(public_path('storage\\users\\').$user->getId().$driver.'.jpg', $file);
+        return $user->getId().$driver.'.jpg';
     }
 }

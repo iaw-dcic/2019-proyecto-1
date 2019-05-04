@@ -641,6 +641,48 @@ section.actividad div.contenido-actividad {
   transition-delay: 0.05s;
 }
 
+/*Paginación*/
+
+ul.pagination {
+  margin: 25px;
+  font-weight: bold;
+}
+
+ul.pagination li.page-item a.page-link {
+  color: #05a081;
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+ul.pagination li.active a.page-link {
+  color: white;
+  background-color: #05a081;
+}
+
+/*No hay publicaciones*/
+
+div.no-hay-posts {
+  height: 60vh;
+  margin: 0;
+  padding: 0;
+}
+
+div.no-hay-posts h3 {
+  text-align: center;
+}
+
+div.no-hay-posts h3 a {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  color: #05a081;
+  display: inline;
+}
+
+div.no-hay-posts h3 a:hover {
+  color: #06B995;
+}
+
 /*Modifico los tamaños del figure y los textos para cada tamaño*/
 
 @media screen and (min-width: 992px) {
@@ -702,16 +744,15 @@ section.actividad div.contenido-actividad {
 
 .card-signin .card-img-left {
   width: 45%;
-  /* Link to your background image using in the property below! */
   background-size: cover;
 }
 
 .card-img-left-login {
-  background-image: url(/images/background-login.jpg?ef941bd67eec4893e303e2fc29ad484e);
+  background-image: url(/images/background-login.jpg?fb04853ba6569b1e102312e9298e8238);
 }
 
 .card-img-left-register {
-  background-image: url(/images/background-register.jpg?f57926b8b534021faa48640703558855);
+  background-image: url(/images/background-register.jpg?fb04853ba6569b1e102312e9298e8238);
 }
 
 .card-signin .card-body {
@@ -761,14 +802,19 @@ section.actividad div.contenido-actividad {
   transition: all 0.1s ease-in-out;
 }
 
-.btn-google {
+a.btn-google {
   color: white;
   background-color: #ea4335;
 }
 
-.btn-facebook {
+a.btn-facebook {
   color: white;
   background-color: #3b5998;
+}
+
+a.btn-facebook:hover,
+a.btn-google:hover {
+  color: #ebebeb;
 }
 
 /*----------------------------------------*/
@@ -893,24 +939,22 @@ div.img-vistas-previas div.row img.col {
   padding: 0;
 }
 
-div#configurarPerfil a {
-  margin: 0px 5px;
-  color: #05a081;
-}
-
-div#configurarPerfil a:hover {
-  color: #06B995;
-  text-decoration: none;
-}
-
 /*Cambiar foto de perfil*/
 
 #foto-perfil-grande {
-  width: 100%;
-  height: 480px;
+  height: 320px;
   margin: 20px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+#btn-cambiar-foto-perfil {
+  background-color: #05a081;
+  color: white;
+}
+
+#btn-cambiar-foto-perfil:hover {
+  background-color: #06B995;
 }
 
 /*------------------------------------------*/

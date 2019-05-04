@@ -2,7 +2,7 @@
     <div class="row no-gutters justify-content-between align-items-center grid-figures contenido-actividad">
         <!--Figures-->
 
-        @if(isset($posteos))
+        @if(isset($posteos) && count($posteos) > 0)
             @foreach($posteos as $post)
             <article class="col-12 col-md-5 col-lg-2 posts" data-target="#modal-post" data-post="{{$post}}">
                 <figure data-toggle="modal">
@@ -19,6 +19,29 @@
             @endforeach()
 
             <article class="col-12 col-md-5 col-lg-2"></article>
-        @endif()
+
+            @if(isset($page))
+            <div class="col-12 d-flex justify-content-center">
+                <nav aria-label="pagination">
+                    <ul class="pagination">
+                        @if($page-1 > 0)
+                        <li class="page-item"><a class="page-link" href="?page={{$page-1}}">Anterior</a></li>
+                        @endif
+                        @if($page-1 > 0)
+                        <li class="page-item"><a class="page-link" href="?page={{$page-1}}">{{$page-1}}</a></li>
+                        @endif
+                        <li class="page-item active"><a class="page-link" href="?page={{$page}}">{{$page}}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{$page+1}}">{{$page+1}}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{$page+1}}">Siguiente</a></li>
+                    </ul>
+                </nav>
+            </div>
+            @endif
+        @else
+            <div class="col d-flex justify-content-center align-items-center no-hay-posts">
+                <h3>No hay publicaciones <a href="#" data-toggle="modal" data-target="#crearPost" class="nav-link" id="subir-foto">¡Haz la primera!</a>
+                </h3>
+            </div>
+        @endif
     </div>
 </section>

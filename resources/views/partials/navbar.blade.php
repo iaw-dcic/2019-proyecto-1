@@ -9,7 +9,7 @@
 @include('partials.profile.crear-post')
 
 <nav class="row navbar navbar-expand-lg no-gutters">
-    <div class="col-2">
+    <div class="col-1 mr-1 mr-lg-2">
         <a class="navbar-brand titulo" href="{{ route('welcome') }}"><i class="fas fa-camera-retro"></i> <span> Protolog </span></a>
     </div>
 
@@ -20,7 +20,7 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-search">
-        <div class="col">
+        <div class="col ml-1 ml-lg-5">
             <!--Formulario de búsqueda-->
             <form class="form-inline my-2 my-lg-0" id="form-search" method="GET" action="/user/search">
                 <div class="searchbar d-flex align-items-center" id="div_search">

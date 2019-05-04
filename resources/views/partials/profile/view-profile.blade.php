@@ -1,7 +1,6 @@
 <div class="container-fluid no-gutters container-profile">
 
     @include('partials.profile.edit-perfil')
-    @include('partials.profile.configurar-perfil')
     @include('partials.profile.foto-perfil')
 
     <div class="row no-gutters row-perfil align-items-center">
@@ -17,7 +16,6 @@
             <div class="d-flex justify-content-center justify-content-md-start text-center text-md-left botones-perfil">
                 <a href="#" data-toggle="modal" data-target="#crearPost"><i class="fas fa-plus btn-profile"></i></a>
                 <a href="#" data-toggle="modal" data-target="#editarPerfil"><i class="far fa-edit btn-profile"></i></a>
-                <a href="#" data-toggle="modal" data-target="#configurarPerfil"><i class="fas fa-wrench"></i></a>
             </div>
             @endif()
 

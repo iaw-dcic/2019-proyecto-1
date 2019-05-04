@@ -32,35 +32,16 @@ class UsersController extends Controller{
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request){
         $user = new User;
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = $request->password;
         $user->first_name = $request->first_name;
-        if($request->phone != null)
-            $user->phone = $request->phone;
-        if($request->photo != null)
-            $user->photo = $request->photo;
-        if($request->biography != null)
-            $user->biography = $request->biography;
-
         $user->save();
         return view('profile')->with(['user' => $user]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($username){
         $user = User::where('username', $username)->get()->first();
         if($user != null){
@@ -72,13 +53,6 @@ class UsersController extends Controller{
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $username){
         if($request->ajax()){
             $user = User::where('username', $username)->get()->first();
@@ -112,12 +86,6 @@ class UsersController extends Controller{
         return $user;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id){
         //
     }

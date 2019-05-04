@@ -1,6 +1,6 @@
 @if(Auth::user() != null && Auth::user() == $user)
 <div class="modal fade" id="cambiarFotoPerfil" tabindex="-1" role="dialog" >
-    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <!--Header-->
             <div class="modal-header">
@@ -31,7 +31,7 @@
                 <!--Footer-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-cerrar-foto-perfil">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" id="btn-cambiar-foto-perfil">Guardar cambios</button>
+                    <button type="submit" class="btn" id="btn-cambiar-foto-perfil">Guardar cambios</button>
                 </div>
             </form>
         </div>

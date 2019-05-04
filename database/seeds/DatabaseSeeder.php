@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder{
     public function run(){
 
 
-        factory(\App\User::class, 3)->create()->each(function(\App\User $user){
+        factory(\App\User::class, 6)->create()->each(function(\App\User $user){
             $url = $user->photo;
             $file = file($url);
             file_put_contents(public_path('storage\\users\\').$user->id.$user->username.'.jpg', $file);
@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder{
             $user->save();
         });
 
-        factory(\App\Post::class, 5)->create();
+        factory(\App\Post::class, 15)->create();
 
-        factory(\App\Photo::class, 20)->create()->each(function(\App\Photo $photo){
+        factory(\App\Photo::class, 50)->create()->each(function(\App\Photo $photo){
             $url = $photo->photo_url;
             $file = file($url);
             $post = \App\Post::find($photo->post_id);
@@ -29,6 +29,6 @@ class DatabaseSeeder extends Seeder{
             $photo->photo_url = $post->id . $photo->id . '.jpg';
             $photo->save();
         });;
-        factory(\App\Comment::class, 20)->create();
+        factory(\App\Comment::class, 40)->create();
     }
 }

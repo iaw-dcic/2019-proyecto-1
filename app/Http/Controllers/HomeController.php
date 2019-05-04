@@ -5,24 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 
-class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+class HomeController extends Controller{
+
     public function __construct(){
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index(){
-        $posteos = Post::where('public', 1)->orderBy('created_at', 'desc')->get();
-        return view('home')->with(['posteos' => $posteos]);
+    public function index(Request $request){
+        $page = $request->query('page') ?: 1;
+        $posteos = Post::where('public', true)->orderBy('created_at', 'desc')->paginate('9');
+        return view('home')->with(['posteos' => $posteos, 'page' => $page]);
     }
 }

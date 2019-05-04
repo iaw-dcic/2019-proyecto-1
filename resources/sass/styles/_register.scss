@@ -82,12 +82,16 @@
     transition: all .1s ease-in-out;
   }
 
-  .btn-google {
+a.btn-google {
     color: white;
     background-color: #ea4335;
-  }
+}
 
-  .btn-facebook {
+a.btn-facebook {
     color: white;
     background-color: #3b5998;
-  }
+}
+
+a.btn-facebook:hover, a.btn-google:hover{
+    color: rgb(235, 235, 235);
+}

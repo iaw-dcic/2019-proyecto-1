@@ -11,8 +11,9 @@ class WelcomeController extends Controller{
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(){
-        $posteos = Post::where('public', true)->orderBy('created_at', 'desc')->get();
-        return view('welcome')->with(['posteos' => $posteos]);
+    public function index(Request $request){
+        $page = $request->query('page') ?: 1;
+        $posteos = Post::where('public', true)->orderBy('created_at', 'desc')->paginate('9');
+        return view('welcome')->with(['posteos' => $posteos, 'page' => $page]);
     }
 }

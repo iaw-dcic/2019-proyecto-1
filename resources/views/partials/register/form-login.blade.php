@@ -29,8 +29,8 @@
                         </div>
 
                         <div class="invalid-feedback hide" id="invalid-email-pass">Usuario o contraseña inválidos. Intente nuevamente.</div>
-                        
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn_login" type="submit">Ingresar</button>
+
+                        <button class="btn btn-lg btn-primary btn-block" id="btn_login" type="submit">Ingresar</button>
                         <a class="d-block text-center mt-2 small" href="{{route('register')}}">Registrarse</a>
                         @if (Route::has('password.request'))
                             <div class="col-12 d-flex justify-content-center forgot">
@@ -39,8 +39,8 @@
                         @endif
 
                         <hr class="my-4">
-                        <button href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Ingresa con Google</button>
-                        <button href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-lg btn-facebook btn-block text-uppercase"><i class="fab fa-facebook-f mr-2"></i> Ingresa con Facebook</button>
+                        <a href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-lg btn-google btn-block"><i class="fab fa-google mr-2"></i> Ingresa con Google</a>
+                        <a href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-lg btn-facebook btn-block"><i class="fab fa-facebook-f mr-2"></i> Ingresa con Facebook</a>
                     </form>
                 </div>
             </div>
