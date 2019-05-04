@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Lista;
 use App\User;
+use App\Juego;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Input;
 class listsController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('auth')->only(['create','edit','update','destroy']);
+    }
 
     /**
      * Display a listing of the resource.
@@ -23,11 +27,14 @@ class listsController extends Controller
         
         if(Auth::check()){
             $name = Auth::user()->name ;
-            $listas = DB::table('listas')->where('user_id',Auth::user()->id)->get(); //Obtengo todas las listas del usuario
+            $listas = Lista::where('user_id',Auth::user()->id)->get(); //Obtengo todas las listas del usuario
             return view('lists.index',compact('listas','name')); //devuelvo una view junto con las listas
         }    
     }
 
+    /*
+    * Dado un usuario, listo las listas públicas del usuario al que se esta accediendo
+    */
     public function accederListasAjenas(int $id){
         $listas = DB::table('listas')->where([ ['user_id', "=", $id], ['public',"=",1] ])->get();
         $name = User::find($id)->name;
@@ -36,14 +43,16 @@ class listsController extends Controller
     }
 
     /*
-    * SE QUE ES UNA LISTA PUBLICA DEL USUARIO $idUsuario
+    * NO SE QUE SI ES UNA LISTA PUBLICA DEL USUARIO $idUsuario
     */
     public function accederDatosListaAjena(String $nomUsuario, int $idLista){
 
+
         $idUsuario = DB::table('users')->where('name', $nomUsuario)->get();
         $idUsuario = $idUsuario[0]->id;
-        $lista = DB::table('listas')->where([ ['id', "=", $idLista], ['user_id', "=", $idUsuario] ])->get();
-        $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
+        $lista = Lista::where([ ['id', "=", $idLista], ['user_id', "=", $idUsuario] ])->get();
+        abort_if($lista[0]->public == 0 &&  ($idUsuario != auth()->id() || $idUsuario == "guest"), 403);
+        $juegos = Juego::where('list_id',$lista[0]->id)->get();
         $name = User::find($idUsuario)->name;
         return view('lists.show',compact('lista','juegos','idUsuario','name'));
     }
@@ -55,7 +64,6 @@ class listsController extends Controller
      */
     public function create()
     {
-        $this->middleware('auth');
         return view('lists/crear');
     }
 
@@ -67,8 +75,7 @@ class listsController extends Controller
      */
     public function store(Request $request, User $user)
     {
-        $this->middleware('auth');
-
+  
         $validated = request()->validate([
             'title' => ['required', 'min:5', 'max:255'],
             'listaDescripcion' => ['required', 'min:5', 'max:255']
@@ -79,7 +86,7 @@ class listsController extends Controller
         
 
         $lista = new Lista;
-        $lista->user_id=Input::get('userID');
+        $lista->user_id=auth()->id();
         $lista->name=Input::get('title');
         $lista->description=Input::get('listaDescripcion');
         $lista->public=$public;
@@ -99,14 +106,16 @@ class listsController extends Controller
      */
     public function show(int $id)
     {   
-    
-        $lista = DB::table('listas')->where('id',$id)->get();
+        
+        $lista = Lista::where('id',$id)->get();
         $juegos = DB::table('juegos')->where('list_id',$lista[0]->id)->get();
+       
         if(Auth::check())
             $idUsuario = Auth::user()->id;
         else
             $idUsuario = "guest";
 
+        abort_if($lista[0]->public == 0 &&  ($idUsuario != auth()->id() || $idUsuario == "guest"), 403);
         $idUsuarioAccediendo = DB::table('users')->where('id',$lista[0]->user_id)->get();
         $idUsuarioAccediendo = $idUsuarioAccediendo[0]->id;
         if($idUsuario == $idUsuarioAccediendo){
@@ -114,6 +123,7 @@ class listsController extends Controller
             return view('lists.show',compact('lista','juegos','idUsuario','name'));
         }
         else{
+
             $idUsuario = $idUsuarioAccediendo;
             $name = User::find($idUsuario)->name; 
             return view('lists.show',compact('lista','juegos','idUsuario','name'));
@@ -131,7 +141,7 @@ class listsController extends Controller
     {
    
         $lista= DB::table('listas')->where('id',$listaId)->get();
-        $this->middleware('auth');
+  
         return view('lists.edit')->with('listaId',$listaId)->with('list',$lista[0]);
     }
 
@@ -142,7 +152,7 @@ class listsController extends Controller
      */
     public function update()
     {
-        $this->middleware('auth');
+
         $public = 0;
         if(Input::get('public') == 'on')
             $public = 1;
@@ -166,7 +176,7 @@ class listsController extends Controller
      */
     public function destroy(int $ListaId)
     {
-        $this->middleware('auth');
+      
         
         $lista = Lista::findOrFail(request('listId'));
         $lista->delete();

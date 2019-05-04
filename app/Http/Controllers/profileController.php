@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 class profileController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('auth')->only(['edit','update','destroy']);
+    }
+
     /**
      * Display the specified resource.
      *

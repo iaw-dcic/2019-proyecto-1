@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\DB;
 
 class ListGamesController extends Controller
 {
+    
+    public function __construct(){
+        $this->middleware('auth')->only(['store','edit','update','destroy']);
+    }
+
     public function store(int $idLista){
         
         $juego = new Juego;
@@ -54,10 +59,13 @@ class ListGamesController extends Controller
 
     public function show(int $idLista, int $idJuego)
     {   
+
         $idUsuario = DB::table('listas')->where('id',$idLista)->get();
         $idUsuario = $idUsuario[0]->user_id;
         $nombreUs = DB::table('users')->where('id',$idUsuario)->get();
         $nombreUs = $nombreUs[0]->name;
+        $lista = Lista::where('id',$idLista)->get();
+        abort_if($lista[0]->public == 0 &&  ($idUsuario != auth()->id() || $idUsuario == "guest"), 403);
         $datosJuego = DB::table('juegos')->where([ ['list_id',"=",$idLista,], ['id',"=",$idJuego] ])->get();
         
         return view('lists.games.show', compact('datosJuego','idLista','idUsuario','nombreUs'));
@@ -70,7 +78,6 @@ class ListGamesController extends Controller
      */
     public function destroy(int $juegoId)
     {
-        $this->middleware('auth');
         $juego = Juego::findOrFail(request('gameId'));
         $juego->delete();
         return redirect('/lists');
