@@ -32,7 +32,7 @@ Route::get('/showAlbum/{id}','AlbumController@show')->name('showAlbum');
 
 
 Route::get('/profile', 'ApiController@profile')->name('profile');
-Route::post('profile','ApiController@updateAvatar')->name('avatar');
+Route::post('/profile','ApiController@updateAvatar')->name('avatar');
 
 
 
@@ -65,5 +65,5 @@ Route::get('/album/{id}','AlbumController@destroy')->name('eliminarAlbum');
 Route::get('/edit/{id}','AlbumController@edit')->name('editAlbum');
 
 
-Route::get('login/github', 'Auth\LoginController@redirectToProvider');
-Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('/login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('/login/github/callback', 'Auth\LoginController@handleProviderCallback');
