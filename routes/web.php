@@ -22,7 +22,7 @@ Route::get('/list/{id}',"ListController@show")->name('showlist');
 
 Route::get('/create_list',"ListController@create")->name('create_list')->middleware('auth');
 
-Route::post('/create_list',"ListController@store")->middelware('auth');
+Route::post('/create_list',"ListController@store")->middleware('auth');
 
 //Seccion agregar pelis y editar pelis 
 
