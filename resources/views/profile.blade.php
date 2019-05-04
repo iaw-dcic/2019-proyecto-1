@@ -27,42 +27,35 @@
 				<h3>Perfil usuario</h3>
 			</div>
 			<div class="card-body">
-			<form method="POST" action="{{url('edit/{$user -> id}')}}">
-						{{method_field('PUT')}}
+			<form method="POST" action="{{url('edit')}}">
                         @csrf
-
                         <div class="input-group form-group">
 						    <div class="input-group-prepend">
 							    <span class="input-group-text"><i class="fas fa-user"></i></span>
 						    </div>
-						    <input id="name" type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{old('name', $user->name)}}" required autofocus>
-                                @if ($errors->has('name'))
+						    <input id="name" type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{old('name',$user->name)}}" required autofocus>
+							@if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
-                                @endif
-                        </div>
+                            @endif
+						</div>
 						<div class="input-group form-group">
 						    <div class="input-group-prepend">
 							    <span class="input-group-text"><i class="fas fa-envelope-open"></i></span>
 						    </div>
-						    <input id="email" type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{old('email', $user->email)}}" required autofocus>
-                                @if ($errors->has('email'))
+						    <input id="email" type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{$user->email}}" required autofocus>
+							@if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                        </div>
+                            @endif
+						</div>
                         <div class="input-group form-group">
 						    <div class="input-group-prepend">
 							    <span class="input-group-text"><i class="fas fa-key"></i></span>
 						    </div>
-						    <input id="password" type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{old('password', $user->password)}}" required>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
+						    <input id="password" type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{$user->password}}" required autofocus>
                         </div>
                         <div class="form-group">
 						    <input type="submit" value="Editar" class="btn btn-primary btn-lg btn-block login-button">

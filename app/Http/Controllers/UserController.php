@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\MovieList;
 use App\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -48,13 +49,23 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
     
-    public function edit(User $user)
+    public function edit()
     {
+        $user = Auth::user();
+
         return view('profile',['user' => $user]);
     }
 
-    public function update(User $user)
+    public function update()
     {
+        $user = Auth::user();
+
+        $data=request()->validate([
+            'name'=>'required',
+            'email' => ['required',Rule::unique('users')->ignore($user->id)],
+            'password' => 'required',
+        ]);
+
         $user->name=request('name');
         $user->email=request('email');
         $user->password=bcrypt(request('password'));
