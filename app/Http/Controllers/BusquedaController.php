@@ -26,3 +26,4 @@ class BusquedaController extends Controller
         return view('/perfilPublico',['user'=>$userBuscado],['partidos'=>$partidosPublicos]);
     }
 }
+
