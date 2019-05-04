@@ -35,7 +35,7 @@
             <!-- Listings -->
             <div class="form-style-agile">
                 <label><i class="fas fa-list-ul" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
-                <select class="selectpicker" name="listings[]" title="Seleccionar una o más listas" multiple data-live-search="true" data-style="btn-primary"
+                <select class="selectpicker" name="listings[]" title="Seleccionar una o más listas" multiple data-live-search="true"
                     data-width="100%" required>                            
                         @foreach($listings as $listing)
                             <option value="{{ $listing->id}}"> {{ $listing->title}} </option>
@@ -43,6 +43,7 @@
                 </select>
             </div>
 
+           
             <!-- Console -->
             <div class="form-style-agile">
                 <label><i class="fas fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente? *</label>

@@ -19,3 +19,4 @@
 
 <!-- Delete confirmation -->
 <script src="{{ URL::asset('js/remove-list.js')}}"></script>
+<script src="{{ URL::asset('js/remove-game.js')}}"></script>

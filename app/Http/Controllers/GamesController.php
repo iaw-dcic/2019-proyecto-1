@@ -194,7 +194,7 @@ class GamesController extends Controller
         $game->delete();
 
         alert()->info('Atención!', 'El juego fue eliminado');
-        return redirect('games');
+        return redirect('listings');
     }
 
     private function handleFileUpload(Request $request)
