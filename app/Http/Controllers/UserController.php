@@ -63,7 +63,7 @@ class UserController extends Controller
         $data=request()->validate([
             'name'=>'required',
             'email' => ['required',Rule::unique('users')->ignore($user->id)],
-            'password' => 'required',
+            'password'=>['required', 'string', 'min:8'],
         ]);
 
         $user->name=request('name');
@@ -71,7 +71,7 @@ class UserController extends Controller
         $user->password=bcrypt(request('password'));
         $user->save();
 
-        return back();
+        return redirect()->route('users.index');
     }
 
     public function mylists()

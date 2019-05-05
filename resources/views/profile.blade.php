@@ -55,8 +55,13 @@
 						    <div class="input-group-prepend">
 							    <span class="input-group-text"><i class="fas fa-key"></i></span>
 						    </div>
-						    <input id="password" type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="{{$user->password}}" required autofocus>
-                        </div>
+						    <input id="password" type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" value="">
+							@if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
+						</div>
                         <div class="form-group">
 						    <input type="submit" value="Editar" class="btn btn-primary btn-lg btn-block login-button">
 					    </div>
