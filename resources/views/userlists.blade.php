@@ -8,7 +8,7 @@
 @section('content')
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
-        <div class="card text-center" style="width: 50rem; height:30rem">
+        <div class="card text-center" style="width: 55rem; height:30rem">
             <div class="card-header">
                 <h3>Mis listas</h3>
                 <h4>Tipo lista 1: pública / 0: privada</h4>
@@ -20,6 +20,7 @@
                         <th>Nombre lista</th>
                         <th>Editar</th>
                         <th>Películas</th>
+                        <th>Cambiar visibilidad</th>
                         <th>Eliminar</th>  
                     </thead>
                     <tbody>
@@ -32,6 +33,13 @@
                                     </button>
                                 </td>
                                 <td><a href="{{ url('/editlist/'.$list->id) }}" class="btn btn-info"> <i class="fas fa-film"></i></a></td>
+                                <td>
+                                    @if ($list->visible)
+                                        <a href="{{ url('/toggle-list/'.$list->id)}}" class="btn btn-info">Hacer privada</a>
+                                    @else
+                                        <a href="{{ url('/toggle-list/'.$list->id)}}" class="btn btn-info">Hacer pública</a>
+                                    @endif
+                                </td> 
                                 <td><button type="button" class="btn btn-danger" data-id={{$list->id}} data-toggle="modal" data-target="#deleteList">
                                     <i class="fas fa-trash"></i>
                                     </button>
@@ -62,7 +70,7 @@
                         <label for="list-name" class="col-form-label">Nombre lista:</label>
                         <input type="text" class="form-control" name="name" id="list-name" value="">
                     </div>
-                    <input type="hidden" id="id_list" name="id_list" value ="">
+                    <input type="hidden" id="id_list" name="id_list" value =""> 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -91,4 +91,13 @@ class ListController extends Controller
         return back();
     }
 
+    public function toggleList($id){
+        $list = MovieList::find($id);
+        
+        $list->visible=!$list->visible;
+        $list -> save();
+
+        return back();
+    }
+
 }

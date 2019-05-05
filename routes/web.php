@@ -50,6 +50,10 @@ Route::delete('/lists','ListController@destroy')->name('delete_list')->middlewar
 
 Route::post('/lists', 'ListController@edit')->name('edit_list')->middleware('auth');
 
+Route::get('/toggle-list/{id}', 'ListController@toggleList')->name('toggle-list')->middleware('auth');
+
+Route::post('/toggle-list/{id}', 'ListController@toggleList')->middleware('auth');
+
 //Routes for lists of elements
 
 Route::get('/home','UserController@index')->name('home');
