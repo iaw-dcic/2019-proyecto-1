@@ -40,6 +40,8 @@ Route::delete('/edit/jugador/{id}','ListadoPartidosController@borrarJugador');
 
 //Mostrar sin iniciar sesion todos los partidos públicos
 Route::get('/partidosPublicos','InicioController@index');
+//Mostrar jugadores dentro del partido público
+Route::get('/jugadores/{id}','InicioController@viewJugadores')->name('viewJugadores');
 
 //EDITAR LA CONFIGURACIÓN DE UN USUARIO
 Route::get('/editarPerfil','PerfilUsuarioController@index')->name('perfil');;

@@ -23,6 +23,9 @@
                         <td>{{$partido->place}}</td>
                         <td>{{$partido->category}}</td>
                         <td>{{$partido->public}}</td>
+                        <td>
+                            <button type="button" onclick="window.location='/jugadores/{{$partido->id}}'">Ver jugadores</button>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
