@@ -18,9 +18,16 @@ class MovieController extends Controller
     {
         $list = MovieList::find($id);
     
-        $movies=Movie::where(['list_id'=>$id])->get();
+        $user=Auth::user();
+
+        if($user['id']==$list['user_id']){
+            $movies=Movie::where(['list_id'=>$id])->get();
     
-        return view('editlist',['list' => $list],['movies'=>$movies]);
+            return view('editlist',['list' => $list],['movies'=>$movies]);
+        }
+        else
+            return redirect()->route('home');
+
     }
 
     public function store()
@@ -35,8 +42,9 @@ class MovieController extends Controller
             'genre' => $data['genre'],
             'list_id' => $data['id_list'],
         ]);
+    
+            return back();
 
-        return back();
     }
 
     public function edit()

@@ -49,13 +49,16 @@ class ListController extends Controller
         return redirect()->route('editlist',[$id_list]);
     }
 
-    public function editmovieslist($id){
+    public function editmovieslist($id)
+    {
+        $user=Auth::user();
 
-            $list = MovieList::find($id);
+        $list = MovieList::find($id);
+
+        $movies=Movie::where(['list_id'=>$id])->get();
     
-            $movies=Movie::where(['list_id'=>$id])->get();
-    
-            return view('editlist',['list' => $list],['movies'=>$movies]);
+        return view('editlist',['list' => $list],['movies'=>$movies]);
+
     }
 
     public function destroy()
