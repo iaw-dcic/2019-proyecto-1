@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('opcionesNavBar')
+<li class="nav-item">
+    <a class="nav-link" href='/partidosPublicos'>Partidos públicos</a>
+</li>
+@endsection
+
 @section('content')
 <div class="content">
     <div class="jumbotron jumbotron-fluid">
@@ -10,7 +16,6 @@
     </div>
 </div>
 @endsection
-
 
 
 

@@ -57,6 +57,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('readme') }}">{{ __('Readme') }}</a>
                         </li>
+                        @yield('opcionesNavBar')
+
                         @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -67,7 +69,7 @@
                         </li>
                         @endif
                         @else
-                        @yield('opcionesNavBar')
+                        
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

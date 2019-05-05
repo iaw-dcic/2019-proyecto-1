@@ -17,7 +17,7 @@ class CreatePartidosTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
-            $table->string('name')->unique();;
+            $table->string('name');
             $table->string('place');
             $table->string('public');
             $table->string('category');

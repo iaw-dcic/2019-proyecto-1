@@ -27,6 +27,7 @@ class validarPartidosUnicosUsuario implements Rule
      */
     public function passes($attribute, $value)
     {
+           
         $partido = partido::where('user_id',$this->user_id)->where('name',$value)->first();
 
         return $partido==null;
