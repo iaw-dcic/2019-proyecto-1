@@ -33,7 +33,6 @@
             <li>Para los estilos y la presentación se usó el framework de estilos Bootstrap: https://getbootstrap.com/ </li>
             <li>Con lo que respecta al ingreso de fechas para los juegos,
                     no existe un chequeo de si la fecha ingresada corresponde a una fecha que NO sea posterior a la fecha actual </li>
-            <li> Al modificar los datos de un juego, es necesario que todos los campos tengan datos para que el mecanismo funcione </li>
             <li>para ciertas estilos de texto se usó Google Fonts: https://fonts.google.com/ </li>
         </ul>
 </div>
