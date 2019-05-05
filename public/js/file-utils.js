@@ -6,6 +6,9 @@ $(function() {
             numFiles = input.get(0).files ? input.get(0).files.length : 1,
             label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
         input.trigger('fileselect', [numFiles, label]);
+
+        $('#playlist-thumbnail').hide();
+
     });
 
     // We can watch for our custom `fileselect` event like this

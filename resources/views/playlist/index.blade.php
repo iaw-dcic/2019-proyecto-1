@@ -15,6 +15,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="{{ route('playlist.details', $playlist->id) }}" class="btn btn-sm btn-outline-secondary">Detalles</a>
+                                        <a href="{{ route('playlist.update', $playlist->id) }}" class="btn btn-sm btn-outline-secondary">Editar</a>
                                         <a id="eliminarPlaylist{{$playlist->id}}" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#modal-eliminar-{{ $playlist->id }}">Eliminar</a>
                                     </div>
                                     <a href="" style="color: #000; text-decoration: none;" ><i class="fab fa-spotify fa-3x"></i></a>

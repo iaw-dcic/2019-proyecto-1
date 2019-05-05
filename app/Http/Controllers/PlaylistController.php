@@ -11,9 +11,11 @@ class PlaylistController extends Controller
 {
     public function index(){
 
-        $userId = Auth::id();
+        //$userId = Auth::id();
 
-        $playlists = Playlist::where('user_id',$userId)->get();
+        $user = Auth::user();
+
+        $playlists = Playlist::where('user_id',$user->id)->get();
 
         return view('playlist.index')->with('playlists', $playlists);
 
@@ -23,14 +25,19 @@ class PlaylistController extends Controller
 
         $songs = Song::where('playlist_id',$id)->get();
 
-        $playlist = Playlist::where('id',$id)->first();
+        $playlist = Playlist::find($id);
 
         return view('playlist.details')->with('songs', $songs)->with('playlist',$playlist);
     }
 
     public function store(Request $request)
     {
-        $playlist = new Playlist();
+
+        if($request->get('id')!= -1){
+            $playlist = Playlist::find($request->get('id'));
+        }
+        else
+            $playlist = new Playlist();
 
         $playlist->name=$request->get('nombre');
         $playlist->spotify_url=$request->get('spotify_url');
@@ -49,6 +56,12 @@ class PlaylistController extends Controller
             $playlist->save();
         }
 
+    }
+
+    public function update($id){
+        $playlist = Playlist::find($id);
+
+        return view('playlist.create')->with('playlist',$playlist);
     }
 
     public function delete($id){

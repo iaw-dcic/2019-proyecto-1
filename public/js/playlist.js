@@ -26,13 +26,14 @@ function onVisibilityChange(id) {
 
 }
 
-function storePlaylist() {
+function storePlaylist(id) {
 
     var data = new FormData();
 
     data.append('nombre', $('#inputNombre').val() );
     data.append('visibilidad', $('#inputVisibilidad').val() );
     data.append('spotify_url', $('#inputSpotifyURL').val());
+    data.append('id', id );
 
     jQuery.each(jQuery('#inputFile')[0].files, function(i, file) {
         data.append('imagen-'+i, file);

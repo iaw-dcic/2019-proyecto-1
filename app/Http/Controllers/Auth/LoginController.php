@@ -101,7 +101,6 @@ class LoginController extends Controller
      */
     public function handleFacebookCallback()
     {
-        try {
 
             $userFacebook = Socialite::driver('facebook')->stateless()->user();
 
@@ -125,13 +124,8 @@ class LoginController extends Controller
             // Login User
             Auth::login($user,true);
 
-            return redirect($this->redirectToHome);
-
-        } catch (Exception $e) {
-
-            return redirect('login/facebook');
-
-        }
+        //Overide Facebook
+        return redirect('/#');
     }
 
 

@@ -48,7 +48,7 @@
 
                 </div>
 
-                </hr>
+                <hr>
                 <br>
                 <ul class="list-group p-4">
                     <li class="list-group-item text-center">Actividad</li>
@@ -56,7 +56,7 @@
                         </span> : {{ count($playlists) }}
                     </li>
                     <li class="list-group-item text-left"><span class="pull-left"><strong>Canciones</strong>
-                        </span> : {{ count($songs) }}
+                        </span> : {{ $cantSongs }}
                     </li>
                 </ul>
 
@@ -175,9 +175,10 @@
             @endif
         </div><!--/row-->
 
-        @endsection
+    </div>
+@endsection
 
-        @section('scripts')
-            <script src="{{ asset('js/file-utils.js') }}"></script>
-            <script src="{{ asset('js/register.js') }}"></script>
+@section('scripts')
+        <script src="{{ asset('js/file-utils.js') }}"></script>
+        <script src="{{ asset('js/register.js') }}"></script>
 @endsection

@@ -15,13 +15,13 @@ class UserController extends Controller
 
         $playlists = Playlist::where('user_id',$user->id)->get();
 
-        $songs = array();
+        $songs = 0;
 
         foreach($playlists as $playlist){
-            $songs = $playlist->songs()->get();
+            $songs = $songs + count($playlist->songs()->get());
         }
 
-        return view('user.profile')->with('user' , $user)->with('playlists',$playlists)->with('songs',$songs);
+        return view('user.profile')->with('user' , $user)->with('playlists',$playlists)->with('cantSongs',$songs);
     }
 
     public function update(Request $request)

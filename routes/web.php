@@ -31,12 +31,17 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('playlists', 'PlaylistController@index');
 
     Route::get('playlist/create', function () {
-        return view('playlist.create');
+        return view('playlist.create')->with('playlist',null);
     });
 
     Route::get('playlist/details/{id}', [
         'uses'  => 'PlaylistController@details',
         'as'    => 'playlist.details'
+    ]);
+
+    Route::get('playlist/update/{id}', [
+        'uses'  => 'PlaylistController@update',
+        'as'    => 'playlist.update'
     ]);
 
     Route::post('playlist/store','PlaylistController@store');

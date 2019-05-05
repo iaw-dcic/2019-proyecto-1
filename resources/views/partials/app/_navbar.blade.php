@@ -25,7 +25,7 @@
 
         </ul>
 
-        @if (Request::path() == '/'  || Request::path() == '/home')
+        @if (Request::path() == '/')
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" id="inputSearch" autocomplete="off" type="search" placeholder="Buscar" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
