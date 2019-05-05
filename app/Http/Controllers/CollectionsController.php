@@ -25,6 +25,13 @@ class CollectionsController extends Controller
      */
     public function create()
     {
+        if (Auth::guest()){
+            $data = [
+                "error_type" => "Create collection",
+                "description" => "You need to log in if you want to create a collection.",
+            ];
+            return view('error')->withData($data);
+        }
         return view('collections.create');
     }
 

@@ -26,6 +26,13 @@ class ItemsController extends Controller
      */
     public function create()
     {
+        if (Auth::guest()){
+            $data = [
+                "error_type" => "Create item",
+                "description" => "You need to log in if you want to create an item.",
+            ];
+            return view('error')->withData($data);
+        }
         $id = Auth::user()->id;
         $collections = Collection::where('user_id', $id)->get();
         return view('items.create')->withCollections($collections);
