@@ -17,7 +17,7 @@
                
 
                 <div class="jumbotron">
-                    <h1 class="display-4">Hola {{$user->name}}!</h1>
+                    <h1 class="display-4">Hola {{$user->name}}</h1>
                     <p class="lead">Bienvenido a una página donde es posible registrar tu partido seleccionando la categoria y los jugadores. Luego puedes compartirlo
                         con tus amigos!
                     </p>
