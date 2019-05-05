@@ -41,7 +41,11 @@ class ElementController extends Controller
     public function update($idUsuario, $idColeccion){
 
         $coleccion=Colection::where('id', $idColeccion)->get();
-        $coleccion[0]->estado=1;
+        if($coleccion[0]->estado){
+            $coleccion[0]->estado=0;
+        }else{
+            $coleccion[0]->estado=1;
+        }
         $coleccion[0]->save();
 
         return redirect('home');

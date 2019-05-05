@@ -76,7 +76,7 @@ div.gallery {
     margin: 5px;
     border: 1px solid #ccc;
     float: left;
-    width: 180px;
+    width: 250px;
   }
   
   div.gallery:hover {
@@ -109,6 +109,7 @@ div.gallery {
   .tituloCard{
     font-family: 'Bangers';
     font-size: 18px;
+    color: black;
   }
 
   .wellItem{
@@ -131,4 +132,12 @@ div.gallery {
 
 .negrita{
     font-weight: bold;
+}
+
+a.linkCard{
+    text-decoration: none;
+}
+
+.colorP{
+    color: black;
 }

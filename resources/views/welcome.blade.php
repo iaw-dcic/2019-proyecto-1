@@ -59,13 +59,14 @@
                    <div class="flex-container">
                      @foreach ($colecciones as $colecion)
                         <div class="gallery">
-                            <a href="/{{$colecion->id}}/showItems" target="_self">
+                            <a href="/{{$colecion->id}}/showItems" target="_self" class="linkCard">
                                 <img src="#" alt="{{ $colecion->name }}" width="400" height="250">
-                            </a>
+                            
                             <div class="desc">
                                 <h6 class="tituloCard">{{ $colecion->name }}</h6>
-                                <p>{{ $colecion->description }}</p></div>
+                                <p class="colorP">{{ $colecion->description }}</p></div>
                         </div>
+                        </a>
                        @endforeach 
                      
                    </div>

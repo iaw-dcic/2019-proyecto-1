@@ -86,21 +86,38 @@
                             </div>
                         </div>
                     </form>
-
-                    <form class="colorFondo" action="/{{ Auth::user()->id }}/{{ $datos[0]->id }}/insertarItem" method="post">
-                    @csrf
-                    {{ method_field('PATCH') }}
-                        <div class="form-group row mb-0">
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-danger btn-block">
-                                        Compartir Colección
-                                    </button>
+                    @if($datos[0]->estado === 0)
+                        <form class="colorFondo" action="/{{ Auth::user()->id }}/{{ $datos[0]->id }}/insertarItem" method="post">
+                        @csrf
+                        {{ method_field('PATCH') }}
+                            <div class="form-group row mb-0">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-danger btn-block">
+                                            Compartir Colección
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
 
-                    </form>
+                        </form>
+                    
+                    @else 
+                        <form class="colorFondo" action="/{{ Auth::user()->id }}/{{ $datos[0]->id }}/insertarItem" method="post">
+                        @csrf
+                        {{ method_field('PATCH') }}
+                            <div class="form-group row mb-0">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-danger btn-block">
+                                            Dejar de Compartir Colección
+                                        </button>
+                                    </div>
+                                </div>
 
+                        </form>
+                        
+                    
+                    @endif
                     <form class="colorFondo" action="/{{ Auth::user()->id }}/{{ $datos[0]->id }}/insertarItem" method="post">
                     @csrf
                     {{ method_field('DELETE') }}

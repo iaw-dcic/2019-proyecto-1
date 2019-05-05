@@ -10,17 +10,23 @@
                     <img src="/img/avatar.png" class="img-thumbnail fPerfil" alt="Foto de Perfil">
                 </div>
             </div>
+          
             <div class="panel panel-primary">
-             <div class="panel-heading text-center"> <h4 class="titulo">Colecciones</h4> </div>
+             <div class="panel-heading text-center"> <h4 class="titulo">Información</h4> </div>
              <div class="panel-body">
-                <form>
+                <p class="opciones">Contacto: {{ Auth::user()->email }}</p>
+                <p class="opciones">Cantidad de Colecciones: {{ sizeof($colecciones) }} </p>
+     
+             <!--
+                <form action="/home" method="get">
                     <div class="checkbox">
-                        <label class="opciones"><input type="checkbox" value="" checked>Públicas</label>
+                        <label class="opciones"><input type="checkbox" name="publica" value="" checked onChange="this.form.submit()">Públicas</label>
                     </div>
-                    <div class="checkbox">
-                        <label class="opciones"><input type="checkbox" value="" checked>Privadas</label>
+                    <div class="checkbox" for="estado">
+                        <label class="opciones"><input type="checkbox" name="privada" value="" checked onChange="this.form.submit()">Privadas</label>
                     </div>
                 </form>
+-->
             </div>
             </div>
 
@@ -31,13 +37,13 @@
                    <div class="flex-container">
                      @foreach ($colecciones as $colecion)
                         <div class="gallery">
-                            <a href="/{{ Auth::user()->id }}/{{ $colecion->id }}/insertarItem">
+                            <a href="/{{ Auth::user()->id }}/{{ $colecion->id }}/insertarItem" class="linkCard">
                                 <img src="#" alt="{{ $colecion->name }}" width="400" height="250">
-                            </a>
+                            
                             <div class="desc">
                                 <h6 class="tituloCard">{{ $colecion->name }}</h6>
-                                <p>{{ $colecion->description }}</p>
-                                <p><span class="negrita">Estado: </span>
+                                <p class="colorP">{{ $colecion->description }}</p>
+                                <p class="colorP"><span class="negrita">Estado: </span>
                                     @if (($colecion->estado) === 0)
                                         Privada
                                     @else
@@ -45,6 +51,7 @@
                                     @endif
                                 </p>
                             </div>
+                            </a>
                         </div>
                        @endforeach 
                      
