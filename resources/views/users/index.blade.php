@@ -28,6 +28,9 @@
                   <a class="nav-link"  data-ajax="false" href="{{ route('users.create') }}">Crear Lista</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link"  data-ajax="false" href="{{ route('users.showListas') }}">Mis Listas</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" data-ajax="false"href="{{ route('logout') }}">Salir</a>
                 </li>
 

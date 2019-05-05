@@ -16,15 +16,18 @@
     <title>Crear Usuario</title>
 </head>
 <body>
-    <ul class="nav nav-pills nav-fill">
+        <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
-                  <a class="nav-link active" href="{{ route('users.index') }}">Home</a>
+                  <a class="nav-link" data-ajax="false" href="{{ route('users.index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ route('users.create') }}">Crear Lista</a>
+                  <a class="nav-link active"  data-ajax="false" href="{{ route('users.create') }}">Crear Lista</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Salir</a>
+                  <a class="nav-link "  data-ajax="false" href="{{ route('users.create') }}">Mis Listas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-ajax="false"href="{{ route('logout') }}">Salir</a>
                 </li>
 
         </ul>

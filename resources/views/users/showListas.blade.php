@@ -11,25 +11,33 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 
+    {{-- boostrap --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    {{--  boostrap y datatable con el stylo de boostrap  --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+
+
+
 
     <title>Futboleros</title>
 </head>
 <body>
+
     <div>
         <ul class="nav nav-pills nav-fill">
                 <li class="nav-item">
-                  <a class="nav-link active" data-ajax="false" href="{{ route('users.index') }}">Home</a>
+                  <a class="nav-link" data-ajax="false" href="{{ route('users.index') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Registrarse</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="{{ route('login') }}" tabindex="-1" aria-disabled="true">Ingresar</a>
-                  </li>
+                  <a class="nav-link"  data-ajax="false" href="{{ route('users.create') }}">Crear Lista</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active"  data-ajax="false" href="{{ route('users.create') }}">Mis Listas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-ajax="false"href="{{ route('logout') }}">Salir</a>
+                </li>
+
         </ul>
     </div>
 
@@ -38,7 +46,15 @@
              @foreach ($lists as $list)
 
                 <div data-role=collapsible>
-                <h4>{{$list->name}} creada por {{ App\User::where('id',$list->user_id)->first()->name}}</h4>
+                <td>
+                <h4>{{$list->name}} creada el {{ $list->created_at}}
+                </h4>
+                <div data-role="controlgroup" data-type="horizontal" >
+                                        <a href="{{ route('users.edit', $user)}}" data-role="button" data-icon="forward"  style="border-radius: 15px;color:white; background:yellowgreen" >Editar</a>
+                                        <button type="submit" data-role="button" data-icon="delete"style="border-radius: 15px; color:white; background:tomato;">Eliminar</button>
+
+                </div>
+
                 <table class="table table-sm table-dark table-hover bordered">
                         <thead>
                         <tr>
@@ -74,6 +90,8 @@
 
 
 
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

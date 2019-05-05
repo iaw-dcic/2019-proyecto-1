@@ -23,10 +23,19 @@ Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 /**GET/usuarios/{id} pagina detalles.
  * PUT/usuarios/{id} accion para actualizar.
  */
+
+Route::get('usuarios/mostrarListas','UserController@showListas')->name('users.showListas');
+
+Route::get('usuarios/mostrarListas/editarLista','UserController@editLista')->name('users.editLista');
+
+
 Route::put('/usuarios/{user}', 'UserController@update');
 /**Ruta hacia los detalles del usuario para configurar sus vistas
  * Para eso la enlazo con el controlador User Controller y la funcion es show
 */
+
+
+
 Route::get('/usuarios/{user}', 'UserController@show')->name('users.show');
 Route::delete('/usuarios/{user}', 'UserController@destroy')->name('users.destroy');
 // Authentication Routes...

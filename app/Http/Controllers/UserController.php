@@ -30,6 +30,26 @@ class UserController extends Controller
         }
     }
 
+    public function showListas(){
+        if(auth()->user()!=null){
+            $user = auth()->user();
+            //usoEloquentModel para obtener la tabla de listas
+            $lists = Lista::where('user_id',$user->id)->get();
+
+
+            $items = Item::all();
+
+            //A la vista le paso un arreglo asociativo, donde cada fila va a ser (llave,valor)
+            return view('users.showListas', [
+                'lists' => $lists,
+                'user' => auth()->user(),
+                'items' => $items,
+            ]);
+        }else {
+            return back();
+        }
+    }
+
     /**Muestra el detalle del usuario. */
     public function show(User $user){
         $user = User::find($user->id);
@@ -79,7 +99,12 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-
+    public function editarLista(){
+        if(auth()->user()!=null)
+           return view('users.editLista');
+        else
+           return back();
+   }
 
 
     public function store(){
