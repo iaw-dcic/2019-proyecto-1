@@ -1,15 +1,5 @@
 @extends('layouts.app')
 
-<!--Agrega a la barra la opcion de Crear Una lista-->
-@section('opcionesNavBar')
-<li class="nav-item">
-    <a class="nav-link" href='partido'>Crear Partido</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" href='/listadoPartidos'>Mis Partidos</a>
-</li>
-@endsection
-
 <!--Si inicio sesion agrega un mensaje de inicio de sesion-->
 @section('content')
 <div class="container">

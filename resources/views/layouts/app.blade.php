@@ -30,9 +30,15 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
+                @guest
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Inicio
                 </a>
+                @else
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    Inicio
+                </a>
+                @endguest
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -69,7 +75,12 @@
                         </li>
                         @endif
                         @else
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href='partido'>Crear Partido</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href='/listadoPartidos'>Mis Partidos</a>
+                        </li>
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -81,7 +92,6 @@
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>

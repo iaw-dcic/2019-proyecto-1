@@ -42,7 +42,7 @@ Route::delete('/edit/jugador/{id}','ListadoPartidosController@borrarJugador');
 Route::get('/partidosPublicos','InicioController@index');
 
 //EDITAR LA CONFIGURACIÓN DE UN USUARIO
-Route::get('/editarPerfil','PerfilUsuarioController@index');
+Route::get('/editarPerfil','PerfilUsuarioController@index')->name('perfil');;
 Route::post('/editarPerfil/{id}','PerfilUsuarioController@editarPerfil');
 
 //Buscar usuario
