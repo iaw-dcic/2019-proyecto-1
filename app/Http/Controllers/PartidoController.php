@@ -46,7 +46,7 @@ class PartidoController extends Controller
             'place'=>'required|string|max:255',
             'category'=>'required|string|exists:categories|max:255',
             'public'=> ['required','string','max:255', new validarVisibilidad()],
-            'jugadores'=>['required','max:255'],
+            'jugadores'=>['max:255'],
             ]);
     
             //Crear Partido
