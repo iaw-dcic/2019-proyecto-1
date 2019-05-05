@@ -45,9 +45,12 @@ return [
     ],
 
     'github' => [
-    'client_id' => env('GITHUB_CLIENT_ID','12cc3b8b53fd018344cf'),
-    'client_secret' => env('GITHUB_CLIENT_SECRET','3ed263c1f6899d84cb0694c0829fad9d34246f27'),
-    'redirect' => 'http://localhost/proyecto-1/public/login/github/callback',
+    'client_id' => env('GITHUB_CLIENT_ID'),
+    'client_secret' => env('GITHUB_CLIENT_SECRET'),
+    'redirect' => env('GITHUB_URL'),
 ],
+
+
+
 
 ];

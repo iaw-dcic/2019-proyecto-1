@@ -8,7 +8,7 @@
  <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
 <form class="form-inline"  method="POST" action="Categorias" >
   @csrf
-  <div class="form-group mb-2">
+  <pre>  </pre><div class="form-group mb-2">
     <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingresar vehiculo">
   </div>
   <div class="form-group mx-sm-3 mb-2">
@@ -21,12 +21,12 @@
     <input type="text" name="cv" class="form-control">
   </div>
   <div class="form-group">
-    <label>Categorias</label>
+    <label>Categorias <pre>  </pre></label>
     <select class="form-control" name="categoria">
       @foreach ($caters as $cater)
       <option value="{{$cater->categoria}}">{{$cater->categoria}}</option>
          @endforeach
-    </select>
+    </select><pre>  </pre>
   </div>
   <button type="submit" class="btn btn-outline-danger">Confirmar</button>
 </form>
@@ -50,18 +50,39 @@
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-      @foreach ($autos as $auto)
-        @if($auto->categoria==$cater->categoria)
-           {{$auto->auto}} CV:{{$auto->cv}} 
-
         
-            <a  href="{{ url('/home',['nom' => $auto->auto, 'cate' => $cater->categoria])}}"
+        @foreach ($autos as $auto)
+        @if($auto->categoria==$cater->categoria)
+       
+       <table class="table table-borderless">
+       <thead>
+       <tr> 
+      <th scope="col">Vehiculo</th>
+      <th scope="col">Potencia</th>
+      <th scope="col">Accion</th> 
+      </tr>
+     </thead>
+   <tbody>
+     
+    <tr>
+
+      <td>{{$auto->auto}}</td>
+      <td>{{$auto->cv}} </td>
+      <td><a  href="{{ url('/home',['nom' => $auto->auto, 'cate' => $cater->categoria])}}"
             class="btn btn-outline-dark btn-sm">  Eliminar</a>
             @if($auto->publico=='false')
            <a href="{{ url('/home',['nom' => $auto->auto])}}"
-            class="btn btn-outline-dark btn-sm">       Publicar</a><br>
-
+            class="btn btn-outline-dark btn-sm">       Publicar</a></td>
+            @else
+            <a href="{{ url('/home',['nom' => $auto->auto])}}"
+            class="btn btn-outline-dark btn-sm">       Privado</a></td>
             @endif
+    </tr>
+  </tbody>
+</table>
+            
+
+           
        @endif
       @endforeach
       </div>

@@ -68,14 +68,21 @@ class CategoriaController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *Compruebo si esta publico lo hago privado y si esta privado lo hago publico
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nom)
     {
-        $caters = DB::select('update autos Set publico = :dat where id = :id', ['dat' => true,'id'=> Auth::id()]);
+       $publico=DB::select ('select publico from autos where auto =:nom and id =:id',['nom'=>$nom,'id'=> Auth::id(),]);
+   
+        if($publico[0]->publico==0)
+        $caters = DB::select('update autos Set publico = :dat where id = :id and auto = :nom', ['dat' => true,'nom'=>$nom,'id'=> Auth::id()]);
+        else
+             $caters = DB::select('update autos Set publico = :dat where id = :id and auto = :nom', ['dat' => false,'nom'=>$nom,'id'=> Auth::id()]);
+       
          return redirect('home');
+         
     }
 
     /**
