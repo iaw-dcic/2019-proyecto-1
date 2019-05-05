@@ -25,14 +25,14 @@
                 <nav aria-label="pagination">
                     <ul class="pagination">
                         @if($page-1 > 0)
-                        <li class="page-item"><a class="page-link" href="?page={{$page-1}}">Anterior</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{$page-1}}#actividad-publica">Anterior</a></li>
                         @endif
                         @if($page-1 > 0)
-                        <li class="page-item"><a class="page-link" href="?page={{$page-1}}">{{$page-1}}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{$page-1}}#actividad-publica">{{$page-1}}</a></li>
                         @endif
-                        <li class="page-item active"><a class="page-link" href="?page={{$page}}">{{$page}}</a></li>
-                        <li class="page-item"><a class="page-link" href="?page={{$page+1}}">{{$page+1}}</a></li>
-                        <li class="page-item"><a class="page-link" href="?page={{$page+1}}">Siguiente</a></li>
+                        <li class="page-item active"><a class="page-link" href="?page={{$page}}#actividad-publica">{{$page}}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{$page+1}}#actividad-publica">{{$page+1}}</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{$page+1}}#actividad-publica">Siguiente</a></li>
                     </ul>
                 </nav>
             </div>

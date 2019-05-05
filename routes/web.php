@@ -51,6 +51,6 @@ Route::resource('posts', 'PostsController')->only([
 ]);
 
 Route::get('/posts/{post_id}/comments', 'CommentsController@index');
-Route::post('/posts/{post_id}/comments', 'CommentsController@store');
-Route::put('/posts/{post_id}/comments/{id}', 'CommentsController@update');
-Route::delete('/posts/{post_id}/comments/{id}', 'CommentsController@destroy');
+Route::post('/posts/{post_id}/comments', 'CommentsController@store')->middleware('auth');;
+Route::put('/posts/{post_id}/comments/{id}', 'CommentsController@update')->middleware('auth');;
+Route::delete('/posts/{post_id}/comments/{id}', 'CommentsController@destroy')->middleware('auth');;

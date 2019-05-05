@@ -10,12 +10,14 @@ use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller{
+    protected $redirectTo = '/home';
 
     public function index(){
         return Post::paginate(9);
     }
 
     public function store(Request $request){
+        $this->middleware('auth');
         $post = $this->crearPost($request);
         $user = Auth::user();
         $this->crearImagenes($request, $user, $post);
@@ -59,10 +61,30 @@ class PostsController extends Controller{
     }
 
     public function update(Request $request, $id){
-        //
+        $this->middleware('auth');
+        $post = Post::find($id);
+        $post_user = User::find($post->user_id);
+        if($post_user->id == Auth::user()->id){
+            $post->description = $request->descripcion;
+            if($request->public)
+                $post->public = true;
+            else
+                $post->public = false;
+            $post->save();
+        }
+        return back();
     }
 
     public function destroy($id){
-        //
+        $this->middleware('auth');
+        $post = Post::find($id);
+        $post_user = User::find($post->user_id);
+        if($post_user->id == Auth::user()->id){
+            $imagenes = Photo::where('post_id', $post->id)->get();
+            foreach($imagenes as $image)
+                Photo::destroy($image->id);
+            Post::destroy($id);
+        }
+        return back();
     }
 }

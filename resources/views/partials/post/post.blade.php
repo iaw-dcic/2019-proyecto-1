@@ -25,7 +25,9 @@
     }
 ?>
 
-<div class="modal fade" id="modal-post" tabindex="-1" role="dialog" >
+@include('partials.post.editar-post')
+
+<div class="modal fade" id="modal-post" tabindex="-1" role="dialog" style="z-index: 1045;">
     <div class="modal-dialog modal-md modal-dialog-centered" role="document">
         <div class="modal-content">
             <!--HEADER-->
@@ -48,9 +50,16 @@
                                 <i class="fas fa-chevron-down"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownPostButton m-0 p-0">
-                                <a class="dropdown-item" href="#" id="btn-editar-post">Editar post</a>
-                                <a class="dropdown-item" href="#" id="btn-editar-post">Borrar post</a>
+                                <a class="dropdown-item" href="" id="btn-editar-post" data-toggle="modal" data-target="#editar-post-modal">Editar post</a>
+                                <a class="dropdown-item" href="#" id="btn-borrar-post" onclick="$('#form-borrar-post').submit()">Borrar post</a>
                             </div>
+
+
+                            <!--Formulario para borrar un post-->
+                            <form action="{{ url('/posts/'.$post->id) }}" method="POST" id="form-borrar-post">
+                                @csrf
+                                <input type="hidden" name="_method" value="DELETE">
+                            </form>
                         </div>
                         @endif()
 
