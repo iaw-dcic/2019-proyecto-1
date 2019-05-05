@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@section('opcionesNavBar')
-<li class="nav-item">
-    <a class="nav-link" href='home'>Volver</a>
-</li>
-@endsection
-
 @section('content')
 <div class="container">
     <h2>Listado de Partidos Creados</h2>
