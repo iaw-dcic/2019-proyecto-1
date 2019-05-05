@@ -70,7 +70,15 @@ class CollectionsController extends Controller
      */
     public function edit(Collection $collection)
     {
-        return view('collections.edit')->withCollection($collection);
+        if (!Auth::guest() && Auth::user()->id==$collection->user_id)
+            return view('collections.edit')->withCollection($collection);
+        else {
+            $data = [
+                "error_type" => "Edit collection",
+                "description" => "You can't edit other people's collections.",
+            ];
+            return view('error')->withData($data);
+        }
     }
 
     /**
@@ -113,7 +121,25 @@ class CollectionsController extends Controller
         return view('success')->withData($data);
     }
 
-    public function confirmDelete(Collection $collection){
-        return view('collections.delete')->withCollection($collection);
+    public function confirmDelete($id){
+        $collection = Collection::find($id);
+        if (!($collection === NULL)){
+            if (!Auth::guest() && Auth::user()->id == ($collection->user_id))
+                return view('collections.delete')->withCollection($collection);
+            else {
+                $data = [
+                    "error_type" => "Delete collection",
+                    "description" => "You can't delete othe people's collections.",
+                ];
+                return view('error')->withData($data);
+            }
+        }
+        else{
+            $data = [
+                "error_type" => "Delete collection",
+                "description" => "The collection you're trying to delete doesn't exist.",
+            ];
+            return view('error')->withData($data);
+        }
     }
 }

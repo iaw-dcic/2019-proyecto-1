@@ -75,7 +75,6 @@ class LoginController extends Controller
             $newUser->email_verified_at = now();
             $newUser->avatar            = $user->getAvatar();
             $newUser->save();
-            dd($newUser);
             Auth::login($newUser, true);
         }
         return redirect($this->redirectPath());

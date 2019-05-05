@@ -53,7 +53,7 @@
                                     <div class="col-md-6">
                                         <div class="input-group-append">
                                             <span class="input-group-text">$</span>
-                                            <input id="price" type="text" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" required>
+                                            <input id="price" type="text" maxlength="10" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" required>
                                         </div>
                                         @if ($errors->has('price'))
                                             <span class="invalid-feedback" role="alert">

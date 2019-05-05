@@ -37,14 +37,23 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::where('id', $id)->first();
-        $data = [
-            "id" => $user->id,
-            "name" => $user->name,
-            "description" => $user->description,
-            "email" => $user->email,
-        ];
-        return view('users.edit')->withData($data);
+        if (!Auth::guest() && Auth::user()->id==$id){
+            $user = User::where('id', $id)->first();
+            $data = [
+                "id" => $user->id,
+                "name" => $user->name,
+                "description" => $user->description,
+                "email" => $user->email,
+            ];
+            return view('users.edit')->withData($data);
+        }
+        else {
+            $data = [
+                "error_type" => "Edit user",
+                "description" => "You can't edit other user than yourself.",
+            ];
+            return view('error')->withData($data);
+        }
     }
 
     /**

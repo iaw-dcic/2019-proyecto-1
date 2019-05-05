@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->foreign('collection_id')->references('id')->on('collections');
             $table->string('name');
             $table->string('description');
-            $table->float('price');
+            $table->float('price', 12 , 2);
             $table->timestamps();
         });
     }

@@ -71,7 +71,24 @@ class ItemsController extends Controller
      */
     public function edit(Item $item)
     {
-        return view('items.edit')->withItem($item);
+        $collection = Collection::find($item->collection_id);
+        if(!($collection === NULL)){
+            if (!Auth::guest() && Auth::user()->id == ($collection->user_id))
+                return view('items.edit')->withItem($item);
+            else {
+                $data = [
+                    "error_type" => "Edit item",
+                    "description" => "You can't edit other people's items.",
+                ];
+                return view('error')->withData($data);
+            }
+        } else {
+            $data = [
+                "error_type" => "Edit item",
+                "description" => "The item you're trying to edit doesn't exist.",
+            ];
+            return view('error')->withData($data);
+        }
     }
 
     /**
@@ -111,6 +128,23 @@ class ItemsController extends Controller
     }
 
     public function confirmDelete(Item $item){
-        return view('items.delete')->withItem($item);
+        $collection = Collection::find($item->collection_id);
+        if(!($collection === NULL)){
+            if (!Auth::guest() && Auth::user()->id == ($collection->user_id))
+                return view('items.delete')->withItem($item);
+            else {
+                $data = [
+                    "error_type" => "Delete item",
+                    "description" => "You can't delete other people's items.",
+                ];
+                return view('error')->withData($data);
+            }
+        } else {
+            $data = [
+                "error_type" => "Delete item",
+                "description" => "The item you're trying to delete doesn't exist.",
+            ];
+            return view('error')->withData($data);
+        }
     }
 }
