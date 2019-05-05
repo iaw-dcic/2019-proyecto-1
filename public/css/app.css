@@ -650,13 +650,29 @@ ul.pagination {
 
 ul.pagination li.page-item a.page-link {
   color: #05a081;
-  padding: 15px 20px;
-  font-size: 16px;
+  padding: 10px 15px;
+  font-size: 14px;
+  transition: 0.25s;
+  border: none;
+  border-bottom: 1px solid #05a081;
+  border-top: 1px solid #05a081;
+}
+
+ul.pagination li.page-item a.page-link:first-of-type,
+ul.pagination li.page-item a.page-link:last-of-type {
+  border: 1px solid #05a081;
 }
 
 ul.pagination li.active a.page-link {
   color: white;
   background-color: #05a081;
+  transition: 0.25s;
+}
+
+ul.pagination li.page-item a.page-link:hover {
+  color: white;
+  background-color: #06B995;
+  border: 1px solid #06B995;
 }
 
 /*No hay publicaciones*/
@@ -698,12 +714,22 @@ div.no-hay-posts h3 a:hover {
   .grid-figures article figure h2 {
     font-size: 14px;
   }
+
+  ul.pagination li.page-item a.page-link {
+    padding: 15px 20px;
+    font-size: 18px;
+  }
 }
 
 @media screen and (max-width: 991px) and (min-width: 768px) {
   .grid-figures article {
     min-width: 45%;
     min-height: 45%;
+  }
+
+  ul.pagination li.page-item a.page-link {
+    padding: 15px 20px;
+    font-size: 18px;
   }
 }
 
@@ -715,6 +741,11 @@ div.no-hay-posts h3 a:hover {
 
   .grid-figures article figure p {
     font-size: 16px;
+  }
+
+  ul.pagination li.page-item a.page-link {
+    padding: 15px 20px;
+    font-size: 18px;
   }
 }
 
@@ -748,11 +779,11 @@ div.no-hay-posts h3 a:hover {
 }
 
 .card-img-left-login {
-  background-image: url(/images/background-login.jpg?fb04853ba6569b1e102312e9298e8238);
+  background-image: url(/images/background-login.jpg?f57926b8b534021faa48640703558855);
 }
 
 .card-img-left-register {
-  background-image: url(/images/background-register.jpg?fb04853ba6569b1e102312e9298e8238);
+  background-image: url(/images/background-register.jpg?89842e9527e216d28c36e46a31a9b904);
 }
 
 .card-signin .card-body {
@@ -909,25 +940,8 @@ div.img-vistas-previas div.row {
   margin: 0 auto;
 }
 
-div.img-vistas-previas div.row a {
-  position: relative;
-}
-
-div.img-vistas-previas div.row a i {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 24px;
-  color: red;
-  background-color: white;
-  border-radius: 100%;
-  z-index: 10;
-  padding: 0;
-  margin: 0;
-}
-
 div.img-vistas-previas div.row img {
-  max-width: 235px;
+  max-width: 250px;
   max-height: 250px;
   -o-object-fit: cover;
      object-fit: cover;

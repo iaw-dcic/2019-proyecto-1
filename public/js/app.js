@@ -851,7 +851,7 @@ $(document).ready(function () {
 
   var createPost = __webpack_require__(/*! ./createPost */ "./resources/js/createPost.js");
 
-  var search = __webpack_require__(/*! ./search */ "./resources/js/search.js");
+  var navbar = __webpack_require__(/*! ./navbar */ "./resources/js/navbar.js");
 
   var profile = __webpack_require__(/*! ./profile */ "./resources/js/profile.js");
 });
@@ -957,58 +957,8 @@ function _agregarComentario() {
 /*!************************************!*\
   !*** ./resources/js/createPost.js ***!
   \************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function ajaxCrearPost(_x, _x2, _x3) {
-  return _ajaxCrearPost.apply(this, arguments);
-}
-
-function _ajaxCrearPost() {
-  _ajaxCrearPost = _asyncToGenerator(
-  /*#__PURE__*/
-  _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(url, parametros, callback) {
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return $.ajax({
-              type: 'POST',
-              url: url,
-              headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              },
-              data: parametros,
-              contentType: false,
-              processData: false,
-              success: function success(response) {
-                return callback(response);
-              }
-            });
-
-          case 2:
-            return _context.abrupt("return", _context.sent);
-
-          case 3:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _ajaxCrearPost.apply(this, arguments);
-}
+/*! no static exports found */
+/***/ (function(module, exports) {
 
 function readFile(input) {
   var _loop = function _loop(i) {
@@ -1016,7 +966,7 @@ function readFile(input) {
 
     reader.onload = function (event) {
       var filePreview = document.createElement('img');
-      filePreview = "<a href=\"#\" id=\"file-preview-".concat(i, "\"><img src=\"").concat(event.target.result, "\" class=\"col img-fluid\"><i class=\"fas fa-ban\"></i></a>");
+      filePreview = "<img src=\"".concat(event.target.result, "\" class=\"col img-fluid\">");
       $('#file-preview-zone').append(filePreview);
       $("#file-preview-".concat(i)).on('click', function (event) {
         $("#file-preview-".concat(i)).remove();
@@ -1031,23 +981,8 @@ function readFile(input) {
   }
 }
 
-function addPost(username, post) {
-  $('#contenido-actividad').prepend("\n        <article class=\"col-12 col-md-5 col-lg-2 posts\" data-target=\"#modal-post\" data-post=\"".concat(post, "\">\n            <figure data-toggle=\"modal\">\n                <img class=\"img-fluid img-thumbnail\" src=\"/storage/photos/").concat(post.photo_url, "\">\n                <figcaption>\n                    <h2>&#64").concat(username, "</h2>\n                    <i class=\"far fa-heart\"></i>\n                    <i class=\"far fa-comment\"></i>\n                    <p>").concat(post.descripcion, "</p>\n                </figcaption>\n            </figure>\n        </article>\n    "));
-}
-
 $('#fotos').on('change', function (event) {
   readFile(event.target);
-});
-$('#form-crear-post').on('submit', function (event) {
-  event.preventDefault();
-  var parametros = new FormData($(this)[0]);
-  var url = $(event.target).data('url');
-  ajaxCrearPost(url, parametros, function (request) {
-    var username = request.username;
-    var post = request.post;
-    $('#btn-cerrar-crear-post').click();
-    addPost(username, post);
-  });
 });
 
 /***/ }),
@@ -1143,6 +1078,42 @@ function initListeners() {
     } else event.preventDefault();
   });
 } //initListeners();
+
+/***/ }),
+
+/***/ "./resources/js/navbar.js":
+/*!********************************!*\
+  !*** ./resources/js/navbar.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//Consulta AJAX para la búsqueda de usuarios
+$('#div_search .typeahead').typeahead({
+  hint: true,
+  minLength: 1
+}, {
+  limit: 5,
+  name: 'username',
+  source: function source(query, sync, async) {
+    return $.get("/user/search/?username=".concat(query), function (data) {
+      var users = {
+        username: []
+      };
+      data.users.forEach(function (user) {
+        users.username.push(user.username);
+      });
+      return async(users.username);
+    });
+  }
+}); //Efectos para el dropdown menu
+
+$('.dropdown').on('show.bs.dropdown', function () {
+  $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+});
+$('.dropdown').on('hide.bs.dropdown', function () {
+  $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+});
 
 /***/ }),
 
@@ -1369,34 +1340,6 @@ function initListeners() {
 }
 
 initListeners();
-
-/***/ }),
-
-/***/ "./resources/js/search.js":
-/*!********************************!*\
-  !*** ./resources/js/search.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$('#div_search .typeahead').typeahead({
-  hint: true,
-  minLength: 1
-}, {
-  limit: 5,
-  name: 'username',
-  source: function source(query, sync, async) {
-    return $.get("/user/search/?username=".concat(query), function (data) {
-      var users = {
-        username: []
-      };
-      data.users.forEach(function (user) {
-        users.username.push(user.username);
-      });
-      return async(users.username);
-    });
-  }
-});
 
 /***/ }),
 

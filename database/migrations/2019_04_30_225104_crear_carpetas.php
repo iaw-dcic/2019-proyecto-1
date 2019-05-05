@@ -12,7 +12,9 @@ class CrearCarpetas extends Migration
      * @return void
      */
     public function up(){
-
+        Storage::deleteDirectory('users');
+        Storage::deleteDirectory('photos');
+        Storage::deleteDirectory('images');
         Storage::makeDirectory('users');
         Storage::makeDirectory('photos');
         Storage::makeDirectory('images');

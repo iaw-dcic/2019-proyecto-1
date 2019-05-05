@@ -16,16 +16,10 @@ class PostsController extends Controller{
     }
 
     public function store(Request $request){
-        if($request->ajax()){
-            $post = $this->crearPost($request);
-            $user = Auth::user();
-            $this->crearImagenes($request, $user, $post);
-
-            return response()->json([
-                'post' => $post,
-                'username' => $user->username
-            ]);
-        }
+        $post = $this->crearPost($request);
+        $user = Auth::user();
+        $this->crearImagenes($request, $user, $post);
+        return back();
     }
 
     private function crearPost(Request $request){

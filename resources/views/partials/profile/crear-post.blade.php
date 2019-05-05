@@ -11,11 +11,11 @@
             </div>
 
             <!--Body-->
-            <form method="POST" data-url="/posts" enctype="multipart/form-data" id="form-crear-post" autocomplete="off">
+            <form method="POST" action="/posts" enctype="multipart/form-data" id="form-crear-post" autocomplete="off">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control" placeholder="Descripción del post" maxlength="240" name="descripcion" required>
+                        <input type="text" class="form-control" placeholder="Descripción del post" maxlength="240" id="descripcion" name="descripcion" required>
                     </div>
                     <div class="input-group mb-3">
                         <div class="custom-file">
@@ -34,16 +34,11 @@
                 <!--Footer-->
                 <div class="modal-footer">
                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" value="true" name="public" id="hacer-publico">
-                        <label class="form-check-label" for="hacer-publico">¿Hacer público?</label>
+                        <input type="checkbox" class="form-check-input" value="true" name="public" id="publico">
+                        <label class="form-check-label" for="hacer-publico">Hacer público</label>
                     </div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-cerrar-crear-post">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" id="btn-publicar-post">Publicar
-                        <!--Poner el button en disabled y agregar este código con JQuery
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        Subiendo...
-                        -->
-                    </button>
+                    <button type="submit" class="btn btn-primary" id="btn-publicar-post">Publicar</button>
                 </div>
             </form>
         </div>

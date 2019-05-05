@@ -59,7 +59,7 @@
                             <img src="{{ url('/storage/users/' . Auth::user()->photo) }}" id="foto_perfil_navbar"></img>
                             &#64;{{ Auth::user()->username }} <span class="caret"></span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu fade" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item efecto-corchete" href="{{ route('profile') }}">Perfil</a>
                             <a class="dropdown-item efecto-corchete" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

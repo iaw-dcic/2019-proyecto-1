@@ -3,6 +3,6 @@ $(document).ready(() => {
     var signup = require('./register');
     var showPost = require('./showPost');
     var createPost = require('./createPost');
-    var search = require('./search');
+    var navbar = require('./navbar');
     var profile = require('./profile');
 });
