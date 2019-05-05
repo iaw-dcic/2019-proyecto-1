@@ -11,11 +11,20 @@ class WelcomeController extends Controller
 {
     public function index(){
         
+     
+
+       return view('welcome');
+    }
+    
+    
+    /*
+    public function index(){
+        
         $colecciones=Colection::where('estado',1)->get();
 
        return view('welcome', compact('colecciones'));
     }
-
+*/
     public function show($id){
         $coleccion=Colection::where('id', $id)->get();
         $items=Element::where('colection_id', $id)->get();
