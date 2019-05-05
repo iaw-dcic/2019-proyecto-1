@@ -20,11 +20,11 @@
                         <input type="hidden" name="listId" value="{{$list->id}}">
                         <div>
                             <span class="input-group-addon" id="basic-addon1">Nombre actual de la lista: {{$list->name}}</span>
-                            <input type="text" class="form-control" placeholder="Nombre Lista" aria-describedby="basic-addon1" name="titulo" required>
+                            <input type="text" class="form-control" placeholder="Nombre Lista" aria-describedby="basic-addon1" name="name" >
                         </div>
                         <div>
                             <span class="input-group-addon" id="basic-addon2">descripcion actual de la lista: {{$list->description}}</span>
-                            <input type="text" class="form-control" placeholder="Descripción Lista" aria-describedby="basic-addon2" name="listaDescripcion" required>
+                            <input type="text" class="form-control" placeholder="Descripción Lista" aria-describedby="basic-addon2" name="listaDescripcion" >
                         </div>
                         <div class="row">
                         <div class="col-lg-6">

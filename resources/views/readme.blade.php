@@ -29,15 +29,12 @@
             <li>Es probable que al lanzar la App desde Heroku, la homepage no cargue los etilos CSS, desconozco las razones por las cuales ocurre esto
                 esto SOLO OCURRE LA PRIMERA VEZ, cuando se vuelve a cargar la homepage, la misma se carga con los estilos CSS como debería.
                      Esto solo ocurre para la homeepage </li>
-            <li>Por razones que desconozco, los usuarios NO podían crearse debido a problemas con al base de Datos y los IDs,
-                por más que tuvieran auto_increment en la componente 'id',
-                    no se generaba una ID, asi que fue necesario hard-codear una linea de código que genere números aleatorios para los usuarios que hagan de IDs </li>
             <li>La contraseña al crear un usuario debe ser como mínimo de 8 caracteres </li>
             <li>Para los estilos y la presentación se usó el framework de estilos Bootstrap: https://getbootstrap.com/ </li>
             <li>Con lo que respecta al ingreso de fechas para los juegos,
                     no existe un chequeo de si la fecha ingresada corresponde a una fecha que NO sea posterior a la fecha actual </li>
-            <li> Al modificar los datos de una lista, es necesario ingresar tanto un nombre como una descripcion </li>
             <li> Al modificar los datos de un juego, es necesario que todos los campos tengan datos para que el mecanismo funcione </li>
+            <li>para ciertas estilos de texto se usó Google Fonts: https://fonts.google.com/ </li>
         </ul>
 </div>
 

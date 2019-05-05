@@ -37,7 +37,8 @@ class profileController extends Controller
         else{
             $name = $nameac[0]->id; 
             $entrada = "guest";
-            return view('profiles.show')->with('name',$nameUs)->with('idActual',$name)->with('loggedIn',$entrada); //es un usuario externo
+            $surname = $nameac[0]->surname;
+            return view('profiles.show')->with('name',$nameUs)->with('idActual',$name)->with('loggedIn',$entrada)->with('surname',$surname); //es un usuario externo
         }
     
     }
@@ -61,24 +62,33 @@ class profileController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user = User::findOrFail(Auth::user()->id);
-        if(Input::get('name') == "")
-            $user->name = Auth::user()->name;
-        else
-            $user->name = Input::get('name');
-        
-        if(Input::get('email') == "")
-            $user->email = Auth::user()->email;
-        else
-            $user->email = Input::get('email');
-        
-        if(Input::get('surname') == "")
-            $user->surname = $user->surname;
-        else
-            $user->surname = Input::get('surname');
 
+        $user = User::findOrFail(Auth::user()->id);
+        if(Input::get('name') != ""){
+           
+            $validated = request()->validate([
+                'name' => ['unique:users','string', 'max:255',]
+            ]);    
+            $user->name = Input::get('name');
+        }
+         
+        
+        if(Input::get('email') != ""){
+            $validated = request()->validate([
+                'email' => ['string', 'email', 'max:255', 'unique:users'] ]); 
+                $user->email = Input::get('email');
+        }
+          
+        
+        if(Input::get('surname') != ""){
+            
+            $validated = request()->validate([
+                'surname' => ['string', 'max:255'] ]); 
+            $user->surname = Input::get('surname');
+        }
+           
         $user->save();
-        return view('welcome');        
+        return redirect('/');        
     }
 
     /**

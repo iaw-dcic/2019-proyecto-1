@@ -19,7 +19,7 @@
                         <div class="form-group">
                             <label for="list_title">Titulo de la lista</label>
                             <input type="text" class="form-control" id="list_title" aria-describedby="listHelp" 
-                                placeholder="Ingresa el nombre de la lista" name="title" required value="{{old('title')}}">
+                                placeholder="Ingresa el nombre de la lista" name="name" required value="{{old('name')}}">
                         </div>
                         <div class="form-group">
                             <label for="list_description">Descripcion</label>

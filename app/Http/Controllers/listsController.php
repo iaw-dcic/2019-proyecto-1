@@ -43,13 +43,15 @@ class listsController extends Controller
     }
 
     /*
-    * NO SE QUE SI ES UNA LISTA PUBLICA DEL USUARIO $idUsuario
+    * NO SE SI ES UNA LISTA PUBLICA DEL USUARIO $idUsuario
+    * Esto se acciona cuando DESDE eL PERFIL DE UN USUARIO AJENO, se ingresa a las listas y se hace clic en una lista
     */
     public function accederDatosListaAjena(String $nomUsuario, int $idLista){
 
 
         $idUsuario = DB::table('users')->where('name', $nomUsuario)->get();
         $idUsuario = $idUsuario[0]->id;
+        dd($idUsuario);
         $lista = Lista::where([ ['id', "=", $idLista], ['user_id', "=", $idUsuario] ])->get();
         abort_if($lista[0]->public == 0 &&  ($idUsuario != auth()->id() || $idUsuario == "guest"), 403);
         $juegos = Juego::where('list_id',$lista[0]->id)->get();
@@ -77,7 +79,7 @@ class listsController extends Controller
     {
   
         $validated = request()->validate([
-            'title' => ['required', 'min:5', 'max:255'],
+            'name' => ['required', 'min:5', 'max:255', 'unique:listas'],
             'listaDescripcion' => ['required', 'min:5', 'max:255']
         ]);
         $public = 0;
@@ -87,7 +89,7 @@ class listsController extends Controller
 
         $lista = new Lista;
         $lista->user_id=auth()->id();
-        $lista->name=Input::get('title');
+        $lista->name=Input::get('name');
         $lista->description=Input::get('listaDescripcion');
         $lista->public=$public;
         
@@ -153,6 +155,7 @@ class listsController extends Controller
     public function update()
     {
 
+
         $public = 0;
         if(Input::get('public') == 'on')
             $public = 1;
@@ -160,8 +163,22 @@ class listsController extends Controller
         $userName= Auth::user()->name;
         
         $lista = Lista::findOrFail(request('listId'));
-        $lista->name=Input::get('titulo');
-        $lista->description=Input::get('listaDescripcion');
+        
+        if(Input::get('name') != ""){
+            
+            $validated = request()->validate([
+                'name' => ['min:5','max:255', 'unique:listas'] ]);
+            $lista->name=Input::get('name');
+        }
+        
+        if(Input::get('listaDescripcion') != ""){
+
+            $validated = request()->validate([
+                'listaDescripcion' => ['min:5', 'max:255']
+            ]);
+            $lista->description=Input::get('listaDescripcion');
+        }
+       
         $lista->public=$public;
         $lista->save();
         return redirect('/lists');

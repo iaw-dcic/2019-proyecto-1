@@ -18,19 +18,19 @@
                             <input type="hidden" name="gameId" value="{{$juegoInfo[0]->id}}">
                             <div class="form-group">
                                 <label for="game_title">Titulo del Juego</label>
-                                <input type="text" class="form-control" id="game_title" aria-describedby="listHelp" placeholder="Ingresa el nombre del juego" name="title" required value="{{$juegoInfo[0]->name}}">
+                                <input type="text" class="form-control" id="game_title" aria-describedby="listHelp" placeholder="Ingresa el nombre del juego" name="title" value="{{$juegoInfo[0]->name}}">
                             </div>
                             <div class="form-group">
                                 <label for="game_genre">Descripcion</label>
-                                <input type="text" class="form-control" id="game_genre" aria-describedby="game_genre" placeholder="Ingresa el genero del juego" name="genre" required value="{{$juegoInfo[0]->genre}}">
+                                <input type="text" class="form-control" id="game_genre" aria-describedby="game_genre" placeholder="Ingresa el genero del juego" name="genre" value="{{$juegoInfo[0]->genre}}">
                             </div>
                             <div class="form-group">
                                 <label for="game_company">compañia</label>
-                                <input type="text" class="form-control" id="game_company" aria-describedby="game_company" placeholder="Ingresa la compañia que creó el juego" name="company" required value="{{$juegoInfo[0]->company}}">
+                                <input type="text" class="form-control" id="game_company" aria-describedby="game_company" placeholder="Ingresa la compañia que creó el juego" name="company" value="{{$juegoInfo[0]->company}}">
                             </div>
                             <div class="form-group">
                                 <label for="release_date">fecha de salida</label>
-                                <input type="date" class="form-control" id="release_date" aria-describedby="release_date" placeholder="Ingresa la fecha de salida del juego" name="release_date" required value="{{$juegoInfo[0]->release_date}}">
+                                <input type="date" class="form-control" id="release_date" aria-describedby="release_date" placeholder="Ingresa la fecha de salida del juego" name="release_date" value="{{$juegoInfo[0]->release_date}}">
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary" >Guardar Datos Juego </button>

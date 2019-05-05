@@ -17,7 +17,7 @@ class CreateListasTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->timestamps();
-            $table->string('name')->nullable($value=false);
+            $table->string('name')->nullable($value=false)->unique();
             $table->boolean('public');
             $table->string('description');
             $table->engine = 'InnoDB';

@@ -7,6 +7,7 @@ use App\Lista;
 use App\Juego;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 
 class ListGamesController extends Controller
@@ -37,7 +38,14 @@ class ListGamesController extends Controller
      */
     public function edit(int $nombreJuego)
     {
+        
+      
         $juegoInfo = DB::table('juegos')->where('id',$nombreJuego)->get();
+        $listID = $juegoInfo[0]->list_id;
+        $lista = DB::table('listas')->where('id', $listID )->get();
+        $userID = $lista[0]->user_id; 
+    
+        abort_if(!Auth::check() || $userID != auth()->id(), 403);
         return view('lists.games.edit', compact('juegoInfo'));
     }
 
@@ -48,10 +56,16 @@ class ListGamesController extends Controller
      */
     public function update(){
         $juego = Juego::findOrFail(request('gameId'));
-        $juego->name = request('title');
-        $juego->genre =request('genre');
-        $juego->company =request('company');
-        $juego->release_date =request('release_date');
+
+        if(Input::get('title') != "")
+            $juego->name = request('title');
+        if(Input::get('genre') != "")
+            $juego->genre =request('genre');
+        if(Input::get('company') != "")
+            $juego->company =request('company');
+        if(Input::get('release_date') != "")
+            $juego->release_date =request('release_date');
+
         $juego->save();
         $juegoId = $juego->list_id;
         return redirect('/lists');
@@ -65,7 +79,7 @@ class ListGamesController extends Controller
         $nombreUs = DB::table('users')->where('id',$idUsuario)->get();
         $nombreUs = $nombreUs[0]->name;
         $lista = Lista::where('id',$idLista)->get();
-        abort_if($lista[0]->public == 0 &&  ($idUsuario != auth()->id() || $idUsuario == "guest"), 403);
+        abort_if($lista[0]->public == 0 &&  ($idUsuario != auth()->id()), 403);
         $datosJuego = DB::table('juegos')->where([ ['list_id',"=",$idLista,], ['id',"=",$idJuego] ])->get();
         
         return view('lists.games.show', compact('datosJuego','idLista','idUsuario','nombreUs'));
