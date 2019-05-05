@@ -56,6 +56,11 @@ class ListadoPartidosController extends Controller
 
     public function editarPartido($id)
     {
+        $user = Auth::user();
+        $partido = partido::where('id', $id)->get()->first();
+        if ($user->id != $partido->user_id) {
+            abort(403, 'No está autorizado para realizar la acción');
+        }
         $estados = state::get('visibilidad');
         $partido = partido::findOrFail($id);
         $categorias = category::get('category');
@@ -66,12 +71,13 @@ class ListadoPartidosController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $user = Auth::user();
         $partido = partido::where('id', $id)->get()->first();
         if ($user->id != $partido->user_id) {
             abort(403, 'No está autorizado para realizar la acción');
         }
+
+
         $data = $request->all();
 
         $request->validate([
@@ -115,12 +121,18 @@ class ListadoPartidosController extends Controller
     {
         $jugador = player::where('id', $id)->get()->first();
         $idpartido = (player::where('id', $id)->get()->first())->id_partido;
+
+        $user = Auth::user();
+        $partido = partido::where('id', $idpartido)->get()->first();
+        if ($user->id != $partido->user_id) {
+            abort(403, 'No está autorizado para realizar la acción');
+        }
+
         if ($jugador != null)
             $jugador->delete();
 
 
         $estados = state::get('visibilidad');
-        $partido = partido::findOrFail($idpartido);
         $categorias = category::get('category');
         $jugadores = player::where('id_partido', $idpartido)->get();
 

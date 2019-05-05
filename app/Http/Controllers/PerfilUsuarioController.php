@@ -18,6 +18,11 @@ class PerfilUsuarioController extends Controller
 
     public function editarPerfil(Request $request, $id)
     {
+        $user = Auth::user();
+        if ($user->id != $id) {
+            abort(403, 'No está autorizado para realizar la acción');
+        }
+
         $userAmodificar  = User::where('id', $id)->get()->first();
         $data = $request->all();
 

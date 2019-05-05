@@ -63,7 +63,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('readme') }}">{{ __('Readme') }}</a>
                         </li>
-                        @yield('opcionesNavBar')
+                        <li class="nav-item">
+                            <a class="nav-link" href='/partidosPublicos'>Partidos públicos</a>
+                        </li>
 
                         @guest
                         <li class="nav-item">
