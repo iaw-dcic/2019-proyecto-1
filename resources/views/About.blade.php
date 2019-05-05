@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<title>Acerca de</title>
+<title>Acerca de - Carteleras</title>
 <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
 @section('content')
 <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
@@ -20,6 +20,7 @@
         <li>Laravel (Framework server)</li>
         <li>Bootstrap (Framework estilo)</li>
         <li>Socialite para el login</li>
+        <li>Font-awesome para las fuentes</li>
     </ul>
 </body>
 @endsection

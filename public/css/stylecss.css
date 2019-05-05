@@ -2,10 +2,10 @@
 html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Nunito', sans-serif;
+                font-family: "Comic Sans", Times, serif;
                 font-weight: 200;
                 height: 100vh;
-                margin: 0;
+                margin: 10;
             }
 
             .full-height {
@@ -29,7 +29,7 @@ html, body {
             }
 
             .content {
-                text-align: right;
+                text-align: left;
             }
 
             .title {
@@ -38,7 +38,7 @@ html, body {
 
             .links > a {
                 color: #636b6f;
-                padding: 0 25px;
+                padding: 25 25px;
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
@@ -48,4 +48,9 @@ html, body {
 
             .m-b-md {
                 margin-bottom: 30px;
+            }
+
+            .linebreaker {
+                margin-top:5px;
+                margin-bottom:5px;
             }

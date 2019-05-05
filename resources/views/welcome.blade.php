@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Bienvenido - Carteleras</title>
+        <title>Bienvenido a Carteleras</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -17,7 +17,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Cine</a>
+                    <a href="{{ url('/home') }}">{{ Auth::user()->name }}</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -34,8 +34,9 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/About') }}">Acerca de</a> 
                     <a href="{{ url('/ListasPublicas') }}">Pelitecas</a>
+                    <br><br>
+                    <a href="{{ url('/About') }}">Acerca de</a>
                 </div>
             </div>
         </div>
