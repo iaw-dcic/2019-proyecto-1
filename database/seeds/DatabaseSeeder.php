@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder{
             Cloudder::upload($url);
             $result = Cloudder::getResult();
             $photo_id = $result['public_id'];
-            $photo_url = $result['url'];
+            $photo_url = $result['secure_url'];
 
             $user->photo_id = $photo_id;
             $user->photo_url  =$photo_url;
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder{
             Cloudder::upload($url);
             $result = Cloudder::getResult();
             $photo_id = $result['public_id'];
-            $photo_url = $result['url'];
+            $photo_url = $result['secure_url'];
 
             $photo->photo_id = $photo_id;
             $photo->photo_url = $photo_url;

@@ -46,7 +46,7 @@ class PostsController extends Controller{
             Cloudder::upload($file->getRealPath());
             $result = Cloudder::getResult();
             $photo_id = $result['public_id'];
-            $photo_url = $result['url'];
+            $photo_url = $result['secure_url'];
 
             $photo = new Photo();
             $photo->post_id = $post->id;

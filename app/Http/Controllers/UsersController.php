@@ -74,7 +74,7 @@ class UsersController extends Controller{
         Cloudder::upload($file->getRealPath());
         $result = Cloudder::getResult();
         $photo_id = $result['public_id'];
-        $photo_url = $result['url'];
+        $photo_url = $result['secure_url'];
         $user->photo_id = $photo_id;
         $user->photo_url = $photo_url;
         $user->save();
