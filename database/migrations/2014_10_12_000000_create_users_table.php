@@ -13,10 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        /*
+            TODO: Agregar 3 campos mas a usuario
+        */
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('nombre')->nullable();
             $table->string('email')->unique();
+            $table->text('about')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
