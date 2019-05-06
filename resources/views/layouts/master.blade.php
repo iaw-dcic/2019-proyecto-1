@@ -26,7 +26,7 @@
     <div id="wrap">
     @include('layouts.header')
 
-    <main role="main">
+    <main>
         @yield('content')
     </main>
     </div>
