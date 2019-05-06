@@ -1,23 +1,14 @@
 @extends('layouts.app')
-
+<title>Mi cuenta</title>
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<link href="{{ asset('css/stylecss.css') }}" rel="stylesheet">
+<link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
+<body class = 'fondo'>
+    <div class="links">
+        <a href="{{ url('/perfil') }}">Mi perfil</a>
+        <br>
+        <a href="{{ url('/PelitecaEditor') }}">Mi peliteca</a>
     </div>
-</div>
+</body>
 @endsection

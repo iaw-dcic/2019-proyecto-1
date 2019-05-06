@@ -1,7 +1,8 @@
 @extends('layouts.app')
 <title>Acerca de - Carteleras</title>
-<link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
 @section('content')
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<link href="{{ asset('css/stylecss.css') }}" rel="stylesheet">
 <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
 <body class = 'fondo'>
     <div class='tituloAbout'>

@@ -7,10 +7,10 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Request\PelitecaFormRequest;
+use App\Http\Request\PelitecaShowerFormRequest;
 use App\genero;
 
-class PelitecaController extends Controller
+class PelitecaShowerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,10 @@ class PelitecaController extends Controller
      */
     public function index($id)
     {
-        $puntajes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        $puntajes = array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
         $caters = DB::select('select genero from generos');
         $peliculas = DB::select('select pelicula,genero,anio,puntaje from peliculas where id = :id and publico =:dat' , ['id' => $id, 'dat' => true]);
-        return view('Peliteca', ['puntajes' => $puntajes ,'caters' => $caters ,'peliculas' => $peliculas ]);
+        return view('PelitecaShower', ['puntajes' => $puntajes ,'caters' => $caters ,'peliculas' => $peliculas ]);
     }
 
     /**
@@ -49,7 +49,7 @@ class PelitecaController extends Controller
             $genero->genero=$request->input('name');
             $genero->save();
         }
-       return redirect('/home');
+        return redirect('/home');
     }
 
     /**

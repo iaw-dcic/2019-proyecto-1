@@ -39,7 +39,7 @@ class GeneroController extends Controller
     {
         $Pelicula=new pelicula();//nuestro modelo
         $Pelicula->id=Auth::id();
-        if(!empty($request->input('titulo')) and !empty($request->input('puntaje')))
+        if(!empty($request->input('titulo')) and !empty($request->input('anio')) and !empty($request->input('puntaje')))
         {
              $Pelicula->pelicula=$request->input('titulo');
              $Pelicula->genero=$request->input('genero');
@@ -47,7 +47,7 @@ class GeneroController extends Controller
              $Pelicula->puntaje=$request->input('puntaje');
              $Pelicula->publico=false;
              $Pelicula->save();
-         }
+        }
        return redirect('/home');
     }
 
@@ -96,6 +96,5 @@ class GeneroController extends Controller
     {
          $caters = DB::select('delete from peliculas where genero=:cate and pelicula=:nom and anio=:anio', ['nom' => $nom,'cate'=>$cate,'anio'=>$anio]);      
         return redirect('home');
-         
     }
 }

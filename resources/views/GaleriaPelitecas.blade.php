@@ -21,7 +21,7 @@
       <td>{{$user->name}}</td>
       <td>{{$user->lastname}}</td>
       <td>{{$user->email}}</td>
-      <td><a class="btn btn-primary" href="{{ url('/Peliteca',$user->id) }}"role="button">Obtener</a></td>
+      <td><a class="btn btn-primary" href="{{ url('/PelitecaShower',$user->id) }}"role="button">Obtener</a></td>
     </tr>
    @endforeach
   </tbody>
