@@ -106,7 +106,7 @@
                         <div class="form-group row">
                             <div class="col">
                                 <input placeholder="Titulo" id="title" type="text" class="form-control{{ $errors->has('title') ? 'is-invalid' : '' }}"
-                                name="title" value="{{ old('title') }}">
+                                name="title" value="{{ old('title') }}" autofocus>
                                 @if ($errors->has('title'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('title') }}</strong>
@@ -117,7 +117,7 @@
                         <div class="form-group row">
                                 <div class="col">
                                     <input placeholder="Categoria" id="category" type="text" class="form-control{{ $errors->has('category') ? 'is-invalid' : '' }}"
-                                    name="category" value="{{ old('category') }}">
+                                    name="category" value="{{ old('category') }}" autofocus>
                                     @if ($errors->has('category'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('category') }}</strong>
