@@ -7,7 +7,7 @@ Su lista de categorias:
 <br>
       EL usuario no ingreso ningun vehiculo
 @endif
-
+ 
 
   @foreach ($caters as $cater)
 <div class="accordion" id="accordionExample">
@@ -25,22 +25,33 @@ Su lista de categorias:
         
         @foreach ($autos as $auto)
         @if($auto->categoria==$cater->categoria)
-       
+     
        <table class="table table-borderless">
        <thead>
        <tr> 
       <th scope="col">Vehiculo</th>
       <th scope="col">Potencia</th>
+      <th scope="col">Accion</th> 
       </tr>
      </thead>
-   <tbody>  
+     
+   <tbody>
+     
     <tr>
+
+ 
       <td>{{$auto->auto}}</td>
       <td>{{$auto->cv}} </td>
+      
+    
+      
+   
+  
+ 
     </tr>
   </tbody>
 </table>
-            
+          
 
            
        @endif
@@ -48,4 +59,7 @@ Su lista de categorias:
       </div>
     </div>
   </div>
+
+  @endforeach
+  
 @endsection
