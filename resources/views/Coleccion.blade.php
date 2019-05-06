@@ -7,7 +7,9 @@ Su lista de categorias:
 <br>
       EL usuario no ingreso ningun vehiculo
 @endif
- @foreach ($caters as $cater)
+
+
+  @foreach ($caters as $cater)
 <div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
@@ -20,13 +22,30 @@ Su lista de categorias:
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-      @foreach ($autos as $auto)
+        
+        @foreach ($autos as $auto)
         @if($auto->categoria==$cater->categoria)
-           {{$auto->auto}} CV:{{$auto->cv}}  
+       
+       <table class="table table-borderless">
+       <thead>
+       <tr> 
+      <th scope="col">Vehiculo</th>
+      <th scope="col">Potencia</th>
+      </tr>
+     </thead>
+   <tbody>  
+    <tr>
+      <td>{{$auto->auto}}</td>
+      <td>{{$auto->cv}} </td>
+    </tr>
+  </tbody>
+</table>
+            
+
+           
        @endif
       @endforeach
       </div>
     </div>
   </div>
-  @endforeach
 @endsection
