@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/ListasPublicas') }}">Pelitecas</a>
+                    <a href="{{ url('/GaleriaPelitecas') }}">Galeria de pelitecas</a>
                     <br><br>
                     <a href="{{ url('/About') }}">Acerca de</a>
                 </div>
