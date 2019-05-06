@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\User;
+use JD\Cloudder\Facades\Cloudder;
 
 class LoginController extends Controller{
     use AuthenticatesUsers;
