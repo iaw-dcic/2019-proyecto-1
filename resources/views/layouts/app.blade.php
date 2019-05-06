@@ -12,12 +12,19 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+
+    <!--Boostrap core CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+
+
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body>
     <div id="app">
@@ -26,6 +33,29 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                @if(auth()->user()!=null)
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                          <a class="nav-link " data-ajax="false" href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link crear"  data-ajax="false" href="{{ route('users.create') }}">Crear Lista</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"  data-ajax="false" href="{{ route('users.showListas') }}">Mis Listas</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-ajax="false"href="{{ route('logout') }}">Configuración</a>
+                        </li>
+                        <li>
+                    {{-- <a href="{{ route('users.show',$user) }}" data-ajax="false">usuario</a> --}}
+                        </li>
+
+                </ul>
+                @endif
+
+
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

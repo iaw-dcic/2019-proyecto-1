@@ -134,7 +134,7 @@ class ListController extends Controller
 
             $list = Lista::where('id',$id)->first();
             $list->delete();
-            return redirect()->route('users.showListas')->with('message', 'La lista'.$list->name.' ha sido borrada de forma exitosa');
+            return redirect()->route('users.showListas')->with('message', 'La lista '.$list->name.' ha sido borrada de forma exitosa');
         }else {
             return back();
         }

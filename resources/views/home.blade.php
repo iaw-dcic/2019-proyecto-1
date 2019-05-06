@@ -1,23 +1,48 @@
 @extends('layouts.app')
+ {{--  jquery  --}}
+ <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+ <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+ <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    You are logged in!
-                </div>
+@if($lists->isNotEmpty())
+     <div class="list-group">
+         @foreach ($lists as $list)
+
+            <div data-role=collapsible>
+            <h4>{{$list->name}} creada por {{ App\User::where('id',$list->user_id)->first()->name}}</h4>
+            <table class="table table-sm table-dark table-hover bordered">
+                    <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Club</th>
+                    <th scope="col">Estadio</th>
+                    <th scope="col">Capacidad</th>
+                    <th scope="col">Pais</th>
+                    </tr>
+                    </thead>
+                    @foreach($items as $item)
+                        @if($item->list_id == $list->list_id)
+                             <tbody>
+                                    <tr>
+                                            <th scope="row"></th>
+                                            <td>{{ $item->nombre_club }}</td>
+                                            <td>{{ $item->nombre_estadio }}</td>
+                                            <td>{{ $item->capacidad_estadio }}</td>
+                                            <td>{{ $item->pais }}</td>
+                                    </tr>
+                             </tbody>
+                        @endif
+                    @endforeach
+            </table>
             </div>
-        </div>
+        @endforeach
     </div>
-</div>
+
+ @else
+    <p>No se han creado listas todavía</p>
+@endif
+
 @endsection

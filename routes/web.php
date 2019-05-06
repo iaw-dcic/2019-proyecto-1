@@ -10,10 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'WelcomeController@index')->name('welcome');
-/**Ruta hacia la página principal de la aplicación */
-Route::get('/usuarios', 'ListController@index')->name('users.index');
-/** Ruta para registrarse */
+Route::get('/', 'HomeController@index')->name('home');
+
+/** Ruta para crear una lista */
 Route::get('usuarios/nuevo', 'ListController@create')->name('users.create');
 Route::post('usuarios/crear','ListController@store');
 Route::get('usuarios/nuevoItem','ListController@createItem')->name('users.createItem');

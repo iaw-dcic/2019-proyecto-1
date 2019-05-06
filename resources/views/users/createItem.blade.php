@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
-
+@extends('layouts.app')
 
     <!--Boostrap core CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,23 +11,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
     <title>Crear Usuario</title>
-</head>
-<body>
-        <div>
-        <ul class="nav nav-pills nav-fill">
-                <li class="nav-item">
-                  <a class="nav-link active" href="{{ route('users.index') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('users.create') }}">Crear Lista</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Salir</a>
-                </li>
 
-        </ul>
-        </div>
-        <br>
+@section('content')
+
+
 
 
         <div class="container">
@@ -108,11 +85,4 @@
 
             });
         </script>
-
-
-
-
-
-
-</body>
-</html>
+@endsection
