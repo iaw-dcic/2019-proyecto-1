@@ -41,7 +41,7 @@
 
                         <!-- esta logeado: -->
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{--si quiero un icono:--}}
                                 <i class="fas fa-user"></i>
                                 {{--si quiero nombre:
