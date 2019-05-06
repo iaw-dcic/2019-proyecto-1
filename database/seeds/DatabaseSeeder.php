@@ -9,6 +9,7 @@ class DatabaseSeeder extends Seeder{
      * @return void
      */
     public function run(){
+        /*
         factory(\App\User::class, 10)->create()->each(function(\App\User $user){
             $url = $user->photo;
             $file = file($url);
@@ -28,5 +29,6 @@ class DatabaseSeeder extends Seeder{
             $photo->save();
         });;
         factory(\App\Comment::class, 100)->create();
+        */
     }
 }
