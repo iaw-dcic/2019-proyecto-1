@@ -36,3 +36,5 @@ Route::get('/login/{provider}','Auth\SocialAuthController@redirectToProvider');
 Route::get('/login/{provider}/callback','Auth\SocialAuthController@handleProviderCallback');
 
 Route::get('/About','AboutController@index');
+
+Route::resource('users', 'UserController');
