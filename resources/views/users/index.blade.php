@@ -33,6 +33,9 @@
                 <li class="nav-item">
                   <a class="nav-link" data-ajax="false"href="{{ route('logout') }}">Salir</a>
                 </li>
+                <li>
+            {{-- <a href="{{ route('users.show',$user) }}" data-ajax="false">usuario</a> --}}
+                </li>
 
         </ul>
     </div>
@@ -54,7 +57,7 @@
                         </tr>
                         </thead>
                         @foreach($items as $item)
-                            @if($item->list_id == $list->list_id)
+                            @if($item->list_id == $list->id)
                                  <tbody>
                                         <tr>
                                                 <th scope="row"></th>

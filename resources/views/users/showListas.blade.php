@@ -32,7 +32,7 @@
                   <a class="nav-link"  data-ajax="false" href="{{ route('users.create') }}">Crear Lista</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active"  data-ajax="false" href="{{ route('users.create') }}">Mis Listas</a>
+                  <a class="nav-link active"  data-ajax="false" href="{{ route('users.showListas') }}">Mis Listas</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" data-ajax="false"href="{{ route('logout') }}">Salir</a>
@@ -40,6 +40,10 @@
 
         </ul>
     </div>
+
+    @if(Session::has('message'))
+        <p class="alert alert-danger">{{ Session::get('message') }}</p>
+    @endif
 
     @if($lists->isNotEmpty())
          <div class="list-group">
@@ -50,8 +54,21 @@
                 <h4>{{$list->name}} creada el {{ $list->created_at}}
                 </h4>
                 <div data-role="controlgroup" data-type="horizontal" >
-                                        <a href="{{ route('users.edit', $user)}}" data-role="button" data-icon="forward"  style="border-radius: 15px;color:white; background:yellowgreen" >Editar</a>
-                                        <button type="submit" data-role="button" data-icon="delete"style="border-radius: 15px; color:white; background:tomato;">Eliminar</button>
+                                        <a href="{{ route('users.editLista', $list->id)}}" data-ajax="false" data-role="button" data-icon="forward"  style="border-radius: 15px;color:white; background:yellowgreen" >Editar</a>
+                                        <a href="{{ route('users.destroy', $list->id)}}" data-ajax="false" data-role="button" data-icon="delete"  style="border-radius: 15px;color:white; background:tomato" >Eliminar</a>
+
+
+                                        {{-- <form action="{{ route('users.destroy',$user) }}" method="POST">
+
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <!--En cada ciclo se va a crear un enlace a cada usuario en cuestion.-->
+                                                <!--Utilizo nombramiento de rutas, como primer argumento pasa el nombre de la ruta-->
+                                                <a href="{{ route('users.show', $user)}}" class = "btn btn-link"><span class="oi oi-eye"></span> </a>
+                                                <a href="{{ route('users.edit', $user)}}" class = "btn btn-link"><span class="oi oi-pencil"></span></a>
+                                                <button type="submit" class="btn btn-link"class = "btn btn-link"> <span class="oi oi-trash"></span></button>
+                                            </form> --}}
+
 
                 </div>
 
@@ -66,7 +83,7 @@
                         </tr>
                         </thead>
                         @foreach($items as $item)
-                            @if($item->list_id == $list->list_id)
+                            @if($item->list_id == $list->id)
                                  <tbody>
                                         <tr>
                                                 <th scope="row"></th>

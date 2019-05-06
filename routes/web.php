@@ -12,32 +12,40 @@
 */
 Route::get('/', 'WelcomeController@index')->name('welcome');
 /**Ruta hacia la página principal de la aplicación */
-Route::get('/usuarios', 'UserController@index')->name('users.index');
+Route::get('/usuarios', 'ListController@index')->name('users.index');
 /** Ruta para registrarse */
-Route::get('usuarios/nuevo', 'UserController@create')->name('users.create');
-Route::post('usuarios/crear','UserController@store');
-Route::get('usuarios/nuevoItem','UserController@createItem')->name('users.createItem');
-Route::post('usuarios/crearItem','UserController@storeItem');
+Route::get('usuarios/nuevo', 'ListController@create')->name('users.create');
+Route::post('usuarios/crear','ListController@store');
+Route::get('usuarios/nuevoItem','ListController@createItem')->name('users.createItem');
+Route::post('usuarios/crearItem','ListController@storeItem');
 /** */
-Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
+// Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 /**GET/usuarios/{id} pagina detalles.
  * PUT/usuarios/{id} accion para actualizar.
  */
-
-Route::get('usuarios/mostrarListas','UserController@showListas')->name('users.showListas');
-
-Route::get('usuarios/mostrarListas/editarLista','UserController@editLista')->name('users.editLista');
+// Route::get('/usuarios/{user}', 'UserController@show')->name('users.show');
 
 
-Route::put('/usuarios/{user}', 'UserController@update');
+Route::get('usuarios/mostrarListas','ListController@showListas')->name('users.showListas');
+
+Route::get('usuarios/mostrarListas/{list_id}/destroy','ListController@destroy')->name('users.destroy');
+
+
+Route::get('usuarios/mostrarListas/{list_id}/editar','ListController@editLista')->name('users.editLista');
+Route::put('usuarios/mostrarListas/{list_id}','ListController@updateLista');
+
+
+
+
+
+// Route::put('/usuarios/{user}', 'UserController@update');
 /**Ruta hacia los detalles del usuario para configurar sus vistas
  * Para eso la enlazo con el controlador User Controller y la funcion es show
 */
 
 
 
-Route::get('/usuarios/{user}', 'UserController@show')->name('users.show');
-Route::delete('/usuarios/{user}', 'UserController@destroy')->name('users.destroy');
+// Route::delete('/usuarios/{user}', 'UserController@destroy')->name('users.destroy');
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

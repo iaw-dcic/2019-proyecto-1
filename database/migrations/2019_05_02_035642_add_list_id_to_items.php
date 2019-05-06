@@ -15,7 +15,7 @@ class AddListIdToItems extends Migration
     {
         Schema::table('items', function (Blueprint $table) {
             $table->integer('list_id')->unsigned();
-            $table->foreign('list_id')->references('list_id')->on('lists');
+            $table->foreign('list_id')->references('id')->on('lists');
         });
     }
 
