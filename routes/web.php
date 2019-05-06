@@ -29,10 +29,11 @@ Route::get('/searchUser/{userSearch}', 'SearchUserController@searchUser');
 Route::get('/searchUser', 'SearchUserController@searchUser');
 Route::get('/searchUser/listings/{userId}', 'SearchUserController@getUserListings')->name('user_listings');
 
+//Profile
 Route::get('/profile/{username}', 'UserController@getUserProfile')->name('user_profile');
-Route::post('/profile/{username}','UserController@update_avatar')->name('update_avatar');
+Route::post('/profile','UserController@update_profile')->name('update_profile');
 
-
+//Listings
 Route::get('/deleteGameFromListing/{game}/{listing}','ListingsController@deleteGameFromListing')->name('delete_game_from_listing');
 Route::resource('listings','ListingsController');
 

@@ -20,3 +20,7 @@
 <!-- Delete confirmation -->
 <script src="{{ URL::asset('js/remove-list.js')}}"></script>
 <script src="{{ URL::asset('js/remove-game.js')}}"></script>
+
+<!-- Update profile -->
+<script src="{{ URL::asset('js/favourite-game.js')}}"></script>
+<script src="{{ URL::asset('js/favourite-console.js')}}"></script>

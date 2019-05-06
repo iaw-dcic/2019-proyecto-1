@@ -21,7 +21,7 @@ class UserController extends Controller
         return view('pages.profile', compact('user', 'userListings'));
     }
 
-    public function update_avatar(Request $request)
+    /*public function update_avatar(Request $request)
     {
         $user = Auth::user();
         $userListings = Listing::where('user_id', $user->id)->get();
@@ -34,8 +34,56 @@ class UserController extends Controller
             $user->avatar = $fileNameToStore;
         }
         $user->save();
+        alert()->success('Listo!', 'Cambiaste el avatar!');
         return view('pages.profile', compact('user', 'userListings'));
     }
+
+    public function update_favourite_game(Request $request) {
+        $user = Auth::user();
+        $userListings = Listing::where('user_id', $user->id)->get();
+
+        dd($request->hasFile('favourite_game'));
+        exit;
+
+        $user->favourite_game= $request->favourite_game;
+        $user->save();
+        alert()->success('Listo!', 'Cambiaste tu juego favorito!');
+        return view('pages.profile', compact('user', 'userListings'));
+    }
+
+    
+    public function update_favourite_console(Request $request) {
+        $user = Auth::user();
+        $userListings = Listing::where('user_id', $user->id)->get();
+        $user->favourite_console= $request->favourite_console;
+        $user->save();
+        alert()->success('Listo!', 'Cambiaste tu consola favorita!');
+        return view('pages.profile', compact('user', 'userListings'));
+    }*/
+
+    public function update_profile (Request $request){
+        $user = Auth::user();
+        $userListings = Listing::where('user_id', $user->id)->get();
+
+        //Update avatar
+        if ($request->hasFile('avatar')) {
+            $fileNameToStore = $this->handleFileUpload($request);
+            if ($user->avatar != 'default.jpg') {
+                Storage::delete('/img/avatars/' . $user->avatar);
+            }
+            $user->avatar = $fileNameToStore;
+        } else if ($request->has('favourite_game')) {  //Update favourite game
+            $user->favourite_game= $request->favourite_game;
+         
+        } else {    //Update favourite console
+            $user->favourite_console= $request->favourite_console;
+        }
+
+        $user->save();
+        alert()->success('Listo!', 'Se actualizó tu perfil');
+        return view('pages.profile', compact('user', 'userListings')); 
+    }
+
 
 
     private function handleFileUpload(Request $request)

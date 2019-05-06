@@ -22,9 +22,11 @@
                 <div class="row">
                         <div class="col-xl-9 col-lg-8 col-md-7">
                             <ul class="blog-filter">
-                                <li><a href="{{route('login')}}">Iniciar sesión</a></li>
-                                <li><a href="#">Registrarse</a></li>
-                                <li><a href="#">Preguntas frecuentes</a></li>
+                                @guest
+                                    <li><a href="{{route('login')}}">Iniciar sesión</a></li>
+                                    <li><a href="{{route('register')}}">Registrarse</a></li>  
+                                    <li><a href="{{url('about')}}">Preguntas frecuentes</a></li>
+                                @endguest
                             </ul>
                             <br><br>
                             <div class="big-blog-item">
@@ -33,7 +35,7 @@
                                     <div class="widget-item">
                                         <form class="search-widget" action="{{url('searchUser') }}" method="get">
                                             @csrf
-                                            <input name="searchTerm" type="text" placeholder="Ingresar nombre de usuario o de la lista...">
+                                            <input autofocus name="searchTerm" type="text" placeholder="Escribí acá el nombre del usuario y hace click en buscar">
                                             <button><i class="fa fa-search" aria-hidden="true"></i>  Buscar</button>
                                         </form>
                                     </div>
