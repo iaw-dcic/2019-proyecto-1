@@ -12,17 +12,18 @@ class WelcomeController extends Controller
  
 
     public function index(){
-        
-        $colecciones=Colection::where('estado',1)->get();
+        $colecciones=Colection::findPublics();
 
        return view('welcome', compact('colecciones'));
     }
     
     public function show($id){
-        $coleccion=Colection::where('id', $id)->get();
-        $items=Element::where('colection_id', $id)->get();
-        $usuario=User::where('id', $coleccion[0]->user_id)->get();
-        $datos=[$coleccion[0], $items, $usuario[0]];
+
+        $coleccion= new Colection;
+        $coleccion = $coleccion ->findColection($id);
+        $items= $coleccion ->findElementos();
+        $usuario=User::find($coleccion->user_id);
+        $datos=[$coleccion, $items, $usuario];
 
         return view('showItems', compact('datos'));
 

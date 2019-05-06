@@ -27,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $id=auth()->user()->id;
-        $colecciones=Colection::where('user_id', $id)->get();
+        $coleccion = new Colection;
+        $colecciones=$coleccion ->findColecForUser($id);
         return view('home', compact('colecciones'));
     }
 }

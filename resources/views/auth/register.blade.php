@@ -30,7 +30,7 @@
                             <label for="lastName" class="col-md-3 col-form-label text-md-right control-label">{{ __('Apellido:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ old('lastName') }}" required autofocus>
+                                <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" required autofocus>
 
                                 @if ($errors->has('lastName'))
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                             <label for="email" class="col-md-3 col-form-label text-md-right control-label">{{ __('Email:') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" required>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">

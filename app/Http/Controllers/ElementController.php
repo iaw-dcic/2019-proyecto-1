@@ -18,10 +18,10 @@ class ElementController extends Controller
 
     public function index($idUsuario, $idColeccion){
 
-        
-        $coleccion=Colection::where('id', $idColeccion)->get();
-        $items=Element::where('colection_id', $idColeccion)->get();
-        $datos=[$coleccion[0], $items];
+        $coleccion = new Colection; 
+        $coleccion=$coleccion ->findColection($idColeccion);
+        $items= $coleccion ->findElementos();
+        $datos=[$coleccion, $items];
         return view('insertarItem', compact('datos'));
     }
 
@@ -39,14 +39,15 @@ class ElementController extends Controller
     }
 
     public function update($idUsuario, $idColeccion){
-
-        $coleccion=Colection::where('id', $idColeccion)->get();
-        if($coleccion[0]->estado){
-            $coleccion[0]->estado=0;
+        
+        $coleccion = new Colection; 
+        $coleccion=$coleccion ->findColection($idColeccion);
+        if($coleccion->estado){
+            $coleccion->estado=0;
         }else{
-            $coleccion[0]->estado=1;
+            $coleccion->estado=1;
         }
-        $coleccion[0]->save();
+        $coleccion->save();
 
         return redirect('home');
 
