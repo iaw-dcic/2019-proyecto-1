@@ -5,7 +5,7 @@
         <h1>Welcome To ListAPP!</h1>
         <p>This is a Social Network where you can share personalized lists with the topics you like!</p>
         <p><a class="btn btn-primary btn-lg" href="/login" role="button">Login</a> <a class="btn btn-success btn-lg" href="/register" role="button">Register</a></p>
-
+        <a class="btn btn-primary btn-lg" href="{{ route('social.auth', 'facebook') }}">Login with Facebook!</a>
     </div>
     
 @endsection
