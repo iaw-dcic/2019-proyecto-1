@@ -11,6 +11,11 @@ use App\goal;
 class PagesController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -42,13 +47,16 @@ class PagesController extends Controller
 
     public function getOtherProfile(User $user)
     {
-        return view('Profile/otherProfile', compact('user'));
+        if ($user->id != auth()->id())
+            return view('Profile/otherProfile', compact('user'));
+        else
+            return view('Profile/profile',compact('user'));
     }
 
     public function getOtherList(Lista $lista)
     {
         $user = User::findOrFail($lista->user_id);
-        $goals = goal::where('lista_id', $lista->id)->get();
+        $goals = $lista->goals();
 
         return view('otherList', compact('lista', 'goals','user'));
     }

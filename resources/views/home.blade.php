@@ -15,7 +15,7 @@
                     @endif
 
                     @foreach ($paquetes as $paquete)
-                    <!-- Cada paquete es un [user,listas]-->
+                    <!-- Cada paquete es un [user, [listas] ]-->
 
                     <div class="card-header" style="padding: 3px; background-color: rgba(92, 112, 57, 0.912)">
                         <a href="otherProfile/{{$paquete[0]->id}}" style="color: white"> {{ $paquete[0]->name}} </a> 

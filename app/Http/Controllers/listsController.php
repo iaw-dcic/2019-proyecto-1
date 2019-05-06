@@ -4,16 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\lista;
-use Auth;
-use App\User;
-use App\goal;
+
+
+use Illuminate\Validation\Rule;
 
 class listsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getMyLists()
     {
-        $user = Auth::user();
-        $listas = lista::where('user_id', $user->id)->get();
+        $listas = Lista::where('user_id', auth()->id())->get();
+
         return view('Profile/myLists', compact('listas'));
     }
 
@@ -23,19 +29,17 @@ class listsController extends Controller
     }
 
 
-
     public function storeList()
     {
-        $user = Auth::user();
-
-        $lista = new Lista();
-
         request()->validate([
             'name' => ['required','min:3','max:25']
         ]);
 
+        $lista = new Lista();
         $lista->name = request('name');
-        $lista->user_id = $user->id;
+        $lista->user_id = auth()->id();
+        
+
         if (request('public') != '') {
             $lista->public = 1;
         } else {
@@ -49,14 +53,18 @@ class listsController extends Controller
 
     public function showList(Lista $lista)
     {
-        $goals = goal::where('lista_id', $lista->id)->get();
-        return view('myList.show', compact('lista', 'goals'));
+        abort_if($lista->user_id != auth()->id(), 403, 'Nada para mostrar.');
+        $goals = $lista->goals();
+
+        return view('myList.show', compact('lista'));
     }
 
     public function editList(Lista $lista)
     {
-        $goals = goal::where('lista_id', $lista->id)->get();
-        return view('myList.edit', compact('lista', 'goals'));
+        abort_if($lista->user_id != auth()->id(), 403, 'Nada para mostrar.');
+        $goals = $lista->goals();
+
+        return view('myList.edit', compact('lista'));
     }
 
     public function updateList(Lista $lista)
@@ -79,11 +87,7 @@ class listsController extends Controller
 
     public function destroyList(Lista $lista)
     {
-        $goals = goal::where('lista_id', $lista->id)->get();
-        foreach ($goals as $goal)
-            $goal->delete();
         $lista->delete();
-
         return redirect('/myLists');
     }
 }

@@ -5,24 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\goal;
 use App\lista;
-use Auth;
 
 class goalsController extends Controller
 {
-    /*public function getGoals()
+    public function __construct()
     {
-        $user = Auth::user();
-        $lista = lista::first(); //where('user_id',$user->id)->get();
-        //foreach($listas as $lista){
-            $goals = goal::where('lista_id',$lista->id)->get();
-        //}   
-        //$goals = goal::where('lista_id',$listas->id)->get();
-        return view('myList\goals',compact('goals'));
-    }*/
+        $this->middleware('auth');
+    }
 
     public function storeGoal(Lista $lista){
-
-        $user = Auth::user();
         
         $goal = new Goal();
 
@@ -41,16 +32,17 @@ class goalsController extends Controller
         
         $goal->save();
 
-        $goals = goal::where('lista_id',$lista->id)->get();
+        $goals = $lista->goals();
 
         return view('myList.edit',compact('lista','goals'));
     }
 
-    public function destroyGoal(Lista $lista,$goal_id){
+    public function destroyGoal(Lista $lista, $goal_id){
 
         $goal = goal::findOrFail($goal_id);
         $goal->delete();
-        $goals = goal::where('lista_id',$lista->id)->get();
+
+        $goals = $lista -> goals();
 
         return view('/myList.edit',compact('lista','goals'));
     }

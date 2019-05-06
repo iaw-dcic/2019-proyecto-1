@@ -136,3 +136,7 @@ textarea {
 #card-listas-home {
     padding: 3px;
 }
+
+#btnEdit {
+    background-color: rgba(155, 194, 88, 0.38);
+}
