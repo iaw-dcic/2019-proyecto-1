@@ -38,10 +38,12 @@
             </div>
             @endif
         @else
+            @auth
             <div class="col d-flex justify-content-center align-items-center no-hay-posts">
                 <h3>No hay publicaciones <a href="#" data-toggle="modal" data-target="#crearPost" class="nav-link" id="subir-foto">¡Haz la primera!</a>
                 </h3>
             </div>
+            @endauth
         @endif
     </div>
 </section>
