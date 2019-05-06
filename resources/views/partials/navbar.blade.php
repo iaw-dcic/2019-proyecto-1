@@ -1,11 +1,3 @@
-<!--
-    Botones para cuando no está iniciada la sesión:
-        Explorar - Iniciar sesión - Registrarse
-
-    Botones para cuando se inició sesión
-        Inicio - Subir foto - Foto de perfil (y submenú)
--->
-
 @include('partials.profile.crear-post')
 
 <nav class="row navbar navbar-expand-lg no-gutters">
@@ -56,7 +48,7 @@
 
                     <li class="nav-item dropdown img-perfil">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ url('/storage/users/' . Auth::user()->photo) }}" id="foto_perfil_navbar"></img>
+                            <img src="{{ Auth::user()->photo_url ?: url('storage/users/no_photo.png') }}" id="foto_perfil_navbar"></img>
                             &#64;{{ Auth::user()->username }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu fade" aria-labelledby="navbarDropdown">

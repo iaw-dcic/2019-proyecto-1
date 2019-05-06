@@ -16,7 +16,8 @@ class Photos extends Migration
         Schema::create('photos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('post_id')->nullable(false);
-            $table->string('photo_url', 200)->nullable($value=false);
+            $table->string('photo_url', 300)->nullable(true);
+            $table->string('photo_id', 300)->nullable(true);
         });
     }
 

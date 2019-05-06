@@ -6,7 +6,7 @@
     <div class="row no-gutters row-perfil align-items-center">
         <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-end foto-perfil no-gutters">
             <a href="#" data-toggle="modal" data-target="#cambiarFotoPerfil">
-                <img src="{{ url('/storage/users/' . $user->photo) }}" class="img-fluid img-thumbnail" id="foto_perfil_usuario">
+                <img src="{{ $user->photo_url ?: url('storage/users/no_photo.png') }}" class="img-fluid img-thumbnail" id="foto_perfil_usuario">
             </a>
         </div>
 

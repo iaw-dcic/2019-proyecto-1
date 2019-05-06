@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use App\Comment;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller{
 
     public function __construct(){
-        $this->middleware('auth');
     }
 
     public function index($post_id){
@@ -20,9 +20,10 @@ class CommentsController extends Controller{
     }
 
     public function store(Request $request, $post_id){
+        $this->middleware('auth');
         if($request->ajax()){
             $now = new \Datetime();
-            $user = User::where('username', $request->username)->get()->first();
+            $user = User::where('username', Auth::user()->username)->get()->first();
             $comment = new Comment();
             $comment->user_id = $user->id;
             $comment->post_id = $post_id;
@@ -34,13 +35,5 @@ class CommentsController extends Controller{
                 'username' => $user->username
             ]);
         }
-    }
-
-    public function update($post_id, $id){
-        //
-    }
-
-    public function destroy($post_id, $id){
-        //
     }
 }

@@ -7,7 +7,7 @@
             <article class="col-12 col-md-5 col-lg-2 posts" data-target="#modal-post" data-post="{{$post}}">
                 <figure data-toggle="modal">
                     <img class="img-fluid img-thumbnail"
-                        src="{{ url('/storage/photos/'.$post->getPhotos()->get()->first()->photo_url) }}">
+                        src="{{ $post->getPhotos()->get()->first()->photo_url }}">
                     <figcaption>
                         <h2>&#64{{ App\User::where('id', $post->user_id)->get()->first()->username }}</h2>
                         @auth

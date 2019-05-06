@@ -15,7 +15,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col d-flex justify-content-center">
-                            <img src="{{ url('storage/users/'.Auth::user()->photo) }}" class="img-fluid" id="foto-perfil-grande">
+                            <img src="{{ Auth::user()->photo ?: url('storage/users/no_photo.png') }}" class="img-fluid" id="foto-perfil-grande">
                         </div>
                     </div>
                     <div class="row justify-content-end">

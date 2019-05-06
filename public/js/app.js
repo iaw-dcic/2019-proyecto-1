@@ -1420,8 +1420,8 @@ function _showPost() {
             return getView("/posts/".concat(post.id), function (response) {
               $('#ver-post').append(response);
               $('#modal-post').modal();
-              var btn = document.getElementById('form-agregar-comentario');
-              btn.addEventListener('submit', eventoComentarios);
+              var form_agregar_comentario = document.getElementById('form-agregar-comentario');
+              form_agregar_comentario.addEventListener('submit', eventoComentarios);
               $('#modal-post').on('hidden.bs.modal', function (event) {
                 var btn = document.getElementById('form-agregar-comentario');
                 btn.removeEventListener('submit', eventoComentarios);

@@ -34,7 +34,7 @@
             <div class="modal-header">
                 <div class="modal-title">
                     <div class="row align-items-center">
-                        <a href="/user/{{$user->username}}"><img src="{{ url('/storage/users/' . $user->photo) }}" class="img-fluid img-thumbnail"></a>
+                        <a href="/user/{{$user->username}}"><img src="{{$user->photo_url ?: url('storage/users/no_photo.png') }}" class="img-fluid img-thumbnail"></a>
 
                         <div class="col-7 col-sm-8">
                             <div class="row">
@@ -49,18 +49,17 @@
                             <a class="btn" id="dropdownPostButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-chevron-down"></i>
                             </a>
+
                             <div class="dropdown-menu" aria-labelledby="dropdownPostButton m-0 p-0">
                                 <a class="dropdown-item" href="" id="btn-editar-post" data-toggle="modal" data-target="#editar-post-modal">Editar post</a>
-                                <a class="dropdown-item" href="#" id="btn-borrar-post" onclick="$('#form-borrar-post').submit()">Borrar post</a>
+                                <a class="dropdown-item" href="" id="btn-borrar-post" onclick="$('#form-borrar-post').submit();">Borrar post</a>
                             </div>
-
-
-                            <!--Formulario para borrar un post-->
-                            <form action="{{ url('/posts/'.$post->id) }}" method="POST" id="form-borrar-post">
-                                @csrf
-                                <input type="hidden" name="_method" value="DELETE">
-                            </form>
                         </div>
+
+                        <form method="POST" action="{{url('/posts/'.$post->id)}}" id="form-borrar-post" autocomplete="off">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE">
+                        </form>
                         @endif()
 
                         <div class="col justify-self-end d-flex justify-content-end mr-3 p-0">
@@ -78,11 +77,11 @@
                         @foreach($photos as $photo)
                             @if($photo != $post->getPhotos()->get()->first())
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="{{ url('/storage/photos/'.$photo->photo_url) }}">
+                                    <img class="d-block w-100" src="{{ $photo->photo_url }}">
                                 </div>
                             @else()
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="{{ url('/storage/photos/'.$photo->photo_url) }}">
+                                    <img class="d-block w-100" src="{{ $photo->photo_url }}">
                                 </div>
                             @endif()
                         @endforeach()
@@ -133,10 +132,7 @@
                         <form id="form-agregar-comentario" data-url="/posts/{{$post->id}}/comments" autocomplete="off">
                         @csrf
                             <div class="input-group">
-                                <input type="text" class="form-control" id="content" name="content" placeholder="Agregar comentario..." aria-describedby="agregar-comentario-prepend" @guest disabled autofocus @endguest required>
-                                @if(Auth::user() != null)
-                                <input type="hidden" name="username" value="{{Auth::user()->username}}">
-                                @endif
+                                <input type="text" class="form-control" id="content" name="content" placeholder="Agregar comentario..." aria-describedby="agregar-comentario-prepend" @guest disabled @endguest required>
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-success" @guest disabled @endguest id="agregar-comentario">
                                         <i class="far fa-comment-dots"></i>

@@ -8,6 +8,7 @@ use App\Photo;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
+use JD\Cloudder\Facades\Cloudder;
 
 class PostsController extends Controller{
     protected $redirectTo = '/home';
@@ -42,13 +43,15 @@ class PostsController extends Controller{
         $files = $request->file('fotos');
         $i = 0;
         foreach($files as $file){
-            $extension = $file->getClientOriginalExtension();
-            $file_name = $user->id.'-'.$post->id.'-'.$i.'.'.$extension;
-            $i++;
-            Image::make($file->getRealPath())->fit(640,480)->save('storage/photos/'.$file_name);
+            Cloudder::upload($file->getRealPath());
+            $result = Cloudder::getResult();
+            $photo_id = $result['public_id'];
+            $photo_url = $result['url'];
+
             $photo = new Photo();
             $photo->post_id = $post->id;
-            $photo->photo_url = $file_name;
+            $photo->photo_id = $photo_id;
+            $photo->photo_url = $photo_url;
             $photo->save();
         }
     }
@@ -81,8 +84,10 @@ class PostsController extends Controller{
         $post_user = User::find($post->user_id);
         if($post_user->id == Auth::user()->id){
             $imagenes = Photo::where('post_id', $post->id)->get();
-            foreach($imagenes as $image)
+            foreach($imagenes as $image){
+                Cloudder::delete($image->photo_id);
                 Photo::destroy($image->id);
+            }
             Post::destroy($id);
         }
         return back();

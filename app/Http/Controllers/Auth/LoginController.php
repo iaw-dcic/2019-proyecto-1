@@ -78,15 +78,15 @@ class LoginController extends Controller{
         $newUser->username = strtolower($username);
         $newUser->email = $user->getEmail();
         $newUser->email_verified_at = now();
-        $newUser->photo = $this->crearFotoPerfil($user, $driver);
+
+        Cloudder::upload($user->getAvatar());
+        $result = Cloudder::getResult();
+        $photo_id = $result['public_id'];
+        $photo_url = $result['url'];
+
+        $newUser->photo_id = $photo_id;
+        $newUser->photo_url = $photo_url;
         $newUser->save();
         return $newUser;
-    }
-
-    //Retorna string con la dirección de la foto
-    private function crearFotoPerfil($user, $driver){
-        $file = file($user->getAvatar());
-        file_put_contents(public_path('storage\\users\\').$user->getId().$driver.'.jpg', $file);
-        return $user->getId().$driver.'.jpg';
     }
 }

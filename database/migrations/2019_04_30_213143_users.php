@@ -18,7 +18,8 @@ class Users extends Migration
             $table->string('name', 48)->nullable(false);
             $table->string('email', 48)->unique()->nullable(false);
             $table->string('password', 256)->nullable(true);
-            $table->string("photo",300)->default('no_photo.png')->nullable(false);
+            $table->string("photo_url",300)->nullable(true);
+            $table->string("photo_id",300)->nullable(true);
             $table->string("phone",32)->unique()->nullable(true);
             $table->string("biography",240)->nullable(true);
             $table->boolean("active")->default(true);

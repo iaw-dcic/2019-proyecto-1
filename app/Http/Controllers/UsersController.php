@@ -54,12 +54,15 @@ class UsersController extends Controller{
     }
 
     public function update(Request $request, $username){
+        $this->middleware('auth');
         if($request->ajax()){
             $user = User::where('username', $username)->get()->first();
-            if($request->file('photo'))
-                return $this->editarFotoPerfil($request, $user);
-            else
-                return $this->editarInformacionPerfil($request, $user);
+            if($user->id == Auth::user()->id){
+                if($request->file('photo'))
+                    return $this->editarFotoPerfil($request, $user);
+                else
+                    return $this->editarInformacionPerfil($request, $user);
+            }
         }
     }
 
@@ -68,11 +71,12 @@ class UsersController extends Controller{
         $file = $request->file('photo');
         $extension = $file->getClientOriginalExtension();
         $file_name = $user->id.'-'.$now->format('Y-m-d-H-m-s').'.'.$extension;
-        Image::make($file->getRealPath())
-            ->fit(480,320)
-            ->save('storage/users/'.$file_name);
-
-        $user->photo = $file_name;
+        Cloudder::upload($file->getRealPath());
+        $result = Cloudder::getResult();
+        $photo_id = $result['public_id'];
+        $photo_url = $result['url'];
+        $user->photo_id = $photo_id;
+        $user->photo_url = $photo_url;
         $user->save();
         return $user->photo;
     }
