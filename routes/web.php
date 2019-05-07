@@ -54,3 +54,7 @@ Route::get('/posts/{post_id}/comments', 'CommentsController@index');
 Route::post('/posts/{post_id}/comments', 'CommentsController@store')->middleware('auth');;
 Route::put('/posts/{post_id}/comments/{id}', 'CommentsController@update')->middleware('auth');;
 Route::delete('/posts/{post_id}/comments/{id}', 'CommentsController@destroy')->middleware('auth');;
+
+Route::get('/about', function(){
+    return view('about');
+});
