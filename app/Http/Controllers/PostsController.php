@@ -75,7 +75,7 @@ class PostsController extends Controller
         return redirect('/home');
     }
 
-    private static function createItem($post_id){
+    private function createItem($post_id){
         $item = new Item;
         $item->name = $request->input('name');
         $item->link = $request->input('link');
