@@ -1,41 +1,34 @@
 @extends('layouts.app')
 
 
-<title>Home | Tus vehiculos</title>
+<title>Mi Peliteca</title>
 
 @section('content')
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <link href="{{ asset('css/stylecss.css') }}" rel="stylesheet">
 <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
 
-<form class="form-inline"  method="POST" action="Generos" >
+<form class="form-inline"  method="POST" action="{{ url('/PelitecaEditor/Generos') }}" >
   @csrf
-  <pre>  </pre>
-  <div class="form-group mb-2">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingresar titulo">
+  <div class="form-group mx-sm-3 mb-2">
+    <label>Ingresar titulo</label><pre> </pre>
+    <input type="text" name="titulo" class="form-control">
   </div>
   <div class="form-group mx-sm-3 mb-2">
-    <input type="text" name="name" class="form-control">
-  </div>
-   <div class="form-group mb-2">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingresar Año">
-  </div>
-  <div class="form-group mx-sm-3 mb-2">
+    <label>Ingresar año</label><pre> </pre>
     <input type="text" name="anio" class="form-control">
   </div>
-  <div class="form-group mb-2">
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingresar Puntaje">
-  </div>
   <div class="form-group mx-sm-3 mb-2">
+    <label>Ingresar puntaje</label><pre> </pre>
     <input type="text" name="puntaje" class="form-control">
   </div>
   <div class="form-group">
-    <label>Generos <pre>  </pre></label>
+    <label>Generos</label><pre> </pre>
     <select class="form-control" name="genero">
       @foreach ($caters as $cater)
       <option value="{{$cater->genero}}">{{$cater->genero}}</option>
          @endforeach
-    </select><pre>  </pre>
+    </select><pre>        </pre>
   </div>
   <button type="submit" class="btn btn-primary">Confirmar</button>
 </form>
@@ -79,15 +72,22 @@
       <td>{{$pelicula->pelicula}}</td>
       <td>{{$pelicula->anio}} </td>
       <td>{{$pelicula->puntaje}} </td>
-      <td><a  href="{{ url('/PelitecaEditor',['nom' => $pelicula->pelicula, 'cate' => $cater->genero])}}"
-            class="btn btn-outline-dark btn-sm">Eliminar</a>
-            @if($pelicula->publico=='false')
-           <a href="{{ url('/PelitecaEditor',['nom' => $pelicula->pelicula])}}"
-            class="btn btn-outline-dark btn-sm">Mostrar</a></td>
-            @else
-            <a href="{{ url('/PelitecaEditor',['nom' => $pelicula->pelicula])}}"
-            class="btn btn-outline-dark btn-sm">Ocultar</a></td>
-            @endif
+      <td>
+        <form action="{{ url('/PelitecaEditor/'.$pelicula->id) }}" method="POST">
+          @csrf
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-primary">Eliminar</button>
+        </form>
+        <form action="{{ url('/PelitecaEditor/'.$pelicula->id) }}" method="POST">
+        @csrf
+          <input type="hidden" name="_method" value="PUT">
+          @if($pelicula->publico == 0)
+            <button type="submit" class="btn btn-primary">Mostrar</button>
+          @else
+            <button type="submit" class="btn btn-primary">Ocultar</a>
+          @endif
+        </form>
+      </td>
     </tr>
   </tbody>
 </table>

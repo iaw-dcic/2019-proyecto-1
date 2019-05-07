@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = DB::select('select * from users', [1]);
+        //$users = DB::select('select * from users', [1]);
+        $users = User::all();
         return view('GaleriaPelitecas', ['users' => $users]);
     }
 

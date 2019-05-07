@@ -20,15 +20,18 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/PelitecaEditor/{id}', 'PelitecaEditorController@index')->name('PelitecaEditor');
 
+Route::delete('/PelitecaEditor/{id}', 'PelitecaEditorController@destroy');
+Route::put('/PelitecaEditor/{id}', 'PelitecaEditorController@update');
+
 Route::get('/GaleriaPelitecas', 'UserController@index')->name('GaleriaPelitecas');
 Route::get('/PelitecaShower/{id}', 'PelitecaShowerController@index')->name('PelitecaShower');
 Route::resource('Generos','GeneroController');
 
 Route::get('/PelitecaEditor/{nom}/{cate}','GeneroController@destroy')->name('PelitecaEditor')->middleware('auth');
 Route::get('/PelitecaEditor/{nom}','GeneroController@edit')->name('PelitecaEditor')->middleware('auth');
-Route::get('/Persona','PersonalController@index');
+//Route::get('/Persona','PersonaController@index');
 
-Route::post('/PelitecaEditor', 'GeneroController@store')->name('Genero');
+Route::post('/PelitecaEditor/Generos', 'GeneroController@store')->name('Genero');
 
 //Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 //Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
@@ -39,3 +42,9 @@ Route::get('/login/{provider}/callback','Auth\SocialAuthController@handleProvide
 Route::get('/About','AboutController@index');
 
 Route::resource('users', 'UserController');
+
+//get: obtener recurso
+//post: escribir algo en servidor(no modificar)
+//put: actualizar
+//delete: no se usa comunmente peeeeeero
+//resource

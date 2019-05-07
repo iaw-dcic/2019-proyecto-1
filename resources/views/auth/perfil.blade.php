@@ -38,7 +38,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}:</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" placeholder="{{$user->name}}"class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" placeholder="Nombre nuevo"class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}:</label>
 
                             <div class="col-md-6">
-                                <input id="lastname" type="text" placeholder="{{$user->lastname}}"class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required autofocus>
+                                <input id="lastname" type="text" placeholder="Apellido nuevo"class="form-control{{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" value="{{ old('lastname') }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}:</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" placeholder="{{$user->email}}"class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" placeholder="E-Mail nuevo"class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">

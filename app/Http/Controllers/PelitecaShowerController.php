@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Request\PelitecaShowerFormRequest;
-use App\genero;
+use App\Genero;
 
 class PelitecaShowerController extends Controller
 {
@@ -19,9 +19,10 @@ class PelitecaShowerController extends Controller
      */
     public function index($id)
     {
-        $puntajes = array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-        $caters = DB::select('select genero from generos');
-        $peliculas = DB::select('select pelicula,genero,anio,puntaje from peliculas where id = :id and publico =:dat' , ['id' => $id, 'dat' => true]);
+        $puntajes = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        //$caters = DB::select('select genero from generos');
+        $caters = Genero::all();
+        $peliculas = Auth::user()->getPeliculas()->where('publico', true)->get();
         return view('PelitecaShower', ['puntajes' => $puntajes ,'caters' => $caters ,'peliculas' => $peliculas ]);
     }
 

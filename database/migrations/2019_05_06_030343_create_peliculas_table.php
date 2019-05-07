@@ -15,6 +15,7 @@ class CreatePeliculasTable extends Migration
     {
         Schema::create('peliculas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
             $table->string('pelicula');
             $table->string('genero');
             $table->integer('anio');

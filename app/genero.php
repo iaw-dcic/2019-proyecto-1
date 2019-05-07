@@ -4,7 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class genero extends Model
+class Genero extends Model
 {
-    //
+    protected $fillable = [
+        'genero',
+    ];
+
+    public function getPeliculas(){
+        return $this->hasMany('App\Pelicula');
+    }
 }
