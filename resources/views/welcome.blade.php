@@ -18,7 +18,7 @@
 	<div class="bg-text">
 		<h1 style="font-size:70px">FILMIK</h1>
 		<p><i>Tu inventario de películas preferido</i></p>
-		<a href="home">Ingresar <span class="sr-only"></span></a>
+		<a href="{{ url('/home') }}">Ingresar <span class="sr-only"></span></a>
 	</div>
       
     </body>
