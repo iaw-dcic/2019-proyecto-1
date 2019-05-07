@@ -8,7 +8,7 @@ class Lista extends Model
 {
     protected $table = "lista";
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name','visibilidad','descripcion'];
 
     public function get_id(){
     	return $this->id;

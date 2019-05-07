@@ -17,8 +17,7 @@ class AddArticulosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->integer('puntaje');
-            $table->enum('visibilidad',['privada','publica'])->default('publica');
+            $table->integer('puntaje');           
             $table->integer('lista_id')-> unsigned();
             
             

@@ -38,6 +38,8 @@
                             <div class="col-sm">    
                                  <button class="btn btn-outline-success my-2 my-sm-0"  onclick="location.href='/postear'" type="submit">Postear </button>
                             </div>
+                            @yield('barra_principal')
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

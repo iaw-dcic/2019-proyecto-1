@@ -34,6 +34,7 @@ class UserController extends Controller
         if(!is_null($name)){
             $user->name=$name;
         }
+        
         $user->save();
         //dd($request->all());
         return view('perfil', array('user'=> Auth::user()));

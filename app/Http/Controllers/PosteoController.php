@@ -38,6 +38,7 @@ class PosteoController extends Controller
        
         $articulo= new Articulo();
 
+
         $name = $request->input('nombre');
              
         if(!is_null($name)){
@@ -87,4 +88,78 @@ class PosteoController extends Controller
 
     }
 
+
+    public function mis_post(){
+        $user=Auth::user();
+        $lista=DB::table('lista')->where('user_id','=',$user->id)->first();
+        $articulos=DB::table('articulos')->where('lista_id','=',$lista->id)->orderBy('created_at','desc')->get();
+        $data = array('user' => Auth::user(),
+                      'articulos' => $articulos);
+        return view('mis_post', $data);
+    }
+
+   public function eliminar_post(Request $request){
+         $articulos=DB::table('articulos')->where('id','=',$request->id_post)->delete();         
+         
+         $user=Auth::user();
+        $lista=DB::table('lista')->where('user_id','=',$user->id)->first();
+        $articulos=DB::table('articulos')->where('lista_id','=',$lista->id)->orderBy('created_at','desc')->get();
+        $data = array('user' => Auth::user(),
+                      'articulos' => $articulos);
+        return view('mis_post', $data);
+    }
+
+     public function modificar_post(Request $request){
+  
+
+        $user=Auth::user();
+        $articulos=DB::table('articulos')->where('id','=',$request->id_post)->first();
+        $data = array('user' => Auth::user(),
+                      'articulos' => $articulos);
+        
+        return view('modificar', $data);
+
+
+     }
+
+     public function modificar(Request $request){
+
+            $user=Auth::user();
+  
+       
+        //$articulo=DB::table('articulos')->where('id','=',$request->id_post)->first();
+        //
+
+        $articulo= Articulo::find($request->id_post);
+
+        $name = $request->input('nombre');
+             
+        if(!is_null($name)){
+            $articulo->nombre=$name;
+        }
+
+        $descripcion = $request->input('descripcion');     
+        $articulo->descripcion=$descripcion;
+
+        $visibilidad = $request->input('visibilidad');     
+        $articulo->visibilidad=$visibilidad;
+
+        $puntaje = $request->input('puntaje');     
+        $articulo->puntaje=$puntaje;
+
+
+        $articulo->save();        
+
+        $articulos=DB::table('articulos')->orderBy('created_at','desc')->get();
+        $data = array('user' => Auth::user(),
+                      'articulos' => $articulos);
+
+        return view('mis_post', $data);
+
+
+
+
+         
+
+     }   
 }

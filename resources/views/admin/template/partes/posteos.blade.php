@@ -6,7 +6,7 @@
   if($articulos){
     foreach($articulos as $art){ 
     
-       if(strcmp($art->visibilidad,'publica')==0){ ?>
+        ?>
           <div class="card-body">
             <h4 class="card-title">Nombre articulo: {{$art->nombre}} </h4>
              
@@ -29,7 +29,7 @@
 
 
   <?php
-        }
+      
      } 
   }else {  //si no hay articulos 
 

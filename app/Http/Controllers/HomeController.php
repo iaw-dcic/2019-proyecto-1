@@ -32,10 +32,10 @@ class HomeController extends Controller
             ->orderBy('idcategoria','desc')
             ->paginate(7);       
      */
-    $articulos=DB::table('articulos')->orderBy('created_at','desc')->get();
+    $listas=DB::table('lista')->orderBy('created_at','desc')->get();
 
    
-        return view('main')->with('articulos', $articulos);
+        return view('main')->with('listas', $listas);
         //return view('main',[$articulos]);
     }
 

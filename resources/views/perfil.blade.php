@@ -1,4 +1,10 @@
-@extends('layouts.app')
+@section('barra_principal')
+                             <div class="col-sm">    
+                                 <button class="btn btn-outline-success my-2 my-sm-0"  onclick="location.href='/mis_listas'" type="submit">Mis Listas</button>
+                            </div>
+
+
+@endSection()@extends('layouts.app')
 
 
 
