@@ -26,16 +26,7 @@
                 <input value={{$album->bandName}} name="band" type="text" class="form-control" id="albumid" placeholder="Nombre de banda o artista" required>
             </div>
         </div>
-       
-    
-        <div class="form-group row">
-            <label for="publisherid" class="col-sm-3 col-form-label">Cancion</label>
-            <div class="col-sm-9">
-                <input value={{$album->link}} name="youtubeLink" type="text" class="form-control" id="publisherid"
-                       placeholder="https://www.youtube.com/watch?v=sXvzp3YKJ1Q">
-            </div>
 
-        </div>
 
         <div class="form-group row">
             <label for="sel1" class="col-sm-3 col-form-label">Visibilidad : </label>

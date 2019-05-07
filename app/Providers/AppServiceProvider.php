@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //haciendo que todo la aplicacación use https. 
         if (env('APP_ENV') === 'production') {
             $this->app['url']->forceScheme('https');
         }
