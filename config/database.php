@@ -6,7 +6,7 @@ return [
 
     'mysql' => [
         'driver' => 'mysql',
-        'host' => env('DB_HOST', 'us-cdbr-gcp-east-01.cleardb.net'),
+        'host' => env('DB_HOST', '104.196.163.17'), //us-cdbr-gcp-east-01.cleardb.net
         'port' => env('DB_PORT', '3306'),
         'database' => env('DB_DATABASE', 'gcp_3f647be54b1106e5244e'),
         'username' => env('DB_USERNAME', 'b9f04ec0e3ebe9'),
