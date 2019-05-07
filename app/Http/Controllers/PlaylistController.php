@@ -6,8 +6,6 @@ use App\Playlist;
 use App\Song;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use UxWeb\SweetAlert\SweetAlert;
 
 class PlaylistController extends Controller
 {
