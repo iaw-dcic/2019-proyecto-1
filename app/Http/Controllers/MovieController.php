@@ -40,7 +40,10 @@ class MovieController extends Controller
 	}
 	
 	public function create(){
-		return view('lists.createlist');
+
+			return view('lists.createlist');
+
+	
 }
 	
 	public function store(){
@@ -80,7 +83,16 @@ class MovieController extends Controller
 	}
 	
 	public function edit(Usermovie $usermovie){
-		return view('lists.editlist', ['usermovie'=> $usermovie]);
+			$auth_id =  Auth::id();
+			 $listas = Usermovie::all();
+				$user= User::all();
+	
+		if($auth_id==$usermovie->creador_id)
+			return view('lists.editlist', ['usermovie'=> $usermovie]);
+		else
+			return view('home', ['listas'=> $listas, 
+						  'title'=> 'Listas públicas ',
+						  'users' => $user]); 
 	}
 	
 	public function update(Usermovie $usermovie){

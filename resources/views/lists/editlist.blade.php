@@ -23,7 +23,9 @@
 	
 	<label>Lista pública</label>
 	<label class="switch">
-					<input name="public" type="checkbox">
+					<input name="public" type="checkbox"   @if(old('public',$usermovie->public))
+									checked
+									@endif>
 					<span class="slider round"></span>
 	</label>				
 	

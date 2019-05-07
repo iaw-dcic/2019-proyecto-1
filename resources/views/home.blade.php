@@ -13,7 +13,7 @@
  
   <ul>
     
-    </ul>
+  </ul>
  
   <div id="table-wrapper">
   <div id="table-scroll">

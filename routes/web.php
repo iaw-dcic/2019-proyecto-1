@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Route::get('/usuarios/nuevo', 'UserController@create')->name('users.create');
 
-Route::get('/listas/nuevo', 'MovieController@create');
+Route::get('/listas/nuevo', 'MovieController@create')->middleware('auth');;
+
+//->middleware(Auth);
 
 Route::post('/home', 'MovieController@store')->name('movie.store');
 
@@ -51,16 +53,14 @@ Route::put('/listas/{usermovie}/{movie}', 'MovieItemController@update');
 Route::post('/usuarios', 'UserController@store');	
 
 Route::get('/listas/{usermovie}/addmovie', 'MovieItemController@create')
-	->where('usermovie','[0-9]+');
+	->where('usermovie','[0-9]+')->middleware('auth');
 	
-Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
-Route::get('/usuarios/{usermovie}/{movie}/editar', 'MovieItemController@edit')->name('movies.edit');
+Route::get('/usuarios/{user}/editar', 'UserController@edit')->name('users.edit')->middleware('auth');
+Route::get('/usuarios/{usermovie}/{movie}/editar', 'MovieItemController@edit')->name('movies.edit')->middleware('auth');
 
-Route::get('/listas/{usermovie}/editar', 'MovieController@edit')->name('lists.edit');
+Route::get('/listas/{usermovie}/editar', 'MovieController@edit')->name('lists.edit')->middleware('auth');
 
 Route::post('/listas/{usermovie}', 'MovieItemController@store');	
-
-
 
 //redireccionar invalidos 
 Route::any('{query}', 
