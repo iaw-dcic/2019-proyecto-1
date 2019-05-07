@@ -52,7 +52,7 @@ class PostsController extends Controller
         $post_id = 0;
         foreach($posts as $post){
             if(($post->title) == $request->input('title')){
-                createItem($post);
+                $this->createItem($post);
                 $post_id= $post->id;
                 $postExist = 1;
             }
@@ -63,7 +63,7 @@ class PostsController extends Controller
             $post->user_id = auth()->user()->id;
             $post->save();            
             $post_id = $post->id;
-            createItem($post_id);
+            $this->createItem($post_id);
         }
         
         $userPost = Post::find($post_id);
