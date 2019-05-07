@@ -78,7 +78,7 @@
                         @endif
                         @else
                         <li class="nav-item">
-                            <a class="nav-link" href='partido'>Crear Partido</a>
+                            <a class="nav-link" href='/partido'>Crear Partido</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href='/listadoPartidos'>Mis Partidos</a>
