@@ -53,6 +53,31 @@ class UserController extends Controller
      */
     public function show(Request $request, $id)
     {
+       //
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+       $user=User::find($id);
+        return view('/auth/edit')->with('user',$user);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
        $user=User::find($id);
        $nomB=true;
        $emailB=true;
@@ -83,36 +108,6 @@ class UserController extends Controller
         
         flash('asdasda')->success();  
         return redirect('/home');
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-       $user=User::find($id);
-        return view('/auth/edit')->with('user',$user);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-       /* $user=User::find($id);
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->save();
-        return redirect('/home');*/
-        return "Entre al updateeeeeeeeeeeeeeeee";
     }
 
     /**

@@ -2,11 +2,7 @@
 
 @section('content')
 
-Su lista de categorias:
-@if(sizeof($caters)==0)
-<br>
-      EL usuario no ingreso ningun vehiculo
-@endif
+
  
 
   @foreach ($caters as $cater)
