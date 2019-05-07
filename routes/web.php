@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     // Playlist
 
-    Route::get('playlists', 'PlaylistController@index');
+    Route::get('playlists', 'PlaylistController@index')->name('playlist.index');
 
     Route::get('playlist/create', function () {
         return view('playlist.create')->with('playlist',null);

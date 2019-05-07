@@ -23,7 +23,6 @@ function onVisibilityChange(id) {
         }
     });
 
-
 }
 
 function storePlaylist(id) {
@@ -51,18 +50,22 @@ function storePlaylist(id) {
         method: 'POST',
         type: 'POST',
         success: function(data){
-            alert('Playlist Creada Exitosamente.');
+            $('#result').html(data.html);
+            $('#result').show();
         }
     });
 
 }
 
+
+
 function deletePlaylist(id) {
+
     var item = $('#playlist-item-'+id);
 
     $.get('playlist/delete/'+id, function (data) {
-        item.empty();
-        $('#modal-eliminar-'+id).modal('dispose');
+        item.hide();
+        $('#modal-eliminar-'+id).dispose();
     })
-}
 
+}

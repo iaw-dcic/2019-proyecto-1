@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
 
-                @foreach ($playlists as $playlist)
+            @foreach ($playlists as $playlist)
                     <div class="col-md-4" id="playlist-item-{{$playlist->id}}">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top" src="{{asset('images/playlists/'.$playlist->image)}}" alt="playlist-cover" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
@@ -53,6 +53,9 @@
 
 
 @endsection
+
+
+
 
 @section('scripts')
     <script src="{{ asset('js/playlist.js') }}"></script>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
+
 class SongController extends Controller
 {
 
@@ -43,6 +44,20 @@ class SongController extends Controller
             $song->image = $image;
             $song->save();
         }
+
+        $message = "Cancion creada con exito!";
+        $url = '/song/create/'.$song->playlist_id;
+        $action = "Agregar más canciones";
+        $playlistUrl = '/playlist/details/'.$song->playlist_id;
+
+        $result = view('song.result-message')
+            ->with('message',$message)
+            ->with('url',$url)
+            ->with('playlistUrl',$playlistUrl)
+            ->with('action',$action)
+            ->render();
+
+        return response()->json(array('success' => true, 'html' => $result));
 
     }
 

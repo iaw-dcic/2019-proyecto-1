@@ -26,7 +26,8 @@ function storeSong(playlist_id) {
         method: 'POST',
         type: 'POST',
         success: function(data){
-            alert('Cancion creada exitosamente.');
+            $('#result').html(data.html);
+            $('#result').show();
         }
     });
 

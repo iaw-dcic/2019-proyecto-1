@@ -22,7 +22,7 @@ function register() {
         method: 'POST',
         type: 'POST',
         success: function(data){
-            alert('Usuario registrado con exito.');
+            window.location = '/';
         }
     });
 

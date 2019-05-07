@@ -8,12 +8,12 @@
 
 <body>
 
-    <div class="container-fluid p-5 ">
+    <div class="container-fluid p-5" >
 
         @yield('container-fluid')
 
     </div>
-    <div class="container p-5 ">
+    <div class="container p-5" id="result">
 
         @yield('container')
 
