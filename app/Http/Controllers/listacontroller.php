@@ -35,6 +35,7 @@ class listacontroller extends Controller
     			return view('error',compact('msg'));
     		
     		}
+    	}
  			
     }
     public function eliminarlista($id){
