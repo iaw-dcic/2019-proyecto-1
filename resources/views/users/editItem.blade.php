@@ -19,10 +19,12 @@
         <br>
         <br>
         <br>
+        <br>
+
 
         <div class="container">
-            <form method="POST" action=" }}">
-                {{  csrf_field() }} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
+                <form method="PUT" action="{{ route('users.updateEditItem',$items->first()->list_id) }}">
+                        {{  csrf_field() }} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
 
                 <section>
 
@@ -39,14 +41,17 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                    @foreach ($items as $item)
+
 
                                     <tr>
-                                        <td><input type="text" name="nombre_club[]" class="form-control" required=""></td>
-                                        <td><input type="text" name="nombre_estadio[]" class="form-control"></td>
-                                        <td><input type="number" name="capacidad_estadio[]" class="form-control quantity" required=""></td>
-                                        <td><input type="text" name="pais[]" class="form-control budget"></td>
+                                        <td><input type="text" name="nombre_club[]" class="form-control" required="" value="{{ old('nombre_club',$item->nombre_club) }}"></td>
+                                        <td><input type="text" name="nombre_estadio[]" class="form-control" value="{{ old('nombre_estadio',$item->nombre_estadio) }}"></td>
+                                        <td><input type="number" name="capacidad_estadio[]" class="form-control quantity" required=""value="{{ old('capacidad_estudio',$item->capacidad_estadio) }}"></td>
+                                        <td><input type="text" name="pais[]" class="form-control budget"value="{{ old('pais',$item->pais) }}"></td>
                                         <td><a href="#" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>
                                     </tr>
+                                    @endforeach
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -54,32 +59,8 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
 
-                        @foreach ($items as $item)
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
-                        <h1>No hay un carajo</h1>
 
-                            @if(empty($item))
-                                <h1>No hay un carajo</h1>
-                                <h1>No hay un carajo</h1>
-                                <h1>No hay un carajo</h1>
-                                <h1>No hay un carajo</h1>
-                                <h1>No hay un carajo</h1>
-                                <h1>No hay un carajo</h1>
-                                <h1>No hay un carajo</h1>
-                            @endempty)
-                            <h1>{{ $item->nombre_club }}</h1>
-                        @endforeach
                     </div>
                 </section>
             </form>

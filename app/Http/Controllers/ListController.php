@@ -127,17 +127,19 @@ class ListController extends Controller
 
    public function updateLista(Request $request,$id){
        $list = Lista::where('id',$id)->first();
-       if (empty($data['isPublic']))
-            $request['isPublic']=false;
-       else
-            $request['isPublic']=true;
+       if (($request['isPublic']=='on'))
+         $request['isPublic']=true;
+       else {
+           $request['isPublic']=false;
+       }
+
 
        $list->update(request()->validate([
            'name' => 'required',
            'isPublic' =>'required',
 
        ]));
-       $items = Item::where('list_id',$id);
+       $items = Item::where('list_id',$list->id)->get();
        return view('users.editItem',[
             'lista' => $list,
             'items' => $items,
@@ -145,7 +147,34 @@ class ListController extends Controller
    }
 
    public function editItem($id){
-        return view('users.editItem');
+       $list=Lista::where('id',$id)->first();
+        return view('users.editItem',[
+            'list' => $list
+        ]);
+   }
+
+   public function updateEditItem($id,Request $request){
+    //borro lo que tenia antes
+    $items = Item::where('list_id',$id)->delete();
+
+    $data = request()->all();
+    $lista= Lista::orderby('id','desc')->first();
+    if(count($request->nombre_club) > 0){
+        foreach($request->nombre_club as $item=>$v){
+            $data2=array(
+                // 'nombre_club'
+                'nombre_club' => $request->nombre_club[$item],
+                'nombre_estadio' => $request->nombre_estadio[$item],
+                'capacidad_estadio' => $request->capacidad_estadio[$item],
+                'pais' => $request->pais[$item],
+                'list_id' => $lista->id,
+
+            );
+            Item::create($data2);
+        }
+    }
+    return redirect()->route('users.showListas');
+
    }
 
 

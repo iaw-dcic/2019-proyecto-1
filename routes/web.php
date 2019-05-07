@@ -33,7 +33,8 @@ Route::get('usuarios/mostrarListas/{id}','ListController@updateLista')->name('us
 
 Route::get('usuarios/mostrarListas/{id}/editar','ListController@editLista')->name('users.editLista');
 
-Route::get('usuarios/mostrarListas/{id}/editarItem','ListController@editItem')->name('users.editItem');
+Route::get('usuarios/mostrarListas/{id}/editItem','ListController@editItem')->name('users.editItem');
+Route::get('usuarios/mostrarListas/{id}/guardar','ListController@updateEditItem')->name('users.updateEditItem');
 
 
 

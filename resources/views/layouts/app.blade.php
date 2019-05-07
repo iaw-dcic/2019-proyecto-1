@@ -35,13 +35,15 @@
 </head>
 <body>
     <div id="app">
+
+
         <nav class="navbar navbar-expand-lg  navbar-laravel navbar-dark gris scrolling-navbar fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 @if(auth()->user()!=null)
-                    <ul class="nav nav-pills nav-fill blanca">
+                    <ul class="nav nav-pills nav-fill">
                         <li class="nav-item">
                           <a class="nav-link " data-ajax="false" href="{{ route('home') }}">Home</a>
                         </li>
