@@ -73,6 +73,18 @@ class AlbumsController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show (Album $album) {
+        if ($album->public == 0) {
+
+            if (!Auth::user()) {
+                return Redirect::to('/login');
+            }
+            else {
+                if (Auth::user() != $album->owner) {
+                    abort(403, 'Unauthorized Action');
+                }
+            }
+            
+        }
         return view('albums.showAlbum', compact('album'));
     }
 
