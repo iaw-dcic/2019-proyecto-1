@@ -24,7 +24,7 @@ class MovieItemController extends Controller
 		$auth_id =  Auth::id();
 		 
 		if($auth_id==$usermovie->creador_id)
-			return view('movie.createmovie', ['usermovie'=> $usermovie]); //tengo q hacer vista de peli
+			return view('movie.createmovie', ['usermovie'=> $usermovie]); 
 		else
 			return redirect('/home');
 	}

@@ -13,18 +13,9 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index(){
-		
-	//	$users= DB::table('users')->get();
-	
+
 	 $users = User::all();
-	
-	//	if (request()->has('empty')) {
-    //        $users = [];
-     //   } else {
-         //   $users = [
-           //     'Joel', 'Ellie', 'Tess', 'Tommy', 'Bill',
-           // ];
-     //   }
+
 		
 	return view('users.index', ['users'=> $users, 
 						  'title'=> 'Comunidad']); 
@@ -93,9 +84,7 @@ class UserController extends Controller
         $nombre = Input::get('nombre');
 		
         $user = User::where('name','like','%nombre%')->get();
-		
-		//$pelis=Usermovie::where('creador_id',$user->id)->get();
-		
+
 		return  redirect()-> route('users.show', ['user'=> $user]);
     }
 	
