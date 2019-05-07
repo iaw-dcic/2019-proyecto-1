@@ -78,8 +78,9 @@ class AlbumsController extends Controller {
             if (!Auth::user()) {
                 return Redirect::to('/login');
             }
+
             else {
-                if (Auth::user() != $album->owner) {
+                if (Auth::user()->name != $album->owner) {
                     abort(403, 'Unauthorized Action');
                 }
             }
