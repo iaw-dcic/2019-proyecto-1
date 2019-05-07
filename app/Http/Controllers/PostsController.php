@@ -19,9 +19,16 @@ class PostsController extends Controller{
 
     public function store(Request $request){
         $this->middleware('auth');
-        $post = $this->crearPost($request);
-        $user = Auth::user();
-        $this->crearImagenes($request, $user, $post);
+        DB::beginTransaction();
+        try{
+            $post = $this->crearPost($request);
+            $user = Auth::user();
+            $post->save();
+            $this->crearImagenes($request, $user, $post);
+            DB::commit();
+        }catch(\Exception $ex){
+            DB::rollback();
+        }
         return back();
     }
 
@@ -35,7 +42,6 @@ class PostsController extends Controller{
         else
             $post->public = false;
         $post->created_at = $now->created_at = $now->format('Y-m-d H:m:s');
-        $post->save();
         return $post;
     }
 
@@ -80,15 +86,21 @@ class PostsController extends Controller{
 
     public function destroy($id){
         $this->middleware('auth');
-        $post = Post::find($id);
-        $post_user = User::find($post->user_id);
-        if($post_user->id == Auth::user()->id){
-            $imagenes = Photo::where('post_id', $post->id)->get();
-            foreach($imagenes as $image){
-                Cloudder::delete($image->photo_id);
-                Photo::destroy($image->id);
+        DB::beginTransaction();
+        try{
+            $post = Post::find($id);
+            $post_user = User::find($post->user_id);
+            if($post_user->id == Auth::user()->id){
+                $imagenes = Photo::where('post_id', $post->id)->get();
+                foreach($imagenes as $image){
+                    Cloudder::delete($image->photo_id);
+                    Photo::destroy($image->id);
+                }
+                Post::destroy($id);
             }
-            Post::destroy($id);
+            DB::commit();
+        }catch(\Exception $ex){
+            DB::rollback();
         }
         return back();
     }

@@ -71,23 +71,29 @@ class LoginController extends Controller{
     }
 
     private function crearUsuario($user, $driver){
-        $newUser = new User();
-        $newUser->provider_name = $driver;
-        $newUser->provider_id = $user->getId();
-        $newUser->name = $user->getName();
-        $username = str_replace(' ', '', $user->getName());
-        $newUser->username = strtolower($username);
-        $newUser->email = $user->getEmail();
-        $newUser->email_verified_at = now();
+        DB::beginTransaction();
+        try{
+            $newUser = new User();
+            $newUser->provider_name = $driver;
+            $newUser->provider_id = $user->getId();
+            $newUser->name = $user->getName();
+            $username = str_replace(' ', '', $user->getName());
+            $newUser->username = strtolower($username);
+            $newUser->email = $user->getEmail();
+            $newUser->email_verified_at = now();
 
-        Cloudder::upload($user->getAvatar());
-        $result = Cloudder::getResult();
-        $photo_id = $result['public_id'];
-        $photo_url = $result['secure_url'];
+            Cloudder::upload($user->getAvatar());
+            $result = Cloudder::getResult();
+            $photo_id = $result['public_id'];
+            $photo_url = $result['secure_url'];
 
-        $newUser->photo_id = $photo_id;
-        $newUser->photo_url = $photo_url;
-        $newUser->save();
+            $newUser->photo_id = $photo_id;
+            $newUser->photo_url = $photo_url;
+            $newUser->save();
+            DB::commit();
+        }catch(\Exception $ex){
+            DB::rollback();
+        }
         return $newUser;
     }
 }
