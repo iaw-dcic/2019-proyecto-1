@@ -106,7 +106,7 @@ class UserController extends Controller
             $user->save();
         }
         
-        flash('asdasda')->success();  
+          
         return redirect('/home');
     }
 

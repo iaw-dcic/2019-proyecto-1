@@ -63,12 +63,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
-                                    <form class="form-inline"  method="POST" action="{{ route('users.update',Auth::user()->id) }}" >
-                                    @csrf
-                                      <input name="_method" type="hidden" value="PUT">
-                                     <button type="submit" class="dropdown-item">Editar</button>
-                                    @csrf
-                                 </form>
+                                    <a class="dropdown-item" href="{{ route('users.edit',Auth::user()->id) }}">
+                                        {{ __('Editar') }}
+                                    </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

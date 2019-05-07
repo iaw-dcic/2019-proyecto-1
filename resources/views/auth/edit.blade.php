@@ -9,7 +9,9 @@
                 <div class="card-header">{{ __('Editar Usuario') }}</div>
 
                 <div class="card-body">
-                    <form method="PUT" action="{{ route('users.update',$user) }}">
+                   <form class="form-inline"  method="POST" action="{{ route('users.update',Auth::user()->id) }}" >
+                      @csrf
+                         <input name="_method" type="hidden" value="PUT">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
