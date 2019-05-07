@@ -29,9 +29,13 @@ Route::get('usuarios/mostrarListas','ListController@showListas')->name('users.sh
 
 Route::get('usuarios/mostrarListas/{list_id}/destroy','ListController@destroy')->name('users.destroy');
 
+Route::get('usuarios/mostrarListas/{id}','ListController@updateLista')->name('users.updateLista');
 
-Route::get('usuarios/mostrarListas/{list_id}/editar','ListController@editLista')->name('users.editLista');
-Route::put('usuarios/mostrarListas/{list_id}','ListController@updateLista');
+Route::get('usuarios/mostrarListas/{id}/editar','ListController@editLista')->name('users.editLista');
+
+Route::get('usuarios/mostrarListas/{id}/editarItem','ListController@editItem')->name('users.editItem');
+
+
 
 
 
@@ -49,7 +53,6 @@ Route::put('usuarios/mostrarListas/{list_id}','ListController@updateLista');
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('logout', 'Auth\LoginController@salir')->name('salir');
 // Registration Routes...
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');

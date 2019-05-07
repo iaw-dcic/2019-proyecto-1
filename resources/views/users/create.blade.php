@@ -33,13 +33,16 @@
                 <div class="form-group">
                         <!-- Label usa el id del input --> <!-- el campo name es el que usa el metodo post en el controlador para crear el usuario -->
                         <label for="name">Nombre de la lista a crear:</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Juan Perez" value="{{ old('name') }}">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Mi Lista" value="{{ old('name') }}">
                 </div>
+                <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="isPublic" name="isPublic">
+                        <label class="form-check-label" for="exampleCheck1">Es pública</label>
+                 </div>
 
                 <div>
 
-                </div>
-                        <button type="submit" class = "btn btn-primary">Crear Lista</button>
+                      <button type="submit" class = "btn btn-primary">Crear Lista</button>
 
                 </div>
             </form>

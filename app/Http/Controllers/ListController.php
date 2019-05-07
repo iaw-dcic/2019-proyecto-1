@@ -85,7 +85,7 @@ class ListController extends Controller
                 Item::create($data2);
             }
         }
-        return redirect()->route('users.index');
+        return redirect()->route('home');
     }
 
 
@@ -94,10 +94,14 @@ class ListController extends Controller
         /**Recibimos los datos del formulario */
         $data = request()->all();
         $user = auth()->user();
+        if (empty($data['isPublic']))
+            $data['isPublic']=false;
+        else
+            $data['isPublic']=true;
 
         $list = Lista::create([
             'name' => $data['name'],
-            'isPublic' => true,
+            'isPublic' => $data['isPublic'],
             'user_id' => $user->id,
         ]);
 
@@ -121,12 +125,31 @@ class ListController extends Controller
            return back();
    }
 
-   public function updateLista($id){
+   public function updateLista(Request $request,$id){
+       $list = Lista::where('id',$id)->first();
+       if (empty($data['isPublic']))
+            $request['isPublic']=false;
+       else
+            $request['isPublic']=true;
+
        $list->update(request()->validate([
            'name' => 'required',
+           'isPublic' =>'required',
+
        ]));
-      return redirect()->route('users.showListas');
+       $items = Item::where('list_id',$id);
+       return view('users.editItem',[
+            'lista' => $list,
+            'items' => $items,
+       ]);
    }
+
+   public function editItem($id){
+        return view('users.editItem');
+   }
+
+
+
 
     public function destroy($id){
         if(auth()->user()!=null){

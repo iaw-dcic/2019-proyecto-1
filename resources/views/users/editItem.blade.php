@@ -21,7 +21,7 @@
         <br>
 
         <div class="container">
-            <form method="POST" action="{{ url('usuarios/crearItem') }}">
+            <form method="POST" action=" }}">
                 {{  csrf_field() }} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
 
                 <section>
@@ -39,6 +39,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                     <tr>
                                         <td><input type="text" name="nombre_club[]" class="form-control" required=""></td>
                                         <td><input type="text" name="nombre_estadio[]" class="form-control"></td>
@@ -49,10 +50,36 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td> <input type="submit" name="" value="Crear Lista" class="btn btn-primary"></td>
+                                    <td> <input type="submit" name="" value="Guardar cambios" class="btn btn-primary"></td>
                                 </tr>
                             </tfoot>
                         </table>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+
+                        @foreach ($items as $item)
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+                        <h1>No hay un carajo</h1>
+
+                            @if(empty($item))
+                                <h1>No hay un carajo</h1>
+                                <h1>No hay un carajo</h1>
+                                <h1>No hay un carajo</h1>
+                                <h1>No hay un carajo</h1>
+                                <h1>No hay un carajo</h1>
+                                <h1>No hay un carajo</h1>
+                                <h1>No hay un carajo</h1>
+                            @endempty)
+                            <h1>{{ $item->nombre_club }}</h1>
+                        @endforeach
                     </div>
                 </section>
             </form>
