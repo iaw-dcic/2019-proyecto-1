@@ -72,13 +72,10 @@ class AlbumController extends Controller
         $album->name = request('name');
         $album->bandName = request('band');
         $album->description = request('coment');  
-        $album->link = request('youtubeLink');
         $album->save();
-        
         //return View('album.index');
-        return redirect()->action(
-            'AlbumController@index'
-        );
+        return redirect()->route('createSongs', ['id' => $album->id]);
+
 
     }
 
@@ -140,7 +137,6 @@ class AlbumController extends Controller
       $album->bandName = Input::get('band');
       $album->public = Input::get('visibility');
       $album->description = Input::get('coment');  
-      $album->link = Input::get('youtubeLink');
       $album->save();
       
       //$album->update(request(['name','band','visibility','coment','youtubeLink']));

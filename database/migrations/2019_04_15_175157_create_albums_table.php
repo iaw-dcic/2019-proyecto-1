@@ -20,9 +20,7 @@ class CreateAlbumsTable extends Migration
             $table->string('name', 100);
             $table->string('bandName', 100);	
             $table->integer('user_id');	
-            $table->text('description');
-            //Link a  youtube...
-            $table->text('link');
+            $table->text('description'); 
             $table->boolean('public')->default(1);	
             $table->timestamps();
         });

@@ -46,9 +46,9 @@ return [
 
     //Login con github    
     'github' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
-        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
-        'redirect' => env('GITHUB_CALLBACK') , //cambiar en producción  solo para testear...
+        'client_id' => env('3288479ae1eda7810194'),         // Your GitHub Client ID
+        'client_secret' => env('a7242824557138c1bc8f590c73d449602e2746d9'), // Your GitHub Client Secret
+        'redirect' => env('http://haiku2.herokuapp.com/login/github/callback') , //cambiar en producción  solo para testear...
     ],
 
 ];

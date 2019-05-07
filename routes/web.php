@@ -30,6 +30,8 @@ Route::post('/updateUser','ApiController@updatePost')->name('updatePost');
 Route::post('/update','AlbumController@update')->name('update');
 Route::get('/showAlbum/{id}','AlbumController@show')->name('showAlbum');
 
+Route::get('/createSongs/{id}','song\SongController@index')->name('createSongs');
+
 
 Route::get('/profile', 'ApiController@profile')->name('profile');
 Route::post('/profile','ApiController@updateAvatar')->name('avatar');
