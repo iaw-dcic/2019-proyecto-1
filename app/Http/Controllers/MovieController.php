@@ -26,8 +26,10 @@ class MovieController extends Controller
             return view('editlist',['list' => $list],['movies'=>$movies]);
         }
         else
+        {
             return redirect()->route('home');
-
+        }
+     
     }
 
     public function store()
