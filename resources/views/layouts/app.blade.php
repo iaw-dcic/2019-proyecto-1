@@ -15,7 +15,7 @@
    
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="{{ secure_asset('//fonts.gstatic.com') }}">
     <link href="{{ secure_asset('https://fonts.googleapis.com/css?family=Nunito') }}" rel="stylesheet" type="text/css">
     <link href="{{ secure_asset('https://fonts.googleapis.com/css?family=Bangers') }}" rel='stylesheet'>
 
