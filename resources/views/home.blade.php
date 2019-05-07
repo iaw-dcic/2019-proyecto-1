@@ -65,17 +65,29 @@
    <tbody>
      
     <tr>
-
-      <td>{{$auto->auto}}</td>
+  <td>{{$auto->auto}}</td>
       <td>{{$auto->cv}} </td>
-      <td><a  href="{{ url('/home',['nom' => $auto->auto, 'cate' => $cater->categoria])}}"
-            class="btn btn-outline-dark btn-sm">  Eliminar</a>
+      <td>
+       <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto.'/'.$cater->categoria)}}" >
+        @csrf
+         <input name="_method" type="hidden" value="DELETE">
+        <button type="submit" class="btn btn-outline-dark btn-sm">Eliminar</button>
+         @csrf
+      </form>
             @if($auto->publico=='false')
-           <a href="{{ url('/home',['nom' => $auto->auto])}}"
-            class="btn btn-outline-dark btn-sm">       Publicar</a></td>
+             <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
+             @csrf
+             <input name="_method" type="hidden" value="PUT">
+            <button type="submit" class="btn btn-outline-dark btn-sm">Publicar</button></td>
+             @csrf
+             </form>
             @else
-            <a href="{{ url('/home',['nom' => $auto->auto])}}"
-            class="btn btn-outline-dark btn-sm">       Privado</a></td>
+            <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
+            @csrf
+            <input name="_method" type="hidden" value="PUT">
+           <button type="submit" class="btn btn-outline-dark btn-sm">Privado</button></td>
+            @csrf
+           </form>
             @endif
     </tr>
   </tbody>
