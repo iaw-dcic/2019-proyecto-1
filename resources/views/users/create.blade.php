@@ -1,13 +1,9 @@
 @extends('layouts.app')
 
-<style>
-    .crear:active{
-        color: blue;
-    }
 
-
-</style>
 @section('content')
+
+
 
     <div class="card">
         <h4 class="card-header"> Crear Lista </h4>
