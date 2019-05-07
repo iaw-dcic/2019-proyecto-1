@@ -31,7 +31,6 @@ Su lista de categorias:
        <tr> 
       <th scope="col">Vehiculo</th>
       <th scope="col">Potencia</th>
-      <th scope="col">Accion</th> 
       </tr>
      </thead>
      
