@@ -37,7 +37,9 @@ class listsController extends Controller
     */
     public function accederListasAjenas(int $id){
         $listas = DB::table('listas')->where([ ['user_id', "=", $id], ['public',"=",1] ])->get();
+     
         $name = User::find($id)->name;
+        abort_if($lista[0]->public == 0 &&  ($idUsuario != auth()->id() || $idUsuario == "guest"), 403);
         return view('lists.index',compact('listas','name')); //devuelvo una view junto con las listas
 
     }
@@ -51,7 +53,7 @@ class listsController extends Controller
 
         $idUsuario = DB::table('users')->where('name', $nomUsuario)->get();
         $idUsuario = $idUsuario[0]->id;
-        dd($idUsuario);
+     
         $lista = Lista::where([ ['id', "=", $idLista], ['user_id', "=", $idUsuario] ])->get();
         abort_if($lista[0]->public == 0 &&  ($idUsuario != auth()->id() || $idUsuario == "guest"), 403);
         $juegos = Juego::where('list_id',$lista[0]->id)->get();
@@ -121,13 +123,15 @@ class listsController extends Controller
         $idUsuarioAccediendo = DB::table('users')->where('id',$lista[0]->user_id)->get();
         $idUsuarioAccediendo = $idUsuarioAccediendo[0]->id;
         if($idUsuario == $idUsuarioAccediendo){
+       
             $name = User::find($idUsuario)->name; 
             return view('lists.show',compact('lista','juegos','idUsuario','name'));
         }
         else{
-
+        
             $idUsuario = $idUsuarioAccediendo;
             $name = User::find($idUsuario)->name; 
+            abort_if($lista[0]->public == 0, 403 );
             return view('lists.show',compact('lista','juegos','idUsuario','name'));
         }
 
