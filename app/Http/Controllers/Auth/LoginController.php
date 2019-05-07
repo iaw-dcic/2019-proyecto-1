@@ -39,7 +39,7 @@ class LoginController extends Controller
     public function handleProviderCallback($provider)
     {
        
-      $user = Socialite::driver('github')->user();
+      $user = Socialite::driver($provider)->user();
         
        $createUser = User::FirstOrCreate(
         [
