@@ -18,7 +18,7 @@
                     </div>
 
                     <div class="form-group form-check">
-                        <input type="checkbox" class="form-check-input" value="{{$post->public}}" name="public" id="publico" <?php if($post->public) echo 'checked' ?>>
+                        <input type="checkbox" class="form-check-input" name="public" id="publico" <?php if($post->public) echo 'checked' ?>>
                         <label class="form-check-label" for="hacer-publico">Hacer público</label>
                     </div>
                 </div>

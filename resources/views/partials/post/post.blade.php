@@ -52,7 +52,7 @@
 
                             <div class="dropdown-menu" aria-labelledby="dropdownPostButton m-0 p-0">
                                 <a class="dropdown-item" href="" id="btn-editar-post" data-toggle="modal" data-target="#editar-post-modal">Editar post</a>
-                                <a class="dropdown-item" href="" id="btn-borrar-post" onclick="$('#form-borrar-post').submit();">Borrar post</a>
+                                <a class="dropdown-item" href="" id="btn-borrar-post">Borrar post</a>
                             </div>
                         </div>
 
