@@ -7,7 +7,7 @@
     <div class="links">
         <a href="{{ route('users.edit',Auth::user()->id) }}">{{ __('Mi Perfil') }}</a>
         <br><br>
-        <a href="{{ url('/PelitecaEditor') }}">Mi peliteca</a>
+        <a href="{{ url('/PelitecaEditor',Auth::user()->id) }}">Mi peliteca</a>
     </div>
 </body>
 @endsection

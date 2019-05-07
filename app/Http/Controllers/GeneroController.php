@@ -48,7 +48,7 @@ class GeneroController extends Controller
              $Pelicula->publico=false;
              $Pelicula->save();
         }
-       return redirect('/home');
+       return redirect('PeliculaEditor');
     }
 
     /**
@@ -68,10 +68,16 @@ class GeneroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($titulo)
     {
-        $caters = DB::select('update peliculas Set publico = :dat where id = :id', ['dat' => true,'id'=> Auth::id()]);
-        return redirect('home');
+        $publico=DB::select ('select publico from peliculas where pelicula =:titulo and id =:id',['titulo'=>$titulo,'id'=> Auth::id(),]);
+   
+        if($publico[0]->publico==0)
+        $caters = DB::select('update peliculas Set publico = :dat where id = :id and pelicula = :titulo', ['dat' => true,'titulo'=>$titulo,'id'=> Auth::id()]);
+        else
+             $caters = DB::select('update peliculas Set publico = :dat where id = :id and pelicula = :titulo', ['dat' => false,'titulo'=>$titulo,'id'=> Auth::id()]);
+       
+         return redirect('PelitecaEditor');
     }
 
     /**
@@ -92,9 +98,9 @@ class GeneroController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($nom,$cate,$anio)
+    public function destroy($nom,$gen)
     {
-         $caters = DB::select('delete from peliculas where genero=:cate and pelicula=:nom and anio=:anio', ['nom' => $nom,'cate'=>$cate,'anio'=>$anio]);      
-        return redirect('home');
+         $caters = DB::select('delete from peliculas where genero=:gen and pelicula=:nom', ['nom' => $nom,'gen'=>$gen]);      
+        return redirect('PelitecaEditor');
     }
 }

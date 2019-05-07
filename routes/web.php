@@ -18,16 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/PelitecaEditor/{id}', 'PelitecaEditorController@index')->name('PelitecaEditor');
 
 Route::get('/GaleriaPelitecas', 'UserController@index')->name('GaleriaPelitecas');
 Route::get('/PelitecaShower/{id}', 'PelitecaShowerController@index')->name('PelitecaShower');
 Route::resource('Generos','GeneroController');
 
-Route::get('/home/{nom}/{cate}','CategoriaController@destroy')->name('home');
-Route::get('/home/{nom}','CategoriaController@edit')->name('home');
+Route::get('/PelitecaEditor/{nom}/{cate}','GeneroController@destroy')->name('PelitecaEditor')->middleware('auth');
+Route::get('/PelitecaEditor/{nom}','GeneroController@edit')->name('PelitecaEditor')->middleware('auth');
 Route::get('/Persona','PersonalController@index');
 
-Route::post('/PelitecaShower', 'PelitecaShowerController@store')->name('PelitecaShower');
+Route::post('/PelitecaEditor', 'GeneroController@store')->name('Genero');
 
 //Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 //Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
