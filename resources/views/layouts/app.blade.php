@@ -16,13 +16,13 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet'>
+    <link href="{{ secure_asset('https://fonts.googleapis.com/css?family=Nunito') }}" rel="stylesheet" type="text/css">
+    <link href="{{ secure_asset('https://fonts.googleapis.com/css?family=Bangers') }}" rel='stylesheet'>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="{{ secure_asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css')}}">
+    <script src="{{ secure_asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
+    <script src="{{ secure_asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js') }}"></script> 
     <link rel="stylesheet" href="{{ asset('css/miestilo.css') }}">
 
 </head>
