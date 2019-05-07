@@ -68,6 +68,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'listing.privacy' => \App\Http\Middleware\CheckListingPrivacy::class,
+        'game.privacy' => \App\Http\Middleware\CheckGamePrivacy::class,
     ];
 
     /**

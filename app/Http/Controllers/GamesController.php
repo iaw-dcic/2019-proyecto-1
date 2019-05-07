@@ -18,6 +18,7 @@ class GamesController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'create', 'show']]);
+        $this->middleware('game.privacy', ['only'=>['show']]);
     }
 
     /**
@@ -101,7 +102,6 @@ class GamesController extends Controller
     public function show($id)
     {
         $game = Game::find($id);
-
 
         $listNames = [];
         foreach ($game->listings as $listing) {

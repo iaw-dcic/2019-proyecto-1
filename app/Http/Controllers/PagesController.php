@@ -25,17 +25,15 @@ class PagesController extends Controller
         return view('pages.about');
     }
 
-   /* public function games()
-    {
-        return view('pages.games');
-    }*/
-
     public function searchlisting() 
     {
         return view('listings.listing-search');
     }
 
-
+    public function noAuthorized() 
+    {
+        return view('errors.401');
+    }
     
 
 }

@@ -16,6 +16,9 @@ Route::get('/','PagesController@home');
 Route::get('/about', 'PagesController@about');
 Route::get('/searchlisting', 'PagesController@searchListing');
 
+//Error non authorized
+Route::get('/401', 'PagesController@noAuthorized');
+
 //Games resource
 Route::resource('games','GamesController');
 

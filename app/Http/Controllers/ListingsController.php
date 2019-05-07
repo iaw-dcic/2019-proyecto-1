@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Listing;
 use App\Game;
 use Auth;
+use App\Http\Middleware\CheckListingPrivacy;
 
 class ListingsController extends Controller
 {
@@ -19,6 +20,8 @@ class ListingsController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'create', 'show', 'getUserListings']]);
+
+        $this->middleware('listing.privacy', ['only'=>['edit','update','store','destroy']]);
     }
 
     /**
