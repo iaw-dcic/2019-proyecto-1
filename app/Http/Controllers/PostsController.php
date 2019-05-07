@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post; 
+use App\Item;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -38,17 +40,50 @@ class PostsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'body' => 'required'
+            'name' => 'required',
+            'link' => 'required',
+            'price' => 'required'
         ]);
 
-        $post = new Post;
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->user_id = auth()->user()->id;
-        $post->save();
 
-        return redirect('/posts')->with('success', 'Post Created');
+        $postExist = 0;
+        $user= User::find(auth()->user()->id);
+        $posts = $user->posts;
+        $post_id = 0;
+        foreach($posts as $post){
+            if(($post->title) == $request->input('title')){
+                createItem($post);
+                $post_id= $post->id;
+                $postExist = 1;
+            }
+        }
+        if($postExist < 1){
+            $post = new Post;
+            $post->title = $request->input('title');
+            $post->user_id = auth()->user()->id;
+            $post->save();            
+            $post_id = $post->id;
+            createItem($post_id);
+        }
+        
+        $userPost = Post::find($post_id);
+
+        return redirect('/posts/create')->with('items',$userPost->items);
     }
+
+    public function finishStore(Request $request){
+        return redirect('/home');
+    }
+
+    private static function createItem($post_id){
+        $item = new Item;
+        $item->name = $request->input('name');
+        $item->link = $request->input('link');
+        $item->price = $request->input('price');
+        $item->post_id = $post->id;
+        $item->save();
+    }
+
 
     /**
      * Display the specified resource.
