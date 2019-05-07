@@ -38,13 +38,15 @@ class PlaylistController extends Controller
     public function store(Request $request)
     {
 
-        $playlist = new Playlist();
-
         if($request->get('id')!= -1){
             $playlist = Playlist::find($request->get('id'));
         }
+        else
+            $playlist = new Playlist();
 
-        $playlist->name=$request->get('nombre');
+        $name = $request->get('nombre');
+
+        $playlist->name=$name;
         $playlist->spotify_url=$request->get('spotify_url');
         $playlist->visibility=$request->get('visibilidad');
 
