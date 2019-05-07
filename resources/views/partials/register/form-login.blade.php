@@ -40,7 +40,6 @@
 
                         <hr class="my-4">
                         <a href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-lg btn-google btn-block"><i class="fab fa-google mr-2"></i> Ingresa con Google</a>
-                        <a href="{{ route('social_auth', ['driver' => 'facebook']) }}" class="btn btn-lg btn-facebook btn-block"><i class="fab fa-facebook-f mr-2"></i> Ingresa con Facebook</a>
                     </form>
                 </div>
             </div>
