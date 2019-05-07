@@ -3930,6 +3930,24 @@ function _ajaxEditarPerfil() {
   return _ajaxEditarPerfil.apply(this, arguments);
 }
 
+function mostrarAlerta() {
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: 'No podrás recuperar la cuenta una vez eliminada',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Borrar',
+    cancelButtonText: 'Cancelar'
+  }).then(function (result) {
+    if (result.value) {
+      Swal.fire('Eliminada!', 'La cuenta ha sido eliminada.', 'success');
+      $('#form-borrar-perfil').submit();
+    } else if (result.dismiss === Swal.DismissReason.cancel) {
+      Swal.fire('Cancelado', 'La cuenta no ha sido eliminada', 'error');
+    }
+  });
+}
+
 function readFile(input) {
   var reader = new FileReader();
 
@@ -3943,6 +3961,9 @@ function readFile(input) {
 
 $('#nueva_foto_perfil').on('change', function (event) {
   readFile(event.target);
+});
+$('#btn-borrar-perfil').on('click', function (event) {
+  mostrarAlerta();
 });
 $('#form_cambiar_foto_perfil').on('submit', function (event) {
   event.preventDefault();

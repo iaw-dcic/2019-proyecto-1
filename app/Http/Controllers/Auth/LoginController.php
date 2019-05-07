@@ -41,9 +41,7 @@ class LoginController extends Controller{
                 'exists' => ($user != null)
             ]);
         }
-        return reponse()->json([
-            'exists' => false
-        ]);
+        abort(400, '400 Bad Request');
     }
 
     //Conexión con las redes sociales
@@ -93,6 +91,7 @@ class LoginController extends Controller{
             DB::commit();
         }catch(\Exception $ex){
             DB::rollback();
+            abort(500, '500 Internal Server Error');
         }
         return $newUser;
     }

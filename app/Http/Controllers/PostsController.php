@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Photo;
 use App\User;
+use Validator;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 use JD\Cloudder\Facades\Cloudder;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller{
     protected $redirectTo = '/home';
@@ -19,6 +20,7 @@ class PostsController extends Controller{
 
     public function store(Request $request){
         $this->middleware('auth');
+        $this->validarDatosPost($request);
         DB::beginTransaction();
         try{
             $post = $this->crearPost($request);
@@ -28,6 +30,7 @@ class PostsController extends Controller{
             DB::commit();
         }catch(\Exception $ex){
             DB::rollback();
+            abort(500, '500 Internal Server Error');
         }
         return back();
     }
@@ -49,6 +52,8 @@ class PostsController extends Controller{
         $files = $request->file('fotos');
         $i = 0;
         foreach($files as $file){
+            //$this->validarImagenes($file);
+
             Cloudder::upload($file->getRealPath());
             $result = Cloudder::getResult();
             $photo_id = $result['public_id'];
@@ -62,15 +67,34 @@ class PostsController extends Controller{
         }
     }
 
-    public function show($id){
-        $post = Post::find($id);
-        $user = User::find($post->user_id);
-        $photos = Photo::where('post_id', $post->id)->get();
-        return view('partials.post.post')->with(['post' => $post, 'user' => $user, 'photos' => $photos]);
+    private function validarDatosPost(Request $request){
+        return $request->validate([
+            'descripcion' => 'required|max:255',
+            'public' => 'required'
+        ]);
+    }
+
+    private function validarImagenes($file){
+        return Validator::make($file, 'image');
+    }
+
+    public function show(Request $request, $id){
+        if($request->ajax()){
+            $post = Post::find($id);
+            $user = User::find($post->user_id);
+            $photos = $post->getPhotos()->get();
+            return view('partials.post.post')->with(['post' => $post, 'user' => $user, 'photos' => $photos]);
+        }
+        return abort(403, 'Unauthorized action.');
     }
 
     public function update(Request $request, $id){
         $this->middleware('auth');
+
+        $validator = validarDatosPost($request);
+        if($validator->fails())
+            return abort(400, '400 Bad request');
+
         $post = Post::find($id);
         $post_user = User::find($post->user_id);
         if($post_user->id == Auth::user()->id){
@@ -101,6 +125,7 @@ class PostsController extends Controller{
             DB::commit();
         }catch(\Exception $ex){
             DB::rollback();
+            abort(500, '500 Internal Server Error');
         }
         return back();
     }

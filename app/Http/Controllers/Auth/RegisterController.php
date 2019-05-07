@@ -76,9 +76,7 @@ class RegisterController extends Controller{
                 'exists' => ($user != null)
             ]);
         }
-        return response()->json([
-            'exists' => 'false'
-        ]);
+        abort(400, '400 Bad Request');
     }
 
     //Consulta Ajax para saber si el email está registrado o no
@@ -90,5 +88,6 @@ class RegisterController extends Controller{
                 'exists' => ($user != null),
             ]);
         }
+        abort(400, '400 Bad Request');
     }
 }

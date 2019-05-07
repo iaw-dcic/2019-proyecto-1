@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\Route;
 use Illuminate\Http\Request;
 use App\User;
+use App\Photo;
+use App\Post;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 
 class UsersController extends Controller{
 
     public function viewProfile(){
         $user = Auth::user();
-        $posts_publicos = $user->getPosts()->where('public', true)->orderBy('created_at', 'desc')->get();
-        $posts_privados = $user->getPosts()->where('public', false)->orderBy('created_at', 'desc')->get();
-        return view('profile')->with(['user' => $user, 'posts_publicos' => $posts_publicos, 'posts_privados' => $posts_privados]);
+        if($user != null){
+            $posts_publicos = $user->getPosts()->where('public', true)->orderBy('created_at', 'desc')->get();
+            $posts_privados = $user->getPosts()->where('public', false)->orderBy('created_at', 'desc')->get();
+            return view('profile')->with(['user' => $user, 'posts_publicos' => $posts_publicos, 'posts_privados' => $posts_privados]);
+        }
+        return redirect('login');
     }
 
     public function searchUsernames(Request $request){
@@ -28,25 +31,20 @@ class UsersController extends Controller{
         }else{
         //Envio de formulario
             $username = $request->query('username');
-            return redirect('/user/'.$username);
+            if($username != null && $username != '')
+                return redirect('/user/'.$username);
+            else
+                return redirect('/');
         }
-    }
-
-    public function store(Request $request){
-        $user = new User;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->first_name = $request->first_name;
-        $user->save();
-        return view('profile')->with(['user' => $user]);
     }
 
     public function show($username){
         $user = User::where('username', $username)->get()->first();
         if($user != null){
             $posts_publicos = $user->getPosts()->where('public', true)->orderBy('created_at', 'desc')->get();
-            $posts_privados = $user->getPosts()->where('public', false)->orderBy('created_at', 'desc')->get();
+            $posts_privados = null;
+            if(Auth::user() != null && $user->id == Auth::user()->id)
+                $posts_privados = $user->getPosts()->where('public', false)->orderBy('created_at', 'desc')->get();
             return view('profile')->with(['user' => $user, 'posts_publicos' => $posts_publicos, 'posts_privados' => $posts_privados]);
         }else{
             return redirect()->route('home');
@@ -62,7 +60,11 @@ class UsersController extends Controller{
                     return $this->editarFotoPerfil($request, $user);
                 else
                     return $this->editarInformacionPerfil($request, $user);
+            }else{
+                abort(403, 'Unauthorized action.');
             }
+        }else{
+            abort(403, 'Unauthorized action.');
         }
     }
 
@@ -91,6 +93,19 @@ class UsersController extends Controller{
     }
 
     public function destroy($id){
-        //
+        $this->middleware('auth');
+        if(Auth::user()->id == $id){
+            $user = User::find($id);
+            if($user != null){
+                Auth::logout();
+                $posts = Post::where('user_id', $id)->get();
+                foreach($posts as $post)
+                    Photo::where('post_id', $post->id)->delete();
+                Post::where('user_id', $id)->delete();
+                User::find($id)->delete();
+                return redirect('home');
+            }
+        }
+        return abort(403, 'Unauthorized action.');
     }
 }

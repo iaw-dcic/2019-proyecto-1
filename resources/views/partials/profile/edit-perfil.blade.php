@@ -30,11 +30,20 @@
                         <label for="biography-textarea"></label>
                         <textarea class="form-control" name="biography" placeholder="Biografía" id="biography-textarea" value="{{$user->biography}}" rows="3"></textarea>
                     </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-danger" id="btn-borrar-perfil">Borrar perfil</button>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-cerrar-editar-perfil">Cerrar</button>
                     <button type="submit" class="btn btn-primary" id="btn-editar-perfil">Guardar cambios</button>
                 </div>
+            </form>
+
+            <form method="POST" action="/user/{{Auth::user()->id}}" id="form-borrar-perfil">
+                @csrf
+                <input type="hidden" value="DELETE" name="_method">
             </form>
         </div>
     </div>

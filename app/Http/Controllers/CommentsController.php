@@ -13,10 +13,13 @@ class CommentsController extends Controller{
     public function __construct(){
     }
 
-    public function index($post_id){
-        $post = Post::find($post_id);
-        $comments = $post->getComments()->orderBy('created_at')->get();
-        return $comments;
+    public function index(Request $request, $post_id){
+        if($request->ajax()){
+            $post = Post::find($post_id);
+            $comments = $post->getComments()->orderBy('created_at')->get();
+            return $comments;
+        }else
+            abort(403, 'Unauthorized action.');
     }
 
     public function store(Request $request, $post_id){

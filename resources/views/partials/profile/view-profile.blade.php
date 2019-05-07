@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="tab-pane fade show" id="fotos-privadas" role="tabpanel" aria-labelledby="fotos-privadas-tab">
-            @if(Auth::user() != null && Auth::user()->username == $user->username)
+            @if($posts_privados != null)
             <?php $posteos = $posts_privados ?>
             <div class="row no-gutters actividad-usuario">
                 @include('partials.articles')

@@ -9,7 +9,7 @@
                     <img class="img-fluid img-thumbnail"
                         src="{{ $post->getPhotos()->get()->first()->photo_url }}">
                     <figcaption>
-                        <h2>&#64{{ App\User::where('id', $post->user_id)->get()->first()->username }}</h2>
+                        <h2>&#64{{ App\User::find($post->user_id)->username }}</h2>
                         @auth
                         <i class="far fa-comment"></i>
                         @endauth

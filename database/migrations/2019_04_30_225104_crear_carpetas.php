@@ -30,7 +30,6 @@ class CrearCarpetas extends Migration{
         file_put_contents(public_path('storage\\images\\').'fondo_3.jpg', $fondo_3);
         file_put_contents(public_path('storage\\images\\').'background-login.jpg', $background_login);
         file_put_contents(public_path('storage\\images\\').'background-register.jpg', $background_register);
-
     }
 
     /**

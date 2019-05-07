@@ -42,8 +42,11 @@ Route::get('/user/search', 'UsersController@searchUsernames');
 Route::post('/user/{username}', 'UsersController@update');
 
 Route::resource('user', 'UsersController')->only([
-    'store', 'show', 'destroy'
+    'show', 'destroy'
 ]);
+Route::get('user', function() {
+    return view('home');
+});
 
 //Posts
 Route::resource('posts', 'PostsController')->only([
@@ -51,9 +54,7 @@ Route::resource('posts', 'PostsController')->only([
 ]);
 
 Route::get('/posts/{post_id}/comments', 'CommentsController@index');
-Route::post('/posts/{post_id}/comments', 'CommentsController@store')->middleware('auth');;
-Route::put('/posts/{post_id}/comments/{id}', 'CommentsController@update')->middleware('auth');;
-Route::delete('/posts/{post_id}/comments/{id}', 'CommentsController@destroy')->middleware('auth');;
+Route::post('/posts/{post_id}/comments', 'CommentsController@store')->middleware('auth');
 
 Route::get('/about', function(){
     return view('about');
