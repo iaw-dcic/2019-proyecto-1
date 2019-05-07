@@ -26,8 +26,16 @@ class listacontroller extends Controller
     	$peliculas = \App\pelicula::where(['listaid'=>$id])->get();
     	if($lista->visible==true)
     		return view('listapublica',compact('lista','peliculas'));
-    	else
-    		return "ERROR ESTA TRATANDO DE ACCEDER A UNA LISTA PRIVADA";
+    	else{
+    		$user=Auth::user();
+    		if($user!=null && $user->id==$lista->userid){
+    			return view('listapublica',compact('lista','peliculas'));	
+    		}else{
+    			$msg="You can not see a private list that does not belongs to you";
+    			return view('error',compact('msg'));
+    		
+    		}
+ 			
     }
     public function eliminarlista($id){
     	$user=Auth::user();

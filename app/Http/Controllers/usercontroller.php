@@ -20,7 +20,7 @@ class usercontroller extends Controller
     	$user = Auth::user();
  		if($user!=null){
  			$usuario = Auth::user()->id;
- 			$listas = \App\lista::where(['userid' => $usuario, 'visible' => true])->get();
+ 			$listas = \App\lista::where(['userid' => $usuario])->get();
  			return view('miperfil',compact('user','listas')); 
  		}else{
  			$msg="You need to log in first!!!";
