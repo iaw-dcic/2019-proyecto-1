@@ -12,18 +12,9 @@ class MovieController extends Controller
 {
     public function index(){
 		
-	//	$listas= DB::table('usermovies')->get();
-	 $listas = Usermovie::all();
-	 $user= User::all();
 	
-	//	if (request()->has('empty')) {
-    //        $users = [];
-     //   } else {
-     //       $movies = [
-     //           'Titanic', 'Memento', 'Batman', 'Los simpsons', 'Kill Bill',
-     //       ];
-     //   }
-
+	$listas = Usermovie::all();
+	$user= User::all();
 		
 	return view('home', ['listas'=> $listas, 
 						  'title'=> 'Listas públicas ',
@@ -40,18 +31,14 @@ class MovieController extends Controller
 	}
 	
 	public function create(){
-
-			return view('lists.createlist');
-
-	
-}
+		return view('lists.createlist');
+	}
 	
 	public function store(){
 		$user = Auth::user();
 		
 		request()->validate([
 			'nombre' => ['required', 'min:3'],
-			
 		]);
 		
 		$public = request('public') == "on" ? 1 : 0;
@@ -83,9 +70,9 @@ class MovieController extends Controller
 	}
 	
 	public function edit(Usermovie $usermovie){
-			$auth_id =  Auth::id();
-			 $listas = Usermovie::all();
-				$user= User::all();
+	$auth_id =  Auth::id();
+	$listas = Usermovie::all();
+	$user= User::all();
 	
 		if($auth_id==$usermovie->creador_id)
 			return view('lists.editlist', ['usermovie'=> $usermovie]);
@@ -105,24 +92,31 @@ class MovieController extends Controller
 	}
 	
 	public function destroy(Usermovie $usermovie){
-	
-	//	$lista= Usermovie::find($usermovie);
-		
-		$peli=Movie::where('lista',$usermovie->id)->get();
-		
-		foreach ($peli as $movie){
-			$movie->delete();
-		}
-		
-		$usermovie->delete();
-		
-		//Para ir otra vez a home
+		$auth_id =  Auth::id();
 		$listas = Usermovie::all();
 		$user= User::all();
+	
+		$peli=Movie::where('lista',$usermovie->id)->get();
 		
-		return view('home', ['listas'=> $listas, 
+		if($auth_id==$usermovie->creador_id){
+			foreach ($peli as $movie){
+				$movie->delete();
+			}
+			
+			$usermovie->delete();
+			
+			//Para ir otra vez a home
+			$listas = Usermovie::all();
+			$user= User::all();
+			
+			return view('home', ['listas'=> $listas, 
+							  'title'=> 'Listas públicas ',
+							  'users' => $user]);
+		}
+		else
+			return view('home', ['listas'=> $listas, 
 						  'title'=> 'Listas públicas ',
-						  'users' => $user]);
+						  'users' => $user]); 
 	}
 	
 

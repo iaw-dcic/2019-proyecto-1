@@ -45,19 +45,28 @@ class MovieItemController extends Controller
 	}
 	
 	public function destroy(Usermovie $usermovie, Movie $movie){
-					
-		$movie->delete();
-
-		return redirect()->route('lists.show',  ['usermovie'=> $usermovie, 
+		$auth_id =  Auth::id();
+		$listas = Usermovie::all();
+		$user= User::all();
+		
+		if($auth_id==$usermovie->creador_id){
+			$movie->delete();
+			return redirect()->route('lists.show',  ['usermovie'=> $usermovie, 
 												'movie'=> $movie]);
+		}
+		else
+			return view('home', ['listas'=> $listas, 
+						  'title'=> 'Listas públicas ',
+						  'users' => $user]); 
 	}
 	
 	public function edit(Usermovie $usermovie, Movie $movie){
 		$auth_id =  Auth::id();
-			 $listas = Usermovie::all();
-	 $user= User::all();
-	if($auth_id==$usermovie->creador_id)
-		return view('movie.editmovie', ['usermovie'=> $usermovie, 
+		$listas = Usermovie::all();
+		$user= User::all();
+		
+		if($auth_id==$usermovie->creador_id)
+			return view('movie.editmovie', ['usermovie'=> $usermovie, 
 												'movie'=> $movie]);
 		else
 			return view('home', ['listas'=> $listas, 
