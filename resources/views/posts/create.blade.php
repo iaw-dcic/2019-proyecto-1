@@ -4,7 +4,6 @@
 <h1> Create New Collection </h1>
 {{ Form::open(['action' => 'PostsController@store', 'method'=> 'POST']) }}
 
-
 <table class="table table-striped table-dark">
   <thead>
     <tr>
