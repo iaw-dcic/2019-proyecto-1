@@ -6,15 +6,14 @@
 
         <title>ComicColect</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+      
 
         <!-- Styles -->
         
-        <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css') }}">
-        <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
-        <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js') }}"></script> 
-        <link href="{{ asset('https://fonts.googleapis.com/css?family=Bangers') }}" rel='stylesheet'>
+        <link rel="stylesheet" href="{{ secure_asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css') }}">
+        <script src="{{ secure_asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
+        <script src="{{ secure_asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js') }}"></script> 
+        <link href="{{ secure_asset('https://fonts.googleapis.com/css?family=Bangers') }}" rel='stylesheet'>
         <link rel="stylesheet" href="{{ asset('css/miestilo.css') }}">
 
     </head>
