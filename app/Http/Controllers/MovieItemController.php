@@ -22,32 +22,30 @@ class MovieItemController extends Controller
 
 	public function create(Usermovie $usermovie){
 		$auth_id =  Auth::id();
-		$listas = Usermovie::all();
-		$user= User::all();
 		 
 		if($auth_id==$usermovie->creador_id)
 			return view('movie.createmovie', ['usermovie'=> $usermovie]); //tengo q hacer vista de peli
 		else
-			return view('home', ['listas'=> $listas, 
-						  'title'=> 'Listas públicas ',
-						  'users' => $user]); 
+			return redirect('/home');
 	}
 
 	public function store(Usermovie $usermovie){
-		Movie::create([
-           	'titulo' => request('titulo'),
-			'director' =>  request('director'),
-			'año' =>  request('año'),
-			'lista' => $usermovie->id
-        ]);
+		$auth_id =  Auth::id();
 		
-		return redirect()->route('lists.show', ['usermovie'=> $usermovie]);
+		if($auth_id==$usermovie->creador_id){
+			Movie::create([
+				'titulo' => request('titulo'),
+				'director' =>  request('director'),
+				'año' =>  request('año'),
+				'lista' => $usermovie->id
+			]);
+			
+			return redirect()->route('lists.show', ['usermovie'=> $usermovie]);
+		}
 	}
 	
 	public function destroy(Usermovie $usermovie, Movie $movie){
 		$auth_id =  Auth::id();
-		$listas = Usermovie::all();
-		$user= User::all();
 		
 		if($auth_id==$usermovie->creador_id){
 			$movie->delete();
@@ -55,36 +53,35 @@ class MovieItemController extends Controller
 												'movie'=> $movie]);
 		}
 		else
-			return view('home', ['listas'=> $listas, 
-						  'title'=> 'Listas públicas ',
-						  'users' => $user]); 
+			return redirect('/home');
 	}
 	
 	public function edit(Usermovie $usermovie, Movie $movie){
 		$auth_id =  Auth::id();
-		$listas = Usermovie::all();
-		$user= User::all();
 		
 		if($auth_id==$usermovie->creador_id)
 			return view('movie.editmovie', ['usermovie'=> $usermovie, 
 												'movie'=> $movie]);
 		else
-			return view('home', ['listas'=> $listas, 
-						  'title'=> 'Listas públicas ',
-						  'users' => $user]); 
+			return redirect('/home');
 	}
 	
 	public function update(Usermovie $usermovie, Movie $movie){
-
-		$movie->titulo = request('titulo');
-        $movie->director = request('director');
-		$movie->año = request('año');
-		$movie->lista = $usermovie->id;
+	$auth_id =  Auth::id();
 		
-        $movie->save();
-		
-		return redirect()->route('lists.show', ['usermovie'=> $usermovie, 
-												'movie'=> $movie]);
+		if($auth_id==$usermovie->creador_id){
+			$movie->titulo = request('titulo');
+			$movie->director = request('director');
+			$movie->año = request('año');
+			$movie->lista = $usermovie->id;
+			
+			$movie->save();
+			
+			return redirect()->route('lists.show', ['usermovie'=> $usermovie, 
+													'movie'=> $movie]);
+		}
+		else
+			return redirect('/home');
 	}
 	
 }

@@ -40,13 +40,9 @@ class UserController extends Controller
 	
 	public function create(){
 	$auth_id =  Auth::id();
-	$listas = Usermovie::all();
-	$useres= User::all();
 	
 		if($auth_id>0)
-			return view('home', ['listas'=> $listas, 
-						  'title'=> 'Listas públicas ',
-						  'users' => $useres	]); 
+			return redirect('/home');
 		else
 			return view('users.create');
 		
@@ -59,7 +55,7 @@ class UserController extends Controller
 	public function store(){
 		$data =request()->all();
 		
-	   User::create([
+		User::create([
             'name' => $data['nombre'],
             'email' => $data['correo'],
             'password' => bcrypt($data['clave'])
@@ -71,25 +67,25 @@ class UserController extends Controller
 	
 	public function edit(User $user){
 	$auth_id =  Auth::id();
-	$listas = Usermovie::all();
-	$useres= User::all();
 	
 		if($auth_id==$user->id)
 			return view('users.editar', ['user'=> $user]);
 		else
-			return view('home', ['listas'=> $listas, 
-						  'title'=> 'Listas públicas ',
-						  'users' => $useres	]); 
+			return redirect('/home');
 	}
 	
 	public function update(User $user){
-	
-		$user->name = request('nombre');
-        $user->email = request('correo');
-		$user->password = bcrypt(request('clave'));
-        $user->save();
-		
-		return redirect()->route('users.show', ['user'=> $user]);
+	$auth_id =  Auth::id();
+		if($auth_id==$user->id){
+			$user->name = request('nombre');
+			$user->email = request('correo');
+			$user->password = bcrypt(request('clave'));
+			$user->save();
+			
+			return redirect()->route('users.show', ['user'=> $user]);
+		}
+		else 
+			return redirect('/home');
 	}
 	
 	  public function search()
@@ -104,7 +100,9 @@ class UserController extends Controller
     }
 	
 	function destroy(User $user) {
-		
+	$auth_id =  Auth::id();
+ 	
+	if($auth_id==$user->id){
 		$lista=Usermovie::where('creador_id', $user->id)->get();
 		
 		foreach ($lista as $usermovie){
@@ -125,5 +123,9 @@ class UserController extends Controller
 		return view('home', ['listas'=> $listas, 
 						  'title'=> 'Listas públicas ',
 						  'users' => $user]);
+	}
+	else 
+		return redirect('/home');
+	
 	}
 }

@@ -36,53 +36,35 @@ class MovieController extends Controller
 	
 	public function store(){
 		$user = Auth::user();
-		
 		request()->validate([
 			'nombre' => ['required', 'min:3'],
 		]);
 		
 		$public = request('public') == "on" ? 1 : 0;
 		
-	   Usermovie::create([
+	    Usermovie::create([
            	'nombre' => request('nombre'),
 			'creador_id' => auth()->id(),
 			'public' => $public
         ]);
-	/*	
-		Movie::create([
-           	'titulo' => request('titulo'),
-			'director' =>  request('titulo'),
-			'lista' =>  Usermovie-> id()
-			
-        ]);
-		*/
-		
-/*		
-		$userList = Usermovie::findOrFail(auth()->id());
-		$userList->addMovie(
-					request()->validate(
-						['titulo' => 'required', 
-						'director' => 'required']));
-		
-		Usermovie::create($attributes);
-		*/
-		return redirect('/home');;
+
+		return redirect('/home');
 	}
 	
 	public function edit(Usermovie $usermovie){
 	$auth_id =  Auth::id();
-	$listas = Usermovie::all();
-	$user= User::all();
 	
 		if($auth_id==$usermovie->creador_id)
 			return view('lists.editlist', ['usermovie'=> $usermovie]);
 		else
-			return view('home', ['listas'=> $listas, 
-						  'title'=> 'Listas públicas ',
-						  'users' => $user]); 
+			return redirect('/home');
+						
 	}
 	
 	public function update(Usermovie $usermovie){
+	$auth_id =  Auth::id();
+		
+	if($auth_id==$usermovie->creador_id){
 		$usermovie->nombre = request('nombre');
 		request('public') == "on" ? 1 : 0;
 		$usermovie->public = request('public') == "on" ? 1 : 0;
@@ -90,11 +72,12 @@ class MovieController extends Controller
 		
 		return redirect()->route('lists.show', ['usermovie'=> $usermovie]);
 	}
+	else
+		return redirect('/home');
+	}
 	
 	public function destroy(Usermovie $usermovie){
 		$auth_id =  Auth::id();
-		$listas = Usermovie::all();
-		$user= User::all();
 	
 		$peli=Movie::where('lista',$usermovie->id)->get();
 		
@@ -114,9 +97,7 @@ class MovieController extends Controller
 							  'users' => $user]);
 		}
 		else
-			return view('home', ['listas'=> $listas, 
-						  'title'=> 'Listas públicas ',
-						  'users' => $user]); 
+			return redirect('/home');
 	}
 	
 
