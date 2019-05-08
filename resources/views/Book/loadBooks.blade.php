@@ -38,34 +38,32 @@
     </div>
 
     <div class="col-8">
-      <div class="container">
-        <div class="row">
-          @foreach ($books as $bk)
-          <div class="col-md-4">
-            <div class="col mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h4>Titulo: </h4>
-                  <h6 class="card-title">{{$bk->title}}</h6>
-                  <h4>Editorial: </h4>
-                  <h6 class="card-title">{{$bk->editorial}}</h6>
-                  <h4>Autor: </h4>
-                  <h6 class="card-title">{{$bk->author}}</h6>
-                  <h4>Cantidad de paginas: </h4>
-                  <h6 class="card-title">{{$bk->pag}}</h6>
 
-                  <a href="/home/loadBooks/editBook/{{$bk->id}}" class="card-link"> Editar</a>
-                  <a href="/home/loadBooks/deleteBook/{{$bk->id}}" class="card-link"> Eliminar</a>
-                </div>
-              </div>
+      @foreach ($books as $bk)
+      <div class="col-md-4">
+        <div class="col mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h4>Titulo: </h4>
+              <h6 class="card-title">{{$bk->title}}</h6>
+              <h4>Editorial: </h4>
+              <h6 class="card-title">{{$bk->editorial}}</h6>
+              <h4>Autor: </h4>
+              <h6 class="card-title">{{$bk->author}}</h6>
+              <h4>Cantidad de paginas: </h4>
+              <h6 class="card-title">{{$bk->pag}}</h6>
+
+              <a href="/home/loadBooks/editBook/{{$bk->id}}" class="card-link"> Editar</a>
+              <a href="/home/loadBooks/deleteBook/{{$bk->id}}" class="card-link"> Eliminar</a>
             </div>
           </div>
-          @endforeach
         </div>
       </div>
+      @endforeach
+
     </div>
   </div>
 </div>
-</div>
+
 
 @endsection
