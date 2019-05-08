@@ -74,11 +74,6 @@
       <td>{{$pelicula->puntaje}} </td>
       <td>
         <form action="{{ url('/PelitecaEditor/'.$pelicula->id) }}" method="POST">
-          @csrf
-            <input type="hidden" name="_method" value="DELETE">
-            <button type="submit" class="btn btn-primary">Eliminar</button>
-        </form>
-        <form action="{{ url('/PelitecaEditor/'.$pelicula->id) }}" method="POST">
         @csrf
           <input type="hidden" name="_method" value="PUT">
           @if($pelicula->publico == 0)
@@ -86,6 +81,13 @@
           @else
             <button type="submit" class="btn btn-primary">Ocultar</a>
           @endif
+        </form>
+      </td>
+      <td>
+        <form action="{{ url('/PelitecaEditor/'.$pelicula->id) }}" method="POST">
+          @csrf
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-primary">Eliminar</button>
         </form>
       </td>
     </tr>

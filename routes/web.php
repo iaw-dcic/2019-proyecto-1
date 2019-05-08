@@ -18,10 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/PelitecaEditor/{id}', 'PelitecaEditorController@index')->name('PelitecaEditor');
+Route::get('/PelitecaEditor/{id}', 'PelitecaEditorController@index')->name('PelitecaEditor')->middleware('auth');
 
-Route::delete('/PelitecaEditor/{id}', 'PelitecaEditorController@destroy');
-Route::put('/PelitecaEditor/{id}', 'PelitecaEditorController@update');
+Route::delete('/PelitecaEditor/{id}', 'PelitecaEditorController@destroy')->middleware('auth');
+Route::put('/PelitecaEditor/{id}', 'PelitecaEditorController@update')->middleware('auth');
 
 Route::get('/GaleriaPelitecas', 'UserController@index')->name('GaleriaPelitecas');
 Route::get('/PelitecaShower/{id}', 'PelitecaShowerController@index')->name('PelitecaShower');
@@ -31,7 +31,7 @@ Route::get('/PelitecaEditor/{nom}/{cate}','GeneroController@destroy')->name('Pel
 Route::get('/PelitecaEditor/{nom}','GeneroController@edit')->name('PelitecaEditor')->middleware('auth');
 //Route::get('/Persona','PersonaController@index');
 
-Route::post('/PelitecaEditor/Generos', 'GeneroController@store')->name('Genero');
+Route::post('/PelitecaEditor/Generos', 'GeneroController@store')->name('Genero')->middleware('auth');
 
 //Route::get('/login/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
 //Route::get('/login/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|linkedin|google|github|bitbucket');
@@ -41,8 +41,8 @@ Route::get('/login/{provider}/callback','Auth\SocialAuthController@handleProvide
 
 Route::get('/About','AboutController@index');
 
-Route::resource('users', 'UserController');
-Route::put('/PelitecaEditor/{id}', 'PelitecaEditorController@update');
+Route::resource('users', 'UserController')->middleware('auth');
+Route::put('/PelitecaEditor/{id}', 'PelitecaEditorController@update')->middleware('auth');
 
 //get: obtener recurso
 //post: escribir algo en servidor(no modificar)
