@@ -25,65 +25,6 @@ class UserController extends Controller
         }
     }
 
-    public function create(){
-         if(auth()->user()!=null)
-            return view('users.create');
-         else
-            return back();
-    }
-    public function createItem(){
-        if(auth()->user()!=null)
-            return view('users.createItem');
-        else {
-            return back();
-        }
-    }
-
-    public function storeItem(Request $request){
-
-
-        $data = request()->all();
-        $lista= Lista::orderby('list_id','desc')->first();
-        if(count($request->nombre_club) > 0){
-            foreach($request->nombre_club as $item=>$v){
-                $data2=array(
-                    // 'nombre_club'
-                    'nombre_club' => $request->nombre_club[$item],
-                    'nombre_estadio' => $request->nombre_estadio[$item],
-                    'capacidad_estadio' => $request->capacidad_estadio[$item],
-                    'pais' => $request->pais[$item],
-                    'list_id' => $lista->list_id,
-
-                );
-                Item::create($data2);
-            }
-        }
-        return redirect()->route('users.index');
-    }
-
-
-
-    public function store(){
-        /**Recibimos los datos del formulario */
-        $data = request()->all();
-        $user = auth()->user();
-
-        $list = Lista::create([
-            'name' => $data['name'],
-            'isPublic' => true,
-            'user_id' => $user->id,
-        ]);
-
-        $lista= Lista::where('name','=',$list->name)->first();
-
-        /**Redirecciono al usuario a detalles */
-        return view('users.createItem',[
-            'lista' => $lista,
-        ]);
-
-    }
-
-
 
     public function edit(User $user){
         return view('users.edit', ['user' => $user]);
@@ -109,15 +50,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect("usuarios/{$user->id}");
-        // return redirect()->route('users.show', [
-        //     'user' => $user->id
-        // ]);
+        return redirect('home');
     }
 
-    public function destroy(User $user){
-        $user->delete();
-
-        return redirect()->route('users.index');
-    }
 }

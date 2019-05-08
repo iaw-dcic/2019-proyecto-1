@@ -18,12 +18,13 @@ Route::post('usuarios/crear','ListController@store');
 Route::get('usuarios/nuevoItem','ListController@createItem')->name('users.createItem');
 Route::post('usuarios/crearItem','ListController@storeItem');
 /** */
-// Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
+//
 /**GET/usuarios/{id} pagina detalles.
  * PUT/usuarios/{id} accion para actualizar.
  */
 // Route::get('/usuarios/{user}', 'UserController@show')->name('users.show');
-
+Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
+Route::put('usuarios/{user}', 'UserController@update');
 
 Route::get('usuarios/mostrarListas','ListController@showListas')->name('users.showListas');
 

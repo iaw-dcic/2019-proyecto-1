@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
-{{--  jquery  --}}
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
 @section('content')
 
 
@@ -12,23 +9,16 @@
     @endif
 
     @if($lists->isNotEmpty())
-         <div class="list-group">
-             @foreach ($lists as $list)
+        <div id="accordion">
+        @foreach ($lists as $list)
 
-                <div data-role=collapsible>
-                <td>
                 @if($list->isPublic==1)
-                     <h4>{{$list->name}}: lista publica creada el {{ $list->created_at}}
+                     <h3>{{$list->name}}: lista publica creada el {{ $list->created_at}}
                 @else
-                     <h4>{{$list->name}}: lista privada creada el {{ $list->created_at}}
+                     <h3>{{$list->name}}: lista privada creada el {{ $list->created_at}}
                 @endif
-                </h4>
-                <div data-role="controlgroup" data-type="horizontal" >
-                                        <a href="{{ route('users.editLista', $list->id)}}" data-ajax="false" data-role="button" data-icon="forward"  style="border-radius: 15px;color:white; background:yellowgreen" >Editar</a>
-                                        <a href="{{ route('users.destroy', $list->id)}}" data-ajax="false" data-role="button" data-icon="delete"  style="border-radius: 15px;color:white; background:tomato" >Eliminar</a>
-
-                </div>
-
+                    </h3>
+                <div>
                 <table class="table table-sm table-dark table-hover bordered">
                         <thead>
                         <tr>
@@ -53,9 +43,14 @@
                             @endif
                         @endforeach
                 </table>
+                <div data-role="controlgroup" data-type="horizontal" >
+                        <a href="{{ route('users.editLista', $list->id)}}" data-ajax="false" class="btn btn-warning" data-role="button" data-icon="forward">Editar</a>
+                        <a href="{{ route('users.destroy', $list->id)}}" data-ajax="false" class="btn btn-danger" data-role="button" data-icon="delete" >Eliminar</a>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
         </div>
+
 
      @else
         <p>No se han creado listas todavía</p>

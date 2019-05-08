@@ -9,14 +9,33 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
 
+
+    @if((Route::current()->getName()=='home')||(Route::current()->getName()=='users.showListas'))
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+    $( function() {
+      $( "#accordion" ).accordion();
+    } );
+    </script>
+    @endif
+
+
+
+
+
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
 </head>
 <body>
@@ -31,9 +50,31 @@
 
 
                     <div class="collapse navbar-collapse" id="collapse_target">
-                         <a class="navbar-brand" href="{{ route('home') }}"><img src="../../resources/img/futbol.png" alt="home"></a>
+
+                         @if(route::current()->getName()!='home')
+                            @if((route::current()->getName()=='login')||route::current()->getName()=='register')
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../resources/img/futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
-                        </a>
+                            </a>
+                            @elseif(route::current()->getName()=='users.editLista')
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../../../../resources/img/futbol.png" alt="home"></a>
+                            <span class="navbar-text">Futboleros</span>
+                            </a>
+                            @elseif(route::current()->getName()=='users.edit')
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../../../resources/img/futbol.png" alt="home"></a>
+                            <span class="navbar-text">Futboleros</span>
+                            </a>
+                            @else
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../../resources/img/futbol.png" alt="home"></a>
+                            <span class="navbar-text">Futboleros</span>
+                            </a>
+                            @endif
+
+                        @else
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../resources/img/futbol.png" alt="home"></a>
+                            <span class="navbar-text">Futboleros</span>
+                            </a>
+                        @endif
 
                         <ul class="navbar-nav">
                             {{-- <li class="nav-item dropdown">
@@ -88,7 +129,7 @@
                                 <a class="nav-link"  data-ajax="false" href="{{ route('users.showListas') }}">Mis Listas</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-ajax="false"href="{{ route('logout') }}">Configuración</a>
+                                <a class="nav-link" data-ajax="false"href="{{ route('users.edit',auth()->user()) }}">Configuración</a>
                             </li>
                             @endif
                         </ul>
@@ -100,9 +141,11 @@
         <br>
         <br>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container">
+            <div>
+                @yield('content')
+            </div>
+        </div>
     </div>
 
 </body>

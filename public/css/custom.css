@@ -5,3 +5,7 @@
 .blanca{
    color: white !important;
 }
+
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+    text-shadow: 0 !important;
+}

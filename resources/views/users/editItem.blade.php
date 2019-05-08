@@ -1,5 +1,5 @@
-@extends('layouts.app')
-
+<html>
+<head>
 
     <!--Boostrap core CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -11,17 +11,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
-    <title>Crear Usuario</title>
+</head>
 <body>
 
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-
         <div class="container">
                 <form method="PUT" action="{{ route('users.updateEditItem',$items->first()->list_id) }}">
                         {{  csrf_field() }} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
@@ -99,4 +93,4 @@
 
 
 </body>
-
+</html>
