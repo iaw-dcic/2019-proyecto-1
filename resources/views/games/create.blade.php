@@ -28,13 +28,13 @@
 
             <!-- Title-->
             <div class="form-style-agile">
-                <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre del juego *</label>
+                <label> <i class="fa fa-edit" aria-hidden="true"></i>Nombre del juego *</label>
                 <input name="title" type="text" class="form-control" required>
             </div>
 
             <!-- Listings -->
             <div class="form-style-agile">
-                <label><i class="fas fa-list-ul" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
+                <label><i class="fa fa-list-ul" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
                 <select class="selectpicker" name="listings[]" title="Seleccionar una o más listas" multiple data-live-search="true"
                     data-width="100%" required>                            
                         @foreach($listings as $listing)
@@ -46,7 +46,7 @@
            
             <!-- Console -->
             <div class="form-style-agile">
-                <label><i class="fas fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente? *</label>
+                <label><i class="fa fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente? *</label>
                 <select type="text" class="custom-dropdown" name="console" required>
                         <option disabled selected value style="display:none"> -- Selecciona una consola -- </option>
                         <option>PC</option>
@@ -59,7 +59,7 @@
 
             <!-- Rating -->
             <div class="form-style-agile">
-                <label><i class="fas fa-thumbs-up" aria-hidden="true"></i>¿Qué valoración le das? *</label>
+                <label><i class="fa fa-thumbs-up" aria-hidden="true"></i>¿Qué valoración le das? *</label>
                 <select type="text" class="custom-dropdown" name="rating" required>
                         <option disabled selected value style="display:none"> -- Selecciona una valoración -- </option>
                         <option>Excelente</option>
@@ -72,7 +72,7 @@
 
             <!--Genre -->
             <div class="form-style-agile">
-                <label><i class="fas fa-bomb" aria-hidden="true"></i> ¿A qué genero pertence el juego?*</label>
+                <label><i class="fa fa-bomb" aria-hidden="true"></i> ¿A qué genero pertence el juego?*</label>
                 <select type="text" class="custom-dropdown" name="genre" required>
                         <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
                         <option>Accion</option>
@@ -86,7 +86,7 @@
 
             <!--Mode -->
             <div class="form-style-agile">
-                <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
+                <label><i class="fa fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
                 <select type="text" class="custom-dropdown" name="mode" required>
                         <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
                         <option>Solitario</option>
@@ -96,7 +96,7 @@
             </div>
 
             <!-- Cover image -->
-            <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
+            <label><i class="fa fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
             <div class="input-group" style="margin-bottom:10px;">
                         <label class="input-group-btn">
                             <span class="btn btn-primary">

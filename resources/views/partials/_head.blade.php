@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta name="description" content="GG Games, IAW 2019">
   <meta name="keywords" content="laravel,gg-gaming,website, html">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 
 
   <!-- CSRF Token -->
@@ -25,7 +25,7 @@
 
 
 
-  <link defer rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">
+ <!-- <link defer rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">-->
   <link defer rel="stylesheet" href="{{ URL::asset('/css/owl.carousel.min.css') }}">
  <!-- <link defer rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">-->
 
@@ -33,7 +33,7 @@
   <link defer rel="stylesheet" href="{{ URL::asset('/css/style-form-game.css') }}">
 
   <!-- Style-CSS -->
-  <link defer rel="stylesheet" href="{{ URL::asset('/css/fontawesome-all.css') }}">
+  <!--<link defer rel="stylesheet" href="{{ URL::asset('/css/fontawesome-all.css') }}">-->
 
   <!-- web-fonts -->
   <link defer href="//fonts.googleapis.com/css?family=Marck+Script&amp;subset=cyrillic,latin-ext" rel="stylesheet">

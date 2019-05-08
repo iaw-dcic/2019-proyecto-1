@@ -28,7 +28,7 @@ class CheckGamePrivacy
         }
 
         if (!in_array(Auth::user()->id,$array) & (Auth::check())) { //Usuario no autorizado
-            return redirect('401'); //CAMBIAR RUTA
+            return redirect('401'); 
         }
         //Usuario autorizado
         return $next($request);
