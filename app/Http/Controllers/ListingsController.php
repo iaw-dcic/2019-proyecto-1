@@ -21,7 +21,7 @@ class ListingsController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'create', 'getUserListings']]);
 
-        $this->middleware('listing.privacy', ['only'=>['edit','update','destroy']]);
+        $this->middleware('listing.privacy', ['only'=>['show','edit','update','destroy']]);
     }
 
     /**

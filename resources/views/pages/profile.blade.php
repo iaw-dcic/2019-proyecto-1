@@ -47,10 +47,12 @@
                                 <!--Favourite game -->
                                 <div class="top-meta" style="color:wheat">Juego favorito: <span style="color: azure">{{$user->favourite_game}}</span>
                                     @auth
-                                        <button class="btn btn-sm btn-info" data-toggle="modal"
-                                            data-favgame="{{$user->favourite_game}}" data-target="#favGameModal"
-                                            style="margin-left: 10px">Cambiar 
-                                        </button>
+                                        @if($user->id == Auth::user()->id)
+                                            <button class="btn btn-sm btn-info" data-toggle="modal"
+                                                data-favgame="{{$user->favourite_game}}" data-target="#favGameModal"
+                                                style="margin-left: 10px">Cambiar 
+                                            </button>
+                                        @endif
                                     @endauth
                                 </div>
 
@@ -92,10 +94,12 @@
                                 <!-- Favourite console -->
                                 <div class="top-meta" style="color:wheat">Consola favorita: <span style="color: azure">{{$user->favourite_console}}</span>
                                     @auth
-                                        <button class="btn btn-sm btn-info" data-toggle="modal"
-                                            data-favconsole="{{$user->favourite_console}}" data-target="#favConsoleModal"
-                                            style="margin-left: 10px">Cambiar 
-                                        </button>
+                                        @if($user->id == Auth::user()->id)
+                                            <button class="btn btn-sm btn-info" data-toggle="modal"
+                                                data-favconsole="{{$user->favourite_console}}" data-target="#favConsoleModal"
+                                                style="margin-left: 10px">Cambiar 
+                                            </button>
+                                        @endif
                                     @endauth
                                 </div>
 
@@ -138,28 +142,26 @@
                                 <!-- Listings -->
                                 <div class="top-meta" style="color:wheat">Listas:
                                     @if (count($userListings)>0)
-                                    @foreach($userListings as $listing)
+                                        @foreach($userListings as $listing)
 
-                                    @guest
-                                    @if ($listing->visibility == 'Publica')
-                                    <a href="{{route('listings.show',$listing->id)}}"><span
-                                            style="color:deepskyblue">{{$listing->title}} / </span></a>
-                                    @endif
-                                    @endguest
+                                            @guest
+                                                @if ($listing->visibility == 'Publica')
+                                                    <a href="{{route('listings.show',$listing->id)}}"><span style="color:deepskyblue">{{$listing->title}} / </span></a>
+                                                @endif
+                                            @endguest
 
-                                    @auth
-                                    <a href="{{route('listings.show',$listing->id)}}"> <span
-                                            style="color:deepskyblue">{{$listing->title}} / </span></a>
-                                    @endauth
+                                            @auth
+                                                <a href="{{route('listings.show',$listing->id)}}"> <span style="color:deepskyblue">{{$listing->title}} / </span></a>
+                                            @endauth
 
-                                    @endforeach
+                                        @endforeach
                                     @else
-                                    @auth
-                                    <span style="color: azure">Todavía no tenes ninguna lista</span>
-                                    @endauth
-                                    @guest
-                                    El usuario todavía no creo ninguna lista
-                                    @endguest
+                                        @auth
+                                            <span style="color: azure">Todavía no tenes ninguna lista</span>
+                                        @endauth
+                                        @guest
+                                            El usuario todavía no creó ninguna lista
+                                        @endguest
                                     @endif
 
                                 </div>
@@ -172,21 +174,22 @@
                                     alt="">
 
                                 @auth
-                                <form enctype="multipart/form-data" method="post"
-                                    action="{{route('update_profile')}}">
-                                    @csrf
-                                    <div class="input-group" style="width:50%">
-                                        <label class="input-group-btn">
-                                            <span class="btn btn-info">
-                                                Cambiar&hellip; <input type="file" name="avatar" style="display: none;">
-                                            </span>
-                                        </label>
-                                        <input type="text" class="form-control" readonly>
-                                        <br><br>
-                                    </div>
-                                    <input class="btn btn-primary" type="submit" value="OK">
-                                </form>
-
+                                    @if($user->id == Auth::user()->id)
+                                        <form enctype="multipart/form-data" method="post"
+                                            action="{{route('update_profile')}}">
+                                            @csrf
+                                            <div class="input-group" style="width:50%">
+                                                <label class="input-group-btn">
+                                                    <span class="btn btn-info">
+                                                        Cambiar&hellip; <input type="file" name="avatar" style="display: none;">
+                                                    </span>
+                                                </label>
+                                                <input type="text" class="form-control" readonly>
+                                                <br><br>
+                                            </div>
+                                            <input class="btn btn-primary" type="submit" value="OK">
+                                        </form>
+                                    @endif
                                 @endauth
                             </div>
                         </div>

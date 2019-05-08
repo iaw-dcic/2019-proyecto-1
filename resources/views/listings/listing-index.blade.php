@@ -75,8 +75,7 @@
                         <div class="cell" data-title="Link a la lista">
                             <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
                         </div>
-                        @auth
-                            @if($data['listOwnerName'] == Auth::user()->name)
+                        @if($data['listOwnerName'] == Auth::user()->name)
                                 <div class="cell" data-title="Visibilidad">
                                         {{$listing->visibility}}
                                 </div>
@@ -90,8 +89,7 @@
                                         </form>
 
                                 </div>
-                            @endif
-                        @endauth
+                        @endif
                         @guest
                             <div class="cell" data-title="Link al perfil">
                                 <a href="{{route('user_profile',$data['listOwnerName'])}}">Link al perfil</a>
@@ -104,19 +102,18 @@
                 </div>
                 
                 <!--Create list -->
-                @auth
+                @if($data['listOwnerName'] == Auth::user()->name)
                 <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
-                @endauth
+                @endif
     
             @else 
-                <!--Messages depending if is the owner or a guest -->
-                @guest
-                    <h2 style="color:white; margin-bottom:20px;" > {{$data['listOwnerName']}} todavía no tiene ninguna lista!</h2>
-                @endguest
-                @auth
-                    <h2 style="color:white; margin-bottom:20px;" > Todavía no tenes ninguna lista!</h2>
-                    <a href="{{route('listings.create') }}" class="site-btn">Crear lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
-                @endauth
+                <!--Messages depending if is the owner or a guest -->       
+                    @if($data['listOwnerName'] == Auth::user()->name)
+                        <h2 style="color:white; margin-bottom:20px;" > Todavía no tenes ninguna lista!</h2>
+                        <a href="{{route('listings.create') }}" class="site-btn">Crear lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+                    @else
+                    <h2 style="color:white; margin-bottom:20px;" > {{$data['listOwnerName']}} todavía no tiene ninguna lista pública!</h2>
+                    @endif
 
             @endif      
         </div>

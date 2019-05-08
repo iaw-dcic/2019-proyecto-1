@@ -54,7 +54,7 @@
 
             <!-- Add another game, edit list, delete list -->
             @auth
-                @if($listing->user_id == Auth::user()->name)
+                @if($listing->user_id == Auth::user()->id)
                     <div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">
                         <div class="row">
                             <div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">

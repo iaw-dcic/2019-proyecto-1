@@ -20,14 +20,11 @@ class CheckListingPrivacy
     {
         $listingId= $request->route('listing');
         $listing = Listing::find($listingId);
-
-        if($listing->visibility == 'Publica') {
-            if((Auth::user()->id !== $listing->user_id) & (Auth::check())){   //Usuario no autorizado
-                return redirect('401'); 
-           }
+      
+        if((Auth::user()->id !== $listing->user_id) & (Auth::check())){   //Usuario no autorizado
+            return redirect('401'); 
         }
-        
-         //Usuario autorizado
+      
         return $next($request);
     }
 }
