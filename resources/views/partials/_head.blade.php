@@ -27,7 +27,7 @@
 
  <!-- <link defer rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">-->
   <link defer rel="stylesheet" href="{{ URL::asset('/css/owl.carousel.min.css') }}">
- <!-- <link defer rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">-->
+  <link defer rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">
 
   <!-- Form -->
   <link defer rel="stylesheet" href="{{ URL::asset('/css/style-form-game.css') }}">
