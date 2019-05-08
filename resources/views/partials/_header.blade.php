@@ -22,7 +22,7 @@
                     @auth
 
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="position: relative; padding-left:50px;">
-                            <img src="{{asset('/img/avatars').'/'.auth()->user()->avatar}}" style="width:32px; height:32px; position:absolute; top:0px;left:10px; border-radius:50%">
+                            <img src="{{asset('/img/avatars').'/'.auth()->user()->avatar}}" style="width:32px; height:32px; position:absolute; top:0px;left:10px; border-radius:50%" alt=".">
                             {{ Auth::user()->username }} <span class="caret"></span>
                         </a>
 
