@@ -6,14 +6,14 @@
 <!-- Hero section -->
 <section class="hero-section overflow-hidden">
     <div class="hero-slider owl-carousel">
-        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="img/slider-bg-1.jpg">
+        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="img/slider-bg-1.webp">
             <div class="container">
                 <h2>GoodGame!</h2>
                 <p style="color:wheat">Todos tus juegos en un solo lugar!</p>
                 <a href="{{url('about')}}" class="site-btn">Leer más<img src="img/icons/double-arrow.png" alt="#" /></a>
             </div>
         </div>
-        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="img/slider-bg-2.jpg">
+        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="img/slider-bg-2.webp">
             <div class="container">
                 <h3 style="color:wheat;margin-bottom:20px;">Crea listas, agrega todos tus juegos y compartilos!</h3>
                 @auth

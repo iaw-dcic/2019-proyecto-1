@@ -6,7 +6,7 @@
             <img src="{{asset('img/footer-left-pic.webp')}}">
         </div>
         <div class="footer-right-pic">
-            <img src="{{asset('img/footer-right-pic.png')}}">
+            <img src="{{asset('img/footer-right-pic.webp')}}">
         </div>
         <a href="#" class="footer-logo">
             <img src="{{asset('/img/logo.png')}}">
