@@ -45,11 +45,9 @@
                         <h4>Libros</h4>
                         @foreach ($lp->books as $lpb)
                         <tr>
-                            <th scope="row border"> </th>
-                           
-                            <td> <h5>Titulo: </h5>{{$lpb->title}}</td>
-                            <br>
-                            
+                            <th scope="row border"> </th>                           
+                            <td> <h6>Titulo: {{$lpb->title}} </h6></td>
+                            <br>                            
                             <td><h5>Autor: </h5>{{$lpb->author}}</td>
                         </tr>
                         <br>
