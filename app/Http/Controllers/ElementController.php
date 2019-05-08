@@ -21,7 +21,7 @@ class ElementController extends Controller
 
         $coleccion = new Colection; 
         $coleccion=$coleccion ->findColection($idColeccion);
-        dd($coleccion->user_id);
+        dd($idUsuario);
 
         $items= $coleccion ->findElementos();
         $datos=[$coleccion, $items];
