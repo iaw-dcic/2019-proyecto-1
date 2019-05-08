@@ -21,10 +21,7 @@ class ElementController extends Controller
 
         $coleccion = new Colection; 
         $coleccion=$coleccion ->findColection($idColeccion);
-        
-        if($idUsuario!==$coleccion->user_id){
-            abort(403);
-        }
+        dd($coleccion->user_id);
 
         $items= $coleccion ->findElementos();
         $datos=[$coleccion, $items];
