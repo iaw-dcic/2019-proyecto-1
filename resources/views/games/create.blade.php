@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Page top section -->
-<section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/4.jpg')}}">
+<section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/2.webp')}}">
     <div class="page-info">
         <h2>Agregar juego</h2>
         <div class="site-breadcrumb">

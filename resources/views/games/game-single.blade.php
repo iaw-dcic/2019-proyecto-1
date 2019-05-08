@@ -4,7 +4,7 @@
 @include('sweetalert::alert')
 
 <!-- Page top section -->
-<section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/1.jpg')}} ">
+<section class="page-top-section set-bg" data-setbg="{{asset('/img/page-top-bg/1.webp')}} ">
 	<div class="page-info">
 		<h2>{{strtoupper($data['game']->title)}}</h2>
 		<div class="site-breadcrumb">

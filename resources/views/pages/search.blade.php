@@ -10,7 +10,7 @@
 
 
 <!-- Page top section -->
-<section class="page-top-section set-bg" data-setbg="{{asset('img/page-top-bg/3.jpg')}}">
+<section class="page-top-section set-bg" data-setbg="{{asset('img/page-top-bg/3.webp')}}">
     <div class="page-info">
         <h2>Búsqueda</h2>
         <div class="site-breadcrumb">
