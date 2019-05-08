@@ -32,8 +32,9 @@
                 <div class="card-header">{{ __('Cambios') }}</div>
 
                 <div class="card-body">
-                    <form method="PUT" action="{{ route('users.update',Auth::user()->id) }}">
+                    <form method="POST" action="{{ route('users.update',Auth::user()->id) }}">
                         @csrf
+                        <input type="hidden" name="_method" value="PUT">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}:</label>
 

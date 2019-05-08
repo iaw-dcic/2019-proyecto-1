@@ -42,6 +42,7 @@ Route::get('/login/{provider}/callback','Auth\SocialAuthController@handleProvide
 Route::get('/About','AboutController@index');
 
 Route::resource('users', 'UserController');
+Route::put('/PelitecaEditor/{id}', 'PelitecaEditorController@update');
 
 //get: obtener recurso
 //post: escribir algo en servidor(no modificar)
