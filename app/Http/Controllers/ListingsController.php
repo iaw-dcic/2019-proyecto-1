@@ -21,7 +21,7 @@ class ListingsController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'create', 'getUserListings']]);
 
-        $this->middleware('listing.privacy', ['only'=>['show','edit','update','destroy']]);
+        $this->middleware('listing.privacy', ['only'=>['edit','update','destroy']]);
     }
 
     /**
@@ -96,6 +96,11 @@ class ListingsController extends Controller
     public function show($id)
     {
         $listing = Listing::find($id);
+        if ($listing->visibility == 'Privada') {
+            if ($listing->user_id != auth()->user()->id) {
+                return redirect('401'); 
+            }
+        }
         return view('listings.listing-show')->withListing($listing);
     }
 
