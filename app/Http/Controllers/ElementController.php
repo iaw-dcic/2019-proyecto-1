@@ -17,11 +17,14 @@ class ElementController extends Controller
     }
 
     public function index($idUsuario, $idColeccion){
-
+        $idU=intval($idUsuario);
 
         $coleccion = new Colection; 
         $coleccion=$coleccion ->findColection($idColeccion);
-        dd($idUsuario);
+
+        if($coleccion->user_id !== $idU){
+            abort(403);
+        }
 
         $items= $coleccion ->findElementos();
         $datos=[$coleccion, $items];
