@@ -1,7 +1,17 @@
 body{
 
-background-image:url("/images/libro.jpg");
+background-color: white;
 font-family: 'Poppins', sans-serif;
+}
+
+
+.hero-image {
+  background-image: url("/image/libro.jpg");
+  background-color: #cccccc;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 .jumbotron{
