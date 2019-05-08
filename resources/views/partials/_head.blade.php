@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -28,7 +27,7 @@
 
   <link defer rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">
   <link defer rel="stylesheet" href="{{ URL::asset('/css/owl.carousel.min.css') }}">
-  <link defer rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">
+ <!-- <link defer rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">-->
 
   <!-- Form -->
   <link defer rel="stylesheet" href="{{ URL::asset('/css/style-form-game.css') }}">
