@@ -48,8 +48,7 @@ class UsersProfileController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $posts = Post::where('user_id', $id);
-        return view('usersProfiles.show')->with('user',$user)->with('posts',$posts);
+        return view('usersProfiles.show')->with('user',$user)->with('posts',$user->posts);
     }
 
     /**
