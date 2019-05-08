@@ -20,6 +20,18 @@
             </div>
         @endif
     @endif 
+
+    <div>
+        @foreach($items as $item)
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{$item->name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{$item->price}}</h6>
+            <a href="{{$item->link}}" class="card-link">Link</a>
+        </div>
+        </div>
+        @endforeach
+    </div
     
 @endsection 
 
