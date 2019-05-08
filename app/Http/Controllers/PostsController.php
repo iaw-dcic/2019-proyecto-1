@@ -52,8 +52,8 @@ class PostsController extends Controller
         $post_id = 0;
         foreach($posts as $post){
             if(($post->title) == $request->input('title')){
-                $this->createItem($post_id, $request);
                 $post_id= $post->id;
+                $this->createItem($post_id, $request);
                 $postExist = 1;
             }
         }
