@@ -24,6 +24,7 @@
     <div>
         @foreach($items as $item)
         <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://source.unsplash.com/random/286x180/?{{str_replace(' ', '%20', $item->name)}}" alt="Image related to the name article">
         <div class="card-body">
             <h5 class="card-title">{{$item->name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{$item->price}}</h6>
