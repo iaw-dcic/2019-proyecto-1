@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    
     use Notifiable;
 
     /**
@@ -36,4 +37,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function list(){
+        
+        return $this->hasMany(MovieList::class);
+    }
+
+    function socialProviders()
+    {
+        return $this->hasMany(SocialProvider::class);
+    }
 }
