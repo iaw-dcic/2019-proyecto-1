@@ -76,6 +76,7 @@ class PostsController extends Controller
     }
 
     private function createItem($post_id, Request $request){
+        $post = Post::find($post_id);
         $item = new Item;
         $item->name = $request->input('name');
         $item->link = $request->input('link');
