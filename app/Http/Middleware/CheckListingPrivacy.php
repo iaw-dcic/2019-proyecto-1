@@ -19,7 +19,7 @@ class CheckListingPrivacy
     public function handle($request, Closure $next)
     {
         $listingId= $request->route('listing');
-        $listing = Listing::find($listingId)->first();
+        $listing = Listing::find($listingId);
 
         if($listing->visibility == 'Publica') {
             if((Auth::user()->id !== $listing->user_id) & (Auth::check())){   //Usuario no autorizado

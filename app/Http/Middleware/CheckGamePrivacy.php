@@ -21,15 +21,16 @@ class CheckGamePrivacy
 
         $game = Game::find($gameId)->first();
 
-        $algo = $game->listings()->get();
-        $array = [];
-        foreach ($algo as $alguito) {
-            array_push($array,$alguito->user_id);
+        $gameListings = $game->listings()->get();
+        $userArray = [];
+        foreach ($gameListings as $listing) {
+            array_push($userArray,$listing->user_id);
         }
 
-        if (!in_array(Auth::user()->id,$array) & (Auth::check())) { //Usuario no autorizado
+        if (!in_array(Auth::user()->id,$userArray) & (Auth::check())) { //Usuario no autorizado
             return redirect('401'); 
         }
+
         //Usuario autorizado
         return $next($request);
     }

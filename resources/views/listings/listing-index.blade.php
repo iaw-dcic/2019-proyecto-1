@@ -46,12 +46,14 @@
                         </div>  
 
                         @auth
-                            <div class="cell">
-                                Visibilidad
-                            </div>
-                            <div class="cell">
-                                Eliminar
-                            </div>
+                            @if($data['listOwnerName'] == Auth::user()->name)
+                                <div class="cell">
+                                    Visibilidad
+                                </div>
+                                <div class="cell">
+                                    Eliminar
+                                </div>
+                            @endif
                         @endauth
 
                         @guest
@@ -74,19 +76,21 @@
                             <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
                         </div>
                         @auth
-                            <div class="cell" data-title="Visibilidad">
-                                    {{$listing->visibility}}
-                            </div>
-                            <div class="cell" data-title="Eliminar lista">
+                            @if($data['listOwnerName'] == Auth::user()->name)
+                                <div class="cell" data-title="Visibilidad">
+                                        {{$listing->visibility}}
+                                </div>
+                                <div class="cell" data-title="Eliminar lista">
 
 
-                                    <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post"> 
-                                            {{ method_field("DELETE") }} @csrf
-                                                {{ csrf_field() }}
-                                                <button type="submit" id="deleteButton" data-name="{{ $listing->title }}" class="btn btn-xs btn-danger">X</button>         
-                                    </form>
+                                        <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post"> 
+                                                {{ method_field("DELETE") }} @csrf
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" id="deleteButton" data-name="{{ $listing->title }}" class="btn btn-xs btn-danger">X</button>         
+                                        </form>
 
-                            </div>
+                                </div>
+                            @endif
                         @endauth
                         @guest
                             <div class="cell" data-title="Link al perfil">

@@ -59,23 +59,25 @@
 
 				<!-- Edit and delete game -->
 				@auth
-					<div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
-						<a href="{{route('games.edit', ['game' => $data['game']->id])}}" class="site-btn" style="margin-botom:30px;margin-top:30px;">Editar juego</a>
+					@if($data['userId'] == Auth::user()->id)
+						<div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
+							<a href="{{route('games.edit', ['game' => $data['game']->id])}}" class="site-btn" style="margin-botom:30px;margin-top:30px;">Editar juego</a>
 
-						<!--<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
-							{{ method_field('DELETE') }} @csrf -->
-							<!-- {{ csrf_field() }} -->
-						<!--	<button type="submit" class="site-btn" style="margin-top:30px;">Eliminar juego</button>
-						</form> -->
+							<!--<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
+								{{ method_field('DELETE') }} @csrf -->
+								<!-- {{ csrf_field() }} -->
+							<!--	<button type="submit" class="site-btn" style="margin-top:30px;">Eliminar juego</button>
+							</form> -->
 
-						<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
-								{{ method_field('DELETE') }} @csrf
-								{{ csrf_field() }}
-								<button type="submit" id="deleteGameButton" class="site-btn" style="margin-top:30px;">Eliminar juego</button>
-						</form>
+							<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
+									{{ method_field('DELETE') }} @csrf
+									{{ csrf_field() }}
+									<button type="submit" id="deleteGameButton" class="site-btn" style="margin-top:30px;">Eliminar juego</button>
+							</form>
 
 
-					</div>
+						</div>
+					@endif
 				@endauth
 			</div>
 		</div>

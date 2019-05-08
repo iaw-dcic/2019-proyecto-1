@@ -45,16 +45,7 @@
                                     <img src="{{asset('img/icons/double-arrow.png')}}" />
                                 </a>
                             </div>
-                            <br />
-
-                            <!-- Delete from list -->
-                            @auth
-
-                               
-                            <!-- <a class="btn btn-danger" id="removeList"
-                                    href="{{route('delete_game_from_listing',array('game'=>$game->id,'listing'=> $listing->id))}}"
-                                    role="button">Eliminar de la lista</a>-->
-                            @endauth
+                            <br />                         
                         </div>
                     </div>
                     @endforeach
@@ -63,25 +54,27 @@
 
             <!-- Add another game, edit list, delete list -->
             @auth
-            <div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">
-                <div class="row">
-                    <div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
-                        <!-- Add list -->
-                        <a href="{{route('games.create')}}" class="site-btn">Agregar otro juego a la
-                            lista</a><br><br><br>
-                        <!--Edit list -->
-                        <a href="{{ route('listings.edit', $listing->id)}}" class="site-btn">Editar lista</a>
-                        <br /><br /><br />
-                        <!-- Delete list -->
-                        <form class="read-more"
-                        action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post">
-                        {{ method_field("DELETE") }} @csrf
-                        {{ csrf_field() }}
-                        <button type="submit" id="deleteButton" class="site-btn">Eliminar lista</button>
-                        </form>
+                @if($listing->user_id == Auth::user()->name)
+                    <div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">
+                        <div class="row">
+                            <div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
+                                <!-- Add list -->
+                                <a href="{{route('games.create')}}" class="site-btn">Agregar otro juego a la
+                                    lista</a><br><br><br>
+                                <!--Edit list -->
+                                <a href="{{ route('listings.edit', $listing->id)}}" class="site-btn">Editar lista</a>
+                                <br /><br /><br />
+                                <!-- Delete list -->
+                                <form class="read-more"
+                                action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post">
+                                {{ method_field("DELETE") }} @csrf
+                                {{ csrf_field() }}
+                                <button type="submit" id="deleteButton" class="site-btn">Eliminar lista</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                @endif
             @endauth
         </div>
 

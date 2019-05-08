@@ -18,7 +18,7 @@ class GamesController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'create', 'show']]);
-        $this->middleware('game.privacy', ['only'=>['show']]);
+        $this->middleware('game.privacy', ['only'=>['edit','update','destroy']]);
     }
 
     /**
@@ -103,6 +103,8 @@ class GamesController extends Controller
     {
         $game = Game::find($id);
 
+        $userId = $game->listings()->first()->user_id;
+     
         $listNames = [];
         foreach ($game->listings as $listing) {
             array_push($listNames, $listing->title);
@@ -111,6 +113,7 @@ class GamesController extends Controller
         $data = [
             'game'  => $game,
             'listings'   => implode(" - ", $listNames),
+            'userId' => $userId
         ];
 
         return view('games.game-single')->with('data', $data);
