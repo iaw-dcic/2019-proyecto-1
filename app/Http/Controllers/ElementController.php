@@ -18,8 +18,14 @@ class ElementController extends Controller
 
     public function index($idUsuario, $idColeccion){
 
+
         $coleccion = new Colection; 
         $coleccion=$coleccion ->findColection($idColeccion);
+        
+        if($idUsuario!==$coleccion->user_id){
+            abort(403);
+        }
+
         $items= $coleccion ->findElementos();
         $datos=[$coleccion, $items];
         return view('insertarItem', compact('datos'));
