@@ -3,7 +3,7 @@
     <div class="container">
         <div class="footer-left-pic">
             <!--<img src="img/prueba1.png" alt=""> -->
-            <img src="{{asset('img/footer-left-pic.png')}}">
+            <img src="{{asset('img/footer-left-pic.webp')}}">
         </div>
         <div class="footer-right-pic">
             <img src="{{asset('img/footer-right-pic.png')}}">
