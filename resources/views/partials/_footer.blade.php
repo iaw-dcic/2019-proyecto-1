@@ -9,7 +9,7 @@
             <img src="{{asset('img/footer-right-pic.webp')}}">
         </div>
         <a href="#" class="footer-logo">
-            <img src="{{asset('/img/logo.png')}}">
+            <img src="{{asset('/img/logo.png')}}" alt="GoodGame!">
         </a>
         <ul class="main-menu footer-menu">
             <li><a href="/">Inicio</a></li>

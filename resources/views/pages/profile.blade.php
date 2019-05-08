@@ -171,7 +171,7 @@
                             <div class="col-xl-6 col-lg-7 col-md-8">
                                 <img src="{{asset('/img/avatars/').'/'.$user->avatar}}"
                                     style="width:150px; height:150px; border-radius:50%; margin-right:25px; margin-bottom:8px"
-                                    alt="">
+                                    alt="Avatar">
 
                                 @auth
                                     @if($user->id == Auth::user()->id)
