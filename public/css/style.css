@@ -8,6 +8,7 @@ font-family: 'Poppins', sans-serif;
 .hero-image {
   background-image: url("/image/libro2.jpg");
   background-color: #cccccc;
+  height: 500px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
