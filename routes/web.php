@@ -65,6 +65,7 @@ Route::get('/showUser/{id}','ApiController@showUser')->name('showUser');
 Auth::routes();
 Route::get('/album/{id}','AlbumController@destroy')->name('eliminarAlbum');
 Route::get('/edit/{id}','AlbumController@edit')->name('editAlbum');
+Route::post('/addSongs','song\SongController@addSongs')->name('addSongs');
 
 
 Route::get('/login/github', 'Auth\LoginController@redirectToProvider');

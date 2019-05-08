@@ -16,9 +16,14 @@
     <link src="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{secure_asset('css/app.css')}}" rel="stylesheet">
-    <link href="{{secure_asset('css/appaux.css')}}" rel="stylesheet">
-    <link href="{{secure_asset('css/dataTables.css')}}" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/appaux.css')}}" rel="stylesheet">
+    <link href="{{asset('css/dataTables.css')}}" rel="stylesheet">
+
+    <script src="{{asset('js/app.js')}}" ></script>
+<script src="{{asset('js/jquery.js')}}"></script>
+<script src="{{asset('js/dataTables.js')}}"></script>
+<script src="{{asset('js/dataTables.bootstrap4.js')}}" ></script>
 
 
 
@@ -106,12 +111,9 @@
 
 </footer>
 <!-- Footer -->
-<script src="{{secure_asset('js/app.js')}}" ></script>
-<script src="{{secure_asset('js/jquery.js')}}"></script>
-<script src="{{secure_asset('js/dataTables.js')}}"></script>
-<script src="{{secure_asset('js/dataTables.bootstrap4.js')}}" ></script>
-<script src="{{secure_asset('js/avatar.js')}}"></script>
-<script src="{{secure_asset('js/parallax.js')}}"></script>
+
+<script src="{{asset('js/avatar.js')}}"></script>
+<script src="{{asset('js/parallax.js')}}"></script>
 
 
 
