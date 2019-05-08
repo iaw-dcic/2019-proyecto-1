@@ -37,24 +37,33 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {      
         $this->validate($request, [
-            'title' => 'required',
             'name' => 'required',
             'link' => 'required',
+            'post_id' => 'required',
             'price' => 'required'
         ]);
 
+        $this->createItem($request->input('post_id'),$request);   
+        $userPost = Post::find($post_id);
 
+        return redirect('/posts/createitem')->with('items',$userPost->items);
+    }
+
+    public function createCollection(Request $request){
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
         $postExist = 0;
         $user= User::find(auth()->user()->id);
         $posts = $user->posts;
         $post_id = 0;
-        foreach($posts as $post){
+        foreach($posts as $post){                       
             if(($post->title) == $request->input('title')){
                 $post_id= $post->id;
-                $this->createItem($post_id, $request);
                 $postExist = 1;
+                return view('post.store')->with('post_id',$post_id)->with('items',$post->items);
             }
         }
         if($postExist < 1){
@@ -63,16 +72,9 @@ class PostsController extends Controller
             $post->user_id = auth()->user()->id;
             $post->save();            
             $post_id = $post->id;
-            $this->createItem($post_id, $request);
+            return view('post.store')->with('post_id',$post_id)->with('items',$post->items);            
         }
         
-        $userPost = Post::find($post_id);
-
-        return redirect('/posts/create')->with('items',$userPost->items);
-    }
-
-    public function finishStore(Request $request){
-        return redirect('/home');
     }
 
     private function createItem($post_id, Request $request){

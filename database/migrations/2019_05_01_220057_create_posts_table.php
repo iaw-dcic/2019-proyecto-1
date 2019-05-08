@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table ->integer('user_id');
+            $table->boolean('public');
         });
     }
 
