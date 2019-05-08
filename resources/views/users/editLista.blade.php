@@ -4,20 +4,8 @@
     <div class="card">
         <h4 class="card-header"> Editar Lista </h4>
     <div class="card-body">
-                <!--Laravel pasa automaticamente la variable errors a la vista-->
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                        <h6>Por favor corrige los siguientes errores debajo:</h6>
-                        <ul>
-                            @foreach($errors->all() as $error)
-                            <li>
-                                {{ $error}}
-                            </li>
-                            @endforeach
-                        </ul>
-                </div>
-    </div>
-            @endif
+
+
 
             <form method="PUT" action="{{ route('users.updateLista',$list->id) }}">
                 {{-- Enviamos un campo oculto --}}
@@ -28,6 +16,12 @@
                         <!-- Label usa el id del input --> <!-- el campo name es el que usa el metodo post en el controlador para crear el usuario -->
                         <label for="name">Nombre de la lista a crear:</label>
                         <input type="text" name="name" class="form-control" id="name" placeholder="Mi Lista" value="{{ old('name',$list->name) }}">
+                        @if($errors->has('name'))
+                        <div class="alert alert-danger">
+                            <p>{{ $errors->first('name') }}</p>
+                        </div>
+                        @endif
+
                 </div>
                 <div class="form-check">
                         <!-- Label usa el id del input --> <!-- el campo name es el que usa el metodo post en el controlador para crear el usuario -->
@@ -48,7 +42,7 @@
 
                 </div>
             </form>
-
+            </div>
     </div>
 
 

@@ -16,13 +16,13 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('usuarios/nuevo', 'ListController@create')->name('users.create');
 Route::post('usuarios/crear','ListController@store');
 Route::get('usuarios/nuevoItem','ListController@createItem')->name('users.createItem');
+Route::get('usuarios/nuevoItem/cancelar','ListController@cancelar')->name('users.cancelar');
 Route::post('usuarios/crearItem','ListController@storeItem');
 /** */
 //
 /**GET/usuarios/{id} pagina detalles.
  * PUT/usuarios/{id} accion para actualizar.
  */
-// Route::get('/usuarios/{user}', 'UserController@show')->name('users.show');
 Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 Route::put('usuarios/{user}', 'UserController@update');
 
@@ -38,19 +38,6 @@ Route::get('usuarios/mostrarListas/{id}/editItem','ListController@editItem')->na
 Route::get('usuarios/mostrarListas/{id}/guardar','ListController@updateEditItem')->name('users.updateEditItem');
 
 
-
-
-
-
-
-// Route::put('/usuarios/{user}', 'UserController@update');
-/**Ruta hacia los detalles del usuario para configurar sus vistas
- * Para eso la enlazo con el controlador User Controller y la funcion es show
-*/
-
-
-
-// Route::delete('/usuarios/{user}', 'UserController@destroy')->name('users.destroy');
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

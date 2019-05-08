@@ -11,6 +11,12 @@ use App\Lista;
 
 class ListController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+        return back();
+    }
+
     /**Index se va a referir a nuestro modulo de usuario, cuya logica va a estar encapsulada en UserController  */
     public function index(){
         if(auth()->user()!=null){
@@ -35,7 +41,8 @@ class ListController extends Controller
         if(auth()->user()!=null){
             $user = auth()->user();
             //usoEloquentModel para obtener la tabla de listas
-            $lists = Lista::where('user_id',$user->id)->get();
+            $lists = Lista::where('user_id',$user->id)->orderBy('created_at','desc')->get();
+
 
 
             $items = Item::all();
@@ -53,8 +60,9 @@ class ListController extends Controller
 
 
     public function create(){
-         if(auth()->user()!=null)
+         if(auth()->user()!=null){
             return view('users.create');
+         }
          else
             return back();
     }
@@ -66,9 +74,15 @@ class ListController extends Controller
         }
     }
 
+    public function cancelar(){
+        $list= Lista::all();
+        $list->last()->delete();
+        return redirect()->route('users.create');
+    }
+
     public function storeItem(Request $request){
 
-
+        // La validacion la hago con boostrap en la vista
         $data = request()->all();
         $lista= Lista::orderby('id','desc')->first();
         if(count($request->nombre_club) > 0){
@@ -90,15 +104,20 @@ class ListController extends Controller
 
 
 
-    public function store(){
+    public function store(Request $request){
         /**Recibimos los datos del formulario */
-        $data = request()->all();
-        $user = auth()->user();
-        if (empty($data['isPublic']))
-            $data['isPublic']=false;
-        else
-            $data['isPublic']=true;
 
+        $data = request()->validate([
+            'name' => 'required',
+        ],[
+            'name.required' => 'Por favor: Indique un nombre para su lista'
+        ]);
+        $user = auth()->user();
+        if (($request['isPublic']=='on'))
+        $data['isPublic']=true;
+      else {
+          $data['isPublic']=false;
+      }
         $list = Lista::create([
             'name' => $data['name'],
             'isPublic' => $data['isPublic'],
@@ -137,7 +156,8 @@ class ListController extends Controller
        $list->update(request()->validate([
            'name' => 'required',
            'isPublic' =>'required',
-
+       ],[
+           'name.required' => 'Por favor: Ingrese un nombre para su lista'
        ]));
        $items = Item::where('list_id',$list->id)->get();
        return view('users.editItem',[

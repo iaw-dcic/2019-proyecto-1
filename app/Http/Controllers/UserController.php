@@ -10,21 +10,9 @@ use App\Lista;
 
 class UserController extends Controller
 {
-
-
-    /**Muestra el detalle del usuario. */
-    public function show(User $user){
-        $user = User::find($user->id);
-        if($user == null){
-            return response()->view('errors.404',[],404);
-        }
-        else{
-            return view('users.show', [
-                'user'=> $user,
-            ]);
-        }
+    public function __construct(){
+        $this->middleware('auth');
     }
-
 
     public function edit(User $user){
         return view('users.edit', ['user' => $user]);

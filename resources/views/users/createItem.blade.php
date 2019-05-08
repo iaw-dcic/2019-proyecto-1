@@ -11,15 +11,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
 </head>
-<body>
+<body onload="nobackbutton();">
         <br>
         <br>
         <div class="container">
-            <form method="POST" action="{{ url('usuarios/crearItem') }}">
+            <form method="POST" action="{{ url('usuarios/crearItem') }}"  >
                 {{  csrf_field() }} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
 
                 <section>
 
+                    @if($errors->any())
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">
+                            <h6>Por favor corrige los siguientes errores debajo: </h6>
+                            <li>{{ $error }}</li>
+                        </div>
+                        @endforeach
+                    </ul>
+                    @endif
 
                     <div class="panel panel-footer">
                         <table class= "table table-bordered">
@@ -35,15 +45,18 @@
                             <tbody>
                                     <tr>
                                         <td><input type="text" name="nombre_club[]" class="form-control" required=""></td>
-                                        <td><input type="text" name="nombre_estadio[]" class="form-control"></td>
+                                        <td><input type="text" name="nombre_estadio[]" class="form-control" required=""></td>
                                         <td><input type="number" name="capacidad_estadio[]" class="form-control quantity" required=""></td>
-                                        <td><input type="text" name="pais[]" class="form-control budget"></td>
+                                        <td><input type="text" name="pais[]" class="form-control" required=""></td>
                                         <td><a href="#" class="btn btn-danger remove"><i class="glyphicon glyphicon-remove"></i></a></td>
                                     </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td> <input type="submit" name="" value="Crear Lista" class="btn btn-primary"></td>
+                                    <td> <input type="submit" name="" value="Crear Lista" class="btn btn-primary">
+
+                                     <a href="{{ route('users.cancelar')}}" class="btn btn-danger">Cancelar</a>
+                                     </td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -77,7 +90,16 @@
                      $(this).parent().parent().remove();
                 }
             });
-        </script>
+            function nobackbutton(){
+
+                   window.location.hash="no-back-button";
+
+                   window.location.hash="Again-No-back-button" //chrome
+
+                   window.onhashchange=function(){window.location.hash="no-back-button";}
+
+            }
+            </script>
 
 </body>
 
