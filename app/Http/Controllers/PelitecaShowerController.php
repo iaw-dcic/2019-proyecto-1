@@ -22,7 +22,9 @@ class PelitecaShowerController extends Controller
         $puntajes = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         //$caters = DB::select('select genero from generos');
         $caters = Genero::all();
-        $peliculas = Auth::user()->getPeliculas()->where('publico', true)->get();
+        //$peliculas = Auth::user()->getPeliculas()->where('publico', true)->get();
+        $peliculas = DB::select('select pelicula,genero,anio,puntaje from peliculas where user_id = :id and publico =:dat' , ['id' => $id, 'dat' => true]);
+        //$peliculas = Pelicula::where(['publico', true, 'user_id' => Auth::user()->id])->get();
         return view('PelitecaShower', ['puntajes' => $puntajes ,'caters' => $caters ,'peliculas' => $peliculas ]);
     }
 

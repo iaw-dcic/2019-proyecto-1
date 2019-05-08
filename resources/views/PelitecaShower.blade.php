@@ -6,7 +6,8 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <link href="{{ asset('css/stylecss.css') }}" rel="stylesheet">
 <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
-<form class="form-inline"  method="POST" action="Genero" >
+
+<form class="form-inline"  method="POST" action="{{ url('/PelitecaEditor/Generos') }}" >
   @csrf
  @foreach ($caters as $cater)
 <div class="accordion" id="accordionExample" text-align="center">
