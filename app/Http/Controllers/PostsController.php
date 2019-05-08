@@ -81,7 +81,7 @@ class PostsController extends Controller
         $item->name = $request->input('name');
         $item->link = $request->input('link');
         $item->price = $request->input('price');
-        $item->post_id = $post->id;
+        $item->post_id = $post->id();
         $item->save();
     }
 
