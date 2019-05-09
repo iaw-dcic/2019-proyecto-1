@@ -27,9 +27,11 @@ class PlaylistController extends Controller
         // Controles de seguridad.
         $userId = Auth::id();
 
-        if($playlist->user_id != $userId){
-            $message = "No esta permitido ver playlists de otros usuarios";
-            return view('auth.error')->with('message',$message);
+        if($playlist->visibility != 'Publica'){
+            if($playlist->user_id != $userId){
+                $message = "No esta permitido ver playlists privadas de otros usuarios";
+                return view('auth.error')->with('message',$message);
+            }
         }
 
         return view('playlist.details')->with('songs', $songs)->with('playlist',$playlist);
@@ -38,8 +40,11 @@ class PlaylistController extends Controller
     public function store(Request $request)
     {
 
-
-        $playlist = new Playlist();
+        if($request->get('id')!= -1){
+            $playlist = Playlist::find($request->get('id'));
+        }
+        else
+            $playlist = new Playlist();
 
         $playlist->name=$request->get('nombre');
         $playlist->spotify_url=$request->get('spotify_url');
@@ -80,7 +85,7 @@ class PlaylistController extends Controller
         $userId = Auth::id();
 
         if($playlist->user_id != $userId){
-            $message = "No esta permitido ver playlists de otros usuarios";
+            $message = "No esta permitido modificar playlists de otros usuarios";
             return view('auth.error')->with('message',$message);
         }
 
@@ -91,8 +96,10 @@ class PlaylistController extends Controller
 
         $userId = Auth::user()->id;
 
-        if($id != $userId){
-            $message = "No esta permitido modificar playlists de otros usuarios";
+        $playlist = Playlist::find($id);
+
+        if($playlist->user_id != $userId){
+            $message = "No esta permitido eliminar playlists de otros usuarios";
             return view('auth.error')->with('message',$message);
         }
 

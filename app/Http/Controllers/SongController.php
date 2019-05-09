@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Playlist;
 use App\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -14,6 +15,15 @@ class SongController extends Controller
 
 
     public function onCreate($idLista){
+
+        $userId = Auth::id();
+
+        $playlist = Playlist::find($idLista);
+
+        if($playlist->user_id != $userId){
+            $message = "Oops parece que no tienes permisos para llegar aqui.";
+            return view('auth.error')->with('message',$message);
+        }
 
         $albums = DB::select('select distinct album from songs');
         $artists = DB::select('select distinct artist from songs');
@@ -65,10 +75,31 @@ class SongController extends Controller
 
         $song = Song::find($id);
 
+        $userId = Auth::id();
+        $playlist = Playlist::find($song->playlist_id);
+
+        if($playlist->visibility != 'Publica'){
+            if($playlist->user_id != $userId){
+                $message = "No esta permitido ver canciones de otros usuarios";
+                return view('auth.error')->with('message',$message);
+            }
+        }
+
         return view('song.details')->with('song', $song);
     }
 
     public function delete($id){
+
+        $userId = Auth::id();
+
+        $song = Song::find($id);
+        $playlist = Playlist::find($song->playlist_id);
+
+        if($playlist->user_id != $userId){
+            $message = "No esta permitido eliminar canciones de otros usuarios.";
+            return view('auth.error')->with('message',$message);
+        }
+
         $song = Song::find($id);
         $song->delete();
     }

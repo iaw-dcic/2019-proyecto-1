@@ -50,8 +50,11 @@
                     <th>Album</th>
                     <th>Genero</th>
                     <th>Año</th>
+                    @if($playlist->user_id == Auth::user()->id)
+
                     <th class="text-center">Acciones</th>
 
+                    @endif
                 </tr>
                 </thead>
                 <tbody>
@@ -64,12 +67,17 @@
                         <td class="align-middle" >{{$song->album}}</td>
                         <td class="align-middle" >{{$song->genre}}</td>
                         <td class="align-middle" >{{$song->year}}</td>
+
+                        @if($playlist->user_id == Auth::user()->id)
+
                         <th class="align-middle text-center" scope="col" >
                             <a href="{{ route('song.details', $song->id) }}" class="btn btn-secondary">Detalles
                             </a>
                             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal-eliminar-{{ $song->id }}">Eliminar
                             </button>
                         </th>
+
+                        @endif
                     </tr>
 
                     <!-- Modal Eliminar Song -->
