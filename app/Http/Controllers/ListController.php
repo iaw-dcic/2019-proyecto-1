@@ -20,6 +20,15 @@ class ListController extends Controller
 
         $user = User::where('id',$task->owner_id)->get()->first();
 
+        if(Auth::check()){
+            if($user->id == Auth::user()->id){
+                return view('/list', compact('items','user','task'));
+            }
+        }else{
+            $task = Task::where('id',$id)->where('privacy','Public')->get()->first();
+
+        }
+
         return view('/list', compact('items','user','task'));
 
     }
