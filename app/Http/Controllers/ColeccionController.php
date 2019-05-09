@@ -41,7 +41,9 @@ class ColeccionController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     * quedo la implementacion para agregar las categorias pero
+     *  por decision de implementacion se estrablecieron 3 categorias por defecto
+     * por lo que no se realizan los chequeos de autenticacion
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
