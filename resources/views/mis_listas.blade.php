@@ -50,12 +50,7 @@
                       onclick="location.href='/mis_listas/eliminar_lista/?id_lista={{$lis->id}}'"
                        >Eliminar lista </button>
 
-              <script>
-                function myFunction() {
-                  if(confirm("Estas seguro ? "))
-                      location.href='/mis_listas/eliminar_lista/?id_lista={{$lis->id}}'
-                }
-              </script>
+             
 
 
 			     </div>
