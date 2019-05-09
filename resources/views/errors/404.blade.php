@@ -2,4 +2,4 @@
 
 @section('title','404')
 
-@endsection('message','Página no encontrada')
+@section('message','Página no encontrada')
