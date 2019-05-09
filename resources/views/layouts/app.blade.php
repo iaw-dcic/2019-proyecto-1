@@ -51,22 +51,22 @@
                             <span class="navbar-text">Futboleros</span>
                             </a>
                             @elseif(route::current()->getName()=='users.editLista')
-                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../../../../resources/img/futbol.png" alt="home"></a>
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
                             @elseif((route::current()->getName()=='users.edit') || (route::current()->getName()=='users.show'))
-                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../../../resources/img/futbol.png" alt="home"></a>
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
 
                             @else
-                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../../resources/img/futbol.png" alt="home"></a>
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
                             @endif
 
                         @else
-                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../resources/img/futbol.png" alt="home"></a>
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
                         @endif
