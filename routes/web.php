@@ -22,6 +22,7 @@ Route::get('/listaspublicas', 'listacontroller@listaspublicas');
 Route::get('/lista/modificar/{id}', 'listacontroller@modificarlista')->name('modificarlista');
 Route::post('/lista/modificar', 'peliculacontroller@crearpelicula');
 Route::get('/lista/get/{id}', 'listacontroller@getlista')->name('getlista');
+Route::get('/lista/cambiarvis/{id}', 'listacontroller@cambiarvisibilidad');
 Route::get('/lista/eliminar/{id}', 'listacontroller@eliminarlista');
 Route::get('/lista/crear', 'listacontroller@creacionlista');
 Route::post('/lista/crear', 'listacontroller@crearlista');

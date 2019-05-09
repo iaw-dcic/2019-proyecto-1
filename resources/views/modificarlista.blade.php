@@ -7,16 +7,21 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editing " {{$lista->nombre}} "</div>
+                <div class="card-header">Editing " {{$lista->nombre}} " 
+                  @if($lista->visible==true)
+                    <a type="button" class="btn btn-primary" href="/pelicula/remove/{{$pelicula->id}}"><i class="fas fa-trash"></i></a>
+                  @else
+                  
+                </div>
 
                 <div class="card-body">                    
-                    
+                        
                         <form method="POST" action="{{url('lista/modificar')}}">
                           {{csrf_field()}}
                           <input type="hidden" name="listaid" value="{{$lista->id}}">
                           <p><label for='nombre'>Name: </label> <input type="text" name="nombre" class="form-control" ></p>
-                          <p><label for='visible'>Description: </label> <input type="text" name="descripcion" class="form-control"></p>
-                          <p><label for='visible'>Genre: </label> <input type="text" name="genero" class="form-control" ></p>
+                          <p><label for='descripcion'>Description: </label> <input type="text" name="descripcion" class="form-control"></p>
+                          <p><label for='genero'>Genre: </label> <input type="text" name="genero" class="form-control" ></p>
                           <button type="submit" class="btn btn-primary">Add New Movie</button>
                        </form>
                         <table class="table">

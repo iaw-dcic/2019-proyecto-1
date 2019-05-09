@@ -12,8 +12,11 @@ class listacontroller extends Controller
     	
 
         $listas = \App\lista::where(['visible' => true])->get();
+      
+
         return view('listaspublicas',compact('listas')); 
     }
+    //retorna las listas publicas de un usuario
     public function listasusuario($id){
     	
 
@@ -64,6 +67,12 @@ class listacontroller extends Controller
 
     }
     public function modificarlista($id){
+    	$user=Auth::user();
+    	if($user==null){
+    		$msg="You need to log in first";
+ 			return view('error',compact('msg'));;
+    	}
+
     	$usuario = Auth::user()->id;
     	$lista = \App\lista::find($id);
     	$peliculas=\App\pelicula::where(['listaid'=>$id])->get();
@@ -74,6 +83,29 @@ class listacontroller extends Controller
  			return view('error',compact('msg'));;
  		}
         
+    }
+    public function cambiarvisibilidad($id){
+    	$user = Auth::user();
+    	$lista = \App\lista::find($id);
+    	if($user==null){
+    		$msg="You need to log in first";
+ 			return view('error',compact('msg'));;
+    	}
+    	if($lista==null){
+    		$msg="List do not exist";
+ 			return view('error',compact('msg'));;
+    	}
+    	if($lista->userid==$user->id){
+    		if($lista->visible==true)
+    			$lista->visible=false;
+    		else
+    			$lista->visible=true;
+    		$lista->save();
+    	}else{
+    		$msg="List does not belongs to you";
+ 			return view('error',compact('msg'));;
+    	}
+
     }
     public function crearlista(){
     	$usuario = Auth::user();
