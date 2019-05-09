@@ -1,0 +1,120 @@
+/*----------------------------------------*/
+/*              Profile
+/*----------------------------------------*/
+
+div.container-profile {
+    padding: 30px 0;
+    margin: 0;
+    padding-top: 15px;
+    width: 100%;
+
+    .row-perfil {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .btn-profile a{
+        font-size: 30px;
+        margin: 5px 20px;
+        margin-left: 0;
+        color: $primary-color;
+    }
+
+    .btn-profile a:hover{
+        color: $secondary-color;
+    }
+
+    div.botones-perfil{
+        margin-left: 10px;
+    }
+
+    div.info-perfil {
+        margin: 0;
+        margin-left: 10px;
+        padding: 0;
+
+        p {
+            font-family: "Raleway", sans-serif;
+            margin: 0;
+            margin-left: 10px;
+            padding: 0;
+        }
+
+        p.name {
+            font-size: 40px;
+            font-weight: bolder;
+        }
+        p.username {
+            margin-top: -10px;
+            font-size: 18px;
+        }
+    }
+
+    div.foto-perfil {
+        img {
+            border-radius: 100%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            padding: 4px;
+            cursor: pointer;
+            border: 3px solid $primary-color;
+        }
+
+        img:hover{
+            border: 3px solid $secondary-color;
+        }
+    }
+
+    @media screen and (min-width: 992px){
+        .row-perfil {
+            width: 70%;
+        }
+    }
+
+    @media screen and (max-width: 576px){
+        div.info-perfil {
+
+            p.name {
+                font-size: 24px;
+                font-weight: bolder;
+            }
+            p.username {
+                margin-top: -10px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+div.img-vistas-previas{
+    div.row {
+        margin: 0 auto;
+        img {
+            &.col {
+                margin: 5px;
+                padding: 0;
+            }
+            max-width: 250px;
+            max-height: 250px;
+            object-fit: cover;
+            z-index: 1;
+        }
+    }
+}
+
+/*Cambiar foto de perfil*/
+#foto-perfil-grande {
+    height: 320px;
+    margin: 20px;
+    object-fit: cover;
+}
+
+#btn-cambiar-foto-perfil {
+    background-color: $primary-color;
+    color: white;
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+}

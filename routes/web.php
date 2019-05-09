@@ -10,7 +10,52 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('cacheable:5');
+
+Route::get('/', 'WelcomeController@index')
+    ->name('welcome')
+    ->middleware('guest');
+
+//Vistas para login y register
+Route::get('/login', 'Auth\LoginController@getViewLogin');
+Route::get('/register', 'Auth\RegisterController@getViewRegister');
+
+//Envio de formularios para login y register
+Route::post('/login', 'Auth\LoginController@login')->name('login');
+Route::post('/register', 'Auth\RegisterController@register')->name('register');
+
+//Consulta AJAX para Login
+Route::post('/login/verifyEmailAndPassword', 'Auth\LoginController@verifyEmailAndPassword');
+//Consultas AJAX para registro
+Route::post('/register/verifyUsername', 'Auth\RegisterController@verifyUsername');
+Route::post('/register/verifyEmail', 'Auth\RegisterController@verifyEmail');
+
+//Login con redes sociales
+Route::get('/login/{driver}', 'Auth\LoginController@redirectToProvider')->name('social_auth');
+Route::get('/login/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
+
+//Usuario
+Route::get('/profile', 'UsersController@viewProfile')->name('profile')->middleware('auth');;
+Route::get('/user/search', 'UsersController@searchUsernames');
+Route::post('/user/{username}', 'UsersController@update');
+
+Route::resource('user', 'UsersController')->only([
+    'show', 'destroy'
+]);
+Route::get('user', function() {
+    return view('home');
+});
+
+//Posts
+Route::resource('posts', 'PostsController')->only([
+    'store', 'show', 'update', 'destroy'
+]);
+
+Route::get('/posts/{post_id}/comments', 'CommentsController@index');
+Route::post('/posts/{post_id}/comments', 'CommentsController@store')->middleware('auth');
+
+Route::get('/about', function(){
+    return view('about');
 });

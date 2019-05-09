@@ -1,0 +1,334 @@
+/*----------------------HEADER-------------------------------------*/
+header.pantalla-principal {
+    height: 100vh;
+}
+
+header.nav-only {
+    height: fit-content;
+}
+
+/*----------------------NAVBAR--------------------------------------*/
+nav.navbar {
+    width: 100%;
+    background-color: rgb(34, 34, 34);
+    margin: 0;
+    padding: 5px 50px;
+    z-index: 2;
+}
+
+header.pantalla-principal nav.navbar {
+    background-color: rgba(0,0,0,.5) !important;
+
+    div.dropdown-menu{
+        background-color: rgba(0,0,0,.5) !important;
+        a {
+            background-color: transparent;
+        }
+    }
+
+    .searchbar {
+        background-color: rgba(0,0,0,.5) !important;
+        border: none !important;
+    }
+}
+
+/*Imagen de la camara en el logo*/
+nav.navbar a.titulo i.fa-camera-retro{
+    font-size: 22px;
+    background-color: $primary-color;
+    color: white;
+    padding: 6px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+nav.navbar a.titulo i.fa-camera-retro:hover {
+    background-color: $secondary-color;
+}
+
+/*Titulo del logo*/
+nav.navbar a.titulo span {
+    font-size: 16pt;
+    font-weight: bolder;
+    font-family: 'Raleway', sans-serif;
+    color: whitesmoke;
+}
+
+/*Color del menú de hamburguesa*/
+i.menu{
+    color: white;
+}
+
+/*Botón Search*/
+.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 40px;
+    background-color: rgb(34, 34, 34);
+    border: 1px solid $primary-color;
+    border-radius: 30px;
+    padding: 10px 0;
+    transition: padding 0.2s linear;
+}
+
+.search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear, padding 0.4s linear;
+}
+
+.search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    border-radius: 100%;
+    background-color: transparent;
+    color: white;
+    transition: background 0.15s linear;
+    border: none;
+}
+
+.searchbar:hover > .search_input,
+.search_input:focus{
+    padding: 0 10px;
+    width: 230px;
+    caret-color: $primary-color;
+    transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon,
+.search_icon:hover{
+    background: $primary-color;
+    color: white;
+    text-decoration: none;
+}
+
+/*Resultados de búsqueda*/
+.searchbar div.tt-menu {
+    width:100%;
+}
+
+.searchbar div.tt-dataset {
+    color: white;
+    padding: 10px;
+    margin-top: 12px;
+    background-color: rgb(34, 34, 34);
+    border-radius: 5px;
+}
+
+.searchbar div.tt-suggestion {
+    margin: 10px;
+    width: 100%;
+    font-weight: 100;
+    position: relative;
+    cursor: pointer;
+}
+
+.searchbar div.tt-suggestion:after {
+    position: absolute;
+    content: '>';
+    right: 20px;
+}
+
+.searchbar div.tt-suggestion:hover {
+    text-decoration: underline #fff;
+}
+
+/*Items del navbar*/
+ul.navbar-nav li.nav-item {
+    margin: 0 8px;
+}
+
+ul.navbar-nav li.nav-item a{
+    position: relative;
+    font-size: 14px;
+    color: white;
+    font-weight: 400;
+}
+
+ul.navbar-nav li.borde-inferior a:before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    transform: scale(0);
+    transition: .3s;
+    border-bottom: 2px solid $primary-color;
+    transform-origin: 50% 100%
+}
+
+ul.navbar-nav li.borde-inferior a:hover:before{
+    transform: scale(1);
+}
+
+ul.navbar-nav li.bg-verde a{
+    background-color: $primary-color;
+    border-radius: 3px;
+    padding: 8px;
+    transition: .2.5s;
+}
+
+ul.navbar-nav li.bg-verde a:hover {
+    background-color: $secondary-color;
+}
+
+ul.navbar-nav li.bg-verde a:hover:before{
+    transform: scale(0);
+    color: #FFF;
+    position: relative;
+}
+
+li.dropdown {
+    div.dropdown-menu{
+        position: relative;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: rgb(34, 34, 34);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            right: 10px;
+            border-right: 10px solid transparent;
+            border-top: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-bottom: 15px solid rgb(34, 34, 34);
+        }
+
+        a{
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            text-align: right;
+        }
+
+        a.efecto-corchete::before,
+        a.efecto-corchete::after {
+            display: inline-block;
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.2s;
+            color: $secondary-color;
+        }
+
+        a.efecto-corchete::before {
+            margin-right: 10px;
+            content: '[';
+            transform: translateX(20px);
+        }
+
+        a.efecto-corchete::after {
+            margin-left: 10px;
+            content: ']';
+            transform: translateX(-20px);
+        }
+
+        a.efecto-corchete:hover::before,
+        a.efecto-corchete:hover::after,
+        a.efecto-corchete:focus::before,
+        a.efecto-corchete:focus::after {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+}
+
+ul.navbar-nav li.img-perfil img{
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    padding: 3px;
+    border: 1.5px solid $primary-color;
+}
+
+
+/*Configuraciones para cuando la pantalla es más chica y se genera el menú de hamburguesa*/
+@media only screen and (max-width: 991px) {
+
+    .search_input{
+        width: 100%;
+        padding-left: 10px;
+    }
+
+    .searchbar:hover > .search_input,
+    .search_input:focus{
+        width: 100%;
+    }
+
+    .search_icon:hover{
+        background: rgb(54, 60, 73);
+        color: white;
+    }
+
+    ul.navbar-nav li.borde-inferior a:hover:before{
+        transform: scale(0);
+    }
+
+    /*Boton registrarse*/
+    ul.navbar-nav li.bg-verde a{
+        color: #fff;
+        background-color: transparent;
+        border-radius: 0px;
+        padding-left: 0px;
+    }
+
+    ul.navbar-nav li.bg-verde a:hover {
+        background-color: transparent;
+    }
+
+
+    header.pantalla-principal nav.navbar {
+        background-color: rgb(34, 34, 34) !important;
+
+        div.dropdown-menu{
+            background-color: rgb(34, 34, 34) !important;
+
+            a:hover {
+                background-color: transparent;
+            }
+        }
+    }
+
+    ul.navbar-nav li.img-perfil img{
+        display: none;
+    }
+
+    ul.navbar-nav li a:hover{
+        color: $secondary-color;
+    }
+
+    li.dropdown {
+        div.dropdown-menu{
+            margin-top: 0px;
+            padding: 0px;
+            background-color: rgb(34, 34, 34);
+
+            &::before {
+                content: '';
+                position: relative;
+                border: none;
+            }
+
+            a{
+                text-align: left;
+            }
+
+            a.efecto-corchete:hover::before,
+            a.efecto-corchete:hover::after,
+            a.efecto-corchete:focus::before,
+            a.efecto-corchete:focus::after {
+                opacity: 0;
+            }
+        }
+    }
+}
+
+

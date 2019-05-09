@@ -1,14 +1,16 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+//Font awesome
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
 
 // Variables
 @import 'variables';
 
+//Styles
+@import 'config';
+@import 'styles';
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+@import 'sweetalert2/src/sweetalert2.scss'
