@@ -41,17 +41,11 @@
                         <div class="cell">
                             Lista
                         </div>  
-
-                        @auth
-                            @if($data['listOwnerName'] == Auth::user()->name)
-                                <div class="cell">
-                                    Visibilidad
-                                </div>
-                                <div class="cell">
-                                    Eliminar
-                                </div>
-                            @endif
-                        @endauth
+                       
+                        @if($data['listOwnerName'] == Auth::user()->name)
+                            <div class="cell"> Visibilidad </div>
+                            <div class="cell"> Eliminar </div>
+                        @endif
 
                         @guest
                             <div class="cell">
@@ -60,47 +54,45 @@
                         @endguest
 
                     </div>
+
                     @foreach($data['listings'] as $listing)
-                    <div class="my-row">
-                        <div class="cell" data-title="Titulo de la lista">
-                            {{$listing->title}}
-                        </div>
+                        <div class="my-row">
+                            <div class="cell" data-title="Titulo de la lista">
+                                {{$listing->title}}
+                            </div>
 
-                        <div class="cell" data-title="Cantidad de juegos">
-                            {{$listing->games()->count()}}
-                        </div>
-                        <div class="cell" data-title="Link a la lista">
-                            <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
-                        </div>
-                        @if($data['listOwnerName'] == Auth::user()->name)
-                                <div class="cell" data-title="Visibilidad">
-                                        {{$listing->visibility}}
-                                </div>
-                                <div class="cell" data-title="Eliminar lista">
+                            <div class="cell" data-title="Cantidad de juegos">
+                                {{$listing->games()->count()}}
+                            </div>
+                            <div class="cell" data-title="Link a la lista">
+                                <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
+                            </div>
 
-
-                                        <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post"> 
-                                                {{ method_field("DELETE") }} @csrf
+                            @if($data['listOwnerName'] == Auth::user()->name)
+                                    <div class="cell" data-title="Visibilidad">
+                                            {{$listing->visibility}}
+                                    </div>
+                                    <div class="cell" data-title="Eliminar lista">
+                                            <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post"> 
+                                                    {{ method_field("DELETE") }} @csrf
                                                     {{ csrf_field() }}
                                                     <button type="submit" id="deleteButton" data-name="{{ $listing->title }}" class="btn btn-xs btn-danger">X</button>         
-                                        </form>
-
+                                            </form>
+                                    </div>
+                            @endif
+                            @guest
+                                <div class="cell" data-title="Link al perfil">
+                                    <a href="{{route('user_profile',$data['listOwnerName'])}}">Link al perfil</a>
                                 </div>
-                        @endif
-                        @guest
-                            <div class="cell" data-title="Link al perfil">
-                                <a href="{{route('user_profile',$data['listOwnerName'])}}">Link al perfil</a>
-                            </div>
-                        @endguest
-                    </div>
-
+                            @endguest
+                        </div>
                     @endforeach
 
                 </div>
                 
                 <!--Create list -->
                 @if($data['listOwnerName'] == Auth::user()->name)
-                <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+                    <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                 @endif
     
             @else 

@@ -9,7 +9,7 @@
         <h2>Editar juego</h2>
         <div class="site-breadcrumb">
             <a href="./">Inicio</a> /
-            <a href="{{ url('games') }}">Juegos</a> /
+            <a href="{{ url('listings') }}">Listas</a> /
             <span>Editar juego</span>
         </div>
     </div>
@@ -23,15 +23,11 @@
     <div class="sub-main-w3">
         <form action="{{ route('games.update', $game->id) }}" method="post" enctype="multipart/form-data">
             {{ method_field('PUT') }} @csrf
-            <!-- {{ csrf_field() }} -->
-
             <!-- Title -->
             <div class="form-style-agile">
                 <label><i class="fa fa-edit"></i>Nombre del juego</label>
                 <input name="title" value="{{ $game->title }}" type="text" required="">
-                <div class="invalid-feedback">
-                    El nombre es obligatorio
-                </div>
+                <div class="invalid-feedback"> El nombre es obligatorio </div>
             </div>
 
              <!-- Listings -->
@@ -100,9 +96,9 @@
             <label><i class="fa fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
             <div class="input-group" style="margin-bottom:10px;">
                 <label class="input-group-btn">
-                        <span class="btn btn-warning">
-                            Seleccionar&hellip; <input type="file" name="cover_image" style="display: none;">
-                        </span>
+                    <span class="btn btn-warning">
+                        Seleccionar&hellip; <input type="file" name="cover_image" style="display: none;">
+                    </span>
                 </label>
                 <input type="text" class="form-control" value="{{$game->cover_image}}" readonly>
             </div>

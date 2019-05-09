@@ -47,12 +47,12 @@
             <div class="form-style-agile">
                 <label><i class="fa fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente? *</label>
                 <select type="text" class="custom-dropdown" name="console" aria-label="console" required>
-                        <option disabled selected value style="display:none"> -- Selecciona una consola -- </option>
-                        <option>PC</option>
-                        <option>Playstation 4</option>
-                        <option>Xbox One</option>
-                        <option>Nintendo Switch</option>
-                        <option>Otra</option>
+                    <option disabled selected value style="display:none"> -- Selecciona una consola -- </option>
+                    <option>PC</option>
+                    <option>Playstation 4</option>
+                    <option>Xbox One</option>
+                    <option>Nintendo Switch</option>
+                    <option>Otra</option>
                 </select>
             </div>
 
@@ -60,12 +60,12 @@
             <div class="form-style-agile">
                 <label><i class="fa fa-thumbs-up" aria-hidden="true"></i>¿Qué valoración le das? *</label>
                 <select type="text" class="custom-dropdown" name="rating" aria-label="rating" required>
-                        <option disabled selected value style="display:none"> -- Selecciona una valoración -- </option>
-                        <option>Excelente</option>
-                        <option>Muy bueno</option>
-                        <option>Bueno</option>
-                        <option>Regular</option>
-                        <option>Malo</option>
+                    <option disabled selected value style="display:none"> -- Selecciona una valoración -- </option>
+                    <option>Excelente</option>
+                    <option>Muy bueno</option>
+                    <option>Bueno</option>
+                    <option>Regular</option>
+                    <option>Malo</option>
                 </select>
             </div>
 
@@ -73,13 +73,13 @@
             <div class="form-style-agile">
                 <label><i class="fa fa-bomb" aria-hidden="true"></i> ¿A qué genero pertence el juego?*</label>
                 <select type="text" class="custom-dropdown" name="genre" aria-label="genre" required>
-                        <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
-                        <option>Accion</option>
-                        <option>Disparos</option>
-                        <option>Deportes</option>
-                        <option>Aventura</option>
-                        <option>Estrategia</option>
-                        <option>Otro</option>
+                    <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
+                    <option>Accion</option>
+                    <option>Disparos</option>
+                    <option>Deportes</option>
+                    <option>Aventura</option>
+                    <option>Estrategia</option>
+                    <option>Otro</option>
                 </select>
             </div>
 
@@ -87,22 +87,22 @@
             <div class="form-style-agile">
                 <label><i class="fa fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
                 <select type="text" class="custom-dropdown" name="mode" aria-label="mode" required>
-                        <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
-                        <option>Solitario</option>
-                        <option>Multijugador</option>
-                        <option>Solitario/Multijugador</option>
+                    <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
+                    <option>Solitario</option>
+                    <option>Multijugador</option>
+                    <option>Solitario/Multijugador</option>
                 </select>
             </div>
 
             <!-- Cover image -->
             <label><i class="fa fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
             <div class="input-group" style="margin-bottom:10px;">
-                        <label class="input-group-btn">
-                            <span class="btn btn-warning">
-                                Seleccionar&hellip; <input type="file" name="cover_image" style="display: none;">
-                            </span>
-                        </label>
-                        <input type="text" class="form-control" aria-label="cover" readonly>
+                <label class="input-group-btn">
+                    <span class="btn btn-warning">
+                        Seleccionar&hellip; <input type="file" name="cover_image" style="display: none;">
+                    </span>
+                </label>
+                <input type="text" class="form-control" aria-label="cover" readonly>
             </div>
 
             <label style="color:burlywood">Los campos marcados con un * son requeridos</label>

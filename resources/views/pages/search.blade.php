@@ -22,48 +22,27 @@
 <!-- Page top end-->
 
 <div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
-                    <h3 style="color:bisque; text-align:center">Resultados de la búsqueda </h3>
-
-					<div class="table">
-                        <br>
-						<div class="my-row header no-hover">
-							<div class="cell">
-								Nombre
-							</div>
-							<div class="cell">
-								Usuario
-							</div>
-							<div class="cell">
-								Listas
-							</div>
-							<div class="cell">
-								Perfil
-							</div>
-						</div>
-                        @foreach($users as $user)
-                            <div class="my-row">
-                                    <div class="cell" data-title="Nombre">
-                                        {{$user->name}}
-                                    </div>
-                                    <div class="cell" data-title="Nombre usuario">
-                                        {{$user->username}}
-                                    </div>
-                                    <div class="cell" data-title="Listas de juegos">
-                                        <a href="{{ route('user_listings', $user->id)}}" >Ver listas</a>
-
-                                    </div>
-
-                                    <div class="cell" data-title="Perfil">
-                                    <a href="{{ route('user_profile', $user->name)}}" >Ver perfil</a>
-                                    </div>
-                            </div>
-                        @endforeach
-
+	<div class="container-table100">
+		<div class="wrap-table100">
+            <h3 style="color:bisque; text-align:center">Resultados de la búsqueda </h3>
+				<div class="table"><br>
+					<div class="my-row header no-hover">
+						<div class="cell">Nombre</div>
+						<div class="cell">Usuario</div>
+						<div class="cell">Listas</div>
+						<div class="cell">Perfil</div>
 					</div>
-			</div>
+                    @foreach($users as $user)
+                        <div class="my-row">
+                            <div class="cell" data-title="Nombre">{{$user->name}}</div>
+                            <div class="cell" data-title="Nombre usuario">{{$user->username}}</div>
+                            <div class="cell" data-title="Listas de juegos"><a href="{{ route('user_listings', $user->id)}}" >Ver listas</a></div>
+                            <div class="cell" data-title="Perfil"><a href="{{ route('user_profile', $user->name)}}" >Ver perfil</a></div>
+                        </div>
+                    @endforeach
+				</div>
 		</div>
+	</div>
 </div>
 
 @endsection

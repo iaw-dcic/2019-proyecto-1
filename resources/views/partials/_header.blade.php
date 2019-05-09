@@ -20,29 +20,23 @@
                     <a href="{{ url('login') }}">Ingresar</a> /
                     <a href="{{ url('register') }}">Registrarse</a> @endguest 
                     @auth
-
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="position: relative; padding-left:50px;">
-                            <img src="{{asset('/img/avatars').'/'.auth()->user()->avatar}}" style="width:32px; height:32px; position:absolute; top:0px;left:10px; border-radius:50%" alt=".">
-                            {{ Auth::user()->username }} <span class="caret"></span>
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" style="position: relative; padding-left:50px;">
+                                <img src="{{asset('/img/avatars').'/'.auth()->user()->avatar}}" style="width:32px; height:32px; position:absolute; top:0px;left:10px; border-radius:50%" alt=".">
+                                {{ Auth::user()->username }} <span class="caret"></span>
                         </a>
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <!--<a class="dropdown-item" href="{{ url('profile') }}">
-                            <p style="color:black;"> Mi perfil </p>
-                        </a> -->
-                        <a class="dropdown-item" href="{{ route('user_profile',Auth::user()->name)}}"> <p style="color:black;"> Mi perfil </p></a>
-                        <a class="dropdown-item" href="{{ route('listings.index')}}"> <p style="color:black;"> Mis listas </p></a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                            <p style="color:black;"> Cerrar sesión </p>
-                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('user_profile',Auth::user()->name)}}"> <p style="color:black;"> Mi perfil </p></a>
+                            <a class="dropdown-item" href="{{ route('listings.index')}}"> <p style="color:black;"> Mis listas </p></a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                                <p style="color:black;"> Cerrar sesión </p>
+                            </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                    </li>
-
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>         
 
                     @endauth
                 </div>

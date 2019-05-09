@@ -53,52 +53,43 @@
             </div>
 
             <!-- Add another game, edit list, delete list -->
-            @auth
-                @if($listing->user_id == Auth::user()->id)
-                    <div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">
-                        <div class="row">
-                            <div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
-                                <!-- Add list -->
-                                <a href="{{route('games.create')}}" class="site-btn">Agregar otro juego a la
-                                    lista</a><br><br><br>
-                                <!--Edit list -->
-                                <a href="{{ route('listings.edit', $listing->id)}}" class="site-btn">Editar lista</a>
-                                <br /><br /><br />
-                                <!-- Delete list -->
-                                <form class="read-more"
-                                action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post">
+            @if($listing->user_id == Auth::user()->id)
+                <div class="col-xl-5 col-lg-4 col-md-5 sidebar game-page-sideber">
+                    <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
+                            <!-- Add list -->
+                            <a href="{{route('games.create')}}" class="site-btn">Agregar otro juego a la lista</a><br><br><br>
+                            <!--Edit list -->
+                            <a href="{{ route('listings.edit', $listing->id)}}" class="site-btn">Editar lista</a><br /><br /><br />
+                            <!-- Delete list -->
+                            <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post">
                                 {{ method_field("DELETE") }} @csrf
                                 {{ csrf_field() }}
                                 <button type="submit" id="deleteButton" class="site-btn">Eliminar lista</button>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
-                @endif
-            @endauth
-        </div>
-
-        @else
-        <!--The list doesnt have any game -->
-
-        @auth
-            <!-- Add new game -->
-            <div class="row" style="margin-bottom:80px">
-                <div class="col-xl-12 col-lg-12 col-md-12">
-                    <div class="text-white">
-                        <h3>Todavía no tenes juegos en tu lista!</h3>
-                        <br /><br />
-                    </div>
-                    <a href="{{ route('games.create') }}" class="site-btn">Agregar nuevo juego<img
-                            src="{{ asset('img/icons/double-arrow.png') }}" alt="#" /></a>
                 </div>
-            </div>
-        @endauth
-        @guest
-        <div class="text-white">
-            <h3>Esta lista todavía no tiene juegos!</h3>
+            @endif
         </div>
-        @endguest
+
+        @else  <!--The list doesnt have any game -->
+            @if($listing->user_id == Auth::user()->id)
+                <!-- Add new game -->
+                <div class="row" style="margin-bottom:80px">
+                    <div class="col-xl-12 col-lg-12 col-md-12">
+                        <div class="text-white">
+                            <h3>Todavía no tenes juegos en tu lista!</h3>
+                            <br /><br />
+                        </div>
+                        <a href="{{ route('games.create') }}" class="site-btn">Agregar nuevo juego<img
+                                src="{{ asset('img/icons/double-arrow.png') }}" alt="#" /></a>
+                    </div>
+                </div>
+            @endif
+            @guest
+                <div class="text-white"><h3>Esta lista todavía no tiene juegos!</h3></div>
+            @endguest
         @endif
     </div>
 </section>

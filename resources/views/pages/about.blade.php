@@ -53,7 +53,7 @@
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse">
                     <div class="panel-body">
-                       GG o good game es una expresión dentro del mundo gamer para reconocer una buena partida al adversario. 
+                       GG o good game es una expresión dentro del mundo gamer para reconocer una buena partida al adversario. GL&HF es otra expresión utilizada antes de una partida y significa "Good luck and have fun".
                     </div>
                 </div>
             </div>

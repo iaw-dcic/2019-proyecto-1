@@ -25,8 +25,7 @@
     <div class="sub-main-w3">
         <form action="{{ route('listings.store') }}" method="post">
             @csrf
-            <!-- {{ csrf_field() }} -->
-
+            {{ csrf_field() }}
             <!-- Title -->
             <div class="form-style-agile">
                 <label> <i class="fa fa-edit" aria-hidden="true"></i>Nombre de la lista *</label>
@@ -37,9 +36,9 @@
             <div class="form-style-agile">
                 <label><i class="fa fa-eye" aria-hidden="true"></i>¿Cómo queres que sea la lista? *</label>
                 <select type="text" class="custom-dropdown" name="visibility" required>
-                        <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
-                        <option>Publica</option>
-                        <option>Privada</option>                          
+                    <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
+                    <option>Publica</option>
+                    <option>Privada</option>                          
                 </select>
             </div>
            

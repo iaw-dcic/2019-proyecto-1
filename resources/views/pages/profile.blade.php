@@ -143,22 +143,20 @@
                                 <div class="top-meta" style="color:wheat">Listas:
                                     @if (count($userListings)>0)
                                         @foreach($userListings as $listing)
-
                                             @guest
                                                 @if ($listing->visibility == 'Publica')
                                                     <a href="{{route('listings.show',$listing->id)}}"><span style="color:deepskyblue">{{$listing->title}} / </span></a>
                                                 @endif
                                             @endguest
 
-                                            @auth
+                                            @if($user->id == Auth::user()->id)
                                                 <a href="{{route('listings.show',$listing->id)}}"> <span style="color:deepskyblue">{{$listing->title}} / </span></a>
-                                            @endauth
-
+                                            @endif
                                         @endforeach
                                     @else
-                                        @auth
+                                        @if($user->id == Auth::user()->id)
                                             <span style="color: azure">Todavía no tenes ninguna lista</span>
-                                        @endauth
+                                        @endif
                                         @guest
                                             El usuario todavía no creó ninguna lista
                                         @endguest
@@ -172,25 +170,19 @@
                                 <img src="{{asset('/img/avatars/').'/'.$user->avatar}}"
                                     style="width:150px; height:150px; border-radius:50%; margin-right:25px; margin-bottom:8px"
                                     alt="Avatar">
-
-                                @auth
-                                    @if($user->id == Auth::user()->id)
-                                        <form enctype="multipart/form-data" method="post"
-                                            action="{{route('update_profile')}}">
-                                            @csrf
-                                            <div class="input-group" style="width:50%">
-                                                <label class="input-group-btn">
-                                                    <span class="btn btn-info">
-                                                        Cambiar&hellip; <input type="file" name="avatar" style="display: none;">
-                                                    </span>
-                                                </label>
-                                                <input type="text" class="form-control" readonly>
-                                                <br><br>
-                                            </div>
-                                            <input class="btn btn-primary" type="submit" value="OK">
-                                        </form>
-                                    @endif
-                                @endauth
+             
+                                @if($user->id == Auth::user()->id)
+                                    <form enctype="multipart/form-data" method="post" action="{{route('update_profile')}}">
+                                        @csrf
+                                        <div class="input-group" style="width:50%">
+                                            <label class="input-group-btn">
+                                                <span class="btn btn-info"> Cambiar&hellip; <input type="file" name="avatar" style="display: none;"></span>
+                                            </label>
+                                            <input type="text" class="form-control" readonly><br><br>
+                                        </div>
+                                        <input class="btn btn-primary" type="submit" value="OK">
+                                    </form>
+                                @endif
                             </div>
                         </div>
 
@@ -211,10 +203,10 @@
                             <ul>
                                 <li><a href="/">Inicio</a></li>
                                 <li><a href="{{ route('listings.index')}}">Listas de juegos</a></li>
-                                @auth
-                                <li><a href="{{ route('games.create')}}">Agregar juego</a></li>
-                                <li><a href="{{url('searchlisting')}}">Buscar listas</a></li>
-                                @endauth
+                                @if($user->id == Auth::user()->id)
+                                    <li><a href="{{ route('games.create')}}">Agregar juego</a></li>
+                                    <li><a href="{{url('searchlisting')}}">Buscar listas</a></li>
+                                @endif
                                 <li><a href="{{url('about')}}">Preguntas frecuentes</a></li>
                             </ul>
                         </div>
