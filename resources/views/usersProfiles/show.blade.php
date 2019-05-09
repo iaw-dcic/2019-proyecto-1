@@ -45,14 +45,6 @@
                     </div>
                     <!--/row-->
                 </div>
-               
-        <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
-        </div>
     </div>
 </div>
 @endsection

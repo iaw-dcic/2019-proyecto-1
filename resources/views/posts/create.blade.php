@@ -2,7 +2,7 @@
 
 @section('content')
 <h1> Create New Collection </h1>
-{{ Form::open(['action' => 'PostsController@createCollection', 'method'=> 'POST']) }}
+{{ Form::open(['action' => 'PostsController@store', 'method'=> 'POST']) }}
 
 <table class="table table-striped table-dark">
   <thead>
@@ -16,7 +16,7 @@
         {{Form::text('title', '', ['class' => 'form-control', 'placeholder' =>'Title' ])}}
         </td> 
         <td>
-              {{Form::submit('Submit', ['class'=>'btn btn-danger'])}}
+        {{Form::submit('Submit', ['class'=>'btn btn-danger'])}}
         {!!Form::close()!!}  
         </div>
         </td>      

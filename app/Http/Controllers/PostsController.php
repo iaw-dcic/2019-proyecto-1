@@ -36,22 +36,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {      
-        $this->validate($request, [
-            'name' => 'required',
-            'link' => 'required',
-            'post_id' => 'required',
-            'price' => 'required'
-        ]);
-
-        $this->createItem($request->input('post_id'),$request);   
-        $userPost = Post::find($post_id);
-
-        return redirect('/posts/createitem')->with('items',$userPost->items);
-    }
-
-    public function createCollection(Request $request){
+    public function store(Request $request){      
         $this->validate($request, [
             'title' => 'required'
         ]);
@@ -63,29 +48,23 @@ class PostsController extends Controller
             if(($post->title) == $request->input('title')){
                 $post_id= $post->id;
                 $postExist = 1;
-                return view('post.store')->with('post_id',$post_id)->with('items',$post->items);
+                return view('items.create')->with('post_id',$post_id)->with('items',$post->items);
             }
         }
         if($postExist < 1){
             $post = new Post;
             $post->title = $request->input('title');
             $post->user_id = auth()->user()->id;
+            $post->public = false;
             $post->save();            
             $post_id = $post->id;
-            return view('post.store')->with('post_id',$post_id)->with('items',$post->items);            
+            return view('items.create')->with('post_id',$post_id)->with('items',$post->items);            
         }
-        
     }
 
-    private function createItem($post_id, Request $request){
-        $post = Post::find($post_id);
-        $item = new Item;
-        $item->name = $request->input('name');
-        $item->link = $request->input('link');
-        $item->price = $request->input('price');
-        $item->post_id = $post->id;
-        $item->save();
-    }
+
+
+   
 
 
     /**

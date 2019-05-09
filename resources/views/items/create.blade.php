@@ -21,8 +21,8 @@
   </tbody>
 </table>
 
-{{ Form::open(['action' => 'PostsController@createItem', 'method'=> 'POST']) }}
 
+{{ Form::open(array('action' => array('ItemsController@store', $post_id))) }}
 <table class="table table-striped table-dark">
     <thead>
     <tr>
@@ -43,6 +43,9 @@
         {{Form::text('price', '', ['class' => 'form-control', 'placeholder' =>'Price' ])}}
         </td>
     </tr>
+    <div style="display: none;">
+    {{ Form::input('text','post_id', $post_id) }}
+    </div>
     
   </tbody>
 </table>
@@ -50,5 +53,6 @@
         <div>
         {{Form::submit('Add New Item', ['class'=>'btn btn-primary'])}}
         {{ Form::close() }} 
+        <a href= "/home" class = "btn btn-default">Save Collection</a>
         </div>
 @endsection

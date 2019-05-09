@@ -29,5 +29,4 @@ Auth::routes();
 
 Route::resource('home', 'HomeController');
 
-Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->name('social.auth');
-Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
+Route::resource('posts/items', 'ItemsController');
