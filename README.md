@@ -22,4 +22,9 @@ TODO
 
 ## Herramienta Audit de Chrome
 
-TODO
+Para el Home tengo una accesibilidad de 87 y performance 78 tanto para los usuarios registrados como no registrados
+Para el login tengo una accesibilidad de 73 y performance 98
+En la pagina de mis listas para usuarios autenticados tengo una accesibilidad de 87 y performance de 82
+
+## LINK A LA PÁGINA EN HEROKU
+https://futboleroos.herokuapp.com/
