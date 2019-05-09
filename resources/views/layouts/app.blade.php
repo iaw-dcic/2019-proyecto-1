@@ -19,7 +19,7 @@
 
 
 
-    @if((Route::current()->getName()=='home')||(Route::current()->getName()=='users.showListas'))
+    @if((Route::current()->getName()=='home')||(Route::current()->getName()=='users.showListas') ||(Route::current()->getName()=='users.show'))
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -60,10 +60,11 @@
                             <a class="navbar-brand" href="{{ route('home') }}"><img src="../../../../resources/img/futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
-                            @elseif(route::current()->getName()=='users.edit')
+                            @elseif((route::current()->getName()=='users.edit') || (route::current()->getName()=='users.show'))
                             <a class="navbar-brand" href="{{ route('home') }}"><img src="../../../resources/img/futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
+
                             @else
                             <a class="navbar-brand" href="{{ route('home') }}"><img src="../../resources/img/futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>

@@ -23,6 +23,8 @@ Route::post('usuarios/crearItem','ListController@storeItem');
 /**GET/usuarios/{id} pagina detalles.
  * PUT/usuarios/{id} accion para actualizar.
  */
+Route::get('usuarios/show/{user}','UserController@show')->name('users.show');
+
 Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
 Route::put('usuarios/{user}', 'UserController@update');
 

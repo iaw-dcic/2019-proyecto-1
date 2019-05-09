@@ -11,7 +11,7 @@ use App\Lista;
 class UserController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
     }
 
     public function edit(User $user){
@@ -39,6 +39,17 @@ class UserController extends Controller
         $user->update($data);
 
         return redirect('home');
+    }
+
+    public function show($id){
+        $user = User::where('id',$id)->first();
+        $listas= Lista::where('user_id',$id)->get();
+        $items= Item::all();
+        return view('users.show',[
+            'user' => $user,
+            'lists' => $listas,
+            'items' => $items,
+        ]);
     }
 
 }

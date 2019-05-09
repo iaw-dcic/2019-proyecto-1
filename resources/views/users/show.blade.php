@@ -1,20 +1,21 @@
 @extends('layouts.app')
-{{--  jquery  --}}
 
 
 @section('content')
+    <div class="page-header card bg-info text-center">
+        <h2 class="font-italic">{{ $user->name }}</h2>
+    </div>
 
 
-
-@if($lists->isNotEmpty())
-<div id="accordion">
+    @if($lists->isNotEmpty())
+        <div id="accordion">
         @foreach ($lists as $list)
 
-        @if($list->isPublic==1)
+                @if($list->isPublic==1)
+                     <h3 >{{ $user->name }} publico: {{$list->name}} el {{ $list->created_at}}  </h3>
 
-                <h3>{{  App\User::where('id',$list->user_id)->first()->name}} publicó {{$list->name}}</a></h3>
                 <div>
-                    <table class="table table-sm table-dark table-hover bordered">
+                <table class="table table-sm table-dark table-hover bordered">
                         <thead>
                         <tr>
                         <th scope="col">#</th>
@@ -26,7 +27,7 @@
                         </thead>
                         @foreach($items as $item)
                             @if($item->list_id == $list->id)
-                                <tbody>
+                                 <tbody>
                                         <tr>
                                                 <th scope="row"></th>
                                                 <td>{{ $item->nombre_club }}</td>
@@ -34,18 +35,24 @@
                                                 <td>{{ $item->capacidad_estadio }}</td>
                                                 <td>{{ $item->pais }}</td>
                                         </tr>
-                                </tbody>
+                                 </tbody>
                             @endif
                         @endforeach
-                    </table>
-                    <a class="btn btn-info" href="{{ route('users.show',$list->user_id) }}"> Acceder al Perfil</a>
+                </table>
 
-                 </div>
-        @endif
+             </div>
+             @endif
         @endforeach
-</div>
-@else
-<p>No se han creado listas todavía</p>
-@endif
+        </div>
 
-@endsection
+
+     @else
+        <p>El usuario no ha publicado listas hasta el momento.</p>
+    @endif
+
+
+
+
+
+ @endsection
+
