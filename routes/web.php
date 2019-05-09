@@ -38,7 +38,7 @@ Route::get('/list/{id_task}/edit','EditListController@getEditList')->name('getEd
 
 Route::get('/profile/{id}/edit','ProfileController@editProfile')->name('editProfile');
 Route::get('/profile/{user}','ProfileController@showPublicProfile')->name('showPublicProfile');
-Route::get('/profile','profileController@searchByEmail')->name('searchByEmail');
+Route::get('/profile','ProfileController@searchByEmail')->name('searchByEmail');
 
 
 Route::post('/profile/{user}/edit','editController@edit')->name('edit');
