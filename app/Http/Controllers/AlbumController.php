@@ -105,9 +105,10 @@ class AlbumController extends Controller
     {
         //
         $user  = Auth::user();
-        if(!$user)
-        return redirect()->route('home');
         $album = Album::find($id);
+        if(!$user || $album->user_id != $user->id)
+        return redirect()->route('home');
+        else
         return View('album.edit',['album'=>$album]);
         
     }
@@ -134,13 +135,14 @@ class AlbumController extends Controller
             return Redirect::back()->withInput(Input::all())->withErrors($validator);;
             $user  = Auth::user();
 
-            if(!$user)
-            return redirect()->route('home');
+            
 
         
 
         
       $album =Album::find(Input::get('id'));
+      if(!$user || $user->id != $album->user_id)
+            return redirect()->route('home');
       $album->name = Input::get('name');
       $album->bandName = Input::get('band');
       $album->public = Input::get('visibility');
