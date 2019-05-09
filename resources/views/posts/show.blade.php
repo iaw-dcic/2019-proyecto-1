@@ -2,14 +2,8 @@
 
 @section('content')
     <a href= "/posts" class = "btn btn-default"> Go Back </a>
-    <h1> {{$post->title}} </h1>
-    <div class='jumbotron'>
-        {!!$post->body!!}
-    </div>
-  
-    @if(!Auth::guest())
-        @if (Auth::user()->id == $post->user_id)
-        
+    <h1> {{$post->title}} </h1> 
+    
     <div>
         @foreach($items as $item)
         <div class="card" style="width: 18rem;">
@@ -26,14 +20,16 @@
     <hr>
     </div>
         <a href ="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
-            <div class = 'float-right'>
-            {{ Form::open(['action' => ['PostsController@destroy', $post->id] , 'method'=> 'POST', 'class' =>'pull-right']) }}
-                {{Form::hidden('_method', 'DELETE')}}
-                {{Form::submit('Delete', ['class'=>'btn btn-danger'])}}
-            {!!Form::close()!!}
-            </div>
-        @endif
-    @endif 
+        @if(!Auth::guest())
+            @if (Auth::user()->id == $post->user_id)
+                <div class = 'float-right'>        
+                {{ Form::open(['action' => ['PostsController@destroy', $post->id] , 'method'=> 'POST', 'class' =>'pull-right']) }}
+                    {{Form::hidden('_method', 'DELETE')}}
+                    {{Form::submit('Delete', ['class'=>'btn btn-danger'])}}
+                {!!Form::close()!!}
+                </div>
+            @endif
+         @endif 
 
     
 @endsection 
