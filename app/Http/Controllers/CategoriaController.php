@@ -72,7 +72,7 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($nom)
+    public function edit($nom,$id)
     {
         $idAuto= DB::select('select id from autos where auto=:nom and id=:id', ['nom' => $nom,'id'=>$id]);
         

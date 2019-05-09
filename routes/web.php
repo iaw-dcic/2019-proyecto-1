@@ -24,16 +24,16 @@ Route::get('/Coleccion/{id}', 'ColeccionController@index')->name('Coleccion');
 Route::resource('Categorias','CategoriaController');
 
 //Route::get('/home/{nom}/{cate}','CategoriaController@destroy')->name('home')->middleware('auth');
-Route::delete('/home/{nom}/{cate}','CategoriaController@destroy')->middleware('auth');
-Route::put('/home/{nom}','CategoriaController@edit')->middleware('auth');
+Route::delete('/home/{nom}/{cate}/{id}','CategoriaController@destroy')->middleware('auth');
+Route::put('/home/{nom}/{id}','CategoriaController@edit')->middleware('auth');
 Route::get('/Persona','PersonalController@index');
 
 //Route::get('/login{provider}','SocialAuthController@redirectToProvider');
 //Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 //Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
+//Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+//Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 //PARA AGREGAR UNA CATEGORIA:
 Route::post('/Coleccion', 'ColeccionController@store')->name('Coleccion');
 //Route::post('/Coleccion/{nom}', 'ColeccionController@destroy')->name('Coleccion');

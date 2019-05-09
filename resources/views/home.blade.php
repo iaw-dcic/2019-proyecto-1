@@ -18,7 +18,7 @@
     <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingresar CV">
   </div>
   <div class="form-group mx-sm-3 mb-2">
-    <input type="number" min="1" max="999" name="cv" class="form-control">
+    <input  type="number" min="1" max="999" name="cv" class="form-control">
   </div>
   <div class="form-group">
     <label>Categorias <pre>  </pre></label>
@@ -59,36 +59,37 @@
        <tr> 
       <th scope="col">Vehiculo</th>
       <th scope="col">Potencia</th>
-      <th scope="col">Accion</th> 
+      <th scope="col">Acciones</th> 
+      
       </tr>
      </thead>
    <tbody>
      
     <tr>
-  <td>{{$auto->auto}}</td>
+
+      <td>{{$auto->auto}}</td>
       <td>{{$auto->cv}} </td>
       <td>
-       <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto.'/'.$cater->categoria)}}" >
+       <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto.'/'.$cater->categoria.'/'.Auth::user()->id)}}" >
         @csrf
          <input name="_method" type="hidden" value="DELETE">
         <button type="submit" class="btn btn-outline-dark btn-sm">Eliminar</button>
          @csrf
-      </form></td>
+      </form>
             @if($auto->publico=='false')
-            <td> <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
+            <td>  <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
              @csrf
              <input name="_method" type="hidden" value="PUT">
             <button type="submit" class="btn btn-outline-dark btn-sm">Publicar</button>
              @csrf
              </form></td>
             @else
-           <td> <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
+           <td>  <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto.'/'.Auth::user()->id)}}" >
             @csrf
             <input name="_method" type="hidden" value="PUT">
            <button type="submit" class="btn btn-outline-dark btn-sm">Privado</button>
             @csrf
            </form></td>
-          
             @endif
     </tr>
   </tbody>
