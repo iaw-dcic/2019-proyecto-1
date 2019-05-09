@@ -25,7 +25,7 @@
 
             <!-- Name -->
             <div class="form-style-agile">
-                <label> <i class="fas fa-edit" aria-hidden="true"></i> Nombre *</label>
+                <label> <i class="fa fa-edit" aria-hidden="true"></i> Nombre *</label>
                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"
                     required autofocus> 
                     @if ($errors->has('name'))
@@ -37,7 +37,7 @@
 
             <!-- Username -->
             <div class="form-style-agile">
-                <label> <i class="fas fa-user" aria-hidden="true"></i> Nombre de usuario *</label>
+                <label> <i class="fa fa-user" aria-hidden="true"></i> Nombre de usuario *</label>
                 <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username"
                     value="{{ old('username') }}" required> 
                     @if ($errors->has('username'))

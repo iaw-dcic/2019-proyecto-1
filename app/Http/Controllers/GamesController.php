@@ -27,7 +27,9 @@ class GamesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { }
+    { 
+        return redirect('404'); 
+    }
 
     /**
      * Show the form for creating a new resource.
