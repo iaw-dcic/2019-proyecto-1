@@ -6,7 +6,7 @@
 @section('content')
 
  <link href="{{ asset('css/estilo.css') }}" rel="stylesheet">
-<form class="form-inline"  method="POST" action="Categorias" >
+ <form class="form-inline"  method="POST" action="{{ url('/Categorias'.'/'.Auth::user()->id)}}" >
   @csrf
   <pre>  </pre><div class="form-group mb-2">
     <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingresar vehiculo">
@@ -77,7 +77,7 @@
          @csrf
       </form>
             @if($auto->publico=='false')
-            <td>  <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
+            <td>  <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto.'/'.Auth::user()->id)}}" >
              @csrf
              <input name="_method" type="hidden" value="PUT">
             <button type="submit" class="btn btn-outline-dark btn-sm">Publicar</button>

@@ -35,10 +35,11 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
 
-
+        if(Auth::id()==$id)
+       {
         $Auto=new auto();//nuestro modelo
         $Auto->id=Auth::id();
         if(!empty($request->input('name')) and !empty($request->input('cv')))
@@ -49,6 +50,9 @@ class CategoriaController extends Controller
              $Auto->publico=false;
              $Auto->save();
          }
+     }
+     else
+        abort(403,"403 usuario no autorizado"); 
        return redirect('/home');
        
        
@@ -85,7 +89,7 @@ class CategoriaController extends Controller
             else
                  $caters = DB::select('update autos Set publico = :dat where id = :id and auto = :nom', ['dat' => false,'nom'=>$nom,'id'=>  Auth::id()]);
          }
-         else
+        else
             abort(403,"403 usuario no autorizado"); 
        
          return redirect('home');

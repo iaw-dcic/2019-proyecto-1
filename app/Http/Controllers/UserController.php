@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Laracast\Flash\Flash;
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /** $users= User::orderBy('id','ASC')-> paginate(5);
@@ -76,37 +77,38 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+     public function update(Request $request, $id)
     {
-       $user=User::find($id);
-       $nomB=true;
-       $emailB=true;
-       $nombreUsados = DB::select('select name from users where id != :id ', ['id'=> $id]);
-       $mailUsados = DB::select('select email from users where id != :id ', ['id'=> $id]);
-       $nombreNuevo=$request->name;
-       $emailNuevo=$request->email;
-      foreach ($nombreUsados as $nombre)
-      {
-      
-        if(strcmp($nombre->name, $nombreNuevo) === 0)
-             $nomB=false;
-       
-      }
-      foreach ($mailUsados as $email)
-      {
-        if(strcmp($email->email, $emailNuevo) === 0)
-                $emailB=false;
-
-      }
-     
-      if($nomB==true && $emailB==true)
+        $user=User::find($id);
+        if($user->id ==Auth::id())
         {
-            $user->name=$request->name;
-            $user->email=$request->email;
-            $user->save();
-        }
+           $nomB=true;
+           $emailB=true;
+           $nombreUsados = DB::select('select name from users where id != :id ', ['id'=> $id]);
+           $mailUsados = DB::select('select email from users where id != :id ', ['id'=> $id]);
+           $nombreNuevo=$request->name;
+           $emailNuevo=$request->email;
+           foreach ($nombreUsados as $nombre)
+           {
+            if(strcmp($nombre->name, $nombreNuevo) === 0)
+                 $nomB=false;
+           }
+           foreach ($mailUsados as $email)
+           {
+              if(strcmp($email->email, $emailNuevo) === 0)
+                   $emailB=false;
+           }
+     
+            if($nomB==true && $emailB==true)
+            {
+             $user->name=$request->name;
+             $user->email=$request->email;
+             $user->save();
+            }
+          }
+          else
+        abort(403,"403 usuario no autorizado");
         
-          
         return redirect('/home');
     }
 

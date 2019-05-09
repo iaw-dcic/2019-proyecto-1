@@ -21,8 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/ListasPublicas', 'UserController@index')->name('ListasPublicas');
 Route::get('/Coleccion/{id}', 'ColeccionController@index')->name('Coleccion');
-Route::resource('Categorias','CategoriaController');
-
+//Route::resource('Categorias','CategoriaController');
+Route::post('/Categorias/{id}', 'CategoriaController@store')->name('Categorias');
 //Route::get('/home/{nom}/{cate}','CategoriaController@destroy')->name('home')->middleware('auth');
 Route::delete('/home/{nom}/{cate}/{id}','CategoriaController@destroy')->middleware('auth');
 Route::put('/home/{nom}/{id}','CategoriaController@edit')->middleware('auth');
