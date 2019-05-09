@@ -32,7 +32,7 @@ class Colection extends Model
     }
 
     public function existe($id){
-        $c = findColection($id);
+        $c = $this->findColection($id);
         if(sizeof($c)>0){
             return true;
         }else{
