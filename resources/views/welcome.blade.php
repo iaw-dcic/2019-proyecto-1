@@ -35,7 +35,7 @@
             <tr>
             <td>{{$user->name}}</td>
             <td> <img src="/uploads/avatars/{{$user->avatar}}" class="rounded-circle" width="50" height="50" id="content-img"></td>
-            <td><a href="{{ route('showUser',['id' => $user->id]) }}" class="btn btn-primary">Ver perfil</a></td>
+            <td><a href="{{ route('showUser',['id' => $user->id]) }}" class="btn btn-outline-success">Ver perfil</a></td>
             </tr>
             @endforeach
 
