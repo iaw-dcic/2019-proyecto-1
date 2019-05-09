@@ -15,7 +15,7 @@
     <input type="text" name="titulo" class="form-control">
   </div>
   <div class="form-group mx-sm-3 mb-2">
-    <label>Ingresar año</label><pre> </pre>
+    <label>Ingresar año</label><pre>   </pre>
     <input type="text" name="anio" class="form-control">
   </div>
   <div class="form-group">
