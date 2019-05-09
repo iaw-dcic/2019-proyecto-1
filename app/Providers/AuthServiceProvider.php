@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use app\Lista;
-use app\Policies\PostPolicy;
+use app\Policies\ListPolicy;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
-        Lista::class => PostPolicy::class,
+        Lista::class => ListPolicy::class,
 
     ];
 

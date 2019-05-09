@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Policies;
-
+//Toda politica tiene que ver con un usuario, por eso se agrega esta entidad
 use App\User;
 use App\Lista;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PostPolicy
+class ListPolicy
 {
     use HandlesAuthorization;
 
@@ -19,7 +19,8 @@ class PostPolicy
     {
         //
     }
-    public function pass(User $user, Lista $post){
-        return $user->id == $post->user_id;
+
+    public function pass(User $user, Lista $list){
+        return $user->id == $list->user_id;
     }
 }
