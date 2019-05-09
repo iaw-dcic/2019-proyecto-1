@@ -43,34 +43,27 @@
 							</div>
 						</div>
                         @foreach($users as $user)
-                        <div class="my-row">
-                                <div class="cell" data-title="Nombre">
-                                    {{$user->name}}
-                                </div>
-                                <div class="cell" data-title="Nombre usuario">
-                                    {{$user->username}}
-                                </div>
-                                <div class="cell" data-title="Listas de juegos">
-                                    <a href="{{ route('user_listings', $user->id)}}" >Ver listas</a>
+                            <div class="my-row">
+                                    <div class="cell" data-title="Nombre">
+                                        {{$user->name}}
+                                    </div>
+                                    <div class="cell" data-title="Nombre usuario">
+                                        {{$user->username}}
+                                    </div>
+                                    <div class="cell" data-title="Listas de juegos">
+                                        <a href="{{ route('user_listings', $user->id)}}" >Ver listas</a>
 
-                                </div>
+                                    </div>
 
-                                <div class="cell" data-title="Perfil">
-                                <a href="{{ route('user_profile', $user->name)}}" >Ver perfil</a>
-                                </div>
-                        </div>
-
+                                    <div class="cell" data-title="Perfil">
+                                    <a href="{{ route('user_profile', $user->name)}}" >Ver perfil</a>
+                                    </div>
+                            </div>
                         @endforeach
-					
-						
 
 					</div>
 			</div>
 		</div>
 </div>
-
-
-
-
 
 @endsection

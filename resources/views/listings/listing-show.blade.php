@@ -82,18 +82,17 @@
         <!--The list doesnt have any game -->
 
         @auth
-        <!-- Add new game -->
-        <div class="row" style="margin-bottom:80px">
-            <div class="col-xl-12 col-lg-12 col-md-12">
-                <div class="text-white">
-                    <h3>Todavía no tenes juegos en tu lista!</h3>
-                    <br /><br />
+            <!-- Add new game -->
+            <div class="row" style="margin-bottom:80px">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <div class="text-white">
+                        <h3>Todavía no tenes juegos en tu lista!</h3>
+                        <br /><br />
+                    </div>
+                    <a href="{{ route('games.create') }}" class="site-btn">Agregar nuevo juego<img
+                            src="{{ asset('img/icons/double-arrow.png') }}" alt="#" /></a>
                 </div>
-                <a href="{{ route('games.create') }}" class="site-btn">Agregar nuevo juego<img
-                        src="{{ asset('img/icons/double-arrow.png') }}" alt="#" /></a>
             </div>
-        </div>
-
         @endauth
         @guest
         <div class="text-white">

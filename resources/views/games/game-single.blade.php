@@ -63,18 +63,11 @@
 						<div class="col-xl-2 col-lg-2 col-md-2 sidebar game-page-sideber">
 							<a href="{{route('games.edit', ['game' => $data['game']->id])}}" class="site-btn" style="margin-botom:30px;margin-top:30px;">Editar juego</a>
 
-							<!--<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
-								{{ method_field('DELETE') }} @csrf -->
-								<!-- {{ csrf_field() }} -->
-							<!--	<button type="submit" class="site-btn" style="margin-top:30px;">Eliminar juego</button>
-							</form> -->
-
 							<form class="read-more" action="{{ route('games.destroy', $data['game']->id) }}" method="post">
 									{{ method_field('DELETE') }} @csrf
 									{{ csrf_field() }}
 									<button type="submit" id="deleteGameButton" class="site-btn" style="margin-top:30px;">Eliminar juego</button>
 							</form>
-
 
 						</div>
 					@endif
@@ -85,16 +78,4 @@
 	</div>
 </section>
 
-
-
-
-<!--<section class="game-author-section">
-		<div class="container">
-			<div class="game-author-pic set-bg" data-setbg="{{asset('/img/author.jpg')}}"></div>
-			<div class="game-author-info">
-				<h4>Written by: Michael Williams</h4>
-				<p>Vivamus volutpat nibh ac sollicitudin imperdiet. Donec scelerisque lorem sodales odio ultricies, nec rhoncus ex lobortis. Vivamus tincid-unt sit amet sem id varius. Donec elementum aliquet tortor. Curabitur justo mi, efficitur sed eros alique.</p>
-			</div>
-		</div>
-	</section>-->
 @endsection

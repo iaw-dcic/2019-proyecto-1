@@ -9,7 +9,7 @@
 
         <div class="header-bar-warp d-flex">
             <!-- site logo -->
-            <a href="home.html" class="site-logo">
+            <a href="/" class="site-logo">
                 <img src="{{asset('/img/logo.png')}}" alt="GoodGame!">
             </a>
 

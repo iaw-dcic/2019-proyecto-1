@@ -22,11 +22,8 @@
 
 
 <div class="limiter">
-
     <div class="container-table100">
-
         <div class="wrap-table100">
-
             @if (count($data['listings']) >0) 
 
                 <!--Show lists -->
@@ -112,7 +109,7 @@
                         <h2 style="color:white; margin-bottom:20px;" > Todavía no tenes ninguna lista!</h2>
                         <a href="{{route('listings.create') }}" class="site-btn">Crear lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
                     @else
-                    <h2 style="color:white; margin-bottom:20px;" > {{$data['listOwnerName']}} todavía no tiene ninguna lista pública!</h2>
+                        <h2 style="color:white; margin-bottom:20px;" > {{$data['listOwnerName']}} todavía no tiene ninguna lista pública!</h2>
                     @endif
 
             @endif      

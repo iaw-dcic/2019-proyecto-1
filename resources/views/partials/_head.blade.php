@@ -5,7 +5,6 @@
   <meta name="keywords" content="laravel,gg-gaming,website, html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 
-
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -13,35 +12,23 @@
   <link href="img/favicon.ico" rel="shortcut icon" />
 
   <!-- Google Font -->
-  <link defer href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i"
-    rel="stylesheet">
-
+  <link defer href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 
   <!-- Stylesheets -->
 
   <!--Bootstrap -->
-  <link defer rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link defer rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
-
-
- <!-- <link defer rel="stylesheet" href="{{ URL::asset('/css/font-awesome.min.css') }}">-->
+  <!-- Carousel -->
   <link defer rel="stylesheet" href="{{ URL::asset('/css/owl.carousel.min.css') }}">
- <!-- <link defer rel="stylesheet" href="{{ URL::asset('/css/animate.css') }}">-->
 
   <!-- Form -->
   <link defer rel="stylesheet" href="{{ URL::asset('/css/style-form-game.css') }}">
 
-  <!-- Style-CSS -->
-  <!--<link defer rel="stylesheet" href="{{ URL::asset('/css/fontawesome-all.css') }}">-->
-
   <!-- web-fonts -->
   <link defer href="//fonts.googleapis.com/css?family=Marck+Script&amp;subset=cyrillic,latin-ext" rel="stylesheet">
-  <link defer
-    href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic,latin-ext"
-    rel="stylesheet">
-
-  <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+  <link defer href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=cyrillic,latin-ext" rel="stylesheet">
 
 
   <!-- Main Stylesheet -->
@@ -52,9 +39,6 @@
   Version: 1.0
  ------------------------------------
  ====================================*/
-
-
-
     /*----------------------------------------*/
     /* Template default CSS
 /*----------------------------------------*/
