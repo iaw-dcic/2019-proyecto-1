@@ -107,10 +107,9 @@ class HomeController extends Controller{
                   break;
           }
         }
-
-        $tasks = Task::where('owner_id', auth()->id())->get(['id','name','desc','privacy','genre','owner_id']);
-        $genres = Genre::all(); 
-        return view('home', compact('tasks','genres'));
+        
+        return redirect('/home');
+       
 
     }
 }
