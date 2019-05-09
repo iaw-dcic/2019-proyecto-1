@@ -40,8 +40,10 @@ class ProfileController extends Controller{
 
         $tasks = Task::where('owner_id',$user->id)->where('privacy','Public')->get();
 
-        if($user->id == Auth::user()->id){
-            $tasks = Task::where('owner_id',$user->id)->get();
+        if(Auth::check()){
+            if($user->id == Auth::user()->id){
+                $tasks = Task::where('owner_id',$user->id)->get();
+            }
         }
 
         return view('/profile',compact('user','tasks'));
