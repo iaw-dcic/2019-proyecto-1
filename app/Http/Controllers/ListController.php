@@ -134,7 +134,7 @@ class ListController extends Controller
     }
 
     public function editLista($id){
-        if(auth()->user()!=null){
+        if(auth()->user()->id!=$id){
            $list = Lista::where('id',$id)->first();
            return view('users.editLista',[
                'list' => $list,
