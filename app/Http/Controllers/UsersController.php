@@ -7,6 +7,8 @@ use App\User;
 use App\Photo;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use JD\Cloudder\Facades\Cloudder;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller{
 
@@ -69,42 +71,62 @@ class UsersController extends Controller{
     }
 
     private function editarFotoPerfil(Request $request, $user){
-        $now = new \Datetime();
-        $file = $request->file('photo');
-        $extension = $file->getClientOriginalExtension();
-        $file_name = $user->id.'-'.$now->format('Y-m-d-H-m-s').'.'.$extension;
-        Cloudder::upload($file->getRealPath());
-        $result = Cloudder::getResult();
-        $photo_id = $result['public_id'];
-        $photo_url = $result['secure_url'];
-        $user->photo_id = $photo_id;
-        $user->photo_url = $photo_url;
-        $user->save();
-        return $user->photo;
+        DB::beginTransaction();
+        try{
+            $file = $request->file('photo');
+            Cloudder::upload($file->getRealPath());
+            $result = Cloudder::getResult();
+            $photo_id = $result['public_id'];
+            $photo_url = $result['secure_url'];
+            $user->photo_id = $photo_id;
+            $user->photo_url = $photo_url;
+            $user->save();
+            DB::commit();
+            return $user->photo;
+        }catch(\Exception $ex){
+            abort(500, 'Internal server error');
+            DB::rollback();
+        }
+        return null;
     }
 
     private function editarInformacionPerfil(Request $request, $user){
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->biography = $request->biography;
-        $user->save();
-        return $user;
+        DB::beginTransaction();
+        try{
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->biography = $request->biography;
+            $user->save();
+            DB::commit();
+            return $user;
+        }catch(\Exception $ex){
+            abort(500, 'Internal server error');
+            DB::rollback();
+        }
+        return null;
     }
 
     public function destroy($id){
         $this->middleware('auth');
-        if(Auth::user()->id == $id){
-            $user = User::find($id);
-            if($user != null){
-                Auth::logout();
-                $posts = Post::where('user_id', $id)->get();
-                foreach($posts as $post)
-                    Photo::where('post_id', $post->id)->delete();
-                Post::where('user_id', $id)->delete();
-                User::find($id)->delete();
-                return redirect('home');
+        DB::beginTransaction();
+        try{
+            if(Auth::user()->id == $id){
+                $user = User::find($id);
+                if($user != null){
+                    Auth::logout();
+                    $posts = Post::where('user_id', $id)->get();
+                    foreach($posts as $post)
+                        Photo::where('post_id', $post->id)->delete();
+                    Post::where('user_id', $id)->delete();
+                    User::find($id)->delete();
+                    DB::commit();
+                    return redirect('home');
+                }
             }
+        }catch(\Exception $ex){
+            abort(500, 'Internal server error');
+            DB::rollback();
         }
         return abort(403, 'Unauthorized action.');
     }
