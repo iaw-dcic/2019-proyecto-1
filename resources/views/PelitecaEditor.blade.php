@@ -18,9 +18,13 @@
     <label>Ingresar año</label><pre> </pre>
     <input type="text" name="anio" class="form-control">
   </div>
-  <div class="form-group mx-sm-3 mb-2">
-    <label>Ingresar puntaje</label><pre> </pre>
-    <input type="text" name="puntaje" class="form-control">
+  <div class="form-group">
+    <label>Puntaje</label><pre> </pre>
+    <select class="form-control" name="puntaje">
+      @foreach ($puntajes as $p)
+      <option value="{{$p}}">{{$p}}</option>
+         @endforeach
+    </select><pre>        </pre>
   </div>
   <div class="form-group">
     <label>Generos</label><pre> </pre>
@@ -32,12 +36,6 @@
   </div>
   <button type="submit" class="btn btn-primary">Confirmar</button>
 </form>
-
-        
-
-
- 
-    
 
  @foreach ($caters as $cater)
 <div class="accordion" id="accordionExample">
@@ -93,8 +91,6 @@
     </tr>
   </tbody>
 </table>
-            
-
            
        @endif
       @endforeach
@@ -102,19 +98,5 @@
     </div>
   </div>
   @endforeach
-
-
-<!--<form class="form-inline" method="POST" action="Coleccion">
-   @csrf
-  <div class="form-group mb-2">
-    <label for="staticEmail2" class="sr-only">Email</label>
-    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="agregar categoria">
-  </div>
-  <div class="form-group mx-sm-3 mb-2">
-    <input type="text" class="form-control" name="name">
-  </div>
-  <button type="submit" class="btn btn-primary mb-2">Añadir</button>
-</form>-->
-
   
 @endsection

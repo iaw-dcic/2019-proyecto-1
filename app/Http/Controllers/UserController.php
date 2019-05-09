@@ -16,7 +16,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        //$users = DB::select('select * from users', [1]);
         $users = User::all();
         return view('GaleriaPelitecas', ['users' => $users]);
     }
@@ -74,17 +73,40 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name'=>'required',
-            'lastname'=>'required',
-            'email'=>'required',
-        ]);
-
         $user=User::find($id);
-        $user->name=$request->name;
-        $user->lastname=$request->lastname;
-        $user->email=$request->email;
-        $user->save();
+        //Setea los default.
+        $nomDefault=$user->name;
+        $apelDefault=$user->lastname;
+        //Auxiliares para chequear el email.
+        $emailB=true;
+        $mailUsados = DB::select('select email from users where id != :id ', ['id'=> $id]);
+        $emailNuevo=$request->email;
+        //Name
+        if($request->name==null){
+            $user->name=$nomDefault;
+        }
+        else{
+            $user->name=$request->name;
+        }
+        //Lastname
+        if($request->lastname==null){
+            $user->lastname=$apelDefault;
+        }
+        else{
+            $user->lastname=$request->lastname;
+        }
+        //Mail
+        foreach ($mailUsados as $email)
+        {
+            if(strcmp($email->email, $emailNuevo) === 0)
+                    $emailB=false;
+        }
+        if($emailB==true)
+        {
+            $user->email=$request->email;
+            $user->save();
+        }
+        
         return back();
     }
 

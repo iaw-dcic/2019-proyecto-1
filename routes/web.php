@@ -44,7 +44,7 @@ Route::get('/About','AboutController@index');
 Route::resource('users', 'UserController')->middleware('auth');
 Route::put('/PelitecaEditor/{id}', 'PelitecaEditorController@update')->middleware('auth');
 
-Route::get('/logout')->middleware('auth');
+Route::get('/logout','HomeController@inicio')->middleware('auth');
 
 //get: obtener recurso
 //post: escribir algo en servidor(no modificar)

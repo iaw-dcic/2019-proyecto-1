@@ -21,9 +21,7 @@ class PelitecaEditorController extends Controller
     public function index($id)
     {
         $puntajes = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        //$caters = DB::select('select genero from generos');
         $caters = Genero::all();
-        //$peliculas = DB::select('select pelicula,genero,anio,puntaje from peliculas where id = :id and publico =:dat' , ['id' => $id, 'dat' => true]);
         $peliculas = Auth::user()->getPeliculas()->get();
         return view('PelitecaEditor', ['puntajes' => $puntajes ,'caters' => $caters ,'peliculas' => $peliculas ]);
     }
