@@ -5,7 +5,7 @@
  	<table>
   <tr>
  <?php   
-  if($articulos){
+  if(!is_null($articulos)){
     foreach($articulos as $art){ 
  ?>			
  		 <form>
@@ -16,9 +16,9 @@
              $lista=DB::table('lista')->where('id','=',$id_l)->orderBy('created_at','desc')->first(); 
              ?>
             <h3 class="card-title">Lista: {{$lista->name}} </h3> 
-
+            <h3 class="card-title">Puntaje: {{$art->puntaje}} </h3> 
             <h3 class="card-text">Descripcion del articulo: {{$art->descripcion}}</h3>
-            <h2 class="card-title">Visibilidad: {{$art->visibilidad}} </h2> 
+            
             <?php 
             
             $id_u=$lista->user_id;
@@ -29,14 +29,27 @@
             <div class="btn-group" role="group" aria-label="Basic example">
 			 
 
-            	<button class="btn btn-outline-success my-2 my-sm-0" value="" onclick="location.href='/mis_post/eliminar/?id_post={{$art->id}}'" type="submit">Eliminar </button>
+<!--            	<button class="btn btn-outline-success my-2 my-sm-0" value="" onclick="location.href='/mis_listas/eliminar_elemento/?id_post={{$art->id}}'" type="submit">Eliminar </button>
+-->
 
-            	<button class="btn btn-outline-success my-2 my-sm-0" value="" onclick="location.href='/mis_post/modificar/?id_post={{$art->id}}'" type="submit">Modiicar </button>
+            	<button class="btn btn-outline-success my-2 my-sm-0" value="" onclick="location.href='/mis_listas/modificar_elemento/?id_post={{$art->id}}'" type="submit">Modificar </button>
 
-			  <button type="button" name="eliminar"  class="btn btn-secondary">Eliminar</button>
-				 
-			  <button type="button" name="modificar" class="btn btn-secondary">Modificar</button>
-			
+
+              <button class="btn btn-danger"
+                      onclick="myFunction()"
+                     
+                       >Eliminar</button>
+
+              <script>
+                function myFunction() {
+                  if(confirm("Estas seguro que dese eliminar el elemento con nombre {{$art->nombre}} ? "))
+                     location.href='/mis_listas/eliminar_elemento/?id_post={{$art->id}}'
+                }
+              </script>
+
+
+
+
 			</div> 
         	
           </div>

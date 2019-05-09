@@ -40,21 +40,27 @@
 
     <!-- Contenido de la página -->
     <div class="container">
-
+    
         <!-- Contact Form -->
         <!-- Campos del formulario de contacto con validación de campos-->
-            
+             <form enctype= "multipart/form-data" action="/perfil" method="POST">
+                    <div class="container">
+                    <label>Actualizar foto de perfil</label> 
+                    <br>
                     <img src="/uploads/avatars/{{$user->avatar}}" style="width:250px; height: 250px;float: left;border-radius: 50%; margin-right: 20px ">
                     
-                    <form enctype= "multipart/form-data" action="/perfil" method="POST">
-                    <div class="container">
-                        <br><br><br><br>
-                        <label>Actualizar foto de perfil</label> 
-                        <input type="file" name="avatar">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    </div>    
-                        <br><br><br><br>
+                   
                     
+                        
+                        
+                        <br><br><br><br>
+                        <input type="file" name="avatar">
+                        <br>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                       
+
+                    </div>
+                        <div class="container">
                         <label>Nombre</label> 
                             <span id="alertName" data-toggle="popover" data-trigger="hover" data-placement="right" title="Nombre de usuario" name="name" data-content="">
                                 <input type="text" 
@@ -77,12 +83,12 @@
                         <label>Mail</label> 
                             <span id="alertEmail" readonly="readonly" data-toggle="popover" data-trigger="hover" data-placement="right" title="Email de usuario" name="email" data-content="">
                               <input type="email" class="form-control" name="email" value="{{Auth::user()->email}}"
-                              required data-validation-required-message="Por favor introduzca su email.">
+                              required data-validation-required-message="Por favor introduzca su email." readonly>
                             </span>
 
                           <br><br>  
                          <input type="submit" class="pull-rigth btn btn-sm btn-primary" >
-
+                     </div>
                     </form>
                 
             &nbsp;

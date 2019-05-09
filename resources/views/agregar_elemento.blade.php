@@ -4,7 +4,7 @@
 @section('content')
 <!-- <form name="modifyProfile" id="profileForm" novalidate> -->
 <div class="container">
-        <form enctype= "multipart/form-data" action="/postear" method="POST">    
+        <form enctype= "multipart/form-data" action="" method="POST">    
                 <!-- Inicio del div central parte de formulario información básica -->
                 <div class="col-md-12" style="border-width: 1px 1px 0px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
                     <div class="col-md-8 col-md-offset-2">
@@ -13,22 +13,21 @@
                                 <div class="controls">
                                     <br >
                                     <label>Información del articulo</label>
+                                    <br>
+                                    Nombre del elemento:
                                     <span id="alertName" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
                                         <input type="text" class="form-control"  name ="nombre" id="txtName" placeholder="Introduzca su nombre" required data-validation-required-message="Por favor introduzca su nomnbre.">
                                     </span>
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <br >
-                                    <span id="alertCategory" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
-                                        <input type="text" class="form-control" name="categoria" id="txtCategoria" placeholder="Introduzca su categoria" required data-validation-required-message="Por favor introduzca su categoria.">
+                                    <span id="alertlista" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+                                        Nombre de la lista:
+                                       <input class="form-control" type="text" placeholder="{{$lista->name}}" readonly>
+                                       Identificador de la lista:
+                                       <input class="form-control" name="id_lista" type="text" value="{{$lista->id}}" readonly>
                                     </span>
                                     <br>
-                                    <label>Visibilidad</label>
-                                    <select name="visibilidad">
-                                      <option name="privada" value="privada">Privada</option> 
-                                      <option name="publica" value="publica" selected>Publica</option>      
-                                    </select>
-
-                                    <label>Puntaje</label>
+                                    Puntaje
                                     <select name="puntaje">
                                       <option name="1" value="1">1</option> 
                                       <option name="2" value="2" selected>2</option>      

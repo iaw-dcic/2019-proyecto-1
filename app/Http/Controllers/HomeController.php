@@ -38,7 +38,7 @@ class HomeController extends Controller
         return view('main')->with('listas', $listas);
         //return view('main',[$articulos]);
     }
-
+/*
     public function buscar(Request $request){
 
          $id_l= $request->lista;
@@ -51,6 +51,20 @@ class HomeController extends Controller
         else
             return  view('main')->with('articulos',null);
     }
-
+*/
+    public function ver_lista(Request $request){
+       
+        $lista=DB::table('lista')->where('id','=',$request->id_lista)->first();
+        $articulos=DB::table('articulos')->where('lista_id','=',$lista->id)->orderBy('created_at','desc')->get();
+       $data = array('articulos' => $articulos);
+        return view('ver_lista', $data);
+    }
+     public function ver_perfil(Request $request){
+       
+        $usuario=DB::table('users')->where('id','=',$request->usuario)->first(); 
+               
+       $data = array('usuario' => $usuario);
+        return view('ver_perfil', $data);
+    }
 
 }

@@ -35,9 +35,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                            <div class="col-sm">    
+                       <!--     <div class="col-sm">    
                                  <button class="btn btn-outline-success my-2 my-sm-0"  onclick="location.href='/postear'" type="submit">Postear </button>
-                            </div>
+                            </div>    -->
                             @yield('barra_principal')
 
                     </ul>
