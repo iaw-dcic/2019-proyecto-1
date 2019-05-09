@@ -36,8 +36,9 @@
                         <td>{{$item->link}}</td>
                         <td>{{$item->price}}</td>
                         <td>
-                         {{ Form::open(['action' => ['ItemsController@edit', $item->id] , 'method'=> 'GET']) }}
+                         {{ Form::open(['action' => ['ItemsController@edit', $item->id] , 'method'=> 'POST']) }}
                             {{Form::submit('Edit', ['class'=>'btn'])}}
+                            {{Form::hidden('_method', 'PUT')}}
                         {!!Form::close()!!}
       
                         <div class = 'float-right'>        
