@@ -30,3 +30,5 @@ Auth::routes();
 Route::resource('home', 'HomeController');
 
 Route::resource('posts/items', 'ItemsController');
+
+Route::post('item.edit', "ItemsController@edit");
