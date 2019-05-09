@@ -47,7 +47,7 @@
               <button class="btn btn-outline-success my-2 my-sm-0" value="" onclick="location.href='/mis_listas/modificar_lista/?id_lista={{$lis->id}}'" type="submit">Modificar lista </button>
 
               <button class="btn btn-danger"                       
-                      onclick="myFunction()"
+                      onclick="location.href='/mis_listas/eliminar_lista/?id_lista={{$lis->id}}'"
                        >Eliminar lista </button>
 
               <script>
