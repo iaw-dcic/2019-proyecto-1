@@ -32,12 +32,16 @@ class Colection extends Model
     }
 
     public function existe($id){
-        $c = $this->findColection($id);
-        
-        if(is_null($c)){
+        try{
+            $c = $this->findColection($id);
+            
+            if(is_null($c)){
+                return false;
+            }else{
+                return true;
+            }
+        }catch(Exception $e){
             return false;
-        }else{
-            return true;
         }
     }
 }
