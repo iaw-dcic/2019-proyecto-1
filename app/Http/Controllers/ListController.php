@@ -1,4 +1,3 @@
-
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
@@ -176,3 +175,4 @@ class ListController extends Controller
         return view('users.edit', ['user' => $user]);
     }
 
+}
