@@ -47,7 +47,7 @@
 
                          @if(route::current()->getName()!='home')
                             @if((route::current()->getName()=='login')||route::current()->getName()=='register')
-                            <a class="navbar-brand" href="{{ route('home') }}"><img src="../resources/img/futbol.png" alt="home"></a>
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
                             @elseif(route::current()->getName()=='users.editLista')
