@@ -108,14 +108,11 @@ class ListController extends Controller
     }
     public function editLista($id){
            $list = Lista::where('id',$id)->first();
-           if(authorize('pass',$list)){
-                return view('users.editLista',[
-                    'list' => $list,
-                ]
-             );}
-            else {
-                return (back);
-            }
+           $this->authorize('pass',$list);
+           return view('users.editLista',[
+               'list' => $list,
+           ]
+        );
    }
    public function updateLista(Request $request,$id){
        $list = Lista::where('id',$id)->first();
