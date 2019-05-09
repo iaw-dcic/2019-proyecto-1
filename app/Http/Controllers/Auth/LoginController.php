@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/listDashboard';
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,45 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Redirect the user to the google authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from google.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $userSocial = Socialite::driver('google')->stateless()->user();
+        $findUser = User::where('email',$userSocial->email)->first();
+
+        if($findUser){
+            Auth::login($findUser);
+        }
+        else{
+            $user = new User;
+            $user->name = $userSocial->name;
+            // strip out all whitespace
+            $uname_clean = preg_replace('/\s*/', '', $userSocial->name);
+            // convert the string to all lowercase
+            $uname_clean = strtolower($uname_clean);
+            $user->username = $uname_clean;
+            $user->email = $userSocial->email;
+            $user->password = bcrypt('123123123');
+            $user->save();
+            Auth::login($user);
+        }
+
+        return redirect('/listDashboard');
     }
 }
