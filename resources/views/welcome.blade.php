@@ -19,22 +19,32 @@
                     <table class="table table-hover task-table">
                     <thead>
                         <tr>
-                        <th scope="col">Code</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Author</th>
-                        <th scope="col">Editorial</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Genre</th>
                         <th scope="col">OWNER</th>
+                        <th scope="col"></th>
                         </tr>
                        
                     </thead>
                     <tbody>
                     @foreach($tasks as $task)
                         <tr>
-                            <td>{{$task->cod}}</td>
-                            <td>{{$task->title}}</td>
-                            <td>{{$task->author}}</td>
-                            <td>{{$task->editorial}}</td>
-                            <td><a href="/profile/{{$task->owner_id}}">{{$task->owner_name}}<a></td>
+                            <td>{{$task->name}}</td>
+                            <td>{{$task->desc}}</td>
+                            <td>{{$task->genre}}</td>
+                            <td>
+                                <form method= "GET" action="{{route('showPublicProfile',$task->owner_id)}}">
+                                    @csrf
+                                    <button class="btn btn-outline-dark" >{{$task->owner_name}}</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form method= "GET" action="/list/{{$task->id}}">
+                                    @csrf
+                                    <button class="btn btn-outline-dark" >Open list</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

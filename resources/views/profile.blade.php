@@ -19,25 +19,29 @@
         @endif
     </div>
     <hr>
-    @endguest  
+    @endguest
     <h3>Saved books:</h3>
     <div class="container">
         <table class="table table-hover task-table">
             <thead>
                 <tr>
-                <th scope="col">Code</th>
-                <th scope="col">Title</th>
-                <th scope="col">Author</th>
-                <th scope="col">Editorial</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Privacy</th>
+                <th scope="col">Genre</th>
+                <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($tasks as $task)
                     <tr>
-                        <td>{{$task->cod}}</td>
-                        <td>{{$task->title}}</td>
-                        <td>{{$task->author}}</td>
-                        <td>{{$task->editorial}}</td>
+                        <td>{{$task->name}}</td>
+                        <td>{{$task->desc}}</td>
+                        <td>{{$task->privacy}}</td>
+                        <td>{{$task->genre}}</td>
+                        <td> 
+                            <button class="btn btn-outline-dark" onclick= "window.location='/list/{{$task->id}}';" >Open list</button>
+                        </td>
                     </tr>
                 @endforeach     
             </tbody>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">My List</div>
+                <div class="card-header">My Lists</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,23 +13,24 @@
                             {{ session('status') }}
                         </div>
                     @endif
- 
-                    Add some Book to your list
+                    
+                    ADD ALL LIST YOU WANT
                     <hr>
-                    <form method="POST" action="{{ route('addItem')}}">
+                    <form method="POST" action="{{ route('addList')}}">
                     @csrf
                     <div class="form-row">
                         <div class="col">
-                            <input name="cod" id="cod" type="number" min="1" class="form-control" placeholder="Code" required>
+                            <input name="name" id="name" type="text" class="form-control" placeholder="Name" required>
                         </div>
                         <div class="col">
-                            <input name="title" id="title" type="text" class="form-control" placeholder="Title" required>
+                            <input name="desc" id="desc" type="text" class="form-control" placeholder="Description" >
                         </div>
                         <div class="col">
-                            <input name="author" id="author" type="text" class="form-control" placeholder="Author" required>
-                        </div>
-                        <div class="col">
-                            <input name="editorial" id="editorial" type="text" class="form-control" placeholder="Editorial" required>
+                            <select id="genre" name="genre" class="form-control">
+                                @foreach($genres as $genre)
+                                <option selected>{{$genre->genre}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="col">
                             <select id="privacy" name="privacy" class="form-control">
@@ -40,31 +41,44 @@
                         <button type="submit" class="btn btn-outline-dark">Save</button>
                     </div>
                     </form>
+                    
                     <hr>
                     <table class="table table-hover task-table">
                     <thead>
                         <tr>
-                            <th scope="col">Code</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Author</th>
-                            <th scope="col">Editorial</th>
+                            <th></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Genre</th>
                             <th scope="col">Privacy</th>
                             <th scope="col">Public/Private</th>
-                            <th scope="col">Delete</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($tasks as $task)
                             <tr>
-                                <td>{{$task->cod}}</td>
-                                <td>{{$task->title}}</td>
-                                <td>{{$task->author}}</td>
-                                <td>{{$task->editorial}}</td>
+                                <td>
+                                    <form method= "GET" action="/list/{{$task->id}}">
+                                        @csrf
+                                        <button class="btn btn-outline-dark" >Open list</button>
+                                    </form>
+                                </td>
+                                <td>{{$task->name}}</td>
+                                <td>{{$task->desc}}</td>
+                                <td>{{$task->genre}}</td>
                                 <td>{{$task->privacy}}</td>
                                 <td>
-                                    <form method= "POST" action="{{route('changeVisibility',$task->id)}}">
+                                    <form method= "POST" action="{{route('changeVisibility', $task->id)}}">
                                         @csrf
                                         <button class="btn btn-outline-dark" >Change Privacy</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form  method="GET" action ="{{route('getEditList',$task->id)}}" >
+                                        @csrf
+                                        <button class="btn btn-outline-dark" >Edit</button>
                                     </form>
                                 </td>
                                 <td>

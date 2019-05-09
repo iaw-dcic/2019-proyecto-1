@@ -11,7 +11,7 @@ class WelcomeController extends Controller{
 
     protected function get(){
         //muestro solo las públicas
-        $tasks = Task::where('privacy','Public')->get(['id','cod','title','author','editorial','privacy','owner_id','owner_name']);
+        $tasks = Task::where('privacy','Public')->get(['id','name','desc','privacy','genre','owner_name','owner_id']);
         return view('welcome', ['tasks' => $tasks]);
     }
 

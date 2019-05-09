@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use App\Item;
 use App\Rules\validarPrivacidad;
 use App\User;
+use App\Genre;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller{
     /**
@@ -24,20 +27,22 @@ class HomeController extends Controller{
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
+
+        $genres = Genre::all();
         
-        return view('home');
+        return view('home', compact('genre'));
     }
     
-    protected function addItem(Request $request){
+    protected function addList(Request $request){
         
         $data = $request->all(); //parametros del formulario
         //Tengo que validar los datos antes de cargarlos en la base de datos
         //dd($data); //esto me muestra los datos ingresados
 
         $validatedData = $request->validate([
-            'cod' => 'required|max:255',
-            'title' => 'required|max:255',
-            'author' => 'required|max:255',
+            'name' => 'required|max:255',
+            'desc' => 'required|max:255',
+            'genre' => 'required|string|exists:genres|max:255',
             'privacy' => ['required','string','max:255', new validarPrivacidad()],
         ]);
 
@@ -45,39 +50,51 @@ class HomeController extends Controller{
         $user = User::where('id',auth()->id())->get()[0];
         $task = new Task;
         //$task->id = $request->id;
-        $task->cod = $request->cod;
-        $task->title = $request->title;
-        $task->author = $request->author;
-        $task->editorial = $request->editorial;
+        $task->name = $request->name;
+        $task->desc = $request->desc;
+        $task->genre = $request->genre;
         $task->privacy = $request->privacy;
         $task->owner_id = $user->id;
         $task->owner_name = $user->name;
         $task->save();
-
-        //$tasks = Task::orderBy('created_at', 'asc')->get(['id','cod','name','quantity','privacy','owner_id']);
-        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
-        return view('home', ['tasks' => $tasks]);
+        
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','name','desc','privacy','genre','owner_id']);
+        $genres = Genre::all();
+        return view('home', ['tasks' => $tasks , 'genres'=>$genres]);
     
     }
     
     protected function getTable(){
 
-        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
-        return view('home', ['tasks' => $tasks]);
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','name','desc','privacy','genre','owner_id']);
+        $genres = Genre::all();
+        return view('home', ['tasks' => $tasks , 'genres'=>$genres]);
     }
 
     protected function destroy($id){
 
-        Task::findOrFail($id)->delete();
-        
-        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
+        $task = Task::where('id',$id)->get()->first();
+        if(Auth::user()->id != $task->owner_id){
+            abort(403,"No está autorizado para realizar esta accion");
+        }
 
-        return view('home', ['tasks' => $tasks]);
+        $items = Item::where('task_id',$id)->get();
+
+        foreach($items as $item){
+            $item->delete();
+        }
+
+        $task->delete();
+
+       // Task::findOrFail($id)->delete();
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','name','desc','privacy','genre','owner_id']);
+        $genres = Genre::all();
+        return view('home', ['tasks' => $tasks , 'genres'=>$genres ]);
     }
 
     protected function changeVisibility($id){
 
-        $task = Task::where('id',$id)->get(['id','cod','title','author','editorial','privacy','owner_id']);
+        $task = Task::where('id',$id)->get(['id','name','desc','privacy','genre','owner_id']);
 
         if($task){
 
@@ -90,12 +107,10 @@ class HomeController extends Controller{
                   break;
           }
         }
-  
 
-        $tasks = Task::where('owner_id', auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id']);
-        
-        return view('home', compact('tasks'));
+        $tasks = Task::where('owner_id', auth()->id())->get(['id','name','desc','privacy','genre','owner_id']);
+        $genres = Genre::all(); 
+        return view('home', compact('tasks','genres'));
 
-        
     }
 }

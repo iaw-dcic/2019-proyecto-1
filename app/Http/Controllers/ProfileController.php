@@ -2,26 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\Task;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller{
-
-    protected function showProfile(){
-
-        if(Auth::check()){
-            $user = User::where('id',auth()->id())->get()[0];
-
-            $tasks = Task::where('owner_id',auth()->id())->get(['id','cod','title','author','editorial','privacy','owner_id','owner_name']);
-            
-            return view('/profile',compact('user','tasks'));
-        }
-        else{
-            return redirect('/');
-        }
-    }
 
     protected function editProfile($id){
 
@@ -34,13 +19,31 @@ class ProfileController extends Controller{
 
         $user = user::findOrFail($id);
 
-        $tasks = Task::where('owner_id',$id)->where('privacy','Public')->get(['id','cod','title','author','editorial','privacy','owner_id','owner_name']);
+        $tasks = Task::where('owner_id',$id)->where('privacy','Public')->get(['id','name','desc','privacy','genre','owner_id']);
         
-        if($id == auth()->id()){
-            $tasks = Task::where('owner_id',$id)->get(['cod','title','author','editorial']);
+        
+        if($id == Auth::user()->id){
+            $tasks = Task::where('owner_id',$id)->get(['id','name','desc','privacy','genre','owner_id']);
         }
         
-        return view('profile',compact('user','tasks'));
+        return view('/profile',compact('user','tasks'));
     
+    }
+
+    protected function searchByEmail(){
+
+        $user = User::where('email',request('email'))->get()->first();
+
+        if($user==null){
+            abort(404,'Not found');
+        }
+
+        $tasks = Task::where('owner_id',$user->id)->where('privacy','Public')->get();
+
+        if($user->id == Auth::user()->id){
+            $tasks = Task::where('owner_id',$user->id)->get();
+        }
+
+        return view('/profile',compact('user','tasks'));
     }
 }

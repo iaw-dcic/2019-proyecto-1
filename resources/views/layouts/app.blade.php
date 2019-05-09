@@ -44,6 +44,10 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="/profile">
+                             <input class="form-control mr-sm-2" name='email' type="search" placeholder="search by e-mail" aria-label="Search">
+                            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -65,7 +69,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                    <a class="dropdown-item" href="{{ route('showPublicProfile', Auth::user()->id)}}">
                                         {{ __('Profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ url('/home') }}">
