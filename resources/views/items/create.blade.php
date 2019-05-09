@@ -6,16 +6,18 @@
     <thead>
     <tr>
       <th scope="col">Item name</th>
-      <th scope="col">Description</th>
+      <th scope="col">Link</th>
       <th scope="col">Price</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
     @foreach($items as $item)
     <tr>      
         <td>{{$item->name}}</td>
-        <td>{{$item->desc}}</td>
-        <td>{{$item->price}}</td> 
+        <td>{{$item->link}}</td>
+        <td>{{$item->price}}</td>
+        <td></td> 
     </tr>
     @endforeach
   </tbody>
@@ -27,7 +29,7 @@
     <thead>
     <tr>
       <th scope="col">Item name</th>
-      <th scope="col">Description</th>
+      <th scope="col">Link</th>
       <th scope="col">Price</th>
     </tr>
   </thead>
