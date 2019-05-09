@@ -18,7 +18,7 @@
     <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Ingresar CV">
   </div>
   <div class="form-group mx-sm-3 mb-2">
-    <input type="text" name="cv" class="form-control">
+    <input type="number" min="1" max="999" name="cv" class="form-control">
   </div>
   <div class="form-group">
     <label>Categorias <pre>  </pre></label>
@@ -73,21 +73,22 @@
          <input name="_method" type="hidden" value="DELETE">
         <button type="submit" class="btn btn-outline-dark btn-sm">Eliminar</button>
          @csrf
-      </form>
+      </form></td>
             @if($auto->publico=='false')
-             <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
+            <td> <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
              @csrf
              <input name="_method" type="hidden" value="PUT">
-            <button type="submit" class="btn btn-outline-dark btn-sm">Publicar</button></td>
+            <button type="submit" class="btn btn-outline-dark btn-sm">Publicar</button>
              @csrf
-             </form>
+             </form></td>
             @else
-            <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
+           <td> <form class="form-inline"  method="POST" action="{{ url('/home/'.$auto->auto)}}" >
             @csrf
             <input name="_method" type="hidden" value="PUT">
-           <button type="submit" class="btn btn-outline-dark btn-sm">Privado</button></td>
+           <button type="submit" class="btn btn-outline-dark btn-sm">Privado</button>
             @csrf
-           </form>
+           </form></td>
+          
             @endif
     </tr>
   </tbody>
