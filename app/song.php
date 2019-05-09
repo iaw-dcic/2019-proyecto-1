@@ -4,7 +4,7 @@ namespace Haiku;
 
 use Illuminate\Database\Eloquent\Model;
 
-class song extends Model
+class Song extends Model
 {
     //
     public function album()

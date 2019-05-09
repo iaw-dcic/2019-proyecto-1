@@ -22,7 +22,7 @@ class SongController extends Controller
     //muestra la canción a editar... 
 
     public function editSong($id){
-        $song = song::find($id);
+        $song = Song::find($id);
         return View('songs.edit',['song'=>$song]);
     }
 
@@ -49,7 +49,7 @@ class SongController extends Controller
             return Redirect::back()->withInput(Input::all())->withErrors($validator);;
 
 
-        $song = song::find(Input::get('id'));
+        $song = Song::find(Input::get('id'));
         $song->song_name =  Input::get('song');
         $song->link = Input::get('link');
         $song->save();
@@ -61,7 +61,7 @@ class SongController extends Controller
     }
 
     public function destroySong($id){
-        $song = song::find($id);
+        $song = Song::find($id);
         $album_id = $song->album_id;
         $song->delete();
         return redirect()->route('displaySongs',  ['id' => $album_id]);
