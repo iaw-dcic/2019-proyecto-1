@@ -42,13 +42,7 @@ class PelitecaShowerController extends Controller
      */
     public function store(Request $request)
     {
-        if(!empty($request->input('name')))
-        {
-            $genero=new genero();//nuestro modelo
-            $genero->genero=$request->input('name');
-            $genero->save();
-        }
-        return redirect('/home');
+        //
     }
 
     /**
