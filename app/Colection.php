@@ -19,12 +19,10 @@ class Colection extends Model
     }
 
     public function findColection($id){
-        try{
+        
         $c = Colection::where('id', $id)->get();
         return $c[0];
-        }catch(Exception $e){
-            return NULL;
-        }
+        
     }
 
     public function findElementos(){
