@@ -116,8 +116,8 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/playlist.js') }}"></script>
-    <script src="{{ asset('js/song.js') }}"></script>
+    <script src="{{ asset('js/playlist.js?1500') }}"></script>
+    <script src="{{ asset('js/song.js?1500') }}"></script>
 
 @endsection
 

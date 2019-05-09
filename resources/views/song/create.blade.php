@@ -70,7 +70,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/song.js') }}"></script>
+    <script src="{{ asset('js/song.js?1500') }}"></script>
     <script src="{{ asset('js/file-utils.js') }}"></script>
 @endsection
 

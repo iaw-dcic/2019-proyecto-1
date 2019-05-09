@@ -82,7 +82,7 @@
     @endif
 
 @section('scripts')
-    <script src="{{ asset('js/playlist.js') }}"></script>
+    <script src="{{ asset('js/playlist.js?1500') }}"></script>
 @endsection
 
 
