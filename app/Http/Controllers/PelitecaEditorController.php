@@ -20,9 +20,14 @@ class PelitecaEditorController extends Controller
      */
     public function index($id)
     {
+        $this->middleware('auth');
+        $userLog=Auth::user();
+        if($userLog->id != $id)
+            abort(403, 'Usuario no autorizado');
+        $userAsked=User::find($id);
         $puntajes = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         $caters = Genero::all();
-        $peliculas = Auth::user()->getPeliculas()->get();
+        $peliculas = $userAsked->getPeliculas()->get();
         return view('PelitecaEditor', ['puntajes' => $puntajes ,'caters' => $caters ,'peliculas' => $peliculas ]);
     }
 
@@ -44,13 +49,7 @@ class PelitecaEditorController extends Controller
      */
     public function store(Request $request)
     {
-        if(!empty($request->input('name')))
-        {
-            $genero=new genero();//nuestro modelo
-            $genero->genero=$request->input('name');
-            $genero->save();
-        }
-        return redirect('/home');
+        //
     }
 
     /**
@@ -83,9 +82,16 @@ class PelitecaEditorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
+        $this->middleware('auth');
         $pelicula = Pelicula::find($id);
-        $pelicula->publico = !($pelicula->publico);
-        $pelicula->save();
+        $user = User::find($pelicula->user_id);
+        if(Auth::user()->id == $user->id){
+            $pelicula->publico = !($pelicula->publico);
+            $pelicula->save();
+        }
+        else{
+            abort(403,'Usuario no autorizado');
+        }
         return back();
     }
 
@@ -97,8 +103,15 @@ class PelitecaEditorController extends Controller
      */
     public function destroy($id)
     {
+        $this->middleware('auth');
         $pelicula = Pelicula::find($id);
-        $pelicula->delete();
+        $user = User::find($pelicula->user_id);
+        if(Auth::user()->id == $user->id){
+            $pelicula->delete();
+        }
+        else{
+            abort(403,'Usuario no autorizado');
+        }
         return back();
     }
 }

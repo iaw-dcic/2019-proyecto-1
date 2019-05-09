@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -49,7 +50,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $this->middleware('auth');
+        $userLog=Auth::user();
+        if($userLog->id != $id)
+            abort(403, 'Usuario no autorizado');
+        $user = User::find($id);
+        return view('/auth/perfil')->with(['user' => $user]);
     }
 
     /**
@@ -60,8 +66,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $this->middleware('auth');
+        $userLog=Auth::user();
+        if($userLog->id != $id)
+            abort(403, 'Usuario no autorizado');
         $user=User::find($id);
-        return view('/auth/perfil')->with('user',$user);
+        return view('/auth/perfilEditor')->with('user',$user);
     }
 
     /**
@@ -73,7 +83,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::find($id);
+        $this->middleware('auth');
+        $user=Auth::user();
+        if($user->id != $id)
+            abort(403, 'Usuario no autorizado');
         //Setea los default.
         $nomDefault=$user->name;
         $apelDefault=$user->lastname;
@@ -107,7 +120,7 @@ class UserController extends Controller
             $user->save();
         }
         
-        return back();
+        return view('/auth/perfil')->with('user',$user);
     }
 
     /**

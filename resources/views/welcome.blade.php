@@ -17,7 +17,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                    <a href="{{ url('/home') }}">{{ Auth::user()->name }}</a>
+                    <a href="{{ url('/PelitecaEditor',Auth::user()->id) }}">{{ __('Mi Peliteca') }}</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <pre></pre>

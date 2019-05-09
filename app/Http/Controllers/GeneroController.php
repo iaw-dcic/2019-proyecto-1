@@ -37,7 +37,6 @@ class GeneroController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request;
         $request->validate([
             'titulo'=>'required',
             'genero'=>'required',
@@ -75,18 +74,7 @@ class GeneroController extends Controller
      */
     public function edit($titulo)
     {
-        $pelicula = Pelicula::where(['titulo' => $titulo, 'user_id' => Auth::user()->id])->get()->first();
-        //$publico=DB::select ('select publico from peliculas where pelicula =:titulo and id =:id',['titulo'=>$titulo,'id'=> Auth::id(),]);
-        
-        $pelicula->publico = !($pelicula->publico);
-        $pelicula->save();
-        /*if($pelicula->publico==0)
-            $caters = DB::select('update peliculas Set publico = :dat where id = :id and pelicula = :titulo', ['dat' => true,'titulo'=>$titulo,'id'=> Auth::id()]);
-        $
-        else
-             $caters = DB::select('update peliculas Set publico = :dat where id = :id and pelicula = :titulo', ['dat' => false,'titulo'=>$titulo,'id'=> Auth::id()]);
-       */
-         return redirect('PelitecaEditor');
+        //
     }
 
     /**
@@ -98,7 +86,7 @@ class GeneroController extends Controller
      */
     public function update(Request $request, $id)
     {
-      //no
+      //
     }
 
     /**
@@ -109,12 +97,6 @@ class GeneroController extends Controller
      */
     public function destroy($nom,$gen)
     {
-        $pelicula = Pelicula::where(['pelicula'=>$nom,'genero'=>$gen])->get()->first();
-        $pelicula->delete();
-        /*
-        $caters = DB::select('delete from peliculas where genero=:gen and pelicula=:nom', ['nom' => $nom,'gen'=>$gen]);      
-        */
-
-        return redirect('PelitecaEditor');
+        //
     }
 }
