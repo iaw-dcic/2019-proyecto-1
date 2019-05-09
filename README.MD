@@ -9,3 +9,5 @@ Autor: Matias Massetti - LU 107954
 - Fontawesome (https://fontawesome.com/v4.7.0/i)
 - Bootstrap selectpicker (https://developer.snapappointments.com/bootstrap-select/)
 - Intervention Image Library (http://image.intervention.io/)
+- Laravel Socialite (https://laravel.com/docs/5.8/socialite)
+- Laravel page speed (https://github.com/renatomarinho/laravel-page-speed)
