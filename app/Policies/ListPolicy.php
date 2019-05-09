@@ -21,6 +21,7 @@ class ListPolicy
     }
 
     public function pass(User $user, Lista $list){
+        //Si soy del id 50 y la lista que estoy editando tiene mi user id va a retornar true
         return $user->id == $list->user_id;
     }
 }
