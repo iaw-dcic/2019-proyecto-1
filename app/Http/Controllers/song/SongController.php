@@ -94,7 +94,7 @@ class SongController extends Controller
         //dd($request);
         $user = Auth::user();
         $j = $request->input('varId');
-        $albumId = $request->input('albumId');
+        $albumId = $request->input('album');
         $album = Album::find($album_id);
         if(!$user ||  $user->id != $album->user_id  )
             return redirect()->route('home');
