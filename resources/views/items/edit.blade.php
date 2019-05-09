@@ -17,7 +17,7 @@
   <tbody>
     <tr>      
         <td>
-        {{Form::text('name', '', ['class' => 'form-control', 'placeholder' =>'Name', 'value'=>'valor'])}}
+        {{Form::text('name', null, ['class' => 'form-control', 'placeholder' =>'Name', 'value' => '{{$item->name}}'])}}
         </td> 
         <td>
         {{Form::text('link', '', ['class' => 'form-control', 'placeholder' =>'Link'])}}
