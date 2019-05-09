@@ -30,5 +30,14 @@
     <ul >
         <li>Agregando mod_deflate mejora performance</li>
     </ul>
+    <div class='tituloAbout'>
+        <h1>Paginas(Performance/Accesibility):</h1>
+    </div>
+    <ul >
+        <li>Welcome: 100 / 100</li>
+        <li>GaleriaPelitecas: 90 / 92</li>
+        <li>PelitecaShower: 90 / 82</li>
+        <li>PelitecaEditor: 88 / 71</li>
+    </ul>
 </body>
 @endsection

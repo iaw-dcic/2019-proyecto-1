@@ -10,7 +10,7 @@
 <form class="form-inline"  method="POST" action="{{ url('/PelitecaEditor/Generos') }}" >
   @csrf
  @foreach ($caters as $cater)
-<div class="accordion" id="accordionExample" text-align="center">
+<div class="accordion" id="accordionExample" text-align="center" style="width:100%;">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">

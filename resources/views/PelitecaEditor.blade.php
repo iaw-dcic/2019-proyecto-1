@@ -16,7 +16,7 @@
   </div>
   <div class="form-group mx-sm-3 mb-2">
     <label>Ingresar año</label><pre>   </pre>
-    <input type="text" name="anio" class="form-control">
+    <input type="number" min='1888' max='2019' value='2019' name="anio" class="form-control">
   </div>
   <div class="form-group">
     <label>Puntaje</label><pre> </pre>
@@ -38,7 +38,7 @@
 </form>
 
  @foreach ($caters as $cater)
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="accordionExample" style='width:100%;'>
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
