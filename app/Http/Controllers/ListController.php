@@ -192,9 +192,10 @@ class ListController extends Controller
             );
             Item::create($data2);
         }
-    }
-    return redirect()->route('users.showListas');
+        return redirect()->route('users.showListas');
 
+    }else
+        return back();
    }
 
 
