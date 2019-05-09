@@ -133,13 +133,13 @@ class ListController extends Controller
 
     }
     public function editLista($id){
-        if (Gate::allows('update-post', $id)) {
             // The current user can't update the post...
+        $this->authorizate('pass',$id);
            $list = Lista::where('id',$id)->first();
            return view('users.editLista',[
                'list' => $list,
            ]
-        );}
+           );
         else
            return back();
    }
