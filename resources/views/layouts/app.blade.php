@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Futboleros') }}</title>
 
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
