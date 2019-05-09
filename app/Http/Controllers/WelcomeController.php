@@ -20,12 +20,15 @@ class WelcomeController extends Controller
     public function show($id){
 
         $coleccion= new Colection;
-        $coleccion = $coleccion ->findColection($id);
-        $items= $coleccion ->findElementos();
-        $usuario=User::find($coleccion->user_id);
-        $datos=[$coleccion, $items, $usuario];
+            if($coleccion->existe($id)){
+            $coleccion = $coleccion ->findColection($id);
+            $items= $coleccion ->findElementos();
+            $usuario=User::find($coleccion->user_id);
+            $datos=[$coleccion, $items, $usuario];
 
-        return view('showItems', compact('datos'));
-
+            return view('showItems', compact('datos'));
+        }else{
+            abort(404);
+        }
     }
 }

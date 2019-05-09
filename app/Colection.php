@@ -30,4 +30,13 @@ class Colection extends Model
     public function findColecForUser($id){
         return Colection::where('user_id', $id)->get();
     }
+
+    public function existe($id){
+        $c = findColection($id);
+        if(sizeof($c)>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
