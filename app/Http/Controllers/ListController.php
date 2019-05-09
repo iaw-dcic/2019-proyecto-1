@@ -16,17 +16,15 @@ class ListController extends Controller
 
         $items = Item::where('task_id',$id)->get();
 
-        $task = Task::where('id',$id)->get()->first();
+        $task = Task::where('id',$id)->where('privacy','Public')->get()->first();
 
         $user = User::where('id',$task->owner_id)->get()->first();
 
         if(Auth::check()){
             if($user->id == Auth::user()->id){
+                $task = Task::where('id',$id)->get()->first();
                 return view('/list', compact('items','user','task'));
             }
-        }else{
-            $task = Task::where('id',$id)->where('privacy','Public')->get()->first();
-
         }
 
         return view('/list', compact('items','user','task'));
