@@ -26,7 +26,7 @@ Route::post('usuarios/crearItem','ListController@storeItem');
 Route::get('usuarios/show/{user}','UserController@show')->name('users.show');
 
 Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
-Route::put('usuarios/actualizar', 'UserController@update');
+Route::put('usuarios/{user}', 'UserController@update');
 
 Route::get('usuarios/mostrarListas','ListController@showListas')->name('users.showListas');
 
