@@ -36,16 +36,11 @@
 
 
               <button class="btn btn-danger"
-                      onclick="myFunction()"
+                      onclick="location.href='/mis_listas/eliminar_elemento/?id_post={{$art->id}}'"
                      
                        >Eliminar</button>
 
-              <script>
-                function myFunction() {
-                  if(confirm("Estas seguro que dese eliminar el elemento con nombre {{$art->nombre}} ? "))
-                     location.href='/mis_listas/eliminar_elemento/?id_post={{$art->id}}'
-                }
-              </script>
+              
 
 
 
