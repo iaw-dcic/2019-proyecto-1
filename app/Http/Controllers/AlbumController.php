@@ -105,7 +105,6 @@ class AlbumController extends Controller
     {
         //
         $user  = Auth::user();
-
         if(!$user)
         return redirect()->route('home');
         $album = Album::find($id);
@@ -133,6 +132,7 @@ class AlbumController extends Controller
         // process the login
         if ($validator->fails()) 
             return Redirect::back()->withInput(Input::all())->withErrors($validator);;
+            $user  = Auth::user();
 
             if(!$user)
             return redirect()->route('home');
