@@ -20,10 +20,10 @@
         {{Form::text('name', '$item->name', ['class' => 'form-control', 'placeholder' =>'Name'])}}
         </td> 
         <td>
-        {{Form::text('link', '{!!$item->link!!}', ['class' => 'form-control', 'placeholder' =>'Link'])}}
+        {{Form::text('link', '$item->link' , ['class' => 'form-control', 'placeholder' =>'Link'])}}
         </td>
         <td>
-        {{Form::text('price', '{{$item->price}}', ['class' => 'form-control', 'placeholder' =>'Price'])}}
+        {{Form::text('price', '$item->price', ['class' => 'form-control', 'placeholder' =>'Price'])}}
         </td>
     </tr>    
   </tbody>
