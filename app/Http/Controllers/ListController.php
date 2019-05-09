@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Item;
 use App\Lista;
-
+use App\Providers\AuthServiceProviderGate;
 
 class ListController extends Controller
 {
@@ -133,7 +133,8 @@ class ListController extends Controller
 
     }
     public function editLista($id){
-        if(auth()->user()!=null){
+        if (Gate::allows('update-post', $id)) {
+            // The current user can't update the post...
            $list = Lista::where('id',$id)->first();
            return view('users.editLista',[
                'list' => $list,
