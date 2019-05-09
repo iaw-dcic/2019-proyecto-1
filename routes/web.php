@@ -53,7 +53,3 @@ Route::resetPassword();
 Route::emailVerification();
 Route::get('/home', 'HomeController@index')->name('home');
 
-/**Redes sociales */
-//Ruta de respuesta
-Route::get('/redirect/{provider}','SocialController@redirect');
-Route::get('/callback/{provider}/callback','SocialController@callback');

@@ -17,9 +17,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-    @if(Route::current()->getName()=='login')
-        <link rel="stylesheet" href="{{ asset('css/app.scss') }}">
-    @endif
 
     @if((Route::current()->getName()=='home')||(Route::current()->getName()=='users.showListas') ||(Route::current()->getName()=='users.show'))
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -33,12 +30,6 @@
     </script>
     @endif
 
-
-
-
-
-
-    <link rel="stylesheet" href="{{ asset('sass/app.scss') }}">
 
 </head>
 <body>
