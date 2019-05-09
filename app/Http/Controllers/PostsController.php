@@ -40,10 +40,10 @@ class PostsController extends Controller{
         $post = new Post();
         $post->description = $request->descripcion;
         $post->user_id = Auth::user()->id;
-        if($request->public)
-            $post->public = true;
+        if(isset($request->public) && $request->public != null)
+            $post->public = 1;
         else
-            $post->public = false;
+            $post->public = 0;
         $post->created_at = $now->created_at = $now->format('Y-m-d H:m:s');
         return $post;
     }
@@ -69,8 +69,7 @@ class PostsController extends Controller{
 
     private function validarDatosPost(Request $request){
         return $request->validate([
-            'descripcion' => 'required|max:255',
-            'public' => 'required'
+            'descripcion' => 'required|max:255'
         ]);
     }
 
@@ -80,25 +79,23 @@ class PostsController extends Controller{
             $user = User::find($post->user_id);
             $photos = $post->getPhotos()->get();
             return view('partials.post.post')->with(['post' => $post, 'user' => $user, 'photos' => $photos]);
-        }
+        }else
+            return $this->update($request, $id);
         abort(403, 'Unauthorized action.');
     }
 
     public function update(Request $request, $id){
         $this->middleware('auth');
-
-        $validator = validarDatosPost($request);
-        if($validator->fails())
-            abort(400, '400 Bad request');
+        $this->validarDatosPost($request);
 
         $post = Post::find($id);
         $post_user = User::find($post->user_id);
         if($post_user->id == Auth::user()->id){
             $post->description = $request->descripcion;
-            if($request->public)
-                $post->public = true;
+            if(isset($request->public) && $request->public != null)
+                $post->public = 1;
             else
-                $post->public = false;
+                $post->public = 0;
             $post->save();
         }
         return back();

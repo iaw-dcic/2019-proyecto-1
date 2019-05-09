@@ -8,9 +8,9 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form method="POST" action="/posts/{{$post->id}}" id="form-crear-post" autocomplete="off">
-        @csrf
-        <input type="hidden" name="_method" value="PUT">
+        <form action="posts/{{$post->id}}" id="form-crear-post" autocomplete="off">
+            @csrf
+            <input type="hidden" value="PUT" name="_method">
             <div class="modal-body">
                 <div class="modal-body">
                     <div class="form-group mb-3">

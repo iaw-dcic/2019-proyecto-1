@@ -30,7 +30,7 @@
               </div>
 
             <button class="btn btn-lg btn-primary btn-block text-uppercase" id="btn_signup" type="submit">Registrarse</button>
-            <a class="d-block text-center mt-2 small" href="{{route('login')}}">Ingresasr</a>
+            <a class="d-block text-center mt-2 small" href="{{route('login')}}">Ingresar</a>
 
             <hr class="my-4">
             <a href="{{ route('social_auth', ['driver' => 'google']) }}" class="btn btn-lg btn-google btn-block text-uppercase"><i class="fab fa-google mr-2"></i> Ingresa con Google</a>
