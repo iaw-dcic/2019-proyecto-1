@@ -20,7 +20,7 @@ class WelcomeController extends Controller
     public function show($id){
 
         $coleccion= new Colection;
-            if($coleccion->existe($id)){
+        if($coleccion->existe($id)){
             $coleccion = $coleccion ->findColection($id);
             $items= $coleccion ->findElementos();
             $usuario=User::find($coleccion->user_id);
