@@ -66,6 +66,8 @@ class AlbumController extends Controller
         
         //dd($request);
         $user  = Auth::user();
+        if(!$user)
+        return redirect()->route('home');
         $album = new Album;
         $album->user_id = $user->id;
         $album->public = request('visibility');       
@@ -102,7 +104,10 @@ class AlbumController extends Controller
     public function edit($id)
     {
         //
-        
+        $user  = Auth::user();
+
+        if(!$user)
+        return redirect()->route('home');
         $album = Album::find($id);
         return View('album.edit',['album'=>$album]);
         
@@ -129,9 +134,12 @@ class AlbumController extends Controller
         if ($validator->fails()) 
             return Redirect::back()->withInput(Input::all())->withErrors($validator);;
 
+            if(!$user)
+            return redirect()->route('home');
+
         
 
-     
+        
       $album =Album::find(Input::get('id'));
       $album->name = Input::get('name');
       $album->bandName = Input::get('band');
@@ -155,7 +163,12 @@ class AlbumController extends Controller
      */
     public function destroy($id)
     {
+        $user  = Auth::user();
         $album = Album::find($id);
+        if(!$user || $album->user_id != $user->id)
+            return redirect()->route('home');
+        foreach($album->songs as $song)
+            $song->delete();
         $album->delete();
 
         // redirect

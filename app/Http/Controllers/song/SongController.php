@@ -22,21 +22,28 @@ class SongController extends Controller
     //muestra la canción a editar... 
 
     public function editSong($id){
+        $user = Auth::user();
         $song = Song::find($id);
+        $album = Album::find($song->album_id);
+        if(!$user ||  $user->id != $album->user_id  )
+            return redirect()->route('home');
         return View('songs.edit',['song'=>$song]);
     }
 
 
     public function displaySongs($id){
         //retorna todas las canciones del album con $id pasado por parametro
-
+        $user = Auth::user();
         $album = Album::find($id);
+        if(!$user ||  $user->id != $album->user_id  )
+            return redirect()->route('home');
         $songs= $album->songs;
         return View('songs.display',['songs'=>$songs,'album'=>$album]);
     }
 
     public function updateSong(Request $request){
         //dd($request);
+        $user = Auth::user();
         $rules = array(
             'song'       => 'required',
             'link'      => 'required',
@@ -63,6 +70,15 @@ class SongController extends Controller
     public function destroySong($id){
         $song = Song::find($id);
         $album_id = $song->album_id;
+
+        //Comprobar que sea el usuario correcto 
+        $user = Auth::user();
+        $album = Album::find($album_id);
+        if(!$user ||  $user->id != $album->user_id  )
+            return redirect()->route('home');
+
+
+
         $song->delete();
         return redirect()->route('displaySongs',  ['id' => $album_id]);
       
@@ -74,8 +90,14 @@ class SongController extends Controller
     //Faltan las validaciones del lado del servidor....
     public function addSongs(Request $request){
         //dd($request);
+        $user = Auth::user();
         $j = $request->input('varId');
         $albumId = $request->input('albumId');
+        $album = Album::find($album_id);
+        if(!$user ||  $user->id != $album->user_id  )
+            return redirect()->route('home');
+
+
         //SE PUEDE OPTIMIZAR PERO SE DEJA ASÍ POR CUESTIONES DE LEGIBILIDAD...  
         //leo todos los inputs dinámicos para canciones y para links y los guardo en la base de datos...
         for ($i = 0; $i <= $j; $i++) {

@@ -1,4 +1,4 @@
-var i = 1;
+var i = 0;
 $(document).on("click",".addSong",function(){
 
     var row = $(".clone").eq(0).clone().show();
@@ -18,8 +18,10 @@ $(document).on("click",".addSong",function(){
 }); 
 
 $(document).on("click",".removeSong",function(){
-    $(".last:last").remove();
-    i--;
+    if(i>0){
+        $(".last:last").remove();
+        i--;
+    }
    
 }); 
 

@@ -20,6 +20,8 @@ class ApiController extends Controller
 
     public function profile(){
         $user = Auth::user();
+        if(!$user)
+        return redirect()->route('home');
         $albums= User::find($user->id)->albums;
         return view('profile',['user'=>$user,'albums'=>$albums]);
 
@@ -59,6 +61,8 @@ class ApiController extends Controller
 
     public function updateUser(){
         $user = Auth::user();
+        if(!$user)
+        return redirect()->route('home');
         return view('users/editUser',['user'=>$user]);
 
 
@@ -68,6 +72,8 @@ class ApiController extends Controller
     public function updatePost(Request $request){
         $user = Auth::user();
         //dd($request);
+        if(!$user)
+        return redirect()->route('home');
 
         $data = $this->validate($request, [
             'name' => 'required',

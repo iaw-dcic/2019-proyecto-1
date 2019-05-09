@@ -26,7 +26,7 @@
             <td>{{$album->bandName}}</td>
             <td>{{$album->link}}</td>
             <td>
-            <a href="{{ route('eliminarAlbum', $album->id) }}" class="btn btn-outline-success" role="button" aria-pressed="true">Eliminar</a>
+            <a onclick="return confirm('Are you sure you want to Remove?');" href="{{ route('eliminarAlbum', $album->id) }}" class="btn btn-outline-success" role="button" aria-pressed="true">Eliminar</a>
             </td>
             <td>
             <a href="{{ route('editAlbum', $album->id) }}" class="btn btn-outline-success" role="button" aria-pressed="true">Editar</a>

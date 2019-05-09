@@ -17,8 +17,8 @@
             <tr>
             <td>{{$song->song_name}}</td>
             <td>{{$song->link}}</td>
-            <td><a href="{{ route('editSong',['id' => $song->id]) }}" class="btn btn-primary">Editar</a></td>
-            <td><a onclick="return confirm('Are you sure you want to Remove?');" href="{{ route('destroySong',['id' => $song->id]) }}" class="btn btn-primary">Eliminar</a></td>
+            <td><a href="{{ route('editSong',['id' => $song->id]) }}" class="btn btn-outline-success">Editar</a></td>
+            <td><a onclick="return confirm('Are you sure you want to Remove?');" href="{{ route('destroySong',['id' => $song->id]) }}" class="btn btn-outline-success">Eliminar</a></td>
 
         @endforeach
 
@@ -31,6 +31,7 @@
 
   
 
+    
 </div>
 
 @endsection
