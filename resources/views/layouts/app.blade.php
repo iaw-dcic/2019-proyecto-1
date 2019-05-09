@@ -138,26 +138,7 @@
 
         <div class="container">
             <div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                 @yield('content')
-
-
             </div>
         </div>
     </div>
