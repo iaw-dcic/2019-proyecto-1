@@ -20,9 +20,7 @@
     <ul >
         <li>Laravel (Framework server)</li>
         <li>Bootstrap (Framework estilo)</li>
-        <li>Socialite para el login</li>
         <li>Font-awesome para las fuentes</li>
-        <li>Extension Lighthouse</li>
     </ul>
     <div class='tituloAbout'>
         <h1>Correcciones del Audit:</h1>
