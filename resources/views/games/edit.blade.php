@@ -17,7 +17,7 @@
 
 <!-- Page top end-->
 
-<section class="contact-page">
+<section class="custom-form">
         <h3 style="color:bisque; text-align:center"> Editando <span style="color:azure">{{$game->title}} </span></h3> <br><br>
     <!-- content -->
     <div class="sub-main-w3">
@@ -27,7 +27,7 @@
 
             <!-- Title -->
             <div class="form-style-agile">
-                <label><i class="fas fa-edit"></i>Nombre del juego</label>
+                <label><i class="fa fa-edit"></i>Nombre del juego</label>
                 <input name="title" value="{{ $game->title }}" type="text" required="">
                 <div class="invalid-feedback">
                     El nombre es obligatorio
@@ -36,7 +36,7 @@
 
              <!-- Listings -->
              <div class="form-style-agile">
-                <label><i class="fas fa-list-ul" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
+                <label><i class="fa fa-list-ul" aria-hidden="true"></i> ¿A qué listas pertenece este juego? *</label>
                 <select class="selectpicker" name="listings[]" title="Seleccionar una o más listas" multiple data-live-search="true" data-width="100%" required>
                     @foreach($listings as $listing)
                         <option value="{{ $listing->id}}"> {{ $listing->title}} </option>
@@ -47,7 +47,7 @@
 
             <!-- Console -->
             <div class="form-style-agile">
-                <label><i class="fas fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente? *</label>
+                <label><i class="fa fa-gamepad" aria-hidden="true"></i>¿En qué consola lo jugas principalmente? *</label>
                 <select type="text" class="custom-dropdown" name="console" required>
                     <option disabled selected value style="display:none"> -- Selecciona una consola -- </option>
                     <option {{ $game->console == 'PC' ? 'selected' : '' }}>PC</option>
@@ -60,7 +60,7 @@
 
             <!-- Rating -->
             <div class="form-style-agile">
-                <label><i class="fas fa-thumbs-up"></i>¿Qué valoración le das?</label>
+                <label><i class="fa fa-thumbs-up"></i>¿Qué valoración le das?</label>
                 <select type="text" class="custom-dropdown" name="rating" required>
                     <option disabled selected value style="display:none"> -- Selecciona una opción -- </option>
                     <option {{ $game->rating == 'Excelente' ? 'selected' : '' }}>Excelente</option>
@@ -73,7 +73,7 @@
 
              <!--Genre -->
              <div class="form-style-agile">
-                <label><i class="fas fa-bomb" aria-hidden="true"></i> ¿A qué género pertence el juego?*</label>
+                <label><i class="fa fa-bomb" aria-hidden="true"></i> ¿A qué género pertence el juego?*</label>
                 <select type="text" class="custom-dropdown" name="genre" required>
                     <option disabled selected value style="display:none"> -- Selecciona un género-- </option>
                     <option {{ $game->genre == 'Accion' ? 'selected' : '' }}>Accion</option>
@@ -87,7 +87,7 @@
 
             <!--Mode -->
             <div class="form-style-agile">
-                <label><i class="fas fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
+                <label><i class="fa fa-users" aria-hidden="true"></i> ¿En qué modo lo jugas? *</label>
                 <select type="text" class="custom-dropdown" name="mode" required>
                     <option disabled selected value style="display:none"> -- Selecciona un modo-- </option>
                     <option {{ $game->mode == 'Solitario' ? 'selected' : '' }}>Solitario</option>
@@ -97,10 +97,10 @@
             </div>    
 
             <!-- Cover image -->
-            <label><i class="fas fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
+            <label><i class="fa fa-picture-o" aria-hidden="true"></i>Portada del juego</label>
             <div class="input-group" style="margin-bottom:10px;">
                 <label class="input-group-btn">
-                        <span class="btn btn-primary">
+                        <span class="btn btn-warning">
                             Seleccionar&hellip; <input type="file" name="cover_image" style="display: none;">
                         </span>
                 </label>

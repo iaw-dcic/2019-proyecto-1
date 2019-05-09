@@ -17,7 +17,6 @@
 
 <section class="custom-form">
 
-    <!-- <div class="video-w3l" data-vide-bg="video/1"> -->
     <h3 style="color:bisque; text-align:center;margin-bottom:20px"> Datos del juego </h3>
 
     <!-- content -->

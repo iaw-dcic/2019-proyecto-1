@@ -26,7 +26,7 @@ class CheckGamePrivacy
         foreach ($gameListings as $listing) {
             array_push($userArray,$listing->user_id);
         }
-
+        
         if (!in_array(Auth::user()->id,$userArray) & (Auth::check())) { //Usuario no autorizado
             return redirect('401'); 
         }
