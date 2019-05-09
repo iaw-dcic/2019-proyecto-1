@@ -2,14 +2,14 @@
 
 @section('content')
 
+<div class="d-none d-lg-block"> 
+
 <div class="parallax"></div>
 
+</div>
 
     <div class="container">
 
-
-
-    <
 
      
       @if (! empty($users))

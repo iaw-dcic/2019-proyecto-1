@@ -3,6 +3,7 @@ $(document).on("click",".addSong",function(){
 
     var row = $(".clone").eq(0).clone().show();
     $(row).removeClass("clone");
+    $(row).addClass("last");
     var aux = $(row).find(".cloneName");
     var aux2 = $(row).find(".cloneLink");
     $(aux).attr('name', $(aux).attr('name') + i);
@@ -14,10 +15,11 @@ $(document).on("click",".addSong",function(){
     $(myElement).attr('value',i);
     i++;
 
-
-
-
-
-
-
 }); 
+
+$(document).on("click",".removeSong",function(){
+    $(".last:last").remove();
+    i--;
+   
+}); 
+

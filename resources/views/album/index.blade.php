@@ -12,7 +12,6 @@
       <th scope="col">#</th>
       <th scope="col">Album</th>
       <th scope="col">Artista</th>
-      <th scope="col">Link</th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +20,6 @@
       <th scope="row">1</th>
       <td>{{$user->name}}</td>
       <td>{{$user->bandName}}</td>
-      <td>{{$user->link}}</td>
     </tr>
    @endforeach
   </tbody>

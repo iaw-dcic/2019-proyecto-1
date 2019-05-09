@@ -22,7 +22,7 @@
         @foreach($albums as $album)
             <tr>
             <td>{{$album->id}}</td>
-            <td>{{$album->name}}</td>
+            <td><a href="{{ route('displaySongs', $album->id) }}" class="btn btn-outline-success" role="button" aria-pressed="true">{{$album->name}}</a></td>
             <td>{{$album->bandName}}</td>
             <td>{{$album->link}}</td>
             <td>

@@ -30,11 +30,19 @@ Route::post('/updateUser','ApiController@updatePost')->name('updatePost');
 Route::post('/update','AlbumController@update')->name('update');
 Route::get('/showAlbum/{id}','AlbumController@show')->name('showAlbum');
 
-Route::get('/createSongs/{id}','song\SongController@index')->name('createSongs');
+Route::get('/displaySongs/{id}','song\SongController@displaySongs')->name('displaySongs');
+Route::get('/editSong/{id}','song\SongController@editSong')->name('editSong');
 
+Route::post('/updateSong','song\SongController@updateSong')->name('updateSong');
 
 Route::get('/profile', 'ApiController@profile')->name('profile');
 Route::post('/profile','ApiController@updateAvatar')->name('avatar');
+
+Route::get('/deleteSong/{id}','song\SongController@destroySong')->name('destroySong');
+
+Route::get('/showSongs/{id}','song\SongController@index');
+
+Route::get('/createSongs/{id}','song\SongController@index')->name('createSongs');
 
 
 

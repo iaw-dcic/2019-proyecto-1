@@ -5,6 +5,9 @@ use Auth;
 use Illuminate\Http\Request;
 use Haiku\Http\Controllers\Controller;
 use Haiku\song;
+use Haiku\Album;
+use Validator;
+use Illuminate\Support\Facades\Input;
 
 class SongController extends Controller
 {
@@ -15,6 +18,58 @@ class SongController extends Controller
         Auth::login($user,true);
         return View('songs.create',['id'=>$id]);
     }
+
+    //muestra la canción a editar... 
+
+    public function editSong($id){
+        $song = song::find($id);
+        return View('songs.edit',['song'=>$song]);
+    }
+
+
+    public function displaySongs($id){
+        //retorna todas las canciones del album con $id pasado por parametro
+
+        $album = Album::find($id);
+        $songs= $album->songs;
+        return View('songs.display',['songs'=>$songs,'album'=>$album]);
+    }
+
+    public function updateSong(Request $request){
+        //dd($request);
+        $rules = array(
+            'song'       => 'required',
+            'link'      => 'required',
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) 
+            return Redirect::back()->withInput(Input::all())->withErrors($validator);;
+
+
+        $song = song::find(Input::get('id'));
+        $song->song_name =  Input::get('song');
+        $song->link = Input::get('link');
+        $song->save();
+        $album = Album::find($song->album_id);
+        $songs= $album->songs;
+        return View('songs.display',['songs'=>$songs,'album'=>$album]);
+
+
+    }
+
+    public function destroySong($id){
+        $song = song::find($id);
+        $album_id = $song->album_id;
+        $song->delete();
+        return redirect()->route('displaySongs',  ['id' => $album_id]);
+      
+        }
+
+    
+
 
     //Faltan las validaciones del lado del servidor....
     public function addSongs(Request $request){
@@ -39,9 +94,10 @@ class SongController extends Controller
             $songToDb->song_name = $song;
             $songToDb->link = $link;
             $songToDb->save();
-            return redirect()->route('profile');
             
         }
+        return redirect()->route('profile');
+
 
 
 
