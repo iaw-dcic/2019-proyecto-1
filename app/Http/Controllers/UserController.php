@@ -19,7 +19,7 @@ class UserController extends Controller
     }
 
     public function update(User $user){
-        if(auth()->user()==$user){
+        if(auth()->user()->id==$user){
             $data = request()->validate([
                 'name' => 'required',
                 'email' => [
