@@ -43,10 +43,10 @@ class LoginController extends Controller
         
        $createUser = User::FirstOrCreate(
         [
-            'email' => $user->email
+            'email' => $user->getEmail()
         ],
         [
-            'name' => $user->name
+            'name' => $user->getName()
        
          ]);
         auth()->login($createUser);

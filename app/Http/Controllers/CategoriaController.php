@@ -74,12 +74,19 @@ class CategoriaController extends Controller
      */
     public function edit($nom)
     {
-       $publico=DB::select ('select publico from autos where auto =:nom and id =:id',['nom'=>$nom,'id'=> Auth::id(),]);
+        $idAuto= DB::select('select id from autos where auto=:nom and id=:id', ['nom' => $nom,'id'=>$id]);
+        
+        if(Auth::user()->id==$idAuto[0]->id) 
+        {
+            $publico=DB::select ('select publico from autos where auto =:nom and id =:id',['nom'=>$nom,'id'=> Auth::id(),]);
    
-        if($publico[0]->publico==0)
-        $caters = DB::select('update autos Set publico = :dat where id = :id and auto = :nom', ['dat' => true,'nom'=>$nom,'id'=> Auth::id()]);
-        else
-             $caters = DB::select('update autos Set publico = :dat where id = :id and auto = :nom', ['dat' => false,'nom'=>$nom,'id'=> Auth::id()]);
+            if($publico[0]->publico==0)
+            $caters = DB::select('update autos Set publico = :dat where id = :id and auto = :nom', ['dat' => true,'nom'=>$nom,'id'=> Auth::id()]);
+            else
+                 $caters = DB::select('update autos Set publico = :dat where id = :id and auto = :nom', ['dat' => false,'nom'=>$nom,'id'=>  Auth::id()]);
+         }
+         else
+            abort(403,"403 usuario no autorizado"); 
        
          return redirect('home');
          
@@ -103,10 +110,15 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($nom,$cate)
+    public function destroy($nom,$cate,$id)
     {
-        //DB::table('autos')->where('categoria', '=', $cate)->delete();
-         $caters = DB::select('delete from autos where categoria= :cate and auto=:nom', ['nom' => $nom,'cate'=>$cate]);      
+        
+        $idAuto= DB::select('select id from autos where categoria= :cate and auto=:nom and id=:id', ['nom' => $nom,'cate'=>$cate,'id'=>$id]);
+        
+        if(Auth::user()->id==$idAuto[0]->id) 
+         $caters = DB::select('delete from autos where categoria= :cate and auto=:nom and id=:id', ['nom' => $nom,'cate'=>$cate,'id'=>$id]);
+         else
+            abort(403,"403 usuario no autorizado");      
         return redirect('home');
          
     }
