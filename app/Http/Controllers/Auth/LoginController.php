@@ -87,7 +87,7 @@ class LoginController extends Controller{
             Cloudder::upload($user->getAvatar());
             $result = Cloudder::getResult();
             $photo_id = $result['public_id'];
-            $photo_url = $result['secure_url'];
+            $photo_url = Cloudder::show($photo_id, ['width' => 640, 'height' => 480]);
 
             $newUser->photo_id = $photo_id;
             $newUser->photo_url = $photo_url;

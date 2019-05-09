@@ -77,7 +77,7 @@ class UsersController extends Controller{
             Cloudder::upload($file->getRealPath());
             $result = Cloudder::getResult();
             $photo_id = $result['public_id'];
-            $photo_url = $result['secure_url'];
+            $photo_url = Cloudder::show($photo_id, ['width' => 640, 'height' => 480]);
             $user->photo_id = $photo_id;
             $user->photo_url = $photo_url;
             $user->save();
@@ -128,6 +128,6 @@ class UsersController extends Controller{
             abort(500, 'Internal server error');
             DB::rollback();
         }
-        return abort(403, 'Unauthorized action.');
+        abort(403, 'Unauthorized action.');
     }
 }

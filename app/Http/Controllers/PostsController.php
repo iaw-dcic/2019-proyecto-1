@@ -15,7 +15,7 @@ class PostsController extends Controller{
     protected $redirectTo = '/home';
 
     public function index(){
-        return Post::paginate(9);
+        return Post::paginate(6);
     }
 
     public function store(Request $request){
@@ -57,7 +57,7 @@ class PostsController extends Controller{
             Cloudder::upload($file->getRealPath());
             $result = Cloudder::getResult();
             $photo_id = $result['public_id'];
-            $photo_url = $result['secure_url'];
+            $photo_url = Cloudder::show($photo_id, ['width' => 640, 'height' => 480]);
 
             $photo = new Photo();
             $photo->post_id = $post->id;
@@ -74,10 +74,6 @@ class PostsController extends Controller{
         ]);
     }
 
-    private function validarImagenes($file){
-        return Validator::make($file, 'image');
-    }
-
     public function show(Request $request, $id){
         if($request->ajax()){
             $post = Post::find($id);
@@ -85,7 +81,7 @@ class PostsController extends Controller{
             $photos = $post->getPhotos()->get();
             return view('partials.post.post')->with(['post' => $post, 'user' => $user, 'photos' => $photos]);
         }
-        return abort(403, 'Unauthorized action.');
+        abort(403, 'Unauthorized action.');
     }
 
     public function update(Request $request, $id){
@@ -93,7 +89,7 @@ class PostsController extends Controller{
 
         $validator = validarDatosPost($request);
         if($validator->fails())
-            return abort(400, '400 Bad request');
+            abort(400, '400 Bad request');
 
         $post = Post::find($id);
         $post_user = User::find($post->user_id);

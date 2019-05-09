@@ -12,7 +12,7 @@
 */
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('cacheable:5');
 
 Route::get('/', 'WelcomeController@index')
     ->name('welcome')
