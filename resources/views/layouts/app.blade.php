@@ -44,7 +44,7 @@
 
 
                     <div class="collapse navbar-collapse" id="collapse_target">
-                            @if(Route::current()->getName()=='users.show')
+                            {{-- @if(Route::current()->getName()=='users.show')
                             <a class="navbar-brand" href="{{ route('home') }}"><img src="../../futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
@@ -52,7 +52,10 @@
                             <a class="navbar-brand" href="{{ route('home') }}"><img src="futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
-                            @endif
+                            @endif --}}
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="/futbol.png" alt="home"></a>
+                            <span class="navbar-text">Futboleros</span>
+                            </a>
 
                         <ul class="navbar-nav">
                             {{-- <li class="nav-item dropdown">
