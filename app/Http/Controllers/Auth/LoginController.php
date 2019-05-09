@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\User;
 use JD\Cloudder\Facades\Cloudder;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller{
     use AuthenticatesUsers;
@@ -59,7 +60,10 @@ class LoginController extends Controller{
                 auth()->login($existingUser, true);
             else {
                 $newUser = $this->crearUsuario($user, $driver);
-                auth()->login($newUser, true);
+                if($newUser != null)
+                    auth()->login($newUser, true);
+                else
+                    return redirect()->route('login');
             }
 
         }catch(\Exception $e){
@@ -89,10 +93,11 @@ class LoginController extends Controller{
             $newUser->photo_url = $photo_url;
             $newUser->save();
             DB::commit();
+            return $newUser;
         }catch(\Exception $ex){
             DB::rollback();
             abort(500, '500 Internal Server Error');
         }
-        return $newUser;
+        return null;
     }
 }

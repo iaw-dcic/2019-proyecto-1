@@ -77,11 +77,11 @@
                         @foreach($photos as $photo)
                             @if($photo != $post->getPhotos()->get()->first())
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="{{ $photo->photo_url }}">
+                                    <img class="d-block w-100" alt="{{$post->description}}" src="{{ $photo->photo_url }}">
                                 </div>
                             @else()
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="{{ $photo->photo_url }}">
+                                    <img class="d-block w-100" alt="{{$post->description}}" src="{{ $photo->photo_url }}">
                                 </div>
                             @endif()
                         @endforeach()

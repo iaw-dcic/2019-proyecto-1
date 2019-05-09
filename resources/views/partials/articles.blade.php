@@ -6,7 +6,7 @@
             @foreach($posteos as $post)
             <article class="col-12 col-md-5 col-lg-2 posts" data-target="#modal-post" data-post="{{$post}}">
                 <figure data-toggle="modal">
-                    <img class="img-fluid img-thumbnail"
+                    <img class="img-fluid img-thumbnail" alt="{{$post->description}}"
                         src="{{ $post->getPhotos()->get()->first()->photo_url }}">
                     <figcaption>
                         <h2>&#64{{ App\User::find($post->user_id)->username }}</h2>

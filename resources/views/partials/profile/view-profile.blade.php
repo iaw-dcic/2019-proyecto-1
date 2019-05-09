@@ -5,8 +5,8 @@
 
     <div class="row no-gutters row-perfil align-items-center">
         <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-end foto-perfil no-gutters">
-            <a href="#" data-toggle="modal" data-target="#cambiarFotoPerfil">
-                <img src="{{ $user->photo_url ?: url('storage/users/no_photo.png') }}" class="img-fluid img-thumbnail" id="foto_perfil_usuario">
+            <a href="#" data-toggle="modal" data-target="#cambiarFotoPerfil" aria-label="Cambiar foto de perfil">
+                <img src="{{ $user->photo_url ?: url('storage/users/no_photo.png') }}" alt="Foto de perfil" class="img-fluid img-thumbnail" id="foto_perfil_usuario">
             </a>
         </div>
 
@@ -14,8 +14,8 @@
 
             @if(Auth::user() != null && Auth::user()->username == $user->username)
             <div class="d-flex justify-content-center justify-content-md-start text-center text-md-left botones-perfil">
-                <a href="#" data-toggle="modal" data-target="#crearPost"><i class="fas fa-plus btn-profile"></i></a>
-                <a href="#" data-toggle="modal" data-target="#editarPerfil"><i class="far fa-edit btn-profile"></i></a>
+                <a href="#" data-toggle="modal" data-target="#crearPost" aria-label="Crear post"><i class="fas fa-plus btn-profile"></i></a>
+                <a href="#" data-toggle="modal" data-target="#editarPerfil" aria-label="Editar perfil"><i class="far fa-edit btn-profile"></i></a>
             </div>
             @endif()
 

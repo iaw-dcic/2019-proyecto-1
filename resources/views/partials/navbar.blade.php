@@ -16,8 +16,9 @@
             <!--Formulario de búsqueda-->
             <form class="form-inline my-2 my-lg-0" id="form-search" method="GET" action="/user/search">
                 <div class="searchbar d-flex align-items-center" id="div_search">
+                    <label for="search_input" style="display: none">Buscar usuario: </label>
                     <input class="typeahead search_input" id="search_input" type="text" name="username" placeholder="Buscar usuario...">
-                    <button type="submit" href="#" class="search_icon d-flex justify-content-center align-items-center"
+                    <button type="submit" value="submit" aria-label="Buscar usuarios" href="#" role="button" class="search_icon d-flex justify-content-center align-items-center"
                         id="search_btn" onmouseover="document.getElementById('search_input').focus()">
                         <i class="fas fa-search"></i>
                     </button>
@@ -48,7 +49,7 @@
 
                     <li class="nav-item dropdown img-perfil">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ Auth::user()->photo_url ?: url('storage/users/no_photo.png') }}" id="foto_perfil_navbar"></img>
+                            <img src="{{ Auth::user()->photo_url ?: url('storage/users/no_photo.png') }}" alt="Tu perfil" id="foto_perfil_navbar"></img>
                             &#64;{{ Auth::user()->username }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu fade" aria-labelledby="navbarDropdown">
