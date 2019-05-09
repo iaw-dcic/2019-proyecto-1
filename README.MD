@@ -13,7 +13,7 @@ Autor: Matias Massetti - LU 107954
 - Laravel page speed (https://github.com/renatomarinho/laravel-page-speed)
 
 
-** Resultados Audit Lighthouse **
+**Resultados Audit Lighthouse:**
 
 Inicio - Performance: 79 - Accesibilidad: 90
 Listas - Performance: 75 - Accesibilidad: 98
