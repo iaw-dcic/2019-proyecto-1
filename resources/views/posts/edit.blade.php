@@ -36,8 +36,11 @@
                         <td>{{$item->link}}</td>
                         <td>{{$item->price}}</td>
                         <td>
+
                          {{ Form::open(['action' => ['ItemsController@edit', $item->id] , 'method'=> 'GET']) }}
+                           @csrf
                             {{Form::submit('Edit', ['class'=>'btn'])}}
+                            
                         {!!Form::close()!!}
       
                         <div class = 'float-right'>        
