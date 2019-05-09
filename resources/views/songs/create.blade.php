@@ -57,7 +57,7 @@
                         <br>
 
                         <button type="submit" class="btn btn-primary">
-                                    Agregar Album 
+                                    Agregar al Album 
                                 </button>
                     </form>
                 </div>

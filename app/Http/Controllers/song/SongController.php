@@ -16,6 +16,8 @@ class SongController extends Controller
         //vuelvo a chequear que el usuario tenga permisos de hacer cambios... 
         $user = Auth::user();
         Auth::login($user,true);
+        if(!$user)
+            return redirect()->route('home');
         return View('songs.create',['id'=>$id]);
     }
 
