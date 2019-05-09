@@ -23,10 +23,9 @@
     @endif </small>
     <hr>
     </div>
-        
+        <a href ="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
         @if(!Auth::guest())
             @if (Auth::user()->id == $post->user_id)
-                <a href ="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
                 <div class = 'float-right'>        
                 {{ Form::open(['action' => ['PostsController@destroy', $post->id] , 'method'=> 'POST', 'class' =>'pull-right']) }}
                     {{Form::hidden('_method', 'DELETE')}}
