@@ -14,18 +14,20 @@ class ListController extends Controller
     
     protected function showList($id){
 
-        $items = Item::where('task_id',$id)->get();
-
-        $task = Task::where('id',$id)->where('privacy','Public')->get()->first();
-
+        $task = Task::where('id',$id)->get()->first();
         $user = User::where('id',$task->owner_id)->get()->first();
 
         if(Auth::check()){
-            if($user->id == Auth::user()->id){
-                $task = Task::where('id',$id)->get()->first();
-                return view('/list', compact('items','user','task'));
+            if(Auth::user()->id !=$user->id && $task->privacy != 'Public'){
+                abort(404,'No tienes permisos para ver esta página');
+            }
+        }else{
+            if($task->privacy != 'Public'){
+                abort(404,'No tienes permisos para ver esta página');
             }
         }
+
+        $items = Item::where('task_id',$id)->get();
 
         return view('/list', compact('items','user','task'));
 
