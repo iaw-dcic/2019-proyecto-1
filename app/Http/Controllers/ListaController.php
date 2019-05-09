@@ -122,7 +122,7 @@ class ListaController extends Controller
 
                       $lista->save();        
 
-                      $listas=DB::table('lista')->orderBy('created_at','desc')->get();
+                      $listas=DB::table('lista')->where('user_id','=',$user->id)->orderBy('created_at','desc')->get();
                       $data = array('user' => Auth::user(),
                                     'listas' => $listas);
 
