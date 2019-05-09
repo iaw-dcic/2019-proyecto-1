@@ -40,24 +40,22 @@ class CategoriaController extends Controller
 
         if(Auth::id()==$id)
        {
-        $Auto=new auto();//nuestro modelo
-        $Auto->id=Auth::id();
-        if(!empty($request->input('name')) and !empty($request->input('cv')))
-        {
-             $Auto->auto=$request->input('name');
-             $Auto->categoria=$request->input('categoria');
-             $Auto->cv=$request->input('cv');
-             $Auto->publico=false;
-             $Auto->save();
+         $Auto=new auto();//nuestro modelo
+         $Auto->id=Auth::id();
+         if(!empty($request->input('name')) and !empty($request->input('cv')))
+         {
+            $Auto->auto=$request->input('name');
+            $Auto->categoria=$request->input('categoria');
+            $Auto->cv=$request->input('cv');
+            $Auto->publico=false;
+            $Auto->save();
          }
-     }
-     else
-        abort(403,"403 usuario no autorizado"); 
+        }
+        else
+            abort(403,"403 usuario no autorizado"); 
        return redirect('/home');
        
-       
-        
-    }
+     }
 
     /**
      * Display the specified resource.
