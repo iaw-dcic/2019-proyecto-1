@@ -19,26 +19,30 @@ class UserController extends Controller
     }
 
     public function update(User $user){
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users')->ignore($user->id),], //En la busqueda me tiene que ignorar el mail actual del usuario.
-            'password' => '',
-        ]);
+        if(auth()->user()==$user){
+            $data = request()->validate([
+                'name' => 'required',
+                'email' => [
+                    'required',
+                    'email',
+                    Rule::unique('users')->ignore($user->id),], //En la busqueda me tiene que ignorar el mail actual del usuario.
+                'password' => '',
+            ]);
 
-        if($data['password'] != null){
-            $data['password'] = bcrypt($data['password']);
-        }else{
-            //Usamos unset para quitar el indice password del array asociativo de la variable data
-            unset($data['password']);
-        }
+            if($data['password'] != null){
+                $data['password'] = bcrypt($data['password']);
+            }else{
+                //Usamos unset para quitar el indice password del array asociativo de la variable data
+                unset($data['password']);
+            }
 
 
-        $user->update($data);
+            $user->update($data);
 
-        return redirect('home');
+            return redirect('home');
+    }else {
+        return back();
+    }
     }
 
     public function show($id){
