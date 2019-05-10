@@ -64,7 +64,7 @@
                             </div>
 
                             <div class="cell" data-title="Link al perfil">
-                                <a href="{{route('user_profile',$listing['listing']->user_id)}}">Ver</a>
+                                <a href="{{route('user_profile',$listing['owner'])}}">Ver</a>
                             </div>
                         </div>
                     @endforeach
