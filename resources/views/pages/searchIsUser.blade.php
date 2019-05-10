@@ -4,7 +4,7 @@
 @stop
 
 
-@section('title',' | Juegos') 
+@section('title',' | Búsqueda') 
 @section('content')
 @include('sweetalert::alert')
 

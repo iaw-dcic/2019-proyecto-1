@@ -19,7 +19,7 @@ class ListingsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'create', 'getUserListings']]);
+        $this->middleware('auth', ['except' => ['index','show', 'create', 'getUserListings','getAllPublicListings']]);
 
         $this->middleware('listing.privacy', ['only'=>['edit','update','destroy']]);
     }
@@ -161,5 +161,20 @@ class ListingsController extends Controller
         $listing->games()->detach(Game::find($gameId));
         alert()->info('Atención!', 'El juego fue eliminado de la lista');
         return redirect('listings');
+    }
+
+    public function getAllPublicListings() {
+        $publicListings = Listing::where('visibility','=', 'Publica')
+                        ->orderBy('title', 'asc')
+                        ->paginate(8);
+           
+        $data= array();
+        foreach($publicListings as $listing) {
+            $ownerName = $listing->user()->first()->name;
+            $data[] = array('listing' => $listing, 'owner' => $ownerName);
+        }
+
+       return view('listings.listing-all')->withData($data)->withListings($publicListings);
+     
     }
 }

@@ -38,6 +38,7 @@ Route::post('/profile','UserController@update_profile')->name('update_profile');
 
 //Listings
 Route::get('/deleteGameFromListing/{game}/{listing}','ListingsController@deleteGameFromListing')->name('delete_game_from_listing');
+Route::get('/publicListings','ListingsController@getAllPublicListings')->name('public_listings');
 Route::resource('listings','ListingsController');
 
 

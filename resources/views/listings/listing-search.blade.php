@@ -33,7 +33,7 @@
                         <div class="widget-item">
                             <form class="search-widget" action="{{url('searchUser') }}" method="get">
                                 @csrf
-                                <input autofocus name="searchTerm" type="text" placeholder="Escribí acá el nombre del usuario y hace click en buscar">
+                                <input autofocus name="searchTerm" type="text" placeholder="Escribí acá el nombre de una lista o de un usuario y hace click en buscar">
                                 <button><i class="fa fa-search" aria-hidden="true"></i>  Buscar</button>
                             </form>
                         </div>

@@ -42,10 +42,12 @@
                             Lista
                         </div>  
                        
-                        @if($data['listOwnerName'] == Auth::user()->name)
-                            <div class="cell"> Visibilidad </div>
-                            <div class="cell"> Eliminar </div>
-                        @endif
+                        @auth
+                            @if($data['listOwnerName'] == Auth::user()->name)
+                                <div class="cell"> Visibilidad </div>
+                                <div class="cell"> Eliminar </div>
+                            @endif
+                        @endauth
 
                         @guest
                             <div class="cell">
@@ -68,18 +70,20 @@
                                 <a href="{{route('listings.show',$listing->id)}}">Link a la lista</a>
                             </div>
 
-                            @if($data['listOwnerName'] == Auth::user()->name)
-                                    <div class="cell" data-title="Visibilidad">
-                                            {{$listing->visibility}}
-                                    </div>
-                                    <div class="cell" data-title="Eliminar lista">
-                                            <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post"> 
-                                                    {{ method_field("DELETE") }} @csrf
-                                                    {{ csrf_field() }}
-                                                    <button type="submit" id="deleteButton" data-name="{{ $listing->title }}" class="btn btn-xs btn-danger">X</button>         
-                                            </form>
-                                    </div>
-                            @endif
+                            @auth
+                                @if($data['listOwnerName'] == Auth::user()->name)
+                                        <div class="cell" data-title="Visibilidad">
+                                                {{$listing->visibility}}
+                                        </div>
+                                        <div class="cell" data-title="Eliminar lista">
+                                                <form class="read-more" action="{{ route('listings.destroy', array('id' => $listing->id )) }}" method="post"> 
+                                                        {{ method_field("DELETE") }} @csrf
+                                                        {{ csrf_field() }}
+                                                        <button type="submit" id="deleteButton" data-name="{{ $listing->title }}" class="btn btn-xs btn-danger">X</button>         
+                                                </form>
+                                        </div>
+                                @endif
+                            @endauth
                             @guest
                                 <div class="cell" data-title="Link al perfil">
                                     <a href="{{route('user_profile',$data['listOwnerName'])}}">Link al perfil</a>
@@ -91,15 +95,19 @@
                 </div>
                 
                 <!--Create list -->
-                @if($data['listOwnerName'] == Auth::user()->name)
-                    <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
-                @endif
+                @auth
+                    @if($data['listOwnerName'] == Auth::user()->name)
+                        <a href="{{route('listings.create') }}" class="site-btn">Crear otra lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+                    @endif
+                @endauth
     
             @else 
                 <!--Messages depending if is the owner or a guest -->       
+                    @auth
                     @if($data['listOwnerName'] == Auth::user()->name)
                         <h2 style="color:white; margin-bottom:20px;" > Todavía no tenes ninguna lista!</h2>
                         <a href="{{route('listings.create') }}" class="site-btn">Crear lista<img src="{{asset('img/icons/double-arrow.png')}}" alt="#"/></a>
+                    @endauth
                     @else
                         <h2 style="color:white; margin-bottom:20px;" > {{$data['listOwnerName']}} todavía no tiene ninguna lista pública!</h2>
                     @endif

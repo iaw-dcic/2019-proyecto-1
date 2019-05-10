@@ -32,26 +32,24 @@
                                 <h3 style="color:bisque">Información del usuario</h3>
 
                                 <!-- Name -->
-                                <div class="top-meta" style="color:wheat">Nombre: <span
-                                        style="color: azure">{{$user->name}}</span></div>
+                                <div class="top-meta" style="color:wheat">Nombre: <span style="color: azure">{{$user->name}}</span></div>
 
                                 <!-- Username -->
-                                <div class="top-meta" style="color:wheat">Nombre usuario: <span
-                                        style="color: azure">{{$user->username}}</span></div>
+                                <div class="top-meta" style="color:wheat">Nombre usuario: <span style="color: azure">{{$user->username}}</span></div>
                                 @auth
-                                <!-- Email -->
-                                <div class="top-meta" style="color:wheat">Email registrado: <span
-                                        style="color: azure">{{$user->email}}</span></div>
+                                    @if($user->id == Auth::user()->id)
+                                        <!-- Email -->
+                                        <div class="top-meta" style="color:wheat">Email registrado: <span style="color: azure">{{$user->email}}</span></div>
+                                    @endif
                                 @endauth
-
                                 <!--Favourite game -->
                                 <div class="top-meta" style="color:wheat">Juego favorito: <span style="color: azure">{{$user->favourite_game}}</span>
                                     @auth
                                         @if($user->id == Auth::user()->id)
-                                            <button class="btn btn-sm btn-info" data-toggle="modal"
-                                                data-favgame="{{$user->favourite_game}}" data-target="#favGameModal"
-                                                style="margin-left: 10px">Cambiar 
-                                            </button>
+                                                <button class="btn btn-sm btn-info" data-toggle="modal"
+                                                    data-favgame="{{$user->favourite_game}}" data-target="#favGameModal"
+                                                    style="margin-left: 10px">Cambiar 
+                                                </button>
                                         @endif
                                     @endauth
                                 </div>
@@ -138,28 +136,28 @@
                                  </div>
                              </div>
 
-        
                                 <!-- Listings -->
                                 <div class="top-meta" style="color:wheat">Listas:
                                     @if (count($userListings)>0)
                                         @foreach($userListings as $listing)
-                                            @guest
+                                            @auth
+                                            @if($user->id == Auth::user()->id)
+                                                <a href="{{route('listings.show',$listing->id)}}"> <span style="color:deepskyblue">{{$listing->title}} / </span></a>
+                                            @endauth
+                                            @else
                                                 @if ($listing->visibility == 'Publica')
                                                     <a href="{{route('listings.show',$listing->id)}}"><span style="color:deepskyblue">{{$listing->title}} / </span></a>
                                                 @endif
-                                            @endguest
-
-                                            @if($user->id == Auth::user()->id)
-                                                <a href="{{route('listings.show',$listing->id)}}"> <span style="color:deepskyblue">{{$listing->title}} / </span></a>
                                             @endif
                                         @endforeach
                                     @else
+                                        @auth
                                         @if($user->id == Auth::user()->id)
                                             <span style="color: azure">Todavía no tenes ninguna lista</span>
-                                        @endif
-                                        @guest
-                                            El usuario todavía no creó ninguna lista
-                                        @endguest
+                                        @endauth
+                                        @else
+                                            <span styile="color: azure">  {{$user->username}} todavía no creó ninguna lista </span>  
+                                        @endif                                                   
                                     @endif
 
                                 </div>
@@ -171,27 +169,27 @@
                                     style="width:150px; height:150px; border-radius:50%; margin-right:25px; margin-bottom:8px"
                                     alt="Avatar">
              
-                                @if($user->id == Auth::user()->id)
-                                    <form enctype="multipart/form-data" method="post" action="{{route('update_profile')}}">
-                                        @csrf
-                                        <div class="input-group" style="width:50%">
-                                            <label class="input-group-btn">
-                                                <span class="btn btn-info"> Cambiar&hellip; <input type="file" name="avatar" style="display: none;"></span>
-                                            </label>
-                                            <input type="text" class="form-control" readonly><br><br>
-                                        </div>
-                                        <input class="btn btn-primary" type="submit" value="OK">
-                                    </form>
-                                @endif
+                                @auth
+                                    @if($user->id == Auth::user()->id)
+                                        <form enctype="multipart/form-data" method="post" action="{{route('update_profile')}}">
+                                            @csrf
+                                            <div class="input-group" style="width:50%">
+                                                <label class="input-group-btn">
+                                                    <span class="btn btn-info"> Cambiar&hellip; <input type="file" name="avatar" style="display: none;"></span>
+                                                </label>
+                                                <input type="text" class="form-control" readonly><br><br>
+                                            </div>
+                                            <input class="btn btn-primary" type="submit" value="OK">
+                                        </form>
+                                    @endif
+                                @endauth
                             </div>
                         </div>
 
                     </div>
-                    <div class="blog-thumb">
-
+                <div class="blog-thumb">
                     </div>
                 </div>
-
 
             </div>
             <div class="col-xl-3 col-lg-4 col-md-5 sidebar">
@@ -203,10 +201,12 @@
                             <ul>
                                 <li><a href="/">Inicio</a></li>
                                 <li><a href="{{ route('listings.index')}}">Listas de juegos</a></li>
-                                @if($user->id == Auth::user()->id)
-                                    <li><a href="{{ route('games.create')}}">Agregar juego</a></li>
-                                    <li><a href="{{url('searchlisting')}}">Buscar listas</a></li>
-                                @endif
+                                @auth
+                                    @if($user->id == Auth::user()->id)
+                                        <li><a href="{{ route('games.create')}}">Agregar juego</a></li>
+                                        <li><a href="{{url('searchlisting')}}">Buscar listas</a></li>
+                                    @endif
+                                @endauth
                                 <li><a href="{{url('about')}}">Preguntas frecuentes</a></li>
                             </ul>
                         </div>

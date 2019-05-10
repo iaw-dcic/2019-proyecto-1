@@ -49,15 +49,18 @@
                         
                             <ul class="sub-menu">
                                 @auth
-                                <li><a href="{{route('listings.index')}}"> Mis listas </a></li>
-                                <li><a href="{{route('listings.create')}}"> Nueva lista </a></li>
+                                    <li><a href="{{route('listings.index')}}"> Mis listas </a></li>
+                                    <li><a href="{{route('listings.create')}}"> Nueva lista </a></li>
                                 @endauth
+                                <li><a href="{{url('publicListings')}}"> Listas públicas </a></li>
                                 <li><a href="{{url('searchlisting')}}"> Buscar listas de usuarios </a></li>
                             </ul>
                         </li>
                     @endauth
                     @guest
                         <li><a href="{{route('listings.index')}}">Listas</a> </li>
+                        <li><a href="{{url('publicListings')}}"> Listas públicas </a></li>
+
                         <li><a href="{{url('searchlisting')}}">Búsqueda</a> </li>
                     @endguest
 
