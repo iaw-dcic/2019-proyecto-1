@@ -15,7 +15,7 @@ Autor: Matias Massetti - LU 107954
 
 **Resultados Audit Lighthouse:**
 
-- Inicio - Performance: 79 - Accesibilidad: 90
-- Listas - Performance: 75 - Accesibilidad: 98
-- Perfil - Performance: 81 - Accesibilidad: 91
-- Crear juego - Performance: 87 - Accesibilidad: 98
+- Inicio - Performance: 74 - Accesibilidad: 90
+- Listas - Performance: 77 - Accesibilidad: 98
+- Perfil - Performance: 88 - Accesibilidad: 91
+- Crear juego - Performance: 90 - Accesibilidad: 98
