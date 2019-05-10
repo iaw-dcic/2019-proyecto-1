@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Haiku\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\TrimStrings as Middleware;
 

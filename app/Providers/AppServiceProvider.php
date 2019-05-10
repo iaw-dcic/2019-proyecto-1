@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Haiku\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //haciendo que todo la aplicacación use https. 
+        if (env('APP_ENV') === 'production') {
+            $this->app['url']->forceScheme('https');
+        }
+
     }
 
     /**

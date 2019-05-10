@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Haiku\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Haiku\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+use Haiku\User;
 
 class LoginController extends Controller
 {
@@ -35,5 +38,42 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+
+        $githubUser = Socialite::driver('github')->user();
+        //dd($githubUser);
+        //add user to database
+        $user = User::where('provider_id', $githubUser->getId())->first();
+        if(! $user){
+                    $user = User::create([
+                        'email' => $githubUser->getEmail(),
+                        'name' => $githubUser->getName(),
+                        'provider_id' => $githubUser->getId(),
+                        //'avatar' => $githubUser->getAvatar(),
+                        
+
+                    ]);
+        }
+        Auth::login($user,true);
+        // $user->token;
+        return redirect('/home');    
     }
 }
