@@ -32,6 +32,6 @@
 	@endforeach
 </tbody>
 </table>
-<a href="{{route('listas.create',$lista)}}" role="button" class="btn btn-primary btn-lg btn-block" aria-pressed="true">Agregar</a>
+<a href="{{route('listas.create')}}" role="button" class="btn btn-primary btn-lg btn-block" aria-pressed="true">Agregar</a>
 </div>
 @endsection
