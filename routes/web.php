@@ -72,7 +72,7 @@ Route::put('/profiles/',[
 
 
 Route::get('public/{usr}','PublicController@index')->name('publica');
-
+Route::get('public/{usr}/{id}','PublicController@show')->name('public.show');
 
 //socialite
 Route::get('/redirect', 'SocialController@redirect');

@@ -19,7 +19,7 @@
 			@foreach ($listas as $lista)
 			<tr>
 				<td>
-					{{$lista->nombre}}
+					<a href="{{ route('public.show',['usr'=>$usr,'id' => $lista->id])}}"> {{$lista->nombre}}</a>
 				</td>
 				<td>
 				@if($lista->lista_publica == '1')

@@ -53,6 +53,9 @@
                                     <a class="dropdown-item" href="{{ route('profiles.edit') }}">
                                         {{ __('Editar Perfil') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('listas.index') }}">
+                                        {{ __('mis Listas') }}
+                                    </a>
 
                                 </div>
                             </li>
