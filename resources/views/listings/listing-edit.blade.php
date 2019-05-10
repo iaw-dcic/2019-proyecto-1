@@ -27,7 +27,7 @@
             {{ csrf_field() }}
             <!-- Title -->
             <div class="form-style-agile">
-                <label> <i class="fas fa-edit" aria-hidden="true"></i>Nombre de la lista *</label>
+                <label> <i class="fa fa-edit" aria-hidden="true"></i>Nombre de la lista *</label>
                 <input name="title" value="{{ $listing->title }}" type="text" class="form-control" required>
                 <div class="invalid-feedback">
                     El nombre es obligatorio
