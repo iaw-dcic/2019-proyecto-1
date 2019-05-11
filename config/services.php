@@ -1,4 +1,4 @@
-<?php
+                    <?php
 
 return [
 
@@ -43,5 +43,11 @@ return [
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
     ],
+
+    'twitter' => [
+        'client_id' => 'TlUevKuWKUlgvfUC41yy3fUzf',
+        'client_secret' => 'TAf66Kt2Mrs3sxbuOoFastyTmhDjprO7pSoMMO0UHwTI4W8fOG',
+        'redirect' => 'http://proyecto1.test/callback/twitter',
+        ],
 
 ];

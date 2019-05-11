@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index');
+
+Route::resource('posts','PostsController');
+
+Auth::routes();
+
+Route::get('/auth/redirect/{provider}', 'SocialController@redirect');
+Route::get('/callback/{provider}', 'SocialController@callback');
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/users/{id}', 'PagesController@user');
+
+Route::get('/users/edit/{id}', 'PagesController@edit');
+
+Route::resource('pages','PagesController');
