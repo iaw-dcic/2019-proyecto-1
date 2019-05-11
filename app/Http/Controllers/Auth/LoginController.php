@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -25,7 +28,10 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectToHome = '/';
+    protected $redirectToLogin = '/login';
+    protected $redirectToProfile = '/profile';
+
 
     /**
      * Create a new controller instance.
@@ -36,4 +42,91 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $userGithub = Socialite::driver('github')->stateless()->user();
+
+        $user = User::where('email',$userGithub->getEmail())->first();
+
+        if(!$user){ // Si el usuario no existe
+
+            $user = new User();
+
+            $user->provider_id = $userGithub->getId();
+            $user->email = $userGithub->getEmail();
+            $user->name = $userGithub->getName();
+            $user->username = $userGithub->getNickname();
+            $user-> avatar_img = $userGithub->getAvatar();
+
+            $user->save();
+        }
+
+        // Login User
+        Auth::login($user,true);
+
+        return redirect($this->redirectToHome);
+    }
+
+    /**
+     * Redirect the user to the Facebook authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+
+    /**
+     * Obtain the user information from Facebook.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleFacebookCallback()
+    {
+
+            $userFacebook = Socialite::driver('facebook')->stateless()->user();
+
+            $user = User::where('email',$userFacebook->getEmail())->first();
+
+            list($username,$dominio) = explode("@", $userFacebook->getEmail());
+
+            if(!$user){ // Si el usuario no existe
+
+                $user = new User();
+
+                $user->provider_id = $userFacebook->getId();
+                $user->email = $userFacebook->getEmail();
+                $user->username = $username;
+                $user->name = $userFacebook->getName();
+                $user-> avatar_img = $userFacebook->getAvatar();
+
+                $user->save();
+            }
+
+            // Login User
+            Auth::login($user,true);
+
+        //Overide Facebook
+        return redirect('/#');
+    }
+
+
 }

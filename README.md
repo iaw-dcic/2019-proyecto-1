@@ -1,62 +1,80 @@
-# Proyecto 1: PHP - Laravel - MySQL
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-Repositorio de base para el Proyecto 1 - 2019 - Laravel
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-## Creación del Fork
 
-Debe realizar un fork de este repositorio en su propia cuenta de GitHub.
-Una vez realizado esto, puede clonar su fork, y seguir las siguientes instrucciones para poder correr localmente el proyecto inicial en Laravel (ver requisitos mínimos [acá](https://laravel.com/docs/5.8#server-requirements)):
+## Sobre el proyecto
 
-1. `git clone https://github.com/<UsuarioGitHub>/proyecto-1.git` clona localmente el fork del repositorio original, `<UsuarioGitHub>` **NO** debe ser `iaw-dcic`
-1. `cd proyecto-1`
-1. `composer install` instala dependencias
-1. `cp .env.example .env` (`copy .env.example .env` en Windows) crea el archivo de configuración de entorno
-1. `php artisan key:generate` agrega un api key aleatorio
-1. `php artisan serve` inicializa el server
+Se uso https://hatchful.shopify.com/ para el logo.
 
-Eso debería permitirle acceder a http://127.0.0.1:8000
+Libreria para logins sociales
+  * Socialite -> Github 
 
-## Creación del Pull Request para la entrega
 
-1. Vaya a `https://github.com/<github-user>/proyecto-1`
-1. Haga click en 'New pull request'
-1. Haga click en 'compare across forks'
-1. Seleccione como base respository a `iaw-dcic/proyecto-1`
-1. Seleccione como head repository a su repositorio y branch donde tiene el proyecto.
-1. Haga click en "Create pull request"
-1. Escriba como título del Pull Request "Entrega Proyecto 1".
-1. Puede agregar un comentario que considere apropiado.
-1. Finalmente, haga click en "Create pull request".
+## About Laravel
 
-## Herramienta Audit de Chrome
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-1. En cada página que desee evaluar (hagalo para al menos 3 páginas de su proyecto)
-1. En chrome, abra la herramienta del desarrollador (Fn 12)
-1. Seleccione las opciones que se muestran en la siguiente captura ![Ver](screenshots/screenshot21.png)
-1. Ejecute la auditoria
-1. Analice los resultados e intente corregir posibles errores reportados por la misma.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## Deploy en Heroku
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-1. Crear una cuenta en https://www.heroku.com/
-1. Crear la aplicación ![Ver](screenshots/screenshot1.png)
-1. Elija un nombre único ![Ver](screenshots/screenshot2.png)
-1. Vaya al tab deploy, conecte a su cuenta de Github ![Ver](screenshots/screenshot3.png)
-1. Busque su repositorio y haga click en connect ![Ver](screenshots/screenshot4.png)
-1. Habilite los deploy automáticos (opcional, también puede hacer deploys manuales) ![Ver](screenshots/screenshot5.png)
-1. En el tab settings, haga click en 'Reveal Config Vars' ![Ver](screenshots/screenshot6.png)
-1. Agregue la variable de entorno API_KEY ![Ver](screenshots/screenshot7.png)
-1. Agregue el archivo Procfile ![Ver](screenshots/screenshot8.png)
-1. Vaya a https://www.cleardb.com/login.view y registre una cuenta ![Ver](screenshots/screenshot9.png)
-1. Ingrese sus datos, el número de teléfono no tiene que ser válido ![Ver](screenshots/screenshot10.png)
-1. Verifique su email para poder continuar ![Ver](screenshots/screenshot11.png)
-1. Cree su usuario y contraseña ![Ver](screenshots/screenshot12.png)
-1. Registre los datos del perfil faltantes, no necesitan ser válidos ![Ver](screenshots/screenshot13.png)
-1. Haga click en New Datastore ![Ver](screenshots/screenshot14.png)
-1. Seleccione Google Cloud Platform ![Ver](screenshots/screenshot15.png)
-1. Seleccione la opción Free (de prueba por 90 días) ![Ver](screenshots/screenshot16.png)
-1. Haga click en Create Datastore ![Ver](screenshots/screenshot17.png)
-1. Haga click en el nombre de la base de datos ![Ver](screenshots/screenshot18.png)
-1. Seleccione el tab "System Information" ![Ver](screenshots/screenshot19.png)
-1. Aquí encontrará el nombre de la base de datos, el hostname, el usuario y la contraseña. el puerto es el 3306. ![Ver](screenshots/screenshot20.png)
-1. Modifique el archivo app/Providers/AppServiceProviders.php [ver cambio](https://github.com/iaw-dcic/proyecto-1/commit/9c6640f14fa2a31fe351e77377c93d729eb83e63)    
+## Learning Laravel
+
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost you and your team's skills by digging into our comprehensive video library.
+
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- [UserInsights](https://userinsights.com)
+- [Fragrantica](https://www.fragrantica.com)
+- [SOFTonSOFA](https://softonsofa.com/)
+- [User10](https://user10.com)
+- [Soumettre.fr](https://soumettre.fr/)
+- [CodeBrisk](https://codebrisk.com)
+- [1Forge](https://1forge.com)
+- [TECPRESSO](https://tecpresso.co.jp/)
+- [Runtime Converter](http://runtimeconverter.com/)
+- [WebL'Agence](https://weblagence.com/)
+- [Invoice Ninja](https://www.invoiceninja.com)
+- [iMi digital](https://www.imi-digital.de/)
+- [Earthlink](https://www.earthlink.ro/)
+- [Steadfast Collective](https://steadfastcollective.com/)
+- [We Are The Robots Inc.](https://watr.mx/)
+- [Understand.io](https://www.understand.io/)
+- [Abdel Elrafa](https://abdelelrafa.com)
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
