@@ -44,4 +44,10 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'client_id' => '2167143170021378',
+        'client_secret' => 'ad1eb6219f4000b50df38a9efba1f8c7',
+        'redirect' => 'https://app-iaw-danilo.herokuapp.com/auth/facebook/callback'
+    ]
+
 ];
