@@ -128,7 +128,8 @@ class PostsController extends Controller
             // Filename to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            Cloudder::upload($request->file('cover_image'), $fileNameToStore, [], []);
+            //$path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
 
         }
 
@@ -155,7 +156,8 @@ class PostsController extends Controller
 
         if($post->cover_image != 'noimage.jpg'){
             // Delete image
-            Storage::delete('public/cover_images/'.$post->cover_image);
+            Cloudder::delete($post->cover_image, []);
+            //&Storage::delete('public/cover_images/'.$post->cover_image);
         }
 
         $post->delete();
