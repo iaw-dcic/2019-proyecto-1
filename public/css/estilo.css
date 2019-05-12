@@ -1,0 +1,32 @@
+.fondo{
+  background-image: url(Popcorn.jpg);
+  background-repeat: no-repeat;
+  width:auto;
+  height:auto;
+}
+.titulo{
+	text-align: center;
+	font-style: bold;
+	font-weight: normal;
+	font-variant: small-caps;
+	font-family: "Comic Sans", Times, serif;
+}
+
+.tituloAbout{
+	text-align: left;
+	font-style: bold;
+	font-weight: normal;
+	font-variant: small-caps;
+	font-family: "Comic Sans", Times, serif;
+}
+
+.boton{
+  position: relative;
+  top: 150px;
+}
+
+.personal{
+  text-align: center;
+  font-family: "Comic Sans", Times, serif;
+  font-style: bold;
+}

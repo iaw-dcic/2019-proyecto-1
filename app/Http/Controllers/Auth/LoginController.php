@@ -36,4 +36,23 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+    * Handle Social login request
+    *
+    * @return response
+    */
+   public function socialLogin($social)
+   {
+       //
+   }
+   /**
+    * Obtain the user information from Social Logged in.
+    * @param $social
+    * @return Response
+    */
+   public function handleProviderCallback($social)
+   {
+       //
+   }
 }
