@@ -44,10 +44,12 @@ return [
         ],
     ],
 
+    
     'twitter' => [
-        'client_id' => 'TlUevKuWKUlgvfUC41yy3fUzf',
-        'client_secret' => 'TAf66Kt2Mrs3sxbuOoFastyTmhDjprO7pSoMMO0UHwTI4W8fOG',
-        'redirect' => 'http://iaw-vitiasencio-proyecto-1.herokuapp.com/callback/twitter',
-        ],
+        'client_id' => env('TWITTER_KEY'),
+        'client_secret' => env('TWITTER_SECRET'),
+        'redirect' => env('TWITTER_REDIRECT_URI'),
+    ],
 
+        
 ];

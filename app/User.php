@@ -10,6 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +18,16 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'provider', 'provider_id'
+    ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'provider' => NULL,
+        'provider_id' => NULL,
     ];
 
     /**
