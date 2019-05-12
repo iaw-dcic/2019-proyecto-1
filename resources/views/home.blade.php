@@ -22,7 +22,7 @@
         </div>
         <div class="card-body text-center">
             <a href="/posts/create" class="btn btn-success">Crear Post</a>
-        <a href="/users/edit/{{Auth::user()->id}}" class="btn btn-primary">Editar Perfil </a>
+            <a href="/users/edit/{{Auth::user()->id}}" class="btn btn-primary">Editar Perfil </a>
         </div>
     </div>
 
@@ -39,7 +39,7 @@
     @if(count($posts)>0)
     @foreach($posts as $post)
     <div class="card mb-3">
-        <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
+        <img class="card-img-top" src="{{ Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}" alt="Card image cap">
         <div class="card-body">
 
             <div class="row">

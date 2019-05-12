@@ -26,7 +26,7 @@
     @if(($key % 2 )==0)
 
     <div class="media">
-        <img class="align-self-center mr-5" src="/storage/cover_images/{{$post->cover_image}}"
+        <img class="align-self-center mr-5" src="{{ Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
             alt="Generic placeholder image" width="60%">
         <div class="media-body align-middle">
             <h4>By: {{$post->user->name}}</h4>
@@ -47,7 +47,7 @@
             <h5>{{$post->title}}</h5>
             <p>{{$post->body}}</p>
         </div>
-        <img class="align-self-center ml-5" src="/storage/cover_images/{{$post->cover_image}}"
+        <img class="align-self-center ml-5" src="{{ Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
             alt="Generic placeholder image" width="60%">
     </div>
 

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Storage;
 
+use JD\Cloudder\Facades\Cloudder;
+
 class PostsController extends Controller
 {
     /**
@@ -55,10 +57,12 @@ class PostsController extends Controller
             // Filename to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+            Cloudder::upload($request->file('cover_image'), $fileNameToStore, [], []);
+            //return Cloudder::cloudinary_url($fileNameToStore,['width'=>'1.0', 'height'=>'1.0']);
+            //return Cloudder::show($fileNameToStore, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg']);
 
         }else{
-            $fileNameToStore = 'noimage.jpeg';
+            $fileNameToStore = 'noimage.jpg';
         }
 
         $post = new Post;

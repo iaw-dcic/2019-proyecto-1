@@ -7,7 +7,7 @@
     @if(count($posts)>0)
     @foreach($posts as $post)
     <div class="card mb-3">
-        <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
+        <img class="card-img-top" src="{{ Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{$post->title}}</h5>
             <p class="card-text">{{$post->body}}</p>
