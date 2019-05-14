@@ -78,6 +78,7 @@ class ListasController extends Controller
      */
     public function show($id)
     {   
+        abort_if(Lista::find($id)->user_id != auth()->id(),403,'permiso denegado');
         $lista=Lista::find($id);
         return view('lista.showLista')->with('libros',$lista->libros)->
         with('usr',auth()->user()->name)->with('lista',$lista);
@@ -111,6 +112,7 @@ class ListasController extends Controller
             'visibilidad' => ['required']
         
         ]);
+        abort_if(Lista::find($id)->user_id != auth()->id(),403,'permiso denegado');
 
         $user_name=User::find(auth()->id())->name;
 
