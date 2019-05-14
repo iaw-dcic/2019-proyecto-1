@@ -112,7 +112,7 @@ class ListasController extends Controller
             'visibilidad' => ['required']
         
         ]);
-        abort_if(Lista::find($id)->user_id != auth()->id(),403,'permiso denegado');
+        abort_if(Lista::find($lista)->user_id != auth()->id(),403,'permiso denegado');
 
         $user_name=User::find(auth()->id())->name;
 
