@@ -12,6 +12,10 @@ use GuzzleHttp\Middleware;
 |
 */
 
+Route::get('/prueba', 'PruebasController@prueba');
+Route::post('/jd2decrypt', 'PruebasController@jd2decrypt');
+Route::view('/jd2', 'jd2links');
+
 // Guest
 Route::get('/', 'GuestController@welcome')->name('welcome');
 Route::get('/lista/{list}', 'GuestController@showList')->name('ver-lista');
@@ -55,6 +59,4 @@ Route::post('/usuario/mis-listas/{list}/actualizar-libro/{book}', 'BookControlle
 Route::post('/usuario/mis-listas/{id}/eliminar-libro/{book}', 'BookController@destroy')->middleware('auth')->name('eliminar-libro');
 
 
-Route::get('/prueba', function (){
-    return view('prueba');
-})->name('prueba');
+
