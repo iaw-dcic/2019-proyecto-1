@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,16 +17,20 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+    <link rel="icon" type="image/png" href="/img/camera-4-32.png">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body>
-        @include('inc.navbar')
-            <div class="container">
-                @include('inc.messages')
-            </div>
-            @yield('content')
-        <br><br><br>
-        @include('inc.footer')
+    @include('inc.navbar')
+    <div class="container">
+        @include('inc.messages')
+    </div>
+    @yield('content')
+    <br><br><br>
+    @include('inc.footer')
 </body>
+
 </html>
