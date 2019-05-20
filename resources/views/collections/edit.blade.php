@@ -11,7 +11,7 @@
 
 <div class="row mt-2">
     <div class="col-2 text-center px-5">
-        <h3>Crear Post</h3>
+        <h3>{{$collection->collection_name}}</h3>
         {!! Form::open(['action'=>['CollectionsController@update',$collection->id], 'method'=>'POST'])!!}
         <div class="form-group">
             {{Form::label('collection_name','Titulo')}}
