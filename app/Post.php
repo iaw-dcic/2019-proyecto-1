@@ -18,9 +18,10 @@ class Post extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'id';
+    //protected $primaryKey = 'post_id';
 
-    public function user(){
-        return $this->belongsTo('App\User');
+    protected function collection(){
+        return $this->belongsTo('App\Collection');
     }
+
 }

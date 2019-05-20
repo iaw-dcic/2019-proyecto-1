@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use App\User;
 Use App\Post;
+Use App\Collection;
 
 
 class PagesController extends Controller
@@ -21,15 +22,17 @@ class PagesController extends Controller
     public function user($id){
 
         $user = User::find($id);
+        $collections = Collection::where('user_id',$id)->where('is_public',true)->get();
         
         if(auth()->user()==NULL){
-            return view('user')->with('posts', $user->posts)->with('user',$user);
+            return view('user')->with('collections', $collections)->with('user',$user);
         }
         
         if($id == auth()->user()->id)
-            return view('home')->with('posts', $user->posts);
+            return view('home')->with('collections', $collections)->with('user',$user);
         else
-            return view('user')->with('posts', $user->posts)->with('user',$user);
+            return view('user')->with('collections', $collections)->with('user',$user);
+
     }
 
     public function edit($id){

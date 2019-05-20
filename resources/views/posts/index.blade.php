@@ -11,7 +11,7 @@
         <div class="card-body">
             <h5 class="card-title">{{$post->title}}</h5>
             <p class="card-text">{{$post->body}}</p>
-            <p class="card-text"><small class="text-muted">Subido el: {{$post->created_at}} por <a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></small></p>
+            <p class="card-text"><small class="text-muted">Subido el: {{$post->created_at}} por <a href="/users/{{$post->user->user_id}}">{{$post->user->name}}</a></small></p>
         </div>
     </div>
     @endforeach

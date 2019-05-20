@@ -15,10 +15,11 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+     
     public function index()
     {
-        $posts = Post::all();
-        return view('posts.index')->with('posts',$posts);
+         $posts = Post::all();
+         return view('posts.index')->with('posts',$posts);
     }
 
     /**
@@ -60,7 +61,6 @@ class PostsController extends Controller
             Cloudder::upload($request->file('cover_image'), $fileNameToStore, [], []);
             //return Cloudder::cloudinary_url($fileNameToStore,['width'=>'1.0', 'height'=>'1.0']);
             //return Cloudder::show($fileNameToStore, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg']);
-
         }else{
             $fileNameToStore = 'noimage.jpg';
         }
@@ -68,11 +68,11 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body'); 
-        $post->user_id = auth()->user()->id;
+        $post->collection_id = $request->input('collection_id');
         $post->cover_image = $fileNameToStore;
         $post->save();
 
-        return redirect('/posts')->with('success','Post Created');
+        return redirect('/collections/'.$request->input('collection_id').'/edit')->with('success','Post Created');
 
     }
 
@@ -161,6 +161,6 @@ class PostsController extends Controller
         }
 
         $post->delete();
-        return redirect('/home')->with('success','PostRemoved');
+        return redirect()->back()->with('success','Post Borrado');
     }
 }

@@ -1,84 +1,93 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- 
-    
-    <div class="container">
-        
-        @if(count($posts)>0)
-        @foreach($posts as $post)
-        <div class="card mb-3">
-            <img class="card-img-top" src="/storage/cover_images/{{$post->cover_image}}" alt="Card image cap">
-<div class="card-body">
-    <h5 class="card-title"><a href="/users/{{$post->user->id}}">{{$post->user->name}}</a></h5>
-    <p class="card-text">{{$post->body}}</p>
-    <p class="card-text"><small class="text-muted">Uploaded on: {{$post->created_at}}</small></p>
-</div>
-</div>
-@endforeach
-@else
-<div class="card mb-3">
-    <div class="card-body">
-        <h5 class="card-title">No images yet.</h5>
+
+
+<div class="row m-0 px-2 pt-4">
+
+    <div class="col-2 text-center">
+        <h4>Profile.</h5>
+            <hr>
+            <h5>Nombre</h5>
+            <p>{{ $user->name }}</p>
+            <h5>Edad</h5>
+            <p>{{ $user->edad }}</p>
+            <h5>Mail</h5>
+            <p>{{ $user->email }}</p>
+            <h5>Profesión</h5>
+            <p>{{ $user->profesion }}</p>
     </div>
-</div>
-<br>
-@endif
+    <div class="col text-center">
+        <h5>Listas de {{$user->name}}</h5>
+        @if (count($collections)>0)
+        <div class="d-flex flex-wrap justify-content-around">
 
-</div>
---}}
+            @foreach ($collections as $collection)
 
+            <div class="card m-2" style="width: 18rem;">
 
-<div class="container">
+                <div id="carouselExampleControls{{$collection->id}}" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @if (count($collection->posts)>0)
 
-    <div class="card mb-3">
-        <div class="card-body bg-dark text-center light-font">
-            <h5>Profile.</h5>
-        </div>
-        <div class="card-body text-center">
-            <h5>Nombre: {{ $user->name }}</h5>
-            <h5>Edad: {{ $user->edad }} </h5>
-            <h5>Mail: {{ $user->email }} </h5>
-            <h5>Profesión: {{ $user->profesion }} </h5>
-        </div>
-    </div>
+                        @foreach ($collection->posts as $post)
+                        @if ($loop->first)
+                        <div class="carousel-item active carousel-fixed" style="height: 15rem !important;">
 
-    <br>
-    <hr>
-    <br>
-    <div class="card mb-3">
-        <div class="card-body bg-dark text-center light-font">
-            <h5>Imágenes.</h5>
-        </div>
-    </div>
+                            <img class="d-block h-100"
+                                src="{{Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
+                                alt="First slide">
 
-    @if(count($posts)>0)
-    @foreach($posts as $post)
-    <div class="card mb-3">
-            {{--  
-            {{ Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}
-            --}}
-        <img class="card-img-top" src="{{ Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}" alt="Card image cap">
-        <div class="card-body">
+                        </div>
+                        @else
+                        <div class="carousel-item carousel-fixed" style="height: 15rem !important;">
 
-            <div class="row">
-                <div class="col">
-                    <h4 class="card-title">{{$post->title}}</h4>
-                    <p class="card-text">{{$post->body}}</p>
-                    <p class="card-text"><small class="text-muted">Subido el: {{$post->created_at}}</small></p>
+                            <img class="d-block h-100"
+                                src="{{Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
+                                alt="First slide">
+
+                        </div>
+                        @endif
+                        @endforeach
+                        @else
+                        <div class="carousel-item active carousel-fixed" style="height: 15rem !important;">
+
+                            <img class="d-block h-100 " src="/img/empty-photo.jpg" alt="First slide">
+
+                        </div>
+
+                        @endif
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls{{$collection->id}}" role="button"
+                        data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls{{$collection->id}}" role="button"
+                        data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <div class="card-body">
+                    <div class="card-text">
+                        <h5><a href="/collections/{{$collection->id}}">{{$collection->collection_name}}</a></h5>
+                        <small>Subido por <a
+                                href="/users/{{$collection->user->id}}">{{$collection->user->name}}</a></small>
+                    </div>
                 </div>
             </div>
+            @endforeach
+
         </div>
+        @else
+        <h2>En este momento no hay listas.</h2>
+        @endif
+
     </div>
-    @endforeach
-    @else
-    <div class="card mb-3">
-        <div class="card-body">
-            <h5 class="card-title">Sin imágenes.</h5>
-        </div>
-    </div>
-    <br>
-    @endif
+
 
 </div>
 @endsection

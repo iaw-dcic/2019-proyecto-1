@@ -2,12 +2,12 @@
 
 @section('content')
 
-{{-- primer imagen.  --}}
+{{-- imagen principal  --}}
 <div class="container-fluid no-padding index_image">
     <!-- elementos sobre la imagen -->
     <div class="container h-100 text-center ">
         <div class="row h-50 justify-content-center align-items-center ">
-            <div>
+            <div class="texto-index">
                 <h1>¡Bienvenido a PhotoStore!</h1>
                 <h4>Aquí podrás ver y compartir contenido fotográfico.</h4>
             </div>
@@ -22,47 +22,46 @@
     <hr>
     <br>
 
-    @foreach ($postsIndex as $key=>$post)
-    @if(($key % 2 )==0)
+    @if (count($postsIndex)>0)
 
-    <div class="media">
-        <img class="align-self-center mr-5" src="{{ Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
-            alt="Generic placeholder image" width="60%">
-        <div class="media-body align-middle">
-            <h4>By: {{$post->user->name}}</h4>
-            <h5>{{$post->title}}</h5>
-            <p>{{$post->body}}</p>
+    <h3 class="text-center mb-3">Ejemplos</h3>
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+            @foreach ($postsIndex as $post)
+                @if ($loop->first)
+                    <div class="carousel-item carousel-fixed active">
+                        <img class="d-block h-100"
+                            src="{{Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
+                            alt="First slide">
+                    </div>
+                @else
+                    <div class="carousel-item carousel-fixed">
+                        <img class="d-block h-100"
+                            src="{{Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
+                            alt="Second slide">
+                    </div>
+                @endif
+            @endforeach
         </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-
-    <br>
-    <hr>
-    <br>
-
-    @else
-
-    <div class="media">
-        <div class="media-body align-middle">
-            <h4>By: {{$post->user->name}}</h4>
-            <h5>{{$post->title}}</h5>
-            <p>{{$post->body}}</p>
-        </div>
-        <img class="align-self-center ml-5" src="{{ Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
-            alt="Generic placeholder image" width="60%">
-    </div>
-
-    <br>
-    <hr>
-    <br>
 
     @endif
 
-    @endforeach
+    <br>
+    <hr>
+    <br>
 
-
-</div>
-
-<div class="container">
 
 
     <div class="row">
