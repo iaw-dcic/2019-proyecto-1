@@ -22,28 +22,22 @@
     <hr>
     <br>
 
-    @if (count($postsIndex)>0)
 
     <h3 class="text-center mb-3">Ejemplos</h3>
-
+    <br>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
 
-            @foreach ($postsIndex as $post)
-                @if ($loop->first)
-                    <div class="carousel-item carousel-fixed active">
-                        <img class="d-block h-100"
-                            src="{{Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
-                            alt="First slide">
-                    </div>
-                @else
-                    <div class="carousel-item carousel-fixed">
-                        <img class="d-block h-100"
-                            src="{{Cloudder::show($post->cover_image, ['width'=>'1.0', 'height'=>'1.0', 'format'=>'jpg'])}}"
-                            alt="Second slide">
-                    </div>
-                @endif
-            @endforeach
+            <div class="carousel-item carousel-fixed active">
+                <img class="d-block h-100" src="/img/afternoon-4175917_1920.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item carousel-fixed ">
+                <img class="d-block h-100" src="/img/sand-dunes-1149528_19202.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item carousel-fixed ">
+                    <img class="d-block h-100" src="/img/weather-phenomenon-4178465_1920.jpg" alt="First slide">
+            </div>
+            
         </div>
 
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -56,7 +50,6 @@
         </a>
     </div>
 
-    @endif
 
     <br>
     <hr>
