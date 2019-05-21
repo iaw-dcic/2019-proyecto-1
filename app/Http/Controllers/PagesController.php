@@ -10,6 +10,17 @@ Use App\Collection;
 
 class PagesController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','user');
+    }  
+
     public function index(){
 
         $postsIndex = Post::orderBy('updated_at','asc')->take(4)->get();
@@ -37,6 +48,10 @@ class PagesController extends Controller
 
     public function edit($id){
         $user = User::find($id);
+
+        if(auth()->user()->id !== $user->id)
+            return redirect('/collections')->with('error','Operación no autorizada.');
+
         return view('edituser')->with('user',$user);
     }
 

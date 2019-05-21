@@ -8,6 +8,17 @@ use JD\Cloudder\Facades\Cloudder;
 
 class CollectionsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index','show');
+    }   
+
     /**
      * Display a listing of the resource.
      *
@@ -65,6 +76,9 @@ class CollectionsController extends Controller
     public function show($id)
     {
         $collection = Collection::find($id);
+
+        if($collection->is_public == false)
+            return redirect('/collections')->with('error','Operación no autorizada.');
         
         return view('collections.show')->with('collection',$collection);
     }
@@ -78,6 +92,10 @@ class CollectionsController extends Controller
     public function edit($id)
     {
         $collection = Collection::find($id);
+
+        if(auth()->user()->id !== $collection->user->id)
+            return redirect('/collections')->with('error','Operación no autorizada.');
+
         $posts = $collection->posts;
         return view('collections.edit')->with('collection',$collection)->with('posts', $posts);
     }

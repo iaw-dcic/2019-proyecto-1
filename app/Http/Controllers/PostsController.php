@@ -10,12 +10,23 @@ use JD\Cloudder\Facades\Cloudder;
 
 class PostsController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     
+
     public function index()
     {
          $posts = Post::all();
@@ -82,11 +93,12 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         $post = Post::find($id);
         return view('posts.show')->with('post',$post);
     }
+    */
 
     /**
      * Show the form for editing the specified resource.
