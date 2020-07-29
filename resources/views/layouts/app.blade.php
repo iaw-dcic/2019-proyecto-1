@@ -53,7 +53,7 @@
                             <span class="navbar-text">Futboleros</span>
                             </a>
                             @endif --}}
-                            <a class="navbar-brand" href="{{ route('home') }}"><img src="futbol.png" alt="home"></a>
+                            <a class="navbar-brand" href="{{ route('home') }}"><img src="/futbol.png" alt="home"></a>
                             <span class="navbar-text">Futboleros</span>
                             </a>
 

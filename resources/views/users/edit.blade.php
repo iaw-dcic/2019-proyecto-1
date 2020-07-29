@@ -42,14 +42,10 @@
                 <input type="password" name="password" id="password" placeholder="Mayor a 6 caracteres" class="form-control">
             </div>
 
-            <div class="form-check">
-                @if(old('activar2F',$user->activar2F==1))
-                    <input type="checkbox" class="form-check-input" id="activar2F" name="activar2F" checked>
-                @else
-                    <input type="checkbox" class="form-check-input" id="activar2F" name="activar2F">
-                @endif
-                    <label class="form-check-label" for="exampleCheck1">Activar segundo factor de autenticación</label>
-             </div>
+            <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
 
             <button type="submit" class="btn btn-primary">Actualizar usuario</button>
 
