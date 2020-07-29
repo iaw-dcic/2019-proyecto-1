@@ -68,11 +68,11 @@ class UserController extends Controller
                 ]);
             }
             else{
-               $data['activar2F']=false;
-               $data['semilla']='0';
-               $user->update($data);
+                $data['activar2F']=false;
+                $data['semilla']='0';
+                $user->update($data);
 
-               return redirect('home');
+                return redirect('home');
             }
     }
 
