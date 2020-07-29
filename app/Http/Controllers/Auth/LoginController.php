@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Authenticator;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -26,7 +28,9 @@ class LoginController extends Controller
      *
      * @var string
      */
+
     protected $redirectTo = '/home';
+
 
     /**
      * Create a new controller instance.
@@ -39,17 +43,25 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
-
-    public function logout(Request $request)
-    {
-        $this->guard()->logout();
-
-        $request->session()->flush();
-
-        $request->session()->invalidate();
-
-        return $this->loggedOut($request) ?: redirect()->route('home');
+    public function twofactor(User $user){
+        return view('sfactor',[
+            'users' => $user->get()
+        ]);
     }
 
+    protected function authenticated(Request $request, User $user)
+    {
+        if($user->activar2F == true){
+            return view('sfactor',[
+                'user' => $user
+            ]);
+        }else
+            return redirect('home');
+    }
+
+    public function logout()
+     {
+        Auth::logout();
+        return view('Auth.login');
+     }
 }

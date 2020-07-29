@@ -91,10 +91,10 @@ class ListController extends Controller
         ]);
         $user = auth()->user();
         if (($request['isPublic']=='on'))
-        $data['isPublic']=true;
-      else {
-          $data['isPublic']=false;
-      }
+            $data['isPublic']=true;
+        else {
+            $data['isPublic']=false;
+        }
         $list = Lista::create([
             'name' => $data['name'],
             'isPublic' => $data['isPublic'],
