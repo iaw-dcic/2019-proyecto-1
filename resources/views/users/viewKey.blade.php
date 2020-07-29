@@ -20,12 +20,11 @@
                         <div class="form-group row">
                             <input type="hidden" id="k" name="k" value="{{ $key }}">
                         </div>
-
-                        </div>
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-1">
+
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Activar') }}
+                                    {{('Activar') }}
                                 </button>
                             </div>
                         </div>
