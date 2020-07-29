@@ -26,6 +26,9 @@ Route::post('usuarios/crearItem','ListController@storeItem');
 Route::get('usuarios/show/{user}','UserController@show')->name('users.show');
 
 Route::get('usuarios/{user}/editar', 'UserController@edit')->name('users.edit');
+Route::get('usuarios/{user}/editar/viewKey','UserController@showViewKey')->name('users.viewKey');
+Route::post('usuarios/{user}/editar/viewKey','UserController@storeKey');
+
 Route::put('usuarios/{user}', 'UserController@update');
 
 Route::get('usuarios/mostrarListas','ListController@showListas')->name('users.showListas');
@@ -40,6 +43,9 @@ Route::get('usuarios/mostrarListas/{id}/editItem','ListController@editItem')->na
 Route::get('usuarios/mostrarListas/{id}/guardar','ListController@updateEditItem')->name('users.updateEditItem');
 
 
+Route::get('login/twofactor','Auth\LoginController@twofactor')->name('twofactor');
+Route::post('login/twofactor','UserController@twofactorP');
+
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -53,3 +59,4 @@ Route::resetPassword();
 Route::emailVerification();
 Route::get('/home', 'HomeController@index')->name('home');
 
+?>
