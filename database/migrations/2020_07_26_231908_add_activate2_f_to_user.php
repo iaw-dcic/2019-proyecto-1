@@ -15,7 +15,7 @@ class AddActivate2FToUser extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('activar2F')->default(0);
-            $table->strings('semilla')->default(0);
+            $table->string('semilla')->default(0);
         });
     }
 
