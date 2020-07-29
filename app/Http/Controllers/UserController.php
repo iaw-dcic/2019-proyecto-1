@@ -59,7 +59,6 @@ class UserController extends Controller
                 $authenticator = new Authenticator();
                 $secret =$authenticator->generateRandomSecret();
                 $QR = $authenticator->getQR('futboleros',$secret);
-                //aca podria mandarle toda la info necesaria para el qr
                 $user->update($data);
 
                 return view('users.viewKey',[
@@ -75,7 +74,6 @@ class UserController extends Controller
 
                return redirect('home');
             }
-
     }
 
     public function storeKey($id,Request $request){
