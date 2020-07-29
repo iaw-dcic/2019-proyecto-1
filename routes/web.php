@@ -58,5 +58,3 @@ Route::resetPassword();
 // Email Verification Routes...
 Route::emailVerification();
 Route::get('/home', 'HomeController@index')->name('home');
-
-?>
