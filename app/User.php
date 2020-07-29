@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','activar2F','semilla'
+        'name', 'email', 'password'
     ];
 
     /**
@@ -54,10 +54,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Lista::class);
     }
-
-    public function generar_semilla(){
-
-    }
-
 
 }
