@@ -74,9 +74,11 @@ class Authenticator
             $urlencoded .= urlencode('&issuer='.urlencode($title));
         }
 
+        //api de google para generar QR
         return 'https://chart.googleapis.com/chart?chs='.$width.'x'.$height.'&chld='.$level.'|0&cht=qr&chl='.$urlencoded.'';
     }
 
+    //parametros que espera $llavesemillasecreta y codigoTOTPrequest
     public function verifyCode($secret, $code, $discrepancy = 1, $currentTimeSlice = null)
     {
         if ($currentTimeSlice === null) {
