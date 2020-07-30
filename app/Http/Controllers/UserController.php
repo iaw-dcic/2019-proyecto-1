@@ -28,7 +28,7 @@ class UserController extends Controller
         // La validacion la hago con boostrap en la vista
         $user= User::where('email',$request->email)->first();
         $authenticator = new Authenticator();
-        $checkresult = $authenticator->verifyCode($user->semilla,$request->token,0);
+        $checkresult = $authenticator->verifyCode(decrypt($user->semilla),$request->token,0);
         $login = new LoginController();
         if($checkresult)
             return redirect('home');
@@ -78,7 +78,8 @@ class UserController extends Controller
 
     public function storeKey($id,Request $request){
         $user = User::where('id',$id)->first();
-        $data['semilla']=$request['k'];
+        //encriptamos la semilla
+        $data['semilla'] = encrypt($request['k']);
         $user->update($data);
         return redirect('home');
     }

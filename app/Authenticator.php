@@ -5,8 +5,9 @@ namespace App;
 class Authenticator
 {
     protected $length = 6;
-    public function generateRandomSecret($secretLength = 16)
+    public function generateRandomSecret()
     {
+        $secretLength = 16;
         $secret = '';
         $validChars = array(
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -16,22 +17,24 @@ class Authenticator
             '=',
         );
 
-        // Valid secret lengths are 80 to 640 bits
+        // valida que el tamaño de la clave sea entre 80 a 640 bits
         if ($secretLength < 16 || $secretLength > 128) {
             throw new Exception('Bad secret length');
         }
         $random = false;
         if (function_exists('random_bytes')) {
+            //genera una cadena de longitud $secretLength.
             $random = random_bytes($secretLength);
         }
         if ($random !== false) {
             for ($i = 0; $i < $secretLength; ++$i) {
+                //ord convierte el primer byte del string a un valor entre 0 y 255.
                 $secret .= $validChars[ord($random[$i]) & 31];
             }
         } else {
             throw new Exception('Cannot create secure random secret due to source unavailbility');
         }
-
+        //FIMQ2OOBU5EVRQ5D
         return $secret;
     }
 
