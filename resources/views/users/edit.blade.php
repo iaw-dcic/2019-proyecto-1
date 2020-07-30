@@ -22,7 +22,7 @@
 
 
 
-        <form method="POST" action="{{ url("usuarios/{$user->id}") }}">
+        <form method="POST" action="{{ url('usuarios/{$user->id}') }}">
             {{ method_field('PUT') }} <!--Paso el metodo correcto-->
             {!! csrf_field() !!} <!--Laravel nos protoge para evitar que un sitio malicioso envia solicitudes post a nuestra app pidiendo este token-->
             <div class="form-group">
