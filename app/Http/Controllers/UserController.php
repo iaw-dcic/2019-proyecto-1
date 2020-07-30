@@ -22,10 +22,7 @@ class UserController extends Controller
         return view('users.edit', ['user' => $user]);
     }
 
-
-
     public function twofactorP (Request $request){
-        // La validacion la hago con boostrap en la vista
         $user= User::where('email',$request->email)->first();
         $authenticator = new Authenticator();
         $checkresult = $authenticator->verifyCode(decrypt($user->semilla),$request->token,0);
