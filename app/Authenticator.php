@@ -5,6 +5,7 @@ namespace App;
 class Authenticator
 {
     protected $length = 6;
+
     public function generateRandomSecret()
     {
         $secretLength = 16;
